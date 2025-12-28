@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, useMotionValue } from 'framer-motion'
+import AccommodationStats from '../components/AccommodationStats'
 import './Accommodation.css'
 
 const OPTIONS = [
@@ -15,7 +16,7 @@ const OPTIONS = [
       '/src/assets/images/main-house.jpg',
       '/src/assets/images/attic-beds.jpg',
     ],
-    description: 'A beautifully converted hay barn that serves as our main group accommodation. This spacious and rustic space offers 23 comfortable beds across two former stables, perfect for retreats, workshops, and creative gatherings. The warm, inviting atmosphere combines traditional charm with modern comfort, creating an inspiring environment where groups can connect, create, and unwind together.',
+    description: 'A beautifully converted hay barn offering 23 comfortable beds across two former stables. Perfect for retreats, workshops, and creative gatherings.',
     features: [
       'Kitchen',
       'Bathroom',
@@ -35,7 +36,7 @@ const OPTIONS = [
       '/src/assets/images/teahous-with-chair.jpg',
       '/src/assets/images/you-are-where-you-need-to-be.jpg',
     ],
-    description: 'An intimate and inspiring workshop space designed for smaller sessions, masterclasses, and one-on-one creative work. The Cosmos offers a serene environment with thoughtful design elements that encourage focus and creativity. Perfect for intimate gatherings, private sessions, or specialized workshops where connection and inspiration flow naturally.',
+    description: 'An intimate workshop space designed for smaller sessions, masterclasses, and one-on-one creative work. Perfect for intimate gatherings and specialized workshops.',
     features: [
       'Workshop space',
       'Comfortable seating',
@@ -53,7 +54,7 @@ const OPTIONS = [
       '/src/assets/images/outside-walk.jpg',
       '/src/assets/images/hay-house-against-sun.jpg',
     ],
-    description: 'Our expansive outdoor spaces invite you to connect with nature and find inspiration in the open air. Whether you\'re seeking a peaceful moment of reflection, planning an outdoor workshop, or simply want to breathe in the fresh countryside air, Horizon offers the perfect backdrop for your creative journey.',
+    description: 'Expansive outdoor spaces to connect with nature and find inspiration in the open air. Perfect for reflection, outdoor workshops, and enjoying the countryside.',
   },
   {
     id: 'sauna',
@@ -66,7 +67,7 @@ const OPTIONS = [
       '/src/assets/images/you-are-where-you-need-to-be.jpg',
       '/src/assets/images/outside-walk.jpg',
     ],
-    description: 'Unwind and rejuvenate in our private sauna and hot tub area. After a day of creative work or workshops, there\'s nothing quite like the restorative power of heat and relaxation. This outdoor wellness space offers the perfect way to decompress, connect with fellow guests, or simply enjoy a moment of peaceful solitude under the stars.',
+    description: 'Unwind and rejuvenate in our private sauna and hot tub area. The perfect way to decompress after a day of creative work or workshops.',
   },
   {
     id: 'pond',
@@ -79,7 +80,7 @@ const OPTIONS = [
       '/src/assets/images/you-are-where-you-need-to-be.jpg',
       '/src/assets/images/field-walking-women.jpg',
     ],
-    description: 'Dive into nature at our natural swimming pond. Surrounded by lush greenery and teeming with local wildlife, this eco-friendly swimming area offers a refreshing escape and a unique way to connect with the natural world. Perfect for a morning swim, an afternoon cool-down, or simply enjoying the peaceful sounds of nature.',
+    description: 'A natural swimming pond surrounded by lush greenery and local wildlife. Perfect for a refreshing swim or enjoying the peaceful sounds of nature.',
   },
   {
     id: 'in-between',
@@ -93,7 +94,7 @@ const OPTIONS = [
       '/src/assets/images/double-ensuite.jpg',
       '/src/assets/images/attic-beds.jpg',
     ],
-    description: 'Discover the many versatile spaces throughout our property that make every stay unique. From cozy attic rooms to comfortable ensuite accommodations, our main house and surrounding buildings offer flexible spaces that adapt to your needs. Whether you\'re looking for a quiet corner to work, a comfortable place to rest, or a space that sparks inspiration, you\'ll find it here.',
+    description: 'Versatile spaces throughout our property, from cozy attic rooms to comfortable ensuite accommodations. Flexible spaces that adapt to your needs.',
     features: [
       'Kitchen',
       'Bathroom',
@@ -213,7 +214,7 @@ function AccommodationDetailSection({ option, index }) {
       id={option.id}
       className="accommodation-detail-band"
     >
-      <article className="accommodation-detail" style={{ backgroundColor: option.color }}>
+      <article className={`accommodation-detail ${isReversed ? 'accommodation-detail-reversed' : ''}`} style={{ backgroundColor: option.color }}>
         {isReversed ? (
           <>
             {media}
@@ -237,10 +238,8 @@ function Accommodation() {
         <header className="accommodation-header">
           <h1 className="accommodation-title">Accommodation</h1>
           <p className="accommodation-intro">
-            Rent the entire location for your own retreat, masterclass, or other creative adventures and let yourself be
-            inspired to create the most beautiful things. We offer you and your participants a beautiful private garden with
-            a large stretch tent, a converted hay barn for more intimate sessions, two former stables with 23 beds,
-            a mini-camping area, a well-equipped kitchen, and all the space and tranquility you need.
+            Rent the entire location for your retreat, masterclass, or creative adventures. We offer a private garden,
+            converted hay barn, 23 beds, and all the space and tranquility you need.
           </p>
           <p className="accommodation-intro secondary">
             Need extra spaces during your retreat or want to book a separate space for a one-on-one session or
@@ -266,6 +265,8 @@ function Accommodation() {
             </button>
           ))}
         </div>
+
+        <AccommodationStats />
       </section>
 
       <section className="accommodation-details">

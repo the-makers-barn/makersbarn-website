@@ -53,7 +53,8 @@
 
 .hero-heading-top {
   margin: 0;
-  font-size: 3.6rem;
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-size: 5.2rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -66,7 +67,8 @@
 
 .hero-heading-bottom {
   margin: 0;
-  font-size: 3.2rem;
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-size: 4rem;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -157,11 +159,11 @@
   }
 
   .hero-heading-top {
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
 
   .hero-heading-bottom {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
   }
 
   .hero-subtitle {

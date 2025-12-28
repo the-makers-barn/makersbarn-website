@@ -32,7 +32,7 @@ function Contact() {
         <div className="contact-intro-content">
           <h1 className="contact-intro-title">Get in Touch</h1>
           <p className="contact-intro-text">
-            We'd love to hear from you! Whether you're planning a retreat, workshop, or just want to learn more about Maker's Barn, we're here to help. Choose the way that works best for you:
+            We'd love to hear from you! Whether you're planning a retreat, workshop, or just want to learn more about Maker's Barn, we're here to help. Choose the way that works best for&nbsp;you:
           </p>
           <div className="contact-intro-options">
             <div className="contact-intro-option">

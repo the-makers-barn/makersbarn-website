@@ -82,8 +82,8 @@ export const ImpressionCarousel = () => {
         <p className="impression-kicker">A little impression</p>
         <h2 className="impression-title">Slow down, look around.</h2>
         <p className="impression-subtitle">
-          Spaces to focus, wander, nap, write, reflect, and be together. Here's a glimpse of what
-          your retreat might feel like.
+          Discover the beauty of slow living. Each moment here invites you to pause, breathe, and
+          reconnect with what truly matters.
         </p>
       </div>
 

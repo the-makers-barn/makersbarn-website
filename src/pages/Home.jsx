@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import HeroDetails from '../components/HeroDetails'
+import AccommodationStats from '../components/AccommodationStats'
 import ImpressionDynamicWall from '../components/ImpressionDynamicWall'
 import ImpressionCarousel from '../components/ImpressionCarousel'
 import ImpressionPolaroids from '../components/ImpressionPolaroids'
@@ -10,6 +11,7 @@ function Home() {
     <>
       <Hero />
       <HeroDetails />
+      <AccommodationStats />
       {/* <ImpressionDynamicWall /> */}
       <ImpressionCarousel />
       <Testimonials />
