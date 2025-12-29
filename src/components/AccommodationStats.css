@@ -5,7 +5,7 @@
   margin-top: 0;
   padding: 3rem 0;
   text-align: center;
-  background-color: #f7f3ee;
+  background: radial-gradient(circle at top left, #f6f2eb 0, #fff 55%, #f4f1ec 100%);
 }
 
 @media (max-width: 767px) {
