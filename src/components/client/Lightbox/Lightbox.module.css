@@ -300,6 +300,41 @@
   object-fit: cover;
 }
 
+/* Loading Spinner */
+.loadingContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.loadingSpinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--lightbox-control-color-subtle);
+  border-top-color: var(--lightbox-control-color);
+  border-radius: 50%;
+  animation: lightboxSpin 0.8s linear infinite;
+}
+
+@keyframes lightboxSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--lightbox-control-color-muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
 /* Screen Reader Only */
 .srOnly {
   position: absolute;

@@ -1,6 +1,6 @@
 'use client'
 
-import { memo } from 'react'
+import { memo, useState, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { LIGHTBOX_ANIMATION } from './constants'
@@ -24,7 +24,23 @@ export const LightboxImage = memo(function LightboxImage({
   onLoad,
   onError,
 }: LightboxImageProps) {
+  const [isLoading, setIsLoading] = useState(true)
   const variants = getAnimationVariants(direction)
+
+  // Reset loading state when image changes
+  useEffect(() => {
+    setIsLoading(true)
+  }, [image.src])
+
+  const handleLoad = useCallback(() => {
+    setIsLoading(false)
+    onLoad?.()
+  }, [onLoad])
+
+  const handleError = useCallback(() => {
+    setIsLoading(false)
+    onError?.()
+  }, [onError])
 
   return (
     <AnimatePresence mode="wait">
@@ -37,6 +53,22 @@ export const LightboxImage = memo(function LightboxImage({
           exit={variants.exit}
           transition={LIGHTBOX_ANIMATION.image.transition}
         >
+          {/* Loading Spinner */}
+          <AnimatePresence>
+            {isLoading && (
+              <motion.div
+                className={styles.loadingContainer}
+                initial={LIGHTBOX_ANIMATION.fade.initial}
+                animate={LIGHTBOX_ANIMATION.fade.animate}
+                exit={LIGHTBOX_ANIMATION.fade.exit}
+                transition={LIGHTBOX_ANIMATION.fade.transition}
+              >
+                <div className={styles.loadingSpinner} aria-hidden="true" />
+                <span className={styles.srOnly}>Loading image...</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <Image
             src={image.src}
             alt={image.alt}
@@ -44,8 +76,8 @@ export const LightboxImage = memo(function LightboxImage({
             sizes="90vw"
             className={styles.image}
             priority
-            onLoad={onLoad}
-            onError={onError}
+            onLoad={handleLoad}
+            onError={handleError}
           />
           {image.caption && (
             <figcaption className={styles.caption}>{image.caption}</figcaption>
