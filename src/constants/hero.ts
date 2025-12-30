@@ -1,7 +1,7 @@
 export const HERO_DETAILS_CONTENT = {
   title: 'A grounded, intimate location for retreats and gatherings',
   subtitle: 'In the Dutch countryside, surrounded by nature.',
-  body: 'An intimate retreat space surrounded by fields, woodland and big open skies – designed to hold deep, transformative work with ease, warmth and beauty.',
+  body: 'A retreat space that feels like home, surrounded by fields and big open skies. Designed to hold deep, transformative work with ease, warmth and beauty. Accommodates up to 20 people.',
   primaryCta: {
     label: 'Explore the spaces',
     href: '/accommodation',
