@@ -15,6 +15,14 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.EN]: 'Outdoor sauna at The Makers Barn',
     [Language.NL]: '',
   },
+  '/images/hot-tub-in-field.jpeg': {
+    [Language.EN]: 'Hot tub in the field at The Makers Barn',
+    [Language.NL]: '',
+  },
+  '/images/outside-shower-in-field.jpg': {
+    [Language.EN]: 'Outside shower in the field at The Makers Barn',
+    [Language.NL]: '',
+  },
 
   // Accommodation images
   '/images/hay-house-against-sun.jpg': {
@@ -23,6 +31,10 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
   },
   '/images/hay-house-bench-sunset.jpg': {
     [Language.EN]: 'Hay House bench at sunset',
+    [Language.NL]: '',
+  },
+  '/images/practice-rooms-with-mats.jpg': {
+    [Language.EN]: 'Practice rooms with mats in the Hay House',
     [Language.NL]: '',
   },
   '/images/main-house.jpg': {
@@ -35,6 +47,10 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
   },
   '/images/attic-chill.jpg': {
     [Language.EN]: 'Cozy attic space for relaxing',
+    [Language.NL]: '',
+  },
+  '/images/cosmos-outside-wooden-cabin.jpeg': {
+    [Language.EN]: 'Outside view of the Cosmos wooden cabin',
     [Language.NL]: '',
   },
   '/images/cosmos-view-living-room.jpg': {
@@ -57,12 +73,32 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.EN]: 'Ducks swimming in the natural pond at The Makers Barn',
     [Language.NL]: '',
   },
+  '/images/pond-complete.jpg': {
+    [Language.EN]: 'Complete view of the swimming pond at The Makers Barn',
+    [Language.NL]: '',
+  },
+  '/images/yoga-pond-jetty-reflection.jpg': {
+    [Language.EN]: 'Yoga session at the pond jetty with reflection',
+    [Language.NL]: '',
+  },
+  '/images/pond-coaching-session.jpg': {
+    [Language.EN]: 'Coaching session by the pond at The Makers Barn',
+    [Language.NL]: '',
+  },
   '/images/outside-walk.jpg': {
     [Language.EN]: 'Peaceful walk through the grounds of The Makers Barn',
     [Language.NL]: '',
   },
   '/images/you-are-where-you-need-to-be.jpg': {
     [Language.EN]: 'Inspirational quote: You are where you need to be',
+    [Language.NL]: '',
+  },
+  '/images/two-beds-in-horizon.jpg': {
+    [Language.EN]: 'Two beds in the Horizon accommodation space',
+    [Language.NL]: '',
+  },
+  '/images/single-bed-with-wood.jpg': {
+    [Language.EN]: 'Single bed with wooden details in Horizon accommodation',
     [Language.NL]: '',
   },
 

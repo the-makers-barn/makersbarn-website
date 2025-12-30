@@ -4,8 +4,9 @@ import React, { useState, useEffect, useCallback, memo } from 'react'
 import { motion, useMotionValue } from 'framer-motion'
 import Image from 'next/image'
 import { ACCOMMODATION_OPTIONS } from '@/data'
-import { SPRING_OPTIONS, DRAG_BUFFER } from '@/constants'
+import { SPRING_OPTIONS, DRAG_BUFFER, DEFAULT_LANGUAGE } from '@/constants'
 import { AccommodationOption } from '@/types'
+import { getImageAltText } from '@/lib'
 import styles from './AccommodationCarousel.module.css'
 
 function scrollToOption(id: string) {
@@ -79,7 +80,7 @@ const AccommodationDetailSection = memo(function AccommodationDetailSection({
             >
               <Image
                 src={imgSrc}
-                alt={`${option.title} - Image ${idx + 1}`}
+                alt={getImageAltText(imgSrc, DEFAULT_LANGUAGE)}
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
                 className={styles.carouselImageInner}
