@@ -104,7 +104,7 @@ export function ContactForm() {
                 className={`${styles.introButton} ${styles.whatsappButton}`}
               >
                 <WhatsAppIcon />
-                Get in touch on WhatsApp
+                Send WhatsApp
               </a>
             </div>
             <div className={styles.introOption}>
