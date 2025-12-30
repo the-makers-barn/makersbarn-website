@@ -19,94 +19,94 @@ export const nl: Dictionary = {
   },
 
   heroDetails: {
-    title: 'Een intieme locatie voor retreats en bijeenkomsten',
-    subtitle: 'Op het Nederlandse platteland, omgeven door natuur.',
-    body: 'Een retreat ruimte die voelt als thuis, omgeven door velden en grote open luchten. Ontworpen voor diep, transformatief werk met gemak, warmte en schoonheid. Plaats voor maximaal 20 personen.',
-    primaryCtaLabel: 'Ontdek de ruimtes',
+    title: 'Een warme, intieme plek voor retreats en bijeenkomsten',
+    subtitle: 'Midden op het Nederlandse platteland, omringd door natuur.',
+    body: 'Een retreat plek die aanvoelt als thuis, te midden van weilanden en weidse luchten. Ingericht voor diepgaand, transformerend werk met gemak, warmte en schoonheid. Geschikt voor maximaal 20 personen.',
+    primaryCtaLabel: 'Bekijk de ruimtes',
     secondaryCtaLabel: 'Plan je retreat',
     metaItems: [
-      'Ruimte voor intieme groepen',
-      'Sauna & natuur voor de deur',
-      'Gelegen op het Nederlandse platteland',
+      'Plek voor kleine groepen',
+      'Sauna & natuur op loopafstand',
+      'Midden op het Nederlandse platteland',
     ],
   },
 
   contact: {
-    pageTitle: 'Neem Contact Op',
+    pageTitle: 'Neem contact op',
     introText:
-      'We horen graag van je! Of je nu een retreat, workshop plant, of gewoon meer wilt weten over Maker\'s Barn, we helpen je graag. Kies de manier die het beste bij je past:',
-    formTitle: 'Contacteer ons',
+      'Leuk dat je contact wilt opnemen! Of je nu een retreat of workshop wilt plannen, of gewoon meer wilt weten over de Makers Barn - we horen graag van je. Kies wat het beste bij je past:',
+    formTitle: 'Stuur ons een bericht',
     options: {
       whatsapp: {
         title: 'WhatsApp',
-        description: 'Stuur ons een snel bericht voor directe communicatie',
-        buttonText: 'Neem contact op via WhatsApp',
+        description: 'Stuur ons een berichtje voor snel contact',
+        buttonText: 'App ons op WhatsApp',
       },
       email: {
-        title: 'Stuur een E-mail',
-        description: 'Stuur ons een bericht en we nemen contact op',
-        buttonText: 'Stuur een E-mail',
+        title: 'E-mail',
+        description: 'Mail ons en we reageren zo snel mogelijk',
+        buttonText: 'Stuur een e-mail',
       },
       form: {
         title: 'Contactformulier',
-        description: 'Vul het formulier hieronder in en we nemen contact op',
-        buttonText: 'Ga naar Contactformulier',
+        description: 'Vul het formulier in en we nemen contact met je op',
+        buttonText: 'Naar het formulier',
       },
     },
     labels: {
-      name: 'Hoi! Mijn naam is...',
-      email: 'en je kunt me bereiken op...',
-      phone: 'of bel me op...',
-      message: 'Ik zou graag willen vragen over...',
+      name: 'Hoi! Ik ben...',
+      email: 'Je kunt me bereiken via...',
+      phone: 'Of bel me op...',
+      message: 'Ik wil graag weten...',
     },
     placeholders: {
       name: 'Je naam...',
-      email: 'Je e-mail...',
+      email: 'Je e-mailadres...',
       phone: 'Je telefoonnummer...',
-      message: 'Wat je hartje begeert :)',
+      message: 'Vertel, waar kunnen we je mee helpen?',
     },
     buttons: {
       submit: 'Versturen',
-      submitting: 'Versturen...',
+      submitting: 'Bezig met versturen...',
     },
     messages: {
-      success: 'Bedankt voor je bericht! We nemen snel contact met je op.',
-      emailFailed: 'Er was een probleem bij het verzenden van je bericht. Probeer het later opnieuw.',
-      unexpectedError: 'Er is een onverwachte fout opgetreden. Probeer het later opnieuw.',
-      validationError: 'Controleer je invoer en probeer het opnieuw.',
-      rateLimited: 'Te veel verzoeken. Wacht even voordat je het opnieuw probeert.',
-      loading: 'Versturen...',
+      success: 'Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.',
+      emailFailed: 'Oeps, er ging iets mis bij het versturen. Probeer het later nog eens.',
+      unexpectedError: 'Er ging iets mis. Probeer het later nog eens.',
+      validationError: 'Kun je je gegevens even checken en het opnieuw proberen?',
+      rateLimited: 'Rustig aan! Wacht even en probeer het dan opnieuw.',
+      loading: 'Bezig met versturen...',
     },
   },
 
   footer: {
-    getInTouch: 'Neem Contact Op',
-    followUs: 'Volg Ons',
-    tagline: 'Waar creativiteit rust ontmoet',
+    getInTouch: 'Neem contact op',
+    followUs: 'Volg ons',
+    tagline: 'Waar creativiteit tot rust komt',
     copyright: "Maker's Barn. Alle rechten voorbehouden.",
   },
 
   about: {
-    title: 'Over Ons',
-    intro: `Welkom bij MakersBarn, een plek waar creativiteit, vakmanschap en gemeenschap samenkomen. Genesteld in het hart van het platteland, hebben we een historische hooischuur getransformeerd tot een levendige ruimte voor retreats, workshops en creatieve bijeenkomsten. Onze missie is het bieden van een toevluchtsoord waar makers, kunstenaars en dromers kunnen verbinden, creëren en inspiratie vinden.`,
-    secondary: `We geloven in de kracht van hands-on creatie, de schoonheid van natuurlijke materialen en het belang van ruimtes die zowel individuele groei als collectieve ervaringen voeden. Of je nu een retreat plant, een workshop organiseert of gewoon een rustige plek zoekt om aan je volgende project te werken, MakersBarn biedt de perfecte omgeving om je visie tot leven te brengen.`,
-    teamTitle: 'Ontmoet het Team',
-    metaTitle: 'Over Ons',
+    title: 'Over ons',
+    intro: `Welkom bij de MakersBarn, een plek waar creativiteit, vakmanschap en verbinding samenkomen. Midden op het platteland hebben we een oude hooischuur omgetoverd tot een bruisende ruimte voor retreats, workshops en creatieve bijeenkomsten. Ons doel? Een plek creëren waar makers, kunstenaars en dromers kunnen samenkomen, creëren en inspiratie opdoen.`,
+    secondary: `We geloven in de kracht van met je handen werken, de schoonheid van natuurlijke materialen en het belang van plekken waar je kunt groeien - zowel alleen als samen. Of je nu een retreat organiseert, een workshop geeft of gewoon op zoek bent naar een rustige plek om aan je project te werken: bij de MakersBarn kun je je ideeën tot leven brengen.`,
+    teamTitle: 'Maak kennis met het team',
+    metaTitle: 'Over ons',
     metaDescription:
-      'Ontmoet het team achter MakersBarn. Leer over onze missie om een toevluchtsoord te creëren waar makers, kunstenaars en dromers kunnen verbinden en inspiratie vinden.',
+      'Maak kennis met het team achter de MakersBarn. Een plek waar makers, kunstenaars en dromers samenkomen en inspiratie vinden.',
   },
 
   facilities: {
     title: 'Faciliteiten',
-    intro: `Huur de hele locatie voor je retreat, masterclass of creatieve avonturen. We bieden een privétuin, verbouwde hooischuur, 23 bedden en alle ruimte en rust die je nodig hebt.`,
-    secondary: `Extra ruimtes nodig tijdens je retreat of wil je een aparte ruimte boeken voor een een-op-een sessie of andere intieme bijeenkomst? We hebben deze pareltjes die we met liefde aanbieden als je thuis weg van huis.`,
+    intro: `Huur de hele locatie voor je retreat, masterclass of creatieve uitjes. We hebben een eigen tuin, een verbouwde hooischuur, 23 bedden en alle ruimte en rust die je nodig hebt.`,
+    secondary: `Heb je extra ruimte nodig tijdens je retreat? Of wil je een aparte plek boeken voor een een-op-een sessie of andere intieme bijeenkomst? We hebben een paar pareltjes die we graag met je delen als thuis-weg-van-huis.`,
     metaTitle: 'Faciliteiten',
     metaDescription:
-      'Ontdek onze unieke retreat ruimtes bij MakersBarn. Huur de hele locatie met privétuin, verbouwde hooischuur, 23 bedden en alle rust die je nodig hebt.',
+      'Ontdek onze unieke retreat ruimtes bij de MakersBarn. Huur de hele locatie met eigen tuin, verbouwde hooischuur, 23 bedden en alle rust die je nodig hebt.',
     stats: [
-      { number: '60m²+', description: 'Open praktijkruimte.' },
+      { number: '60m²+', description: 'Ruime praktijkzaal' },
       { number: '14', description: 'Bedden verdeeld over 6 gezellige kamers' },
-      { number: '1.3ha+', description: 'Privéterrein met natuurlijke zwemvijver, sauna en vuurplaats.' },
+      { number: '1.3ha+', description: 'Eigen terrein met zwemvijver, sauna en vuurplaats' },
     ],
     categories: {
       groupAccommodation: 'Groepsaccommodatie',
@@ -115,37 +115,37 @@ export const nl: Dictionary = {
     },
     items: {
       hayHouse: {
-        title: 'Betoverend Hooihuis',
+        title: 'Het betoverende Hooihuis',
         description:
-          'Een prachtig verbouwde hooischuur met 23 comfortabele bedden verdeeld over twee voormalige stallen. Perfect voor retreats, workshops en creatieve bijeenkomsten.',
-        features: ['Keuken', 'Badkamer', '23 bedden over twee voormalige stallen', 'Grote gemeenschappelijke ruimte'],
+          'Een prachtig verbouwde hooischuur met 23 comfortabele bedden, verdeeld over twee voormalige stallen. Ideaal voor retreats, workshops en creatieve bijeenkomsten.',
+        features: ['Keuken', 'Badkamer', '23 bedden in twee voormalige stallen', 'Grote gemeenschappelijke ruimte'],
       },
       cosmos: {
         title: 'De Cosmos',
         description:
-          'Een intieme workshopruimte ontworpen voor kleinere sessies, masterclasses en een-op-een creatief werk. Perfect voor intieme bijeenkomsten en gespecialiseerde workshops.',
-        features: ['Workshopruimte', 'Comfortabele zitplaatsen', 'Natuurlijk licht'],
+          'Een knusse workshopruimte voor kleinere sessies, masterclasses en een-op-een werk. Ideaal voor intieme bijeenkomsten en gespecialiseerde workshops.',
+        features: ['Workshopruimte', 'Comfortabele zithoek', 'Veel natuurlijk licht'],
       },
       horizon: {
         title: 'Horizon',
         description:
-          'Uitgestrekte buitenruimtes om te verbinden met de natuur en inspiratie te vinden in de open lucht. Perfect voor reflectie, buitenworkshops en genieten van het platteland.',
+          'Uitgestrekte buitenruimte om te connecten met de natuur en inspiratie op te doen in de open lucht. Ideaal voor reflectie, workshops buiten en genieten van het platteland.',
       },
       sauna: {
-        title: 'Sauna & Hot Tub',
+        title: 'Sauna & bubbelbad',
         description:
-          'Ontspan en verjong in onze privé sauna en hot tub. De perfecte manier om te ontspannen na een dag creatief werk of workshops.',
+          'Ontspan en kom tot rust in onze eigen sauna en bubbelbad. De perfecte manier om bij te komen na een dag vol creativiteit of workshops.',
       },
       pond: {
         title: 'Zwemvijver',
         description:
-          'Een natuurlijke zwemvijver omgeven door weelderig groen en lokale wildlife. Perfect voor een verfrissende duik of genieten van de vredige geluiden van de natuur.',
+          'Een natuurlijke zwemvijver omringd door groen en lokale dieren. Heerlijk voor een frisse duik of om te genieten van de rust van de natuur.',
       },
       inBetween: {
-        title: 'Alles Daartussen',
+        title: 'En alles daartussen',
         description:
-          'Veelzijdige ruimtes door ons terrein, van gezellige zolderkamers tot comfortabele ensuite accommodaties. Flexibele ruimtes die zich aanpassen aan jouw behoeften.',
-        features: ['Keuken', 'Badkamer', 'Twee eenpersoons- of een tweepersoonbed', 'Ensuite opties beschikbaar'],
+          'Verschillende ruimtes verspreid over ons terrein: van knusse zolderkamers tot comfortabele kamers met eigen badkamer. Flexibele plekken die zich aanpassen aan jouw wensen.',
+        features: ['Keuken', 'Badkamer', 'Twee eenpersoonsbedden of een tweepersoonsbed', 'Eigen badkamer mogelijk'],
       },
     },
   },
@@ -155,22 +155,22 @@ export const nl: Dictionary = {
     items: [
       {
         testimonial:
-          'MakersBarn is pure magie. De combinatie van prachtig platteland, doordachte ruimtes en de sauna maakte onze retreat absoluut transformerend. We vertrokken verfrist en diep verbonden.',
+          'De MakersBarn is pure magie. De combinatie van prachtig platteland, doordachte ruimtes en de sauna maakte onze retreat echt transformerend. We gingen verfrist en diep verbonden naar huis.',
         author: 'Emma K. - Wellness Retreat Organisator',
       },
       {
         testimonial:
-          'Dit is de mooiste retreat ruimte die ik ooit heb ervaren. De aandacht voor detail, de natuurlijke omgeving en de vredige sfeer creëerden de perfecte omgeving voor ons team om te herverbinden en op te laden.',
+          'Dit is de mooiste retreat plek die ik ooit heb meegemaakt. De aandacht voor detail, de natuurlijke omgeving en de rustige sfeer waren precies wat ons team nodig had om weer op te laden.',
         author: 'Marcus T. - Leiderschapscoach',
       },
       {
         testimonial:
-          'Ik heb retreats georganiseerd door heel Europa, en MakersBarn valt op als iets echt bijzonders. De Nederlandse plattelandsomgeving, de warme gastvrijheid en de intieme ruimtes maken het perfect voor diep, betekenisvol werk.',
+          'Ik heb retreats georganiseerd door heel Europa, maar de MakersBarn is echt bijzonder. Het Nederlandse platteland, de warme gastvrijheid en de knusse ruimtes maken het ideaal voor diepgaand, betekenisvol werk.',
         author: 'Sophie L. - Workshop Facilitator',
       },
       {
         testimonial:
-          'Ons creatieve team vond precies wat we nodig hadden bij MakersBarn. De inspirerende omgeving, omgeven door velden en natuur, hielp ons door creatieve blokkades heen te breken en ons beste werk te produceren.',
+          'Ons creatieve team vond precies wat we zochten bij de MakersBarn. De inspirerende omgeving, te midden van weilanden en natuur, hielp ons om creatieve blokkades te doorbreken en ons beste werk te maken.',
         author: 'David R. - Creatief Directeur',
       },
     ],
@@ -181,32 +181,32 @@ export const nl: Dictionary = {
       {
         name: 'Nana',
         description:
-          'Het echte brein achter de MakersBarn. Zij neemt de meeste communicatie op zich, dus zij zal de eerste persoon zijn die je ontmoet.',
+          'Het brein achter de MakersBarn. Zij doet de meeste communicatie, dus waarschijnlijk is zij de eerste die je spreekt.',
       },
       {
         name: 'Benny',
         description:
-          'Benny heeft nog steeds passie voor IT en is vaak achter zijn computer te vinden werkend aan verschillende bedrijven. Houdt van handwerk als pauze, dus is zeer tevreden met het leven bij de MakersBarn.',
+          'Benny heeft een passie voor IT en zit vaak achter zijn computer om aan verschillende projecten te werken. Klussen met zijn handen doet hij graag als afwisseling, dus het leven bij de MakersBarn past hem perfect.',
       },
       {
         name: 'Noud',
         description:
-          'Noud is de echte Maker van ons: CMO, Chief Maker Officer. Ontdekte dat een zaag en boor meer een passie is dan een toetsenbord en computerscherm. Houdt de plek goed onderhouden, is vaak in de buurt, en bouwt meubels wanneer er tijd over is.',
+          'Noud is onze echte Maker: CMO, Chief Maker Officer. Hij ontdekte dat een zaag en boormachine meer zijn ding zijn dan een toetsenbord. Houdt de boel goed bij, is vaak in de buurt, en timmert meubels als hij tijd over heeft.',
       },
     ],
   },
 
   common: {
     logoAlt: "Maker's Barn",
-    selectLanguage: 'Selecteer taal',
-    toggleMenu: 'Menu wisselen',
+    selectLanguage: 'Kies je taal',
+    toggleMenu: 'Menu openen',
   },
 
   metadata: {
     siteName: "The Maker's Barn",
-    siteTitle: "The Maker's Barn - Nederlands Platteland Retreat",
+    siteTitle: "The Maker's Barn - Retreat op het Nederlandse platteland",
     defaultDescription:
-      'Jouw retreat verdient meer dan alleen een locatie. 60m²+ praktijkruimte, 14 bedden, 1.3ha+ privéterrein op het Nederlandse platteland.',
+      'Jouw retreat verdient meer dan alleen een locatie. 60m²+ praktijkzaal, 14 bedden, 1.3ha+ eigen terrein midden op het Nederlandse platteland.',
     keywords: ['retreat', 'Nederland', 'platteland', 'wellness', 'workshop locatie', 'creatieve retreat'],
   },
 } as const
