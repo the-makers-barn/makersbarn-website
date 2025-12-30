@@ -1,13 +1,13 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 @media (min-width: 640px) {
   .grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.6rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
   }
 }
 
@@ -28,17 +28,30 @@
 
 .cardBar {
   display: block;
-  height: 6px;
+  height: 4px;
   border-radius: 999px;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .cardBar {
+    height: 6px;
+    margin-bottom: 0.65rem;
+  }
 }
 
 .cardImageWrapper {
   position: relative;
   aspect-ratio: 4 / 3;
-  border-radius: 18px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 14px 30px rgba(39, 32, 22, 0.26);
+}
+
+@media (min-width: 640px) {
+  .cardImageWrapper {
+    border-radius: 18px;
+  }
 }
 
 .cardImageWrapper::after {
@@ -54,14 +67,21 @@
 }
 
 .cardText {
-  margin-top: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .cardText {
+    margin-top: 0.9rem;
+  }
 }
 
 .cardTitle {
   margin: 0;
   font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
   color: #294b3a;
+  line-height: 1.3;
 }
 
 .details {
@@ -90,13 +110,14 @@
 
 @media (max-width: 767px) {
   .detailBand {
-    padding: 2.5rem 0;
+    padding: 2rem 0;
   }
 
   .detail {
     grid-template-columns: minmax(0, 1fr);
-    padding: 2.5rem 1.2rem;
-    gap: 2rem;
+    padding: 2rem 1rem;
+    gap: 1.8rem;
+    border-radius: 12px;
   }
 }
 
@@ -115,14 +136,15 @@
 
 .detailTitle {
   font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.7rem;
+  font-size: clamp(1.4rem, 4vw, 1.7rem);
   margin: 0 0 1rem;
   color: #fdfbf7;
+  line-height: 1.3;
 }
 
 .detailBody {
   margin: 0 0 1.2rem;
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 2.5vw, 0.95rem);
   line-height: 1.7;
 }
 
@@ -136,7 +158,7 @@
 }
 
 .detailFeatures li {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
   line-height: 1.6;
   color: #f3e7ce;
   position: relative;
@@ -160,9 +182,9 @@
 
 @media (max-width: 767px) {
   .detailMedia {
-    width: calc(100% + 2.4rem);
-    margin-left: -1.2rem;
-    margin-right: -1.2rem;
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    margin-right: -1rem;
   }
 }
 

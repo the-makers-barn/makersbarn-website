@@ -1,7 +1,13 @@
 .accommodation {
   background-color: #f4efe6;
   background-image: radial-gradient(circle at top left, #f8f4ec 0, #f4efe6 55%, #ebdfcf 100%);
-  padding: 4.5rem 1.5rem 5.5rem;
+  padding: 3rem 1rem 4rem;
+}
+
+@media (min-width: 640px) {
+  .accommodation {
+    padding: 4.5rem 1.5rem 5.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -17,7 +23,13 @@
 }
 
 .header {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .header {
+    margin-bottom: 3rem;
+  }
 }
 
 .title {
@@ -31,7 +43,7 @@
   margin: 0 auto 0.9rem;
   max-width: 46rem;
   color: #4c4336;
-  font-size: 0.98rem;
+  font-size: clamp(0.9rem, 2.5vw, 0.98rem);
   line-height: 1.9;
 }
 

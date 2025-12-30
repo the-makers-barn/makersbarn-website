@@ -4,17 +4,12 @@ import { useState, useCallback, FormEvent, ChangeEvent } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { IMAGES } from '@/data'
-import { CONTACT_URLS, ANCHOR_IDS } from '@/constants'
+import { CONTACT_URLS, ANCHOR_IDS, CONTACT_FORM_MESSAGES } from '@/constants'
+import { submitContactForm } from '@/actions'
+import { FormStatus, type ContactFormData } from '@/types'
 import styles from './ContactForm.module.css'
 
-interface FormData {
-  name: string
-  email: string
-  phone: string
-  message: string
-}
-
-const INITIAL_FORM_DATA: FormData = {
+const INITIAL_FORM_DATA: ContactFormData = {
   name: '',
   email: '',
   phone: '',
@@ -42,10 +37,17 @@ const FORM_PLACEHOLDERS = {
   message: 'Whatever your heart desires :)',
 } as const
 
-const SUCCESS_MESSAGE = 'Thank you for your message! We will get back to you soon.'
+const STATUS_MESSAGES = {
+  [FormStatus.SUCCESS]: CONTACT_FORM_MESSAGES.SUCCESS,
+  [FormStatus.ERROR]: CONTACT_FORM_MESSAGES.UNEXPECTED_ERROR,
+  [FormStatus.LOADING]: CONTACT_FORM_MESSAGES.LOADING,
+  [FormStatus.IDLE]: '',
+} as const
 
 export function ContactForm() {
-  const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA)
+  const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM_DATA)
+  const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE)
+  const [statusMessage, setStatusMessage] = useState<string>('')
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -53,14 +55,31 @@ export function ContactForm() {
   }, [])
 
   const handleSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      // TODO: Implement actual form submission
-      alert(SUCCESS_MESSAGE)
-      setFormData(INITIAL_FORM_DATA)
+      setStatus(FormStatus.LOADING)
+      setStatusMessage(STATUS_MESSAGES[FormStatus.LOADING])
+
+      try {
+        const result = await submitContactForm(formData)
+
+        if (result.success) {
+          setStatus(FormStatus.SUCCESS)
+          setStatusMessage(result.message)
+          setFormData(INITIAL_FORM_DATA)
+        } else {
+          setStatus(FormStatus.ERROR)
+          setStatusMessage(result.message)
+        }
+      } catch {
+        setStatus(FormStatus.ERROR)
+        setStatusMessage(STATUS_MESSAGES[FormStatus.ERROR])
+      }
     },
-    []
+    [formData]
   )
+
+  const isSubmitting = status === FormStatus.LOADING
 
   return (
     <div className={styles.contact}>
@@ -178,13 +197,25 @@ export function ContactForm() {
                 />
               </div>
 
+              {statusMessage && (
+                <div
+                  className={`${styles.statusMessage} ${
+                    status === FormStatus.SUCCESS ? styles.statusSuccess : ''
+                  } ${status === FormStatus.ERROR ? styles.statusError : ''}`}
+                  role="alert"
+                >
+                  {statusMessage}
+                </div>
+              )}
+
               <motion.button
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
+                whileHover={isSubmitting ? {} : { scale: 1.01 }}
+                whileTap={isSubmitting ? {} : { scale: 0.99 }}
                 type="submit"
                 className={styles.submitButton}
+                disabled={isSubmitting}
               >
-                Submit
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </motion.button>
             </form>
             <div className={styles.formImage}>

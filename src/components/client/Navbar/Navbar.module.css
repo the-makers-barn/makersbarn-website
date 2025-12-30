@@ -12,7 +12,7 @@
   margin: 0 auto;
   padding: 0 1.5rem;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   height: 70px;
   gap: 2rem;
@@ -48,6 +48,7 @@
   position: absolute;
   right: 1.5rem;
   z-index: 1001;
+  justify-self: end;
 }
 
 .toggle span {
@@ -89,6 +90,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 1rem;
 }
 
 .languageWrapper {
@@ -226,15 +228,22 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
   .container {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     gap: 1rem;
   }
 
   .toggle {
     display: flex;
+    right: 1.5rem;
+  }
+
+  .right {
+    gap: 0.5rem;
+    margin-right: 3.5rem;
   }
 
   .center {
+    display: none;
     position: fixed;
     left: -100%;
     top: 70px;
@@ -247,6 +256,7 @@
   }
 
   .centerActive {
+    display: block;
     left: 0;
   }
 
@@ -285,6 +295,7 @@
 
   .dropdown {
     min-width: 150px;
+    right: 0;
   }
 
   .option {
