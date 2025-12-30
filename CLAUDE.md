@@ -11,6 +11,10 @@ npm run start    # Start production server
 npm run lint     # Run ESLint
 ```
 
+## Deployment
+
+Hosted on **Vercel**. Pushes to `main` branch trigger automatic deployments.
+
 ## Architecture
 
 Next.js 15 App Router with TypeScript, Tailwind CSS, and Framer Motion.
@@ -27,8 +31,11 @@ src/
 ├── services/         # External service integrations (Postmark email, Slack webhooks)
 ├── lib/              # Utilities (cn, validation, security, logger, metadata)
 ├── constants/        # App-wide constants and enums
+├── context/          # React context providers (LanguageContext)
 ├── data/             # Static data (team, testimonials, accommodation, images)
+├── i18n/             # Internationalization (dictionaries, types, server utilities)
 ├── types/            # TypeScript type definitions
+├── middleware.ts     # Security headers, language detection, malicious path blocking
 ```
 
 ### Key Patterns
@@ -38,6 +45,14 @@ src/
 - **Barrel Exports**: All directories use `index.ts` files for clean imports
 - **Server Actions**: Contact form uses server action in `src/actions/contact.ts` with rate limiting and validation
 - **External Services**: Email via Postmark (`src/services/email.ts`), notifications via Slack webhooks (`src/services/slack.ts`)
+
+### Internationalization (i18n)
+
+Supports English (EN) and Dutch (NL) languages:
+- **Dictionaries**: Translation files in `src/i18n/dictionaries/` (en.ts, nl.ts)
+- **Language Detection**: Domain-based detection in middleware, stored in cookie
+- **Context Provider**: `LanguageContext` for client-side language switching
+- **Server Utilities**: `getServerTranslations()` for server components
 
 ### Styling
 
