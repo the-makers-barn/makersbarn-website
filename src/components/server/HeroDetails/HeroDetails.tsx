@@ -17,8 +17,6 @@ export async function HeroDetails() {
         <div className={styles.text}>
           <h2 className={styles.title}>{t.heroDetails.title}</h2>
 
-          <p className={styles.subtitle}>{t.heroDetails.subtitle}</p>
-
           <p className={styles.body}>{t.heroDetails.body}</p>
 
           <div className={styles.actions}>

@@ -26,7 +26,9 @@ export default async function AboutPage() {
           <header className={styles.header}>
             <h1 className={styles.title}>{t.about.title}</h1>
             <p className={styles.intro}>{t.about.intro}</p>
-            <p className={`${styles.intro} ${styles.secondary}`}>{t.about.secondary}</p>
+            <p className={styles.intro}>{t.about.secondary}</p>
+            <p className={styles.intro}>{t.about.tertiary}</p>
+            <p className={`${styles.intro} ${styles.secondary}`}>{t.about.fourth}</p>
           </header>
         </section>
 

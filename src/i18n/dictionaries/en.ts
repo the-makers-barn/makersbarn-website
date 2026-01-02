@@ -18,11 +18,11 @@ export const en: Dictionary = {
   heroDetails: {
     title: 'A grounded, intimate location for retreats and gatherings',
     subtitle: 'In the Dutch countryside, surrounded by nature.',
-    body: 'A retreat space that feels like home, surrounded by fields and big open skies. Designed to hold deep, transformative work with ease, warmth and beauty. Accommodates up to 20 people.',
+    body: 'A retreat space that feels like home, surrounded by fields and big open skies. Designed to hold deep, transformative work with ease, warmth and beauty. Whether you\'re hosting a yoga retreat, a wellness workshop, or a creative gathering, our space adapts to your vision.',
     primaryCtaLabel: 'Explore the spaces',
     secondaryCtaLabel: 'Plan your retreat',
     metaItems: [
-      'Space for intimate groups',
+      'Space for intimate groups up to 20 people',
       'Sauna & nature on your doorstep',
       'Located in the Dutch countryside',
     ],
@@ -85,8 +85,10 @@ export const en: Dictionary = {
 
   about: {
     title: 'About Us',
-    intro: `Welcome to MakersBarn, a place where creativity, craftsmanship, and community come together. Nestled in the heart of the countryside, we've transformed a historic hay barn into a vibrant space for retreats, workshops, and creative gatherings. Our mission is to provide a sanctuary where makers, artists, and dreamers can connect, create, and find inspiration.`,
-    secondary: `We believe in the power of hands-on creation, the beauty of natural materials, and the importance of spaces that nurture both individual growth and collective experiences. Whether you're planning a retreat, hosting a workshop, or simply seeking a peaceful place to work on your next project, MakersBarn offers the perfect environment to bring your vision to life.`,
+    intro: `The MakersBarn started as a hub for Makers of different kinds, wood workers, corporate professionals, artists, and dreamers. Somewhere along the way, we realized that what people needed most wasn't just a workshop. It was a place to slow down. So that's what we became.`,
+    secondary: `We believe everyone has a Maker in us. Humans are Makers in the heart. Whether that's crafting something with our hands, making peace, or making memories. A gathering, transformative work, sharing and connecting are all core aspects of Makers.`,
+    tertiary: `The three of us came together with a vision and a way to escape the hustle and bustle of city life. A stunning 1920s farm, our love for the land, and a dedication to crafting unique lodges have created a place where plants, animals, and people all find happiness.`,
+    fourth: `If you're looking to host your next retreat, join one, or simply enjoy a peaceful stay, MakersBarn is ready for you.`,
     teamTitle: 'Meet the Team',
     metaTitle: 'About Us',
     metaDescription:
@@ -101,9 +103,9 @@ export const en: Dictionary = {
     metaDescription:
       'Explore our unique retreat spaces at MakersBarn. Rent the entire location with private garden, converted hay barn, 23 beds, and all the tranquility you need.',
     stats: [
-      { number: '60m²+', description: 'Open space practice hall.' },
-      { number: '14', description: 'Beds across 6 cozy rooms' },
-      { number: '1.3ha+', description: 'Of private land, a natural swimming pond, sauna, and fire circle.' },
+      { number: '1200+', description: 'Trees planted on the area' },
+      { number: '13.000+ m²', description: 'Of private land, a natural swimming pond, sauna, and fire circle.' },
+      { number: '∞', description: 'Infinite possibilities' },
     ],
     categories: {
       groupAccommodation: 'Group Accommodation',
@@ -112,26 +114,33 @@ export const en: Dictionary = {
     },
     items: {
       hayHouse: {
-        title: 'Enchanting Hay House',
+        title: 'Hay House Practice Space',
         description:
-          'A beautifully converted hay barn offering 23 comfortable beds across two former stables. Perfect for retreats, workshops, and creative gatherings.',
-        features: ['Kitchen', 'Bathroom', '23 beds across two former stables', 'Large common area'],
+          'An enchanting hay house with space for yoga, breathing sessions, and much more! Even more beautiful when the sun is out creating mesmerizing colorful reflections.',
+        features: ['65+ m² space', 'Heated floor', 'Yoga mats and accessories', 'Sound system'],
       },
       cosmos: {
         title: 'The Cosmos',
         description:
-          'An intimate workshop space designed for smaller sessions, masterclasses, and one-on-one creative work. Perfect for intimate gatherings and specialized workshops.',
-        features: ['Workshop space', 'Comfortable seating', 'Natural light'],
+          'A wooden cabin with wood stove. Cosy as no other while creating a luxury vibe. Private terrace with one of the best views the Netherlands has to offer.',
+        features: ['60 m²', '2 Full sized beds', 'Sleeper sofa', 'Shower', 'Kitchen'],
       },
       horizon: {
         title: 'Horizon',
         description:
-          'Expansive outdoor spaces to connect with nature and find inspiration in the open air. Perfect for reflection, outdoor workshops, and enjoying the countryside.',
+          'Old barn turned into luxury sleeping arrangement. Chill area, rooms with private and shared showers. Kitchen present on the second floor',
+        features: [
+          '3 bed room with shared shower',
+          '2 bed room with ensuit shower',
+          'Private room with shared shower',
+          'Large attic space for sleeping 4',
+          'Attic space for indoor practic sessions',
+        ],
       },
       sauna: {
-        title: 'Sauna & Hot Tub',
+        title: 'Sauna, Hot Tub & Fire Circle',
         description:
-          'Unwind and rejuvenate in our private sauna and hot tub area. The perfect way to decompress after a day of creative work or workshops.',
+          'Unwind and rejuvenate in our private sauna, hot tub, and fire circle area. The perfect way to decompress after a day of creative work or workshops.',
       },
       pond: {
         title: 'Swimming Pond',
@@ -141,7 +150,7 @@ export const en: Dictionary = {
       inBetween: {
         title: 'Everything in Between',
         description:
-          'Versatile spaces throughout our property, from cozy attic rooms to comfortable ensuite accommodations. Flexible spaces that adapt to your needs.',
+          'The offered Facilities are essential for a retreat, but it\'s the little things in between that make a place truly special',
         features: ['Kitchen', 'Bathroom', 'Two single or one double bed', 'Ensuite options available'],
       },
     },

@@ -1,18 +1,25 @@
 .carousel {
-  padding: 4rem 1.5rem 5rem;
+  padding: 4rem 0 5rem;
   background: radial-gradient(circle at top left, #f6f2eb 0, #fff 55%, #f4f1ec 100%);
 }
 
 @media (min-width: 768px) {
   .carousel {
-    padding: 5rem 4rem 6rem;
+    padding: 5rem 0 6rem;
   }
 }
 
 .header {
   max-width: 880px;
   margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
   text-align: left;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 0 4rem;
+  }
 }
 
 .kicker {
@@ -40,9 +47,9 @@
 
 .container {
   position: relative;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -87,11 +94,11 @@
 }
 
 .navButtonPrev {
-  left: 24px;
+  left: 1.5rem;
 }
 
 .navButtonNext {
-  right: 24px;
+  right: 1.5rem;
 }
 
 @media (max-width: 768px) {
@@ -101,11 +108,11 @@
   }
 
   .navButtonPrev {
-    left: 12px;
+    left: 1rem;
   }
 
   .navButtonNext {
-    right: 12px;
+    right: 1rem;
   }
 
   .navButton svg {
@@ -166,7 +173,7 @@
   width: 100%;
   min-width: 100%;
   flex-shrink: 0;
-  border-radius: 18px;
+  border-radius: 0;
   background-color: #f4f1ec;
   overflow: hidden;
   box-shadow: 0 14px 30px rgba(16, 10, 4, 0.08);
@@ -188,6 +195,6 @@
 
 @media (min-width: 768px) {
   .image {
-    border-radius: 24px;
+    border-radius: 0;
   }
 }

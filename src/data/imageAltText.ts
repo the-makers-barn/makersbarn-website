@@ -19,12 +19,28 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.EN]: 'Aerial overview of The Makers Barn and surrounding countryside',
     [Language.NL]: '',
   },
+  '/images/arial-view.jpg': {
+    [Language.EN]: 'Aerial view of The Makers Barn and surrounding countryside',
+    [Language.NL]: '',
+  },
+  '/images/man-in-hammock-looking-on-field.jpg': {
+    [Language.EN]: 'Person relaxing in a hammock looking out over the field at The Makers Barn',
+    [Language.NL]: '',
+  },
   '/images/hot-tub-in-field.jpeg': {
     [Language.EN]: 'Hot tub in the field at The Makers Barn',
     [Language.NL]: '',
   },
   '/images/outside-shower-in-field.jpg': {
     [Language.EN]: 'Outside shower in the field at The Makers Barn',
+    [Language.NL]: '',
+  },
+  '/images/fire-circle-wood-logs.jpg': {
+    [Language.EN]: 'Fire circle with wood logs at The Makers Barn',
+    [Language.NL]: '',
+  },
+  '/images/fire-circle-gathering.jpg': {
+    [Language.EN]: 'Gathering around the fire circle at The Makers Barn',
     [Language.NL]: '',
   },
 
@@ -65,6 +81,10 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.EN]: 'Cosy couch in the Cosmos space',
     [Language.NL]: '',
   },
+  '/images/cosmos-kitchen.jpg': {
+    [Language.EN]: 'Kitchen in the Cosmos wooden cabin with wood stove',
+    [Language.NL]: '',
+  },
   '/images/double-ensuite.jpg': {
     [Language.EN]: 'Double ensuite bedroom',
     [Language.NL]: '',
@@ -89,8 +109,16 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.EN]: 'Coaching session by the pond at The Makers Barn',
     [Language.NL]: '',
   },
+  '/images/woman-in-pond.jpg': {
+    [Language.EN]: 'Woman swimming in the natural pond at The Makers Barn',
+    [Language.NL]: '',
+  },
   '/images/outside-walk.jpg': {
     [Language.EN]: 'Peaceful walk through the grounds of The Makers Barn',
+    [Language.NL]: '',
+  },
+  '/images/outside-guitar-circle.jpg': {
+    [Language.EN]: 'Outdoor guitar circle gathering at The Makers Barn',
     [Language.NL]: '',
   },
   '/images/you-are-where-you-need-to-be.jpg': {
@@ -103,6 +131,14 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
   },
   '/images/single-bed-with-wood.jpg': {
     [Language.EN]: 'Single bed with wooden details in Horizon facilities',
+    [Language.NL]: '',
+  },
+  '/images/horizon-kitchen.jpg': {
+    [Language.EN]: 'Kitchen on the second floor of the Horizon facility',
+    [Language.NL]: '',
+  },
+  '/images/horizon-shower.jpg': {
+    [Language.EN]: 'Shower facilities in the Horizon accommodation',
     [Language.NL]: '',
   },
 

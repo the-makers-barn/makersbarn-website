@@ -99,6 +99,8 @@ export interface AboutTranslations {
   title: string
   intro: string
   secondary: string
+  tertiary: string
+  fourth: string
   teamTitle: string
   metaTitle: string
   metaDescription: string
@@ -136,6 +138,7 @@ export interface FacilitiesTranslations {
     horizon: {
       title: string
       description: string
+      features: readonly string[]
     }
     sauna: {
       title: string

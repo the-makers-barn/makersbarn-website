@@ -140,7 +140,7 @@ export function ImpressionCarousel() {
                 src={imgSrc}
                 alt={getImageAltText(imgSrc, DEFAULT_LANGUAGE)}
                 fill
-                sizes="(max-width: 768px) 100vw, 80vw"
+                sizes="100vw"
                 className={styles.imageInner}
               />
             </motion.div>

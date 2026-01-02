@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { FacilitiesCarousel } from '@/components/client'
-import { FacilitiesStats, StructuredData } from '@/components/server'
+import { StructuredData } from '@/components/server'
 import { generatePageMetadata } from '@/lib/metadata'
 import { generateLocalBusinessSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
 import { Route } from '@/types'
@@ -38,7 +38,6 @@ export default async function FacilitiesPage() {
           </header>
 
           <FacilitiesCarousel />
-          <FacilitiesStats />
         </section>
       </div>
     </>
