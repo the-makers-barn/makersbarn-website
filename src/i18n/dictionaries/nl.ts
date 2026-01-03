@@ -108,7 +108,7 @@ export const nl: Dictionary = {
     stats: [
       { number: '1200+', description: 'Bomen geplant op het terrein' },
       { number: '13.000+ m²', description: 'Eigen terrein met zwemvijver, sauna en vuurplaats' },
-      { number: '∞', description: 'Infinite possibilities' },
+      { number: '∞', description: 'Oneindige mogelijkheden' },
     ],
     categories: {
       groupAccommodation: 'Groepsaccommodatie',
@@ -157,6 +157,10 @@ export const nl: Dictionary = {
         features: ['Keuken', 'Badkamer', 'Twee eenpersoonsbedden of een tweepersoonsbed', 'Eigen badkamer mogelijk'],
       },
     },
+  },
+
+  impressionCarousel: {
+    facilitiesButton: 'Bekijk onze faciliteiten',
   },
 
   testimonials: {

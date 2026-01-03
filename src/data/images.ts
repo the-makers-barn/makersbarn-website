@@ -35,6 +35,8 @@ export const IMAGES = {
     yogaPondJettyReflection: '/images/yoga-pond-jetty-reflection.jpg',
     pondCoachingSession: '/images/pond-coaching-session.jpg',
     womanInPond: '/images/woman-in-pond.jpg',
+    lunchTogether: '/images/lunch-together.jpg',
+    manInHammock: '/images/man-in-hammock-looking-on-field.jpg',
   },
   team: {
     nana: '/images/nana-stairs.jpg',
@@ -48,17 +50,14 @@ export const CAROUSEL_IMAGES = [
   IMAGES.accommodation.fieldWalking,
   IMAGES.accommodation.pondComplete,
   IMAGES.accommodation.hayHouseSun,
-  IMAGES.accommodation.atticBeds,
-  IMAGES.accommodation.cosmosView,
-  IMAGES.accommodation.cosmosCouch,
-  IMAGES.accommodation.atticChill,
-  IMAGES.accommodation.doubleEnsuite,
+  IMAGES.accommodation.lunchTogether,
   IMAGES.accommodation.sauna,
   IMAGES.accommodation.teahouse,
   IMAGES.accommodation.outsideWalk,
   IMAGES.accommodation.ducks,
   IMAGES.accommodation.quoteImage,
   IMAGES.accommodation.mainHouse,
+  IMAGES.accommodation.manInHammock,
 ] as const
 
 export const POLAROID_IMAGES = [

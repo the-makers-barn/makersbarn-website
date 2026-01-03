@@ -1,15 +1,16 @@
 'use client'
 
-import { useEffect, useState, useCallback, useMemo, useRef } from 'react'
+import { useState, useCallback, useMemo, useRef } from 'react'
 import { motion, useMotionValue } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { CAROUSEL_IMAGES } from '@/data'
 import { SPRING_OPTIONS, DRAG_BUFFER, DEFAULT_LANGUAGE } from '@/constants'
 import { getImageAltText } from '@/lib'
+import { useTranslation } from '@/context'
+import { Route } from '@/types'
 import { Lightbox, type LightboxImage } from '../Lightbox'
 import styles from './ImpressionCarousel.module.css'
-
-const AUTO_DELAY_MS = 10000
 
 const CAROUSEL_CONTENT = {
   kicker: 'A little impression',
@@ -23,6 +24,7 @@ export function ImpressionCarousel() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const triggerRef = useRef<HTMLDivElement>(null)
   const dragX = useMotionValue(0)
+  const { t } = useTranslation('impressionCarousel')
 
   // Convert to Lightbox format - memoized to prevent unnecessary context updates
   const lightboxImages: LightboxImage[] = useMemo(
@@ -34,18 +36,6 @@ export function ImpressionCarousel() {
     []
   )
 
-  useEffect(() => {
-    const intervalRef = setInterval(() => {
-      const x = dragX.get()
-
-      // Don't auto-rotate if lightbox is open
-      if (x === 0 && !lightboxOpen) {
-        setImgIndex((pv) => (pv === CAROUSEL_IMAGES.length - 1 ? 0 : pv + 1))
-      }
-    }, AUTO_DELAY_MS)
-
-    return () => clearInterval(intervalRef)
-  }, [dragX, lightboxOpen])
 
   const onDragEnd = useCallback(() => {
     const x = dragX.get()
@@ -76,6 +66,14 @@ export function ImpressionCarousel() {
   const handleNext = useCallback(() => {
     setImgIndex((prev) => (prev === CAROUSEL_IMAGES.length - 1 ? 0 : prev + 1))
   }, [])
+
+  // Calculate which images should be rendered (visible + next)
+  const visibleIndices = useMemo(() => {
+    const indices = [imgIndex]
+    const nextIndex = imgIndex === CAROUSEL_IMAGES.length - 1 ? 0 : imgIndex + 1
+    indices.push(nextIndex)
+    return indices
+  }, [imgIndex])
 
   return (
     <section className={styles.carousel}>
@@ -117,34 +115,50 @@ export function ImpressionCarousel() {
           onDragEnd={onDragEnd}
           className={styles.track}
         >
-          {CAROUSEL_IMAGES.map((imgSrc, idx) => (
-            <motion.div
-              key={imgSrc}
-              ref={idx === imgIndex ? triggerRef : undefined}
-              animate={{ scale: imgIndex === idx ? 0.95 : 0.85 }}
-              transition={SPRING_OPTIONS}
-              className={`${styles.image} ${styles.imageClickable}`}
-              onClick={handleImageClick}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  handleImageClick()
-                }
-              }}
-              aria-label={`View impression ${idx + 1} in fullscreen`}
-              aria-haspopup="dialog"
-            >
-              <Image
-                src={imgSrc}
-                alt={getImageAltText(imgSrc, DEFAULT_LANGUAGE)}
-                fill
-                sizes="100vw"
-                className={styles.imageInner}
-              />
-            </motion.div>
-          ))}
+          {CAROUSEL_IMAGES.map((imgSrc, idx) => {
+            const isVisible = visibleIndices.includes(idx)
+            if (!isVisible) {
+              // Render placeholder to maintain layout structure
+              return (
+                <div
+                  key={imgSrc}
+                  className={styles.image}
+                  aria-hidden="true"
+                />
+              )
+            }
+
+            return (
+              <motion.div
+                key={imgSrc}
+                ref={idx === imgIndex ? triggerRef : undefined}
+                animate={{ scale: imgIndex === idx ? 0.95 : 0.85 }}
+                transition={SPRING_OPTIONS}
+                className={`${styles.image} ${styles.imageClickable}`}
+                onClick={handleImageClick}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    handleImageClick()
+                  }
+                }}
+                aria-label={`View impression ${idx + 1} in fullscreen`}
+                aria-haspopup="dialog"
+              >
+                <Image
+                  src={imgSrc}
+                  alt={getImageAltText(imgSrc, DEFAULT_LANGUAGE)}
+                  fill
+                  sizes="100vw"
+                  className={styles.imageInner}
+                  priority={idx === imgIndex}
+                  loading={idx === imgIndex ? undefined : 'lazy'}
+                />
+              </motion.div>
+            )
+          })}
         </motion.div>
 
         <div className={styles.dots} role="group" aria-label="Carousel navigation">
@@ -171,6 +185,26 @@ export function ImpressionCarousel() {
         loop={true}
         triggerRef={triggerRef}
       />
+
+      {/* Facilities CTA */}
+      <div className={styles.footer}>
+        <Link href={Route.FACILITIES} className={styles.facilitiesButton}>
+          {t.facilitiesButton}
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </Link>
+      </div>
     </section>
   )
 }

@@ -156,6 +156,10 @@ export const en: Dictionary = {
     },
   },
 
+  impressionCarousel: {
+    facilitiesButton: 'Explore our facilities',
+  },
+
   testimonials: {
     sectionTitle: 'What our guests say',
     items: [

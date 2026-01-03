@@ -157,6 +157,13 @@ export interface FacilitiesTranslations {
 }
 
 /**
+ * Impression carousel section translations
+ */
+export interface ImpressionCarouselTranslations {
+  facilitiesButton: string
+}
+
+/**
  * Testimonials section translations
  */
 export interface TestimonialsTranslations {
@@ -207,6 +214,7 @@ export interface Dictionary {
   footer: FooterTranslations
   about: AboutTranslations
   facilities: FacilitiesTranslations
+  impressionCarousel: ImpressionCarouselTranslations
   testimonials: TestimonialsTranslations
   team: TeamTranslations
   common: CommonTranslations
