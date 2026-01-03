@@ -9,18 +9,6 @@ const ImpressionCarousel = dynamic(
   () => import('@/components/client/ImpressionCarousel').then((mod) => mod.ImpressionCarousel)
 )
 
-const Testimonials = dynamic(
-  () => import('@/components/client/Testimonials').then((mod) => mod.Testimonials)
-)
-
-const ImpressionPolaroids = dynamic(
-  () => import('@/components/client/ImpressionPolaroids').then((mod) => mod.ImpressionPolaroids)
-)
-
-const ImageGallery = dynamic(
-  () => import('@/components/client/ImageGallery').then((mod) => mod.ImageGallery)
-)
-
 export const metadata = generatePageMetadata({
   title: 'Home',
   path: '/',
@@ -38,10 +26,7 @@ export default function HomePage() {
       <Hero />
       <HeroDetails />
       <FacilitiesStats />
-      {/* <ImageGallery /> */}
       <ImpressionCarousel />
-      {/* <Testimonials /> */}
-      {/* <ImpressionPolaroids /> */}
     </>
   )
 }
