@@ -11,8 +11,8 @@ export const en: Dictionary = {
   hero: {
     eyebrow: 'Welcome to',
     emphasis: 'the Makers Barn',
-    subtitle: 'Your retreat deserves more than',
-    subtitleBreak: 'just a venue.',
+    subtitle: 'Give your retreat',
+    subtitleBreak: 'the place it deserves.',
   },
 
   heroDetails: {
@@ -216,7 +216,7 @@ export const en: Dictionary = {
     siteName: "The Maker's Barn",
     siteTitle: "The Maker's Barn - Dutch Countryside Retreat",
     defaultDescription:
-      'Your retreat deserves more than just a venue. 60m²+ practice hall, 14 beds, 1.3ha+ private land in the Dutch countryside.',
+      'Give your retreat the place it deserves. 60m²+ practice hall, 14 beds, 1.3ha+ private land in the Dutch countryside.',
     keywords: ['retreat', 'Netherlands', 'countryside', 'wellness', 'workshop venue', 'creative retreat'],
   },
 } as const

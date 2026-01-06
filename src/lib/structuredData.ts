@@ -226,7 +226,7 @@ export function generateWebSiteSchema(options?: {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      'Your retreat deserves more than just a venue. 60m²+ practice hall, 14 beds, 1.3ha+ private land in the Dutch countryside.',
+      'Give your retreat the place it deserves. 60m²+ practice hall, 14 beds, 1.3ha+ private land in the Dutch countryside.',
     publisher: {
       '@id': `${SITE_URL}#organization`,
     },

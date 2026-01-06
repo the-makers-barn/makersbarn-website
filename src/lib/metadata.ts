@@ -3,7 +3,7 @@ import { SITE_CONFIG } from '@/constants/site'
 
 const SITE_NAME = SITE_CONFIG.name
 const SITE_URL = SITE_CONFIG.url
-const DEFAULT_DESCRIPTION = 'Your retreat deserves more than just a venue. 60m²+ practice hall, 14 beds, 1.3ha+ private land in the Dutch countryside.'
+const DEFAULT_DESCRIPTION = 'Give your retreat the place it deserves. 60m²+ practice hall, 14 beds, 1.3ha+ private land in the Dutch countryside.'
 
 interface PageMetadataParams {
   title: string

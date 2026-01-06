@@ -14,8 +14,8 @@ export const nl: Dictionary = {
   hero: {
     eyebrow: 'Welkom bij',
     emphasis: 'the Makers Barn',
-    subtitle: 'Jouw retreat verdient meer dan',
-    subtitleBreak: 'alleen een locatie.',
+    subtitle: 'Geef je retreat',
+    subtitleBreak: 'de plek die het verdient.',
   },
 
   heroDetails: {
@@ -219,7 +219,7 @@ export const nl: Dictionary = {
     siteName: "The Maker's Barn",
     siteTitle: "The Maker's Barn - Retreat op het Nederlandse platteland",
     defaultDescription:
-      'Jouw retreat verdient meer dan alleen een locatie. 60m²+ praktijkzaal, 14 bedden, 1.3ha+ eigen terrein midden op het Nederlandse platteland.',
+      'Geef je retreat de plek die het verdient. 60m²+ praktijkzaal, 14 bedden, 1.3ha+ eigen terrein midden op het Nederlandse platteland.',
     keywords: ['retreat', 'Nederland', 'platteland', 'wellness', 'workshop locatie', 'creatieve retreat'],
   },
 } as const
