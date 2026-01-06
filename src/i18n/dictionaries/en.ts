@@ -97,11 +97,11 @@ export const en: Dictionary = {
 
   facilities: {
     title: 'Facilities',
-    intro: `Rent the entire location for your retreat, masterclass, or creative adventures. We offer a private garden, converted hay barn, 23 beds, and all the space and tranquility you need.`,
+    intro: `Rent the entire location for your retreat, masterclass, or creative adventures. We offer a private garden, converted hay barn, 14 beds, plus space for tents and campervans, and all the tranquility you need.`,
     secondary: `Need extra spaces during your retreat or want to book a separate space for a one-on-one session or other intimate gathering? We have these gems that we lovingly offer as your home away from home.`,
     metaTitle: 'Facilities',
     metaDescription:
-      'Explore our unique retreat spaces at MakersBarn. Rent the entire location with private garden, converted hay barn, 23 beds, and all the tranquility you need.',
+      'Explore our unique retreat spaces at MakersBarn. Rent the entire location with private garden, converted hay barn, 14 beds plus space for tents and campervans.',
     stats: [
       { number: '1200+', description: 'Trees planted on the area' },
       { number: '13.000+ m²', description: 'Of private land, a natural swimming pond, sauna, and fire circle.' },

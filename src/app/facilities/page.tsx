@@ -11,7 +11,7 @@ import styles from './page.module.css'
 export const metadata: Metadata = generatePageMetadata({
   title: 'Facilities',
   description:
-    'Explore our unique retreat spaces at MakersBarn. Rent the entire location with private garden, converted hay barn, 23 beds, and all the tranquility you need.',
+    'Explore our unique retreat spaces at MakersBarn. Rent the entire location with private garden, converted hay barn, 14 beds plus space for tents and campervans.',
   path: '/facilities',
 })
 
