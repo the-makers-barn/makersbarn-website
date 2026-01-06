@@ -154,7 +154,7 @@ export const nl: Dictionary = {
         title: 'En alles daartussen',
         description:
           'De aangeboden faciliteiten zijn essentieel voor een retreat, maar het zijn de kleine dingen daartussen die een plek echt bijzonder maken.',
-        features: ['Keuken', 'Badkamer', 'Twee eenpersoonsbedden of een tweepersoonsbed', 'Eigen badkamer mogelijk'],
+        features: ['Mooie paden', '1000+ bomen', 'Theehuis', 'Vogelgebied', 'Weidse uitzichten'],
       },
     },
   },

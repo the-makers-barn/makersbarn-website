@@ -110,10 +110,11 @@ export const FACILITIES_OPTIONS: FacilitiesOption[] = [
     ],
     description: 'The offered Facilities are essential for a retreat, but it\'s the little things in between that make a place truly special',
     features: [
-      'Kitchen',
-      'Bathroom',
-      'Two single or one double bed',
-      'Ensuite options available',
+      'Beautiful paths',
+      '1000+ trees',
+      'Tea house',
+      'Bird area',
+      'Wide views',
     ],
   },
 ]
