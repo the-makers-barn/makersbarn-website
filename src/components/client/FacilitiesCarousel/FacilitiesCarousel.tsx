@@ -4,9 +4,11 @@ import React, { useState, useEffect, useCallback, memo, useMemo, useRef } from '
 import { motion, useMotionValue } from 'framer-motion'
 import Image from 'next/image'
 import { FACILITIES_OPTIONS } from '@/data'
-import { SPRING_OPTIONS, DRAG_BUFFER, DEFAULT_LANGUAGE } from '@/constants'
-import { FacilitiesOption } from '@/types'
+import { SPRING_OPTIONS, DRAG_BUFFER } from '@/constants'
+import { FacilitiesOption, Language } from '@/types'
 import { getImageAltText } from '@/lib'
+import { useTranslation } from '@/context'
+import type { FacilitiesTranslations } from '@/i18n/types'
 import { Lightbox, type LightboxImage } from '../Lightbox'
 import styles from './FacilitiesCarousel.module.css'
 
@@ -20,11 +22,15 @@ function scrollToOption(id: string) {
 interface FacilitiesDetailProps {
   option: FacilitiesOption
   index: number
+  language: Language
+  carouselTranslations: FacilitiesTranslations['carousel']
 }
 
 const FacilitiesDetailSection = memo(function FacilitiesDetailSection({
   option,
   index,
+  language,
+  carouselTranslations,
 }: FacilitiesDetailProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -101,7 +107,7 @@ const FacilitiesDetailSection = memo(function FacilitiesDetailSection({
               type="button"
               className={`${styles.navButton} ${styles.navButtonPrev}`}
               onClick={handlePrevious}
-              aria-label="Previous image"
+              aria-label={carouselTranslations.previousImage}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="15 18 9 12 15 6" />
@@ -111,7 +117,7 @@ const FacilitiesDetailSection = memo(function FacilitiesDetailSection({
               type="button"
               className={`${styles.navButton} ${styles.navButtonNext}`}
               onClick={handleNext}
-              aria-label="Next image"
+              aria-label={carouselTranslations.nextImage}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
@@ -144,12 +150,12 @@ const FacilitiesDetailSection = memo(function FacilitiesDetailSection({
                   handleImageClick()
                 }
               }}
-              aria-label={`View ${option.title} image ${idx + 1} in fullscreen`}
+              aria-label={`${carouselTranslations.viewFullscreen} ${option.title} ${idx + 1}`}
               aria-haspopup="dialog"
             >
               <Image
                 src={imgSrc}
-                alt={getImageAltText(imgSrc, DEFAULT_LANGUAGE)}
+                alt={getImageAltText(imgSrc, language)}
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
                 className={styles.carouselImageInner}
@@ -159,14 +165,14 @@ const FacilitiesDetailSection = memo(function FacilitiesDetailSection({
         </motion.div>
       </div>
       {images.length > 1 && (
-        <div className={styles.carouselDots} role="group" aria-label={`${option.title} image navigation`}>
+        <div className={styles.carouselDots} role="group" aria-label={`${option.title} ${carouselTranslations.imageNavigation}`}>
           {images.map((imgSrc, i) => (
             <button
               key={imgSrc}
               type="button"
               className={`${styles.carouselDot} ${i === currentIndex ? styles.carouselDotActive : ''}`}
               onClick={() => setCurrentIndex(i)}
-              aria-label={`Go to image ${i + 1}${i === currentIndex ? ', current' : ''}`}
+              aria-label={`${carouselTranslations.goToImage} ${i + 1}`}
               aria-current={i === currentIndex ? 'true' : undefined}
             />
           ))}
@@ -210,6 +216,8 @@ const FacilitiesDetailSection = memo(function FacilitiesDetailSection({
 })
 
 export function FacilitiesCarousel() {
+  const { t, language } = useTranslation('facilities')
+
   return (
     <>
       <div className={styles.grid}>
@@ -243,7 +251,13 @@ export function FacilitiesCarousel() {
 
       <section className={styles.details}>
         {FACILITIES_OPTIONS.map((option, index) => (
-          <FacilitiesDetailSection key={option.id} option={option} index={index} />
+          <FacilitiesDetailSection
+            key={option.id}
+            option={option}
+            index={index}
+            language={language}
+            carouselTranslations={t.carousel}
+          />
         ))}
       </section>
     </>

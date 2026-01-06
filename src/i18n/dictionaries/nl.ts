@@ -118,6 +118,13 @@ export const nl: Dictionary = {
     ctaTitle: 'Klaar om je retreat te plannen?',
     ctaSubtitle: 'Laat ons je helpen een onvergetelijke ervaring te creëren voor je groep.',
     ctaButton: 'Boek nu je retreat',
+    carousel: {
+      previousImage: 'Vorige afbeelding',
+      nextImage: 'Volgende afbeelding',
+      viewFullscreen: 'Bekijk afbeelding op volledig scherm',
+      goToImage: 'Ga naar afbeelding',
+      imageNavigation: 'afbeelding navigatie',
+    },
     items: {
       hayHouse: {
         title: 'Hooihuis Oefenruimte',
@@ -163,7 +170,23 @@ export const nl: Dictionary = {
   },
 
   impressionCarousel: {
+    kicker: 'Een kleine impressie',
+    title: 'Vertragen, rondkijken.',
+    subtitle:
+      'Ontdek de schoonheid van langzaam leven. Elk moment hier nodigt je uit om te pauzeren, te ademen en opnieuw verbinding te maken met wat echt belangrijk is.',
     facilitiesButton: 'Bekijk onze faciliteiten',
+    previousImage: 'Vorige afbeelding',
+    nextImage: 'Volgende afbeelding',
+    carouselNavigation: 'Carrousel navigatie',
+    viewFullscreen: 'Bekijk impressie op volledig scherm',
+    goToSlide: 'Ga naar slide',
+  },
+
+  impressionPolaroids: {
+    kicker: 'Een kleine impressie',
+    title: 'Een plek om blijvende herinneringen te maken',
+    subtitle:
+      'Ruimtes om je te focussen, te dwalen, te dutten, te schrijven, te reflecteren en samen te zijn. Hier is een glimp van hoe je retreat zou kunnen aanvoelen.',
   },
 
   testimonials: {
@@ -216,6 +239,24 @@ export const nl: Dictionary = {
     logoAlt: "Maker's Barn",
     selectLanguage: 'Kies je taal',
     toggleMenu: 'Menu openen',
+    previousImage: 'Vorige afbeelding',
+    nextImage: 'Volgende afbeelding',
+    closeGallery: 'Galerij sluiten',
+    imageNavigation: 'Afbeelding navigatie',
+    imageThumbnails: 'Afbeelding miniaturen',
+    imageGallery: 'Afbeelding galerij',
+    lightbox: {
+      closeGallery: 'Galerij sluiten',
+      previousImage: 'Vorige afbeelding',
+      nextImage: 'Volgende afbeelding',
+      imageOf: 'van',
+      viewImage: 'Bekijk afbeelding',
+      current: 'huidig',
+      imageNavigation: 'Afbeelding navigatie',
+      imageThumbnails: 'Afbeelding miniaturen',
+      keyboardInstructions:
+        'Gebruik de pijltjestoetsen links en rechts om tussen afbeeldingen te navigeren. Druk op Escape om de galerij te sluiten.',
+    },
   },
 
   metadata: {

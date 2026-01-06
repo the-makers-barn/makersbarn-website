@@ -5,14 +5,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { POLAROID_IMAGES, IMAGES } from '@/data'
 import { cn } from '@/lib/cn'
+import { useTranslation } from '@/context'
 import styles from './ImpressionPolaroids.module.css'
-
-const POLAROIDS_CONTENT = {
-  kicker: 'A little impression',
-  title: 'A place to create lasting memories',
-  subtitle:
-    'Spaces to focus, wander, nap, write, reflect, and be together. Here\'s a glimpse of what your retreat might feel like.',
-} as const
 
 const CARD_POSITIONS = [
   { rotate: '6deg', top: '15%', left: '25%', width: 'w-36 md:w-56' },
@@ -68,18 +62,20 @@ function Card({ containerRef, src, alt, top, left, rotate, className }: CardProp
 
 export function ImpressionPolaroids() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const { t } = useTranslation('impressionPolaroids')
+  const { t: common } = useTranslation('common')
 
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <p className={styles.kicker}>{POLAROIDS_CONTENT.kicker}</p>
-        <h2 className={styles.title}>{POLAROIDS_CONTENT.title}</h2>
-        <p className={styles.subtitle}>{POLAROIDS_CONTENT.subtitle}</p>
+        <p className={styles.kicker}>{t.kicker}</p>
+        <h2 className={styles.title}>{t.title}</h2>
+        <p className={styles.subtitle}>{t.subtitle}</p>
       </div>
 
       <div className={styles.container}>
         <div className={styles.backgroundLogo}>
-          <Image src={IMAGES.logo} alt="Makers Barn Logo" width={400} height={200} />
+          <Image src={IMAGES.logo} alt={common.logoAlt} width={400} height={200} />
         </div>
         <div className={styles.cardsContainer} ref={containerRef}>
           {POLAROID_IMAGES.map((img, idx) => (

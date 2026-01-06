@@ -31,6 +31,7 @@ export const IMAGES = {
     outsideShowerInField: '/images/outside-shower-in-field.jpg',
     fireCircleWoodLogs: '/images/fire-circle-wood-logs.jpg',
     fireCircleGathering: '/images/fire-circle-gathering.jpg',
+    playingMusicFirePit: '/images/playing-music-around-the-fire-pit.jpg',
     pondComplete: '/images/pond-complete.jpg',
     yogaPondJettyReflection: '/images/yoga-pond-jetty-reflection.jpg',
     pondCoachingSession: '/images/pond-coaching-session.jpg',

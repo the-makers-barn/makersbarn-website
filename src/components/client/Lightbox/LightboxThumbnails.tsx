@@ -12,6 +12,7 @@ export const LightboxThumbnails = memo(function LightboxThumbnails({
   currentIndex,
   onThumbnailClick,
   isVisible,
+  translations,
 }: LightboxThumbnailsProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([])
@@ -33,7 +34,7 @@ export const LightboxThumbnails = memo(function LightboxThumbnails({
       ref={containerRef}
       className={styles.thumbnails}
       role="group"
-      aria-label="Image thumbnails"
+      aria-label={translations.imageThumbnails}
       initial={LIGHTBOX_ANIMATION.controls.hide}
       animate={isVisible ? LIGHTBOX_ANIMATION.controls.show : LIGHTBOX_ANIMATION.controls.hide}
       transition={LIGHTBOX_ANIMATION.controls.transition}
@@ -49,7 +50,7 @@ export const LightboxThumbnails = memo(function LightboxThumbnails({
             type="button"
             className={`${styles.thumbnail} ${isActive ? styles.thumbnailActive : ''}`}
             onClick={() => onThumbnailClick(index)}
-            aria-label={`View ${image.alt}${isActive ? ', current' : ''}`}
+            aria-label={`${translations.viewImage} ${image.alt}${isActive ? `, ${translations.current}` : ''}`}
             aria-current={isActive ? 'true' : undefined}
             style={{
               width: LIGHTBOX_LAYOUT.thumbnail.width,

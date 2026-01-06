@@ -115,6 +115,13 @@ export const en: Dictionary = {
     ctaTitle: 'Ready to Plan Your Retreat?',
     ctaSubtitle: 'Let us help you create an unforgettable experience for your group.',
     ctaButton: 'Book a Retreat Now',
+    carousel: {
+      previousImage: 'Previous image',
+      nextImage: 'Next image',
+      viewFullscreen: 'View image in fullscreen',
+      goToImage: 'Go to image',
+      imageNavigation: 'image navigation',
+    },
     items: {
       hayHouse: {
         title: 'Hay House Practice Space',
@@ -160,7 +167,23 @@ export const en: Dictionary = {
   },
 
   impressionCarousel: {
+    kicker: 'A little impression',
+    title: 'Slow down, look around.',
+    subtitle:
+      'Discover the beauty of slow living. Each moment here invites you to pause, breathe, and reconnect with what truly matters.',
     facilitiesButton: 'Explore our facilities',
+    previousImage: 'Previous image',
+    nextImage: 'Next image',
+    carouselNavigation: 'Carousel navigation',
+    viewFullscreen: 'View impression in fullscreen',
+    goToSlide: 'Go to slide',
+  },
+
+  impressionPolaroids: {
+    kicker: 'A little impression',
+    title: 'A place to create lasting memories',
+    subtitle:
+      "Spaces to focus, wander, nap, write, reflect, and be together. Here's a glimpse of what your retreat might feel like.",
   },
 
   testimonials: {
@@ -213,6 +236,24 @@ export const en: Dictionary = {
     logoAlt: "Maker's Barn",
     selectLanguage: 'Select language',
     toggleMenu: 'Toggle menu',
+    previousImage: 'Previous image',
+    nextImage: 'Next image',
+    closeGallery: 'Close gallery',
+    imageNavigation: 'Image navigation',
+    imageThumbnails: 'Image thumbnails',
+    imageGallery: 'Image gallery',
+    lightbox: {
+      closeGallery: 'Close gallery',
+      previousImage: 'Previous image',
+      nextImage: 'Next image',
+      imageOf: 'of',
+      viewImage: 'View image',
+      current: 'current',
+      imageNavigation: 'Image navigation',
+      imageThumbnails: 'Image thumbnails',
+      keyboardInstructions:
+        'Use left and right arrow keys to navigate between images. Press Escape to close the gallery.',
+    },
   },
 
   metadata: {

@@ -73,6 +73,7 @@ export const FACILITIES_OPTIONS: FacilitiesOption[] = [
     image: IMAGES.accommodation.sauna,
     color: FACILITIES_COLORS.SAUNA,
     images: [
+      IMAGES.accommodation.playingMusicFirePit,
       IMAGES.accommodation.sauna,
       IMAGES.accommodation.hotTubInField,
       IMAGES.accommodation.outsideShowerInField,

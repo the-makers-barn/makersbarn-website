@@ -5,26 +5,19 @@ import { motion, useMotionValue } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CAROUSEL_IMAGES } from '@/data'
-import { SPRING_OPTIONS, DRAG_BUFFER, DEFAULT_LANGUAGE } from '@/constants'
+import { SPRING_OPTIONS, DRAG_BUFFER } from '@/constants'
 import { getImageAltText } from '@/lib'
 import { useTranslation } from '@/context'
 import { Route } from '@/types'
 import { Lightbox, type LightboxImage } from '../Lightbox'
 import styles from './ImpressionCarousel.module.css'
 
-const CAROUSEL_CONTENT = {
-  kicker: 'A little impression',
-  title: 'Slow down, look around.',
-  subtitle:
-    'Discover the beauty of slow living. Each moment here invites you to pause, breathe, and reconnect with what truly matters.',
-} as const
-
 export function ImpressionCarousel() {
   const [imgIndex, setImgIndex] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const triggerRef = useRef<HTMLDivElement>(null)
   const dragX = useMotionValue(0)
-  const { t } = useTranslation('impressionCarousel')
+  const { t, language } = useTranslation('impressionCarousel')
 
   // Convert to Lightbox format - memoized to prevent unnecessary context updates
   const lightboxImages: LightboxImage[] = useMemo(
@@ -78,9 +71,9 @@ export function ImpressionCarousel() {
   return (
     <section className={styles.carousel}>
       <div className={styles.header}>
-        <p className={styles.kicker}>{CAROUSEL_CONTENT.kicker}</p>
-        <h2 className={styles.title}>{CAROUSEL_CONTENT.title}</h2>
-        <p className={styles.subtitle}>{CAROUSEL_CONTENT.subtitle}</p>
+        <p className={styles.kicker}>{t.kicker}</p>
+        <h2 className={styles.title}>{t.title}</h2>
+        <p className={styles.subtitle}>{t.subtitle}</p>
       </div>
 
       <div className={styles.container}>
@@ -89,7 +82,7 @@ export function ImpressionCarousel() {
           type="button"
           className={`${styles.navButton} ${styles.navButtonPrev}`}
           onClick={handlePrevious}
-          aria-label="Previous image"
+          aria-label={t.previousImage}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6" />
@@ -99,7 +92,7 @@ export function ImpressionCarousel() {
           type="button"
           className={`${styles.navButton} ${styles.navButtonNext}`}
           onClick={handleNext}
-          aria-label="Next image"
+          aria-label={t.nextImage}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="9 18 15 12 9 6" />
@@ -144,12 +137,12 @@ export function ImpressionCarousel() {
                     handleImageClick()
                   }
                 }}
-                aria-label={`View impression ${idx + 1} in fullscreen`}
+                aria-label={`${t.viewFullscreen} ${idx + 1}`}
                 aria-haspopup="dialog"
               >
                 <Image
                   src={imgSrc}
-                  alt={getImageAltText(imgSrc, DEFAULT_LANGUAGE)}
+                  alt={getImageAltText(imgSrc, language)}
                   fill
                   sizes="100vw"
                   className={styles.imageInner}
@@ -161,14 +154,14 @@ export function ImpressionCarousel() {
           })}
         </motion.div>
 
-        <div className={styles.dots} role="group" aria-label="Carousel navigation">
+        <div className={styles.dots} role="group" aria-label={t.carouselNavigation}>
           {CAROUSEL_IMAGES.map((imgSrc, idx) => (
             <button
               key={imgSrc}
               type="button"
               onClick={() => setImgIndex(idx)}
               className={`${styles.dot} ${idx === imgIndex ? styles.dotActive : ''}`}
-              aria-label={`Go to slide ${idx + 1}${idx === imgIndex ? ', current' : ''}`}
+              aria-label={`${t.goToSlide} ${idx + 1}`}
               aria-current={idx === imgIndex ? 'true' : undefined}
             />
           ))}

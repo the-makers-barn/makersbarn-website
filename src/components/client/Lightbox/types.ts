@@ -1,4 +1,10 @@
 import type { RefObject } from 'react'
+import type { CommonTranslations } from '@/i18n/types'
+
+/**
+ * Lightbox translations type
+ */
+export type LightboxTranslations = CommonTranslations['lightbox']
 
 /**
  * Represents a single image in the lightbox gallery
@@ -83,6 +89,7 @@ export interface LightboxControlsProps {
   onPrevious: () => void
   onNext: () => void
   isVisible: boolean
+  translations: LightboxTranslations
 }
 
 /**
@@ -93,6 +100,7 @@ export interface LightboxDotsProps {
   currentIndex: number
   onDotClick: (index: number) => void
   isVisible: boolean
+  translations: LightboxTranslations
 }
 
 /**
@@ -103,6 +111,7 @@ export interface LightboxThumbnailsProps {
   currentIndex: number
   onThumbnailClick: (index: number) => void
   isVisible: boolean
+  translations: LightboxTranslations
 }
 
 /**

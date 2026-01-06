@@ -10,7 +10,8 @@ import { LightboxDots } from './LightboxDots'
 import { LightboxThumbnails } from './LightboxThumbnails'
 import { useLightboxKeyboard, useLightboxGestures, useLightboxFocus, useMediaQuery } from './hooks'
 import { LIGHTBOX_ANIMATION, LIGHTBOX_Z_INDEX, LIGHTBOX_BREAKPOINTS } from './constants'
-import type { LightboxProps } from './types'
+import { useTranslation } from '@/context'
+import type { LightboxProps, LightboxTranslations } from './types'
 import styles from './Lightbox.module.css'
 
 interface LightboxContentProps {
@@ -20,6 +21,7 @@ interface LightboxContentProps {
   enableBackdropClose: boolean
   enableKeyboard: boolean
   triggerRef?: LightboxProps['triggerRef']
+  translations: LightboxTranslations
 }
 
 function LightboxContent({
@@ -29,6 +31,7 @@ function LightboxContent({
   enableBackdropClose,
   enableKeyboard,
   triggerRef,
+  translations,
 }: LightboxContentProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const {
@@ -141,7 +144,7 @@ function LightboxContent({
           className={styles.lightbox}
           role="dialog"
           aria-modal="true"
-          aria-label="Image gallery"
+          aria-label={translations.imageNavigation}
           aria-describedby="lightbox-instructions"
           style={{ zIndex: LIGHTBOX_Z_INDEX.backdrop }}
           initial={LIGHTBOX_ANIMATION.backdrop.initial}
@@ -154,8 +157,7 @@ function LightboxContent({
         >
           {/* Screen reader instructions */}
           <div id="lightbox-instructions" className={styles.srOnly}>
-            Use left and right arrow keys to navigate between images. Press
-            Escape to close the gallery.
+            {translations.keyboardInstructions}
           </div>
 
           {/* Live region for announcements */}
@@ -166,7 +168,7 @@ function LightboxContent({
             aria-atomic="true"
             className={styles.srOnly}
           >
-            Image {currentIndex + 1} of {images.length}. {currentImage?.alt}
+            {translations.viewImage} {currentIndex + 1} {translations.imageOf} {images.length}. {currentImage?.alt}
           </div>
 
           {/* Main image */}
@@ -187,6 +189,7 @@ function LightboxContent({
             onPrevious={goToPrevious}
             onNext={goToNext}
             isVisible={controlsVisible}
+            translations={translations}
           />
 
           {/* Dot indicators */}
@@ -196,6 +199,7 @@ function LightboxContent({
               currentIndex={currentIndex}
               onDotClick={goTo}
               isVisible={controlsVisible}
+              translations={translations}
             />
           )}
 
@@ -206,6 +210,7 @@ function LightboxContent({
               currentIndex={currentIndex}
               onThumbnailClick={goTo}
               isVisible={controlsVisible}
+              translations={translations}
             />
           )}
         </motion.div>
@@ -228,6 +233,8 @@ export function Lightbox({
   loop = false,
   triggerRef,
 }: LightboxProps) {
+  const { t } = useTranslation('common')
+
   // Don't render anything if closed and no images
   if (!isOpen || images.length === 0) {
     return null
@@ -255,6 +262,7 @@ export function Lightbox({
         enableBackdropClose={enableBackdropClose}
         enableKeyboard={enableKeyboard}
         triggerRef={triggerRef}
+        translations={t.lightbox}
       />
     </LightboxProvider>,
     document.body

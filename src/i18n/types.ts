@@ -127,6 +127,13 @@ export interface FacilitiesTranslations {
   ctaTitle: string
   ctaSubtitle: string
   ctaButton: string
+  carousel: {
+    previousImage: string
+    nextImage: string
+    viewFullscreen: string
+    goToImage: string
+    imageNavigation: string
+  }
   items: {
     hayHouse: {
       title: string
@@ -163,7 +170,24 @@ export interface FacilitiesTranslations {
  * Impression carousel section translations
  */
 export interface ImpressionCarouselTranslations {
+  kicker: string
+  title: string
+  subtitle: string
   facilitiesButton: string
+  previousImage: string
+  nextImage: string
+  carouselNavigation: string
+  viewFullscreen: string
+  goToSlide: string
+}
+
+/**
+ * Impression polaroids section translations
+ */
+export interface ImpressionPolaroidsTranslations {
+  kicker: string
+  title: string
+  subtitle: string
 }
 
 /**
@@ -194,6 +218,23 @@ export interface CommonTranslations {
   logoAlt: string
   selectLanguage: string
   toggleMenu: string
+  previousImage: string
+  nextImage: string
+  closeGallery: string
+  imageNavigation: string
+  imageThumbnails: string
+  imageGallery: string
+  lightbox: {
+    closeGallery: string
+    previousImage: string
+    nextImage: string
+    imageOf: string
+    viewImage: string
+    current: string
+    imageNavigation: string
+    imageThumbnails: string
+    keyboardInstructions: string
+  }
 }
 
 /**
@@ -218,6 +259,7 @@ export interface Dictionary {
   about: AboutTranslations
   facilities: FacilitiesTranslations
   impressionCarousel: ImpressionCarouselTranslations
+  impressionPolaroids: ImpressionPolaroidsTranslations
   testimonials: TestimonialsTranslations
   team: TeamTranslations
   common: CommonTranslations

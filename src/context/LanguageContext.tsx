@@ -9,8 +9,9 @@ import {
   useMemo,
   type ReactNode,
 } from 'react'
+import { useRouter } from 'next/navigation'
 import { Language } from '@/types'
-import { DEFAULT_LANGUAGE } from '@/constants'
+import { DEFAULT_LANGUAGE, LANG_ATTRIBUTES } from '@/constants'
 import { getDictionary } from '@/i18n/dictionaries'
 import type { Dictionary } from '@/i18n/types'
 import {
@@ -55,6 +56,7 @@ export function LanguageProvider({
 }: LanguageProviderProps) {
   const [language, setLanguageState] = useState<Language>(initialLanguage)
   const [isHydrated, setIsHydrated] = useState(false)
+  const router = useRouter()
 
   // On mount, check if localStorage has a different preference
   useEffect(() => {
@@ -74,12 +76,21 @@ export function LanguageProvider({
     setIsHydrated(true)
   }, [])
 
+  // Sync HTML lang attribute when language changes
+  useEffect(() => {
+    if (isHydrated && typeof document !== 'undefined') {
+      document.documentElement.lang = LANG_ATTRIBUTES[language]
+    }
+  }, [language, isHydrated])
+
   // Update language and persist to both storage mechanisms
   const setLanguage = useCallback((newLanguage: Language) => {
     setLanguageState(newLanguage)
     setLanguageToLocalStorage(newLanguage)
     setLanguageCookie(newLanguage)
-  }, [])
+    // Refresh server components to re-render with new language
+    router.refresh()
+  }, [router])
 
   // Get dictionary for current language
   const dictionary = useMemo(() => getDictionary(language), [language])

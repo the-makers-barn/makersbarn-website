@@ -72,6 +72,7 @@ export const LightboxControls = memo(function LightboxControls({
   onPrevious,
   onNext,
   isVisible,
+  translations,
 }: LightboxControlsProps) {
   return (
     <motion.div
@@ -85,7 +86,7 @@ export const LightboxControls = memo(function LightboxControls({
         type="button"
         className={styles.closeButton}
         onClick={onClose}
-        aria-label="Close gallery"
+        aria-label={translations.closeGallery}
       >
         <CloseIcon />
       </button>
@@ -105,7 +106,7 @@ export const LightboxControls = memo(function LightboxControls({
             className={`${styles.navButton} ${styles.navButtonPrev}`}
             onClick={onPrevious}
             disabled={!canGoPrevious}
-            aria-label="Previous image"
+            aria-label={translations.previousImage}
             aria-disabled={!canGoPrevious}
           >
             <PrevIcon />
@@ -116,7 +117,7 @@ export const LightboxControls = memo(function LightboxControls({
             className={`${styles.navButton} ${styles.navButtonNext}`}
             onClick={onNext}
             disabled={!canGoNext}
-            aria-label="Next image"
+            aria-label={translations.nextImage}
             aria-disabled={!canGoNext}
           >
             <NextIcon />

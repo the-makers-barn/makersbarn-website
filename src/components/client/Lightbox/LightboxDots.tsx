@@ -11,12 +11,13 @@ export const LightboxDots = memo(function LightboxDots({
   currentIndex,
   onDotClick,
   isVisible,
+  translations,
 }: LightboxDotsProps) {
   return (
     <motion.div
       className={styles.dots}
       role="group"
-      aria-label="Image navigation"
+      aria-label={translations.imageNavigation}
       initial={LIGHTBOX_ANIMATION.controls.hide}
       animate={isVisible ? LIGHTBOX_ANIMATION.controls.show : LIGHTBOX_ANIMATION.controls.hide}
       transition={LIGHTBOX_ANIMATION.controls.transition}
@@ -29,7 +30,7 @@ export const LightboxDots = memo(function LightboxDots({
             type="button"
             className={`${styles.dot} ${isActive ? styles.dotActive : ''}`}
             onClick={() => onDotClick(index)}
-            aria-label={`View image ${index + 1} of ${totalImages}${isActive ? ', current' : ''}`}
+            aria-label={`${translations.viewImage} ${index + 1} ${translations.imageOf} ${totalImages}${isActive ? `, ${translations.current}` : ''}`}
             aria-current={isActive ? 'true' : undefined}
           />
         )
