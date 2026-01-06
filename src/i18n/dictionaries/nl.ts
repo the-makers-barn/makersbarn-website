@@ -115,6 +115,7 @@ export const nl: Dictionary = {
       workshopSpace: 'Workshopruimte',
       outdoors: 'Buiten',
     },
+    ctaButton: 'Boek nu je retreat',
     items: {
       hayHouse: {
         title: 'Hooihuis Oefenruimte',

@@ -112,6 +112,7 @@ export const en: Dictionary = {
       workshopSpace: 'Workshop Space',
       outdoors: 'Outdoors',
     },
+    ctaButton: 'Book a Retreat Now',
     items: {
       hayHouse: {
         title: 'Hay House Practice Space',

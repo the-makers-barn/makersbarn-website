@@ -50,3 +50,62 @@
 .secondary {
   margin-top: 1.5rem;
 }
+
+/* CTA Footer Section */
+.ctaFooter {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem 1rem 0;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .ctaFooter {
+    padding: 4rem 1.5rem 0;
+  }
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  font-size: 0.98rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1f130c;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(31, 19, 12, 0.15);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.ctaButton:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(31, 19, 12, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  color: #1f130c;
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ctaButton:focus-visible {
+  outline: 2px solid #8a7760;
+  outline-offset: 3px;
+}
+
+.ctaButton svg {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ctaButton:hover svg {
+  transform: translateX(3px);
+}
