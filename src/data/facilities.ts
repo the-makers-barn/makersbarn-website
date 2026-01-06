@@ -37,7 +37,7 @@ export const FACILITIES_OPTIONS: FacilitiesOption[] = [
     description: 'A wooden cabin with wood stove. Cosy as no other while creating a luxury vibe. Private terrace with one of the best views the Netherlands has to offer.',
     features: [
       '60 m²',
-      '2 Full sized beds',
+      'Double bed or two singles',
       'Sleeper sofa',
       'Shower',
       'Kitchen',
@@ -62,7 +62,7 @@ export const FACILITIES_OPTIONS: FacilitiesOption[] = [
       '3 bed room with shared shower',
       '2 bed room with ensuit shower',
       'Private room with shared shower',
-      'Large attic space for sleeping 4',
+      'Large attic space with 2-4 sleeping spaces and a shower',
       'Attic space for indoor practic sessions',
     ],
   },
