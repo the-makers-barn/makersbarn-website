@@ -19,15 +19,15 @@ export const nl: Dictionary = {
   },
 
   heroDetails: {
-    title: 'Een warme, intieme plek voor retreats en bijeenkomsten',
+    title: 'Een fijne, intieme locatie voor retreats en sessies',
     subtitle: 'Midden op het Nederlandse platteland, omringd door natuur.',
-    body: 'Een retreat plek die aanvoelt als thuis, te midden van weilanden en weidse luchten. Ingericht voor diepgaand, transformerend werk met gemak, warmte en schoonheid. Of je nu een yoga retreat, een wellness workshop of een creatieve bijeenkomst organiseert, onze ruimte past zich aan jouw visie aan.',
-    primaryCtaLabel: 'Bekijk de ruimtes',
-    secondaryCtaLabel: 'Plan je retreat',
+    body: 'Een plek die voelt als thuiskomen, omringd door bomen met daarbuiten weidse weilanden. Opgezet voor transformerende bijeenkomsten die je bijblijven. Of je nu een yoga retraite, een workshop of een creatieve bijeenkomst geeft, onze plek staat voor je klaar.',
+    primaryCtaLabel: 'Ontdek de ruimtes',
+    secondaryCtaLabel: 'Reserveer je retraite',
     metaItems: [
       'Plek voor kleine groepen tot 20 personen',
       'Sauna & natuur op loopafstand',
-      'Midden op het Nederlandse platteland',
+      'Midden op het platteland',
     ],
   },
 
@@ -82,17 +82,17 @@ export const nl: Dictionary = {
   footer: {
     getInTouch: 'Neem contact op',
     followUs: 'Volg ons',
-    tagline: 'Waar creativiteit tot rust komt',
-    copyright: "Maker's Barn. Alle rechten voorbehouden.",
+    tagline: 'Where creativity meets tranquility',
+    copyright: "Maker's Barn.",
   },
 
   about: {
     title: 'Over ons',
-    intro: `De MakersBarn begon als een hub voor Makers van verschillende soorten: houtbewerkers, zakelijke professionals, kunstenaars en dromers. Onderweg realiseerden we ons dat wat mensen het meest nodig hadden niet alleen een workshop was. Het was een plek om te vertragen. Dat is wat we geworden zijn.`,
-    secondary: `We geloven dat iedereen een Maker in zich heeft. Mensen zijn Makers in het hart. Of dat nu iets met onze handen maken is, vrede maken, of herinneringen maken. Een bijeenkomst, transformerend werk, delen en verbinden zijn allemaal kernaspecten van Makers.`,
-    tertiary: `Wij drieën kwamen bij elkaar met een visie en een manier om te ontsnappen aan de drukte van het stadsleven. Een prachtige boerderij uit de jaren 1920, onze liefde voor het land, en een toewijding aan het creëren van unieke lodges hebben een plek gecreëerd waar planten, dieren en mensen allemaal geluk vinden.`,
-    fourth: `Als je je volgende retreat wilt organiseren, eraan wilt deelnemen, of gewoon een vredig verblijf wilt genieten, dan is MakersBarn klaar voor je.`,
-    teamTitle: 'Maak kennis met het team',
+    intro: `The MakersBarn begon als een plek voor allerlei soorten Makers: houtbewerkers, zakenmensen, kunstenaars en dromers. Gaandeweg leerde we dat wat mensen het meest nodig hebben niet zomaar een plek om te werken is. Het is een plek om tot rust te komen. Dus dat zijn we gaan maken.`,
+    secondary: `Wij geloven dat er in ieder van ons een Maker schuilt. Of dat nu iets is wat we met onze handen maken, plezier maken, of het maken van herinneringen. Samenkomen, delen en verbinden zijn allemaal kernwaarden van Makers.`,
+    tertiary: `Wij drieën kwamen samen met een visie en een drang om te ontsnappen aan de drukte van het stadsleven. Een prachtige herenboerderij uit de jaren '20, onze liefde voor het land en onze toewijding aan het creëren van unieke verblijven hebben tot een plek geleid waar planten, dieren én mensen geluk vinden.`,
+    fourth: `Of je nu je volgende retraite wilt organiseren, aan een retraite wilt deelnemen, of gewoon wilt genieten van een rustig verblijf; the MakersBarn staat voor je klaar.`,
+    teamTitle: 'Wie we zijn',
     metaTitle: 'Over ons',
     metaDescription:
       'Maak kennis met het team achter de MakersBarn. Een plek waar makers, kunstenaars en dromers samenkomen en inspiratie vinden.',
@@ -127,15 +127,15 @@ export const nl: Dictionary = {
     },
     items: {
       hayHouse: {
-        title: 'Hooihuis Oefenruimte',
+        title: 'Hooischuur - oefenruimte',
         description:
-          'Een betoverend hooihuis met ruimte voor yoga, ademsessies en nog veel meer! Nog mooier wanneer de zon schijnt en betoverende kleurrijke reflecties creëert.',
+          'Een betoverend hooischuur met ruimte voor yoga, breathwork en nog veel meer! Zelfs nog mooier wanneer de zon schijnt en betoverende kleurrijke reflecties van de glazen stenen.',
         features: ['65+ m² ruimte', 'Vloerverwarming', 'Yogamatten en accessoires', 'Geluidssysteem'],
       },
       cosmos: {
         title: 'De Cosmos',
         description:
-          'Een houten cabin met houtkachel. Gezelliger dan welke andere plek ook, met een luxe uitstraling. Privéterras met een van de mooiste uitzichten die Nederland te bieden heeft.',
+          'Een houten cabin met houtkachel. Luxe ingericht maar toch gezelliger dan welke andere plek ook. Privéterras met een van de mooiste uitzichten die Nederland te bieden heeft.',
         features: ['60 m²', 'Tweepersoonsbed of twee eenpersoonsbedden', 'Slaapbank', 'Douche', 'Keuken'],
       },
       horizon: {
@@ -151,9 +151,9 @@ export const nl: Dictionary = {
         ],
       },
       sauna: {
-        title: 'Sauna, bubbelbad & vuurplaats',
+        title: 'Sauna, Hot Tub & Vuurkuil',
         description:
-          'Ontspan en kom tot rust in onze eigen sauna, bubbelbad en vuurplaats. De perfecte manier om bij te komen na een dag vol creativiteit of workshops.',
+          'Ontspan en kom tot rust in onze eigen sauna, Hot Tub en vuurkuil. De perfecte manier om bij te komen na een dag vol creativiteit of workshops.',
       },
       pond: {
         title: 'Zwemvijver',
@@ -161,9 +161,9 @@ export const nl: Dictionary = {
           'Een natuurlijke zwemvijver omringd door groen en lokale dieren. Heerlijk voor een frisse duik of om te genieten van de rust van de natuur.',
       },
       inBetween: {
-        title: 'En alles daartussen',
+        title: 'Alles ertussenin',
         description:
-          'De aangeboden faciliteiten zijn essentieel voor een retreat, maar het zijn de kleine dingen daartussen die een plek echt bijzonder maken.',
+          'Alle gebouwen en faciliteiten zijn natuurlijk essentieel voor een retreat, maar het zijn juist de kleine dingen daartussen die een plek echt bijzonder maken.',
         features: ['Mooie paden', '1000+ bomen', 'Theehuis', 'Vogelgebied', 'Weidse uitzichten'],
       },
     },
@@ -171,10 +171,10 @@ export const nl: Dictionary = {
 
   impressionCarousel: {
     kicker: 'Een kleine impressie',
-    title: 'Vertragen, rondkijken.',
+    title: 'Neem de tijd, kijk rond',
     subtitle:
-      'Ontdek de schoonheid van langzaam leven. Elk moment hier nodigt je uit om te pauzeren, te ademen en opnieuw verbinding te maken met wat echt belangrijk is.',
-    facilitiesButton: 'Bekijk onze faciliteiten',
+      'Ontdek de kracht van langzaam leven. Ontdek de schoonheid van langzaam leven. Elk moment hier nodigt je uit om te pauzeren, te ademen en opnieuw verbinding te maken met wat echt belangrijk is.',
+    facilitiesButton: 'Ontdek onze faciliteiten',
     previousImage: 'Vorige afbeelding',
     nextImage: 'Volgende afbeelding',
     carouselNavigation: 'Carrousel navigatie',

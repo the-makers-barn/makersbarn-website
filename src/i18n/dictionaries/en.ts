@@ -80,7 +80,7 @@ export const en: Dictionary = {
     getInTouch: 'Get in Touch',
     followUs: 'Follow Us',
     tagline: 'Where creativity meets tranquility',
-    copyright: "Maker's Barn. All rights reserved.",
+    copyright: "Maker's Barn.",
   },
 
   about: {

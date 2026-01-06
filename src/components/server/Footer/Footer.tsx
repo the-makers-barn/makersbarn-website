@@ -3,8 +3,8 @@ import {
   FOOTER_ADDRESS,
   SOCIAL_LINKS,
 } from '@/constants/footer'
-import { SocialPlatform } from '@/types'
-import { getServerTranslations } from '@/i18n'
+import { SocialPlatform, Language } from '@/types'
+import { getServerTranslations, getServerLanguage } from '@/i18n'
 import { InstagramIcon, FacebookIcon, LinkedInIcon } from './SocialIcons'
 import styles from './Footer.module.css'
 
@@ -16,6 +16,7 @@ const ICON_MAP: Record<SocialPlatform, React.ComponentType> = {
 
 export async function Footer() {
   const t = await getServerTranslations()
+  const language = await getServerLanguage()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -31,8 +32,12 @@ export async function Footer() {
               {FOOTER_ADDRESS.street}
               <br />
               {FOOTER_ADDRESS.postalCode} {FOOTER_ADDRESS.city}
-              <br />
-              {FOOTER_ADDRESS.country}
+              {language === Language.EN && (
+                <>
+                  <br />
+                  {FOOTER_ADDRESS.country}
+                </>
+              )}
             </p>
           </div>
 
