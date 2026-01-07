@@ -6,7 +6,7 @@ export const en: Dictionary = {
     about: 'About',
     facilities: 'Facilities',
     experiences: 'Join a Retreat',
-    location: 'Location',
+    surroundings: 'Surroundings',
     contact: 'Contact',
   },
 

@@ -8,7 +8,7 @@ export interface NavTranslations {
   about: string
   facilities: string
   experiences: string
-  location: string
+  surroundings: string
   contact: string
 }
 

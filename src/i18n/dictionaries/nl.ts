@@ -9,7 +9,7 @@ export const nl: Dictionary = {
     about: 'Over ons',
     facilities: 'Faciliteiten',
     experiences: 'Boek een Retraite',
-    location: 'Omgeving',
+    surroundings: 'Omgeving',
     contact: 'Contact',
   },
 

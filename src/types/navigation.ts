@@ -3,7 +3,7 @@ export enum Route {
   ABOUT = '/about',
   FACILITIES = '/facilities',
   EXPERIENCES = '/experiences',
-  LOCATION = '/location',
+  SURROUNDINGS = '/surroundings',
   CONTACT = '/contact',
 }
 

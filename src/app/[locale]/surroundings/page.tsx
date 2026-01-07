@@ -10,7 +10,7 @@ import { getValidLocale } from '@/lib/locale'
 import { getLocalizedPath } from '@/lib/routing'
 import { IMAGES, IMAGE_ALT_TEXT } from '@/data'
 import { CONTACT_URLS } from '@/constants'
-import styles from '../../location/page.module.css'
+import styles from '../../surroundings/page.module.css'
 
 const LOCATION_IMAGES = [
   IMAGES.location.kasteelNijenhuis,
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
   return generatePageMetadata({
     title: t.location.metaTitle,
     description: t.location.metaDescription,
-    path: '/location',
+    path: '/surroundings',
     locale: validLocale,
   })
 }
@@ -47,7 +47,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
           generateLocalBusinessSchema({
             type: 'LodgingBusiness',
           }),
-          generatePageBreadcrumbs({ name: t.location.title, path: getLocalizedPath(Route.LOCATION, validLocale) }),
+          generatePageBreadcrumbs({ name: t.location.title, path: getLocalizedPath(Route.SURROUNDINGS, validLocale) }),
         ]}
       />
       <div className={styles.location}>
