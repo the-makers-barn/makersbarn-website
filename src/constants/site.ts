@@ -3,7 +3,7 @@
  * Single source of truth for domain and site identity
  */
 export const SITE_CONFIG = {
-  name: "The Maker's Barn",
+  name: "The MakersBarn",
   domain: 'themakersbarn.nl',
   url: 'https://themakersbarn.nl',
   defaultLocale: 'nl_NL',

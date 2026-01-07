@@ -37,7 +37,9 @@ export function generatePageMetadata({
   locale = DEFAULT_LANGUAGE,
   ogTitle,
 }: PageMetadataParams): Metadata {
-  const fullTitle = `${title} | ${SITE_NAME}`
+  // For home page, use just the site name. For other pages, use "Site Name | Page Name"
+  const isHomePage = path === '' || path === '/'
+  const fullTitle = isHomePage ? SITE_NAME : `${SITE_NAME} | ${title}`
   // Use custom OG title if provided, otherwise use the page title
   const ogTitleFinal = ogTitle || fullTitle
   
@@ -61,7 +63,9 @@ export function generatePageMetadata({
   }
 
   return {
-    title: fullTitle,
+    title: {
+      absolute: fullTitle,
+    },
     description,
     openGraph: {
       title: ogTitleFinal,
@@ -88,8 +92,7 @@ export function generatePageMetadata({
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} - Dutch Countryside Retreat`,
-    template: `%s | ${SITE_NAME}`,
+    default: SITE_NAME,
   },
   description: DEFAULT_DESCRIPTION,
   keywords: ['retreat', 'retraite', 'huren', 'rent', 'organize', 'organiseren', 'natuur', 'nature', 'yoga'],
