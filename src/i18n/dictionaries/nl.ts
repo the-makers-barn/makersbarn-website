@@ -183,9 +183,11 @@ export const nl: Dictionary = {
     createExperience: {
       title: 'Creëer Je Eigen Ervaring',
       subtitle: 'Stel jouw perfecte escape samen met onze flexibele opties',
+      alternativeText: 'Iets anders in gedachten?',
+      alternativeCta: 'Neem contact op voor meer opties',
     },
     soloRetreat: {
-      title: 'Solo Yoga Retraite',
+      title: 'Solo / Duo Yoga Retraite',
       description: 'Een gepersonaliseerde retraite-ervaring in de Cosmos cabin. Op maat gemaakte yoga sessies, sauna, hot tub en complete rust voor je persoonlijke reis.',
       features: [
         '2-3 nachten pakketten',

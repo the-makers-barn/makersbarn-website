@@ -263,6 +263,8 @@ export interface ExperiencesTranslations {
   createExperience: {
     title: string
     subtitle: string
+    alternativeText: string
+    alternativeCta: string
   }
   soloRetreat: {
     title: string

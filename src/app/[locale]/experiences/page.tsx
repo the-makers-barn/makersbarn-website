@@ -198,6 +198,14 @@ export default async function ExperiencesPage({ params }: ExperiencesPageProps) 
               )
             })}
           </div>
+
+          <div className={styles.alternativeOption}>
+            <span className={styles.alternativeText}>{t.experiences.createExperience.alternativeText}</span>
+            <Link href={getLocalizedPath(Route.CONTACT, validLocale)} className={styles.alternativeLink}>
+              {t.experiences.createExperience.alternativeCta}
+              <ArrowIcon className={styles.alternativeLinkIcon} />
+            </Link>
+          </div>
         </section>
 
         <div className={styles.divider} />

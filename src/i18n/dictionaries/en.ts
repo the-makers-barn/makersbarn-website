@@ -180,9 +180,11 @@ export const en: Dictionary = {
     createExperience: {
       title: 'Create Your Own Experience',
       subtitle: 'Design your perfect escape with our flexible options',
+      alternativeText: 'Want something else?',
+      alternativeCta: 'Contact us for additional options',
     },
     soloRetreat: {
-      title: 'Solo Yoga Retreat',
+      title: 'Solo / Duo Yoga Retreat',
       description: 'A personalized retreat experience in the Cosmos cabin. Tailored yoga sessions, sauna, hot tub, and complete tranquility for your personal journey.',
       features: [
         '2-3 night packages',
