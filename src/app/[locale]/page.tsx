@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: HomePageProps) {
     description: t.metadata.defaultDescription,
     path: '/',
     locale: validLocale,
+    ogTitle: t.metadata.siteTitle, // Use the more descriptive site title for social sharing
   })
 }
 

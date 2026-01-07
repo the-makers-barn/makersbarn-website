@@ -24,6 +24,7 @@ interface PageMetadataParams {
   imageWidth?: number
   imageHeight?: number
   locale?: Language
+  ogTitle?: string // Optional custom Open Graph title for social sharing
 }
 
 export function generatePageMetadata({
@@ -34,8 +35,11 @@ export function generatePageMetadata({
   imageWidth = 1200,
   imageHeight = 630,
   locale = DEFAULT_LANGUAGE,
+  ogTitle,
 }: PageMetadataParams): Metadata {
   const fullTitle = `${title} | ${SITE_NAME}`
+  // Use custom OG title if provided, otherwise use the page title
+  const ogTitleFinal = ogTitle || fullTitle
   
   // Generate localized path for the current locale
   const localizedPath = getLocalizedPath(path, locale)
@@ -53,14 +57,14 @@ export function generatePageMetadata({
     url: `${SITE_URL}${image}`,
     width: imageWidth,
     height: imageHeight,
-    alt: fullTitle,
+    alt: ogTitleFinal,
   }
 
   return {
     title: fullTitle,
     description,
     openGraph: {
-      title: fullTitle,
+      title: ogTitleFinal,
       description,
       url,
       siteName: SITE_NAME,
@@ -70,7 +74,7 @@ export function generatePageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: fullTitle,
+      title: ogTitleFinal,
       description,
       images: [`${SITE_URL}${image}`],
     },
