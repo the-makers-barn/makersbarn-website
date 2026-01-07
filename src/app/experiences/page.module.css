@@ -310,6 +310,14 @@
   background: #1e3a2c;
 }
 
+/* Divider */
+.divider {
+  max-width: 1180px;
+  margin: 4rem auto;
+  border: none;
+  border-top: 1px solid rgba(41, 75, 58, 0.15);
+}
+
 /* CTA Footer Section */
 .ctaFooter {
   max-width: 1180px;

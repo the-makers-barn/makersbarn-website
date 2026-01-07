@@ -241,6 +241,8 @@ export default async function ExperiencesPage({ params }: ExperiencesPageProps) 
           </div>
         </section>
 
+        <hr className={styles.divider} />
+
         {/* CTA Footer */}
         <footer className={styles.ctaFooter}>
           <h2 className={styles.ctaTitle}>{t.experiences.ctaTitle}</h2>
