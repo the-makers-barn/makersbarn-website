@@ -31,7 +31,7 @@ export function generatePageMetadata({
   title,
   description = DEFAULT_DESCRIPTION,
   path = '',
-  image = '/images/main-house.jpg',
+  image = '/open-graph-preview-image.png',
   imageWidth = 1200,
   imageHeight = 630,
   locale = DEFAULT_LANGUAGE,
