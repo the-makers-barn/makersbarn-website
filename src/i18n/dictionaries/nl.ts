@@ -223,17 +223,17 @@ export const nl: Dictionary = {
       {
         name: 'Nana',
         description:
-          'Het brein achter de MakersBarn. Zij doet de meeste communicatie, dus waarschijnlijk is zij de eerste die je spreekt.',
+          'Nana is het brein achter The MakersBarn. Deze plek met zijn rustgevende sfeer is een reflective van haar eigen levensreis en helingsproces. Ze is de person met wie je vanaf het begin contact hebt en degene die ervoor zorgt dat jouw retraite preceis aanvoelt zoals je hem voorstelt. Nana brengt een kalme aanwezigheid gevoed door haar liefde voor natuur, yoga, mindful leven en genieten van kleine creatieve momenten. Ze begrijpt wat retraitebegeleiders nodig hebben en ondersteund op een zorgzame manier.',
       },
       {
         name: 'Benny',
         description:
-          'Benny heeft een passie voor IT en zit vaak achter zijn computer om aan verschillende projecten te werken. Klussen met zijn handen doet hij graag als afwisseling, dus het leven bij de MakersBarn past hem perfect.',
+          'Deels tech wizard, deels keukenliefhebber, Benny creërt graag magie en doet dit zowel op zijn computerscherm als bij het fornuis. Met zijn speelse nieuwsgierigheid is het geen wonder dat de aap zijn spirit animal is. Hij balanceert computerwerk met yoga en mindfulness, is altijd blij met een cocktail, of een leuk gesprek over de dingen die jouw op het moment bezighouden.',
       },
       {
         name: 'Noud',
         description:
-          'Noud is onze echte Maker: CMO, Chief Maker Officer. Hij ontdekte dat een zaag en boormachine meer zijn ding zijn dan een toetsenbord. Houdt de boel goed bij, is vaak in de buurt, en timmert meubels als hij tijd over heeft.',
+          'Noud is de echte Maker van ons: CMO, Chief Maker Officer. Zijn schroeven, spijkers, boompjes en liefde voor de plek zorgt dat alles tip-top in orde is. Wanneer er tijd over is kan je hem regelmatig in de werkplaats aantreffen waar hij met plezier meubels bouwt.',
       },
     ],
   },

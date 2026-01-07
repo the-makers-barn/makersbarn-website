@@ -49,7 +49,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         <section className={styles.team}>
           <div className={styles.teamContainer}>
             <h2 className={styles.teamTitle}>{t.about.teamTitle}</h2>
-            <TeamGrid />
+            <TeamGrid locale={validLocale} />
           </div>
         </section>
       </div>

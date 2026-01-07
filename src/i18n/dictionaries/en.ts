@@ -220,17 +220,17 @@ export const en: Dictionary = {
       {
         name: 'Nana',
         description:
-          'The true mastermind behind the MakersBarn. She takes up most communications so she will be your first person to meet.',
+          'Nana is the mastermind and the heart behind The Makers Barn. The place grew out of her own life journey and healing process, which shaped the atmosphere we try to create here. She\'s the person you\'ll be in touch with from the start and the one who helps make sure your retreat feels exactly the way you imagine it. Nana brings a calm, grounded presence, influenced by her love for nature, yoga, mindful living, and small creative moments. She understands what retreat facilitators need and supports them in a clear, caring, and practical way.',
       },
       {
         name: 'Benny',
         description:
-          'Benny still has the passion for IT and can often be found behind his computer working on different businesses. Loves manual work as a break so is very content living at the MakersBarn.',
+          'Part tech wizard, part kitchen enthusiast, Benny loves creating magic both on screen and at the stove. With the monkey as his spirit animal, he brings playful curiosity to everything he does. Balances computer work with yoga and mindfulness, and is always happy to share a cocktail, some kindness, and a conversation about whatever\'s on your mind.',
       },
       {
         name: 'Noud',
         description:
-          'Noud is the true Maker of us: CMO, Chief Maker Officer. Learned that a saw and drill is more of a passion than a keyboard and computer screen. Keeps the place well maintained, is often around, and when time is left builds furniture.',
+          'Noud is the truest Maker of us: CMO, Chief Maker Officer. It are his screws, nails, trees and love which keep the place in prime condition. When there is time to spare he likes to spend his time in the workshop, building cool furniture.',
       },
     ],
   },

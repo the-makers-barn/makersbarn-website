@@ -1,11 +1,29 @@
 import Image from 'next/image'
 import { TEAM_MEMBERS } from '@/data'
+import { getServerTranslations, getServerLanguage } from '@/i18n'
+import { Language } from '@/types'
 import styles from './TeamGrid.module.css'
 
-export function TeamGrid() {
+interface TeamGridProps {
+  locale?: Language
+}
+
+export async function TeamGrid({ locale }: TeamGridProps = {}) {
+  const language = locale || await getServerLanguage()
+  const t = await getServerTranslations(language)
+
+  // Merge translated descriptions with images from TEAM_MEMBERS
+  const members = TEAM_MEMBERS.map((member) => {
+    const translatedMember = t.team.members.find((tm) => tm.name === member.name)
+    return {
+      ...member,
+      description: translatedMember?.description || member.description,
+    }
+  })
+
   return (
     <div className={styles.grid}>
-      {TEAM_MEMBERS.map((member) => (
+      {members.map((member) => (
         <article key={member.name} className={styles.member}>
           <div className={styles.imageWrapper}>
             <Image
