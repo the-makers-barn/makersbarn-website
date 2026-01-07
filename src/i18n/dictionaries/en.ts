@@ -197,6 +197,8 @@ export const en: Dictionary = {
         'Yoga sessions available',
         'Hot tub rental',
         'Sauna access',
+        'Massage',
+        'Creativity Workshops',
         'Catering on request',
       ],
       platforms: {

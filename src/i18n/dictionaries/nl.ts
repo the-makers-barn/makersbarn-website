@@ -200,6 +200,8 @@ export const nl: Dictionary = {
         'Yoga sessies beschikbaar',
         'Hot tub huur',
         'Sauna toegang',
+        'Massage',
+        'Creatieve Workshops',
         'Catering op aanvraag',
       ],
       platforms: {
