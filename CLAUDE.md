@@ -60,6 +60,45 @@ Supports English (EN) and Dutch (NL) languages:
 - CSS Modules (`*.module.css`) for component-specific styles
 - Fonts: Playfair Display (headings), Quicksand (body) - loaded via `next/font/google`
 
+### Typography System
+
+The project uses a centralized typography system with CSS custom properties. All typography tokens are defined in `src/constants/typography.ts` and exposed as CSS variables in `globals.css`.
+
+**Font Families** (use CSS variables, not hardcoded font stacks):
+- `var(--font-playfair)` - Headings, titles, accent text
+- `var(--font-quicksand)` - Body text (set as default on body element)
+
+**Font Sizes** (fluid scaling with `clamp()`):
+- `var(--font-size-xs)` through `var(--font-size-5xl)`
+- Common mappings: xs (0.75rem), sm (0.875rem), base (1rem), md (1.1rem), lg (1.25rem), xl (1.5rem), 2xl (1.75rem), 3xl (2.25rem), 4xl (3rem), 5xl (3.5rem)
+
+**Text Colors** (semantic naming):
+- `var(--color-text)` - Primary text (#1f130c)
+- `var(--color-text-muted)` - Secondary body text (#4c4336)
+- `var(--color-text-tertiary)` - Subtle text (#5c554c)
+- `var(--color-primary)` - Brand green (#294b3a)
+- `var(--color-secondary)` - Brand gold (#b8894a)
+- `var(--color-text-inverse)` - Text on dark backgrounds (#ffffff)
+- `var(--color-text-inverse-muted)` - Muted text on dark backgrounds (rgba(255,255,255,0.85))
+- `var(--color-text-error)` - Error messages (#dc2626)
+- `var(--color-background)` - Background color (#ffffff)
+
+**Line Heights**:
+- `var(--line-height-tight)` (1.2) - Headings
+- `var(--line-height-snug)` (1.4) - Compact text
+- `var(--line-height-normal)` (1.5) - Default
+- `var(--line-height-relaxed)` (1.7) - Body paragraphs
+
+**Letter Spacing**:
+- `var(--letter-spacing-tight)` (-0.01em) - Headings
+- `var(--letter-spacing-normal)` (0) - Default
+- `var(--letter-spacing-wide)` (0.05em) - Uppercase labels, kickers
+
+**Usage Guidelines**:
+- Always use CSS variables for typography, never hardcode values
+- Import typography constants from `@/constants/typography` for TypeScript usage
+- Tailwind classes are extended to use these tokens (e.g., `text-primary`, `font-playfair`)
+
 ### Environment Variables
 
 Required for contact form functionality (see `.env.example`):

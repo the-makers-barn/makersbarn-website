@@ -11,14 +11,14 @@
 }
 
 .label {
-  font-size: clamp(0.95rem, 1.5vw + 0.4rem, 1.05rem);
-  color: #374151;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .required {
-  color: #b8894a;
+  color: var(--color-secondary);
   margin-left: 0.25rem;
   font-weight: 600;
 }
@@ -31,9 +31,9 @@
   padding: 0.875rem 1rem;
   border: 2px solid #e2e8f0;
   border-radius: 10px;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-family: inherit;
-  color: #1f2937;
+  color: var(--color-text);
   background-color: #ffffff;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -67,7 +67,7 @@
 }
 
 .inputValue {
-  color: #1f2937;
+  color: var(--color-text);
 }
 
 .inputPlaceholder {
@@ -115,9 +115,9 @@
 }
 
 .captionLabel {
-  font-size: 1.1rem;
+  font-size: var(--font-size-md);
   font-weight: 600;
-  color: #1f2937;
+  color: var(--color-text);
 }
 
 /* Navigation buttons */
@@ -159,13 +159,13 @@
 }
 
 .weekday {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 600;
-  color: #b8894a;
+  color: var(--color-secondary);
   text-align: center;
   padding: 0.5rem 0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 /* Weeks container */
@@ -199,8 +199,8 @@
   border: none;
   border-radius: 8px;
   background-color: transparent;
-  color: #374151;
-  font-size: 0.9rem;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -282,8 +282,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.75rem;
-  color: #64748b;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
 }
 
 .legendBlocked {
@@ -306,17 +306,17 @@
 
 /* Help text and error messages */
 .helpText {
-  font-size: 0.85rem;
-  color: #64748b;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
   margin: 0;
-  line-height: 1.5;
+  line-height: var(--line-height-snug);
 }
 
 .error {
-  font-size: 0.85rem;
-  color: #dc2626;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-error);
   margin: 0;
-  line-height: 1.4;
+  line-height: var(--line-height-snug);
 }
 
 /* Responsive adjustments */
@@ -336,6 +336,6 @@
   .dayButton {
     width: 32px;
     height: 32px;
-    font-size: 0.85rem;
+    font-size: var(--font-size-xs);
   }
 }

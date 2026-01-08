@@ -9,14 +9,17 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-3xl);
   font-weight: 600;
-  color: var(--color-brand-dark, #1f130c);
+  color: var(--color-text);
   margin-bottom: 1rem;
 }
 
 .description {
-  color: var(--color-text-secondary, #666);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
   margin-bottom: 2rem;
   max-width: 400px;
 }
@@ -30,12 +33,12 @@
 
 .button {
   padding: 0.75rem 1.5rem;
-  background-color: var(--color-brand-green, #294b3a);
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   transition: opacity 0.2s;
 }
 
@@ -45,9 +48,10 @@
 
 .link {
   padding: 0.75rem 1.5rem;
-  border: 1px solid var(--color-brand-green, #294b3a);
-  color: var(--color-brand-green, #294b3a);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
   border-radius: 0.5rem;
+  font-size: var(--font-size-base);
   text-decoration: none;
   transition: background-color 0.2s;
 }

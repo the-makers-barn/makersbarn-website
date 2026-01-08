@@ -3,15 +3,58 @@
 @tailwind utilities;
 
 :root {
+  /* ========================================================================
+     FONT FAMILY VARIABLES
+     ======================================================================== */
   --font-playfair: 'Playfair Display', 'Times New Roman', serif;
   --font-quicksand: 'Quicksand', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  /* Brand Colors */
+  /* ========================================================================
+     BRAND COLORS
+     ======================================================================== */
   --color-primary: #294b3a;
   --color-secondary: #b8894a;
   --color-background: #f7f3ee;
   --color-text: #1f130c;
   --color-text-muted: #4c4336;
+
+  /* ========================================================================
+     TEXT COLOR TOKENS
+     ======================================================================== */
+  --color-text-tertiary: #5c554c;
+  --color-text-inverse: #ffffff;
+  --color-text-inverse-muted: rgba(255, 255, 255, 0.7);
+  --color-text-error: #dc2626;
+
+  /* ========================================================================
+     FONT SIZE SCALE (Fluid typography with clamp)
+     Base: 16px at 375px viewport, scales to larger viewports
+     ======================================================================== */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --font-size-md: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);
+  --font-size-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --font-size-xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.875rem);
+  --font-size-2xl: clamp(1.875rem, 1.65rem + 1.125vw, 2.25rem);
+  --font-size-3xl: clamp(2.25rem, 1.95rem + 1.5vw, 3rem);
+  --font-size-4xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --font-size-5xl: clamp(3.75rem, 3rem + 3.75vw, 5.5rem);
+
+  /* ========================================================================
+     LINE HEIGHT SCALE
+     ======================================================================== */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.4;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+
+  /* ========================================================================
+     LETTER SPACING SCALE
+     ======================================================================== */
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
 }
 
 *,

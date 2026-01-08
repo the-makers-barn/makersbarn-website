@@ -31,17 +31,17 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(2.4rem, 3vw + 1.4rem, 3rem);
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-4xl);
   margin: 0 0 1rem;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .sectionSubtitle {
   margin: 0;
-  color: #5c554c;
-  font-size: clamp(0.85rem, 2vw, 0.95rem);
-  line-height: 1.7;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
 }
 
 /* Offers Grid */
@@ -103,17 +103,17 @@
 }
 
 .offerTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.35rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
   margin: 0 0 0.75rem;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .offerDescription {
   margin: 0 0 1rem;
-  color: #4c4336;
-  font-size: 0.9rem;
-  line-height: 1.7;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
   flex: 1;
 }
 
@@ -134,8 +134,8 @@
   padding: 0.35rem 0.75rem;
   background: rgba(41, 75, 58, 0.08);
   border-radius: 20px;
-  font-size: 0.78rem;
-  color: #294b3a;
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
 }
 
 .featureIcon {
@@ -153,11 +153,11 @@
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
   border-radius: 999px;
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   font-weight: 500;
   text-decoration: none;
-  color: #fff;
-  background: #294b3a;
+  color: var(--color-text-inverse);
+  background: var(--color-primary);
   transition: all 0.3s ease;
   margin-top: auto;
 }
@@ -236,16 +236,16 @@
 }
 
 .alternativeText {
-  color: #5c554c;
-  font-size: 0.95rem;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
 }
 
 .alternativeLink {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  color: #294b3a;
-  font-size: 0.95rem;
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -327,16 +327,16 @@
 }
 
 .featuredTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.25rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
   margin: 0 0 0.5rem;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .featuredDate {
   margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: #5c554c;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
 }
 
 .featuredCta {
@@ -386,18 +386,18 @@
 }
 
 .ctaTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(1.5rem, 2.5vw + 0.8rem, 2rem);
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
   margin: 0 0 0.75rem;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .ctaSubtitle {
   margin: 0 auto 1.5rem;
   max-width: 32rem;
-  color: #5c554c;
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  line-height: 1.7;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
 }
 
 .ctaButton {
@@ -407,10 +407,10 @@
   gap: 0.6rem;
   padding: 0.9rem 2rem;
   border-radius: 999px;
-  font-size: 0.98rem;
+  font-size: var(--font-size-base);
   font-weight: 500;
   text-decoration: none;
-  color: #1f130c;
+  color: var(--color-text);
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(31, 19, 12, 0.15);
   transition: all 0.3s ease;

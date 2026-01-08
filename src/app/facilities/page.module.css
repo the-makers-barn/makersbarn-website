@@ -33,18 +33,18 @@
 }
 
 .title {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(2.4rem, 3vw + 1.4rem, 3rem);
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-4xl);
   margin: 0 0 1.2rem;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .intro {
   margin: 0 auto 0.9rem;
   max-width: 46rem;
-  color: #4c4336;
-  font-size: clamp(0.9rem, 2.5vw, 0.98rem);
-  line-height: 1.9;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
 }
 
 .secondary {
@@ -66,18 +66,18 @@
 }
 
 .ctaTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(1.6rem, 2.5vw + 0.8rem, 2.2rem);
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
   margin: 0 0 0.75rem;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .ctaSubtitle {
   margin: 0 auto 1.5rem;
   max-width: 32rem;
-  color: #5c554c;
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  line-height: 1.7;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
 }
 
 .ctaButton {
@@ -87,10 +87,10 @@
   gap: 0.6rem;
   padding: 0.9rem 2rem;
   border-radius: 999px;
-  font-size: 0.98rem;
+  font-size: var(--font-size-base);
   font-weight: 500;
   text-decoration: none;
-  color: #1f130c;
+  color: var(--color-text);
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(31, 19, 12, 0.15);
   transition: all 0.3s ease;

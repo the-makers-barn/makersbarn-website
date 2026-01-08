@@ -10,8 +10,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 1.5rem 1rem;
-  color: #294b3a;
-  font-size: 0.9rem;
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -63,24 +63,24 @@
 }
 
 .heroSubtitle {
-  font-size: 1rem;
-  color: #5c554c;
+  font-size: var(--font-size-base);
+  color: var(--color-text-tertiary);
   margin: 0 0 0.75rem;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
 }
 
 .heroTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(2.2rem, 4vw + 1rem, 3.2rem);
-  color: #294b3a;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-4xl);
+  color: var(--color-primary);
   margin: 0 0 1rem;
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
 }
 
 .heroTeachers {
-  font-size: 1.1rem;
-  color: #4c4336;
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
   margin: 0 0 1.5rem;
   font-style: italic;
 }
@@ -105,14 +105,14 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
-  color: #5c554c;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
 }
 
 .heroMetaIcon {
   width: 18px;
   height: 18px;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .heroCta {
@@ -120,10 +120,10 @@
   align-items: center;
   gap: 0.6rem;
   padding: 1rem 2rem;
-  background: #294b3a;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
   border-radius: 999px;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -155,9 +155,9 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(1.8rem, 3vw + 0.8rem, 2.4rem);
-  color: #294b3a;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-3xl);
+  color: var(--color-primary);
   margin: 0 0 2rem;
   text-align: center;
 }
@@ -185,23 +185,23 @@
 }
 
 .dateLabel {
-  font-size: 0.85rem;
-  color: #5c554c;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
   margin: 0 0 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .dateRange {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.25rem;
-  color: #294b3a;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
   margin: 0 0 0.5rem;
 }
 
 .dateDuration {
-  font-size: 0.9rem;
-  color: #5c554c;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
   margin: 0;
 }
 
@@ -248,16 +248,16 @@
 }
 
 .teacherText h2 {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(1.6rem, 2.5vw + 0.8rem, 2rem);
-  color: #294b3a;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
   margin: 0 0 1.5rem;
 }
 
 .teacherBio {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #4c4336;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
   margin: 0;
 }
 
@@ -298,9 +298,9 @@
 }
 
 .detailCardTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.25rem;
-  color: #294b3a;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
   margin: 0 0 1rem;
   display: flex;
   align-items: center;
@@ -310,19 +310,19 @@
 .detailIcon {
   width: 20px;
   height: 20px;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .detailText {
-  font-size: 0.95rem;
-  color: #4c4336;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
   margin: 0 0 0.5rem;
-  line-height: 1.6;
+  line-height: var(--line-height-relaxed);
 }
 
 .detailAddress {
   font-weight: 500;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .accessibilityList {
@@ -336,15 +336,15 @@
   align-items: flex-start;
   gap: 0.5rem;
   padding: 0.5rem 0;
-  font-size: 0.9rem;
-  color: #4c4336;
-  line-height: 1.5;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
 }
 
 .checkIcon {
   width: 16px;
   height: 16px;
-  color: #294b3a;
+  color: var(--color-primary);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -424,8 +424,8 @@
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(41, 75, 58, 0.15);
   border-radius: 999px;
-  font-size: 0.9rem;
-  color: #5c554c;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -436,9 +436,9 @@
 }
 
 .scheduleTabActive {
-  background: #294b3a;
-  color: #fff;
-  border-color: #294b3a;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
 }
 
 .scheduleTabActive:hover {
@@ -468,16 +468,16 @@
 }
 
 .scheduleTime {
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
-  color: #294b3a;
+  color: var(--color-primary);
   min-width: 100px;
   flex-shrink: 0;
 }
 
 .scheduleActivity {
-  font-size: 0.95rem;
-  color: #4c4336;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }
 
 .specialActivity {
@@ -489,8 +489,8 @@
 }
 
 .specialActivityText {
-  font-size: 0.95rem;
-  color: #4c4336;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
   margin: 0;
   font-style: italic;
 }
@@ -532,9 +532,9 @@
 }
 
 .includedCardTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.25rem;
-  color: #294b3a;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
   margin: 0 0 1rem;
 }
 
@@ -549,9 +549,9 @@
   align-items: flex-start;
   gap: 0.5rem;
   padding: 0.5rem 0;
-  font-size: 0.9rem;
-  color: #4c4336;
-  line-height: 1.5;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
 }
 
 /* Pricing Section */
@@ -584,15 +584,15 @@
 }
 
 .totalPrice {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: 3rem;
-  color: #294b3a;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-5xl);
+  color: var(--color-primary);
   margin: 0;
 }
 
 .priceSubtext {
-  font-size: 0.95rem;
-  color: #5c554c;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
   margin: 0.5rem 0 0;
 }
 
@@ -612,9 +612,9 @@
 }
 
 .priceSectionTitle {
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: 600;
-  color: #294b3a;
+  color: var(--color-primary);
   margin: 0 0 1rem;
 }
 
@@ -627,8 +627,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
-  color: #4c4336;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }
 
 .priceRowLabel {
@@ -637,7 +637,7 @@
 
 .priceRowAmount {
   font-weight: 500;
-  color: #294b3a;
+  color: var(--color-primary);
 }
 
 .policyList {
@@ -651,15 +651,15 @@
   align-items: flex-start;
   gap: 0.5rem;
   padding: 0.4rem 0;
-  font-size: 0.9rem;
-  color: #4c4336;
-  line-height: 1.5;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
 }
 
 .policyIcon {
   width: 16px;
   height: 16px;
-  color: #294b3a;
+  color: var(--color-primary);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -683,21 +683,21 @@
 }
 
 .registrationTitle {
-  font-family: var(--font-playfair), 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(1.8rem, 3vw + 0.8rem, 2.4rem);
-  color: #fff;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-inverse);
   margin: 0 0 1rem;
 }
 
 .registrationSubtitle {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--font-size-base);
+  color: var(--color-text-inverse-muted);
   margin: 0 0 1.5rem;
 }
 
 .participantInfo {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-inverse-muted);
   margin: 0 0 1.5rem;
   font-style: italic;
 }
@@ -707,10 +707,10 @@
   align-items: center;
   gap: 0.6rem;
   padding: 1rem 2.5rem;
-  background: #fff;
-  color: #294b3a;
+  background: var(--color-background);
+  color: var(--color-primary);
   border-radius: 999px;
-  font-size: 1.1rem;
+  font-size: var(--font-size-md);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -729,8 +729,8 @@
 }
 
 .contactInfo {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.9rem;
+  color: var(--color-text-inverse-muted);
+  font-size: var(--font-size-sm);
   margin-bottom: 1rem;
 }
 
@@ -745,14 +745,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
+  color: var(--color-text-inverse-muted);
+  font-size: var(--font-size-sm);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .contactLink:hover {
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .contactLinkIcon {

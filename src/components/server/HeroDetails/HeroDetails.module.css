@@ -1,6 +1,6 @@
 .heroDetails {
-  background-color: #f7f3ee;
-  color: #1f130c;
+  background-color: var(--color-background);
+  color: var(--color-text);
   padding: 4.25rem 2rem 4rem;
 }
 
@@ -17,33 +17,33 @@
 }
 
 .title {
-  font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: 2.4rem;
-  line-height: 1.15;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-tight);
   margin: 0 0 1rem;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
 }
 
 .subtitle {
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: var(--font-size-md);
   margin: 0 0 1.75rem;
-  color: #8b6c35;
+  color: var(--color-secondary);
 }
 
 .body {
   margin: 0 0 2rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #4e3a2a;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
   max-width: 36rem;
 }
 
 .bodyItalic {
   font-style: italic;
-  font-family: 'Playfair Display', 'Times New Roman', serif;
-  color: #6b5238;
+  font-family: var(--font-playfair);
+  color: var(--color-text-tertiary);
 }
 
 .actions {
@@ -59,7 +59,7 @@
   justify-content: center;
   padding: 0.85rem 1.6rem;
   border-radius: 999px;
-  font-size: 0.98rem;
+  font-size: var(--font-size-base);
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
@@ -68,9 +68,9 @@
 }
 
 .buttonPrimary {
-  background: #1f130c;
-  color: #fdf7f0;
-  border-color: #1f130c;
+  background: var(--color-text);
+  color: var(--color-background);
+  border-color: var(--color-text);
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(31, 19, 12, 0.2);
 }

@@ -78,10 +78,10 @@
 
 .cardTitle {
   margin: 0;
-  font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-  color: #294b3a;
-  line-height: 1.3;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-base);
+  color: var(--color-primary);
+  line-height: var(--line-height-snug);
 }
 
 .details {
@@ -122,7 +122,7 @@
 }
 
 .detailContent {
-  color: #f8f4ec;
+  color: var(--color-background);
   display: flex;
   flex-direction: column;
 }
@@ -138,22 +138,22 @@
 }
 
 .detailTitle {
-  font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--letter-spacing-tight);
   margin: 0 0 1.25rem;
-  color: #fdfbf7;
-  line-height: 1.3;
+  color: var(--color-text-inverse);
+  line-height: var(--line-height-snug);
   align-self: flex-start;
 }
 
 .detailBody {
   margin: 0 0 1.5rem;
-  font-size: clamp(0.925rem, 2.5vw, 1rem);
+  font-size: var(--font-size-base);
   font-weight: 400;
-  line-height: 1.65;
-  color: rgba(248, 244, 236, 0.92);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-inverse-muted);
   max-width: 52ch;
 }
 

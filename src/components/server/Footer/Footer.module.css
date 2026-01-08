@@ -71,48 +71,48 @@
 }
 
 .heading {
-  font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.25rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
   margin: 0 0 0.5rem;
-  color: #ffffff;
+  color: var(--color-text-inverse);
   font-weight: 600;
 }
 
 .email {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
 }
 
 .email a {
-  color: #f7f3ee;
+  color: var(--color-background);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .email a:hover {
-  color: #b8894a;
+  color: var(--color-secondary);
 }
 
 .address {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(247, 243, 238, 0.9);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-inverse-muted);
 }
 
 .tagline {
-  font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: 1.5rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-xl);
   font-style: italic;
   margin: 0;
-  color: #b8894a;
-  line-height: 1.4;
+  color: var(--color-secondary);
+  line-height: var(--line-height-snug);
 }
 
 @media (min-width: 768px) {
   .tagline {
-    font-size: 1.75rem;
+    font-size: var(--font-size-2xl);
   }
 }
 
@@ -130,17 +130,17 @@
   height: 44px;
   background-color: rgba(247, 243, 238, 0.1);
   border-radius: 50%;
-  color: #f7f3ee;
+  color: var(--color-background);
   text-decoration: none;
   transition: all 0.3s ease;
   border: 2px solid transparent;
 }
 
 .socialLink:hover {
-  background-color: #b8894a;
-  color: #ffffff;
+  background-color: var(--color-secondary);
+  color: var(--color-text-inverse);
   transform: translateY(-2px);
-  border-color: #b8894a;
+  border-color: var(--color-secondary);
 }
 
 .bottom {
@@ -151,6 +151,6 @@
 
 .copyright {
   margin: 0;
-  font-size: 0.875rem;
-  color: rgba(247, 243, 238, 0.7);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-inverse-muted);
 }

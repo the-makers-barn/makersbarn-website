@@ -17,10 +17,10 @@
 }
 
 .title {
-  font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-3xl);
   margin: 0;
-  color: #26221c;
+  color: var(--color-text);
 }
 
 .container {
@@ -87,15 +87,15 @@
 
 .quote {
   text-align: center;
-  font-size: 1.125rem;
+  font-size: var(--font-size-md);
   font-style: italic;
-  color: #5c554c;
-  line-height: 1.6;
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-normal);
 }
 
 .author {
   text-align: center;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   font-weight: 500;
-  color: #8a7760;
+  color: var(--color-text-muted);
 }

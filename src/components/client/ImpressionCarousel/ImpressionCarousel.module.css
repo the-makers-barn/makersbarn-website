@@ -23,26 +23,26 @@
 }
 
 .kicker {
-  letter-spacing: 0.18em;
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  font-size: 0.8rem;
-  color: #8a7760;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
   margin: 0 0 0.75rem;
 }
 
 .title {
-  font-family: 'Playfair Display', 'Times New Roman', serif;
-  font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-3xl);
   margin: 0 0 0.75rem;
-  color: #26221c;
+  color: var(--color-text);
 }
 
 .subtitle {
   margin: 0;
   max-width: 32rem;
-  color: #5c554c;
-  font-size: 0.98rem;
-  line-height: 1.7;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
 }
 
 .container {
@@ -71,7 +71,7 @@
   border-radius: 50%;
   border: none;
   background: rgba(255, 255, 255, 0.9);
-  color: #5c554c;
+  color: var(--color-text-tertiary);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -233,10 +233,10 @@
   gap: 0.6rem;
   padding: 0.9rem 2rem;
   border-radius: 999px;
-  font-size: 0.98rem;
+  font-size: var(--font-size-base);
   font-weight: 500;
   text-decoration: none;
-  color: #1f130c;
+  color: var(--color-text);
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(31, 19, 12, 0.15);
   transition: all 0.3s ease;

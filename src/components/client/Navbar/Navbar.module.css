@@ -96,13 +96,13 @@
 
 /* CTA Button - Primary Contact Action */
 .ctaButton {
-  background-color: #b8894a;
-  color: #ffffff;
+  background-color: var(--color-secondary);
+  color: var(--color-text-inverse);
   padding: 0.625rem 1.25rem;
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 0.9375rem;
-  letter-spacing: 0.01em;
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-normal);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -126,16 +126,16 @@
 .contactLink {
   display: inline-flex;
   align-items: center;
-  color: #294b3a;
+  color: var(--color-primary);
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: var(--font-size-sm);
   text-decoration: none;
   padding: 0.5rem 0.75rem;
   transition: color 0.2s ease;
 }
 
 .contactLink:hover {
-  color: #b8894a;
+  color: var(--color-secondary);
 }
 
 /* Mobile CTA in menu - hidden on desktop */
@@ -253,10 +253,10 @@
 }
 
 .link {
-  color: #333;
+  color: var(--color-text);
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   transition: color 0.3s ease;
   position: relative;
   padding: 0.5rem 0;
