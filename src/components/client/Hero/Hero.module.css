@@ -86,13 +86,20 @@
 @media (max-width: 640px) {
   .content {
     padding: 1.5rem 1.25rem;
+    align-items: center;
+    text-align: center;
   }
 
   .headingTop {
     font-size: var(--font-size-2xl);
   }
 
+  .headingEmphasis {
+    display: block;
+    font-size: var(--font-size-4xl);
+  }
+
   .headingBottom {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-2xl);
   }
 }

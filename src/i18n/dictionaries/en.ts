@@ -12,8 +12,8 @@ export const en: Dictionary = {
   },
 
   hero: {
-    eyebrow: 'Welcome to',
-    emphasis: 'the Makers Barn',
+    eyebrow: 'Welcome to the',
+    emphasis: 'Makers Barn',
     subtitle: 'A home for your retreat',
     subtitleBreak: '',
   },
