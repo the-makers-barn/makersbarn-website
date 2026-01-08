@@ -71,6 +71,21 @@ export const nl: Dictionary = {
     },
   },
 
+  unifiedContact: {
+    pageTitle: 'Neem Contact Op',
+    pageSubtitle:
+      'Of je nu een retraite wilt plannen of gewoon een vraag hebt, we helpen je graag. Kies hoe je contact wilt opnemen.',
+    selectorAriaLabel: 'Contact opties',
+    intentSelector: {
+      questionLabel: 'Stel een Vraag',
+      questionSublabel: 'Snelle vraag',
+      bookingLabel: 'Vraag een Offerte',
+      bookingSublabel: 'Vrijblijvend',
+    },
+    mapTitle: 'Locatiekaart met Maker\'s Barn',
+    questionFormImageAlt: 'Gezellige bank bij de Hay House accommodatie',
+  },
+
   booking: {
     pageTitle: 'Boek je Retraite',
     metaTitle: 'Boek je Retraite',

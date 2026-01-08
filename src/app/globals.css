@@ -27,6 +27,20 @@
   --color-text-error: #dc2626;
 
   /* ========================================================================
+     UI COLORS
+     ======================================================================== */
+  --color-background-white: #ffffff;
+  --color-background-warm: #e8e0d5;
+  --color-success: #25d366;
+  --color-error: #dc3545;
+
+  /* Border and shadow tokens */
+  --color-border-light: rgba(41, 75, 58, 0.1);
+  --color-border-medium: rgba(41, 75, 58, 0.15);
+  --color-shadow-light: rgba(0, 0, 0, 0.04);
+  --color-shadow-medium: rgba(39, 32, 22, 0.26);
+
+  /* ========================================================================
      FONT SIZE SCALE (Fluid typography with clamp)
      Base: 16px at 375px viewport, scales to larger viewports
      ======================================================================== */

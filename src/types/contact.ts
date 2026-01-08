@@ -11,3 +11,8 @@ export enum FormStatus {
   SUCCESS = 'success',
   ERROR = 'error',
 }
+
+export enum ContactIntent {
+  QUESTION = 'question',
+  BOOKING = 'booking',
+}

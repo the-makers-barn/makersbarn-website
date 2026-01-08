@@ -429,6 +429,23 @@ export interface ShantiDevaRetreatTranslations {
 }
 
 /**
+ * Unified Contact page translations
+ */
+export interface UnifiedContactTranslations {
+  pageTitle: string
+  pageSubtitle: string
+  selectorAriaLabel: string
+  intentSelector: {
+    questionLabel: string
+    questionSublabel: string
+    bookingLabel: string
+    bookingSublabel: string
+  }
+  mapTitle: string
+  questionFormImageAlt: string
+}
+
+/**
  * Booking form translations
  */
 export interface BookingTranslations {
@@ -562,6 +579,7 @@ export interface Dictionary {
   hero: HeroTranslations
   heroDetails: HeroDetailsTranslations
   contact: ContactTranslations
+  unifiedContact: UnifiedContactTranslations
   booking: BookingTranslations
   footer: FooterTranslations
   about: AboutTranslations

@@ -25,7 +25,6 @@ export function BookingFormSkeleton() {
           <div className={styles.form}>
             {/* Progress Indicator - Real content */}
             <div className={styles.progressContainer}>
-              <h1 className={styles.pageTitle}>{booking.pageTitle}</h1>
               <nav aria-label={booking.progressLabel}>
                 <ol className={styles.progressSteps}>
                   {Array.from({ length: TOTAL_STEPS }, (_, i) => {
@@ -67,9 +66,6 @@ export function BookingFormSkeleton() {
                 <div className={styles.infoAlertLinks}>
                   <Link href={Route.EXPERIENCES} className={styles.infoAlertLink}>
                     {booking.alert.joinRetreatLink}
-                  </Link>
-                  <Link href={Route.CONTACT} className={styles.infoAlertLink}>
-                    {booking.alert.contactLink}
                   </Link>
                 </div>
               </div>

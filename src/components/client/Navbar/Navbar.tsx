@@ -121,19 +121,10 @@ export function Navbar() {
             <li className={`${styles.item} ${styles.mobileOnly}`}>
               <Link
                 href={getLocalizedPath(Route.CONTACT, currentLocale)}
-                className={`${styles.link} ${isActive(Route.CONTACT) ? styles.linkActive : ''}`}
+                className={`${styles.link} ${styles.ctaButtonMobile} ${isActive(Route.CONTACT) ? styles.linkActive : ''}`}
                 onClick={closeMenu}
               >
                 {nav.contact}
-              </Link>
-            </li>
-            <li className={`${styles.item} ${styles.mobileOnly}`}>
-              <Link
-                href={getLocalizedPath(Route.BOOK, currentLocale)}
-                className={`${styles.link} ${styles.ctaButtonMobile} ${isActive(Route.BOOK) ? styles.linkActive : ''}`}
-                onClick={closeMenu}
-              >
-                {nav.book}
               </Link>
             </li>
           </ul>
@@ -142,17 +133,10 @@ export function Navbar() {
         <div className={styles.right}>
           <Link
             href={getLocalizedPath(Route.CONTACT, currentLocale)}
-            className={styles.contactLink}
-            onClick={closeMenu}
-          >
-            {nav.contact}
-          </Link>
-          <Link
-            href={getLocalizedPath(Route.BOOK, currentLocale)}
             className={styles.ctaButton}
             onClick={closeMenu}
           >
-            {nav.book}
+            {nav.contact}
           </Link>
           <div className={styles.languageWrapper} ref={languageDropdownRef}>
             <button

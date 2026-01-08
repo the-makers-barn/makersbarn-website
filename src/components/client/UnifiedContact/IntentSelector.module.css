@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Intent Selector - Elegant toggle between Question and Booking modes
+   ========================================================================== */
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0;
+  }
+}
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 560px;
+  padding: 6px;
+  background-color: var(--color-background-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px var(--color-shadow-light);
+}
+
+@media (min-width: 640px) {
+  .selector {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.option {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-family: inherit;
+  text-align: center;
+}
+
+.option:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(41, 75, 58, 0.3);
+}
+
+.optionContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.optionLabel {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+
+.optionSublabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  transition: color 0.3s ease;
+}
+
+.optionActive .optionLabel {
+  color: var(--color-text-inverse);
+}
+
+.optionActive .optionSublabel {
+  color: var(--color-text-inverse-muted);
+}
+
+.activeIndicator {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-primary);
+  border-radius: 12px;
+  z-index: 0;
+}
+
+/* Hover states for inactive options */
+.option:not(.optionActive):hover .optionLabel {
+  color: var(--color-primary);
+}
+
+.option:not(.optionActive):hover .optionSublabel {
+  color: var(--color-text-muted);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .option,
+  .optionLabel,
+  .optionSublabel {
+    transition: none;
+  }
+}

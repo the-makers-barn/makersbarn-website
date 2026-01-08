@@ -68,6 +68,21 @@ export const en: Dictionary = {
     },
   },
 
+  unifiedContact: {
+    pageTitle: 'Get in Touch',
+    pageSubtitle:
+      "Whether you're planning a retreat or have a quick question, we're here to help. Choose how you'd like to connect.",
+    selectorAriaLabel: 'Contact options',
+    intentSelector: {
+      questionLabel: 'Ask a Question',
+      questionSublabel: 'Quick inquiry',
+      bookingLabel: 'Request a Quote',
+      bookingSublabel: 'No commitment required',
+    },
+    mapTitle: 'Location map showing Maker\'s Barn',
+    questionFormImageAlt: 'Cozy bench at the Hay House accommodation',
+  },
+
   booking: {
     pageTitle: 'Book Your Retreat',
     metaTitle: 'Book Your Retreat',

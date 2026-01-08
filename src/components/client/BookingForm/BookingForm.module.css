@@ -13,13 +13,13 @@
    ========================================================================== */
 .formSection {
   background: linear-gradient(180deg, #f7f3ee 0%, #ffffff 100%);
-  padding: 1rem 1.5rem 6rem;
-  min-height: 100vh;
+  padding: 1rem 1.5rem 1.5rem;
+  min-height: auto;
 }
 
 @media (min-width: 768px) {
   .formSection {
-    padding: 1.5rem 4rem 8rem;
+    padding: 1.5rem 4rem 2rem;
   }
 }
 

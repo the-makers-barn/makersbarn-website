@@ -184,9 +184,9 @@ export function ContactForm() {
           </div>
           <div className={styles.emailAlternative}>
             <p className={styles.emailAlternativeText}>{contact.emailAlternative.text}</p>
-            <a href="mailto:info@makersbarn.com" className={styles.emailLink}>
+            <a href="mailto:info@themakersbarn.com" className={styles.emailLink}>
               <EmailIcon />
-              info@makersbarn.com
+              info@themakersbarn.com
             </a>
           </div>
         </div>
