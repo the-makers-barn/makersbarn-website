@@ -3,8 +3,10 @@
 import { useState, useCallback, useMemo, FormEvent, ChangeEvent } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { track } from '@vercel/analytics'
 import { IMAGES } from '@/data'
 import { submitContactForm } from '@/actions'
+import { AnalyticsEvent } from '@/constants'
 import { FormStatus, type ContactFormData } from '@/types'
 import { useTranslation } from '@/context'
 import styles from './QuestionForm.module.css'
@@ -56,6 +58,7 @@ export function QuestionForm() {
         const result = await submitContactForm(formData)
 
         if (result.success) {
+          track(AnalyticsEvent.QUESTION_FORM_SUBMITTED)
           setStatus(FormStatus.SUCCESS)
           setStatusMessage(result.message)
           setFormData(INITIAL_FORM_DATA)

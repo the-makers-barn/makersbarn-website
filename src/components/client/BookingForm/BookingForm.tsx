@@ -3,7 +3,8 @@
 import { useState, useCallback, useMemo, useRef, useEffect, FormEvent, ChangeEvent } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { getBlockedDateRanges, BOOKING_ANCHOR_ID, GROUP_SIZE, DURATION } from '@/constants'
+import { track } from '@vercel/analytics'
+import { getBlockedDateRanges, BOOKING_ANCHOR_ID, GROUP_SIZE, DURATION, AnalyticsEvent } from '@/constants'
 import { submitBookingForm, notifyBookingStarted } from '@/actions'
 import { FormStatus, RetreatType, Route, type BookingFormData, type PartialBookingContactData } from '@/types'
 import { useTranslation, useLanguage } from '@/context'
@@ -222,6 +223,7 @@ export function BookingForm() {
         const translatedMessage = booking.messages[messageKey] || booking.messages.unexpectedError
 
         if (result.success) {
+          track(AnalyticsEvent.BOOKING_FORM_SUBMITTED, { retreatType: formData.retreatType })
           setStatus(FormStatus.SUCCESS)
           setStatusMessage(translatedMessage)
           // Don't reset form - stay on success screen

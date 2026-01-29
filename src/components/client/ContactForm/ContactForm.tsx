@@ -3,8 +3,9 @@
 import { useState, useCallback, useMemo, FormEvent, ChangeEvent } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { track } from '@vercel/analytics'
 import { IMAGES } from '@/data'
-import { CONTACT_URLS } from '@/constants'
+import { CONTACT_URLS, AnalyticsEvent } from '@/constants'
 import { submitContactForm } from '@/actions'
 import { FormStatus, type ContactFormData } from '@/types'
 import { useTranslation } from '@/context'
@@ -57,6 +58,7 @@ export function ContactForm() {
         const result = await submitContactForm(formData)
 
         if (result.success) {
+          track(AnalyticsEvent.CONTACT_FORM_SUBMITTED)
           setStatus(FormStatus.SUCCESS)
           setStatusMessage(result.message)
           setFormData(INITIAL_FORM_DATA)
