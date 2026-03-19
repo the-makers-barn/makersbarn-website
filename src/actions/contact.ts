@@ -1,10 +1,8 @@
 'use server'
 
-import { headers } from 'next/headers'
-
 import { sendEmail } from '@/services/email'
 import { sendSlackMessage, formatContactFormMessage, SlackChannel } from '@/services/slack'
-import { createLogger, validateContactForm, RateLimiter } from '@/lib'
+import { createLogger, validateContactForm, RateLimiter, getClientIdentifier, maskEmail } from '@/lib'
 import { CONTACT_FORM_MESSAGES, CONTACT_RATE_LIMIT } from '@/constants'
 import type { ContactFormData } from '@/types'
 
@@ -19,13 +17,6 @@ export interface SubmitContactFormResult {
   success: boolean
   message: string
   errors?: Record<string, string>
-}
-
-async function getClientIdentifier(): Promise<string> {
-  const headersList = await headers()
-  const vercelForwardedFor = headersList.get('x-vercel-forwarded-for')
-  const realIp = headersList.get('x-real-ip')
-  return vercelForwardedFor?.split(',')[0]?.trim() || realIp || 'unknown'
 }
 
 export async function submitContactForm(data: ContactFormData): Promise<SubmitContactFormResult> {
@@ -53,7 +44,8 @@ export async function submitContactForm(data: ContactFormData): Promise<SubmitCo
   }
 
   const validatedData = validation.data!
-  logger.info('Contact form submission started', { email: validatedData.email })
+  const maskedUserEmail = maskEmail(validatedData.email)
+  logger.info('Contact form submission started', { email: maskedUserEmail })
 
   // Send Slack notification (secondary - failures don't affect email)
   try {
@@ -65,13 +57,13 @@ export async function submitContactForm(data: ContactFormData): Promise<SubmitCo
 
     if (!slackResult.success) {
       logger.warn('Slack notification failed, continuing with email', {
-        email: validatedData.email,
+        email: maskedUserEmail,
         slackError: slackResult.error,
       })
     }
   } catch (error) {
     logger.warn('Slack notification failed unexpectedly, continuing with email', {
-      email: validatedData.email,
+      email: maskedUserEmail,
       error,
     })
   }

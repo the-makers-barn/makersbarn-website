@@ -68,3 +68,7 @@ export {
   isValidISODateString,
 } from './date'
 export { formatGroupSize } from './formatting'
+export { isBot, getDeviceCategory, DeviceCategory } from './bot-detection'
+export { maskEmail } from './privacy'
+export { anonymizeIp } from './ip-privacy'
+export { getClientIdentifier, getClientIpFromRequest } from './request'

@@ -1,10 +1,8 @@
 'use server'
 
-import { headers } from 'next/headers'
-
 import { sendBookingEmail } from '@/services/email'
 import { sendSlackMessage, formatBookingFormMessage, formatPartialBookingMessage, SlackChannel } from '@/services/slack'
-import { createLogger, validateBookingForm, RateLimiter, ContactInfoSchema } from '@/lib'
+import { createLogger, validateBookingForm, RateLimiter, ContactInfoSchema, getClientIdentifier, maskEmail } from '@/lib'
 import { BOOKING_RATE_LIMIT, BookingMessageCode } from '@/constants'
 import type { BookingFormData, SubmitBookingFormResult, PartialBookingContactData, PartialBookingResult } from '@/types'
 
@@ -14,57 +12,6 @@ const rateLimiter = new RateLimiter({
   windowMs: BOOKING_RATE_LIMIT.WINDOW_MS,
   maxRequests: BOOKING_RATE_LIMIT.MAX_REQUESTS,
 })
-
-/**
- * Mask email for logging (GDPR compliance)
- * e.g., "john@example.com" → "j***@example.com"
- */
-function maskEmail(email: string): string {
-  const [local, domain] = email.split('@')
-  if (!domain) {return '***'}
-  const maskedLocal = local.length > 1 ? `${local[0]}***` : '***'
-  return `${maskedLocal}@${domain}`
-}
-
-/**
- * Validate IP address format (IPv4 or IPv6)
- */
-function isValidIpFormat(ip: string): boolean {
-  // IPv4: validate each octet is 0-255
-  const ipv4Parts = ip.split('.')
-  if (ipv4Parts.length === 4) {
-    return ipv4Parts.every((part) => {
-      const num = parseInt(part, 10)
-      return !isNaN(num) && num >= 0 && num <= 255 && String(num) === part
-    })
-  }
-  // IPv6 pattern (simplified - allows common formats)
-  const ipv6Pattern = /^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}$/
-  return ipv6Pattern.test(ip)
-}
-
-/**
- * Get client identifier for rate limiting
- * Uses Vercel's trusted headers which cannot be spoofed by clients
- */
-async function getClientIdentifier(): Promise<string> {
-  const headersList = await headers()
-
-  // Vercel sets these headers and they cannot be spoofed by clients
-  // Priority: Vercel's forwarded IP > x-real-ip (set by reverse proxy) > fallback
-  const vercelForwardedFor = headersList.get('x-vercel-forwarded-for')
-  const realIp = headersList.get('x-real-ip')
-
-  // Extract first IP from forwarded header (client IP)
-  const clientIp = vercelForwardedFor?.split(',')[0]?.trim() || realIp
-
-  // Validate IP format to prevent injection
-  if (clientIp && isValidIpFormat(clientIp)) {
-    return clientIp
-  }
-
-  return 'unknown'
-}
 
 export async function submitBookingForm(data: BookingFormData): Promise<SubmitBookingFormResult> {
   const clientId = await getClientIdentifier()
