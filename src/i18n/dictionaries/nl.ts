@@ -334,20 +334,32 @@ export const nl: Dictionary = {
       ],
       ctaLabel: 'Ontdek Solo Retraite',
     },
-    accommodation: {
-      title: 'Boek Onze Accommodatie',
-      description: 'Huur onze prachtige ruimtes voor je eigen privé uitje. Perfect voor stellen, gezinnen of kleine groepen op zoek naar een rustige escape.',
-      features: [
-        'Yoga sessies beschikbaar',
-        'Hot tub huur',
-        'Sauna toegang',
-        'Massage',
-        'Creatieve Workshops',
-        'Catering op aanvraag',
-      ],
-      platforms: {
-        airbnb: 'Boek via Airbnb',
-        natuurhuisje: 'Boek via Natuurhuisje',
+    bookingPlatforms: {
+      airbnb: 'Boek via Airbnb',
+      natuurhuisje: 'Boek via Natuurhuisje',
+    },
+    cabins: {
+      cosmos: {
+        title: 'Boek Cosmos Cabin',
+        description: "Een houten cabin met houtkachel, gezellig als geen ander en omgeven door een van de mooiste uitzichten die Nederland te bieden heeft. Gemaakt voor stellen of duo's die zich willen terugtrekken in de natuur.",
+        features: [
+          'Houtkachel & privé terras',
+          'Hot tub & sauna toegang',
+          'Yoga sessies op aanvraag',
+          'Massage beschikbaar',
+          'Catering op aanvraag',
+        ],
+      },
+      horizon: {
+        title: 'Boek Horizon Loft',
+        description: 'Een nieuw gebouwde luxe loft met premium afwerking, midden in het platteland. Open keuken, regendouche en een glazen paviljoen met uitzicht op gedeeld 13.000 m² terrein met wilde bloemenweiden.',
+        features: [
+          'Premium afwerking & regendouche',
+          'Sauna toegang',
+          'Gratis fiets',
+          'Zwemvijver & vuurplaats',
+          'Catering op aanvraag',
+        ],
       },
     },
     togetherRetreat: {

@@ -1,4 +1,4 @@
-import { Language } from '@/types'
+import { AccommodationCabin, Language } from '@/types'
 
 /**
  * Navigation translations
@@ -272,15 +272,15 @@ export interface ExperiencesTranslations {
     features: readonly string[]
     ctaLabel: string
   }
-  accommodation: {
+  bookingPlatforms: {
+    airbnb: string
+    natuurhuisje: string
+  }
+  cabins: Record<AccommodationCabin, {
     title: string
     description: string
     features: readonly string[]
-    platforms: {
-      airbnb: string
-      natuurhuisje: string
-    }
-  }
+  }>
   togetherRetreat: {
     title: string
     description: string

@@ -1,5 +1,6 @@
 import {
   ExperienceType,
+  AccommodationCabin,
   BookingPlatform,
   ExperienceOffer,
   FeaturedRetreat,
@@ -15,8 +16,9 @@ export const EXPERIENCE_OFFERS: ExperienceOffer[] = [
     externalUrl: 'https://thanksforthetrip.com/cosmos-solo-yoga-retreat/',
   },
   {
-    id: 'accommodation',
+    id: 'accommodation-cosmos',
     type: ExperienceType.ACCOMMODATION,
+    cabin: AccommodationCabin.COSMOS,
     image: IMAGES.accommodation.cosmosOutside,
     bookingLinks: [
       {
@@ -26,6 +28,18 @@ export const EXPERIENCE_OFFERS: ExperienceOffer[] = [
       {
         platform: BookingPlatform.NATUURHUISJE,
         url: 'https://www.natuurhuisje.nl/vakantiehuisje/86113',
+      },
+    ],
+  },
+  {
+    id: 'accommodation-horizon',
+    type: ExperienceType.ACCOMMODATION,
+    cabin: AccommodationCabin.HORIZON,
+    image: IMAGES.accommodation.horizonExterior,
+    bookingLinks: [
+      {
+        platform: BookingPlatform.NATUURHUISJE,
+        url: 'https://www.natuurhuisje.nl/vakantiehuisje/91228',
       },
     ],
   },

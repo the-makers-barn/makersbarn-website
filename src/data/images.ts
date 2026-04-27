@@ -14,6 +14,7 @@ export const IMAGES = {
     cosmosCouch: '/images/cosmos-luxury-couch.jpg',
     cosmosOutside: '/images/cosmos-outside-wooden-cabin.jpeg',
     cosmosKitchen: '/images/cosmos-kitchen.jpg',
+    horizonExterior: '/images/horizon.avif',
     doubleEnsuite: '/images/double-ensuite.jpg',
     teahouse: '/images/teahous-with-chair.jpg',
     sauna: '/images/sauna.jpg',

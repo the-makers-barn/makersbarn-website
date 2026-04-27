@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { StructuredData } from '@/components/server'
 import { generatePageMetadata } from '@/lib/metadata'
 import { generateLocalBusinessSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
-import { Route, ExperienceType, BookingPlatform, Language } from '@/types'
+import { Route, ExperienceType, BookingPlatform, Language, ExperienceOffer } from '@/types'
 import { SITE_CONFIG } from '@/constants/site'
 import { getServerTranslations } from '@/i18n'
 import { getValidLocale } from '@/lib/locale'
@@ -78,24 +78,47 @@ const ExternalLinkIcon = () => (
   </svg>
 )
 
-function getOfferContent(type: ExperienceType, t: Awaited<ReturnType<typeof getServerTranslations>>) {
-  switch (type) {
+type Translations = Awaited<ReturnType<typeof getServerTranslations>>
+
+type OfferContent =
+  | {
+      kind: 'cta'
+      title: string
+      description: string
+      features: readonly string[]
+      ctaLabel: string
+    }
+  | {
+      kind: 'booking'
+      title: string
+      description: string
+      features: readonly string[]
+      platforms: Translations['experiences']['bookingPlatforms']
+    }
+
+function getOfferContent(offer: ExperienceOffer, t: Translations): OfferContent {
+  switch (offer.type) {
     case ExperienceType.SOLO_RETREAT:
       return {
+        kind: 'cta',
         title: t.experiences.soloRetreat.title,
         description: t.experiences.soloRetreat.description,
         features: t.experiences.soloRetreat.features,
         ctaLabel: t.experiences.soloRetreat.ctaLabel,
       }
-    case ExperienceType.ACCOMMODATION:
+    case ExperienceType.ACCOMMODATION: {
+      const cabinCopy = t.experiences.cabins[offer.cabin]
       return {
-        title: t.experiences.accommodation.title,
-        description: t.experiences.accommodation.description,
-        features: t.experiences.accommodation.features,
-        platforms: t.experiences.accommodation.platforms,
+        kind: 'booking',
+        title: cabinCopy.title,
+        description: cabinCopy.description,
+        features: cabinCopy.features,
+        platforms: t.experiences.bookingPlatforms,
       }
+    }
     case ExperienceType.TOGETHER_RETREAT:
       return {
+        kind: 'cta',
         title: t.experiences.togetherRetreat.title,
         description: t.experiences.togetherRetreat.description,
         features: t.experiences.togetherRetreat.features,
@@ -105,12 +128,12 @@ function getOfferContent(type: ExperienceType, t: Awaited<ReturnType<typeof getS
 }
 
 interface OfferCardProps {
-  offer: typeof EXPERIENCE_OFFERS[number]
-  t: Awaited<ReturnType<typeof getServerTranslations>>
+  offer: ExperienceOffer
+  t: Translations
 }
 
 function OfferCard({ offer, t }: OfferCardProps) {
-  const content = getOfferContent(offer.type, t)
+  const content = getOfferContent(offer, t)
 
   return (
     <article className={styles.offerCard}>
@@ -119,7 +142,7 @@ function OfferCard({ offer, t }: OfferCardProps) {
           src={offer.image}
           alt={content.title}
           fill
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 25vw"
           className={styles.offerImage}
         />
       </div>
@@ -137,7 +160,7 @@ function OfferCard({ offer, t }: OfferCardProps) {
           ))}
         </ul>
 
-        {offer.externalUrl && 'ctaLabel' in content && (
+        {content.kind === 'cta' && offer.type !== ExperienceType.ACCOMMODATION && (
           <a
             href={offer.externalUrl}
             target="_blank"
@@ -149,7 +172,7 @@ function OfferCard({ offer, t }: OfferCardProps) {
           </a>
         )}
 
-        {offer.bookingLinks && 'platforms' in content && content.platforms && (
+        {content.kind === 'booking' && offer.type === ExperienceType.ACCOMMODATION && (
           <div className={styles.bookingLinks}>
             {offer.bookingLinks.map((link) => (
               <a
@@ -179,7 +202,7 @@ function OfferCard({ offer, t }: OfferCardProps) {
 interface FeaturedRetreatCardProps {
   retreat: typeof FEATURED_RETREATS[number]
   validLocale: Language
-  t: Awaited<ReturnType<typeof getServerTranslations>>
+  t: Translations
 }
 
 function FeaturedRetreatCard({ retreat, validLocale, t }: FeaturedRetreatCardProps) {

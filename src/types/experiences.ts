@@ -4,6 +4,11 @@ export enum ExperienceType {
   TOGETHER_RETREAT = 'together_retreat',
 }
 
+export enum AccommodationCabin {
+  COSMOS = 'cosmos',
+  HORIZON = 'horizon',
+}
+
 export enum BookingPlatform {
   AIRBNB = 'airbnb',
   NATUURHUISJE = 'natuurhuisje',
@@ -14,13 +19,29 @@ export interface ExternalLink {
   url: string
 }
 
-export interface ExperienceOffer {
+export interface SoloRetreatOffer {
   id: string
-  type: ExperienceType
+  type: ExperienceType.SOLO_RETREAT
   image: string
-  externalUrl?: string
-  bookingLinks?: ExternalLink[]
+  externalUrl: string
 }
+
+export interface TogetherRetreatOffer {
+  id: string
+  type: ExperienceType.TOGETHER_RETREAT
+  image: string
+  externalUrl: string
+}
+
+export interface AccommodationOffer {
+  id: string
+  type: ExperienceType.ACCOMMODATION
+  cabin: AccommodationCabin
+  image: string
+  bookingLinks: ExternalLink[]
+}
+
+export type ExperienceOffer = SoloRetreatOffer | TogetherRetreatOffer | AccommodationOffer
 
 export interface FeaturedRetreat {
   id: string

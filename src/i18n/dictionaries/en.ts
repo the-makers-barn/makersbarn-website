@@ -331,20 +331,32 @@ export const en: Dictionary = {
       ],
       ctaLabel: 'Explore Solo Retreat',
     },
-    accommodation: {
-      title: 'Book Our Accommodation',
-      description: 'Rent our beautiful spaces for your own private getaway. Perfect for couples, families, or small groups looking for a peaceful escape.',
-      features: [
-        'Yoga sessions available',
-        'Hot tub rental',
-        'Sauna access',
-        'Massage',
-        'Creativity Workshops',
-        'Catering on request',
-      ],
-      platforms: {
-        airbnb: 'Book on Airbnb',
-        natuurhuisje: 'Book on Natuurhuisje',
+    bookingPlatforms: {
+      airbnb: 'Book on Airbnb',
+      natuurhuisje: 'Book on Natuurhuisje',
+    },
+    cabins: {
+      cosmos: {
+        title: 'Book Cosmos Cabin',
+        description: 'A wooden cabin with wood stove, cosy as no other and bathed in some of the best views the Netherlands has to offer. Made for couples or duos craving a cocooned escape close to nature.',
+        features: [
+          'Wood stove & private terrace',
+          'Hot tub & sauna access',
+          'Yoga sessions on request',
+          'Massage available',
+          'Catering on request',
+        ],
+      },
+      horizon: {
+        title: 'Book Horizon Loft',
+        description: 'A newly built luxury loft with premium finishes and countryside views. Open kitchen, rainfall shower, and a glass pavilion overlooking shared 13,000 m² grounds with wildflower meadows.',
+        features: [
+          'Premium finishes & rainfall shower',
+          'Sauna access',
+          'Free bicycle',
+          'Swimming pond & fire pit',
+          'Catering on request',
+        ],
       },
     },
     togetherRetreat: {
