@@ -91,7 +91,24 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
   // No locale in path - check if it's a valid page path
   // If it's a known route without locale, redirect to localized version
   const pathWithoutLocale = getPathWithoutLocale(pathname)
-  const knownRoutes = ['/', '/about', '/facilities', '/contact']
+  const knownRoutes = [
+    '/',
+    '/about',
+    '/facilities',
+    '/contact',
+    '/host-a-retreat',
+    '/slow-living-vs-commercial-hospitality',
+    '/yoga-teachers',
+    '/meditation-retreats',
+    '/writing-retreats',
+    '/team-offsites',
+    '/breathwork-sound-healing',
+    '/coaching-intensives',
+    '/somatic-therapy-retreats',
+    '/wellness-detox-retreats',
+    '/circle-retreats',
+    '/photography-workshops',
+  ]
   
   if (knownRoutes.includes(pathWithoutLocale)) {
     // Get preferred language

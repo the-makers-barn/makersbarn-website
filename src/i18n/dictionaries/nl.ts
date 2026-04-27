@@ -526,7 +526,7 @@ export const nl: Dictionary = {
       address: 'Adres boerderij',
       accessibility: 'Bereikbaarheid',
       accessibilityItems: {
-        carFromZwolle: '15 minuten met de auto vanaf Zwolle (1u15 met de trein vanaf Schiphol Airport, Amsterdam)',
+        carFromZwolle: '15 minuten met de auto vanaf Zwolle (1 uur 15 met de trein vanaf Schiphol Airport, Amsterdam)',
         freePickup: 'Gratis ophaalservice vanaf station Zwolle (14:00-16:00)',
         sharedTransport: 'Gedeeld vervoer terug naar het station aan het einde: ~€10 per persoon',
       },
@@ -605,6 +605,98 @@ export const nl: Dictionary = {
       whatsapp: 'WhatsApp',
       email: 'E-mail',
       registerButton: 'Inschrijven',
+    },
+  },
+
+  silos: {
+    backToRetreats: 'Alle retraite-types',
+    hookEyebrow: 'Kort gezegd',
+    factsTitle: 'Waarom The Makers Barn',
+    scheduleTitle: 'Een dag op de boerderij',
+    faqTitle: 'Vragen die ertoe doen',
+    primaryCta: 'Plan je retraite',
+    secondaryCta: 'Stel een vraag',
+    finalCtaPrimary: 'Vraag een offerte aan',
+    finalCtaSecondary: 'Neem contact op',
+  },
+
+  comparisonTeaser: {
+    eyebrow: 'Opties vergelijken',
+    headline: 'Een ander soort locatie',
+    ctaLabel: 'Lees de volledige vergelijking',
+  },
+
+  retreats: {
+    metaTitle: 'Organiseer een retraite',
+    metaDescription:
+      'Organiseer je retraite bij The Makers Barn. Een boerderij uit 1920 in Overijssel voor yoga, meditatie, schrijvers, teams, ademwerk en meer.',
+    eyebrow: 'Organiseer een retraite',
+    title: 'Rustige manieren om een boerderij uit 1920 te gebruiken',
+    intro:
+      'The Makers Barn leent zich voor verschillende soorten werk. Kies het retraite-type dat past — elke pagina gaat dieper in op wat we voor zo’n groep bieden.',
+    cardCta: 'Bekijk dit retraite-type',
+    helpTitle: 'Niet zeker welke past?',
+    helpBody:
+      'Vertel ons iets over je groep en we helpen je de juiste vorm te vinden — soms is het iets anders, en ook dat is prima.',
+    helpCta: 'Praat met ons',
+    cards: {
+      yogaTeachers: {
+        title: 'Yogadocenten',
+        pitch:
+          'Een verwarmde hooischuur-shala voor maximaal 20 studenten, een keuken die meebeweegt met jouw schema, en de rest is geregeld.',
+      },
+      meditationRetreats: {
+        title: 'Meditatie & dharma-groepen',
+        pitch:
+          'Twaalfduizend vierkante meter gedragen stilte, een traditie van beoefening, en een keuken die jouw maaltijdschema respecteert.',
+      },
+      writingRetreats: {
+        title: 'Schrijfretraites',
+        pitch:
+          'Voor gepubliceerde auteurs en schrijfdocenten die meerdaagse schrijfintensieven leiden. Werkruimte, privécabines en een lange tafel voor de avondlezingen.',
+      },
+      teamOffsites: {
+        title: 'Teamuitjes',
+        pitch:
+          'Een boerderij uit 1920, exclusief voor je team. Strategiedagen die niet aanvoelen als vergaderzalen.',
+      },
+      breathworkSoundHealing: {
+        title: 'Ademwerk & klank',
+        pitch:
+          'Een verwarmde hooischuur die meeklinkt met de bowls, een vuurplaats buiten, en een sauna voor wat daarna naar boven komt.',
+      },
+      coachingIntensives: {
+        title: 'Coaching-intensieven',
+        pitch:
+          'Een gedragen locatie voor coaches die intensieven van 8–12 personen leiden. Het werk dat na de workshop begint, op een plek die het kan dragen.',
+      },
+      somaticTherapyRetreats: {
+        title: 'Somatische & therapeutische retraites',
+        pitch:
+          'Voor erkende therapeuten en somatische beoefenaars die trauma-geïnformeerde residentials leiden. Volledige buyout, sauna, velden buiten de praktijkruimte.',
+      },
+      wellnessDetoxRetreats: {
+        title: 'Wellness & detox',
+        pitch:
+          'Voor wellness-coaches, natuurgeneeskundigen en Ayurveda-docenten die clean-eating-, sauna- en yogaprogramma’s leiden op een eigen boerderij van 1,3 hectare.',
+      },
+      circleRetreats: {
+        title: 'Circle-retraites',
+        pitch:
+          'Voor facilitators van vrouwen-, mannen- en gemengde circles. Een vuurplaats, een schuur, en de privacy die het werk vraagt.',
+      },
+      photographyWorkshops: {
+        title: 'Fotografie-workshops',
+        pitch:
+          'Voor professionele fotografen die meerdaagse workshops leiden. Grote luchten, 1,3 hectare verschuivend licht, en een basis die de rest regelt.',
+      },
+    },
+    comparisonCard: {
+      eyebrow: 'Nog aan het twijfelen?',
+      headline: 'Een eigen boerderij of een commerciële locatie?',
+      body:
+        'Als je een kleine eigen boerderij afweegt tegen een commerciële retraitelocatie, schreven we een eerlijke vergelijking. Capaciteit, keuken, geluidsbeeld, wat je inruilt en wat je wint — zonder verkooppraatje.',
+      ctaLabel: 'Lees de vergelijking',
     },
   },
 } as const

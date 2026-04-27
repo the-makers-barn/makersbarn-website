@@ -577,6 +577,63 @@ export interface BookingTranslations {
 }
 
 /**
+ * Shared chrome for silo landing pages (CTAs, section labels, etc.)
+ */
+export interface SilosChromeTranslations {
+  backToRetreats: string
+  hookEyebrow: string
+  factsTitle: string
+  scheduleTitle: string
+  faqTitle: string
+  primaryCta: string
+  secondaryCta: string
+  finalCtaPrimary: string
+  finalCtaSecondary: string
+}
+
+/**
+ * Comparison teaser embedded on every silo page
+ */
+export interface ComparisonTeaserTranslations {
+  eyebrow: string
+  headline: string
+  ctaLabel: string
+}
+
+/**
+ * Host a Retreat hub page (`/host-a-retreat`) translations
+ */
+export interface RetreatsHubTranslations {
+  metaTitle: string
+  metaDescription: string
+  eyebrow: string
+  title: string
+  intro: string
+  cardCta: string
+  helpTitle: string
+  helpBody: string
+  helpCta: string
+  cards: {
+    yogaTeachers: { title: string; pitch: string }
+    meditationRetreats: { title: string; pitch: string }
+    writingRetreats: { title: string; pitch: string }
+    teamOffsites: { title: string; pitch: string }
+    breathworkSoundHealing: { title: string; pitch: string }
+    coachingIntensives: { title: string; pitch: string }
+    somaticTherapyRetreats: { title: string; pitch: string }
+    wellnessDetoxRetreats: { title: string; pitch: string }
+    circleRetreats: { title: string; pitch: string }
+    photographyWorkshops: { title: string; pitch: string }
+  }
+  comparisonCard: {
+    eyebrow: string
+    headline: string
+    body: string
+    ctaLabel: string
+  }
+}
+
+/**
  * Complete dictionary structure for a single language
  */
 export interface Dictionary {
@@ -598,6 +655,9 @@ export interface Dictionary {
   team: TeamTranslations
   common: CommonTranslations
   metadata: MetadataTranslations
+  silos: SilosChromeTranslations
+  retreats: RetreatsHubTranslations
+  comparisonTeaser: ComparisonTeaserTranslations
 }
 
 /**

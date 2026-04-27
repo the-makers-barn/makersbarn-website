@@ -29,6 +29,66 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    {
+      path: Route.HOST_A_RETREAT,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      path: Route.COMPARISON,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      path: Route.YOGA_TEACHERS,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.MEDITATION_RETREATS,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.WRITING_RETREATS,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.TEAM_OFFSITES,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.BREATHWORK_SOUND_HEALING,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.COACHING_INTENSIVES,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.SOMATIC_THERAPY_RETREATS,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.WELLNESS_DETOX_RETREATS,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.CIRCLE_RETREATS,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      path: Route.PHOTOGRAPHY_WORKSHOPS,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
   ]
 
   // Generate entries for each route in each language

@@ -599,4 +599,96 @@ export const en: Dictionary = {
       'Give your retreat the place it deserves. 60m²+ practice hall, 14 beds, 1.3ha+ private land in the Dutch countryside.',
     keywords: ['retreat', 'Netherlands', 'countryside', 'wellness', 'workshop venue', 'creative retreat'],
   },
+
+  silos: {
+    backToRetreats: 'All retreat types',
+    hookEyebrow: 'In short',
+    factsTitle: 'Why The Makers Barn',
+    scheduleTitle: 'A day at the barn',
+    faqTitle: 'Questions worth asking',
+    primaryCta: 'Plan your retreat',
+    secondaryCta: 'Ask a question',
+    finalCtaPrimary: 'Request a quote',
+    finalCtaSecondary: 'Get in touch',
+  },
+
+  comparisonTeaser: {
+    eyebrow: 'Comparing options',
+    headline: 'A different kind of venue',
+    ctaLabel: 'Read the full comparison',
+  },
+
+  retreats: {
+    metaTitle: 'Host a Retreat',
+    metaDescription:
+      'Host your retreat at The Makers Barn. A 1920s farm in Overijssel for yoga, meditation, writers, teams, breathwork, and more.',
+    eyebrow: 'Host a retreat',
+    title: 'Quiet ways to use a 1920s farm',
+    intro:
+      'The Makers Barn holds different kinds of work well. Pick the retreat type that fits — each page goes deeper into what we offer for that specific kind of group.',
+    cardCta: 'See this retreat type',
+    helpTitle: 'Not sure which fits?',
+    helpBody:
+      'Tell us a little about your group and we will help you find the right shape — sometimes it is none of these, and that is fine too.',
+    helpCta: 'Talk to us',
+    cards: {
+      yogaTeachers: {
+        title: 'Yoga teachers',
+        pitch:
+          'A heated hay barn shala for up to 20 students, a kitchen built around your schedule, and the rest taken care of.',
+      },
+      meditationRetreats: {
+        title: 'Meditation & dharma groups',
+        pitch:
+          'Twelve-thousand square metres of held quiet, a precedent of practice, and a kitchen that respects your schedule of meals.',
+      },
+      writingRetreats: {
+        title: 'Writing retreats',
+        pitch:
+          'For published authors and craft teachers running multi-day writing intensives. Workshop space, private cabins, and a long table for the evening read-arounds.',
+      },
+      teamOffsites: {
+        title: 'Team offsites',
+        pitch:
+          'A 1920s farm bought out for your team. Strategy days that do not feel like meeting rooms.',
+      },
+      breathworkSoundHealing: {
+        title: 'Breathwork & sound',
+        pitch:
+          'A heated hay barn that hums when the bowls do, a fire circle outside, and a sauna for what comes up afterwards.',
+      },
+      coachingIntensives: {
+        title: 'Coaching intensives',
+        pitch:
+          'A held venue for coaches running 8–12 person cohort intensives. The work after the workshop ends, in a place that can hold it.',
+      },
+      somaticTherapyRetreats: {
+        title: 'Somatic & therapeutic retreats',
+        pitch:
+          'For licensed therapists and somatic practitioners running trauma-informed residentials. Private buyout, sauna, fields outside the practice barn.',
+      },
+      wellnessDetoxRetreats: {
+        title: 'Wellness & detox',
+        pitch:
+          'For wellness coaches, naturopaths, and Ayurveda teachers running clean-eating, sauna, and yoga programmes on a private 1.3-hectare farm.',
+      },
+      circleRetreats: {
+        title: 'Circle retreats',
+        pitch:
+          'For facilitators of women’s, men’s, and mixed circle work. A fire pit, a barn, and the privacy that the work asks for.',
+      },
+      photographyWorkshops: {
+        title: 'Photography workshops',
+        pitch:
+          'For pro photographers running multi-day workshops. Big skies, 1.3 hectares of shifting light, and a base camp that handles the rest.',
+      },
+    },
+    comparisonCard: {
+      eyebrow: 'Still deciding?',
+      headline: 'A private farm or a commercial venue?',
+      body:
+        'If you are weighing a small private farm against a commercial retreat hotel, we wrote an honest side-by-side. Capacity, kitchen, soundscape, what you trade and what you gain — without the sales pitch.',
+      ctaLabel: 'Read the comparison',
+    },
+  },
 } as const
