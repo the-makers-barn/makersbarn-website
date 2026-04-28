@@ -18,7 +18,6 @@ export function CostBreakdownBar({ results, t }: CostBreakdownBarProps) {
     { key: 'food', label: labels.food, value: results.costBreakdown.food, color: 'var(--bar-food)' },
     { key: 'facilitator', label: labels.facilitator, value: results.costBreakdown.facilitatorFee, color: 'var(--bar-facilitator)' },
     { key: 'marketing', label: labels.marketing, value: results.costBreakdown.marketingAndOther, color: 'var(--bar-marketing)' },
-    { key: 'co', label: labels.coFacilitators, value: results.costBreakdown.coFacilitators, color: 'var(--bar-co)' },
     { key: 'travel', label: labels.travel, value: results.costBreakdown.travel, color: 'var(--bar-travel)' },
     { key: 'insurance', label: labels.insurance, value: results.costBreakdown.insurance, color: 'var(--bar-insurance)' },
     { key: 'fees', label: labels.fees, value: results.costBreakdown.paymentFees, color: 'var(--bar-fees)' },

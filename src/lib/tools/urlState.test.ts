@@ -13,7 +13,6 @@ const sample: CalculatorInputs = {
   foodPerGuestPerDay: 40,
   facilitatorFee: 2500,
   marketingAndOther: 800,
-  coFacilitators: 0,
   travel: 0,
   insurance: 150,
   paymentFeePercent: 3,
@@ -31,7 +30,6 @@ describe('encodeCalculatorInputs', () => {
     expect(params.get('f')).toBe('40')
     expect(params.get('ff')).toBe('2500')
     expect(params.get('m')).toBe('800')
-    expect(params.get('cf')).toBe('0')
     expect(params.get('t')).toBe('0')
     expect(params.get('i')).toBe('150')
     expect(params.get('pf')).toBe('3')

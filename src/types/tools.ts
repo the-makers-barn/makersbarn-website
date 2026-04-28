@@ -9,7 +9,6 @@ export interface CalculatorInputs {
   foodPerGuestPerDay: number
   facilitatorFee: number
   marketingAndOther: number
-  coFacilitators: number
   travel: number
   insurance: number
   paymentFeePercent: number
@@ -22,7 +21,6 @@ export interface CalculatorCostBreakdown {
   food: number
   facilitatorFee: number
   marketingAndOther: number
-  coFacilitators: number
   travel: number
   insurance: number
   paymentFees: number

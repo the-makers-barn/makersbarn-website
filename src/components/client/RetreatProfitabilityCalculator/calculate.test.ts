@@ -13,7 +13,6 @@ const baseYogaInputs: CalculatorInputs = {
   foodPerGuestPerDay: 40,
   facilitatorFee: 2500,
   marketingAndOther: 800,
-  coFacilitators: 0,
   travel: 0,
   insurance: 150,
   paymentFeePercent: 3,

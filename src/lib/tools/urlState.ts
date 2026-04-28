@@ -20,7 +20,6 @@ const FIELD_SPECS: FieldSpec[] = [
   { key: 'foodPerGuestPerDay', param: CALCULATOR_URL_PARAMS.FOOD_PER_DAY, min: 0, max: 500 },
   { key: 'facilitatorFee', param: CALCULATOR_URL_PARAMS.FACILITATOR_FEE, min: 0, max: 1_000_000 },
   { key: 'marketingAndOther', param: CALCULATOR_URL_PARAMS.MARKETING_OTHER, min: 0, max: 1_000_000 },
-  { key: 'coFacilitators', param: CALCULATOR_URL_PARAMS.CO_FACILITATORS, min: 0, max: 1_000_000 },
   { key: 'travel', param: CALCULATOR_URL_PARAMS.TRAVEL, min: 0, max: 1_000_000 },
   { key: 'insurance', param: CALCULATOR_URL_PARAMS.INSURANCE, min: 0, max: 100_000 },
   { key: 'paymentFeePercent', param: CALCULATOR_URL_PARAMS.PAYMENT_FEE_PERCENT, min: 0, max: 20 },

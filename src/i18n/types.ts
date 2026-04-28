@@ -647,7 +647,7 @@ export interface ToolsCalculatorInputsTranslations {
   roleCoLedDescription: string
   roleOrganizerOnly: string
   roleOrganizerOnlyDescription: string
-  facilitatorFeeLabelOrganizer: string
+  facilitatorFeeLabel: string
   guestsLabel: string
   guestsUnit: string
   nightsLabel: string
@@ -659,10 +659,6 @@ export interface ToolsCalculatorInputsTranslations {
   foodUnit: string
   marketingAndOtherLabel: string
   advancedLabel: string
-  coFacilitatorsLabelCoLed: string
-  coFacilitatorsLabelOrganizer: string
-  coFacilitatorsHelperCoLed: string
-  coFacilitatorsHelperOrganizer: string
   travelLabel: string
   insuranceLabel: string
   paymentFeePercentLabel: string
@@ -685,7 +681,6 @@ export interface ToolsCalculatorResultsTranslations {
     food: string
     facilitator: string
     marketing: string
-    coFacilitators: string
     travel: string
     insurance: string
     fees: string

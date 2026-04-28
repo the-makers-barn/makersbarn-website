@@ -43,7 +43,6 @@ export const CALCULATOR_URL_PARAMS = {
   FOOD_PER_DAY: 'f',
   FACILITATOR_FEE: 'ff',
   MARKETING_OTHER: 'm',
-  CO_FACILITATORS: 'cf',
   TRAVEL: 't',
   INSURANCE: 'i',
   PAYMENT_FEE_PERCENT: 'pf',

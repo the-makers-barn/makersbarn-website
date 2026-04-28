@@ -13,7 +13,6 @@ export function calculateRetreatProfitability(inputs: CalculatorInputs): Calcula
     food,
     facilitatorFee: inputs.facilitatorFee,
     marketingAndOther: inputs.marketingAndOther,
-    coFacilitators: inputs.coFacilitators,
     travel: inputs.travel,
     insurance: inputs.insurance,
     paymentFees,
@@ -24,7 +23,6 @@ export function calculateRetreatProfitability(inputs: CalculatorInputs): Calcula
     costBreakdown.food +
     costBreakdown.facilitatorFee +
     costBreakdown.marketingAndOther +
-    costBreakdown.coFacilitators +
     costBreakdown.travel +
     costBreakdown.insurance +
     costBreakdown.paymentFees
@@ -53,7 +51,6 @@ function computeBreakevenGuests(inputs: CalculatorInputs): number {
     inputs.venuePerNight * inputs.nights +
     inputs.facilitatorFee +
     inputs.marketingAndOther +
-    inputs.coFacilitators +
     inputs.travel +
     inputs.insurance
 
