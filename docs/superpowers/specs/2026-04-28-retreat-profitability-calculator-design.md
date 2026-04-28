@@ -157,7 +157,7 @@ These details, not the math, determine whether the tool feels good:
 ### Save / share / export
 
 - **Shareable URL:** all input state encoded in URL params, debounced replace-state writes (no history pollution). "Copy link" button. Lets users share calculations with co-facilitators and lets Google deep-link to interesting calculation states.
-- **Email me my summary:** optional inline form below results, sends a styled HTML email via the existing Postmark pipeline. Optional checkbox for soft newsletter opt-in. **Primary lead-capture mechanism.** No PDF in v1 — HTML email is sufficient.
+- **Email me my summary:** optional inline form below results. On submit: (1) sends a styled HTML email to the facilitator via the existing Postmark pipeline (`src/services/email.ts`); (2) posts a lead-captured notification to Slack via the existing `src/services/slack.ts` so the team is aware of new leads. Optional checkbox for soft newsletter opt-in. **Primary lead-capture mechanism.** No PDF in v1 — HTML email is sufficient.
 - **MakersBarn contextual CTA:** non-numeric, no MakersBarn pricing surfaced. Example copy: *"Considering MakersBarn for your retreat? We tailor pricing to your group and dates — request a custom quote →"*. Links to existing contact / booking flow with a query param identifying the source variant.
 
 ### Lead-capture stance
