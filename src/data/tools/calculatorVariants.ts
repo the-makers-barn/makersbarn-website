@@ -6,7 +6,7 @@ const GENERIC: VariantConfig = {
   variant: ToolVariant.GENERIC,
   defaults: {
     guests: 12, nights: 5, pricePerGuest: 1200,
-    venuePerNight: 900, foodPerGuestPerDay: 40,
+    venuePerNight: 800, foodPerGuestPerDay: 40,
     facilitatorFee: 2500, marketingAndOther: 800,
     coFacilitators: 0, travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 5,
@@ -89,7 +89,7 @@ const YOGA: VariantConfig = {
   variant: ToolVariant.YOGA,
   defaults: {
     guests: 12, nights: 5, pricePerGuest: 1200,
-    venuePerNight: 900, foodPerGuestPerDay: 40,
+    venuePerNight: 750, foodPerGuestPerDay: 40,
     facilitatorFee: 2500, marketingAndOther: 800,
     coFacilitators: 0, travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 5,
@@ -105,7 +105,13 @@ const YOGA: VariantConfig = {
     foodPerGuestPerDay: GENERIC.benchmarks.foodPerGuestPerDay,
     facilitatorFee: GENERIC.benchmarks.facilitatorFee,
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
-    venuePerNight: GENERIC.benchmarks.venuePerNight,
+    venuePerNight: {
+      [Language.EN]: 'Per-night rate for a yoga venue + accommodation. Simple retreat lodges €400–€700, mid-range €700–€1,100, premium country estates €1,100+',
+      [Language.NL]: 'Nachtprijs voor yogalocatie + accommodatie. Eenvoudige retraitehuizen €400–€700, middenklasse €700–€1.100, premium buitenplaatsen €1.100+',
+      [Language.DE]: 'Per-night rate for a yoga venue + accommodation. Simple retreat lodges €400–€700, mid-range €700–€1,100, premium country estates €1,100+',
+      [Language.ES]: 'Per-night rate for a yoga venue + accommodation. Simple retreat lodges €400–€700, mid-range €700–€1,100, premium country estates €1,100+',
+      [Language.FR]: 'Per-night rate for a yoga venue + accommodation. Simple retreat lodges €400–€700, mid-range €700–€1,100, premium country estates €1,100+',
+    },
   },
   copy: {
     heroEyebrow: GENERIC.copy.heroEyebrow,
@@ -145,7 +151,7 @@ const WELLNESS: VariantConfig = {
   variant: ToolVariant.WELLNESS,
   defaults: {
     guests: 10, nights: 7, pricePerGuest: 1800,
-    venuePerNight: 1000, foodPerGuestPerDay: 55,
+    venuePerNight: 1100, foodPerGuestPerDay: 55,
     facilitatorFee: 4000, marketingAndOther: 1200,
     coFacilitators: 800, travel: 0, insurance: 200,
     paymentFeePercent: 3, planningDays: 7,
@@ -167,7 +173,13 @@ const WELLNESS: VariantConfig = {
     },
     facilitatorFee: GENERIC.benchmarks.facilitatorFee,
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
-    venuePerNight: GENERIC.benchmarks.venuePerNight,
+    venuePerNight: {
+      [Language.EN]: 'Wellness venues with spa or treatment-room amenities run €900–€1,500 per night mid-range, €1,500–€2,200+ for premium properties',
+      [Language.NL]: 'Wellness-locaties met spa of behandelfaciliteiten kosten €900–€1.500 per nacht middenklasse, €1.500–€2.200+ voor premium-eigendommen',
+      [Language.DE]: 'Wellness venues with spa or treatment-room amenities run €900–€1,500 per night mid-range, €1,500–€2,200+ for premium properties',
+      [Language.ES]: 'Wellness venues with spa or treatment-room amenities run €900–€1,500 per night mid-range, €1,500–€2,200+ for premium properties',
+      [Language.FR]: 'Wellness venues with spa or treatment-room amenities run €900–€1,500 per night mid-range, €1,500–€2,200+ for premium properties',
+    },
   },
   copy: {
     heroEyebrow: GENERIC.copy.heroEyebrow,
@@ -207,7 +219,7 @@ const MEDITATION: VariantConfig = {
   variant: ToolVariant.MEDITATION,
   defaults: {
     guests: 14, nights: 4, pricePerGuest: 900,
-    venuePerNight: 875, foodPerGuestPerDay: 35,
+    venuePerNight: 600, foodPerGuestPerDay: 35,
     facilitatorFee: 2000, marketingAndOther: 600,
     coFacilitators: 0, travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 4,
@@ -229,7 +241,13 @@ const MEDITATION: VariantConfig = {
     },
     facilitatorFee: GENERIC.benchmarks.facilitatorFee,
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
-    venuePerNight: GENERIC.benchmarks.venuePerNight,
+    venuePerNight: {
+      [Language.EN]: 'Dharma centers and simpler retreat venues run €400–€800 per night for groups of 12–16. Larger residential centers can sit higher',
+      [Language.NL]: 'Dharma-centra en eenvoudige retraitelocaties kosten €400–€800 per nacht voor groepen van 12–16. Grotere woon-retraitecentra zitten hoger',
+      [Language.DE]: 'Dharma centers and simpler retreat venues run €400–€800 per night for groups of 12–16. Larger residential centers can sit higher',
+      [Language.ES]: 'Dharma centers and simpler retreat venues run €400–€800 per night for groups of 12–16. Larger residential centers can sit higher',
+      [Language.FR]: 'Dharma centers and simpler retreat venues run €400–€800 per night for groups of 12–16. Larger residential centers can sit higher',
+    },
   },
   copy: {
     heroEyebrow: GENERIC.copy.heroEyebrow,
@@ -269,7 +287,7 @@ const COACHING: VariantConfig = {
   variant: ToolVariant.COACHING,
   defaults: {
     guests: 6, nights: 4, pricePerGuest: 3200,
-    venuePerNight: 1000, foodPerGuestPerDay: 50,
+    venuePerNight: 1200, foodPerGuestPerDay: 50,
     facilitatorFee: 5000, marketingAndOther: 1500,
     coFacilitators: 0, travel: 0, insurance: 200,
     paymentFeePercent: 3, planningDays: 7,
@@ -297,7 +315,13 @@ const COACHING: VariantConfig = {
       [Language.FR]: 'Les intensifs de coaching sont riches en 1:1 — votre temps vaut une prime. Ne pas sous-évaluer.',
     },
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
-    venuePerNight: GENERIC.benchmarks.venuePerNight,
+    venuePerNight: {
+      [Language.EN]: 'Boutique venues for 4–8 guest coaching intensives commonly run €900–€1,800 per night; executive-grade properties run €1,800+',
+      [Language.NL]: 'Boutique-locaties voor coaching-intensives van 4–8 gasten kosten doorgaans €900–€1.800 per nacht; executive-klasse vanaf €1.800',
+      [Language.DE]: 'Boutique venues for 4–8 guest coaching intensives commonly run €900–€1,800 per night; executive-grade properties run €1,800+',
+      [Language.ES]: 'Boutique venues for 4–8 guest coaching intensives commonly run €900–€1,800 per night; executive-grade properties run €1,800+',
+      [Language.FR]: 'Boutique venues for 4–8 guest coaching intensives commonly run €900–€1,800 per night; executive-grade properties run €1,800+',
+    },
   },
   copy: {
     heroEyebrow: GENERIC.copy.heroEyebrow,
