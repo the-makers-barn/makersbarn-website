@@ -23,7 +23,10 @@ export const CALCULATOR_INPUT_RANGES = {
   NIGHTS_MAX: 10,
   PRICE_PER_GUEST_MIN: 500,
   PRICE_PER_GUEST_MAX: 5000,
-  PAYMENT_FEE_PERCENT_DEFAULT: 3,
+} as const
+
+export const CALCULATOR_INPUT_DEFAULTS = {
+  PAYMENT_FEE_PERCENT: 3,
 } as const
 
 export const CALCULATOR_URL_PARAMS = {
@@ -41,15 +44,8 @@ export const CALCULATOR_URL_PARAMS = {
   PLANNING_DAYS: 'pd',
 } as const
 
-export const CALCULATOR_ANALYTICS_EVENTS = {
-  LOADED: 'calculator_loaded',
-  SHARED: 'calculator_shared',
-  EMAIL_CAPTURED: 'email_captured',
-  MAKERSBARN_CTA_CLICKED: 'makersbarn_cta_clicked',
-} as const
-
-export const MAKERSBARN_CTA_QUERY_PARAM = 'src'
-export const MAKERSBARN_CTA_QUERY_VALUE_PREFIX = 'tool-'
+export const MAKERSBARN_CTA_QUERY_PARAM = 'src' as const
+export const MAKERSBARN_CTA_QUERY_VALUE_PREFIX = 'tool-' as const
 
 export const CALCULATOR_RATE_LIMIT = {
   WINDOW_MS: 60_000,
