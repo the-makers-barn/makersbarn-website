@@ -41,10 +41,7 @@ export function ToolPageShell({ variant, locale, t, calculator }: ToolPageShellP
         </ol>
       </section>
 
-      <section className={styles.guide} aria-labelledby="guide">
-        <h2 id="guide" className={styles.sectionTitle}>
-          {config.copy.heroTitle[locale]}
-        </h2>
+      <section className={styles.guide}>
         {content.guideSections.map((section, i) => (
           <div key={i} className={styles.guideSection}>
             <h3 className={styles.guideHeading}>{section.heading[locale]}</h3>
