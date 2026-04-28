@@ -778,8 +778,12 @@ export const nl: Dictionary = {
         optInLabel: 'Stuur me af en toe tips over retraiteprijzen (geen spam, makkelijk uitschrijven)',
       },
       share: {
-        copy: 'Deelbare link kopiëren',
+        heading: 'Deel deze cijfers',
+        intro: 'Stuur je opzet naar een co-begeleider, partner of accountant om je aannames te toetsen.',
+        copy: 'Link kopiëren',
         copied: 'Gekopieerd!',
+        whatsapp: 'Deel via WhatsApp',
+        whatsappMessage: 'Dit zijn mijn retraitecijfers uit de MakersBarn-prijscalculator:',
       },
       makersbarnCta: {
         title: 'MakersBarn overwegen voor je retraite?',

@@ -214,12 +214,29 @@
 .barLegendValue { font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
 
 /* Share + email + CTA */
-.actionsRow {
+.share {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.shareHeading {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.shareIntro {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}
+
+.shareButtons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-  margin-top: 1.25rem;
+  gap: 0.5rem;
 }
 
 .shareButton {
@@ -231,6 +248,12 @@
   font-size: var(--font-size-sm);
   cursor: pointer;
   color: var(--color-text);
+}
+
+.shareButtonWhatsapp {
+  background: #25d366;
+  color: #fff;
+  border-color: #25d366;
 }
 
 .emailForm { display: grid; gap: 0.5rem; margin-top: 1.5rem; }

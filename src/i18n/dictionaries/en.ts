@@ -770,8 +770,12 @@ export const en: Dictionary = {
         optInLabel: 'Send me occasional retreat-pricing tips (no spam, easy unsubscribe)',
       },
       share: {
-        copy: 'Copy shareable link',
+        heading: 'Share these numbers',
+        intro: 'Send your draft to a co-facilitator, partner, or accountant to gut-check your assumptions.',
+        copy: 'Copy link',
         copied: 'Copied!',
+        whatsapp: 'Share on WhatsApp',
+        whatsappMessage: 'These are my retreat numbers from the MakersBarn pricing calculator:',
       },
       makersbarnCta: {
         title: 'Considering MakersBarn for your retreat?',

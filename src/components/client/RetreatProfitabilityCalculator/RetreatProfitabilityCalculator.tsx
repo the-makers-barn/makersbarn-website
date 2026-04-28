@@ -60,9 +60,7 @@ export function RetreatProfitabilityCalculator({
       </div>
 
       <div className={styles.afterCalculator}>
-        <div className={styles.actionsRow}>
-          <ShareLink variant={variant} t={t} />
-        </div>
+        <ShareLink variant={variant} t={t} />
 
         <EmailCapture
           variant={variant}

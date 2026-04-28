@@ -695,8 +695,12 @@ export interface ToolsCalculatorEmailTranslations {
 }
 
 export interface ToolsCalculatorShareTranslations {
+  heading: string
+  intro: string
   copy: string
   copied: string
+  whatsapp: string
+  whatsappMessage: string
 }
 
 export interface ToolsCalculatorMakersBarnCtaTranslations {

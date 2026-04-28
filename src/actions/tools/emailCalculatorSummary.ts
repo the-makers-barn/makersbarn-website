@@ -100,6 +100,40 @@ function buildHtmlSummary(data: EmailCalculatorSummaryData): string {
   `
 }
 
+function buildAdminHtml(data: EmailCalculatorSummaryData): string {
+  const { inputs, results, variant, email, newsletterOptIn } = data
+  const breakeven = Number.isFinite(results.breakevenGuests)
+    ? `${results.breakevenGuests} guests`
+    : 'not reachable at this price'
+  return `
+    <h2>New calculator lead captured</h2>
+    <p>A facilitator just emailed themselves a calculator summary.</p>
+    <ul>
+      <li><strong>Email:</strong> ${escapeHtml(email)}</li>
+      <li><strong>Variant:</strong> ${escapeHtml(variant)}</li>
+      <li><strong>Newsletter opt-in:</strong> ${newsletterOptIn ? 'yes' : 'no'}</li>
+    </ul>
+    <hr />
+    <h3>Their numbers</h3>
+    <ul>
+      <li>Guests × nights: ${inputs.guests} × ${inputs.nights}</li>
+      <li>Price per guest: ${formatEuro(inputs.pricePerGuest)}</li>
+      <li>Venue per night: ${formatEuro(inputs.venuePerNight)} (${formatEuro(inputs.venuePerNight * inputs.nights)} total)</li>
+      <li>Food per guest per day: ${formatEuro(inputs.foodPerGuestPerDay)}</li>
+      <li>Facilitator fee: ${formatEuro(inputs.facilitatorFee)}</li>
+      <li>Marketing &amp; other: ${formatEuro(inputs.marketingAndOther)}</li>
+    </ul>
+    <h3>Results</h3>
+    <ul>
+      <li>Total revenue: ${formatEuro(results.totalRevenue)}</li>
+      <li>Total costs: ${formatEuro(results.totalCosts)}</li>
+      <li>Net profit: <strong>${formatEuro(results.netProfit)}</strong> (${formatPercent(results.profitMargin)} margin)</li>
+      <li>Breakeven: ${breakeven}</li>
+    </ul>
+    <p>Consider following up within 24–48 hours if they look like a strong fit.</p>
+  `
+}
+
 function buildSlackMessage(data: EmailCalculatorSummaryData): string {
   return [
     '🧮 *Calculator email captured*',
@@ -161,6 +195,33 @@ export async function emailCalculatorSummary(
       return { success: false, error: 'email_send_failed' }
     }
     logger.info('Calculator summary email sent', { masked, variant: data.variant })
+
+    const adminEmail = process.env.POSTMARK_ADMIN_EMAIL
+    if (adminEmail) {
+      try {
+        const adminEmails = adminEmail.includes(',')
+          ? adminEmail.split(',').map((e) => e.trim()).join(',')
+          : adminEmail
+        const adminResponse = await client.sendEmail({
+          From: senderEmail,
+          To: adminEmails,
+          Subject: `Calculator lead — ${data.variant} — ${formatEuro(data.results.netProfit)} projected profit`,
+          HtmlBody: buildAdminHtml(data),
+          TextBody: `New calculator lead. Email: ${data.email}. Variant: ${data.variant}. Net profit: ${formatEuro(data.results.netProfit)}.`,
+        })
+        if (adminResponse.ErrorCode && adminResponse.ErrorCode !== 0) {
+          logger.warn('Admin lead email failed (non-fatal)', {
+            errorCode: adminResponse.ErrorCode,
+            message: adminResponse.Message,
+          })
+        } else {
+          logger.info('Admin lead email sent', { variant: data.variant })
+        }
+      } catch (error) {
+        logger.warn('Admin lead email failed unexpectedly (non-fatal)', { error })
+      }
+    }
+
     return { success: true }
   } catch (error) {
     logger.error('Unexpected error sending calculator email', { masked }, error)
