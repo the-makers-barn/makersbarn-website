@@ -8,33 +8,57 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
   heroImageAlt: {
     [Language.EN]: 'A circle gathered around the fire pit at The Makers Barn',
     [Language.NL]: 'Een kring rond de vuurplaats bij The Makers Barn',
+    [Language.DE]: 'Ein Kreis versammelt um die Feuerstelle bei The Makers Barn',
+    [Language.ES]: 'Un círculo reunido alrededor de la hoguera en The Makers Barn',
+    [Language.FR]: 'Un cercle rassemblé autour du foyer à The Makers Barn',
   },
   meta: {
     title: {
       [Language.EN]: 'Circle Retreat Venue — Women’s, Men’s & Mixed Circles',
       [Language.NL]: 'Locatie voor Circle-retraites — vrouwen, mannen & gemengd',
+      [Language.DE]: 'Ort für Circle-Retreats — Frauen-, Männer- & gemischte Kreise',
+      [Language.ES]: 'Lugar para retiros de círculo — círculos de mujeres, de hombres y mixtos',
+      [Language.FR]: 'Lieu pour retraites en cercle — cercles de femmes, d’hommes & mixtes',
     },
     description: {
       [Language.EN]:
         'A private 1.3-hectare farm for facilitators of women’s, men’s, and mixed circle retreats. Fire circle, hay barn, full venue buyout, the privacy the work asks for.',
       [Language.NL]:
         'Een eigen boerderij van 1,3 hectare voor facilitators van vrouwen-, mannen- en gemengde circle-retraites. Vuurplaats, hooischuur, volledige buyout, de privacy die het werk vraagt.',
+      [Language.DE]:
+        'Ein privater Hof von 1,3 Hektar für Facilitatorinnen von Frauen-, Männer- und gemischten Circle-Retreats. Feuerkreis, Heuscheune, volle Buyout-Buchung, die Privatsphäre, die diese Arbeit braucht.',
+      [Language.ES]:
+        'Una finca privada de 1,3 hectáreas para facilitadores de retiros en círculo de mujeres, de hombres y mixtos. Círculo de fuego, granero de heno, buyout completo, la privacidad que pide este trabajo.',
+      [Language.FR]:
+        'Une ferme privée de 1,3 hectares pour les facilitateurs de retraites en cercle — cercles de femmes, d’hommes et mixtes. Cercle de feu, grange à foin, privatisation complète, l’intimité que ce travail demande.',
     },
   },
   hero: {
     eyebrow: {
       [Language.EN]: 'For circle facilitators',
       [Language.NL]: 'Voor circle-facilitators',
+      [Language.DE]: 'Für Circle-Facilitatorinnen',
+      [Language.ES]: 'Para facilitadores de círculo',
+      [Language.FR]: 'Pour facilitateurs de cercle',
     },
     title: {
       [Language.EN]: 'A Held Venue for Circle Retreats — Women’s, Men’s & Mixed',
       [Language.NL]: 'Een gedragen locatie voor circle-retraites — vrouwen, mannen & gemengd',
+      [Language.DE]: 'Ein getragener Ort für Circle-Retreats — Frauen, Männer & gemischt',
+      [Language.ES]: 'Un lugar contenedor para retiros de círculo — mujeres, hombres y mixtos',
+      [Language.FR]: 'Un lieu qui tient pour les retraites en cercle — femmes, hommes & mixtes',
     },
     subtitle: {
       [Language.EN]:
         'A fire circle for the evening work, a hay barn for the morning sit, and a 1.3-hectare farm for the walks between.',
       [Language.NL]:
         'Een vuurplaats voor het avondwerk, een hooischuur voor de ochtendzit, en een boerderij van 1,3 hectare voor de wandelingen ertussen.',
+      [Language.DE]:
+        'Ein Feuerkreis für die Abendarbeit, eine Heuscheune für die Morgenmeditation und ein Hof von 1,3 Hektar für die Spaziergänge dazwischen.',
+      [Language.ES]:
+        'Un círculo de fuego para el trabajo de la tarde, un granero de heno para la práctica de la mañana, y una finca de 1,3 hectáreas para los paseos entre medias.',
+      [Language.FR]:
+        'Un cercle de feu pour le travail du soir, une grange à foin pour la pratique du matin, et une ferme de 1,3 hectares pour les marches entre les deux.',
     },
   },
   hook: {
@@ -43,12 +67,24 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
         'A fire pit, a barn, and the privacy that circle work asks for.',
       [Language.NL]:
         'Een vuurplaats, een schuur, en de privacy die circle-werk vraagt.',
+      [Language.DE]:
+        'Eine Feuerstelle, eine Scheune, und die Privatsphäre, die Circle-Arbeit braucht.',
+      [Language.ES]:
+        'Una hoguera, un granero, y la privacidad que el trabajo en círculo necesita.',
+      [Language.FR]:
+        'Un foyer, une grange, et l’intimité qu’exige le travail en cercle.',
     },
     caption: {
       [Language.EN]:
         'Full venue buyout, no other guests, fields out the door for the long walks the work creates.',
       [Language.NL]:
         'Volledige buyout, geen andere gasten, velden direct buiten de deur voor de lange wandelingen die het werk oproept.',
+      [Language.DE]:
+        'Volle Buyout-Buchung, keine anderen Gäste, Felder direkt vor der Tür für die langen Spaziergänge, die diese Arbeit hervorruft.',
+      [Language.ES]:
+        'Buyout completo, sin otros huéspedes, campos justo a la puerta para las largas caminatas que provoca este trabajo.',
+      [Language.FR]:
+        'Privatisation complète, aucun autre invité, des champs juste devant la porte pour les longues marches que ce travail appelle.',
     },
   },
   sections: [
@@ -56,6 +92,9 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
       h2: {
         [Language.EN]: 'A fire circle that does not have to be shared',
         [Language.NL]: 'Een vuurplaats die niet gedeeld hoeft te worden',
+        [Language.DE]: 'Ein Feuerkreis, den ihr nicht teilen müsst',
+        [Language.ES]: 'Un círculo de fuego que no hay que compartir',
+        [Language.FR]: 'Un cercle de feu qui n’a pas à être partagé',
       },
       body: {
         [Language.EN]: [
@@ -66,17 +105,35 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
           'De meeste circle-retraites gebruiken de vuurplaats als hart van het werk. Die van ons is in het veld aangelegd, twintig stappen van de praktijkruimte, met boomstammen die plaats bieden aan vijftien en een houtopslag die we vol houden. Het vuur is van jullie, van zonsondergang tot wanneer jullie het laten doven.',
           'Geen andere groep kan het horen. Niemand van ons team loopt erdoorheen. De dichtstbijzijnde buur ligt ruim buiten gehoorsafstand. Wat in de kring wordt gezegd, blijft in de kring.',
         ],
+        [Language.DE]: [
+          'Die meisten Circle-Retreats nutzen den Feuerkreis als Herz der Arbeit. Unserer ist ins Feld gebaut, zwanzig Schritte von der Praxisscheune entfernt, mit Baumstämmen für fünfzehn Personen und einem Holzlager, das wir gefüllt halten. Das Feuer gehört euch, von Sonnenuntergang bis ihr es löschen lasst.',
+          'Keine andere Gruppe kann es hören. Niemand vom Team läuft hindurch. Der nächste Nachbar ist weit außer Hörweite. Was im Kreis gesagt wird, bleibt im Kreis.',
+        ],
+        [Language.ES]: [
+          'La mayoría de los retiros en círculo usan la hoguera como centro del trabajo. La nuestra está integrada en el campo, a veinte pasos del granero de práctica, con troncos para sentar a quince personas y una leñera que mantenemos llena. El fuego es vuestro, desde el anochecer hasta cuando decidáis apagarlo.',
+          'Ningún otro grupo puede oírlo. Ningún miembro del equipo cruza por allí. El vecino más cercano queda muy fuera del alcance del oído. Lo que se dice en el círculo se queda en el círculo.',
+        ],
+        [Language.FR]: [
+          'La plupart des retraites en cercle utilisent le cercle de feu comme cœur du travail. Le nôtre est aménagé dans le champ, à vingt pas de la grange de pratique, avec des rondins assez grands pour quinze personnes et un bûcher que nous gardons rempli. Le feu est à vous, du coucher du soleil jusqu’au moment où vous décidez de l’éteindre.',
+          'Aucun autre groupe ne peut l’entendre. Aucun membre de l’équipe ne passe à travers. Le voisin le plus proche est largement hors de portée. Ce qui se dit dans le cercle reste dans le cercle.',
+        ],
       },
       imageSrc: IMAGES.accommodation.fireCircleWoodLogs,
       imageAlt: {
         [Language.EN]: 'Fire circle with wood logs ready at The Makers Barn',
         [Language.NL]: 'Vuurplaats met boomstammen klaargelegd bij The Makers Barn',
+        [Language.DE]: 'Feuerkreis mit bereitgelegten Baumstämmen bei The Makers Barn',
+        [Language.ES]: 'Círculo de fuego con troncos preparados en The Makers Barn',
+        [Language.FR]: 'Cercle de feu avec rondins prêts à The Makers Barn',
       },
     },
     {
       h2: {
         [Language.EN]: 'A barn for the morning work — soft floor, soft light',
         [Language.NL]: 'Een schuur voor het ochtendwerk — zachte vloer, zacht licht',
+        [Language.DE]: 'Eine Scheune für die Morgenarbeit — weicher Boden, weiches Licht',
+        [Language.ES]: 'Un granero para el trabajo de la mañana — suelo suave, luz suave',
+        [Language.FR]: 'Une grange pour le travail du matin — sol doux, lumière douce',
       },
       body: {
         [Language.EN]: [
@@ -87,17 +144,35 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
           'De Hay House-schuur biedt comfortabel plaats aan een kring van vijftien. Verwarmde houten vloer, dimbaar licht, geluidssysteem als je dat wilt, volledige stilte als je dat niet wilt. De avond ervoor leggen we kussens neer voor vloerwerk, of stoelen klaar voor stoelwerk.',
           'De meeste circle-retraites draaien een ochtendsessie in de schuur, een middagwandeling over het land en een vuurkring in de avond. De locatie is gemaakt om dat ritme moeiteloos te laten lopen.',
         ],
+        [Language.DE]: [
+          'Die Hay House-Scheune bietet komfortabel Platz für einen Kreis von fünfzehn. Beheizter Holzboden, dimmbares Licht, Soundsystem wenn ihr wollt, volle Stille wenn nicht. Am Abend vorher legen wir Kissen für Bodenarbeit aus oder stellen Stühle für Stuhlarbeit bereit.',
+          'Die meisten Circle-Retreats machen morgens eine Session in der Scheune, nachmittags einen Spaziergang über das Land und abends den Feuerkreis. Der Ort ist so gebaut, dass dieser Rhythmus leicht läuft.',
+        ],
+        [Language.ES]: [
+          'El granero Hay House acoge cómodamente un círculo de quince. Suelo de madera con calefacción, luz regulable, sistema de sonido si lo quieres, silencio total si no. La noche anterior colocamos cojines para trabajo en el suelo o sillas para trabajo sentado.',
+          'La mayoría de los retiros en círculo hacen una sesión por la mañana en el granero, un paseo por la tarde por el terreno y un círculo de fuego al anochecer. El lugar está hecho para que ese ritmo fluya fácil.',
+        ],
+        [Language.FR]: [
+          'La grange Hay House accueille confortablement un cercle de quinze. Sol en bois chauffé, lumière variable, système son si tu en veux un, silence complet sinon. La veille, nous installons les coussins pour le travail au sol ou les chaises pour le travail assis.',
+          'La plupart des retraites en cercle font une session le matin dans la grange, une marche l’après-midi sur le terrain, et un cercle de feu le soir. Le lieu est fait pour que ce rythme coule sans effort.',
+        ],
       },
       imageSrc: IMAGES.accommodation.hayHouseSun,
       imageAlt: {
         [Language.EN]: 'Hay House barn glowing in evening light',
         [Language.NL]: 'Hay House-schuur in het avondlicht',
+        [Language.DE]: 'Hay House-Scheune im Abendlicht',
+        [Language.ES]: 'Granero Hay House iluminado por la luz de la tarde',
+        [Language.FR]: 'Grange Hay House baignée dans la lumière du soir',
       },
     },
     {
       h2: {
         [Language.EN]: 'For the kind of work that needs solitude between rounds',
         [Language.NL]: 'Voor het soort werk dat alleen-zijn vraagt tussen rondes',
+        [Language.DE]: 'Für die Art Arbeit, die zwischen den Runden Alleinsein braucht',
+        [Language.ES]: 'Para el tipo de trabajo que necesita soledad entre rondas',
+        [Language.FR]: 'Pour le genre de travail qui demande de la solitude entre les rondes',
       },
       body: {
         [Language.EN]: [
@@ -108,11 +183,26 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
           'Na een zware kring willen mensen vaak alleen lopen. Twaalfhonderd bomen die we zelf hebben geplant, een zwemvijver, een theehuis met één stoel naar het raam toe, paden die teruglopen naar het huis zonder elkaar te kruisen.',
           'Wat de kamer in gang zet, voltooit het land. Veel facilitators vertellen ons dat dit hun driedaagse retraite laat aanvoelen als een vijfdaagse.',
         ],
+        [Language.DE]: [
+          'Nach einem schweren Kreis brauchen Menschen oft, allein zu gehen. Zwölfhundert Bäume, die wir selbst gepflanzt haben, ein Schwimmteich, ein Teehaus mit einem einzelnen Stuhl zum Fenster, Pfade, die zum Haus zurückführen, ohne sich zu kreuzen.',
+          'Was der Raum beginnt, führt das Land weiter. Viele Facilitatorinnen erzählen uns, das sei der Grund, warum sich ihr dreitägiges Retreat wie ein fünftägiges anfühlt.',
+        ],
+        [Language.ES]: [
+          'Después de un círculo intenso, lo que la gente suele necesitar es caminar a solas. Mil doscientos árboles que plantamos nosotros mismos, un estanque de natación, una casa de té con una sola silla mirando a la ventana, senderos que vuelven a la casa sin cruzarse.',
+          'Lo que empieza la sala lo continúa la tierra. Muchos facilitadores nos dicen que esto es lo que hace que su retiro de tres días se sienta como uno de cinco.',
+        ],
+        [Language.FR]: [
+          'Après un cercle intense, ce dont les gens ont souvent besoin, c’est de marcher seuls. Mille deux cents arbres que nous avons plantés nous-mêmes, un étang de baignade, une maison de thé avec une seule chaise face à la fenêtre, des sentiers qui reviennent à la maison sans se croiser.',
+          'Ce que la pièce amorce, le terrain le poursuit. Beaucoup de facilitateurs nous disent que c’est ce qui donne à leur retraite de trois jours l’impression d’en durer cinq.',
+        ],
       },
       imageSrc: IMAGES.accommodation.teahouse,
       imageAlt: {
         [Language.EN]: 'Teahouse with a single chair facing the window',
         [Language.NL]: 'Theehuis met één stoel gericht op het raam',
+        [Language.DE]: 'Teehaus mit einem einzelnen Stuhl zum Fenster',
+        [Language.ES]: 'Casa de té con una sola silla mirando a la ventana',
+        [Language.FR]: 'Maison de thé avec une seule chaise face à la fenêtre',
       },
     },
   ],
@@ -122,6 +212,9 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
       description: {
         [Language.EN]: 'Comfortable circle size — barn and fire pit both built around it',
         [Language.NL]: 'Comfortabele kringgrootte — schuur en vuurplaats beide erop afgestemd',
+        [Language.DE]: 'Bequeme Kreisgröße — Scheune und Feuerstelle beide darauf gebaut',
+        [Language.ES]: 'Tamaño cómodo de círculo — granero y hoguera diseñados a su medida',
+        [Language.FR]: 'Taille confortable de cercle — grange et foyer pensés autour',
       },
     },
     {
@@ -129,6 +222,9 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
       description: {
         [Language.EN]: 'Steps from the practice barn to the fire circle',
         [Language.NL]: 'Stappen van de praktijkruimte naar de vuurplaats',
+        [Language.DE]: 'Schritte von der Praxisscheune zum Feuerkreis',
+        [Language.ES]: 'Pasos desde el granero de práctica al círculo de fuego',
+        [Language.FR]: 'Pas de la grange de pratique au cercle de feu',
       },
     },
     {
@@ -136,6 +232,9 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
       description: {
         [Language.EN]: 'Other guests during your retreat — full buyout always',
         [Language.NL]: 'Andere gasten tijdens jullie retraite — altijd volledige buyout',
+        [Language.DE]: 'Andere Gäste während eures Retreats — immer volle Buyout-Buchung',
+        [Language.ES]: 'Otros huéspedes durante vuestro retiro — siempre buyout completo',
+        [Language.FR]: 'Autres invités pendant votre retraite — toujours privatisation complète',
       },
     },
   ],
@@ -144,48 +243,84 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
       question: {
         [Language.EN]: 'Do you accommodate gender-specific retreats?',
         [Language.NL]: 'Faciliteren jullie gender-specifieke retraites?',
+        [Language.DE]: 'Ermöglicht ihr geschlechtsspezifische Retreats?',
+        [Language.ES]: '¿Acogéis retiros específicos por género?',
+        [Language.FR]: 'Accueillez-vous des retraites spécifiques à un genre ?',
       },
       answer: {
         [Language.EN]:
           'Yes — many of our circle bookings are women-only or men-only. Full venue buyout means the space genuinely is just for your group, including bathrooms and shared areas.',
         [Language.NL]:
           'Ja — veel van onze circle-boekingen zijn alleen-vrouwen of alleen-mannen. Volledige buyout betekent dat de ruimte werkelijk alleen voor jullie groep is, inclusief badkamers en gedeelde ruimtes.',
+        [Language.DE]:
+          'Ja — viele unserer Circle-Buchungen sind reine Frauen- oder Männergruppen. Volle Buyout-Buchung heißt, dass der Ort wirklich nur euch gehört — inklusive Bäder und Gemeinschaftsbereiche.',
+        [Language.ES]:
+          'Sí — muchas de nuestras reservas de círculo son solo de mujeres o solo de hombres. El buyout completo significa que el espacio es realmente solo para tu grupo, incluyendo baños y zonas comunes.',
+        [Language.FR]:
+          'Oui — beaucoup de nos réservations en cercle sont uniquement femmes ou uniquement hommes. La privatisation complète veut dire que l’espace est vraiment juste pour ton groupe, y compris les salles de bain et les espaces communs.',
       },
     },
     {
       question: {
         [Language.EN]: 'How late can the fire circle run?',
         [Language.NL]: 'Hoe laat mag de vuurkring doorgaan?',
+        [Language.DE]: 'Wie lange darf der Feuerkreis dauern?',
+        [Language.ES]: '¿Hasta qué hora puede continuar el círculo de fuego?',
+        [Language.FR]: 'Jusqu’à quelle heure le cercle de feu peut-il durer ?',
       },
       answer: {
         [Language.EN]:
           'The fire is yours through the night if needed. We ask that loud singing or drumming respects rural neighbour courtesies after 23:00, but our nearest neighbour is well out of earshot for normal circle work.',
         [Language.NL]:
           'Het vuur mag desnoods de hele nacht branden. Bij luid zingen of drummen na 23.00 uur vragen we om de gangbare landelijke buurtetiquette te respecteren, maar onze dichtstbijzijnde buur ligt ruim buiten gehoorsafstand voor normaal circle-werk.',
+        [Language.DE]:
+          'Das Feuer kann bei Bedarf die ganze Nacht brennen. Bei lautem Singen oder Trommeln nach 23:00 bitten wir, die ländliche Nachbarschaftsetikette zu wahren, aber unser nächster Nachbar ist für normale Kreisarbeit weit außer Hörweite.',
+        [Language.ES]:
+          'El fuego puede arder toda la noche si hace falta. Pedimos que el canto o el tamborileo fuerte respeten la cortesía vecinal del campo después de las 23:00, pero nuestro vecino más cercano queda muy fuera del alcance del oído para el trabajo de círculo habitual.',
+        [Language.FR]:
+          'Le feu peut brûler toute la nuit si besoin. Nous demandons que les chants ou percussions forts respectent les courtoisies de voisinage rural après 23 h, mais notre voisin le plus proche est largement hors de portée pour un travail de cercle normal.',
       },
     },
     {
       question: {
         [Language.EN]: 'Do you provide ritual or ceremonial supplies?',
         [Language.NL]: 'Leveren jullie rituele of ceremoniële benodigdheden?',
+        [Language.DE]: 'Stellt ihr rituelle oder zeremonielle Materialien bereit?',
+        [Language.ES]: '¿Proporcionáis materiales rituales o ceremoniales?',
+        [Language.FR]: 'Fournissez-vous des éléments rituels ou cérémoniels ?',
       },
       answer: {
         [Language.EN]:
           'Firewood and fire-starting supplies, yes. Specific ritual items — herbs, drums, cloths, ceremonial objects — most facilitators bring their own. Tell us what you need and we will tell you honestly what we can source locally.',
         [Language.NL]:
           'Haardhout en aanmaakmateriaal, ja. Specifieke rituele items — kruiden, drums, doeken, ceremoniële objecten — brengen de meeste facilitators zelf mee. Vertel ons wat je nodig hebt en we zeggen eerlijk wat we lokaal kunnen vinden.',
+        [Language.DE]:
+          'Brennholz und Anzündmaterial, ja. Spezifische Ritualgegenstände — Kräuter, Trommeln, Tücher, Zeremonialobjekte — bringen die meisten Facilitatorinnen selbst mit. Sag uns, was du brauchst, und wir sagen dir ehrlich, was wir vor Ort bekommen können.',
+        [Language.ES]:
+          'Leña y material para encender el fuego, sí. Objetos rituales específicos — hierbas, tambores, telas, objetos ceremoniales — la mayoría de facilitadores los traen ellos mismos. Dinos lo que necesitas y te decimos con honestidad qué podemos conseguir localmente.',
+        [Language.FR]:
+          'Bois de chauffage et nécessaire d’allumage, oui. Les objets rituels spécifiques — herbes, tambours, étoffes, objets cérémoniels — la plupart des facilitateurs les apportent eux-mêmes. Dis-nous ce dont tu as besoin et nous te dirons honnêtement ce que nous pouvons trouver localement.',
       },
     },
     {
       question: {
         [Language.EN]: 'Can we host a sweat lodge or similar deeper ceremonial form?',
         [Language.NL]: 'Kunnen we een sweat lodge of vergelijkbare diepere ceremonie houden?',
+        [Language.DE]: 'Können wir eine Schwitzhütte oder ähnliche tiefere zeremonielle Form abhalten?',
+        [Language.ES]: '¿Podemos hacer una cabaña de sudor o una ceremonia profunda similar?',
+        [Language.FR]: 'Peut-on tenir une hutte de sudation ou une forme cérémonielle plus profonde similaire ?',
       },
       answer: {
         [Language.EN]:
           'For sweat-lodge or similar work, please ask us at booking. We have hosted some forms and not others — we are honest about what fits the venue and what does not.',
         [Language.NL]:
           'Voor sweat-lodge of vergelijkbaar werk: vraag het ons bij de boeking. We hebben sommige vormen wel ontvangen en andere niet — we zijn eerlijk over wat bij de locatie past en wat niet.',
+        [Language.DE]:
+          'Für Schwitzhütten oder ähnliche Arbeit: Frag uns bei der Buchung. Manche Formen haben wir schon gehostet, andere nicht — wir sind ehrlich, was zum Ort passt und was nicht.',
+        [Language.ES]:
+          'Para una cabaña de sudor o trabajo similar, pregúntanos al reservar. Hemos acogido algunas formas y otras no — somos honestos sobre lo que encaja en el lugar y lo que no.',
+        [Language.FR]:
+          'Pour une hutte de sudation ou un travail similaire, demande-nous à la réservation. Nous avons accueilli certaines formes et pas d’autres — nous sommes honnêtes sur ce qui convient au lieu et ce qui ne convient pas.',
       },
     },
   ],
@@ -193,12 +328,21 @@ export const CIRCLE_RETREATS_SILO: SiloContent = {
     title: {
       [Language.EN]: 'Bring your circle to a place that knows how to hold one',
       [Language.NL]: 'Breng je kring naar een plek die weet hoe je een kring draagt',
+      [Language.DE]: 'Bring deinen Kreis an einen Ort, der weiß, wie man ihn hält',
+      [Language.ES]: 'Trae tu círculo a un lugar que sabe sostenerlo',
+      [Language.FR]: 'Amène ton cercle dans un lieu qui sait comment le tenir',
     },
     body: {
       [Language.EN]:
         'Tell us your group size, your dates, and what shape your circle takes. We will come back honestly about whether the venue fits and what your participants can expect.',
       [Language.NL]:
         'Vertel ons je groepsgrootte, je data en welke vorm je kring heeft. We laten je eerlijk weten of de locatie past en wat je deelnemers kunnen verwachten.',
+      [Language.DE]:
+        'Sag uns eure Gruppengröße, eure Daten und welche Form euer Kreis hat. Wir melden uns ehrlich zurück, ob der Ort passt und was eure Teilnehmenden erwarten können.',
+      [Language.ES]:
+        'Dinos el tamaño del grupo, las fechas y qué forma toma tu círculo. Te diremos con honestidad si el lugar encaja y qué pueden esperar tus participantes.',
+      [Language.FR]:
+        'Dis-nous la taille du groupe, tes dates, et la forme que prend ton cercle. Nous reviendrons honnêtement sur le fait que le lieu te convient ou non, et sur ce que tes participants peuvent attendre.',
     },
   },
 }

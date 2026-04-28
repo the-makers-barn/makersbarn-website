@@ -16,6 +16,9 @@ const DEFAULT_DESCRIPTION = 'Give your retreat the place it deserves. 60m²+ pra
 const OG_LOCALE_MAP: Record<Language, string> = {
   [Language.EN]: 'en_GB',
   [Language.NL]: 'nl_NL',
+  [Language.DE]: 'de_DE',
+  [Language.ES]: 'es_ES',
+  [Language.FR]: 'fr_FR',
 }
 
 interface PageMetadataParams {

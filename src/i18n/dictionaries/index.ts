@@ -2,7 +2,10 @@ import { Language } from '@/types'
 
 import type { Dictionary, Dictionaries } from '../types'
 
+import { de } from './de'
 import { en } from './en'
+import { es } from './es'
+import { fr } from './fr'
 import { nl } from './nl'
 
 /**
@@ -11,6 +14,9 @@ import { nl } from './nl'
 export const dictionaries: Dictionaries = {
   [Language.EN]: en,
   [Language.NL]: nl,
+  [Language.DE]: de,
+  [Language.ES]: es,
+  [Language.FR]: fr,
 }
 
 /**
@@ -21,5 +27,5 @@ export function getDictionary(language: Language): Dictionary {
   return dictionaries[language]
 }
 
-export { en, nl }
+export { en, nl, de, es, fr }
 export type { Dictionary }

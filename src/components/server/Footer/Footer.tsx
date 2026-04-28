@@ -60,7 +60,7 @@ export async function Footer({ locale }: FooterProps = {}) {
                 {FOOTER_ADDRESS.street}
                 <br />
                 {FOOTER_ADDRESS.postalCode} {FOOTER_ADDRESS.city}
-                {language === Language.EN && (
+                {language !== Language.NL && (
                   <>
                     <br />
                     {FOOTER_ADDRESS.country}

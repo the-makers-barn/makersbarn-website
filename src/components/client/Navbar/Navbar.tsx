@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { GB as EN, NL } from 'country-flag-icons/react/3x2'
+import { GB as EN, NL, DE, ES, FR } from 'country-flag-icons/react/3x2'
 
 import { LANGUAGE_OPTIONS } from '@/constants'
 import { IMAGES } from '@/data'
@@ -17,11 +17,17 @@ import styles from './Navbar.module.css'
 const FLAG_MAP = {
   [Language.EN]: EN,
   [Language.NL]: NL,
+  [Language.DE]: DE,
+  [Language.ES]: ES,
+  [Language.FR]: FR,
 } as const
 
 const FLAG_TITLES = {
   [Language.EN]: 'United Kingdom',
   [Language.NL]: 'Netherlands',
+  [Language.DE]: 'Germany',
+  [Language.ES]: 'Spain',
+  [Language.FR]: 'France',
 } as const
 
 /**
