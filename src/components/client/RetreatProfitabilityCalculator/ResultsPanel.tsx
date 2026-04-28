@@ -1,5 +1,6 @@
 'use client'
 
+import { formatEuro, formatPercent } from '@/lib/tools'
 import type { CalculatorInputs, CalculatorResults } from '@/types/tools'
 import type { Dictionary } from '@/i18n/types'
 
@@ -11,9 +12,6 @@ interface ResultsPanelProps {
   results: CalculatorResults
   t: Dictionary
 }
-
-const formatEuro = (n: number): string => `€${Math.round(n).toLocaleString()}`
-const formatPercent = (n: number): string => `${Math.round(n * 100)}%`
 
 function fillTemplate(template: string, vars: Record<string, string>): string {
   return template.replace(/\{(\w+)\}/g, (_match: string, key: string) => vars[key] ?? `{${key}}`)
