@@ -1,13 +1,15 @@
 import { CALCULATOR_VARIANTS } from '@/data/tools'
 import { ToolVariant } from '@/constants/tools'
+import { Language } from '@/types/common'
 import { getValidLocale } from '@/lib/locale'
 import { ogContentType, ogSize, renderToolOgImage } from '@/lib/tools/og-template'
 
 export const contentType = ogContentType
 export const size = ogSize
-export const alt = 'MakersBarn — retreat pricing calculator'
 
 const VARIANT = ToolVariant.WELLNESS
+
+export const alt = `MakersBarn — ${CALCULATOR_VARIANTS[VARIANT].copy.heroTitle[Language.EN]}`
 
 interface OgProps {
   params: Promise<{ locale: string }>
