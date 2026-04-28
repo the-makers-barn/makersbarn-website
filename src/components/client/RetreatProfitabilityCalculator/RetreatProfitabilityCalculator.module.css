@@ -380,53 +380,41 @@
   min-width: 0;
 }
 
-.toggleSwitch {
-  position: relative;
+.hiresToggle {
+  display: inline-flex;
   flex-shrink: 0;
-  width: 52px;
-  height: 30px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.18);
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  transition: background-color 0.18s ease;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 0.5rem;
+  padding: 3px;
+  gap: 2px;
 }
 
-.toggleSwitch:focus-visible {
+.hiresButton {
+  background: transparent;
+  border: 0;
+  border-radius: 0.4rem;
+  padding: 0.55rem 1.4rem;
+  font: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  min-width: 64px;
+}
+
+.hiresButton:hover:not(.hiresButtonActive) {
+  color: var(--color-text);
+}
+
+.hiresButton:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-.toggleSwitchOn {
+.hiresButtonActive {
   background: var(--color-primary);
-}
-
-.toggleSwitchThumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-  transition: transform 0.18s ease;
-}
-
-.toggleSwitchOn .toggleSwitchThumb {
-  transform: translateX(22px);
-}
-
-.toggleSwitchSrLabel {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 

@@ -81,18 +81,24 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
         <div className={styles.facilitatorBlock}>
           <div className={styles.hiresQuestion}>
             <span className={styles.hiresQuestionLabel}>{labels.hiresFacilitatorsQuestion}</span>
-            <button
-              type="button"
-              role="switch"
-              aria-checked={inputs.hiresFacilitators}
-              className={`${styles.toggleSwitch} ${inputs.hiresFacilitators ? styles.toggleSwitchOn : ''}`}
-              onClick={() => onChange('hiresFacilitators', !inputs.hiresFacilitators)}
-            >
-              <span aria-hidden="true" className={styles.toggleSwitchThumb} />
-              <span className={styles.toggleSwitchSrLabel}>
-                {inputs.hiresFacilitators ? labels.hiresFacilitatorsYes : labels.hiresFacilitatorsNo}
-              </span>
-            </button>
+            <div className={styles.hiresToggle} role="group" aria-label={labels.hiresFacilitatorsQuestion}>
+              <button
+                type="button"
+                aria-pressed={!inputs.hiresFacilitators}
+                className={`${styles.hiresButton} ${!inputs.hiresFacilitators ? styles.hiresButtonActive : ''}`}
+                onClick={() => onChange('hiresFacilitators', false)}
+              >
+                {labels.hiresFacilitatorsNo}
+              </button>
+              <button
+                type="button"
+                aria-pressed={inputs.hiresFacilitators}
+                className={`${styles.hiresButton} ${inputs.hiresFacilitators ? styles.hiresButtonActive : ''}`}
+                onClick={() => onChange('hiresFacilitators', true)}
+              >
+                {labels.hiresFacilitatorsYes}
+              </button>
+            </div>
           </div>
           {inputs.hiresFacilitators && (
             <NumberField
