@@ -42,22 +42,24 @@ export function RetreatProfitabilityCalculator({
   }, [variant])
 
   const contactPath = getLocalizedPath(Route.CONTACT, locale)
-  const ctaHref = `${contactPath}?${MAKERSBARN_CTA_QUERY_PARAM}=${MAKERSBARN_CTA_QUERY_VALUE_PREFIX}${variant}`
+  const ctaHref = `${contactPath}?${MAKERSBARN_CTA_QUERY_PARAM}=${MAKERSBARN_CTA_QUERY_VALUE_PREFIX}${variant}#booking`
   const ctaLabels = t.tools.calculator.makersbarnCta
 
   return (
     <div className={styles.container}>
-      <InputsPanel
-        inputs={inputs}
-        variant={config}
-        locale={locale}
-        t={t}
-        onChange={setInput}
-        onReset={reset}
-      />
-      <div>
+      <div className={styles.grid}>
+        <InputsPanel
+          inputs={inputs}
+          variant={config}
+          locale={locale}
+          t={t}
+          onChange={setInput}
+          onReset={reset}
+        />
         <ResultsPanel inputs={inputs} results={results} t={t} />
+      </div>
 
+      <div className={styles.afterCalculator}>
         <div className={styles.actionsRow}>
           <ShareLink variant={variant} t={t} />
         </div>
