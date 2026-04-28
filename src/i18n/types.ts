@@ -660,7 +660,10 @@ export interface ToolsCalculatorInputsTranslations {
   foodUnit: string
   marketingAndOtherLabel: string
   advancedLabel: string
-  coFacilitatorsLabel: string
+  coFacilitatorsLabelCoLed: string
+  coFacilitatorsLabelOrganizer: string
+  coFacilitatorsHelperCoLed: string
+  coFacilitatorsHelperOrganizer: string
   travelLabel: string
   insuranceLabel: string
   paymentFeePercentLabel: string

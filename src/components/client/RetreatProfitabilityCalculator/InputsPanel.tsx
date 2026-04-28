@@ -104,6 +104,23 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
         helper={variant.benchmarks.facilitatorFee[locale]}
         onChange={(v) => onChange('facilitatorFee', v)}
       />
+      {inputs.role !== RetreatRole.SOLO && (
+        <NumberField
+          label={
+            inputs.role === RetreatRole.ORGANIZER_ONLY
+              ? labels.coFacilitatorsLabelOrganizer
+              : labels.coFacilitatorsLabelCoLed
+          }
+          value={inputs.coFacilitators}
+          unitPrefix="€"
+          helper={
+            inputs.role === RetreatRole.ORGANIZER_ONLY
+              ? labels.coFacilitatorsHelperOrganizer
+              : labels.coFacilitatorsHelperCoLed
+          }
+          onChange={(v) => onChange('coFacilitators', v)}
+        />
+      )}
       <NumberField
         label={labels.marketingAndOtherLabel}
         value={inputs.marketingAndOther}
@@ -113,14 +130,6 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
       />
 
       <AdvancedDisclosure label={labels.advancedLabel}>
-        {inputs.role !== RetreatRole.SOLO && (
-          <NumberField
-            label={labels.coFacilitatorsLabel}
-            value={inputs.coFacilitators}
-            unitPrefix="€"
-            onChange={(v) => onChange('coFacilitators', v)}
-          />
-        )}
         <NumberField
           label={labels.travelLabel}
           value={inputs.travel}
