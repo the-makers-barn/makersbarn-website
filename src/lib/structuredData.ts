@@ -618,7 +618,7 @@ export interface WebApplicationSchema {
   name: string
   url: string
   description: string
-  applicationCategory: 'BusinessApplication'
+  applicationCategory: 'FinanceApplication'
   operatingSystem: 'Web'
   offers: {
     '@type': 'Offer'
@@ -666,11 +666,17 @@ export function generateWebApplicationSchema(params: {
     name: params.name,
     url: params.url,
     description: params.description,
-    applicationCategory: 'BusinessApplication',
+    applicationCategory: 'FinanceApplication',
     operatingSystem: 'Web',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
     publisher: { '@id': `${SITE_URL}#organization` },
   }
+}
+
+function shortStepName(text: string, index: number): string {
+  const firstClause = text.split(/[.!?:]/)[0]?.trim() ?? text
+  const truncated = firstClause.length > 80 ? `${firstClause.slice(0, 77)}…` : firstClause
+  return truncated || `Step ${index + 1}`
 }
 
 export function generateHowToSchema(params: {
@@ -686,7 +692,7 @@ export function generateHowToSchema(params: {
     step: params.steps.map((text, i) => ({
       '@type': 'HowToStep',
       position: i + 1,
-      name: `Step ${i + 1}`,
+      name: shortStepName(text, i),
       text,
     })),
   }
