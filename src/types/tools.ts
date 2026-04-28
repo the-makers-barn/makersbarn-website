@@ -84,7 +84,6 @@ export type CalculatorContentMap = Record<ToolVariant, CalculatorVariantContent>
 export interface EmailCalculatorSummaryData {
   email: string
   inputs: CalculatorInputs
-  results: CalculatorResults
   variant: ToolVariant
   newsletterOptIn: boolean
   locale: Language

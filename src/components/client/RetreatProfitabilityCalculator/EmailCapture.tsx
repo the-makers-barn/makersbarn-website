@@ -7,7 +7,7 @@ import { emailCalculatorSummary } from '@/actions/tools'
 import { AnalyticsEvent } from '@/constants/analytics'
 import { ToolVariant } from '@/constants/tools'
 import { Language } from '@/types/common'
-import type { CalculatorInputs, CalculatorResults } from '@/types/tools'
+import type { CalculatorInputs } from '@/types/tools'
 import type { Dictionary } from '@/i18n/types'
 
 import styles from './RetreatProfitabilityCalculator.module.css'
@@ -16,13 +16,12 @@ interface EmailCaptureProps {
   variant: ToolVariant
   locale: Language
   inputs: CalculatorInputs
-  results: CalculatorResults
   t: Dictionary
 }
 
 type Status = 'idle' | 'success' | 'error'
 
-export function EmailCapture({ variant, locale, inputs, results, t }: EmailCaptureProps) {
+export function EmailCapture({ variant, locale, inputs, t }: EmailCaptureProps) {
   const labels = t.tools.calculator.email
   const id = useId()
   const [email, setEmail] = useState('')
@@ -36,7 +35,6 @@ export function EmailCapture({ variant, locale, inputs, results, t }: EmailCaptu
       const result = await emailCalculatorSummary({
         email,
         inputs,
-        results,
         variant,
         newsletterOptIn: optIn,
         locale,

@@ -66,7 +66,6 @@ export function RetreatProfitabilityCalculator({
           variant={variant}
           locale={locale}
           inputs={inputs}
-          results={results}
           t={t}
         />
 
