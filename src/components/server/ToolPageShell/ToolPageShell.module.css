@@ -9,12 +9,20 @@
 .hero { display: grid; gap: 1rem; max-width: 48rem; }
 
 .eyebrow {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
   color: var(--color-secondary);
+  background: rgba(184, 137, 74, 0.12);
+  border: 1px solid rgba(184, 137, 74, 0.28);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
   margin: 0;
   font-weight: 600;
+  line-height: 1;
 }
 
 .title {
