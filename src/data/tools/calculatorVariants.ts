@@ -28,11 +28,11 @@ const GENERIC: VariantConfig = {
       [Language.FR]: 'Une restauration de qualité retraite coûte généralement 30–55 € par invité par jour',
     },
     facilitatorFee: {
-      [Language.EN]: 'Pay yourself fairly — under-pricing your time leads to retreat burnout',
-      [Language.NL]: 'Betaal jezelf eerlijk — je tijd onderwaarderen leidt tot retraite-burn-out',
-      [Language.DE]: 'Bezahle dich fair — eigene Zeit zu unterbewerten führt zum Retreat-Burnout',
-      [Language.ES]: 'Págate de forma justa — infravalorar tu tiempo provoca desgaste',
-      [Language.FR]: 'Rémunérez-vous équitablement — sous-évaluer votre temps mène à l\'épuisement',
+      [Language.EN]: 'Total fee for the lead facilitator(s) you hire. European facilitator day rates run €600–€1,500/day; specialist teachers €1,500–€3,000/day',
+      [Language.NL]: 'Totale vergoeding voor de hoofdbegeleider(s) die je inhuurt. Europese begeleider-dagtarieven €600–€1.500/dag; specialistische docenten €1.500–€3.000/dag',
+      [Language.DE]: 'Total fee for the lead facilitator(s) you hire. European facilitator day rates run €600–€1,500/day; specialist teachers €1,500–€3,000/day',
+      [Language.ES]: 'Total fee for the lead facilitator(s) you hire. European facilitator day rates run €600–€1,500/day; specialist teachers €1,500–€3,000/day',
+      [Language.FR]: 'Total fee for the lead facilitator(s) you hire. European facilitator day rates run €600–€1,500/day; specialist teachers €1,500–€3,000/day',
     },
     marketingAndOther: {
       [Language.EN]: 'Budget for ads, content, supplies, payment processing, and a contingency buffer',
@@ -313,11 +313,11 @@ const COACHING: VariantConfig = {
       [Language.FR]: 'Les retraites de coaching utilisent souvent un traiteur haut de gamme — 45–80 € par invité par jour est courant',
     },
     facilitatorFee: {
-      [Language.EN]: 'Coaching intensives are 1:1-heavy — your time commands a premium. Don\'t under-price.',
-      [Language.NL]: 'Coaching-intensives zijn 1-op-1-zwaar — je tijd verdient een premium. Niet onderwaarderen.',
-      [Language.DE]: 'Coaching-Intensives sind 1:1-intensiv — deine Zeit verdient einen Aufschlag. Nicht unterbewerten.',
-      [Language.ES]: 'Los intensivos de coaching son intensivos en 1:1 — tu tiempo merece prima. No infravalorar.',
-      [Language.FR]: 'Les intensifs de coaching sont riches en 1:1 — votre temps vaut une prime. Ne pas sous-évaluer.',
+      [Language.EN]: 'Coaching specialists command premium rates — €1,500–€3,000/day for senior coaches',
+      [Language.NL]: 'Coachingspecialisten hanteren premiumtarieven — €1.500–€3.000/dag voor senior coaches',
+      [Language.DE]: 'Coaching specialists command premium rates — €1,500–€3,000/day for senior coaches',
+      [Language.ES]: 'Coaching specialists command premium rates — €1,500–€3,000/day for senior coaches',
+      [Language.FR]: 'Coaching specialists command premium rates — €1,500–€3,000/day for senior coaches',
     },
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
     venuePerNight: {

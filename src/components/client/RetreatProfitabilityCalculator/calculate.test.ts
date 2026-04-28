@@ -93,20 +93,4 @@ describe('calculateRetreatProfitability', () => {
     expect(r.netProfit).toBeCloseTo(7974, 2)
   })
 
-  it('takeHome equals profit + facilitatorFee for SOLO role', () => {
-    const r = calculateRetreatProfitability(baseYogaInputs)
-    expect(r.yourTakeHome).toBeCloseTo(3618 + 2500, 2)
-  })
-
-  it('takeHome equals profit + facilitatorFee for CO_LED role (same formula)', () => {
-    const inputs: CalculatorInputs = { ...baseYogaInputs, role: RetreatRole.CO_LED }
-    const r = calculateRetreatProfitability(inputs)
-    expect(r.yourTakeHome).toBeCloseTo(3618 + 2500, 2)
-  })
-
-  it('takeHome equals profit only for ORGANIZER_ONLY role', () => {
-    const inputs: CalculatorInputs = { ...baseYogaInputs, role: RetreatRole.ORGANIZER_ONLY }
-    const r = calculateRetreatProfitability(inputs)
-    expect(r.yourTakeHome).toBeCloseTo(3618, 2)
-  })
 })

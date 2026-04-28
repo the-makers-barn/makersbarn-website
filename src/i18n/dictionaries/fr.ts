@@ -748,7 +748,6 @@ export const fr: Dictionary = {
         roleCoLedDescription: "I'm a facilitator working alongside another paid facilitator.",
         roleOrganizerOnly: 'Organizer only',
         roleOrganizerOnlyDescription: "I'm hiring the teaching team — I don't facilitate.",
-        facilitatorFeeLabelSolo: 'Pay yourself (your facilitator fee)',
         facilitatorFeeLabelOrganizer: 'Hired facilitator fee',
         marketingAndOtherLabel: 'Marketing & other costs',
         advancedLabel: 'Advanced costs',
@@ -770,8 +769,6 @@ export const fr: Dictionary = {
         totalCosts: 'Total costs',
         profitMargin: 'Profit margin',
         profitPerWorkday: 'Profit per workday',
-        yourTakeHome: 'Your total take-home',
-        yourTakeHomeNote: 'Your facilitator pay plus net profit — the money that ends up with you.',
         breakevenSentence: 'You need at least {guests} guests at {price} to break even.',
         breakevenImpossible: "At this price, your variable costs exceed revenue per guest — you can’t break even with more guests alone.",
         breakdownLabels: {

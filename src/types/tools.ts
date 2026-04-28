@@ -35,7 +35,6 @@ export interface CalculatorResults {
   profitMargin: number
   profitPerWorkday: number
   breakevenGuests: number
-  yourTakeHome: number
   costBreakdown: CalculatorCostBreakdown
 }
 

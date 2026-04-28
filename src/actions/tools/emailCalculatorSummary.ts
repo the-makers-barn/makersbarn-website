@@ -39,7 +39,6 @@ const ResultsSchema = z.object({
   profitMargin: z.number(),
   profitPerWorkday: z.number(),
   breakevenGuests: z.union([z.number(), z.literal(Number.POSITIVE_INFINITY)]),
-  yourTakeHome: z.number(),
   costBreakdown: z.object({
     venueAccommodation: z.number(),
     food: z.number(),
@@ -90,7 +89,6 @@ function buildHtmlSummary(data: EmailCalculatorSummaryData): string {
     </ul>
     <h3>Results</h3>
     <ul>
-      <li>Your total take-home: <strong>${formatEuro(results.yourTakeHome)}</strong></li>
       <li>Total revenue: <strong>${formatEuro(results.totalRevenue)}</strong></li>
       <li>Total costs: ${formatEuro(results.totalCosts)}</li>
       <li>Net profit: <strong>${formatEuro(results.netProfit)}</strong></li>
@@ -130,7 +128,6 @@ function buildAdminHtml(data: EmailCalculatorSummaryData): string {
     </ul>
     <h3>Results</h3>
     <ul>
-      <li>Total take-home: <strong>${formatEuro(results.yourTakeHome)}</strong></li>
       <li>Total revenue: ${formatEuro(results.totalRevenue)}</li>
       <li>Total costs: ${formatEuro(results.totalCosts)}</li>
       <li>Net profit: <strong>${formatEuro(results.netProfit)}</strong> (${formatPercent(results.profitMargin)} margin)</li>

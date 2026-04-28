@@ -733,7 +733,6 @@ export const nl: Dictionary = {
         roleCoLedDescription: 'Ik begeleid samen met een andere betaalde begeleider.',
         roleOrganizerOnly: 'Alleen organisator',
         roleOrganizerOnlyDescription: 'Ik huur de begeleiding in — ik begeleid zelf niet.',
-        facilitatorFeeLabelSolo: 'Betaal jezelf (jouw begeleidersfee)',
         facilitatorFeeLabelOrganizer: 'Vergoeding ingehuurde begeleider',
         guestsLabel: 'Aantal gasten',
         guestsUnit: 'gasten',
@@ -764,8 +763,6 @@ export const nl: Dictionary = {
         totalCosts: 'Totale kosten',
         profitMargin: 'Winstmarge',
         profitPerWorkday: 'Winst per werkdag',
-        yourTakeHome: 'Wat jij overhoudt',
-        yourTakeHomeNote: 'Jouw begeleidersfee plus de nettowinst — wat er voor jou overblijft.',
         breakevenSentence: 'Je hebt minstens {guests} gasten bij {price} nodig om break-even te draaien.',
         breakevenImpossible: 'Bij deze prijs overstijgen je variabele kosten de omzet per gast — meer gasten alleen brengt je niet op break-even.',
         breakdownLabels: {

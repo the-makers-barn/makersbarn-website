@@ -93,17 +93,15 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
         helper={variant.benchmarks.foodPerGuestPerDay[locale]}
         onChange={(v) => onChange('foodPerGuestPerDay', v)}
       />
-      <NumberField
-        label={
-          inputs.role === RetreatRole.ORGANIZER_ONLY
-            ? labels.facilitatorFeeLabelOrganizer
-            : labels.facilitatorFeeLabelSolo
-        }
-        value={inputs.facilitatorFee}
-        unitPrefix="€"
-        helper={variant.benchmarks.facilitatorFee[locale]}
-        onChange={(v) => onChange('facilitatorFee', v)}
-      />
+      {inputs.role === RetreatRole.ORGANIZER_ONLY && (
+        <NumberField
+          label={labels.facilitatorFeeLabelOrganizer}
+          value={inputs.facilitatorFee}
+          unitPrefix="€"
+          helper={variant.benchmarks.facilitatorFee[locale]}
+          onChange={(v) => onChange('facilitatorFee', v)}
+        />
+      )}
       {inputs.role !== RetreatRole.SOLO && (
         <NumberField
           label={

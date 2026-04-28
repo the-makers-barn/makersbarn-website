@@ -38,12 +38,6 @@ export function ResultsPanel({ inputs, results, t }: ResultsPanelProps) {
       </p>
       <p className={styles.narrative}>{narrative}</p>
 
-      <div className={styles.takeHome}>
-        <p className={styles.takeHomeLabel}>{labels.yourTakeHome}</p>
-        <p className={styles.takeHomeValue}>{formatEuro(results.yourTakeHome)}</p>
-        <p className={styles.takeHomeNote}>{labels.yourTakeHomeNote}</p>
-      </div>
-
       <dl className={styles.metricsGrid}>
         <div className={styles.metric}>
           <dt>{labels.totalRevenue}</dt>

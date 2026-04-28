@@ -647,7 +647,6 @@ export interface ToolsCalculatorInputsTranslations {
   roleCoLedDescription: string
   roleOrganizerOnly: string
   roleOrganizerOnlyDescription: string
-  facilitatorFeeLabelSolo: string
   facilitatorFeeLabelOrganizer: string
   guestsLabel: string
   guestsUnit: string
@@ -679,8 +678,6 @@ export interface ToolsCalculatorResultsTranslations {
   totalCosts: string
   profitMargin: string
   profitPerWorkday: string
-  yourTakeHome: string
-  yourTakeHomeNote: string
   breakevenSentence: string
   breakevenImpossible: string
   breakdownLabels: {
