@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { ComparisonTeaser } from '@/components/server/ComparisonTeaser'
 import { StructuredData } from '@/components/server/StructuredData'
-import { generatePageBreadcrumbs } from '@/lib/structuredData'
+import { generateEventVenueSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
 import { getLocalizedPath } from '@/lib/routing'
 import { Language, Route, SiloContent } from '@/types'
 import type { Dictionary } from '@/i18n/types'
@@ -78,13 +78,16 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
     path: getLocalizedPath(silo.route, locale),
   })
   const faqSchema = buildFaqSchema(silo, locale)
+  const eventVenueSchema = generateEventVenueSchema(silo, locale, {
+    linkedEventIds: silo.organizerSeo?.linkedEventIds,
+  })
   const retreatsHref = getLocalizedPath(Route.HOST_A_RETREAT, locale)
   const bookHref = getLocalizedPath(Route.BOOK, locale)
   const contactHref = getLocalizedPath(Route.CONTACT, locale)
 
   return (
     <>
-      <StructuredData data={[breadcrumb, faqSchema]} />
+      <StructuredData data={[breadcrumb, eventVenueSchema, faqSchema]} />
 
       <article className={styles.silo}>
         <div className={styles.heroFrame}>
