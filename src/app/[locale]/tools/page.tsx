@@ -15,6 +15,8 @@ import { getLocalizedPath } from '@/lib/routing'
 import { getValidLocale } from '@/lib/locale'
 import { getServerTranslations } from '@/i18n'
 
+import styles from './page.module.css'
+
 interface PageProps {
   params: Promise<{ locale: string }>
 }
@@ -64,41 +66,24 @@ export default async function ToolsHubPage({ params }: PageProps) {
   return (
     <>
       <StructuredData data={[breadcrumb, collection]} />
-      <main style={{ maxWidth: '64rem', margin: '0 auto', padding: '4rem 1.5rem' }}>
-        <p style={{ textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem', color: '#b8894a', fontWeight: 600 }}>
-          {t.tools.hub.eyebrow}
-        </p>
-        <h1 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'var(--font-size-4xl)' }}>
-          {t.tools.hub.title}
-        </h1>
-        <p style={{ color: 'var(--color-text-muted)', maxWidth: '40rem', marginBottom: '3rem' }}>
-          {t.tools.hub.intro}
-        </p>
-        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '1rem' }}>
+      <main className={styles.main}>
+        <p className={styles.eyebrow}>{t.tools.hub.eyebrow}</p>
+        <h1 className={styles.title}>{t.tools.hub.title}</h1>
+        <p className={styles.intro}>{t.tools.hub.intro}</p>
+        <ul className={styles.toolList}>
           {VARIANT_DISPLAY_ORDER.map((v) => {
             const cfg = CALCULATOR_VARIANTS[v]
             const href = getLocalizedPath(TOOL_VARIANT_ROUTES[v], validLocale)
             return (
               <li key={v}>
-                <Link
-                  href={href}
-                  style={{
-                    display: 'grid',
-                    gap: '0.5rem',
-                    padding: '1.25rem 1.5rem',
-                    background: 'rgba(41, 75, 58, 0.04)',
-                    borderRadius: '0.75rem',
-                    textDecoration: 'none',
-                    color: 'var(--color-text)',
-                  }}
-                >
-                  <span style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.25rem' }}>
+                <Link href={href} className={styles.toolCard}>
+                  <span className={styles.toolCardTitle}>
                     {cfg.copy.heroTitle[validLocale]}
                   </span>
-                  <span style={{ color: 'var(--color-text-muted)' }}>
+                  <span className={styles.toolCardDescription}>
                     {cfg.copy.heroIntro[validLocale]}
                   </span>
-                  <span style={{ color: 'var(--color-primary)', fontWeight: 600 }}>
+                  <span className={styles.toolCardCta}>
                     {t.tools.hub.toolCardCta} →
                   </span>
                 </Link>
