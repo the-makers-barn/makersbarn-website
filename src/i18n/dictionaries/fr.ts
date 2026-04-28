@@ -636,6 +636,9 @@ export const fr: Dictionary = {
     secondaryCta: 'Pose une question',
     finalCtaPrimary: 'Demander un devis',
     finalCtaSecondary: 'Contacte-nous',
+    toolCtaTitle: 'Pricing your retreat?',
+    toolCtaBody: 'Use our free calculator to plan your revenue, costs, profit margin, and breakeven occupancy.',
+    toolCtaLabel: 'Open the calculator',
   },
 
   comparisonTeaser: {

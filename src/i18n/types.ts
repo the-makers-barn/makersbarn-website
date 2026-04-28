@@ -589,6 +589,9 @@ export interface SilosChromeTranslations {
   secondaryCta: string
   finalCtaPrimary: string
   finalCtaSecondary: string
+  toolCtaTitle: string
+  toolCtaBody: string
+  toolCtaLabel: string
 }
 
 /**

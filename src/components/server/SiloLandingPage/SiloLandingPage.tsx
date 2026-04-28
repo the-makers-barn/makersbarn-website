@@ -7,6 +7,7 @@ import { generatePageBreadcrumbs } from '@/lib/structuredData'
 import { getLocalizedPath } from '@/lib/routing'
 import { Language, Route, SiloContent } from '@/types'
 import type { Dictionary } from '@/i18n/types'
+import { SILO_TO_TOOL_ROUTE } from '@/constants/tools'
 
 import styles from './SiloLandingPage.module.css'
 
@@ -81,6 +82,8 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
   const retreatsHref = getLocalizedPath(Route.HOST_A_RETREAT, locale)
   const bookHref = getLocalizedPath(Route.BOOK, locale)
   const contactHref = getLocalizedPath(Route.CONTACT, locale)
+  const toolRoute = SILO_TO_TOOL_ROUTE[silo.route]
+  const toolHref = toolRoute ? getLocalizedPath(toolRoute, locale) : null
 
   return (
     <>
@@ -205,6 +208,21 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
             ))}
           </div>
         </section>
+
+        {toolHref && (
+          <section className={styles.toolCta} aria-labelledby="silo-tool-cta">
+            <div className={styles.toolCtaInner}>
+              <h2 id="silo-tool-cta" className={styles.toolCtaTitle}>
+                {t.silos.toolCtaTitle}
+              </h2>
+              <p className={styles.toolCtaBody}>{t.silos.toolCtaBody}</p>
+              <Link href={toolHref} className={styles.primaryCta}>
+                {t.silos.toolCtaLabel}
+                <ArrowRightIcon />
+              </Link>
+            </div>
+          </section>
+        )}
 
         <ComparisonTeaser locale={locale} t={t} />
 

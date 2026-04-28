@@ -630,6 +630,9 @@ export const nl: Dictionary = {
     secondaryCta: 'Stel een vraag',
     finalCtaPrimary: 'Vraag een offerte aan',
     finalCtaSecondary: 'Neem contact op',
+    toolCtaTitle: 'Prijs je retraite plannen?',
+    toolCtaBody: 'Gebruik onze gratis calculator om omzet, kosten, marge en break-even te plannen.',
+    toolCtaLabel: 'Open de calculator',
   },
 
   comparisonTeaser: {
