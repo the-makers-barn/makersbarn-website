@@ -315,56 +315,54 @@
   font-weight: 600;
 }
 
-.roleSelector { border: 0; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
-
-.roleLegend {
-  font-weight: 600;
-  font-size: var(--font-size-sm);
-  color: var(--color-text);
-  padding: 0;
-}
-
-.roleOptions {
+.facilitatorBlock {
   display: grid;
-  gap: 0.5rem;
-}
-
-@media (min-width: 600px) {
-  .roleOptions { grid-template-columns: repeat(3, 1fr); }
-}
-
-.roleOption {
-  display: grid;
-  gap: 0.25rem;
-  padding: 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.02);
   border-radius: 0.5rem;
-  background: #fff;
-  text-align: left;
-  cursor: pointer;
-  font: inherit;
-  color: var(--color-text);
-  transition: border-color 0.15s ease, background 0.15s ease;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.roleOption:hover {
-  border-color: rgba(41, 75, 58, 0.4);
+.hiresQuestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  cursor: default;
 }
 
-.roleOptionActive {
-  border-color: var(--color-primary);
-  background: rgba(41, 75, 58, 0.06);
-}
-
-.roleOptionLabel {
+.hiresQuestionLabel {
   font-weight: 600;
   font-size: var(--font-size-sm);
   color: var(--color-text);
+  flex: 1;
+  min-width: 0;
 }
 
-.roleOptionDescription {
+.hiresToggle {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 0.5rem;
+  padding: 2px;
+}
+
+.hiresButton {
+  background: transparent;
+  border: 0;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  font: inherit;
   font-size: var(--font-size-xs);
+  font-weight: 600;
   color: var(--color-text-muted);
-  line-height: var(--line-height-snug);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.hiresButtonActive {
+  background: var(--color-primary);
+  color: #fff;
 }
 

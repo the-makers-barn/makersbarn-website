@@ -640,13 +640,9 @@ export interface RetreatsHubTranslations {
  * Tools section — calculator chrome translations
  */
 export interface ToolsCalculatorInputsTranslations {
-  roleQuestion: string
-  roleSolo: string
-  roleSoloDescription: string
-  roleCoLed: string
-  roleCoLedDescription: string
-  roleOrganizerOnly: string
-  roleOrganizerOnlyDescription: string
+  hiresFacilitatorsQuestion: string
+  hiresFacilitatorsYes: string
+  hiresFacilitatorsNo: string
   facilitatorFeeLabel: string
   guestsLabel: string
   guestsUnit: string

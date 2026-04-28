@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest'
 
-import { RetreatRole } from '@/constants/tools'
 import type { CalculatorInputs } from '@/types/tools'
 
 import { calculateRetreatProfitability } from './calculate'
@@ -17,7 +16,7 @@ const baseYogaInputs: CalculatorInputs = {
   insurance: 150,
   paymentFeePercent: 3,
   planningDays: 5,
-  role: RetreatRole.SOLO,
+  hiresFacilitators: false,
 }
 
 describe('calculateRetreatProfitability', () => {

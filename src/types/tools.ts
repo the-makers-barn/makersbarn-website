@@ -1,5 +1,5 @@
 import type { Language } from '@/types/common'
-import type { RetreatRole, ToolVariant } from '@/constants/tools'
+import type { ToolVariant } from '@/constants/tools'
 
 export interface CalculatorInputs {
   guests: number
@@ -13,7 +13,7 @@ export interface CalculatorInputs {
   insurance: number
   paymentFeePercent: number
   planningDays: number
-  role: RetreatRole
+  hiresFacilitators: boolean
 }
 
 export interface CalculatorCostBreakdown {

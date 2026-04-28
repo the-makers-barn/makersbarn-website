@@ -1,6 +1,6 @@
 'use client'
 
-import { CALCULATOR_INPUT_RANGES, RetreatRole } from '@/constants/tools'
+import { CALCULATOR_INPUT_RANGES } from '@/constants/tools'
 import { Language } from '@/types/common'
 import type { CalculatorInputs, VariantConfig } from '@/types/tools'
 import type { Dictionary } from '@/i18n/types'
@@ -22,33 +22,6 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
 
   return (
     <div className={styles.inputsPanel}>
-      <fieldset className={styles.roleSelector}>
-        <legend className={styles.roleLegend}>{labels.roleQuestion}</legend>
-        <div className={styles.roleOptions}>
-          <RoleOption
-            value={RetreatRole.SOLO}
-            current={inputs.role}
-            label={labels.roleSolo}
-            description={labels.roleSoloDescription}
-            onSelect={() => onChange('role', RetreatRole.SOLO)}
-          />
-          <RoleOption
-            value={RetreatRole.CO_LED}
-            current={inputs.role}
-            label={labels.roleCoLed}
-            description={labels.roleCoLedDescription}
-            onSelect={() => onChange('role', RetreatRole.CO_LED)}
-          />
-          <RoleOption
-            value={RetreatRole.ORGANIZER_ONLY}
-            current={inputs.role}
-            label={labels.roleOrganizerOnly}
-            description={labels.roleOrganizerOnlyDescription}
-            onSelect={() => onChange('role', RetreatRole.ORGANIZER_ONLY)}
-          />
-        </div>
-      </fieldset>
-
       <SliderField
         label={labels.guestsLabel}
         value={inputs.guests}
@@ -93,15 +66,38 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
         helper={variant.benchmarks.foodPerGuestPerDay[locale]}
         onChange={(v) => onChange('foodPerGuestPerDay', v)}
       />
-      {inputs.role !== RetreatRole.SOLO && (
-        <NumberField
-          label={labels.facilitatorFeeLabel}
-          value={inputs.facilitatorFee}
-          unitPrefix="€"
-          helper={variant.benchmarks.facilitatorFee[locale]}
-          onChange={(v) => onChange('facilitatorFee', v)}
-        />
-      )}
+      <div className={styles.facilitatorBlock}>
+        <label className={styles.hiresQuestion}>
+          <span className={styles.hiresQuestionLabel}>{labels.hiresFacilitatorsQuestion}</span>
+          <span className={styles.hiresToggle}>
+            <button
+              type="button"
+              className={`${styles.hiresButton} ${!inputs.hiresFacilitators ? styles.hiresButtonActive : ''}`}
+              onClick={() => onChange('hiresFacilitators', false)}
+              aria-pressed={!inputs.hiresFacilitators}
+            >
+              {labels.hiresFacilitatorsNo}
+            </button>
+            <button
+              type="button"
+              className={`${styles.hiresButton} ${inputs.hiresFacilitators ? styles.hiresButtonActive : ''}`}
+              onClick={() => onChange('hiresFacilitators', true)}
+              aria-pressed={inputs.hiresFacilitators}
+            >
+              {labels.hiresFacilitatorsYes}
+            </button>
+          </span>
+        </label>
+        {inputs.hiresFacilitators && (
+          <NumberField
+            label={labels.facilitatorFeeLabel}
+            value={inputs.facilitatorFee}
+            unitPrefix="€"
+            helper={variant.benchmarks.facilitatorFee[locale]}
+            onChange={(v) => onChange('facilitatorFee', v)}
+          />
+        )}
+      </div>
       <NumberField
         label={labels.marketingAndOtherLabel}
         value={inputs.marketingAndOther}
@@ -216,25 +212,3 @@ function NumberField({ label, value, unitPrefix, unitSuffix, step = 1, helper, o
   )
 }
 
-interface RoleOptionProps {
-  value: RetreatRole
-  current: RetreatRole
-  label: string
-  description: string
-  onSelect: () => void
-}
-
-function RoleOption({ value, current, label, description, onSelect }: RoleOptionProps) {
-  const active = value === current
-  return (
-    <button
-      type="button"
-      className={`${styles.roleOption} ${active ? styles.roleOptionActive : ''}`}
-      onClick={onSelect}
-      aria-pressed={active}
-    >
-      <span className={styles.roleOptionLabel}>{label}</span>
-      <span className={styles.roleOptionDescription}>{description}</span>
-    </button>
-  )
-}

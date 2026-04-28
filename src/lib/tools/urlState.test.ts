@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest'
 
-import { RetreatRole } from '@/constants/tools'
 import type { CalculatorInputs } from '@/types/tools'
 
 import { decodeCalculatorInputs, encodeCalculatorInputs } from './urlState'
@@ -17,7 +16,7 @@ const sample: CalculatorInputs = {
   insurance: 150,
   paymentFeePercent: 3,
   planningDays: 5,
-  role: RetreatRole.SOLO,
+  hiresFacilitators: false,
 }
 
 describe('encodeCalculatorInputs', () => {
@@ -71,16 +70,16 @@ describe('decodeCalculatorInputs', () => {
     expect(decoded.nights).toBe(sample.nights)
   })
 
-  it('encodes and decodes role', () => {
-    const params = encodeCalculatorInputs({ ...sample, role: RetreatRole.CO_LED })
-    expect(params.get('r')).toBe('co-led')
+  it('encodes and decodes hiresFacilitators=true', () => {
+    const params = encodeCalculatorInputs({ ...sample, hiresFacilitators: true })
+    expect(params.get('h')).toBe('1')
     const decoded = decodeCalculatorInputs(params, sample)
-    expect(decoded.role).toBe(RetreatRole.CO_LED)
+    expect(decoded.hiresFacilitators).toBe(true)
   })
 
-  it('falls back to default role for invalid value', () => {
-    const params = new URLSearchParams({ r: 'invalid' })
+  it('falls back to default hiresFacilitators for invalid value', () => {
+    const params = new URLSearchParams({ h: 'invalid' })
     const decoded = decodeCalculatorInputs(params, sample)
-    expect(decoded.role).toBe(sample.role)
+    expect(decoded.hiresFacilitators).toBe(sample.hiresFacilitators)
   })
 })

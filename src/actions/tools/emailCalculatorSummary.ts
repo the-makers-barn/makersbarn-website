@@ -3,7 +3,7 @@
 import * as postmark from 'postmark'
 import { z } from 'zod'
 
-import { ToolVariant, CALCULATOR_RATE_LIMIT, RetreatRole } from '@/constants/tools'
+import { ToolVariant, CALCULATOR_RATE_LIMIT } from '@/constants/tools'
 import { Language } from '@/types/common'
 import { createLogger, RateLimiter, getClientIdentifier, maskEmail, escapeHtml } from '@/lib'
 import { sendSlackMessage, SlackChannel } from '@/services/slack'
@@ -28,7 +28,7 @@ const InputsSchema = z.object({
   insurance: z.number().min(0).max(100_000),
   paymentFeePercent: z.number().min(0).max(100),
   planningDays: z.number().min(0).max(365),
-  role: z.nativeEnum(RetreatRole),
+  hiresFacilitators: z.boolean(),
 }) satisfies z.ZodType<CalculatorInputs>
 
 const ResultsSchema = z.object({
@@ -76,7 +76,7 @@ function buildHtmlSummary(data: EmailCalculatorSummaryData): string {
     <p>Variant: <strong>${escapeHtml(variant)}</strong></p>
     <h3>Inputs</h3>
     <ul>
-      <li>Your role: ${escapeHtml(inputs.role)}</li>
+      <li>Pays other facilitators: ${inputs.hiresFacilitators ? 'yes' : 'no'}</li>
       <li>Guests: ${inputs.guests}</li>
       <li>Nights: ${inputs.nights}</li>
       <li>Price per guest: ${formatEuro(inputs.pricePerGuest)}</li>
@@ -111,7 +111,7 @@ function buildAdminHtml(data: EmailCalculatorSummaryData): string {
     <ul>
       <li><strong>Email:</strong> ${escapeHtml(email)}</li>
       <li><strong>Variant:</strong> ${escapeHtml(variant)}</li>
-      <li><strong>Role:</strong> ${escapeHtml(inputs.role)}</li>
+      <li><strong>Pays other facilitators:</strong> ${inputs.hiresFacilitators ? 'yes' : 'no'}</li>
       <li><strong>Newsletter opt-in:</strong> ${newsletterOptIn ? 'yes' : 'no'}</li>
     </ul>
     <hr />

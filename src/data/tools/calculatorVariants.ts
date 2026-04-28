@@ -1,4 +1,4 @@
-import { RetreatRole, ToolVariant } from '@/constants/tools'
+import { ToolVariant } from '@/constants/tools'
 import { Language } from '@/types/common'
 import type { VariantConfig } from '@/types/tools'
 
@@ -10,7 +10,7 @@ const GENERIC: VariantConfig = {
     facilitatorFee: 2500, marketingAndOther: 800,
     travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 5,
-    role: RetreatRole.SOLO,
+    hiresFacilitators: false,
   },
   benchmarks: {
     pricePerGuest: {
@@ -94,7 +94,7 @@ const YOGA: VariantConfig = {
     facilitatorFee: 2500, marketingAndOther: 800,
     travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 5,
-    role: RetreatRole.SOLO,
+    hiresFacilitators: false,
   },
   benchmarks: {
     pricePerGuest: {
@@ -157,7 +157,7 @@ const WELLNESS: VariantConfig = {
     facilitatorFee: 4000, marketingAndOther: 1200,
     travel: 0, insurance: 200,
     paymentFeePercent: 3, planningDays: 7,
-    role: RetreatRole.SOLO,
+    hiresFacilitators: false,
   },
   benchmarks: {
     pricePerGuest: {
@@ -226,7 +226,7 @@ const MEDITATION: VariantConfig = {
     facilitatorFee: 2000, marketingAndOther: 600,
     travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 4,
-    role: RetreatRole.SOLO,
+    hiresFacilitators: false,
   },
   benchmarks: {
     pricePerGuest: {
@@ -295,7 +295,7 @@ const COACHING: VariantConfig = {
     facilitatorFee: 5000, marketingAndOther: 1500,
     travel: 0, insurance: 200,
     paymentFeePercent: 3, planningDays: 7,
-    role: RetreatRole.SOLO,
+    hiresFacilitators: false,
   },
   benchmarks: {
     pricePerGuest: {

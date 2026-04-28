@@ -726,13 +726,9 @@ export const nl: Dictionary = {
     },
     calculator: {
       inputs: {
-        roleQuestion: 'Hoe draai je deze retraite?',
-        roleSolo: 'Solo',
-        roleSoloDescription: 'Ik ben de enige begeleider én de organisator.',
-        roleCoLed: 'Co-begeleid',
-        roleCoLedDescription: 'Ik begeleid samen met een andere betaalde begeleider.',
-        roleOrganizerOnly: 'Alleen organisator',
-        roleOrganizerOnlyDescription: 'Ik huur de begeleiding in — ik begeleid zelf niet.',
+        hiresFacilitatorsQuestion: 'Betaal ik andere begeleiders? (co-begeleiders, gastdocenten of ingehuurde specialisten)',
+        hiresFacilitatorsYes: 'Ja',
+        hiresFacilitatorsNo: 'Nee',
         facilitatorFeeLabel: 'Vergoeding ingehuurde begeleider(s)',
         guestsLabel: 'Aantal gasten',
         guestsUnit: 'gasten',

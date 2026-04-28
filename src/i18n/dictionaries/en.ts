@@ -718,13 +718,9 @@ export const en: Dictionary = {
     },
     calculator: {
       inputs: {
-        roleQuestion: 'How are you running this retreat?',
-        roleSolo: 'Solo',
-        roleSoloDescription: 'I\'m the only facilitator and the organizer.',
-        roleCoLed: 'Co-led',
-        roleCoLedDescription: 'I\'m a facilitator working alongside another paid facilitator.',
-        roleOrganizerOnly: 'Organizer only',
-        roleOrganizerOnlyDescription: 'I\'m hiring the teaching team — I don\'t facilitate.',
+        hiresFacilitatorsQuestion: 'Do I pay other facilitators? (co-facilitators, guest teachers, or hired specialists)',
+        hiresFacilitatorsYes: 'Yes',
+        hiresFacilitatorsNo: 'No',
         facilitatorFeeLabel: 'Hired facilitator(s) fee',
         guestsLabel: 'Number of guests',
         guestsUnit: 'guests',

@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { RetreatRole } from '@/constants/tools'
 import { decodeCalculatorInputs, encodeCalculatorInputs } from '@/lib/tools'
 import type { CalculatorInputs, CalculatorResults } from '@/types/tools'
 
@@ -44,7 +43,7 @@ export function useCalculator(defaults: CalculatorInputs): UseCalculatorReturn {
     <K extends keyof CalculatorInputs>(key: K, value: CalculatorInputs[K]) => {
       setInputs((prev) => {
         const next = { ...prev, [key]: value }
-        if (key === 'role' && value !== RetreatRole.ORGANIZER_ONLY) {
+        if (key === 'hiresFacilitators' && value === false) {
           next.facilitatorFee = 0
         }
         return next
