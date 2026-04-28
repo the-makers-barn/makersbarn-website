@@ -17,7 +17,7 @@ export enum SlackChannel {
 
 const DEFAULT_CHANNEL = SlackChannel.USER_CONTACTS
 
-function escapeSlackMarkdown(text: string): string {
+export function escapeSlackMarkdown(text: string): string {
   return text.replace(/[*_~`<>]/g, (char) => `\\${char}`)
 }
 

@@ -42,9 +42,9 @@ export function generatePageMetadata({
   locale = DEFAULT_LANGUAGE,
   ogTitle,
 }: PageMetadataParams): Metadata {
-  // For home page, use just the site name. For other pages, use "Site Name | Page Name"
+  // For home page, use just the site name. For other pages, use keyword-first format "Page Name | Site Name"
   const isHomePage = path === '' || path === '/'
-  const fullTitle = isHomePage ? SITE_NAME : `${SITE_NAME} | ${title}`
+  const fullTitle = isHomePage ? SITE_NAME : `${title} | ${SITE_NAME}`
   // Use custom OG title if provided, otherwise use the page title
   const ogTitleFinal = ogTitle || fullTitle
   
@@ -62,6 +62,10 @@ export function generatePageMetadata({
     const normalizedAltPath = altPath === '/' ? '/' : altPath.replace(/\/$/, '')
     alternateLanguages[lang] = `${SITE_URL}${normalizedAltPath}`
   }
+  // x-default points to the EN URL as the canonical fallback
+  const enPath = getLocalizedPath(path, Language.EN)
+  const normalizedEnPath = enPath === '/' ? '/' : enPath.replace(/\/$/, '')
+  alternateLanguages['x-default'] = `${SITE_URL}${normalizedEnPath}`
 
   // Build Open Graph image with required properties for WhatsApp
   const ogImage = {
@@ -102,7 +106,7 @@ export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_NAME,
-    template: `${SITE_NAME} | %s`,
+    template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
   keywords: ['retreat', 'retraite', 'huren', 'rent', 'organize', 'organiseren', 'natuur', 'nature', 'yoga'],

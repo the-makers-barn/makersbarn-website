@@ -1,0 +1,64 @@
+.main {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.title {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-4xl);
+  margin: 0.5rem 0 1rem;
+}
+
+.intro {
+  color: var(--color-text-muted);
+  max-width: 40rem;
+  margin: 0 0 3rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.toolList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.toolCard {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(41, 75, 58, 0.04);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: background 0.15s ease;
+}
+
+.toolCard:hover {
+  background: rgba(41, 75, 58, 0.08);
+}
+
+.toolCardTitle {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+}
+
+.toolCardDescription {
+  color: var(--color-text-muted);
+}
+
+.toolCardCta {
+  color: var(--color-primary);
+  font-weight: 600;
+}

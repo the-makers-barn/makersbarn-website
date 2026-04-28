@@ -1,8 +1,19 @@
 import { MetadataRoute } from 'next'
 
-import { Route, Language  } from '@/types'
+import { Route, Language } from '@/types'
 import { SITE_CONFIG } from '@/constants/site'
 import { getLocalizedPath } from '@/lib/routing'
+
+const TOOL_ROUTE_PATHS = new Set<string>([
+  Route.TOOLS,
+  Route.RETREAT_PROFITABILITY_CALCULATOR,
+  Route.YOGA_RETREAT_PRICING_CALCULATOR,
+  Route.WELLNESS_RETREAT_PRICING_CALCULATOR,
+  Route.MEDITATION_RETREAT_PRICING_CALCULATOR,
+  Route.COACHING_RETREAT_PRICING_CALCULATOR,
+])
+
+const TOOL_LOCALES = [Language.EN, Language.NL, Language.DE]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url
@@ -89,13 +100,47 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.85,
     },
+    {
+      path: Route.TOOLS,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.RETREAT_PROFITABILITY_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.YOGA_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.WELLNESS_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.MEDITATION_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.COACHING_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
   ]
 
   // Generate entries for each route in each language
   const routes: MetadataRoute.Sitemap = []
   
   for (const pageRoute of pageRoutes) {
-    for (const locale of Object.values(Language) as Language[]) {
+    const localesForRoute = TOOL_ROUTE_PATHS.has(pageRoute.path)
+      ? TOOL_LOCALES
+      : (Object.values(Language) as Language[])
+
+    for (const locale of localesForRoute) {
       const localizedPath = getLocalizedPath(pageRoute.path, locale)
       routes.push({
         url: `${baseUrl}${localizedPath}`,

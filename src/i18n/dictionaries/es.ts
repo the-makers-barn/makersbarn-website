@@ -1,7 +1,11 @@
 import type { Dictionary } from '../types'
 
 /**
- * Spanish translations
+ * Spanish translations.
+ *
+ * NOT ACTIVELY MAINTAINED. When adding new dictionary keys, copy the EN strings
+ * verbatim into this file to satisfy the `Dictionary` type. Do not invest time
+ * in proper Spanish translations for new copy. (See CLAUDE.md > i18n.)
  */
 export const es: Dictionary = {
   nav: {
@@ -625,6 +629,9 @@ export const es: Dictionary = {
     secondaryCta: 'Hacer una pregunta',
     finalCtaPrimary: 'Pedir un presupuesto',
     finalCtaSecondary: 'Escríbenos',
+    toolCtaTitle: 'Pricing your retreat?',
+    toolCtaBody: 'Use our free calculator to plan your revenue, costs, profit margin, and breakeven occupancy.',
+    toolCtaLabel: 'Open the calculator',
   },
 
   comparisonTeaser: {
@@ -705,5 +712,100 @@ export const es: Dictionary = {
         'Si estás sopesando una pequeña granja privada frente a un hotel-retiro comercial, hemos escrito una comparación honesta a dos columnas. Capacidad, cocina, paisaje sonoro, lo que cambias y lo que ganas, sin discurso de ventas.',
       ctaLabel: 'Lee la comparación',
     },
+  },
+
+  tools: {
+    hub: {
+      metaTitle: 'Free Tools for Retreat Facilitators',
+      metaDescription: 'Free, ungated calculators and tools for retreat facilitators — pricing, profitability, and planning.',
+      eyebrow: 'Free Tools',
+      title: 'Tools for retreat facilitators',
+      intro: 'Plan, price, and run more profitable retreats. These tools are free, with no signup required, and work for any venue — including the one you\'re considering at MakersBarn.',
+      toolCardCta: 'Open the tool',
+    },
+    calculator: {
+      inputs: {
+        hiresFacilitatorsQuestion: 'Do I pay other facilitators? (co-facilitators, guest teachers, or hired specialists)',
+        hiresFacilitatorsYes: 'Yes',
+        hiresFacilitatorsNo: 'No',
+        facilitatorFeeLabel: 'Hired facilitator(s) fee',
+        revenueSectionLabel: 'Revenue',
+        revenueSectionDescription: 'How much you bring in.',
+        costsSectionLabel: 'Costs',
+        costsSectionDescription: 'What it costs you to run the retreat.',
+        guestsLabel: 'Number of guests',
+        guestsUnit: 'guests',
+        nightsLabel: 'Retreat length',
+        nightsUnit: 'nights',
+        pricePerGuestLabel: 'Price per guest',
+        venuePerNightLabel: 'Venue & accommodation per night',
+        venueUnit: '/ night',
+        foodPerGuestPerDayLabel: 'Food per guest per day',
+        foodUnit: '/ guest / day',
+        marketingAndOtherLabel: 'Marketing & other costs',
+        advancedLabel: 'Extra costs',
+        travelLabel: 'Travel & transport (yours)',
+        insuranceLabel: 'Insurance',
+        paymentFeePercentLabel: 'Payment processing fee',
+        planningDaysLabel: 'Planning days',
+        daysUnit: 'days',
+        resetLabel: 'Restore example values',
+      },
+      results: {
+        kicker: 'Net profit',
+        headlineSentence: 'At {price}/person with {guests} guests, you\'ll net {profit} — a {margin} margin.',
+        totalRevenue: 'Total revenue',
+        totalCosts: 'Total costs',
+        profitMargin: 'Profit margin',
+        profitPerWorkday: 'Profit per workday',
+        metricsLabel: 'Retreat economics summary',
+        breakevenSentence: 'You need at least {guests} guests at {price} to break even.',
+        breakevenImpossible: 'At this price, your variable costs exceed revenue per guest — you can\'t break even with more guests alone.',
+        breakdownLabels: {
+          venue: 'Venue',
+          food: 'Food',
+          facilitator: 'Facilitator',
+          marketing: 'Marketing & other',
+          travel: 'Travel',
+          insurance: 'Insurance',
+          fees: 'Payment fees',
+          profit: 'Profit',
+          barAriaLabel: 'Cost and profit breakdown',
+        },
+      },
+      email: {
+        heading: 'Email me my summary',
+        placeholder: 'your@email.com',
+        submit: 'Email summary',
+        sending: 'Sending…',
+        success: 'Sent! Check your inbox.',
+        error: 'Could not send right now. Please try again.',
+        optInLabel: 'Send me occasional retreat-pricing tips (no spam, easy unsubscribe)',
+      },
+      share: {
+        heading: 'Share these numbers',
+        intro: 'Send your draft to a co-facilitator, partner, or accountant to gut-check your assumptions.',
+        copy: 'Copy link',
+        copied: 'Copied!',
+        copyFailed: 'Could not copy link',
+        whatsapp: 'Share on WhatsApp',
+        whatsappMessage: 'These are my retreat numbers from the MakersBarn pricing calculator:',
+      },
+      makersbarnCta: {
+        title: 'Considering MakersBarn for your retreat?',
+        body: 'We tailor pricing to your group size and dates — request a custom quote. The numbers above stay private.',
+        linkLabel: 'Request a custom quote',
+      },
+    },
+    howTo: {
+      heading: 'How to use this calculator',
+    },
+    related: {
+      heading: 'Related calculators',
+    },
+    faq: {
+      heading: 'Frequently asked questions',
+    },
+    translationNotice: 'These tools are available in English, Dutch, and German. Read in English while we expand to more languages.',
   },
 } as const

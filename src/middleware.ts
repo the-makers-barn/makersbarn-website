@@ -108,6 +108,12 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
     '/wellness-detox-retreats',
     '/circle-retreats',
     '/photography-workshops',
+    '/tools',
+    '/tools/retreat-profitability-calculator',
+    '/tools/yoga-retreat-pricing-calculator',
+    '/tools/wellness-retreat-pricing-calculator',
+    '/tools/meditation-retreat-pricing-calculator',
+    '/tools/coaching-retreat-pricing-calculator',
   ]
   
   if (knownRoutes.includes(pathWithoutLocale)) {

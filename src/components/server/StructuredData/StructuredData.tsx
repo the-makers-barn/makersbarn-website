@@ -5,6 +5,9 @@ import type {
   BreadcrumbListSchema,
   ContactPageSchema,
   WebPageSchema,
+  WebApplicationSchema,
+  HowToSchema,
+  FaqPageSchema,
   EventVenueSchema,
   CollectionPageSchema,
 } from '@/lib/structuredData'
@@ -16,6 +19,9 @@ type StructuredDataSchema =
   | BreadcrumbListSchema
   | ContactPageSchema
   | WebPageSchema
+  | WebApplicationSchema
+  | HowToSchema
+  | FaqPageSchema
   | EventVenueSchema
   | CollectionPageSchema
   | Record<string, unknown>

@@ -19,6 +19,12 @@ export enum Route {
   WELLNESS_DETOX_RETREATS = '/wellness-detox-retreats',
   CIRCLE_RETREATS = '/circle-retreats',
   PHOTOGRAPHY_WORKSHOPS = '/photography-workshops',
+  TOOLS = '/tools',
+  RETREAT_PROFITABILITY_CALCULATOR = '/tools/retreat-profitability-calculator',
+  YOGA_RETREAT_PRICING_CALCULATOR = '/tools/yoga-retreat-pricing-calculator',
+  WELLNESS_RETREAT_PRICING_CALCULATOR = '/tools/wellness-retreat-pricing-calculator',
+  MEDITATION_RETREAT_PRICING_CALCULATOR = '/tools/meditation-retreat-pricing-calculator',
+  COACHING_RETREAT_PRICING_CALCULATOR = '/tools/coaching-retreat-pricing-calculator',
 }
 
 export interface NavLink {

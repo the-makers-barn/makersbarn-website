@@ -25,6 +25,9 @@ lerna-debug.log*
 # Local files
 *.local
 
+# Superpowers brainstorming companion
+.superpowers/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

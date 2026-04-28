@@ -482,3 +482,14 @@
   background-color: rgba(41, 75, 58, 0.06);
   border-color: rgba(41, 75, 58, 0.7);
 }
+
+.toolCta {
+  background: rgba(184, 137, 74, 0.06);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.toolCtaInner { display: grid; gap: 1rem; max-width: 36rem; }
+.toolCtaTitle { font-family: var(--font-playfair); margin: 0; font-size: var(--font-size-2xl); }
+.toolCtaBody { color: var(--color-text-muted); margin: 0; line-height: var(--line-height-relaxed); }
