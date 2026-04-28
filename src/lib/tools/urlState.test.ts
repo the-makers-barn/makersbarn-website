@@ -16,7 +16,7 @@ const sample: CalculatorInputs = {
   insurance: 150,
   paymentFeePercent: 3,
   planningDays: 5,
-  hiresFacilitators: false,
+  hiresFacilitators: true,
 }
 
 describe('encodeCalculatorInputs', () => {
@@ -70,16 +70,23 @@ describe('decodeCalculatorInputs', () => {
     expect(decoded.nights).toBe(sample.nights)
   })
 
-  it('encodes and decodes hiresFacilitators=true', () => {
-    const params = encodeCalculatorInputs({ ...sample, hiresFacilitators: true })
-    expect(params.get('h')).toBe('1')
+  it('encodes and decodes hiresFacilitators=false', () => {
+    const params = encodeCalculatorInputs({ ...sample, hiresFacilitators: false, facilitatorFee: 0 })
+    expect(params.get('h')).toBe('0')
     const decoded = decodeCalculatorInputs(params, sample)
-    expect(decoded.hiresFacilitators).toBe(true)
+    expect(decoded.hiresFacilitators).toBe(false)
   })
 
   it('falls back to default hiresFacilitators for invalid value', () => {
     const params = new URLSearchParams({ h: 'invalid' })
     const decoded = decodeCalculatorInputs(params, sample)
     expect(decoded.hiresFacilitators).toBe(sample.hiresFacilitators)
+  })
+
+  it('normalizes facilitatorFee to 0 when hiresFacilitators is decoded as false', () => {
+    const params = new URLSearchParams({ h: '0', ff: '2500' })
+    const decoded = decodeCalculatorInputs(params, sample)
+    expect(decoded.hiresFacilitators).toBe(false)
+    expect(decoded.facilitatorFee).toBe(0)
   })
 })
