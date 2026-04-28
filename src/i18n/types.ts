@@ -634,6 +634,111 @@ export interface RetreatsHubTranslations {
 }
 
 /**
+ * Tools section — calculator chrome translations
+ */
+export interface ToolsCalculatorInputsTranslations {
+  guestsLabel: string
+  guestsUnit: string
+  nightsLabel: string
+  nightsUnit: string
+  pricePerGuestLabel: string
+  venueAccommodationLabel: string
+  foodPerGuestPerDayLabel: string
+  foodUnit: string
+  facilitatorFeeLabel: string
+  marketingAndOtherLabel: string
+  advancedLabel: string
+  coFacilitatorsLabel: string
+  travelLabel: string
+  insuranceLabel: string
+  paymentFeePercentLabel: string
+  planningDaysLabel: string
+  daysUnit: string
+  resetLabel: string
+}
+
+export interface ToolsCalculatorResultsTranslations {
+  kicker: string
+  headlineSentence: string
+  totalRevenue: string
+  totalCosts: string
+  profitMargin: string
+  profitPerWorkday: string
+  breakevenSentence: string
+  breakevenImpossible: string
+  breakdownLabels: {
+    venue: string
+    food: string
+    facilitator: string
+    marketing: string
+    coFacilitators: string
+    travel: string
+    insurance: string
+    fees: string
+    profit: string
+    barAriaLabel: string
+  }
+}
+
+export interface ToolsCalculatorEmailTranslations {
+  heading: string
+  placeholder: string
+  submit: string
+  sending: string
+  success: string
+  error: string
+  optInLabel: string
+}
+
+export interface ToolsCalculatorShareTranslations {
+  copy: string
+  copied: string
+}
+
+export interface ToolsCalculatorMakersBarnCtaTranslations {
+  title: string
+  body: string
+  linkLabel: string
+}
+
+export interface ToolsCalculatorTranslations {
+  inputs: ToolsCalculatorInputsTranslations
+  results: ToolsCalculatorResultsTranslations
+  email: ToolsCalculatorEmailTranslations
+  share: ToolsCalculatorShareTranslations
+  makersbarnCta: ToolsCalculatorMakersBarnCtaTranslations
+}
+
+export interface ToolsHubTranslations {
+  metaTitle: string
+  metaDescription: string
+  eyebrow: string
+  title: string
+  intro: string
+  toolCardCta: string
+}
+
+export interface ToolsHowToTranslations {
+  heading: string
+}
+
+export interface ToolsRelatedTranslations {
+  heading: string
+}
+
+export interface ToolsFaqTranslations {
+  heading: string
+}
+
+export interface ToolsTranslations {
+  hub: ToolsHubTranslations
+  calculator: ToolsCalculatorTranslations
+  howTo: ToolsHowToTranslations
+  related: ToolsRelatedTranslations
+  faq: ToolsFaqTranslations
+}
+
+/**
  * Complete dictionary structure for a single language
  */
 export interface Dictionary {
@@ -658,6 +763,7 @@ export interface Dictionary {
   silos: SilosChromeTranslations
   retreats: RetreatsHubTranslations
   comparisonTeaser: ComparisonTeaserTranslations
+  tools: ToolsTranslations
 }
 
 /**
