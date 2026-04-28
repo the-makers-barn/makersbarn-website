@@ -1,7 +1,11 @@
 import type { Dictionary } from '../types'
 
 /**
- * Spanish translations
+ * Spanish translations.
+ *
+ * NOT ACTIVELY MAINTAINED. When adding new dictionary keys, copy the EN strings
+ * verbatim into this file to satisfy the `Dictionary` type. Do not invest time
+ * in proper Spanish translations for new copy. (See CLAUDE.md > i18n.)
  */
 export const es: Dictionary = {
   nav: {

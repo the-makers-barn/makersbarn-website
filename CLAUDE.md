@@ -48,8 +48,10 @@ src/
 
 ### Internationalization (i18n)
 
-Supports English (EN) and Dutch (NL) languages:
-- **Dictionaries**: Translation files in `src/i18n/dictionaries/` (en.ts, nl.ts)
+Supports five locales (EN, NL, DE, ES, FR), but only EN/NL/DE are actively maintained:
+- **Active locales**: EN, NL, DE — write proper translations for new copy.
+- **Fallback locales**: ES and FR are NOT actively maintained. When adding new dictionary keys, copy the EN strings verbatim into `es.ts` and `fr.ts` to satisfy the `Dictionary` type. Do not invest time in proper translations for those locales.
+- **Dictionaries**: Translation files in `src/i18n/dictionaries/` (en.ts, nl.ts, de.ts, es.ts, fr.ts)
 - **Language Detection**: Domain-based detection in middleware, stored in cookie
 - **Context Provider**: `LanguageContext` for client-side language switching
 - **Server Utilities**: `getServerTranslations()` for server components
