@@ -644,6 +644,10 @@ export interface ToolsCalculatorInputsTranslations {
   hiresFacilitatorsYes: string
   hiresFacilitatorsNo: string
   facilitatorFeeLabel: string
+  revenueSectionLabel: string
+  revenueSectionDescription: string
+  costsSectionLabel: string
+  costsSectionDescription: string
   guestsLabel: string
   guestsUnit: string
   nightsLabel: string

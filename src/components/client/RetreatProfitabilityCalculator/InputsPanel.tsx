@@ -22,85 +22,97 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
 
   return (
     <div className={styles.inputsPanel}>
-      <SliderField
-        label={labels.guestsLabel}
-        value={inputs.guests}
-        min={CALCULATOR_INPUT_RANGES.GUESTS_MIN}
-        max={CALCULATOR_INPUT_RANGES.GUESTS_MAX}
-        step={1}
-        unitSuffix={labels.guestsUnit}
-        onChange={(v) => onChange('guests', v)}
-      />
-      <SliderField
-        label={labels.nightsLabel}
-        value={inputs.nights}
-        min={CALCULATOR_INPUT_RANGES.NIGHTS_MIN}
-        max={CALCULATOR_INPUT_RANGES.NIGHTS_MAX}
-        step={1}
-        unitSuffix={labels.nightsUnit}
-        onChange={(v) => onChange('nights', v)}
-      />
-      <SliderField
-        label={labels.pricePerGuestLabel}
-        value={inputs.pricePerGuest}
-        min={CALCULATOR_INPUT_RANGES.PRICE_PER_GUEST_MIN}
-        max={CALCULATOR_INPUT_RANGES.PRICE_PER_GUEST_MAX}
-        step={50}
-        unitPrefix="€"
-        helper={variant.benchmarks.pricePerGuest[locale]}
-        onChange={(v) => onChange('pricePerGuest', v)}
-      />
-      <NumberField
-        label={labels.venuePerNightLabel}
-        value={inputs.venuePerNight}
-        unitPrefix="€"
-        unitSuffix={labels.venueUnit}
-        helper={variant.benchmarks.venuePerNight[locale]}
-        onChange={(v) => onChange('venuePerNight', v)}
-      />
-      <NumberField
-        label={labels.foodPerGuestPerDayLabel}
-        value={inputs.foodPerGuestPerDay}
-        unitPrefix="€"
-        unitSuffix={labels.foodUnit}
-        helper={variant.benchmarks.foodPerGuestPerDay[locale]}
-        onChange={(v) => onChange('foodPerGuestPerDay', v)}
-      />
-      <div className={styles.facilitatorBlock}>
-        <div className={styles.hiresQuestion}>
-          <span className={styles.hiresQuestionLabel}>{labels.hiresFacilitatorsQuestion}</span>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={inputs.hiresFacilitators}
-            className={`${styles.toggleSwitch} ${inputs.hiresFacilitators ? styles.toggleSwitchOn : ''}`}
-            onClick={() => onChange('hiresFacilitators', !inputs.hiresFacilitators)}
-          >
-            <span aria-hidden="true" className={styles.toggleSwitchThumb} />
-            <span className={styles.toggleSwitchSrLabel}>
-              {inputs.hiresFacilitators ? labels.hiresFacilitatorsYes : labels.hiresFacilitatorsNo}
-            </span>
-          </button>
-        </div>
-        {inputs.hiresFacilitators && (
-          <NumberField
-            label={labels.facilitatorFeeLabel}
-            value={inputs.facilitatorFee}
-            unitPrefix="€"
-            helper={variant.benchmarks.facilitatorFee[locale]}
-            onChange={(v) => onChange('facilitatorFee', v)}
-          />
-        )}
-      </div>
-      <NumberField
-        label={labels.marketingAndOtherLabel}
-        value={inputs.marketingAndOther}
-        unitPrefix="€"
-        helper={variant.benchmarks.marketingAndOther[locale]}
-        onChange={(v) => onChange('marketingAndOther', v)}
-      />
+      <section className={`${styles.inputSection} ${styles.inputSectionRevenue}`}>
+        <header className={styles.inputSectionHeader}>
+          <h3 className={styles.inputSectionTitle}>{labels.revenueSectionLabel}</h3>
+          <p className={styles.inputSectionDescription}>{labels.revenueSectionDescription}</p>
+        </header>
+        <SliderField
+          label={labels.guestsLabel}
+          value={inputs.guests}
+          min={CALCULATOR_INPUT_RANGES.GUESTS_MIN}
+          max={CALCULATOR_INPUT_RANGES.GUESTS_MAX}
+          step={1}
+          unitSuffix={labels.guestsUnit}
+          onChange={(v) => onChange('guests', v)}
+        />
+        <SliderField
+          label={labels.nightsLabel}
+          value={inputs.nights}
+          min={CALCULATOR_INPUT_RANGES.NIGHTS_MIN}
+          max={CALCULATOR_INPUT_RANGES.NIGHTS_MAX}
+          step={1}
+          unitSuffix={labels.nightsUnit}
+          onChange={(v) => onChange('nights', v)}
+        />
+        <SliderField
+          label={labels.pricePerGuestLabel}
+          value={inputs.pricePerGuest}
+          min={CALCULATOR_INPUT_RANGES.PRICE_PER_GUEST_MIN}
+          max={CALCULATOR_INPUT_RANGES.PRICE_PER_GUEST_MAX}
+          step={50}
+          unitPrefix="€"
+          helper={variant.benchmarks.pricePerGuest[locale]}
+          onChange={(v) => onChange('pricePerGuest', v)}
+        />
+      </section>
 
-      <AdvancedDisclosure label={labels.advancedLabel}>
+      <section className={`${styles.inputSection} ${styles.inputSectionCosts}`}>
+        <header className={styles.inputSectionHeader}>
+          <h3 className={styles.inputSectionTitle}>{labels.costsSectionLabel}</h3>
+          <p className={styles.inputSectionDescription}>{labels.costsSectionDescription}</p>
+        </header>
+        <NumberField
+          label={labels.venuePerNightLabel}
+          value={inputs.venuePerNight}
+          unitPrefix="€"
+          unitSuffix={labels.venueUnit}
+          helper={variant.benchmarks.venuePerNight[locale]}
+          onChange={(v) => onChange('venuePerNight', v)}
+        />
+        <NumberField
+          label={labels.foodPerGuestPerDayLabel}
+          value={inputs.foodPerGuestPerDay}
+          unitPrefix="€"
+          unitSuffix={labels.foodUnit}
+          helper={variant.benchmarks.foodPerGuestPerDay[locale]}
+          onChange={(v) => onChange('foodPerGuestPerDay', v)}
+        />
+        <div className={styles.facilitatorBlock}>
+          <div className={styles.hiresQuestion}>
+            <span className={styles.hiresQuestionLabel}>{labels.hiresFacilitatorsQuestion}</span>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={inputs.hiresFacilitators}
+              className={`${styles.toggleSwitch} ${inputs.hiresFacilitators ? styles.toggleSwitchOn : ''}`}
+              onClick={() => onChange('hiresFacilitators', !inputs.hiresFacilitators)}
+            >
+              <span aria-hidden="true" className={styles.toggleSwitchThumb} />
+              <span className={styles.toggleSwitchSrLabel}>
+                {inputs.hiresFacilitators ? labels.hiresFacilitatorsYes : labels.hiresFacilitatorsNo}
+              </span>
+            </button>
+          </div>
+          {inputs.hiresFacilitators && (
+            <NumberField
+              label={labels.facilitatorFeeLabel}
+              value={inputs.facilitatorFee}
+              unitPrefix="€"
+              helper={variant.benchmarks.facilitatorFee[locale]}
+              onChange={(v) => onChange('facilitatorFee', v)}
+            />
+          )}
+        </div>
+        <NumberField
+          label={labels.marketingAndOtherLabel}
+          value={inputs.marketingAndOther}
+          unitPrefix="€"
+          helper={variant.benchmarks.marketingAndOther[locale]}
+          onChange={(v) => onChange('marketingAndOther', v)}
+        />
+
+        <AdvancedDisclosure label={labels.advancedLabel}>
         <NumberField
           label={labels.travelLabel}
           value={inputs.travel}
@@ -128,6 +140,7 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
           onChange={(v) => onChange('planningDays', v)}
         />
       </AdvancedDisclosure>
+      </section>
 
       <button type="button" className={styles.resetButton} onClick={onReset}>
         {labels.resetLabel}

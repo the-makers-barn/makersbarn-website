@@ -732,6 +732,10 @@ export const fr: Dictionary = {
     },
     calculator: {
       inputs: {
+        revenueSectionLabel: 'Revenue',
+        revenueSectionDescription: 'How much you bring in.',
+        costsSectionLabel: 'Costs',
+        costsSectionDescription: 'What it costs you to run the retreat.',
         guestsLabel: 'Number of guests',
         guestsUnit: 'guests',
         nightsLabel: 'Retreat length',
@@ -746,7 +750,7 @@ export const fr: Dictionary = {
         hiresFacilitatorsNo: 'No',
         facilitatorFeeLabel: 'Hired facilitator(s) fee',
         marketingAndOtherLabel: 'Marketing & other costs',
-        advancedLabel: 'Advanced costs',
+        advancedLabel: 'Extra costs',
         travelLabel: 'Travel & transport (yours)',
         insuranceLabel: 'Insurance',
         paymentFeePercentLabel: 'Payment processing fee',

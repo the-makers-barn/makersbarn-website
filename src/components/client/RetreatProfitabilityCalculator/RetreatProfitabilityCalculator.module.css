@@ -35,7 +35,46 @@
   gap: 1.25rem;
 }
 
-.inputsPanel { display: grid; gap: 1.25rem; }
+.inputsPanel { display: grid; gap: 1.5rem; }
+
+.inputSection {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+
+.inputSectionRevenue {
+  background: rgba(41, 75, 58, 0.04);
+  border-color: rgba(41, 75, 58, 0.15);
+}
+
+.inputSectionCosts {
+  background: rgba(184, 137, 74, 0.04);
+  border-color: rgba(184, 137, 74, 0.18);
+}
+
+.inputSectionHeader {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.inputSectionTitle {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.inputSectionDescription {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}
 
 .field { display: grid; gap: 0.5rem; }
 
