@@ -67,27 +67,21 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
         onChange={(v) => onChange('foodPerGuestPerDay', v)}
       />
       <div className={styles.facilitatorBlock}>
-        <label className={styles.hiresQuestion}>
+        <div className={styles.hiresQuestion}>
           <span className={styles.hiresQuestionLabel}>{labels.hiresFacilitatorsQuestion}</span>
-          <span className={styles.hiresToggle}>
-            <button
-              type="button"
-              className={`${styles.hiresButton} ${!inputs.hiresFacilitators ? styles.hiresButtonActive : ''}`}
-              onClick={() => onChange('hiresFacilitators', false)}
-              aria-pressed={!inputs.hiresFacilitators}
-            >
-              {labels.hiresFacilitatorsNo}
-            </button>
-            <button
-              type="button"
-              className={`${styles.hiresButton} ${inputs.hiresFacilitators ? styles.hiresButtonActive : ''}`}
-              onClick={() => onChange('hiresFacilitators', true)}
-              aria-pressed={inputs.hiresFacilitators}
-            >
-              {labels.hiresFacilitatorsYes}
-            </button>
-          </span>
-        </label>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={inputs.hiresFacilitators}
+            className={`${styles.toggleSwitch} ${inputs.hiresFacilitators ? styles.toggleSwitchOn : ''}`}
+            onClick={() => onChange('hiresFacilitators', !inputs.hiresFacilitators)}
+          >
+            <span aria-hidden="true" className={styles.toggleSwitchThumb} />
+            <span className={styles.toggleSwitchSrLabel}>
+              {inputs.hiresFacilitators ? labels.hiresFacilitatorsYes : labels.hiresFacilitatorsNo}
+            </span>
+          </button>
+        </div>
         {inputs.hiresFacilitators && (
           <NumberField
             label={labels.facilitatorFeeLabel}

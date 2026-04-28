@@ -341,28 +341,53 @@
   min-width: 0;
 }
 
-.hiresToggle {
-  display: inline-flex;
-  background: rgba(0, 0, 0, 0.06);
-  border-radius: 0.5rem;
-  padding: 2px;
-}
-
-.hiresButton {
-  background: transparent;
+.toggleSwitch {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
   border: 0;
-  border-radius: 0.4rem;
-  padding: 0.4rem 0.9rem;
-  font: inherit;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--color-text-muted);
+  padding: 0;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background-color 0.18s ease;
 }
 
-.hiresButtonActive {
+.toggleSwitch:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.toggleSwitchOn {
   background: var(--color-primary);
-  color: #fff;
+}
+
+.toggleSwitchThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease;
+}
+
+.toggleSwitchOn .toggleSwitchThumb {
+  transform: translateX(22px);
+}
+
+.toggleSwitchSrLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
