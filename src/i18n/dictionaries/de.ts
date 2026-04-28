@@ -730,7 +730,7 @@ export const de: Dictionary = {
         costsSectionLabel: 'Costs',
         costsSectionDescription: 'What it costs you to run the retreat.',
         guestsLabel: 'Number of guests',
-        guestsUnit: 'guests',
+        guestsUnit: 'Gäste',
         nightsLabel: 'Retreat length',
         nightsUnit: 'nights',
         pricePerGuestLabel: 'Price per guest',
@@ -802,5 +802,6 @@ export const de: Dictionary = {
     faq: {
       heading: 'Frequently asked questions',
     },
+    translationNotice: 'Diese Tools sind auf Englisch, Niederländisch und Deutsch verfügbar. Lies sie auf Englisch, während wir weitere Sprachen ergänzen.',
   },
 } as const

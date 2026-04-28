@@ -9,6 +9,8 @@ import type { Dictionary } from '@/i18n/types'
 
 import styles from './ToolPageShell.module.css'
 
+const FULL_TRANSLATION_LOCALES = new Set([Language.EN, Language.NL, Language.DE])
+
 interface ToolPageShellProps {
   variant: ToolVariant
   locale: Language
@@ -28,6 +30,10 @@ export function ToolPageShell({ variant, locale, t, calculator }: ToolPageShellP
         <p className={styles.intro}>{config.copy.heroIntro[locale]}</p>
       </header>
 
+      {!FULL_TRANSLATION_LOCALES.has(locale) && (
+        <div className={styles.translationNotice}>{t.tools.translationNotice}</div>
+      )}
+
       {calculator}
 
       <section className={styles.howTo} aria-labelledby="how-to">
@@ -35,18 +41,18 @@ export function ToolPageShell({ variant, locale, t, calculator }: ToolPageShellP
           {t.tools.howTo.heading}
         </h2>
         <ol className={styles.howToList}>
-          {content.howToSteps.map((step, i) => (
-            <li key={i}>{step[locale]}</li>
+          {content.howToSteps.map((step) => (
+            <li key={step[Language.EN]}>{step[locale]}</li>
           ))}
         </ol>
       </section>
 
       <section className={styles.guide}>
-        {content.guideSections.map((section, i) => (
-          <div key={i} className={styles.guideSection}>
+        {content.guideSections.map((section) => (
+          <div key={section.heading[Language.EN]} className={styles.guideSection}>
             <h3 className={styles.guideHeading}>{section.heading[locale]}</h3>
-            {section.body.map((paragraph, j) => (
-              <p key={j} className={styles.guideParagraph}>
+            {section.body.map((paragraph) => (
+              <p key={paragraph[Language.EN]} className={styles.guideParagraph}>
                 {paragraph[locale]}
               </p>
             ))}
@@ -59,8 +65,8 @@ export function ToolPageShell({ variant, locale, t, calculator }: ToolPageShellP
           {t.tools.faq.heading}
         </h2>
         <div className={styles.faqList}>
-          {content.faq.map((entry, i) => (
-            <details key={i} className={styles.faqItem}>
+          {content.faq.map((entry) => (
+            <details key={entry.question[Language.EN]} className={styles.faqItem}>
               <summary className={styles.faqQuestion}>{entry.question[locale]}</summary>
               <p className={styles.faqAnswer}>{entry.answer[locale]}</p>
             </details>

@@ -30,7 +30,7 @@ const GENERIC: VariantConfig = {
     facilitatorFee: {
       [Language.EN]: 'Total fees paid out to all hired facilitators or guest teachers. European facilitator day rates run €600–€1,500/day; specialist teachers €1,500–€3,000/day',
       [Language.NL]: 'Totale vergoedingen voor alle ingehuurde begeleiders of gastdocenten. Europese dagtarieven €600–€1.500/dag; specialistische docenten €1.500–€3.000/dag',
-      [Language.DE]: 'Total fees paid out to all hired facilitators or guest teachers. European facilitator day rates run €600–€1,500/day; specialist teachers €1,500–€3,000/day',
+      [Language.DE]: 'Gesamthonorare aller gemieteten Facilitator oder Gastlehrer. Europäische Facilitator-Tagessätze liegen bei €600–€1.500/Tag; Spezialisten €1.500–€3.000/Tag',
       [Language.ES]: 'Total fees paid out to all hired facilitators or guest teachers. European facilitator day rates run €600–€1,500/day; specialist teachers €1,500–€3,000/day',
       [Language.FR]: 'Total fees paid out to all hired facilitators or guest teachers. European facilitator day rates run €600–€1,500/day; specialist teachers €1,500–€3,000/day',
     },
@@ -44,7 +44,7 @@ const GENERIC: VariantConfig = {
     venuePerNight: {
       [Language.EN]: 'Per-night rate for venue + accommodation. Dutch retreat venues commonly run €500–€1,200 per night for groups of 10–14',
       [Language.NL]: 'Nachtprijs voor locatie + accommodatie. Nederlandse retraiteplekken kosten doorgaans €500–€1.200 per nacht voor groepen van 10–14',
-      [Language.DE]: 'Per-night rate for venue + accommodation. Dutch retreat venues commonly run €500–€1,200 per night for groups of 10–14',
+      [Language.DE]: 'Übernachtungspreis für Location + Unterkunft. Niederländische Retreat-Locations liegen typischerweise bei €500–€1.200 pro Nacht für Gruppen von 10–14',
       [Language.ES]: 'Per-night rate for venue + accommodation. Dutch retreat venues commonly run €500–€1,200 per night for groups of 10–14',
       [Language.FR]: 'Per-night rate for venue + accommodation. Dutch retreat venues commonly run €500–€1,200 per night for groups of 10–14',
     },
@@ -110,7 +110,7 @@ const YOGA: VariantConfig = {
     venuePerNight: {
       [Language.EN]: 'Per-night rate for a yoga venue + accommodation. Simple retreat lodges €400–€700, mid-range €700–€1,100, premium country estates €1,100+',
       [Language.NL]: 'Nachtprijs voor yogalocatie + accommodatie. Eenvoudige retraitehuizen €400–€700, middenklasse €700–€1.100, premium buitenplaatsen €1.100+',
-      [Language.DE]: 'Per-night rate for a yoga venue + accommodation. Simple retreat lodges €400–€700, mid-range €700–€1,100, premium country estates €1,100+',
+      [Language.DE]: 'Übernachtungspreis für eine Yoga-Location + Unterkunft. Einfache Retreat-Häuser €400–€700, Mittelklasse €700–€1.100, Premium-Landgüter ab €1.100',
       [Language.ES]: 'Per-night rate for a yoga venue + accommodation. Simple retreat lodges €400–€700, mid-range €700–€1,100, premium country estates €1,100+',
       [Language.FR]: 'Per-night rate for a yoga venue + accommodation. Simple retreat lodges €400–€700, mid-range €700–€1,100, premium country estates €1,100+',
     },
@@ -179,7 +179,7 @@ const WELLNESS: VariantConfig = {
     venuePerNight: {
       [Language.EN]: 'Wellness venues with spa or treatment-room amenities run €900–€1,500 per night mid-range, €1,500–€2,200+ for premium properties',
       [Language.NL]: 'Wellness-locaties met spa of behandelfaciliteiten kosten €900–€1.500 per nacht middenklasse, €1.500–€2.200+ voor premium-eigendommen',
-      [Language.DE]: 'Wellness venues with spa or treatment-room amenities run €900–€1,500 per night mid-range, €1,500–€2,200+ for premium properties',
+      [Language.DE]: 'Wellness-Locations mit Spa- oder Behandlungsräumen liegen bei €900–€1.500/Nacht (Mittelklasse), €1.500–€2.200+ für Premium-Anwesen',
       [Language.ES]: 'Wellness venues with spa or treatment-room amenities run €900–€1,500 per night mid-range, €1,500–€2,200+ for premium properties',
       [Language.FR]: 'Wellness venues with spa or treatment-room amenities run €900–€1,500 per night mid-range, €1,500–€2,200+ for premium properties',
     },
@@ -248,7 +248,7 @@ const MEDITATION: VariantConfig = {
     venuePerNight: {
       [Language.EN]: 'Dharma centers and simpler retreat venues run €400–€800 per night for groups of 12–16. Larger residential centers can sit higher',
       [Language.NL]: 'Dharma-centra en eenvoudige retraitelocaties kosten €400–€800 per nacht voor groepen van 12–16. Grotere woon-retraitecentra zitten hoger',
-      [Language.DE]: 'Dharma centers and simpler retreat venues run €400–€800 per night for groups of 12–16. Larger residential centers can sit higher',
+      [Language.DE]: 'Dharma-Zentren und einfachere Retreat-Locations kosten €400–€800 pro Nacht für Gruppen von 12–16. Größere Wohnzentren entsprechend höher',
       [Language.ES]: 'Dharma centers and simpler retreat venues run €400–€800 per night for groups of 12–16. Larger residential centers can sit higher',
       [Language.FR]: 'Dharma centers and simpler retreat venues run €400–€800 per night for groups of 12–16. Larger residential centers can sit higher',
     },
@@ -315,7 +315,7 @@ const COACHING: VariantConfig = {
     facilitatorFee: {
       [Language.EN]: 'Total fees for senior coaches you hire — €1,500–€3,000/day per coach',
       [Language.NL]: 'Totale vergoedingen voor senior coaches die je inhuurt — €1.500–€3.000/dag per coach',
-      [Language.DE]: 'Total fees for senior coaches you hire — €1,500–€3,000/day per coach',
+      [Language.DE]: 'Gesamthonorare für gebuchte Senior-Coaches — €1.500–€3.000/Tag pro Coach',
       [Language.ES]: 'Total fees for senior coaches you hire — €1,500–€3,000/day per coach',
       [Language.FR]: 'Total fees for senior coaches you hire — €1,500–€3,000/day per coach',
     },
@@ -323,7 +323,7 @@ const COACHING: VariantConfig = {
     venuePerNight: {
       [Language.EN]: 'Boutique venues for 4–8 guest coaching intensives commonly run €900–€1,800 per night; executive-grade properties run €1,800+',
       [Language.NL]: 'Boutique-locaties voor coaching-intensives van 4–8 gasten kosten doorgaans €900–€1.800 per nacht; executive-klasse vanaf €1.800',
-      [Language.DE]: 'Boutique venues for 4–8 guest coaching intensives commonly run €900–€1,800 per night; executive-grade properties run €1,800+',
+      [Language.DE]: 'Boutique-Locations für 4–8 Coaching-Intensivs liegen typischerweise bei €900–€1.800 pro Nacht; Executive-Anwesen ab €1.800',
       [Language.ES]: 'Boutique venues for 4–8 guest coaching intensives commonly run €900–€1,800 per night; executive-grade properties run €1,800+',
       [Language.FR]: 'Boutique venues for 4–8 guest coaching intensives commonly run €900–€1,800 per night; executive-grade properties run €1,800+',
     },

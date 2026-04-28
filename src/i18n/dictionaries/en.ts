@@ -799,5 +799,6 @@ export const en: Dictionary = {
     faq: {
       heading: 'Frequently asked questions',
     },
+    translationNotice: 'These tools are available in English, Dutch, and German. Read in English while we expand to more languages.',
   },
 } as const
