@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { StructuredData } from '@/components/server'
 import { generatePageMetadata } from '@/lib/metadata'
-import { generatePageBreadcrumbs } from '@/lib/structuredData'
+import { generatePageBreadcrumbs, SHANTI_DEVA_RETREAT_EVENT_ID } from '@/lib/structuredData'
 import { Route, ScheduleDayType, Language } from '@/types'
 import { SHANTI_DEVA_RETREAT } from '@/data'
 import { getServerTranslations } from '@/i18n'
@@ -588,6 +588,7 @@ function createEventSchema(t: Awaited<ReturnType<typeof getServerTranslations>>,
   return {
     '@context': 'https://schema.org',
     '@type': 'Event',
+    '@id': SHANTI_DEVA_RETREAT_EVENT_ID,
     name: t.shantiDevaRetreat.hero.title,
     description: t.shantiDevaRetreat.metaDescription,
     startDate: retreat.dates[0].startDate,

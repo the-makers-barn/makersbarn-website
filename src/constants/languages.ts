@@ -4,8 +4,6 @@ export const LANGUAGE_OPTIONS: LanguageOption[] = [
   { code: Language.EN, label: 'English', title: 'United Kingdom' },
   { code: Language.NL, label: 'Nederlands', title: 'Netherlands' },
   { code: Language.DE, label: 'Deutsch', title: 'Germany' },
-  { code: Language.ES, label: 'Español', title: 'Spain' },
-  { code: Language.FR, label: 'Français', title: 'France' },
 ]
 
 export const DEFAULT_LANGUAGE = Language.EN

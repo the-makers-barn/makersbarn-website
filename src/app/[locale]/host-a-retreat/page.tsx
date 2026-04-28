@@ -3,16 +3,45 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { StructuredData } from '@/components/server'
-import { SILO_HUB_CARDS } from '@/data'
+import {
+  BREATHWORK_SOUND_HEALING_SILO,
+  CIRCLE_RETREATS_SILO,
+  COACHING_INTENSIVES_SILO,
+  MEDITATION_RETREATS_SILO,
+  PHOTOGRAPHY_WORKSHOPS_SILO,
+  SILO_HUB_CARDS,
+  SOMATIC_THERAPY_RETREATS_SILO,
+  TEAM_OFFSITES_SILO,
+  WELLNESS_DETOX_RETREATS_SILO,
+  WRITING_RETREATS_SILO,
+  YOGA_TEACHERS_SILO,
+} from '@/data'
 import { getServerTranslations } from '@/i18n'
 import type { Dictionary } from '@/i18n/types'
 import { generatePageMetadata } from '@/lib/metadata'
 import { getValidLocale } from '@/lib/locale'
 import { getLocalizedPath } from '@/lib/routing'
-import { generatePageBreadcrumbs } from '@/lib/structuredData'
-import { Language, Route, SiloHubCardSummary, SiloSlug } from '@/types'
+import {
+  generatePageBreadcrumbs,
+  generateRetreatsCollectionSchema,
+  getSiloCardLabel,
+} from '@/lib/structuredData'
+import { Language, Route, SiloContent, SiloHubCardSummary, SiloSlug } from '@/types'
 
 import styles from './page.module.css'
+
+const SILO_BY_SLUG: Record<SiloSlug, SiloContent> = {
+  [SiloSlug.YOGA_TEACHERS]: YOGA_TEACHERS_SILO,
+  [SiloSlug.MEDITATION_RETREATS]: MEDITATION_RETREATS_SILO,
+  [SiloSlug.WRITING_RETREATS]: WRITING_RETREATS_SILO,
+  [SiloSlug.TEAM_OFFSITES]: TEAM_OFFSITES_SILO,
+  [SiloSlug.BREATHWORK_SOUND_HEALING]: BREATHWORK_SOUND_HEALING_SILO,
+  [SiloSlug.COACHING_INTENSIVES]: COACHING_INTENSIVES_SILO,
+  [SiloSlug.SOMATIC_THERAPY_RETREATS]: SOMATIC_THERAPY_RETREATS_SILO,
+  [SiloSlug.WELLNESS_DETOX_RETREATS]: WELLNESS_DETOX_RETREATS_SILO,
+  [SiloSlug.CIRCLE_RETREATS]: CIRCLE_RETREATS_SILO,
+  [SiloSlug.PHOTOGRAPHY_WORKSHOPS]: PHOTOGRAPHY_WORKSHOPS_SILO,
+}
 
 const CARD_IMAGE_SIZES = '(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw' as const
 
@@ -51,31 +80,6 @@ function ArrowRightIcon({ className }: { className?: string }) {
   )
 }
 
-function getCardLabel(slug: SiloSlug, t: Dictionary): { title: string; pitch: string } {
-  switch (slug) {
-    case SiloSlug.YOGA_TEACHERS:
-      return t.retreats.cards.yogaTeachers
-    case SiloSlug.MEDITATION_RETREATS:
-      return t.retreats.cards.meditationRetreats
-    case SiloSlug.WRITING_RETREATS:
-      return t.retreats.cards.writingRetreats
-    case SiloSlug.TEAM_OFFSITES:
-      return t.retreats.cards.teamOffsites
-    case SiloSlug.BREATHWORK_SOUND_HEALING:
-      return t.retreats.cards.breathworkSoundHealing
-    case SiloSlug.COACHING_INTENSIVES:
-      return t.retreats.cards.coachingIntensives
-    case SiloSlug.SOMATIC_THERAPY_RETREATS:
-      return t.retreats.cards.somaticTherapyRetreats
-    case SiloSlug.WELLNESS_DETOX_RETREATS:
-      return t.retreats.cards.wellnessDetoxRetreats
-    case SiloSlug.CIRCLE_RETREATS:
-      return t.retreats.cards.circleRetreats
-    case SiloSlug.PHOTOGRAPHY_WORKSHOPS:
-      return t.retreats.cards.photographyWorkshops
-  }
-}
-
 interface SiloCardProps {
   card: SiloHubCardSummary
   locale: Language
@@ -83,7 +87,7 @@ interface SiloCardProps {
 }
 
 function SiloCard({ card, locale, t }: SiloCardProps) {
-  const label = getCardLabel(card.slug, t)
+  const label = getSiloCardLabel(card, t)
   return (
     <Link href={getLocalizedPath(card.route, locale)} className={styles.card}>
       <div className={styles.cardImageWrapper}>
@@ -111,14 +115,33 @@ export default async function HostARetreatPage({ params }: PageProps) {
   const { locale } = await params
   const validLocale = getValidLocale(locale)
   const t = await getServerTranslations(validLocale)
+  const hubPath = getLocalizedPath(Route.HOST_A_RETREAT, validLocale)
   const breadcrumb = generatePageBreadcrumbs({
     name: t.retreats.metaTitle,
-    path: getLocalizedPath(Route.HOST_A_RETREAT, validLocale),
+    path: hubPath,
   })
+  const collectionItems = SILO_HUB_CARDS.map((card) => {
+    const label = getSiloCardLabel(card, t)
+    return {
+      card,
+      silo: SILO_BY_SLUG[card.slug],
+      title: label.title,
+      pitch: label.pitch,
+    }
+  })
+  const collectionSchema = generateRetreatsCollectionSchema(
+    collectionItems,
+    validLocale,
+    {
+      title: t.retreats.metaTitle,
+      description: t.retreats.metaDescription,
+      path: hubPath,
+    }
+  )
 
   return (
     <>
-      <StructuredData data={[breadcrumb]} />
+      <StructuredData data={[breadcrumb, collectionSchema]} />
 
       <div className={styles.hub}>
         <header className={styles.header}>

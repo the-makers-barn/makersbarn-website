@@ -8,6 +8,7 @@ import type {
   WebApplicationSchema,
   HowToSchema,
   FaqPageSchema,
+  EventVenueSchema,
   CollectionPageSchema,
 } from '@/lib/structuredData'
 
@@ -21,6 +22,7 @@ type StructuredDataSchema =
   | WebApplicationSchema
   | HowToSchema
   | FaqPageSchema
+  | EventVenueSchema
   | CollectionPageSchema
   | Record<string, unknown>
 

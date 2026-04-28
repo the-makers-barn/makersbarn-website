@@ -53,9 +53,11 @@ export default async function ToolsHubPage({ params }: PageProps) {
     name: t.tools.hub.title,
     url: hubUrl,
     description: t.tools.hub.metaDescription,
+    locale: validLocale,
     items: VARIANT_DISPLAY_ORDER.map((v) => ({
       name: CALCULATOR_VARIANTS[v].copy.heroTitle[validLocale],
       url: `${SITE_CONFIG.url}${getLocalizedPath(TOOL_VARIANT_ROUTES[v], validLocale)}`,
+      description: CALCULATOR_VARIANTS[v].copy.heroIntro[validLocale],
     })),
   })
 
