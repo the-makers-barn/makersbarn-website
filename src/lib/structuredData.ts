@@ -342,3 +342,140 @@ export function generateBookingPageSchema(): WebPageSchema {
   }
 }
 
+export interface WebApplicationSchema {
+  '@context': string
+  '@type': 'WebApplication'
+  name: string
+  url: string
+  description: string
+  applicationCategory: 'BusinessApplication'
+  operatingSystem: 'Web'
+  offers: {
+    '@type': 'Offer'
+    price: '0'
+    priceCurrency: 'EUR'
+  }
+  publisher: { '@id': string }
+}
+
+export interface HowToStepSchema {
+  '@type': 'HowToStep'
+  position: number
+  name: string
+  text: string
+}
+
+export interface HowToSchema {
+  '@context': string
+  '@type': 'HowTo'
+  name: string
+  description: string
+  step: HowToStepSchema[]
+}
+
+export interface FaqQuestionSchema {
+  '@type': 'Question'
+  name: string
+  acceptedAnswer: { '@type': 'Answer'; text: string }
+}
+
+export interface FaqPageSchema {
+  '@context': string
+  '@type': 'FAQPage'
+  mainEntity: FaqQuestionSchema[]
+}
+
+export interface CollectionItemSchema {
+  '@type': 'ListItem'
+  position: number
+  url: string
+  name: string
+}
+
+export interface CollectionPageSchema {
+  '@context': string
+  '@type': 'CollectionPage'
+  name: string
+  url: string
+  description: string
+  hasPart: {
+    '@type': 'ItemList'
+    itemListElement: CollectionItemSchema[]
+  }
+}
+
+export function generateWebApplicationSchema(params: {
+  name: string
+  url: string
+  description: string
+}): WebApplicationSchema {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: params.name,
+    url: params.url,
+    description: params.description,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    publisher: { '@id': `${SITE_URL}#organization` },
+  }
+}
+
+export function generateHowToSchema(params: {
+  name: string
+  description: string
+  steps: readonly string[]
+}): HowToSchema {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: params.name,
+    description: params.description,
+    step: params.steps.map((text, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: `Step ${i + 1}`,
+      text,
+    })),
+  }
+}
+
+export function generateFaqPageSchema(
+  entries: readonly { question: string; answer: string }[]
+): FaqPageSchema {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: entries.map((e) => ({
+      '@type': 'Question',
+      name: e.question,
+      acceptedAnswer: { '@type': 'Answer', text: e.answer },
+    })),
+  }
+}
+
+export function generateCollectionPageSchema(params: {
+  name: string
+  url: string
+  description: string
+  items: readonly { url: string; name: string }[]
+}): CollectionPageSchema {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: params.name,
+    url: params.url,
+    description: params.description,
+    hasPart: {
+      '@type': 'ItemList',
+      itemListElement: params.items.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: item.url,
+        name: item.name,
+      })),
+    },
+  }
+}
+

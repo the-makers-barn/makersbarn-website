@@ -5,6 +5,10 @@ import type {
   BreadcrumbListSchema,
   ContactPageSchema,
   WebPageSchema,
+  WebApplicationSchema,
+  HowToSchema,
+  FaqPageSchema,
+  CollectionPageSchema,
 } from '@/lib/structuredData'
 
 type StructuredDataSchema =
@@ -14,6 +18,10 @@ type StructuredDataSchema =
   | BreadcrumbListSchema
   | ContactPageSchema
   | WebPageSchema
+  | WebApplicationSchema
+  | HowToSchema
+  | FaqPageSchema
+  | CollectionPageSchema
   | Record<string, unknown>
 
 interface StructuredDataProps {
