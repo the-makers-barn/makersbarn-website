@@ -1,8 +1,12 @@
-import { CALCULATOR_INPUT_RANGES, CALCULATOR_URL_PARAMS } from '@/constants/tools'
+import { CALCULATOR_INPUT_RANGES, CALCULATOR_URL_PARAMS, RetreatRole } from '@/constants/tools'
 import type { CalculatorInputs } from '@/types/tools'
 
+type NumericInputKey = {
+  [K in keyof CalculatorInputs]: CalculatorInputs[K] extends number ? K : never
+}[keyof CalculatorInputs]
+
 interface FieldSpec {
-  key: keyof CalculatorInputs
+  key: NumericInputKey
   param: string
   min: number
   max: number
@@ -23,11 +27,14 @@ const FIELD_SPECS: FieldSpec[] = [
   { key: 'planningDays', param: CALCULATOR_URL_PARAMS.PLANNING_DAYS, min: 0, max: 365 },
 ]
 
+const VALID_ROLES = new Set<string>(Object.values(RetreatRole))
+
 export function encodeCalculatorInputs(inputs: CalculatorInputs): URLSearchParams {
   const params = new URLSearchParams()
   for (const spec of FIELD_SPECS) {
     params.set(spec.param, String(inputs[spec.key]))
   }
+  params.set(CALCULATOR_URL_PARAMS.ROLE, inputs.role)
   return params
 }
 
@@ -43,6 +50,10 @@ export function decodeCalculatorInputs(
     if (!Number.isFinite(num)) { continue }
     if (num < spec.min || num > spec.max) { continue }
     decoded[spec.key] = num
+  }
+  const roleRaw = params.get(CALCULATOR_URL_PARAMS.ROLE)
+  if (roleRaw !== null && VALID_ROLES.has(roleRaw)) {
+    decoded.role = roleRaw as RetreatRole
   }
   return decoded
 }

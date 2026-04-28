@@ -1,6 +1,6 @@
 'use client'
 
-import { CALCULATOR_INPUT_RANGES } from '@/constants/tools'
+import { CALCULATOR_INPUT_RANGES, RetreatRole } from '@/constants/tools'
 import { Language } from '@/types/common'
 import type { CalculatorInputs, VariantConfig } from '@/types/tools'
 import type { Dictionary } from '@/i18n/types'
@@ -22,6 +22,33 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
 
   return (
     <div className={styles.inputsPanel}>
+      <fieldset className={styles.roleSelector}>
+        <legend className={styles.roleLegend}>{labels.roleQuestion}</legend>
+        <div className={styles.roleOptions}>
+          <RoleOption
+            value={RetreatRole.SOLO}
+            current={inputs.role}
+            label={labels.roleSolo}
+            description={labels.roleSoloDescription}
+            onSelect={() => onChange('role', RetreatRole.SOLO)}
+          />
+          <RoleOption
+            value={RetreatRole.CO_LED}
+            current={inputs.role}
+            label={labels.roleCoLed}
+            description={labels.roleCoLedDescription}
+            onSelect={() => onChange('role', RetreatRole.CO_LED)}
+          />
+          <RoleOption
+            value={RetreatRole.ORGANIZER_ONLY}
+            current={inputs.role}
+            label={labels.roleOrganizerOnly}
+            description={labels.roleOrganizerOnlyDescription}
+            onSelect={() => onChange('role', RetreatRole.ORGANIZER_ONLY)}
+          />
+        </div>
+      </fieldset>
+
       <SliderField
         label={labels.guestsLabel}
         value={inputs.guests}
@@ -67,7 +94,11 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
         onChange={(v) => onChange('foodPerGuestPerDay', v)}
       />
       <NumberField
-        label={labels.facilitatorFeeLabel}
+        label={
+          inputs.role === RetreatRole.ORGANIZER_ONLY
+            ? labels.facilitatorFeeLabelOrganizer
+            : labels.facilitatorFeeLabelSolo
+        }
         value={inputs.facilitatorFee}
         unitPrefix="€"
         helper={variant.benchmarks.facilitatorFee[locale]}
@@ -82,12 +113,14 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
       />
 
       <AdvancedDisclosure label={labels.advancedLabel}>
-        <NumberField
-          label={labels.coFacilitatorsLabel}
-          value={inputs.coFacilitators}
-          unitPrefix="€"
-          onChange={(v) => onChange('coFacilitators', v)}
-        />
+        {inputs.role !== RetreatRole.SOLO && (
+          <NumberField
+            label={labels.coFacilitatorsLabel}
+            value={inputs.coFacilitators}
+            unitPrefix="€"
+            onChange={(v) => onChange('coFacilitators', v)}
+          />
+        )}
         <NumberField
           label={labels.travelLabel}
           value={inputs.travel}
@@ -190,5 +223,28 @@ function NumberField({ label, value, unitPrefix, unitSuffix, step = 1, helper, o
       </div>
       {helper && <p className={styles.fieldHelper}>{helper}</p>}
     </div>
+  )
+}
+
+interface RoleOptionProps {
+  value: RetreatRole
+  current: RetreatRole
+  label: string
+  description: string
+  onSelect: () => void
+}
+
+function RoleOption({ value, current, label, description, onSelect }: RoleOptionProps) {
+  const active = value === current
+  return (
+    <button
+      type="button"
+      className={`${styles.roleOption} ${active ? styles.roleOptionActive : ''}`}
+      onClick={onSelect}
+      aria-pressed={active}
+    >
+      <span className={styles.roleOptionLabel}>{label}</span>
+      <span className={styles.roleOptionDescription}>{description}</span>
+    </button>
   )
 }

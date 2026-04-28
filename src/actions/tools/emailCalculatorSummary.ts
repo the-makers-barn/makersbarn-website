@@ -3,7 +3,7 @@
 import * as postmark from 'postmark'
 import { z } from 'zod'
 
-import { ToolVariant, CALCULATOR_RATE_LIMIT } from '@/constants/tools'
+import { ToolVariant, CALCULATOR_RATE_LIMIT, RetreatRole } from '@/constants/tools'
 import { Language } from '@/types/common'
 import { createLogger, RateLimiter, getClientIdentifier, maskEmail, escapeHtml } from '@/lib'
 import { sendSlackMessage, SlackChannel } from '@/services/slack'
@@ -29,6 +29,7 @@ const InputsSchema = z.object({
   insurance: z.number().min(0).max(100_000),
   paymentFeePercent: z.number().min(0).max(100),
   planningDays: z.number().min(0).max(365),
+  role: z.nativeEnum(RetreatRole),
 }) satisfies z.ZodType<CalculatorInputs>
 
 const ResultsSchema = z.object({
@@ -38,6 +39,7 @@ const ResultsSchema = z.object({
   profitMargin: z.number(),
   profitPerWorkday: z.number(),
   breakevenGuests: z.union([z.number(), z.literal(Number.POSITIVE_INFINITY)]),
+  yourTakeHome: z.number(),
   costBreakdown: z.object({
     venueAccommodation: z.number(),
     food: z.number(),
@@ -77,6 +79,7 @@ function buildHtmlSummary(data: EmailCalculatorSummaryData): string {
     <p>Variant: <strong>${escapeHtml(variant)}</strong></p>
     <h3>Inputs</h3>
     <ul>
+      <li>Your role: ${escapeHtml(inputs.role)}</li>
       <li>Guests: ${inputs.guests}</li>
       <li>Nights: ${inputs.nights}</li>
       <li>Price per guest: ${formatEuro(inputs.pricePerGuest)}</li>
@@ -87,6 +90,7 @@ function buildHtmlSummary(data: EmailCalculatorSummaryData): string {
     </ul>
     <h3>Results</h3>
     <ul>
+      <li>Your total take-home: <strong>${formatEuro(results.yourTakeHome)}</strong></li>
       <li>Total revenue: <strong>${formatEuro(results.totalRevenue)}</strong></li>
       <li>Total costs: ${formatEuro(results.totalCosts)}</li>
       <li>Net profit: <strong>${formatEuro(results.netProfit)}</strong></li>
@@ -111,6 +115,7 @@ function buildAdminHtml(data: EmailCalculatorSummaryData): string {
     <ul>
       <li><strong>Email:</strong> ${escapeHtml(email)}</li>
       <li><strong>Variant:</strong> ${escapeHtml(variant)}</li>
+      <li><strong>Role:</strong> ${escapeHtml(inputs.role)}</li>
       <li><strong>Newsletter opt-in:</strong> ${newsletterOptIn ? 'yes' : 'no'}</li>
     </ul>
     <hr />
@@ -125,6 +130,7 @@ function buildAdminHtml(data: EmailCalculatorSummaryData): string {
     </ul>
     <h3>Results</h3>
     <ul>
+      <li>Total take-home: <strong>${formatEuro(results.yourTakeHome)}</strong></li>
       <li>Total revenue: ${formatEuro(results.totalRevenue)}</li>
       <li>Total costs: ${formatEuro(results.totalCosts)}</li>
       <li>Net profit: <strong>${formatEuro(results.netProfit)}</strong> (${formatPercent(results.profitMargin)} margin)</li>

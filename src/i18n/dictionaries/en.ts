@@ -718,6 +718,15 @@ export const en: Dictionary = {
     },
     calculator: {
       inputs: {
+        roleQuestion: 'How are you running this retreat?',
+        roleSolo: 'Solo',
+        roleSoloDescription: 'I\'m the only facilitator and the organizer.',
+        roleCoLed: 'Co-led',
+        roleCoLedDescription: 'I\'m a facilitator working alongside another paid facilitator.',
+        roleOrganizerOnly: 'Organizer only',
+        roleOrganizerOnlyDescription: 'I\'m hiring the teaching team — I don\'t facilitate.',
+        facilitatorFeeLabelSolo: 'Pay yourself (your facilitator fee)',
+        facilitatorFeeLabelOrganizer: 'Hired facilitator fee',
         guestsLabel: 'Number of guests',
         guestsUnit: 'guests',
         nightsLabel: 'Retreat length',
@@ -727,7 +736,6 @@ export const en: Dictionary = {
         venueUnit: '/ night',
         foodPerGuestPerDayLabel: 'Food per guest per day',
         foodUnit: '/ guest / day',
-        facilitatorFeeLabel: 'Facilitator compensation (your fee)',
         marketingAndOtherLabel: 'Marketing & other costs',
         advancedLabel: 'Advanced costs',
         coFacilitatorsLabel: 'Co-facilitators / guest teachers',
@@ -745,6 +753,8 @@ export const en: Dictionary = {
         totalCosts: 'Total costs',
         profitMargin: 'Profit margin',
         profitPerWorkday: 'Profit per workday',
+        yourTakeHome: 'Your total take-home',
+        yourTakeHomeNote: 'Your facilitator pay plus net profit — the money that ends up with you.',
         breakevenSentence: 'You need at least {guests} guests at {price} to break even.',
         breakevenImpossible: 'At this price, your variable costs exceed revenue per guest — you can\'t break even with more guests alone.',
         breakdownLabels: {

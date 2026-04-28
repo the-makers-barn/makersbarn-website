@@ -314,3 +314,90 @@
   text-decoration: none;
   font-weight: 600;
 }
+
+.roleSelector { border: 0; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+
+.roleLegend {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  padding: 0;
+}
+
+.roleOptions {
+  display: grid;
+  gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .roleOptions { grid-template-columns: repeat(3, 1fr); }
+}
+
+.roleOption {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.5rem;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: var(--color-text);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.roleOption:hover {
+  border-color: rgba(41, 75, 58, 0.4);
+}
+
+.roleOptionActive {
+  border-color: var(--color-primary);
+  background: rgba(41, 75, 58, 0.06);
+}
+
+.roleOptionLabel {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.roleOptionDescription {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}
+
+.takeHome {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(41, 75, 58, 0.08);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(41, 75, 58, 0.18);
+}
+
+.takeHomeLabel {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-tertiary);
+  font-weight: 600;
+}
+
+.takeHomeValue {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.takeHomeNote {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}

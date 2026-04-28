@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { RetreatRole } from '@/constants/tools'
 import type { CalculatorInputs } from '@/types/tools'
 
 import { decodeCalculatorInputs, encodeCalculatorInputs } from './urlState'
@@ -17,6 +18,7 @@ const sample: CalculatorInputs = {
   insurance: 150,
   paymentFeePercent: 3,
   planningDays: 5,
+  role: RetreatRole.SOLO,
 }
 
 describe('encodeCalculatorInputs', () => {
@@ -69,5 +71,18 @@ describe('decodeCalculatorInputs', () => {
     expect(decoded.guests).toBe(20)
     expect(decoded.pricePerGuest).toBe(2000)
     expect(decoded.nights).toBe(sample.nights)
+  })
+
+  it('encodes and decodes role', () => {
+    const params = encodeCalculatorInputs({ ...sample, role: RetreatRole.CO_LED })
+    expect(params.get('r')).toBe('co-led')
+    const decoded = decodeCalculatorInputs(params, sample)
+    expect(decoded.role).toBe(RetreatRole.CO_LED)
+  })
+
+  it('falls back to default role for invalid value', () => {
+    const params = new URLSearchParams({ r: 'invalid' })
+    const decoded = decodeCalculatorInputs(params, sample)
+    expect(decoded.role).toBe(sample.role)
   })
 })

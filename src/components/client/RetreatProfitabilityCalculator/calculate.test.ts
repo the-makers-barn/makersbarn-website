@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { RetreatRole } from '@/constants/tools'
 import type { CalculatorInputs } from '@/types/tools'
 
 import { calculateRetreatProfitability } from './calculate'
@@ -17,6 +18,7 @@ const baseYogaInputs: CalculatorInputs = {
   insurance: 150,
   paymentFeePercent: 3,
   planningDays: 5,
+  role: RetreatRole.SOLO,
 }
 
 describe('calculateRetreatProfitability', () => {
@@ -89,5 +91,22 @@ describe('calculateRetreatProfitability', () => {
     // total costs: 3500+1200+5000+800+0+0+150+576 = 11226
     expect(r.totalCosts).toBeCloseTo(11226, 2)
     expect(r.netProfit).toBeCloseTo(7974, 2)
+  })
+
+  it('takeHome equals profit + facilitatorFee for SOLO role', () => {
+    const r = calculateRetreatProfitability(baseYogaInputs)
+    expect(r.yourTakeHome).toBeCloseTo(3618 + 2500, 2)
+  })
+
+  it('takeHome equals profit + facilitatorFee for CO_LED role (same formula)', () => {
+    const inputs: CalculatorInputs = { ...baseYogaInputs, role: RetreatRole.CO_LED }
+    const r = calculateRetreatProfitability(inputs)
+    expect(r.yourTakeHome).toBeCloseTo(3618 + 2500, 2)
+  })
+
+  it('takeHome equals profit only for ORGANIZER_ONLY role', () => {
+    const inputs: CalculatorInputs = { ...baseYogaInputs, role: RetreatRole.ORGANIZER_ONLY }
+    const r = calculateRetreatProfitability(inputs)
+    expect(r.yourTakeHome).toBeCloseTo(3618, 2)
   })
 })

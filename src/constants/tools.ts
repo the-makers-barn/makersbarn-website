@@ -1,5 +1,11 @@
 import { Route } from '@/types/navigation'
 
+export enum RetreatRole {
+  SOLO = 'solo',
+  CO_LED = 'co-led',
+  ORGANIZER_ONLY = 'organizer-only',
+}
+
 export enum ToolVariant {
   GENERIC = 'generic',
   YOGA = 'yoga',
@@ -42,6 +48,7 @@ export const CALCULATOR_URL_PARAMS = {
   INSURANCE: 'i',
   PAYMENT_FEE_PERCENT: 'pf',
   PLANNING_DAYS: 'pd',
+  ROLE: 'r',
 } as const
 
 export const MAKERSBARN_CTA_QUERY_PARAM = 'src' as const

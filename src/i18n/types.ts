@@ -640,6 +640,15 @@ export interface RetreatsHubTranslations {
  * Tools section — calculator chrome translations
  */
 export interface ToolsCalculatorInputsTranslations {
+  roleQuestion: string
+  roleSolo: string
+  roleSoloDescription: string
+  roleCoLed: string
+  roleCoLedDescription: string
+  roleOrganizerOnly: string
+  roleOrganizerOnlyDescription: string
+  facilitatorFeeLabelSolo: string
+  facilitatorFeeLabelOrganizer: string
   guestsLabel: string
   guestsUnit: string
   nightsLabel: string
@@ -649,7 +658,6 @@ export interface ToolsCalculatorInputsTranslations {
   venueUnit: string
   foodPerGuestPerDayLabel: string
   foodUnit: string
-  facilitatorFeeLabel: string
   marketingAndOtherLabel: string
   advancedLabel: string
   coFacilitatorsLabel: string
@@ -668,6 +676,8 @@ export interface ToolsCalculatorResultsTranslations {
   totalCosts: string
   profitMargin: string
   profitPerWorkday: string
+  yourTakeHome: string
+  yourTakeHomeNote: string
   breakevenSentence: string
   breakevenImpossible: string
   breakdownLabels: {

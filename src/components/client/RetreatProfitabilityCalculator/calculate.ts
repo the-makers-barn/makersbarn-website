@@ -1,3 +1,4 @@
+import { RetreatRole } from '@/constants/tools'
 import type { CalculatorInputs, CalculatorResults } from '@/types/tools'
 
 export function calculateRetreatProfitability(inputs: CalculatorInputs): CalculatorResults {
@@ -37,6 +38,11 @@ export function calculateRetreatProfitability(inputs: CalculatorInputs): Calcula
 
   const breakevenGuests = computeBreakevenGuests(inputs)
 
+  const yourTakeHome =
+    inputs.role === RetreatRole.ORGANIZER_ONLY
+      ? netProfit
+      : netProfit + inputs.facilitatorFee
+
   return {
     totalRevenue,
     totalCosts,
@@ -44,6 +50,7 @@ export function calculateRetreatProfitability(inputs: CalculatorInputs): Calcula
     profitMargin,
     profitPerWorkday,
     breakevenGuests,
+    yourTakeHome,
     costBreakdown,
   }
 }

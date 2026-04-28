@@ -726,6 +726,15 @@ export const nl: Dictionary = {
     },
     calculator: {
       inputs: {
+        roleQuestion: 'Hoe draai je deze retraite?',
+        roleSolo: 'Solo',
+        roleSoloDescription: 'Ik ben de enige begeleider én de organisator.',
+        roleCoLed: 'Co-begeleid',
+        roleCoLedDescription: 'Ik begeleid samen met een andere betaalde begeleider.',
+        roleOrganizerOnly: 'Alleen organisator',
+        roleOrganizerOnlyDescription: 'Ik huur de begeleiding in — ik begeleid zelf niet.',
+        facilitatorFeeLabelSolo: 'Betaal jezelf (jouw begeleidersfee)',
+        facilitatorFeeLabelOrganizer: 'Vergoeding ingehuurde begeleider',
         guestsLabel: 'Aantal gasten',
         guestsUnit: 'gasten',
         nightsLabel: 'Duur retraite',
@@ -735,7 +744,6 @@ export const nl: Dictionary = {
         venueUnit: '/ nacht',
         foodPerGuestPerDayLabel: 'Eten per gast per dag',
         foodUnit: '/ gast / dag',
-        facilitatorFeeLabel: 'Vergoeding begeleider (jouw fee)',
         marketingAndOtherLabel: 'Marketing & overige kosten',
         advancedLabel: 'Geavanceerde kosten',
         coFacilitatorsLabel: 'Co-begeleiders / gastdocenten',
@@ -753,6 +761,8 @@ export const nl: Dictionary = {
         totalCosts: 'Totale kosten',
         profitMargin: 'Winstmarge',
         profitPerWorkday: 'Winst per werkdag',
+        yourTakeHome: 'Wat jij overhoudt',
+        yourTakeHomeNote: 'Jouw begeleidersfee plus de nettowinst — wat er voor jou overblijft.',
         breakevenSentence: 'Je hebt minstens {guests} gasten bij {price} nodig om break-even te draaien.',
         breakevenImpossible: 'Bij deze prijs overstijgen je variabele kosten de omzet per gast — meer gasten alleen brengt je niet op break-even.',
         breakdownLabels: {
