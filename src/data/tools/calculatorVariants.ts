@@ -359,7 +359,7 @@ const COACHING: VariantConfig = {
       [Language.FR]: 'Tarifez votre retraite de coaching — calculateur gratuit. Valeurs pour 4–8 invités, 3–5 nuits. Planifiez marge, seuil de rentabilité, gains par jour.',
     },
   },
-  relatedVariants: [ToolVariant.WELLNESS, ToolVariant.GENERIC],
+  relatedVariants: [ToolVariant.WELLNESS, ToolVariant.MEDITATION, ToolVariant.GENERIC],
 }
 
 export const CALCULATOR_VARIANTS: Record<ToolVariant, VariantConfig> = {
