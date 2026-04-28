@@ -674,6 +674,7 @@ export interface ToolsCalculatorResultsTranslations {
   totalCosts: string
   profitMargin: string
   profitPerWorkday: string
+  metricsLabel: string
   breakevenSentence: string
   breakevenImpossible: string
   breakdownLabels: {
@@ -704,6 +705,7 @@ export interface ToolsCalculatorShareTranslations {
   intro: string
   copy: string
   copied: string
+  copyFailed: string
   whatsapp: string
   whatsappMessage: string
 }

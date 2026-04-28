@@ -12,7 +12,7 @@ interface CostBreakdownBarProps {
 
 export function CostBreakdownBar({ results, t }: CostBreakdownBarProps) {
   const labels = t.tools.calculator.results.breakdownLabels
-  const total = Math.max(results.totalRevenue, 1) // avoid div-by-zero
+  const total = Math.max(results.totalRevenue, results.totalCosts, 1)
   const segments = [
     { key: 'venue', label: labels.venue, value: results.costBreakdown.venueAccommodation, color: 'var(--bar-venue)' },
     { key: 'food', label: labels.food, value: results.costBreakdown.food, color: 'var(--bar-food)' },
@@ -26,8 +26,13 @@ export function CostBreakdownBar({ results, t }: CostBreakdownBarProps) {
   const profitWidth = Math.max(0, (results.netProfit / total) * 100)
 
   return (
-    <div className={styles.breakdownBar} role="img" aria-label={labels.barAriaLabel}>
-      <div className={styles.bar}>
+    <div className={styles.breakdownBar}>
+      <div
+        className={styles.bar}
+        role="img"
+        aria-label={labels.barAriaLabel}
+        aria-hidden="true"
+      >
         {segments.map((seg) => (
           <div
             key={seg.key}

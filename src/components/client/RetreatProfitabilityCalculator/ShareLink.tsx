@@ -14,19 +14,22 @@ interface ShareLinkProps {
   t: Dictionary
 }
 
+type CopyState = 'idle' | 'copied' | 'error'
+
 export function ShareLink({ variant, t }: ShareLinkProps) {
   const labels = t.tools.calculator.share
-  const [copied, setCopied] = useState(false)
+  const [copyState, setCopyState] = useState<CopyState>('idle')
 
   const handleCopy = async () => {
     if (typeof window === 'undefined') { return }
     try {
       await navigator.clipboard.writeText(window.location.href)
-      setCopied(true)
+      setCopyState('copied')
       track(AnalyticsEvent.CALCULATOR_SHARED, { variant, channel: 'copy' })
-      setTimeout(() => setCopied(false), 2000)
+      setTimeout(() => setCopyState('idle'), 2000)
     } catch {
-      // Clipboard permission denied or unsupported — silent no-op
+      setCopyState('error')
+      setTimeout(() => setCopyState('idle'), 2000)
     }
   }
 
@@ -38,6 +41,11 @@ export function ShareLink({ variant, t }: ShareLinkProps) {
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
+  let copyLabel: string
+  if (copyState === 'copied') { copyLabel = labels.copied }
+  else if (copyState === 'error') { copyLabel = labels.copyFailed }
+  else { copyLabel = labels.copy }
+
   return (
     <div className={styles.share}>
       <p className={styles.shareHeading}>{labels.heading}</p>
@@ -48,7 +56,7 @@ export function ShareLink({ variant, t }: ShareLinkProps) {
           className={styles.shareButton}
           onClick={() => { void handleCopy() }}
         >
-          {copied ? labels.copied : labels.copy}
+          {copyLabel}
         </button>
         <button
           type="button"

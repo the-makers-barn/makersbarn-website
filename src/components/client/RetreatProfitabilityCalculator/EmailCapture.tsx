@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useId, useState, useTransition } from 'react'
 import { track } from '@vercel/analytics'
 
 import { emailCalculatorSummary } from '@/actions/tools'
@@ -24,6 +24,7 @@ type Status = 'idle' | 'success' | 'error'
 
 export function EmailCapture({ variant, locale, inputs, results, t }: EmailCaptureProps) {
   const labels = t.tools.calculator.email
+  const id = useId()
   const [email, setEmail] = useState('')
   const [optIn, setOptIn] = useState(false)
   const [status, setStatus] = useState<Status>('idle')
@@ -57,14 +58,18 @@ export function EmailCapture({ variant, locale, inputs, results, t }: EmailCaptu
     <form className={styles.emailForm} onSubmit={handleSubmit}>
       <p className={styles.emailHeading}>{labels.heading}</p>
       <div className={styles.emailFields}>
+        <label htmlFor={id} className={styles.srOnly}>{labels.heading}</label>
         <input
+          id={id}
           type="email"
           required
           className={styles.emailInput}
           placeholder={labels.placeholder}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          aria-label={labels.placeholder}
+          onChange={(e) => {
+            setEmail(e.target.value)
+            if (status !== 'idle') { setStatus('idle') }
+          }}
         />
         <button type="submit" className={styles.emailSubmit} disabled={pending}>
           {pending ? labels.sending : labels.submit}

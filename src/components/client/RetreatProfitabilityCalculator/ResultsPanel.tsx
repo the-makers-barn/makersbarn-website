@@ -15,30 +15,37 @@ interface ResultsPanelProps {
 const formatEuro = (n: number): string => `€${Math.round(n).toLocaleString()}`
 const formatPercent = (n: number): string => `${Math.round(n * 100)}%`
 
+function fillTemplate(template: string, vars: Record<string, string>): string {
+  return template.replace(/\{(\w+)\}/g, (_match: string, key: string) => vars[key] ?? `{${key}}`)
+}
+
 export function ResultsPanel({ inputs, results, t }: ResultsPanelProps) {
   const labels = t.tools.calculator.results
   const isProfit = results.netProfit >= 0
+
+  const narrative = fillTemplate(labels.headlineSentence, {
+    price: formatEuro(inputs.pricePerGuest),
+    guests: String(inputs.guests),
+    profit: formatEuro(results.netProfit),
+    margin: formatPercent(results.profitMargin),
+  })
+
   const breakeven = Number.isFinite(results.breakevenGuests)
-    ? labels.breakevenSentence
-        .replace('{guests}', String(results.breakevenGuests))
-        .replace('{price}', formatEuro(inputs.pricePerGuest))
+    ? fillTemplate(labels.breakevenSentence, {
+        guests: String(results.breakevenGuests),
+        price: formatEuro(inputs.pricePerGuest),
+      })
     : labels.breakevenImpossible
 
-  const narrative = labels.headlineSentence
-    .replace('{price}', formatEuro(inputs.pricePerGuest))
-    .replace('{guests}', String(inputs.guests))
-    .replace('{profit}', formatEuro(results.netProfit))
-    .replace('{margin}', formatPercent(results.profitMargin))
-
   return (
-    <div className={styles.resultsPanel}>
+    <div className={styles.resultsPanel} aria-live="polite" aria-atomic="false">
       <p className={styles.resultsKicker}>{labels.kicker}</p>
       <p className={`${styles.headline} ${isProfit ? styles.headlineProfit : styles.headlineLoss}`}>
         {formatEuro(results.netProfit)}
       </p>
       <p className={styles.narrative}>{narrative}</p>
 
-      <dl className={styles.metricsGrid}>
+      <dl className={styles.metricsGrid} aria-label={labels.metricsLabel}>
         <div className={styles.metric}>
           <dt>{labels.totalRevenue}</dt>
           <dd>{formatEuro(results.totalRevenue)}</dd>

@@ -772,6 +772,7 @@ export const fr: Dictionary = {
         totalCosts: 'Total costs',
         profitMargin: 'Profit margin',
         profitPerWorkday: 'Profit per workday',
+        metricsLabel: 'Retreat economics summary',
         breakevenSentence: 'You need at least {guests} guests at {price} to break even.',
         breakevenImpossible: "At this price, your variable costs exceed revenue per guest — you can’t break even with more guests alone.",
         breakdownLabels: {
@@ -800,6 +801,7 @@ export const fr: Dictionary = {
         intro: 'Send your draft to a co-facilitator, partner, or accountant to gut-check your assumptions.',
         copy: 'Copy link',
         copied: 'Copied!',
+        copyFailed: 'Could not copy link',
         whatsapp: 'Share on WhatsApp',
         whatsappMessage: 'These are my retreat numbers from the MakersBarn pricing calculator:',
       },

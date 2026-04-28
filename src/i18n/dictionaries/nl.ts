@@ -759,6 +759,7 @@ export const nl: Dictionary = {
         totalCosts: 'Totale kosten',
         profitMargin: 'Winstmarge',
         profitPerWorkday: 'Winst per werkdag',
+        metricsLabel: 'Retraite-economie samenvatting',
         breakevenSentence: 'Je hebt minstens {guests} gasten bij {price} nodig om break-even te draaien.',
         breakevenImpossible: 'Bij deze prijs overstijgen je variabele kosten de omzet per gast — meer gasten alleen brengt je niet op break-even.',
         breakdownLabels: {
@@ -787,6 +788,7 @@ export const nl: Dictionary = {
         intro: 'Stuur je opzet naar een co-begeleider, partner of accountant om je aannames te toetsen.',
         copy: 'Link kopiëren',
         copied: 'Gekopieerd!',
+        copyFailed: 'Kon link niet kopiëren',
         whatsapp: 'Deel via WhatsApp',
         whatsappMessage: 'Dit zijn mijn retraitecijfers uit de MakersBarn-prijscalculator:',
       },
