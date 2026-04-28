@@ -66,6 +66,27 @@ export interface SiloMeta {
   description: SiloLocalizedString
 }
 
+export interface SiloOrganizerSeo {
+  /**
+   * Organizer-facing search vocabulary (e.g. "silent retreat venue", "Vipassana", "EMDR intensive").
+   * Emitted as `keywords` on the silo's EventVenue JSON-LD so AI agents can match queries.
+   */
+  keywords: SiloLocalizedStringList
+  /**
+   * Audience description (e.g. "licensed therapists", "published authors").
+   * Emitted as `audience.audienceType` on the EventVenue.
+   */
+  audience: SiloLocalizedString
+  /** Typical cohort size this silo is built for. Display copy lives in `facts`. */
+  cohortSize?: { min: number; max: number }
+  /** Override the venue's default 14-bed overnight capacity (rare). */
+  overnightCapacityOverride?: number
+  /** Override the venue's default 20-participant day-programme capacity (rare). */
+  dayProgramCapacityOverride?: number
+  /** Stable @ids of past hosted Events to cross-link as proof-of-fit. */
+  linkedEventIds?: readonly string[]
+}
+
 export interface SiloContent {
   slug: SiloSlug
   route: Route
@@ -79,6 +100,7 @@ export interface SiloContent {
   schedule?: SiloSchedule
   faq: readonly SiloFaqItem[]
   finalCta: SiloFinalCta
+  organizerSeo?: SiloOrganizerSeo
 }
 
 export interface SiloHubCardSummary {
