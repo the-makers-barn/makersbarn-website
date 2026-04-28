@@ -8,7 +8,7 @@ const sample: CalculatorInputs = {
   guests: 12,
   nights: 5,
   pricePerGuest: 1200,
-  venueAccommodation: 4500,
+  venuePerNight: 900,
   foodPerGuestPerDay: 40,
   facilitatorFee: 2500,
   marketingAndOther: 800,
@@ -25,7 +25,7 @@ describe('encodeCalculatorInputs', () => {
     expect(params.get('g')).toBe('12')
     expect(params.get('n')).toBe('5')
     expect(params.get('p')).toBe('1200')
-    expect(params.get('v')).toBe('4500')
+    expect(params.get('v')).toBe('900')
     expect(params.get('f')).toBe('40')
     expect(params.get('ff')).toBe('2500')
     expect(params.get('m')).toBe('800')

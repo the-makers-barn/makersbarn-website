@@ -5,7 +5,7 @@ export interface CalculatorInputs {
   guests: number
   nights: number
   pricePerGuest: number
-  venueAccommodation: number
+  venuePerNight: number
   foodPerGuestPerDay: number
   facilitatorFee: number
   marketingAndOther: number
@@ -44,7 +44,7 @@ export interface VariantBenchmarks {
   foodPerGuestPerDay: LocalizedString
   facilitatorFee: LocalizedString
   marketingAndOther: LocalizedString
-  venueAccommodation: LocalizedString
+  venuePerNight: LocalizedString
 }
 
 export interface VariantCopy {

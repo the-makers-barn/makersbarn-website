@@ -645,7 +645,8 @@ export interface ToolsCalculatorInputsTranslations {
   nightsLabel: string
   nightsUnit: string
   pricePerGuestLabel: string
-  venueAccommodationLabel: string
+  venuePerNightLabel: string
+  venueUnit: string
   foodPerGuestPerDayLabel: string
   foodUnit: string
   facilitatorFeeLabel: string

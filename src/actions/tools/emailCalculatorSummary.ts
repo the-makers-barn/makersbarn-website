@@ -20,7 +20,7 @@ const InputsSchema = z.object({
   guests: z.number().int().min(0).max(1000),
   nights: z.number().int().min(0).max(365),
   pricePerGuest: z.number().min(0).max(100_000),
-  venueAccommodation: z.number().min(0).max(1_000_000),
+  venuePerNight: z.number().min(0).max(1_000_000),
   foodPerGuestPerDay: z.number().min(0).max(1000),
   facilitatorFee: z.number().min(0).max(1_000_000),
   marketingAndOther: z.number().min(0).max(1_000_000),
@@ -80,7 +80,7 @@ function buildHtmlSummary(data: EmailCalculatorSummaryData): string {
       <li>Guests: ${inputs.guests}</li>
       <li>Nights: ${inputs.nights}</li>
       <li>Price per guest: ${formatEuro(inputs.pricePerGuest)}</li>
-      <li>Venue &amp; accommodation: ${formatEuro(inputs.venueAccommodation)}</li>
+      <li>Venue &amp; accommodation per night: ${formatEuro(inputs.venuePerNight)} (${formatEuro(inputs.venuePerNight * inputs.nights)} total)</li>
       <li>Food per guest per day: ${formatEuro(inputs.foodPerGuestPerDay)}</li>
       <li>Facilitator fee: ${formatEuro(inputs.facilitatorFee)}</li>
       <li>Marketing &amp; other: ${formatEuro(inputs.marketingAndOther)}</li>

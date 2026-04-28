@@ -6,7 +6,7 @@ const GENERIC: VariantConfig = {
   variant: ToolVariant.GENERIC,
   defaults: {
     guests: 12, nights: 5, pricePerGuest: 1200,
-    venueAccommodation: 4500, foodPerGuestPerDay: 40,
+    venuePerNight: 900, foodPerGuestPerDay: 40,
     facilitatorFee: 2500, marketingAndOther: 800,
     coFacilitators: 0, travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 5,
@@ -40,12 +40,12 @@ const GENERIC: VariantConfig = {
       [Language.ES]: 'Presupuesta para anuncios, contenido, materiales, procesamiento de pagos y un margen',
       [Language.FR]: 'Prévoyez un budget pour publicités, contenu, fournitures, frais de paiement et imprévus',
     },
-    venueAccommodation: {
-      [Language.EN]: 'Total venue rental + accommodation for the entire retreat',
-      [Language.NL]: 'Totaal van locatiehuur + accommodatie voor de hele retraite',
-      [Language.DE]: 'Gesamte Locationmiete + Unterkunft für das gesamte Retreat',
-      [Language.ES]: 'Alquiler total del lugar + alojamiento para todo el retiro',
-      [Language.FR]: 'Location totale du lieu + hébergement pour toute la retraite',
+    venuePerNight: {
+      [Language.EN]: 'Per-night rate for venue + accommodation. Dutch retreat venues commonly run €500–€1,200 per night for groups of 10–14',
+      [Language.NL]: 'Nachtprijs voor locatie + accommodatie. Nederlandse retraiteplekken kosten doorgaans €500–€1.200 per nacht voor groepen van 10–14',
+      [Language.DE]: 'Per-night rate for venue + accommodation. Dutch retreat venues commonly run €500–€1,200 per night for groups of 10–14',
+      [Language.ES]: 'Per-night rate for venue + accommodation. Dutch retreat venues commonly run €500–€1,200 per night for groups of 10–14',
+      [Language.FR]: 'Per-night rate for venue + accommodation. Dutch retreat venues commonly run €500–€1,200 per night for groups of 10–14',
     },
   },
   copy: {
@@ -89,7 +89,7 @@ const YOGA: VariantConfig = {
   variant: ToolVariant.YOGA,
   defaults: {
     guests: 12, nights: 5, pricePerGuest: 1200,
-    venueAccommodation: 4500, foodPerGuestPerDay: 40,
+    venuePerNight: 900, foodPerGuestPerDay: 40,
     facilitatorFee: 2500, marketingAndOther: 800,
     coFacilitators: 0, travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 5,
@@ -105,7 +105,7 @@ const YOGA: VariantConfig = {
     foodPerGuestPerDay: GENERIC.benchmarks.foodPerGuestPerDay,
     facilitatorFee: GENERIC.benchmarks.facilitatorFee,
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
-    venueAccommodation: GENERIC.benchmarks.venueAccommodation,
+    venuePerNight: GENERIC.benchmarks.venuePerNight,
   },
   copy: {
     heroEyebrow: GENERIC.copy.heroEyebrow,
@@ -145,7 +145,7 @@ const WELLNESS: VariantConfig = {
   variant: ToolVariant.WELLNESS,
   defaults: {
     guests: 10, nights: 7, pricePerGuest: 1800,
-    venueAccommodation: 7000, foodPerGuestPerDay: 55,
+    venuePerNight: 1000, foodPerGuestPerDay: 55,
     facilitatorFee: 4000, marketingAndOther: 1200,
     coFacilitators: 800, travel: 0, insurance: 200,
     paymentFeePercent: 3, planningDays: 7,
@@ -167,7 +167,7 @@ const WELLNESS: VariantConfig = {
     },
     facilitatorFee: GENERIC.benchmarks.facilitatorFee,
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
-    venueAccommodation: GENERIC.benchmarks.venueAccommodation,
+    venuePerNight: GENERIC.benchmarks.venuePerNight,
   },
   copy: {
     heroEyebrow: GENERIC.copy.heroEyebrow,
@@ -207,7 +207,7 @@ const MEDITATION: VariantConfig = {
   variant: ToolVariant.MEDITATION,
   defaults: {
     guests: 14, nights: 4, pricePerGuest: 900,
-    venueAccommodation: 3500, foodPerGuestPerDay: 35,
+    venuePerNight: 875, foodPerGuestPerDay: 35,
     facilitatorFee: 2000, marketingAndOther: 600,
     coFacilitators: 0, travel: 0, insurance: 150,
     paymentFeePercent: 3, planningDays: 4,
@@ -229,7 +229,7 @@ const MEDITATION: VariantConfig = {
     },
     facilitatorFee: GENERIC.benchmarks.facilitatorFee,
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
-    venueAccommodation: GENERIC.benchmarks.venueAccommodation,
+    venuePerNight: GENERIC.benchmarks.venuePerNight,
   },
   copy: {
     heroEyebrow: GENERIC.copy.heroEyebrow,
@@ -269,7 +269,7 @@ const COACHING: VariantConfig = {
   variant: ToolVariant.COACHING,
   defaults: {
     guests: 6, nights: 4, pricePerGuest: 3200,
-    venueAccommodation: 4000, foodPerGuestPerDay: 50,
+    venuePerNight: 1000, foodPerGuestPerDay: 50,
     facilitatorFee: 5000, marketingAndOther: 1500,
     coFacilitators: 0, travel: 0, insurance: 200,
     paymentFeePercent: 3, planningDays: 7,
@@ -297,7 +297,7 @@ const COACHING: VariantConfig = {
       [Language.FR]: 'Les intensifs de coaching sont riches en 1:1 — votre temps vaut une prime. Ne pas sous-évaluer.',
     },
     marketingAndOther: GENERIC.benchmarks.marketingAndOther,
-    venueAccommodation: GENERIC.benchmarks.venueAccommodation,
+    venuePerNight: GENERIC.benchmarks.venuePerNight,
   },
   copy: {
     heroEyebrow: GENERIC.copy.heroEyebrow,

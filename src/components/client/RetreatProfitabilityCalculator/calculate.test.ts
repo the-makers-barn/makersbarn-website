@@ -8,7 +8,7 @@ const baseYogaInputs: CalculatorInputs = {
   guests: 12,
   nights: 5,
   pricePerGuest: 1200,
-  venueAccommodation: 4500,
+  venuePerNight: 900,
   foodPerGuestPerDay: 40,
   facilitatorFee: 2500,
   marketingAndOther: 800,
@@ -37,7 +37,7 @@ describe('calculateRetreatProfitability', () => {
 
   it('sums all cost categories into totalCosts', () => {
     const r = calculateRetreatProfitability(baseYogaInputs)
-    // 4500 + 2400 + 2500 + 800 + 0 + 0 + 150 + 432 = 10782
+    // venue(900*5=4500) + food(2400) + facilitator(2500) + marketing(800) + 0 + 0 + insurance(150) + fees(432) = 10782
     expect(r.totalCosts).toBeCloseTo(10782, 2)
   })
 
@@ -58,7 +58,7 @@ describe('calculateRetreatProfitability', () => {
 
   it('computes breakeven guests as ceil of fixed costs over per-guest contribution', () => {
     const r = calculateRetreatProfitability(baseYogaInputs)
-    // fixed = venue + facilitator + marketing + insurance + co + travel = 4500+2500+800+150+0+0 = 7950
+    // fixed = venue(900*5=4500) + facilitator(2500) + marketing(800) + insurance(150) + co(0) + travel(0) = 7950
     // contribution per guest = price - foodPerDay*nights - price*paymentFee%
     //                        = 1200 - 200 - 36 = 964
     // breakeven = ceil(7950 / 964) = 9 (since 7950/964 ≈ 8.247)
@@ -79,7 +79,7 @@ describe('calculateRetreatProfitability', () => {
       guests: 6,
       nights: 4,
       pricePerGuest: 3200,
-      venueAccommodation: 3500,
+      venuePerNight: 875,
       foodPerGuestPerDay: 50,
       facilitatorFee: 5000,
     }

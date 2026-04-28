@@ -6,8 +6,10 @@ export function calculateRetreatProfitability(inputs: CalculatorInputs): Calcula
   const food = inputs.guests * inputs.nights * inputs.foodPerGuestPerDay
   const paymentFees = (totalRevenue * inputs.paymentFeePercent) / 100
 
+  const venueTotal = inputs.venuePerNight * inputs.nights
+
   const costBreakdown = {
-    venueAccommodation: inputs.venueAccommodation,
+    venueAccommodation: venueTotal,
     food,
     facilitatorFee: inputs.facilitatorFee,
     marketingAndOther: inputs.marketingAndOther,
@@ -48,7 +50,7 @@ export function calculateRetreatProfitability(inputs: CalculatorInputs): Calcula
 
 function computeBreakevenGuests(inputs: CalculatorInputs): number {
   const fixedCosts =
-    inputs.venueAccommodation +
+    inputs.venuePerNight * inputs.nights +
     inputs.facilitatorFee +
     inputs.marketingAndOther +
     inputs.coFacilitators +

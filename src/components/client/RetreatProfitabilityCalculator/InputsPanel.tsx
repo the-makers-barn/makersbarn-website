@@ -51,11 +51,12 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
         onChange={(v) => onChange('pricePerGuest', v)}
       />
       <NumberField
-        label={labels.venueAccommodationLabel}
-        value={inputs.venueAccommodation}
+        label={labels.venuePerNightLabel}
+        value={inputs.venuePerNight}
         unitPrefix="€"
-        helper={variant.benchmarks.venueAccommodation[locale]}
-        onChange={(v) => onChange('venueAccommodation', v)}
+        unitSuffix={labels.venueUnit}
+        helper={variant.benchmarks.venuePerNight[locale]}
+        onChange={(v) => onChange('venuePerNight', v)}
       />
       <NumberField
         label={labels.foodPerGuestPerDayLabel}
