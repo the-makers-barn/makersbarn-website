@@ -89,6 +89,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.85,
     },
+    {
+      path: Route.TOOLS,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.RETREAT_PROFITABILITY_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.YOGA_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.WELLNESS_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.MEDITATION_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.COACHING_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
   ]
 
   // Generate entries for each route in each language
