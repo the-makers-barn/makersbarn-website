@@ -1,0 +1,283 @@
+.container {
+  --bar-venue: #294b3a;
+  --bar-food: #b8894a;
+  --bar-facilitator: #5c8d72;
+  --bar-marketing: #d4af37;
+  --bar-co: #7d6a4a;
+  --bar-travel: #4a6e5a;
+  --bar-insurance: #8b7355;
+  --bar-fees: #a89074;
+  --bar-profit: #4ade80;
+
+  display: grid;
+  gap: 2rem;
+  background: var(--color-background, #fff);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 3rem;
+  }
+}
+
+.inputsPanel { display: grid; gap: 1.25rem; }
+
+.field { display: grid; gap: 0.5rem; }
+
+.fieldLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.fieldValue { font-variant-numeric: tabular-nums; color: var(--color-primary); }
+
+.fieldHelper {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-snug);
+}
+
+.slider {
+  width: 100%;
+  accent-color: var(--color-primary);
+}
+
+.numberInputWrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+.unitPrefix, .unitSuffix {
+  padding: 0 0.6rem;
+  background: rgba(0, 0, 0, 0.04);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.numberInput {
+  flex: 1;
+  border: 0;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
+}
+
+.advancedWrapper { margin-top: 0.5rem; }
+
+.advancedToggle {
+  background: none;
+  border: 0;
+  color: var(--color-primary);
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-size: var(--font-size-sm);
+}
+
+.advancedContent { display: grid; gap: 1rem; padding-top: 0.75rem; }
+
+.resetButton {
+  align-self: start;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Results panel */
+.resultsPanel {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: rgba(41, 75, 58, 0.04);
+  border-radius: 0.75rem;
+  align-self: start;
+}
+
+@media (min-width: 900px) {
+  .resultsPanel { position: sticky; top: 1.5rem; }
+}
+
+.resultsKicker {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+.headline {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.headlineProfit { color: var(--color-primary); }
+.headlineLoss { color: var(--color-text-error); }
+
+.narrative {
+  margin: 0;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.metric { background: #fff; border-radius: 0.5rem; padding: 0.75rem; }
+.metric dt { font-size: var(--font-size-xs); color: var(--color-text-muted); margin: 0 0 0.25rem; }
+.metric dd { font-size: var(--font-size-lg); font-weight: 600; margin: 0; font-variant-numeric: tabular-nums; }
+
+.breakeven {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* Cost breakdown bar */
+.breakdownBar { display: grid; gap: 0.75rem; }
+
+.bar {
+  display: flex;
+  height: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.barSegment { height: 100%; transition: width 0.2s ease; }
+
+.barProfitSegment {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: var(--bar-profit);
+  opacity: 0.6;
+}
+
+.barLegend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  font-size: var(--font-size-xs);
+}
+
+.barLegendItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.barLegendSwatch { width: 10px; height: 10px; border-radius: 2px; }
+.barLegendValue { font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
+
+/* Share + email + CTA */
+.actionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.shareButton {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.emailForm { display: grid; gap: 0.5rem; margin-top: 1.5rem; }
+.emailHeading { margin: 0; font-size: var(--font-size-sm); font-weight: 600; }
+.emailFields { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.emailInput {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  font: inherit;
+}
+
+.emailSubmit {
+  padding: 0.6rem 1.1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.emailSubmit:disabled { opacity: 0.6; cursor: progress; }
+
+.emailOptIn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.emailSuccess { color: var(--color-primary); margin: 1.5rem 0 0; font-weight: 600; }
+.emailError { color: var(--color-text-error); margin: 0; font-size: var(--font-size-xs); }
+
+.makersbarnCta {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(184, 137, 74, 0.08);
+  border-radius: 0.75rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.makersbarnCtaTitle { margin: 0; font-family: var(--font-playfair); font-size: var(--font-size-xl); }
+.makersbarnCtaBody { margin: 0; color: var(--color-text-muted); }
+
+.makersbarnCtaLink {
+  align-self: start;
+  background: var(--color-secondary);
+  color: #fff;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
