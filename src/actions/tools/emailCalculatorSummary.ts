@@ -1,0 +1,169 @@
+'use server'
+
+import * as postmark from 'postmark'
+import { z } from 'zod'
+
+import { ToolVariant, CALCULATOR_RATE_LIMIT } from '@/constants/tools'
+import { Language } from '@/types/common'
+import { createLogger, RateLimiter, getClientIdentifier, maskEmail, escapeHtml } from '@/lib'
+import { sendSlackMessage, SlackChannel } from '@/services/slack'
+import type { CalculatorInputs, CalculatorResults, EmailCalculatorSummaryData } from '@/types/tools'
+
+const logger = createLogger('email-calculator-summary')
+
+const rateLimiter = new RateLimiter({
+  windowMs: CALCULATOR_RATE_LIMIT.WINDOW_MS,
+  maxRequests: CALCULATOR_RATE_LIMIT.MAX_REQUESTS,
+})
+
+const InputsSchema = z.object({
+  guests: z.number().int().min(0).max(1000),
+  nights: z.number().int().min(0).max(365),
+  pricePerGuest: z.number().min(0).max(100_000),
+  venueAccommodation: z.number().min(0).max(1_000_000),
+  foodPerGuestPerDay: z.number().min(0).max(1000),
+  facilitatorFee: z.number().min(0).max(1_000_000),
+  marketingAndOther: z.number().min(0).max(1_000_000),
+  coFacilitators: z.number().min(0).max(1_000_000),
+  travel: z.number().min(0).max(1_000_000),
+  insurance: z.number().min(0).max(100_000),
+  paymentFeePercent: z.number().min(0).max(100),
+  planningDays: z.number().min(0).max(365),
+}) satisfies z.ZodType<CalculatorInputs>
+
+const ResultsSchema = z.object({
+  totalRevenue: z.number(),
+  totalCosts: z.number(),
+  netProfit: z.number(),
+  profitMargin: z.number(),
+  profitPerWorkday: z.number(),
+  breakevenGuests: z.union([z.number(), z.literal(Number.POSITIVE_INFINITY)]),
+  costBreakdown: z.object({
+    venueAccommodation: z.number(),
+    food: z.number(),
+    facilitatorFee: z.number(),
+    marketingAndOther: z.number(),
+    coFacilitators: z.number(),
+    travel: z.number(),
+    insurance: z.number(),
+    paymentFees: z.number(),
+  }),
+}) satisfies z.ZodType<CalculatorResults>
+
+const RequestSchema = z.object({
+  email: z.string().email().max(254),
+  inputs: InputsSchema,
+  results: ResultsSchema,
+  variant: z.nativeEnum(ToolVariant),
+  newsletterOptIn: z.boolean(),
+  locale: z.nativeEnum(Language),
+})
+
+export interface EmailCalculatorSummaryResult {
+  success: boolean
+  error?: string
+}
+
+const formatEuro = (n: number): string => `€${Math.round(n).toLocaleString()}`
+const formatPercent = (n: number): string => `${Math.round(n * 100)}%`
+
+function buildHtmlSummary(data: EmailCalculatorSummaryData): string {
+  const { inputs, results, variant } = data
+  const breakeven = Number.isFinite(results.breakevenGuests)
+    ? `${results.breakevenGuests} guests`
+    : 'not reachable at this price'
+  return `
+    <h2>Your retreat profitability summary</h2>
+    <p>Variant: <strong>${escapeHtml(variant)}</strong></p>
+    <h3>Inputs</h3>
+    <ul>
+      <li>Guests: ${inputs.guests}</li>
+      <li>Nights: ${inputs.nights}</li>
+      <li>Price per guest: ${formatEuro(inputs.pricePerGuest)}</li>
+      <li>Venue &amp; accommodation: ${formatEuro(inputs.venueAccommodation)}</li>
+      <li>Food per guest per day: ${formatEuro(inputs.foodPerGuestPerDay)}</li>
+      <li>Facilitator fee: ${formatEuro(inputs.facilitatorFee)}</li>
+      <li>Marketing &amp; other: ${formatEuro(inputs.marketingAndOther)}</li>
+    </ul>
+    <h3>Results</h3>
+    <ul>
+      <li>Total revenue: <strong>${formatEuro(results.totalRevenue)}</strong></li>
+      <li>Total costs: ${formatEuro(results.totalCosts)}</li>
+      <li>Net profit: <strong>${formatEuro(results.netProfit)}</strong></li>
+      <li>Profit margin: ${formatPercent(results.profitMargin)}</li>
+      <li>Profit per workday: ${formatEuro(results.profitPerWorkday)}</li>
+      <li>Breakeven occupancy: ${breakeven}</li>
+    </ul>
+    <hr />
+    <p>Hosted at MakersBarn? <a href="https://www.themakersbarn.com/contact?src=tool-${escapeHtml(variant)}">Request a custom quote</a> tailored to your group and dates.</p>
+    <p>— The MakersBarn team</p>
+  `
+}
+
+function buildSlackMessage(data: EmailCalculatorSummaryData): string {
+  return [
+    '🧮 *Calculator email captured*',
+    `*Variant:* ${data.variant}`,
+    `*Email:* ${data.email}`,
+    `*Net profit calculated:* ${formatEuro(data.results.netProfit)}`,
+    `*Newsletter opt-in:* ${data.newsletterOptIn ? 'yes' : 'no'}`,
+  ].join('\n')
+}
+
+export async function emailCalculatorSummary(
+  payload: EmailCalculatorSummaryData
+): Promise<EmailCalculatorSummaryResult> {
+  const clientId = await getClientIdentifier()
+
+  if (!rateLimiter.isAllowed(clientId)) {
+    logger.warn('Rate limit exceeded', { clientId })
+    return { success: false, error: 'rate_limited' }
+  }
+
+  const parsed = RequestSchema.safeParse(payload)
+  if (!parsed.success) {
+    logger.warn('Validation failed', { issues: parsed.error.issues })
+    return { success: false, error: 'validation_failed' }
+  }
+  const data = parsed.data
+  const masked = maskEmail(data.email)
+
+  try {
+    await sendSlackMessage({
+      channel: SlackChannel.USER_CONTACTS,
+      message: buildSlackMessage(data),
+    })
+  } catch (error) {
+    logger.warn('Slack notification failed for calculator capture', { masked, error })
+  }
+
+  const apiToken = process.env.POSTMARKAPP_API_TOKEN
+  const senderEmail = process.env.POSTMARK_SENDER_EMAIL
+  if (!apiToken || !senderEmail) {
+    logger.error('Postmark not configured for calculator email')
+    return { success: false, error: 'email_service_unavailable' }
+  }
+
+  try {
+    const client = new postmark.ServerClient(apiToken)
+    const response = await client.sendEmail({
+      From: senderEmail,
+      To: data.email,
+      Subject: 'Your retreat profitability summary — MakersBarn',
+      HtmlBody: buildHtmlSummary(data),
+      TextBody: `See HTML version. Variant: ${data.variant}. Net profit: ${formatEuro(data.results.netProfit)}.`,
+    })
+    if (response.ErrorCode && response.ErrorCode !== 0) {
+      logger.error('Postmark error sending calculator email', {
+        masked,
+        errorCode: response.ErrorCode,
+      })
+      return { success: false, error: 'email_send_failed' }
+    }
+    logger.info('Calculator summary email sent', { masked, variant: data.variant })
+    return { success: true }
+  } catch (error) {
+    logger.error('Unexpected error sending calculator email', { masked }, error)
+    return { success: false, error: 'unexpected_error' }
+  }
+}
