@@ -2532,7 +2532,6 @@ export interface ToolsHubTranslations {
 
 export interface ToolsHowToTranslations {
   heading: string
-  steps: readonly string[] // exactly 4 entries
 }
 
 export interface ToolsRelatedTranslations {
@@ -2660,12 +2659,6 @@ Open `src/i18n/dictionaries/en.ts`. At the bottom of the `en` object (before the
     },
     howTo: {
       heading: 'How to use this calculator',
-      steps: [
-        'Set your retreat size: drag the guests and nights sliders to your planned numbers.',
-        'Set your price per guest based on the benchmark beneath the slider.',
-        'Enter the costs you know — venue, food, your facilitator fee, marketing.',
-        'Read the live summary on the right to see profit, margin, and breakeven occupancy.',
-      ],
     },
     related: {
       heading: 'Related calculators',
@@ -2779,12 +2772,6 @@ Open `src/i18n/dictionaries/nl.ts`. At the bottom of the `nl` object, add:
     },
     howTo: {
       heading: 'Zo gebruik je deze calculator',
-      steps: [
-        'Stel je retraite-omvang in: sleep de schuifbalken voor gasten en nachten naar de gewenste waarden.',
-        'Stel je prijs per gast in op basis van de benchmark onder de schuifbalk.',
-        'Voer de kosten in die je kent — locatie, eten, jouw begeleidersfee, marketing.',
-        'Lees rechts de live samenvatting voor winst, marge en break-evenbezetting.',
-      ],
     },
     related: {
       heading: 'Gerelateerde calculators',
@@ -3669,6 +3656,164 @@ git commit -m "add canonical and 4 variant calculator pages with structured data
 
 ---
 
+## Phase 7.5 — OG images
+
+### Task 21a: Shared OG image template + per-page wrappers
+
+**Files:**
+- Create: `src/app/[locale]/tools/og-template.tsx` (shared template; not a route)
+- Create: `src/app/[locale]/tools/opengraph-image.tsx` (hub OG)
+- Create: `src/app/[locale]/tools/retreat-profitability-calculator/opengraph-image.tsx`
+- Create: `src/app/[locale]/tools/yoga-retreat-pricing-calculator/opengraph-image.tsx`
+- Create: `src/app/[locale]/tools/wellness-retreat-pricing-calculator/opengraph-image.tsx`
+- Create: `src/app/[locale]/tools/meditation-retreat-pricing-calculator/opengraph-image.tsx`
+- Create: `src/app/[locale]/tools/coaching-retreat-pricing-calculator/opengraph-image.tsx`
+
+**Goal:** Per-variant Open Graph images generated at build time via `next/og` so social sharing previews show variant-specific titles. Skip if `next/og` import fails — fall back to the global default OG image (already present in `generatePageMetadata`).
+
+- [ ] **Step 1: Create the shared template**
+
+Create `src/app/[locale]/tools/og-template.tsx`:
+
+```tsx
+import { ImageResponse } from 'next/og'
+
+export const ogSize = { width: 1200, height: 630 }
+export const ogContentType = 'image/png'
+
+interface RenderOgImageParams {
+  title: string
+  eyebrow: string
+}
+
+export function renderToolOgImage({ title, eyebrow }: RenderOgImageParams): ImageResponse {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          padding: '80px',
+          background: 'linear-gradient(135deg, #f4ede0 0%, #e8dcc6 100%)',
+          fontFamily: 'sans-serif',
+          color: '#1f130c',
+        }}
+      >
+        <div style={{ fontSize: 28, color: '#b8894a', textTransform: 'uppercase', letterSpacing: 4, marginBottom: 20 }}>
+          {eyebrow}
+        </div>
+        <div style={{ fontSize: 80, lineHeight: 1.1, fontWeight: 700, maxWidth: 980 }}>
+          {title}
+        </div>
+        <div style={{ marginTop: 'auto', fontSize: 28, color: '#294b3a', fontWeight: 600 }}>
+          The MakersBarn
+        </div>
+      </div>
+    ),
+    ogSize,
+  )
+}
+```
+
+- [ ] **Step 2: Create the hub opengraph-image**
+
+Create `src/app/[locale]/tools/opengraph-image.tsx`:
+
+```tsx
+import { getValidLocale } from '@/lib/locale'
+import { getServerTranslations } from '@/i18n'
+
+import { ogContentType, ogSize, renderToolOgImage } from './og-template'
+
+export const contentType = ogContentType
+export const size = ogSize
+export const alt = 'MakersBarn — Tools for retreat facilitators'
+
+interface OgProps {
+  params: Promise<{ locale: string }>
+}
+
+export default async function OgImage({ params }: OgProps) {
+  const { locale } = await params
+  const validLocale = getValidLocale(locale)
+  const t = await getServerTranslations(validLocale)
+  return renderToolOgImage({
+    eyebrow: t.tools.hub.eyebrow,
+    title: t.tools.hub.title,
+  })
+}
+```
+
+- [ ] **Step 3: Create per-variant OG images**
+
+For each of the 5 calculator pages (canonical + 4 variants), create `opengraph-image.tsx` next to `page.tsx` with this template (substituting `VARIANT` for each):
+
+```tsx
+import { CALCULATOR_VARIANTS } from '@/data/tools'
+import { ToolVariant } from '@/constants/tools'
+import { getValidLocale } from '@/lib/locale'
+import { getServerTranslations } from '@/i18n'
+
+import { ogContentType, ogSize, renderToolOgImage } from '../og-template'
+
+export const contentType = ogContentType
+export const size = ogSize
+export const alt = 'MakersBarn — retreat pricing calculator'
+
+const VARIANT = ToolVariant.YOGA // <-- substitute per variant
+
+interface OgProps {
+  params: Promise<{ locale: string }>
+}
+
+export default async function OgImage({ params }: OgProps) {
+  const { locale } = await params
+  const validLocale = getValidLocale(locale)
+  const t = await getServerTranslations(validLocale)
+  const config = CALCULATOR_VARIANTS[VARIANT]
+  return renderToolOgImage({
+    eyebrow: t.tools.calculator.makersbarnCta.title.length > 0 ? config.copy.heroEyebrow[validLocale] : '',
+    title: config.copy.heroTitle[validLocale],
+  })
+}
+```
+
+Per-file substitutions:
+- `retreat-profitability-calculator/opengraph-image.tsx` → `ToolVariant.GENERIC`
+- `yoga-retreat-pricing-calculator/opengraph-image.tsx` → `ToolVariant.YOGA`
+- `wellness-retreat-pricing-calculator/opengraph-image.tsx` → `ToolVariant.WELLNESS`
+- `meditation-retreat-pricing-calculator/opengraph-image.tsx` → `ToolVariant.MEDITATION`
+- `coaching-retreat-pricing-calculator/opengraph-image.tsx` → `ToolVariant.COACHING`
+
+- [ ] **Step 4: Build and verify**
+
+```bash
+npm run build
+```
+
+Expected: PASS. Build output should mention dynamic OG image routes for each tools page.
+
+Spot-check one OG image by visiting `http://localhost:3000/en/tools/yoga-retreat-pricing-calculator/opengraph-image` (after `npm run dev`). A PNG with the variant title and "The MakersBarn" branding should render.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add src/app/\[locale\]/tools/og-template.tsx \
+        src/app/\[locale\]/tools/opengraph-image.tsx \
+        src/app/\[locale\]/tools/retreat-profitability-calculator/opengraph-image.tsx \
+        src/app/\[locale\]/tools/yoga-retreat-pricing-calculator/opengraph-image.tsx \
+        src/app/\[locale\]/tools/wellness-retreat-pricing-calculator/opengraph-image.tsx \
+        src/app/\[locale\]/tools/meditation-retreat-pricing-calculator/opengraph-image.tsx \
+        src/app/\[locale\]/tools/coaching-retreat-pricing-calculator/opengraph-image.tsx
+git commit -m "add per-variant Open Graph images for tools pages"
+```
+
+---
+
 ## Phase 8 — Sitemap + silo internal links
 
 ### Task 21: Add tools routes to sitemap
@@ -4113,7 +4258,7 @@ Done after completing the plan. Spec coverage check:
 - ✅ §3 (Calculator UX): Tasks 2, 4, 5, 6, 7, 8, 9, 10, 11
 - ✅ §4 (Page anatomy & guide content): Tasks 17, 18, 23–27
 - ✅ §5 (Component architecture): all of Phase 1, 2, 4, 6
-- ✅ §6 (SEO machinery): Tasks 16, 19, 20, 21
+- ✅ §6 (SEO machinery): Tasks 16, 19, 20, 21, 21a (OG images)
 - ✅ §7 (v1 scope, content authoring B with verification): Tasks 23–27
 - ✅ Email + Slack flow per spec clarification: Task 12
 - ✅ Silo embed deferred (per spec): silo CTA only added (Task 22), no embed
