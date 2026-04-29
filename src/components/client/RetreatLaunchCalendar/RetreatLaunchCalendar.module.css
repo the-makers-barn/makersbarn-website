@@ -108,6 +108,8 @@
   line-height: var(--line-height-tight);
 }
 
+/* Rail label kept for symmetry with the phase eyebrow shown in content;
+   reserved for future use (e.g. month-name rendering). */
 .phaseRailLabel {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
