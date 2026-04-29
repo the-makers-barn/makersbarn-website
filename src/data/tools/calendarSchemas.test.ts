@@ -37,15 +37,6 @@ describe('emailCalendarPlanSchema', () => {
     expect(result.success).toBe(false)
   })
 
-  it('rejects more than 200 itemStates keys', () => {
-    const tooMany: Record<string, MilestoneStatus.DONE> = {}
-    for (let i = 0; i < 201; i++) {
-      tooMany[`p1-vision`] = MilestoneStatus.DONE
-    }
-    // 201 entries impossible because Object dedupes; force via parsing differently
-    expect(true).toBe(true) // covered structurally; runtime cap test in Task 6.x
-  })
-
   it('rejects more than CALENDAR_CUSTOM_ITEM_LIMITS.MAX_TOTAL custom items', () => {
     const tooMany = Array.from({ length: 121 }, () => ({
       phaseId: CalendarPhaseId.FOUNDATION,
