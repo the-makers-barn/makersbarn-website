@@ -192,5 +192,44 @@ export const CALENDAR_CONTENT: CalendarContent = {
         },
       },
     },
+    [TimelinePreset.THREE_MONTHS]: {
+      impactSubtitle: en(
+        'Tight, but possible. Assumes your venue is already booked and your audience is warm. Smaller intimate cohorts are realistic; large public retreats may not sell out.',
+      ),
+      phases: {
+        [CalendarPhaseId.FOUNDATION]: { kind: 'remove' },
+        [CalendarPhaseId.ANCHOR]: {
+          kind: 'modify',
+          patch: {
+            range: en('2–3 months before'),
+            rangeStartMonth: 3,
+            rangeEndMonth: 2,
+            title: en('Anchor and Launch sprint'),
+          },
+          extraMilestones: [
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_VENUE_PREBOOKED, 'Confirm your venue is already booked or book within the week') },
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_VISION, 'Define your retreat vision, theme, and the transformation it offers') },
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_AVATAR, 'Identify your ideal guest avatar') },
+            { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_FOUNDING_TIER, 'Open a founding-cohort pricing tier to incentivize fast registration') },
+            { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_LIMITED_COHORT, 'Cap cohort size honestly — smaller intimate retreats sell faster') },
+          ],
+        },
+        [CalendarPhaseId.LAUNCH]: {
+          kind: 'modify',
+          patch: { range: en('1–2 months before'), rangeStartMonth: 2, rangeEndMonth: 1 },
+          extraMilestones: [
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_WARM_OUTREACH, 'Send personal outreach to 30 warm contacts in your network') },
+          ],
+        },
+        [CalendarPhaseId.LOCK_IN]: {
+          kind: 'modify',
+          patch: { range: en('2–4 weeks before'), rangeStartMonth: 1, rangeEndMonth: 0 },
+        },
+        [CalendarPhaseId.FINAL_WEEKS]: {
+          kind: 'modify',
+          patch: { range: en('0–2 weeks before'), rangeStartMonth: 1, rangeEndMonth: 0 },
+        },
+      },
+    },
   },
 }
