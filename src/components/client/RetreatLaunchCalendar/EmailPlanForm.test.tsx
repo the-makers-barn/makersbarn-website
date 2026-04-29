@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi, beforeEach } from 'vitest'
 
+import { emailCalendarPlan } from '@/actions/tools'
 import { TimelinePreset } from '@/constants/tools'
 import { en as enDictionary } from '@/i18n/dictionaries/en'
 import { Language } from '@/types/common'
@@ -12,6 +13,11 @@ import { EmailPlanForm } from './EmailPlanForm'
 vi.mock('@/actions/tools', () => ({
   emailCalendarPlan: vi.fn(() => Promise.resolve({ ok: true })),
 }))
+
+beforeEach(() => {
+  vi.mocked(emailCalendarPlan).mockReset()
+  vi.mocked(emailCalendarPlan).mockResolvedValue({ ok: true })
+})
 
 const emptyState: CalendarState = {
   schemaVersion: 1,
@@ -68,5 +74,23 @@ describe('EmailPlanForm', () => {
     )
     await userEvent.click(screen.getByRole('button', { name: /email my plan/i }))
     expect(await screen.findByText(/sent — check your inbox/i)).toBeInTheDocument()
+  })
+
+  it('shows the rate-limit error and keeps the email value when the action returns rate_limit', async () => {
+    vi.mocked(emailCalendarPlan).mockResolvedValueOnce({ ok: false, error: 'rate_limit' })
+    render(
+      <EmailPlanForm
+        preset={TimelinePreset.TWELVE_MONTHS}
+        locale={Language.EN}
+        t={enDictionary}
+        state={emptyState}
+        disabled={false}
+      />,
+    )
+    const emailInput = screen.getByPlaceholderText('your@email.com')
+    await userEvent.type(emailInput, 'host@example.com')
+    await userEvent.click(screen.getByRole('button', { name: /email my plan/i }))
+    expect(await screen.findByText(/too many emails just now/i)).toBeInTheDocument()
+    expect(emailInput).toHaveValue('host@example.com')
   })
 })

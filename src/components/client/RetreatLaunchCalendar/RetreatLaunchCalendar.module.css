@@ -257,15 +257,6 @@
   background: rgba(184, 137, 74, 0.04);
 }
 
-.customItemBadge {
-  align-self: center;
-  font-size: var(--font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wide);
-  color: var(--color-secondary);
-  font-weight: 600;
-}
-
 .customItemRemove {
   align-self: start;
   padding: 0.25rem 0.55rem;
