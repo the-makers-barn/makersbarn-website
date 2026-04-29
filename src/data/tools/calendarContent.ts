@@ -157,5 +157,40 @@ export const CALENDAR_CONTENT: CalendarContent = {
         },
       },
     },
+    [TimelinePreset.SIX_MONTHS]: {
+      impactSubtitle: en(
+        'At 6 months you will need to compress foundation work. Best for facilitators who already have venue chemistry, a warm audience, or a returning cohort.',
+      ),
+      phases: {
+        [CalendarPhaseId.FOUNDATION]: { kind: 'remove' },
+        [CalendarPhaseId.ANCHOR]: {
+          kind: 'modify',
+          patch: {
+            range: en('4–6 months before'),
+            rangeStartMonth: 6,
+            rangeEndMonth: 4,
+            title: en('Sprint Foundation and Anchor'),
+          },
+          extraMilestones: [
+            // Foundation milestones with original IDs preserved (mandate per spec §4.2)
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_VISION, 'Define your retreat vision, theme, and the transformation it offers') },
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_AVATAR, 'Identify your ideal guest avatar') },
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_BUDGET, 'Draft an initial budget with a 10–15% buffer') },
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_PRICING_MODEL, 'Decide on pricing strategy and payment model') },
+            // Preset-specific 6-month sprint milestones
+            { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M6_SPRINT_VENUE_LOCK, 'Lock the venue this week — book one of your top three options') },
+            { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M6_SPRINT_PARALLEL_LANDING, 'Build the landing page in parallel with venue selection — no waiting') },
+          ],
+        },
+        [CalendarPhaseId.LAUNCH]: {
+          kind: 'modify',
+          patch: { range: en('2–4 months before'), rangeStartMonth: 4, rangeEndMonth: 2 },
+        },
+        [CalendarPhaseId.LOCK_IN]: {
+          kind: 'modify',
+          patch: { range: en('1–2 months before'), rangeStartMonth: 2, rangeEndMonth: 1 },
+        },
+      },
+    },
   },
 }
