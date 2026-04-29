@@ -1,4 +1,4 @@
-import { CalendarPhaseId } from '@/constants/tools'
+import { CalendarPhaseId, TimelinePreset } from '@/constants/tools'
 import type { CalendarContent, CalendarMilestone, CalendarPhase, LocalizedString } from '@/types/tools'
 
 import { CALENDAR_MILESTONE_IDS } from './calendarMilestoneIds'
@@ -134,6 +134,28 @@ export const CALENDAR_CONTENT: CalendarContent = {
     PHASE_POST_RETREAT,
   ],
   overrides: {
-    // Filled in Tasks 3.2–3.4
+    [TimelinePreset.NINE_MONTHS]: {
+      impactSubtitle: en(
+        'Three months less runway. Foundation work runs in parallel with venue lock-in — workable, but the early-bird launch window tightens.',
+      ),
+      phases: {
+        [CalendarPhaseId.FOUNDATION]: {
+          kind: 'modify',
+          patch: { range: en('6–9 months before'), rangeStartMonth: 9, rangeEndMonth: 6 },
+        },
+        [CalendarPhaseId.ANCHOR]: {
+          kind: 'modify',
+          patch: { range: en('4–6 months before'), rangeStartMonth: 6, rangeEndMonth: 4 },
+        },
+        [CalendarPhaseId.LAUNCH]: {
+          kind: 'modify',
+          patch: { range: en('2–4 months before'), rangeStartMonth: 4, rangeEndMonth: 2 },
+        },
+        [CalendarPhaseId.LOCK_IN]: {
+          kind: 'modify',
+          patch: { range: en('1–2 months before'), rangeStartMonth: 2, rangeEndMonth: 1 },
+        },
+      },
+    },
   },
 }
