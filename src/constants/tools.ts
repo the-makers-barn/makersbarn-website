@@ -74,3 +74,79 @@ export const SILO_TO_TOOL_ROUTE: Partial<Record<Route, Route>> = {
   [Route.MEDITATION_RETREATS]: Route.MEDITATION_RETREAT_PRICING_CALCULATOR,
   [Route.COACHING_INTENSIVES]: Route.COACHING_RETREAT_PRICING_CALCULATOR,
 }
+
+export enum TimelinePreset {
+  THREE_MONTHS = 3,
+  SIX_MONTHS = 6,
+  NINE_MONTHS = 9,
+  TWELVE_MONTHS = 12,
+}
+
+export enum CalendarPhaseId {
+  FOUNDATION = 'foundation',
+  ANCHOR = 'anchor',
+  LAUNCH = 'launch',
+  LOCK_IN = 'lock-in',
+  FINAL_WEEKS = 'final-weeks',
+  POST_RETREAT = 'post-retreat',
+}
+
+export enum MilestoneStatus {
+  PENDING = 'pending',
+  DONE = 'done',
+  DISMISSED = 'dismissed',
+}
+
+export enum ToolKind {
+  CALCULATOR = 'calculator',
+  PLANNER = 'planner',
+}
+
+export const CALENDAR_STORAGE_KEY = 'mb_retreat_launch_calendar_v1'
+export const CALENDAR_DEFAULT_PRESET = TimelinePreset.TWELVE_MONTHS
+
+export const CALENDAR_PRESETS_ORDER: readonly TimelinePreset[] = [
+  TimelinePreset.THREE_MONTHS,
+  TimelinePreset.SIX_MONTHS,
+  TimelinePreset.NINE_MONTHS,
+  TimelinePreset.TWELVE_MONTHS,
+] as const
+
+export const CALENDAR_CUSTOM_ITEM_LIMITS = {
+  MAX_PER_PHASE: 20,
+  MAX_TEXT_LENGTH: 120,
+  MAX_TOTAL: 120,
+} as const
+
+export const CALENDAR_RATE_LIMIT_IP = {
+  WINDOW_MS: 60_000,
+  MAX_REQUESTS: 5,
+  KEY_PREFIX: 'calendar-ip:',
+} as const
+
+export const CALENDAR_RATE_LIMIT_EMAIL = {
+  WINDOW_MS: 3_600_000,
+  MAX_REQUESTS: 3,
+  KEY_PREFIX: 'calendar-email:',
+} as const
+
+export const CALENDAR_RATE_LIMIT_GLOBAL = {
+  WINDOW_MS: 3_600_000,
+  MAX_REQUESTS: 200,
+  KEY_PREFIX: 'calendar-global:',
+} as const
+
+export const CALENDAR_PAYLOAD_MAX_BYTES = 100_000
+
+export const CALENDAR_ROUTE_BY_PRESET: Record<TimelinePreset, Route> = {
+  [TimelinePreset.THREE_MONTHS]: Route.THREE_MONTH_RETREAT_LAUNCH_CALENDAR,
+  [TimelinePreset.SIX_MONTHS]: Route.SIX_MONTH_RETREAT_LAUNCH_CALENDAR,
+  [TimelinePreset.NINE_MONTHS]: Route.NINE_MONTH_RETREAT_LAUNCH_CALENDAR,
+  [TimelinePreset.TWELVE_MONTHS]: Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR,
+} as const
+
+export const CALENDAR_LEAD_SOURCES = {
+  PHASE_ANCHOR_CTA: 'tool-calendar-phase-anchor',
+  PHASE_POST_RETREAT_CTA: 'tool-calendar-phase-post-retreat',
+  EMAIL_FOOTER: 'email-calendar-plan',
+} as const

@@ -212,7 +212,7 @@ export function generateOrganizationSchema(): OrganizationSchema {
       contactType: 'Customer Service',
       email: FOOTER_EMAIL,
       areaServed: 'NL',
-      availableLanguage: ['en', 'nl', 'de', 'es', 'fr'],
+      availableLanguage: ['en', 'nl', 'de'],
     },
     sameAs: socialUrls,
   }

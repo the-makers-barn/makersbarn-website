@@ -2,8 +2,6 @@ export enum Language {
   EN = 'en',
   NL = 'nl',
   DE = 'de',
-  ES = 'es',
-  FR = 'fr',
 }
 
 export interface LanguageOption {

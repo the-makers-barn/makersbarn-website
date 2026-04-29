@@ -5,6 +5,7 @@ export {
   getBlockReason,
   RateLimiter,
   SecurityPatternCategory,
+  sanitizePlainText,
   type SecurityEvent,
 } from './security'
 export { createLogger, LogLevel, type Logger } from './logger'

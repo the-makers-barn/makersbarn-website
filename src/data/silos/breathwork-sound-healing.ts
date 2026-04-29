@@ -9,16 +9,12 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
     [Language.EN]: 'Group gathering around the fire circle at The Makers Barn',
     [Language.NL]: 'Groep rond de vuurplaats bij The Makers Barn',
     [Language.DE]: 'Gruppe versammelt sich um die Feuerstelle bei The Makers Barn',
-    [Language.ES]: 'Grupo reunido en torno al círculo de fuego en The Makers Barn',
-    [Language.FR]: 'Groupe rassemblé autour du cercle de feu à The Makers Barn',
   },
   meta: {
     title: {
       [Language.EN]: 'Breathwork & Sound Healing Retreats — Overijssel, Netherlands',
       [Language.NL]: 'Ademwerk- & klankhealing-retraites — Overijssel, Nederland',
       [Language.DE]: 'Atemarbeit- & Klangheilung-Retreats — Overijssel, Niederlande',
-      [Language.ES]: 'Espacio para retiros de breathwork y sanación con sonido — Países Bajos',
-      [Language.FR]: 'Lieu de retraite pour respiration et soins sonores — Pays-Bas',
     },
     description: {
       [Language.EN]:
@@ -27,10 +23,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         'Locatie voor ademwerk- en klankhealing-retraites in Overijssel — verwarmde 65 m² praktijkruimte, vuurplaats, sauna, 14 bedden. Volledige buyout, 15 min van Zwolle.',
       [Language.DE]:
         'Ort für Atemarbeit- & Klangheilung-Retreats in Overijssel — beheizte 65 m² Übungsscheune, Feuerstelle, Sauna, 14 Betten. Voller Buyout, 15 Min von Zwolle.',
-      [Language.ES]:
-        'Un granero de heno de madera con calefacción que vibra cuando suenan los cuencos. Un espacio sostenido para retiros de breathwork y sonido en Overijssel. Sauna, círculo de fuego y un estanque para nadar como parte del aftercare.',
-      [Language.FR]:
-        'Une grange de foin en bois chauffée qui vibre avec les bols. Un espace soutenu pour les retraites de respiration et de son en Overijssel. Sauna, cercle de feu et un étang de baignade pour le soin après séance.',
     },
   },
   hero: {
@@ -38,15 +30,11 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
       [Language.EN]: 'For breathwork & sound facilitators',
       [Language.NL]: 'Voor ademwerk- en klankbegeleiders',
       [Language.DE]: 'Für Atem- und Klangbegleiter:innen',
-      [Language.ES]: 'Para facilitadores de breathwork y sonido',
-      [Language.FR]: 'Pour les facilitateurs de respiration et de son',
     },
     title: {
       [Language.EN]: 'Breathwork & Sound Healing Retreats — Heated Barn, Fire Circle & Sauna in Overijssel',
       [Language.NL]: 'Ademwerk- & klankhealing-retraites — verwarmde schuur, vuurplaats en sauna in Overijssel',
       [Language.DE]: 'Atemarbeit- & Klangheilung-Retreats — beheizte Scheune, Feuerstelle und Sauna in Overijssel',
-      [Language.ES]: 'Un espacio sostenido para retiros de breathwork y sonido',
-      [Language.FR]: 'Un espace soutenu pour les retraites de respiration et de son',
     },
     subtitle: {
       [Language.EN]:
@@ -55,10 +43,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         'Een verwarmde houten hooischuur van 65 m² met geluidssysteem en dimbare verlichting, twintig matten en bolsters bij de hand, een vuurplaats op twintig passen en een sauna voor de uren na de sessie. Volledige buyout, vijftien minuten van Zwolle.',
       [Language.DE]:
         'Eine beheizte hölzerne Heuscheune mit 65 m², Soundsystem und dimmbarem Licht, zwanzig Matten und Bolster bereit, eine Feuerstelle zwanzig Schritte entfernt und eine Sauna für die Stunden nach der Session. Voller Buyout, fünfzehn Minuten von Zwolle.',
-      [Language.ES]:
-        'Una acústica que respira. Suelo de madera con calefacción para sesiones tumbadas de dos horas. Campos afuera, círculo de fuego afuera, sauna para lo que aflora después.',
-      [Language.FR]:
-        'Une acoustique qui respire. Sol en bois chauffé pour des séances allongées de deux heures. Des champs dehors, un cercle de feu dehors, un sauna pour ce qui remonte ensuite.',
     },
   },
   hook: {
@@ -69,10 +53,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         'Een verwarmde houten praktijkruimte van 65 m² voor de ademwerk- of klanksessie — en een vuurplaats, sauna en zwemvijver voor wat daarna komt.',
       [Language.DE]:
         'Eine beheizte hölzerne Übungsscheune mit 65 m² für die Atem- oder Klangsession — und eine Feuerstelle, Sauna und ein Schwimmteich für die Zeit danach.',
-      [Language.ES]:
-        'Un granero de heno que vibra cuando suenan los cuencos.',
-      [Language.FR]:
-        'Une grange de foin qui vibre quand les bols résonnent.',
     },
     caption: {
       [Language.EN]:
@@ -81,10 +61,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         'Volledige buyout op een boerderij van 1,3 hectare. Geen buren, geen gedeelde muren, geen andere groep aan de andere kant van de deur.',
       [Language.DE]:
         'Voller Buyout auf einem 1,3 Hektar großen Hof. Keine Nachbarn, keine geteilten Wände, keine andere Gruppe hinter der Tür.',
-      [Language.ES]:
-        'Sin vecinos, sin paredes compartidas, sin otro programa al otro lado de la puerta.',
-      [Language.FR]:
-        'Pas de voisins, pas de murs partagés, pas d’autre programme de l’autre côté de la porte.',
     },
   },
   sections: [
@@ -93,8 +69,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'A Heated 65 m² Hay Barn Built for Breathwork & Sound Sessions',
         [Language.NL]: 'Een verwarmde hooischuur van 65 m² gemaakt voor ademwerk- en klanksessies',
         [Language.DE]: 'Eine beheizte 65 m² Heuscheune, gemacht für Atem- und Klangsessions',
-        [Language.ES]: 'Una acústica que respira',
-        [Language.FR]: 'Une acoustique qui respire',
       },
       body: {
         [Language.EN]: [
@@ -109,22 +83,12 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
           'Das Hay House sind fünfundsechzig Quadratmeter beheizter Holzboden unter einer Holzdecke. Der Raum ist warm vor dem ersten Einatmen, der Boden bleibt durch die längste Atemreise hindurch warm, und das Holz gibt Klangschalen und Stimme einen sauberen, ruhigen Nachklang zum Arbeiten. Soundsystem mit Bluetooth und Aux, dimmbares Licht, Blackout-Option für Klangheilung im Dunkeln.',
           'Der Raum fasst zwanzig großzügig ausgelegte Matten. Für ein aktives Atem-Retreat sind zwölf bis vierzehn Teilnehmende mit vollen Bolstern, Decken und Liegen von Kopf bis Fuß das komfortable Maximum.',
         ],
-        [Language.ES]: [
-          'El Hay House son sesenta y cinco metros cuadrados de suelo de madera con calefacción bajo un techo de madera. La sala está cálida antes de la primera inhalación, el suelo permanece tibio durante el viaje más largo, y la madera tiene esa caída acústica en la que los cuencos y la respiración pueden descansar.',
-          'El espacio acoge veinte esterillas dispuestas con holgura. De doce a catorce, con bolsters, mantas y sesiones tumbadas de cuerpo entero, es el máximo cómodo para una sesión activa.',
-        ],
-        [Language.FR]: [
-          'Le Hay House, c’est soixante-cinq mètres carrés de sol en bois chauffé sous un plafond en bois. La salle est chaude avant la première inspiration, le sol reste chaud durant le plus long voyage, et le bois offre ce type de décroissance acoustique dans lequel les bols et le souffle peuvent se poser.',
-          'L’espace accueille vingt tapis disposés généreusement. Douze à quatorze avec bolsters, couvertures et séances allongées corps entier, c’est le maximum confortable pour une séance active.',
-        ],
       },
       imageSrc: IMAGES.accommodation.hayHouseSun,
       imageAlt: {
         [Language.EN]: 'Hay House practice barn glowing in golden light',
         [Language.NL]: 'Hay House praktijkruimte in gouden licht',
         [Language.DE]: 'Hay House-Übungsscheune in goldenem Licht',
-        [Language.ES]: 'Granero de práctica Hay House con luz dorada',
-        [Language.FR]: 'Grange de pratique Hay House baignée de lumière dorée',
       },
     },
     {
@@ -132,8 +96,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'Sauna, Fire Circle, and Swimming Pond for After the Breathwork Session',
         [Language.NL]: 'Sauna, vuurplaats en zwemvijver voor na de ademwerksessie',
         [Language.DE]: 'Sauna, Feuerstelle und Schwimmteich für die Zeit nach der Atemsession',
-        [Language.ES]: 'Aftercare integrado en el lugar',
-        [Language.FR]: 'Le soin après séance intégré au lieu',
       },
       body: {
         [Language.EN]: [
@@ -148,22 +110,12 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
           'Nach einer langen Atem- oder Klangheilungsreise braucht man selten einen Hotelflur. Die Feuerstelle ist zwanzig Schritte von der Übungsscheune entfernt. Sauna und Whirlpool noch einmal zwanzig. Der Schwimmteich ist ein langsamer Spaziergang durch die Bäume.',
           'Die Morgen öffnen sich auf einen 1,3 Hektar großen Hof im ländlichen Overijssel, fünfzehn Minuten von Zwolle — Felder zum Gehen, Pfade durch den angepflanzten Wald, ein Teehaus mit einem einzigen Stuhl zum Fenster hin. Integration hat einen Ort, der kein Parkplatz ist.',
         ],
-        [Language.ES]: [
-          'Después de un viaje largo de breathwork o sonido, lo que la gente necesita rara vez es un pasillo de hotel. El círculo de fuego está a veinte pasos del granero de práctica. La sauna y el hot tub, otros veinte. El estanque de baño queda a un paseo tranquilo entre los árboles.',
-          'Las mañanas se abren a una granja de 1,3 hectares — campos para caminar, senderos por el bosque plantado, una casa de té con una sola silla frente a la ventana. La integración tiene un sitio adonde ir que no es un aparcamiento.',
-        ],
-        [Language.FR]: [
-          'Après un long voyage de respiration ou de son, ce dont les gens ont besoin n’est rarement un couloir d’hôtel. Le cercle de feu est à vingt pas de la grange de pratique. Le sauna et le bain chaud à vingt de plus. L’étang de baignade se rejoint par une marche tranquille entre les arbres.',
-          'Les matins s’ouvrent sur une ferme de 1,3 hectares — des champs où marcher, des chemins à travers le bois planté, une maison de thé avec une seule chaise face à la fenêtre. L’intégration a un endroit où aller qui n’est pas un parking.',
-        ],
       },
       imageSrc: IMAGES.accommodation.pondComplete,
       imageAlt: {
         [Language.EN]: 'Natural swimming pond at The Makers Barn',
         [Language.NL]: 'Natuurlijke zwemvijver bij The Makers Barn',
         [Language.DE]: 'Natürlicher Schwimmteich bei The Makers Barn',
-        [Language.ES]: 'Estanque natural para nadar en The Makers Barn',
-        [Language.FR]: 'Étang naturel de baignade à The Makers Barn',
       },
     },
     {
@@ -171,8 +123,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'Equipment, Mats and Catering for Your Sound Healing Retreat',
         [Language.NL]: 'Materialen, matten en catering voor je klankhealing-retraite',
         [Language.DE]: 'Equipment, Matten und Catering für dein Klangheilung-Retreat',
-        [Language.ES]: 'Lo que los facilitadores suelen traer',
-        [Language.FR]: 'Ce que les facilitateurs apportent',
       },
       body: {
         [Language.EN]: [
@@ -187,14 +137,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
           'Die meisten Begleiter:innen bringen ihre eigenen Klangschalen, Trommeln oder Playlists für das Klangheilung- oder Atemarbeit-Retreat mit. Wir stellen zwanzig Matten, Decken und Bolster; Soundsystem mit Bluetooth und Aux; dimmbare Stimmungsbeleuchtung; Augenmasken zum Kauf. Wir können auch eine private Köchin für die Mahlzeiten nach der Reise organisieren, wenn dein Retreat das verlangt.',
           'Für Gruppen, die tiefe oder verletzliche innere Arbeit machen, halten wir den Ort für die gesamte Dauer für andere Gäste geschlossen. Voller Buyout, keine Ausnahmen.',
         ],
-        [Language.ES]: [
-          'La mayoría de los facilitadores traen sus propios cuencos, tambores o playlists. Nosotros ponemos veinte esterillas, mantas y bolsters; equipo de sonido con bluetooth y auxiliar; iluminación regulable; antifaces a la venta. También podemos organizar un chef privado para las comidas después del viaje si tu retiro lo pide.',
-          'Para grupos que hacen un trabajo interno profundo o vulnerable, mantenemos el lugar cerrado a otros huéspedes durante toda la estancia. Buyout completo, sin excepciones.',
-        ],
-        [Language.FR]: [
-          'La plupart des facilitateurs apportent leurs propres bols, tambours ou playlists. Nous fournissons vingt tapis, couvertures et bolsters ; système son avec bluetooth et auxiliaire ; éclairage d’ambiance sur variateurs ; masques pour les yeux à la vente. Nous pouvons aussi organiser un chef privé pour les repas après le voyage si ta retraite le demande.',
-          'Pour les groupes qui font un travail intérieur profond ou vulnérable, nous gardons le lieu fermé aux autres invités pendant toute la durée. Buyout complet, sans exception.',
-        ],
       },
     },
   ],
@@ -205,8 +147,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'Heated wooden practice barn — wooden ceiling, warm acoustics',
         [Language.NL]: 'Verwarmde houten praktijkruimte — houten plafond, warme akoestiek',
         [Language.DE]: 'Beheizte hölzerne Übungsscheune — Holzdecke, warme Akustik',
-        [Language.ES]: 'Granero de práctica de madera con calefacción — techo de madera, acústica cálida',
-        [Language.FR]: 'Grange de pratique en bois chauffée — plafond en bois, acoustique chaleureuse',
       },
     },
     {
@@ -215,8 +155,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'Comfortable group size for active sessions and journeys',
         [Language.NL]: 'Comfortabele groepsgrootte voor actieve sessies en reizen',
         [Language.DE]: 'Komfortable Gruppengröße für aktive Sitzungen und Reisen',
-        [Language.ES]: 'Tamaño de grupo cómodo para sesiones activas y viajes',
-        [Language.FR]: 'Taille de groupe confortable pour les séances actives et les voyages',
       },
     },
     {
@@ -225,8 +163,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'Steps from the practice barn to the fire circle',
         [Language.NL]: 'Passen van de praktijkruimte naar de vuurplaats',
         [Language.DE]: 'Schritte von der Übungsscheune zur Feuerstelle',
-        [Language.ES]: 'Pasos desde el granero de práctica hasta el círculo de fuego',
-        [Language.FR]: 'Pas de la grange de pratique au cercle de feu',
       },
     },
   ],
@@ -236,8 +172,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'Can we host journeys late into the evening?',
         [Language.NL]: 'Kunnen we reizen tot laat in de avond houden?',
         [Language.DE]: 'Können wir Reisen bis spät in den Abend abhalten?',
-        [Language.ES]: '¿Podemos hacer viajes hasta tarde en la noche?',
-        [Language.FR]: 'Pouvons-nous tenir des voyages tard le soir ?',
       },
       answer: {
         [Language.EN]:
@@ -246,10 +180,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
           'Ja. Volledige buyout betekent dat er geen stille uren worden opgelegd door andere gasten. We vragen om bij heel luid drummen of versterkt geluid de gangbare landelijke buurtetiquette na 23.00 uur te respecteren, maar onze dichtstbijzijnde buren liggen ruim buiten gehoorsafstand.',
         [Language.DE]:
           'Ja. Voller Buyout heißt: keine Ruhezeiten, die von anderen Gästen vorgegeben werden. Wir bitten darum, bei sehr lautem Trommeln oder verstärktem Klang nach 23:00 Uhr die übliche ländliche Nachbarschaftsrücksicht zu wahren, aber unsere nächsten Nachbarn sind weit außer Hörweite.',
-        [Language.ES]:
-          'Sí. El buyout completo significa que no hay horas de silencio impuestas por otros huéspedes. Pedimos que el tambor muy fuerte o el sonido amplificado respeten la cortesía vecinal habitual del campo después de las 23:00, pero nuestros vecinos más cercanos están muy fuera del alcance del oído.',
-        [Language.FR]:
-          'Oui. Le buyout complet signifie qu’aucune plage de silence n’est imposée par d’autres invités. Nous demandons que les percussions très fortes ou le son amplifié respectent la courtoisie rurale habituelle après 23h00, mais nos plus proches voisins sont bien hors de portée d’ouïe.',
       },
     },
     {
@@ -257,8 +187,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'Do you provide mats, bolsters, and blankets?',
         [Language.NL]: 'Leveren jullie matten, bolsters en dekens?',
         [Language.DE]: 'Stellt ihr Matten, Bolster und Decken zur Verfügung?',
-        [Language.ES]: '¿Proporcionáis esterillas, bolsters y mantas?',
-        [Language.FR]: 'Fournissez-vous tapis, bolsters et couvertures ?',
       },
       answer: {
         [Language.EN]:
@@ -267,10 +195,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
           'Ja — twintig van elk, gewassen tussen groepen door. Breng je eigen mee als je een specifieke merkvoorkeur hebt, dan bewaren we ze voor je tussen sessies door.',
         [Language.DE]:
           'Ja — zwanzig von jedem, zwischen den Gruppen gewaschen. Bring deine eigenen mit, wenn du eine bestimmte Markenvorliebe hast; wir lagern sie für dich zwischen den Sitzungen ein.',
-        [Language.ES]:
-          'Sí — veinte de cada, lavados entre grupos. Trae los tuyos si tienes una marca preferida y los guardamos para ti entre sesiones.',
-        [Language.FR]:
-          'Oui — vingt de chaque, lavés entre les groupes. Apporte les tiens si tu as une marque préférée et nous les rangerons pour toi entre les séances.',
       },
     },
     {
@@ -278,8 +202,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'Is the fire circle available for evening ceremonial work?',
         [Language.NL]: 'Is de vuurplaats beschikbaar voor ceremonieel avondwerk?',
         [Language.DE]: 'Ist die Feuerstelle für zeremonielle Abendarbeit verfügbar?',
-        [Language.ES]: '¿Está disponible el círculo de fuego para trabajo ceremonial nocturno?',
-        [Language.FR]: 'Le cercle de feu est-il disponible pour un travail cérémoniel en soirée ?',
       },
       answer: {
         [Language.EN]:
@@ -288,10 +210,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
           'Ja. De vuurplaats staat twintig stappen van de praktijkruimte, met zitplek voor vijftien en een houtopslag die we vol houden. Hij is van jou vanaf zonsondergang tot wanneer je hem oproept.',
         [Language.DE]:
           'Ja. Die Feuerstelle liegt zwanzig Schritte von der Übungsscheune entfernt, mit Sitzgelegenheiten für fünfzehn und einem Holzlager, das wir gefüllt halten. Sie gehört dir von Sonnenuntergang bis zu dem Moment, in dem du sie schließt.',
-        [Language.ES]:
-          'Sí. El círculo de fuego está a veinte pasos del granero de práctica, con asientos para quince y una leñera que mantenemos llena. Es tuyo desde la puesta de sol hasta cuando decidas cerrarlo.',
-        [Language.FR]:
-          'Oui. Le cercle de feu se trouve à vingt pas de la grange de pratique, avec des sièges pour quinze et une réserve de bois que nous gardons remplie. Il est à toi du coucher du soleil jusqu’au moment où tu le clôtures.',
       },
     },
     {
@@ -299,8 +217,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         [Language.EN]: 'How does aftercare overnight work?',
         [Language.NL]: 'Hoe werkt de aftercare ’s nachts?',
         [Language.DE]: 'Wie funktioniert die Nachsorge über Nacht?',
-        [Language.ES]: '¿Cómo funciona el aftercare durante la noche?',
-        [Language.FR]: 'Comment se passe le soin après séance pendant la nuit ?',
       },
       answer: {
         [Language.EN]:
@@ -309,10 +225,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
           'De meeste groepen blijven na de reis zelf nog een of twee nachten voor een goede integratie. Bedden voor veertien, verdeeld over Horizon en Cosmos. We kunnen catering, wandelingen, zachte yoga en één-op-één-ruimtes regelen waarin begeleiders met deelnemers kunnen nabespreken.',
         [Language.DE]:
           'Die meisten Gruppen bleiben nach der eigentlichen Reise noch ein oder zwei Nächte für eine ordentliche Integration. Betten für vierzehn, verteilt auf Horizon und Cosmos. Wir organisieren Catering, Spaziergänge, sanftes Yoga und Eins-zu-Eins-Räume, in denen Begleiter:innen mit Teilnehmenden nachbesprechen können.',
-        [Language.ES]:
-          'La mayoría de los grupos se queda una o dos noches después del viaje para una buena integración. Camas para catorce repartidas entre Horizon y Cosmos. Podemos organizar catering, paseos, yoga suave y espacios uno a uno para que los facilitadores hagan el debrief con los participantes.',
-        [Language.FR]:
-          'La plupart des groupes restent une ou deux nuits après le voyage lui-même pour une bonne intégration. Quatorze couchages répartis entre Horizon et Cosmos. Nous organisons le traiteur, les promenades, du yoga doux et des espaces en tête-à-tête pour que les facilitateurs débriefent avec les participants.',
       },
     },
   ],
@@ -321,8 +233,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
       [Language.EN]: 'Bring your breathwork or sound healing retreat to a venue built for the practice — and the integration after',
       [Language.NL]: 'Breng je ademwerk- of klankhealing-retraite naar een locatie die gemaakt is voor de praktijk — en voor de integratie erna',
       [Language.DE]: 'Bring dein Atemarbeit- oder Klangheilung-Retreat an einen Ort, der für die Praxis gemacht ist — und für die Integration danach',
-      [Language.ES]: 'Un espacio sostenido para el viaje, y para el día después del viaje',
-      [Language.FR]: 'Un espace soutenu pour le voyage, et pour le jour d’après',
     },
     body: {
       [Language.EN]:
@@ -331,10 +241,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         'Vertel ons over je modaliteit, je groepsgrootte en je data. We laten je eerlijk weten of de locatie past — en wat je deelnemers zullen ervaren als dat zo is.',
       [Language.DE]:
         'Erzähl uns von deiner Modalität, deiner Gruppengröße und deinen Daten. Wir melden uns ehrlich zurück, ob der Ort passt — und was deine Teilnehmenden erleben werden, wenn ja.',
-      [Language.ES]:
-        'Cuéntanos tu modalidad, el tamaño de tu grupo y tus fechas. Te responderemos con honestidad si el lugar encaja — y qué van a vivir tus participantes si así es.',
-      [Language.FR]:
-        'Parle-nous de ta modalité, de la taille de ton groupe et de tes dates. Nous reviendrons honnêtement vers toi pour dire si le lieu convient — et ce que tes participants vivront s’il convient.',
     },
   },
   organizerSeo: {
@@ -342,8 +248,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
       [Language.EN]: 'Breathwork facilitators, sound healers, and ceremonial practitioners running multi-day residential retreats',
       [Language.NL]: 'Ademwerk-facilitators, klankbeoefenaars en ceremoniële begeleiders die meerdaagse residentiële retraites leiden',
       [Language.DE]: 'Atem-Facilitator:innen, Klangpraktizierende und zeremonielle Begleiter:innen, die mehrtägige Residential-Retreats leiten',
-      [Language.ES]: 'Facilitadores de breathwork, sanadores con sonido y guías ceremoniales que dirigen residenciales sostenidos',
-      [Language.FR]: 'Facilitateurs de respiration, sound healers et praticiens cérémoniels qui animent des résidentiels soutenus',
     },
     cohortSize: { min: 8, max: 16 },
     keywords: {
@@ -375,22 +279,6 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
         'Klangheilung Retreat-Ort',
         'Klangschalen Retreat-Ort',
         'zeremonielles Atem-Retreat',
-      ],
-      [Language.ES]: [
-        'lugar para retiros de breathwork',
-        'retiro de respiración holotrópica',
-        'retiro de conscious connected breathwork',
-        'lugar para retiros de sanación con sonido',
-        'retiro de baño de gong',
-        'retiro de breathwork ceremonial',
-      ],
-      [Language.FR]: [
-        'lieu de retraite respiration',
-        'retraite de respiration holotropique',
-        'lieu pour conscious connected breathwork',
-        'lieu de retraite soins sonores',
-        'retraite bain de gong',
-        'retraite de respiration cérémonielle',
       ],
     },
   },

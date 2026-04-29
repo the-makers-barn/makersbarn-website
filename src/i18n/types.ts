@@ -594,6 +594,9 @@ export interface SilosChromeTranslations {
   toolCtaTitle: string
   toolCtaBody: string
   toolCtaLabel: string
+  calendarCtaTitle: string
+  calendarCtaBody: string
+  calendarCtaLabel: string
 }
 
 /**
@@ -635,6 +638,17 @@ export interface RetreatsHubTranslations {
     headline: string
     body: string
     ctaLabel: string
+  }
+  toolsBlock: {
+    eyebrow: string
+    title: string
+    intro: string
+    calendarTitle: string
+    calendarBody: string
+    calendarCtaLabel: string
+    calculatorTitle: string
+    calculatorBody: string
+    calculatorCtaLabel: string
   }
 }
 
@@ -747,13 +761,103 @@ export interface ToolsFaqTranslations {
   heading: string
 }
 
+/**
+ * Retreat Launch Calendar tool translations.
+ * Strings prefixed with `// {var}` accept template-style interpolation.
+ */
+export interface ToolsCalendarTranslations {
+  metaTitle: string
+  metaDescription: string
+  heroEyebrow: string
+  heroTitle: string
+  heroIntro: string
+  heroAfterIntro: string
+  presetSwitcher: {
+    label: string
+    preset3: string
+    preset6: string
+    preset9: string
+    preset12: string
+  }
+  impactSubtitleAria: string
+  milestoneItem: {
+    markDone: string
+    markPending: string
+    dismiss: string
+    restore: string
+  }
+  customItem: {
+    addLabel: string
+    placeholder: string
+    remove: string
+    capReached: string
+    totalCapReached: string
+    counterFormat: string
+  }
+  urlNote: string
+  inlineCta: {
+    anchorTitle: string
+    anchorBody: string
+    anchorLink: string
+    postRetreatTitle: string
+    postRetreatBody: string
+    postRetreatLink: string
+  }
+  reset: {
+    button: string
+    confirm: string
+  }
+  emailForm: {
+    heading: string
+    placeholder: string
+    contactConsent: string
+    submit: string
+    sending: string
+    success: string
+    errorRateLimit: string
+    errorInvalidEmail: string
+    errorGeneric: string
+    errorSendFailed: string
+  }
+  email: {
+    subject: string
+    greeting: string
+    intro: string
+    backToPlanCta: string
+    backToPlanLabel: string
+    signoff: string
+  }
+  howTo: {
+    heading: string
+    steps: readonly string[]
+  }
+  faq: {
+    heading: string
+    entries: readonly { question: string; answer: string }[]
+  }
+  guideHeading: string
+  related: {
+    heading: string
+    hostARetreatTitle: string
+    profitabilityCalculatorTitle: string
+  }
+  crossLinks: {
+    heading: string
+    intro: string
+    linkLabel: string
+  }
+  sticky: {
+    cta: string
+  }
+}
+
 export interface ToolsTranslations {
   hub: ToolsHubTranslations
   calculator: ToolsCalculatorTranslations
+  calendar: ToolsCalendarTranslations
   howTo: ToolsHowToTranslations
   related: ToolsRelatedTranslations
   faq: ToolsFaqTranslations
-  translationNotice: string
 }
 
 /**

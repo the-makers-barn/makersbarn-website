@@ -16,6 +16,4 @@ export const LANG_ATTRIBUTES: Record<Language, string> = {
   [Language.EN]: 'en-GB',
   [Language.NL]: 'nl-NL',
   [Language.DE]: 'de-DE',
-  [Language.ES]: 'es-ES',
-  [Language.FR]: 'fr-FR',
 }

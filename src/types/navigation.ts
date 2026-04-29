@@ -25,6 +25,10 @@ export enum Route {
   WELLNESS_RETREAT_PRICING_CALCULATOR = '/tools/wellness-retreat-pricing-calculator',
   MEDITATION_RETREAT_PRICING_CALCULATOR = '/tools/meditation-retreat-pricing-calculator',
   COACHING_RETREAT_PRICING_CALCULATOR = '/tools/coaching-retreat-pricing-calculator',
+  THREE_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/3-month-retreat-launch-calendar',
+  SIX_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/6-month-retreat-launch-calendar',
+  NINE_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/9-month-retreat-launch-calendar',
+  TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/12-month-retreat-launch-calendar',
 }
 
 export interface NavLink {
