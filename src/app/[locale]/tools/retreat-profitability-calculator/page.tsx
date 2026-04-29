@@ -9,12 +9,12 @@ import {
   generateWebApplicationSchema,
 } from '@/lib/structuredData'
 import { CALCULATOR_VARIANTS, CALCULATOR_CONTENT } from '@/data/tools'
-import { ToolVariant } from '@/constants/tools'
+import { ToolVariant, TOOL_VARIANT_ROUTES } from '@/constants/tools'
 import { Route } from '@/types'
 import { SITE_CONFIG } from '@/constants/site'
 import { generatePageMetadata } from '@/lib/metadata'
 import { getLocalizedPath } from '@/lib/routing'
-import { getValidLocale } from '@/lib/locale'
+import { getValidLocale, shouldShowTranslationNotice } from '@/lib/locale'
 import { getServerTranslations } from '@/i18n'
 
 interface PageProps {
@@ -72,15 +72,36 @@ export default async function CanonicalCalculatorPage({ params }: PageProps) {
     <>
       <StructuredData data={schemas} />
       <ToolPageShell
-        variant={VARIANT}
-        locale={validLocale}
-        t={t}
-        calculator={
+        hero={{
+          eyebrow: config.copy.heroEyebrow[validLocale],
+          title: config.copy.heroTitle[validLocale],
+          intro: config.copy.heroIntro[validLocale],
+        }}
+        tool={
           <RetreatProfitabilityCalculator
             variant={VARIANT}
             locale={validLocale}
             t={t}
           />
+        }
+        howToHeading={t.tools.howTo.heading}
+        howToSteps={content.howToSteps.map((s) => s[validLocale])}
+        guideSections={content.guideSections.map((s) => ({
+          heading: s.heading[validLocale],
+          paragraphs: s.body.map((p) => p[validLocale]),
+        }))}
+        faqHeading={t.tools.faq.heading}
+        faqEntries={content.faq.map((e) => ({
+          question: e.question[validLocale],
+          answer: e.answer[validLocale],
+        }))}
+        relatedHeading={t.tools.related.heading}
+        relatedCards={config.relatedVariants.map((rv) => ({
+          href: getLocalizedPath(TOOL_VARIANT_ROUTES[rv], validLocale),
+          title: CALCULATOR_VARIANTS[rv].copy.heroTitle[validLocale],
+        }))}
+        translationNotice={
+          shouldShowTranslationNotice(validLocale) ? t.tools.translationNotice : undefined
         }
       />
     </>

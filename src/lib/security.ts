@@ -216,3 +216,19 @@ export class RateLimiter {
     }
   }
 }
+
+// eslint-disable-next-line no-control-regex -- intentionally strips ASCII control chars
+const CONTROL_CHARS = /[\x00-\x1F\x7F]/g
+const ZERO_WIDTH_CHARS = /[\u200B-\u200D\uFEFF]/g
+const BIDI_OVERRIDE_CHARS = /[\u202A-\u202E\u2066-\u2069]/g
+const ANGLE_BRACKETS = /[<>]/g
+
+export function sanitizePlainText(input: string, maxLength: number): string {
+  return input
+    .replace(CONTROL_CHARS, '')
+    .replace(ZERO_WIDTH_CHARS, '')
+    .replace(BIDI_OVERRIDE_CHARS, '')
+    .replace(ANGLE_BRACKETS, '')
+    .trim()
+    .slice(0, maxLength)
+}

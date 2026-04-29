@@ -2,32 +2,23 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 import { StructuredData } from '@/components/server'
+import { SITE_CONFIG } from '@/constants/site'
+import { TOOLS_HUB_ITEMS } from '@/data/tools'
+import { getServerTranslations } from '@/i18n'
+import { getValidLocale } from '@/lib/locale'
+import { generatePageMetadata } from '@/lib/metadata'
+import { getLocalizedPath } from '@/lib/routing'
 import {
   generateBreadcrumbListSchema,
   generateCollectionPageSchema,
 } from '@/lib/structuredData'
-import { CALCULATOR_VARIANTS } from '@/data/tools'
-import { TOOL_VARIANT_ROUTES, ToolVariant } from '@/constants/tools'
 import { Route } from '@/types'
-import { SITE_CONFIG } from '@/constants/site'
-import { generatePageMetadata } from '@/lib/metadata'
-import { getLocalizedPath } from '@/lib/routing'
-import { getValidLocale } from '@/lib/locale'
-import { getServerTranslations } from '@/i18n'
 
 import styles from './page.module.css'
 
 interface PageProps {
   params: Promise<{ locale: string }>
 }
-
-const VARIANT_DISPLAY_ORDER: ToolVariant[] = [
-  ToolVariant.GENERIC,
-  ToolVariant.YOGA,
-  ToolVariant.WELLNESS,
-  ToolVariant.MEDITATION,
-  ToolVariant.COACHING,
-]
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params
@@ -56,10 +47,10 @@ export default async function ToolsHubPage({ params }: PageProps) {
     url: hubUrl,
     description: t.tools.hub.metaDescription,
     locale: validLocale,
-    items: VARIANT_DISPLAY_ORDER.map((v) => ({
-      name: CALCULATOR_VARIANTS[v].copy.heroTitle[validLocale],
-      url: `${SITE_CONFIG.url}${getLocalizedPath(TOOL_VARIANT_ROUTES[v], validLocale)}`,
-      description: CALCULATOR_VARIANTS[v].copy.heroIntro[validLocale],
+    items: TOOLS_HUB_ITEMS.map((item) => ({
+      name: item.title[validLocale],
+      url: `${SITE_CONFIG.url}${getLocalizedPath(item.route, validLocale)}`,
+      description: item.intro[validLocale],
     })),
   })
 
@@ -71,17 +62,16 @@ export default async function ToolsHubPage({ params }: PageProps) {
         <h1 className={styles.title}>{t.tools.hub.title}</h1>
         <p className={styles.intro}>{t.tools.hub.intro}</p>
         <ul className={styles.toolList}>
-          {VARIANT_DISPLAY_ORDER.map((v) => {
-            const cfg = CALCULATOR_VARIANTS[v]
-            const href = getLocalizedPath(TOOL_VARIANT_ROUTES[v], validLocale)
+          {TOOLS_HUB_ITEMS.map((item) => {
+            const href = getLocalizedPath(item.route, validLocale)
             return (
-              <li key={v}>
+              <li key={item.route}>
                 <Link href={href} className={styles.toolCard}>
                   <span className={styles.toolCardTitle}>
-                    {cfg.copy.heroTitle[validLocale]}
+                    {item.title[validLocale]}
                   </span>
                   <span className={styles.toolCardDescription}>
-                    {cfg.copy.heroIntro[validLocale]}
+                    {item.intro[validLocale]}
                   </span>
                   <span className={styles.toolCardCta}>
                     {t.tools.hub.toolCardCta} →

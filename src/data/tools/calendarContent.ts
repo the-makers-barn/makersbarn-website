@@ -1,0 +1,254 @@
+import { CalendarPhaseId, TimelinePreset } from '@/constants/tools'
+import type { CalendarContent, CalendarMilestone, CalendarPhase, LocalizedString } from '@/types/tools'
+
+import { CALENDAR_MILESTONE_IDS } from './calendarMilestoneIds'
+
+// During scaffolding, NL/DE/ES/FR strings are EN-verbatim per CLAUDE.md i18n policy.
+// Real NL/DE translations land in a later commit.
+const en = (s: string): LocalizedString => ({ en: s, nl: s, de: s, es: s, fr: s })
+
+const milestone = (id: string, text: string): CalendarMilestone => ({ id, text: en(text) })
+
+// P1_* milestones reused in 6-month and 3-month preset overrides — single source of truth
+// for text, since these IDs survive the Foundation→Anchor merge per spec §4.2.
+const M_P1_VISION = milestone(
+  CALENDAR_MILESTONE_IDS.P1_VISION,
+  'Define your retreat vision, theme, and the transformation it offers',
+)
+const M_P1_AVATAR = milestone(
+  CALENDAR_MILESTONE_IDS.P1_AVATAR,
+  'Identify your ideal guest avatar',
+)
+const M_P1_BUDGET = milestone(
+  CALENDAR_MILESTONE_IDS.P1_BUDGET,
+  'Draft an initial budget with a 10–15% buffer',
+)
+const M_P1_PRICING_MODEL = milestone(
+  CALENDAR_MILESTONE_IDS.P1_PRICING_MODEL,
+  'Decide on pricing strategy and payment model',
+)
+
+const PHASE_FOUNDATION: CalendarPhase = {
+  id: CalendarPhaseId.FOUNDATION,
+  range: en('9–12 months before'),
+  rangeStartMonth: 12,
+  rangeEndMonth: 9,
+  eyebrow: en('Phase 1 · Foundation'),
+  title: en('Set the vision and secure your venue'),
+  milestones: [
+    M_P1_VISION,
+    M_P1_AVATAR,
+    milestone(CALENDAR_MILESTONE_IDS.P1_FORMAT, 'Decide on length, group size, and residential vs day-retreat format'),
+    M_P1_BUDGET,
+    milestone(CALENDAR_MILESTONE_IDS.P1_VENUE_SCOUT, 'Begin venue scouting (popular venues book 12 months out)'),
+    M_P1_PRICING_MODEL,
+    milestone(CALENDAR_MILESTONE_IDS.P1_RESEARCH, 'Research comparable retreats in your niche'),
+    milestone(CALENDAR_MILESTONE_IDS.P1_COFACILITATOR_DECISION, 'Decide whether to co-lead or hire facilitators'),
+    milestone(CALENDAR_MILESTONE_IDS.P1_LEGAL_RESEARCH, 'Research legal and tax implications of hosting a retreat'),
+  ],
+}
+
+const PHASE_ANCHOR: CalendarPhase = {
+  id: CalendarPhaseId.ANCHOR,
+  range: en('6–9 months before'),
+  rangeStartMonth: 9,
+  rangeEndMonth: 6,
+  eyebrow: en('Phase 2 · Anchor'),
+  title: en('Lock contracts and build the landing page'),
+  milestones: [
+    milestone(CALENDAR_MILESTONE_IDS.P2_VENUE_CONTRACT, 'Sign the venue contract — verify cancellation policy, capacity, dietary, and AV'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_INSURANCE, 'Secure event and liability insurance'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_WAIVERS, 'Draft participant waivers'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_COFAC_AGREEMENT, 'Sign co-facilitator and hired-facilitator agreements'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_LANDING_PAGE, 'Publish the retreat landing page (messaging, sample itinerary, pricing)'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_PROGRAM_ARC, 'Draft the program arc — day-by-day skeleton'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_REGISTRATION_SYSTEM, 'Set up your registration and payment system'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_AUDIENCE_WARMUP, 'Warm up your audience with a content cadence'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_ASSETS_PHOTO, 'Gather marketing assets — venue photos, retreat-style imagery'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_DEPOSIT_POLICY, 'Define deposit and refund policy'),
+  ],
+}
+
+const PHASE_LAUNCH: CalendarPhase = {
+  id: CalendarPhaseId.LAUNCH,
+  range: en('3–6 months before'),
+  rangeStartMonth: 6,
+  rangeEndMonth: 3,
+  eyebrow: en('Phase 3 · Launch & sell'),
+  title: en('Announce, sell early-bird, build momentum'),
+  milestones: [
+    milestone(CALENDAR_MILESTONE_IDS.P3_ANNOUNCEMENT, 'Public announcement post and email'),
+    milestone(CALENDAR_MILESTONE_IDS.P3_EARLY_BIRD, 'Launch early-bird pricing tier with a deadline'),
+    milestone(CALENDAR_MILESTONE_IDS.P3_EMAIL_SEQUENCE, 'Schedule the announcement → social proof → urgency email sequence'),
+    milestone(CALENDAR_MILESTONE_IDS.P3_SOCIAL_CADENCE, 'Plan social cadence — behind-the-scenes, founder story, day-in-the-life'),
+    milestone(CALENDAR_MILESTONE_IDS.P3_REFERRALS, 'Set up referral incentives'),
+    milestone(CALENDAR_MILESTONE_IDS.P3_PARTNERSHIPS, 'Reach out for podcast guesting and partner promotions'),
+    milestone(CALENDAR_MILESTONE_IDS.P3_FIRST_REGISTRATIONS, 'Track and respond to the first wave of paid registrations'),
+    milestone(CALENDAR_MILESTONE_IDS.P3_VENDOR_SHORTLIST, 'Shortlist vendors — catering, transport, photography, AV, special activities'),
+    milestone(CALENDAR_MILESTONE_IDS.P3_ITINERARY_REFINE, 'Refine the itinerary based on early registrant feedback'),
+  ],
+}
+
+const PHASE_LOCK_IN: CalendarPhase = {
+  id: CalendarPhaseId.LOCK_IN,
+  range: en('1–3 months before'),
+  rangeStartMonth: 3,
+  rangeEndMonth: 1,
+  eyebrow: en('Phase 4 · Lock-in'),
+  title: en('Go/no-go and finalize every detail'),
+  milestones: [
+    milestone(CALENDAR_MILESTONE_IDS.P4_GO_NO_GO, 'Hit your minimum-viable headcount — go/no-go decision'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_VENDORS_CONFIRMED, 'Confirm all vendors with signed agreements'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_PROGRAM_FINAL, 'Finalize program content and printed/digital materials'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_WELCOME_PACKET, 'Send welcome packet with intentions email'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_PACKING_LIST, 'Send packing list and what-to-expect email'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_DIETARY_SURVEY, 'Send dietary and allergy survey'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_ROOMMATE_MATCHING, 'Confirm roommate matching and special requests'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_ACCESSIBILITY_CHECK, 'Check in on accessibility needs'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_RUN_OF_SHOW, 'Brief the on-site team and finalize the run-of-show'),
+  ],
+}
+
+const PHASE_FINAL_WEEKS: CalendarPhase = {
+  id: CalendarPhaseId.FINAL_WEEKS,
+  range: en('0–1 month before'),
+  rangeStartMonth: 1,
+  rangeEndMonth: 0,
+  eyebrow: en('Phase 5 · Final weeks'),
+  title: en('Detailed itinerary, travel logistics, day-of prep'),
+  milestones: [
+    milestone(CALENDAR_MILESTONE_IDS.P5_DETAILED_ITINERARY, 'Share the detailed itinerary 4 weeks out'),
+    milestone(CALENDAR_MILESTONE_IDS.P5_TRAVEL_LOGISTICS, 'Send travel logistics confirmation 2 weeks out'),
+    milestone(CALENDAR_MILESTONE_IDS.P5_ARRIVAL_DETAILS, 'Send arrival details and final note 1 week out'),
+    milestone(CALENDAR_MILESTONE_IDS.P5_ROSTERS, 'Print attendance rosters and check-in sheets'),
+    milestone(CALENDAR_MILESTONE_IDS.P5_NAME_TAGS, 'Prepare name tags and welcome materials'),
+    milestone(CALENDAR_MILESTONE_IDS.P5_EMERGENCY_CONTACTS, 'Compile emergency-contact list and safety protocols'),
+    milestone(CALENDAR_MILESTONE_IDS.P5_SIGNAGE, 'Prepare on-site signage and materials kit'),
+  ],
+}
+
+const PHASE_POST_RETREAT: CalendarPhase = {
+  id: CalendarPhaseId.POST_RETREAT,
+  range: en('1–2 weeks after'),
+  rangeStartMonth: 0,
+  rangeEndMonth: -1,
+  eyebrow: en('Phase 6 · Post-retreat'),
+  title: en('Close the loop, gather social proof, plan the next one'),
+  milestones: [
+    milestone(CALENDAR_MILESTONE_IDS.P6_THANK_YOU, 'Send personal thank-you emails to every attendee'),
+    milestone(CALENDAR_MILESTONE_IDS.P6_PHOTO_GALLERY, 'Share the photo gallery'),
+    milestone(CALENDAR_MILESTONE_IDS.P6_FEEDBACK_SURVEY, 'Send the feedback survey'),
+    milestone(CALENDAR_MILESTONE_IDS.P6_TESTIMONIALS, 'Request and publish testimonials'),
+    milestone(CALENDAR_MILESTONE_IDS.P6_RECONCILIATION, 'Reconcile finances and document lessons learned'),
+  ],
+}
+
+export const CALENDAR_CONTENT: CalendarContent = {
+  canonical: [
+    PHASE_FOUNDATION,
+    PHASE_ANCHOR,
+    PHASE_LAUNCH,
+    PHASE_LOCK_IN,
+    PHASE_FINAL_WEEKS,
+    PHASE_POST_RETREAT,
+  ],
+  overrides: {
+    [TimelinePreset.NINE_MONTHS]: {
+      impactSubtitle: en(
+        'Three months less runway. Foundation work runs in parallel with venue lock-in — workable, but the early-bird launch window tightens.',
+      ),
+      phases: {
+        [CalendarPhaseId.FOUNDATION]: {
+          kind: 'modify',
+          patch: { range: en('6–9 months before'), rangeStartMonth: 9, rangeEndMonth: 6 },
+        },
+        [CalendarPhaseId.ANCHOR]: {
+          kind: 'modify',
+          patch: { range: en('4–6 months before'), rangeStartMonth: 6, rangeEndMonth: 4 },
+        },
+        [CalendarPhaseId.LAUNCH]: {
+          kind: 'modify',
+          patch: { range: en('2–4 months before'), rangeStartMonth: 4, rangeEndMonth: 2 },
+        },
+        [CalendarPhaseId.LOCK_IN]: {
+          kind: 'modify',
+          patch: { range: en('1–2 months before'), rangeStartMonth: 2, rangeEndMonth: 1 },
+        },
+      },
+    },
+    [TimelinePreset.SIX_MONTHS]: {
+      impactSubtitle: en(
+        'At 6 months you will need to compress foundation work. Best for facilitators who already have venue chemistry, a warm audience, or a returning cohort.',
+      ),
+      phases: {
+        [CalendarPhaseId.FOUNDATION]: { kind: 'remove' },
+        [CalendarPhaseId.ANCHOR]: {
+          kind: 'modify',
+          patch: {
+            range: en('4–6 months before'),
+            rangeStartMonth: 6,
+            rangeEndMonth: 4,
+            title: en('Sprint Foundation and Anchor'),
+          },
+          extraMilestones: [
+            // Foundation milestones with original IDs preserved (mandate per spec §4.2)
+            { position: 'prepend', milestone: M_P1_VISION },
+            { position: 'prepend', milestone: M_P1_AVATAR },
+            { position: 'prepend', milestone: M_P1_BUDGET },
+            { position: 'prepend', milestone: M_P1_PRICING_MODEL },
+            // Preset-specific 6-month sprint milestones
+            { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M6_SPRINT_VENUE_LOCK, 'Lock the venue this week — book one of your top three options') },
+            { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M6_SPRINT_PARALLEL_LANDING, 'Build the landing page in parallel with venue selection — no waiting') },
+          ],
+        },
+        [CalendarPhaseId.LAUNCH]: {
+          kind: 'modify',
+          patch: { range: en('2–4 months before'), rangeStartMonth: 4, rangeEndMonth: 2 },
+        },
+        [CalendarPhaseId.LOCK_IN]: {
+          kind: 'modify',
+          patch: { range: en('1–2 months before'), rangeStartMonth: 2, rangeEndMonth: 1 },
+        },
+      },
+    },
+    [TimelinePreset.THREE_MONTHS]: {
+      impactSubtitle: en(
+        'Tight, but possible. Assumes your venue is already booked and your audience is warm. Smaller intimate cohorts are realistic; large public retreats may not sell out.',
+      ),
+      phases: {
+        [CalendarPhaseId.FOUNDATION]: { kind: 'remove' },
+        [CalendarPhaseId.ANCHOR]: {
+          kind: 'modify',
+          patch: {
+            range: en('2–3 months before'),
+            rangeStartMonth: 3,
+            rangeEndMonth: 2,
+            title: en('Anchor and Launch sprint'),
+          },
+          extraMilestones: [
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_VENUE_PREBOOKED, 'Confirm your venue is already booked or book within the week') },
+            { position: 'prepend', milestone: M_P1_VISION },
+            { position: 'prepend', milestone: M_P1_AVATAR },
+            { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_FOUNDING_TIER, 'Open a founding-cohort pricing tier to incentivize fast registration') },
+            { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_LIMITED_COHORT, 'Cap cohort size honestly — smaller intimate retreats sell faster') },
+          ],
+        },
+        [CalendarPhaseId.LAUNCH]: {
+          kind: 'modify',
+          patch: { range: en('1–2 months before'), rangeStartMonth: 2, rangeEndMonth: 1 },
+          extraMilestones: [
+            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_WARM_OUTREACH, 'Send personal outreach to 30 warm contacts in your network') },
+          ],
+        },
+        [CalendarPhaseId.LOCK_IN]: {
+          kind: 'modify',
+          patch: { range: en('2–4 weeks before'), rangeStartMonth: 1, rangeEndMonth: 0.5 },
+        },
+        [CalendarPhaseId.FINAL_WEEKS]: {
+          kind: 'modify',
+          patch: { range: en('0–2 weeks before'), rangeStartMonth: 0.5, rangeEndMonth: 0 },
+        },
+      },
+    },
+  },
+}
