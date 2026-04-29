@@ -56,7 +56,7 @@ const PHASE_ANCHOR: CalendarPhase = {
   eyebrow: en('Phase 2 · Anchor'),
   title: en('Lock contracts and build the landing page'),
   milestones: [
-    milestone(CALENDAR_MILESTONE_IDS.P2_VENUE_CONTRACT, 'Sign the venue contract — verify cancellation policy, capacity, dietary, and AV'),
+    milestone(CALENDAR_MILESTONE_IDS.P2_VENUE_CONTRACT, 'Sign the venue contract — verify the final-payment deadline (typically 2 months before the retreat, non-refundable), cancellation policy, capacity, dietary, and AV'),
     milestone(CALENDAR_MILESTONE_IDS.P2_INSURANCE, 'Secure event and liability insurance'),
     milestone(CALENDAR_MILESTONE_IDS.P2_WAIVERS, 'Draft participant waivers'),
     milestone(CALENDAR_MILESTONE_IDS.P2_COFAC_AGREEMENT, 'Sign co-facilitator and hired-facilitator agreements'),
@@ -97,7 +97,7 @@ const PHASE_LOCK_IN: CalendarPhase = {
   eyebrow: en('Phase 4 · Lock-in'),
   title: en('Go/no-go and finalize every detail'),
   milestones: [
-    milestone(CALENDAR_MILESTONE_IDS.P4_GO_NO_GO, 'Hit your minimum-viable headcount — go/no-go decision'),
+    milestone(CALENDAR_MILESTONE_IDS.P4_GO_NO_GO, 'Hit your minimum-viable headcount — go/no-go decision before the venue final-payment deadline (typically 2 months out and non-refundable)'),
     milestone(CALENDAR_MILESTONE_IDS.P4_VENDORS_CONFIRMED, 'Confirm all vendors with signed agreements'),
     milestone(CALENDAR_MILESTONE_IDS.P4_PROGRAM_FINAL, 'Finalize program content and printed/digital materials'),
     milestone(CALENDAR_MILESTONE_IDS.P4_WELCOME_PACKET, 'Send welcome packet with intentions email'),
