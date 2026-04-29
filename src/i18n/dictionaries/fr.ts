@@ -16,6 +16,7 @@ export const fr: Dictionary = {
     surroundings: 'Environs',
     contact: 'Contact',
     book: 'Réserver',
+    hostARetreat: 'Host a Retreat',
   },
 
   hero: {
@@ -227,6 +228,7 @@ export const fr: Dictionary = {
   footer: {
     getInTouch: 'Contacte-nous',
     followUs: 'Suis-nous',
+    explore: 'Explore',
     tagline: 'Where creativity meets tranquility',
     copyright: 'The MakersBarn.',
     viewLocation: 'Voir le lieu',
@@ -659,9 +661,9 @@ export const fr: Dictionary = {
     metaDescription:
       'Organise ta retraite à The Makers Barn. Une ferme des années 1920 en Overijssel pour le yoga, la méditation, l’écriture, les équipes, le travail du souffle et bien plus.',
     eyebrow: 'Organiser une retraite',
-    title: 'Des manières paisibles d’habiter une ferme des années 1920',
+    title: 'Retreats we host at The Makers Barn',
     intro:
-      'The Makers Barn sait accueillir des travaux très différents. Choisis le type de retraite qui te correspond — chaque page entre dans le détail de ce qu’on propose pour ce genre de groupe.',
+      'A few examples of the groups The Makers Barn fits well. Pick the type closest to yours — each page goes deeper, and we keep adding more as new kinds of retreat find their way here.',
     cardCta: 'Voir ce type de retraite',
     helpTitle: 'Pas sûr·e de ce qui te correspond ?',
     helpBody:

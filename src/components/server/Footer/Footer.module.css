@@ -127,17 +127,31 @@
 
 .tagline {
   font-family: var(--font-playfair);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-base);
   font-style: italic;
-  margin: 0;
+  margin: 0 0 0.75rem;
   color: var(--color-secondary);
   line-height: var(--line-height-snug);
 }
 
-@media (min-width: 768px) {
-  .tagline {
-    font-size: var(--font-size-2xl);
-  }
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.navLink {
+  color: var(--color-text-inverse-muted);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--color-secondary);
 }
 
 .social {
