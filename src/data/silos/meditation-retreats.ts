@@ -14,19 +14,19 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
   },
   meta: {
     title: {
-      [Language.EN]: 'Silent Meditation & Buddhist Retreat Venue — Netherlands',
-      [Language.NL]: 'Stille Meditatie & Boeddhistische Retraite Locatie — Nederland',
-      [Language.DE]: 'Ort für stille Meditations- und buddhistische Retreats – Niederlande',
+      [Language.EN]: 'Silent Meditation & Buddhist Retreat Venue — Overijssel, NL',
+      [Language.NL]: 'Stille Meditatie- & Boeddhistische Retraite Locatie — Overijssel',
+      [Language.DE]: 'Stille Meditations- & buddhistische Retreats — Overijssel',
       [Language.ES]: 'Lugar para retiros silenciosos de meditación y budistas — Países Bajos',
       [Language.FR]: 'Lieu de retraites silencieuses de méditation et bouddhistes — Pays-Bas',
     },
     description: {
       [Language.EN]:
-        'A silent retreat venue for Buddhist and meditation groups in the Dutch countryside. 1.3-hectare private land, no neighbours, kitchen built around your schedule.',
+        'Silent meditation and Buddhist retreat venue in Overijssel, Netherlands. 1.3 hectares of private land, 14 beds, 65m² heated shala, 15 min from Zwolle.',
       [Language.NL]:
-        'Een stille retraitelocatie voor boeddhistische en meditatiegroepen op het Nederlandse platteland. 1,3 hectare eigen terrein, geen buren, een keuken die zich aanpast aan jouw schema.',
+        'Locatie voor stille meditatie- en boeddhistische retraites in Overijssel. 1,3 hectare eigen terrein, 14 bedden, verwarmde shala van 65m², 15 min van Zwolle.',
       [Language.DE]:
-        'Ein stiller Retreat-Ort für buddhistische Gruppen und Meditationsgruppen mitten in der niederländischen Landschaft. 1,3 Hektar eigenes Land, keine Nachbarn, eine Küche, die sich nach deinem Zeitplan richtet.',
+        'Ort für stille Meditations- und buddhistische Retreats in Overijssel, Niederlande. 1,3 Hektar eigenes Land, 14 Betten, beheizte 65m²-Shala, 15 Min. von Zwolle.',
       [Language.ES]:
         'Un lugar de retiro silencioso para grupos budistas y de meditación en el campo neerlandés. 1,3 hectares de terreno privado, sin vecinos, una cocina pensada en torno a tu horario.',
       [Language.FR]:
@@ -42,19 +42,19 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
       [Language.FR]: 'Pour les groupes de méditation et de dharma',
     },
     title: {
-      [Language.EN]: 'A Silent Retreat Setting for Buddhist & Meditation Groups',
-      [Language.NL]: 'Een stille retraite-locatie voor boeddhistische & meditatie-groepen',
-      [Language.DE]: 'Ein stiller Retreat-Ort für buddhistische und Meditationsgruppen',
+      [Language.EN]: 'Silent Meditation & Buddhist Retreats — Private Venue in Overijssel',
+      [Language.NL]: 'Stille Meditatie- & Boeddhistische Retraites — Privé-locatie in Overijssel',
+      [Language.DE]: 'Stille Meditations- & buddhistische Retreats — privater Ort in Overijssel',
       [Language.ES]: 'Un entorno de retiro silencioso para grupos budistas y de meditación',
       [Language.FR]: 'Un cadre de retraite silencieuse pour les groupes bouddhistes et de méditation',
     },
     subtitle: {
       [Language.EN]:
-        'Held by fields and big skies — not by traffic. A private 1.3-hectare farm in rural Overijssel with a precedent of practice.',
+        'A 1.3-hectare private farm in rural Overijssel — no shared buildings, no neighbouring guests, 15 minutes from Zwolle. A working venue for silent retreats and Buddhist groups.',
       [Language.NL]:
-        'Gedragen door velden en grote luchten — niet door verkeer. Een eigen boerderij van 1,3 hectare in landelijk Overijssel met een traditie van beoefening.',
+        'Een eigen boerderij van 1,3 hectare in landelijk Overijssel — geen gedeelde gebouwen, geen andere gasten, 15 minuten van Zwolle. Een werkende locatie voor stille retraites en boeddhistische groepen.',
       [Language.DE]:
-        'Getragen von Feldern und weitem Himmel – nicht von Verkehrslärm. Ein privater Hof mit 1,3 Hektar im ländlichen Overijssel, an dem schon ernsthaft praktiziert wird.',
+        'Ein 1,3 Hektar großer Privathof im ländlichen Overijssel — keine geteilten Gebäude, keine Nachbargäste, 15 Minuten von Zwolle. Ein eingespielter Ort für stille Retreats und buddhistische Gruppen.',
       [Language.ES]:
         'Sostenido por campos y cielos amplios — no por el tráfico. Una granja privada de 1,3 hectares en el Overijssel rural con una trayectoria de práctica.',
       [Language.FR]:
@@ -64,11 +64,11 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
   hook: {
     text: {
       [Language.EN]:
-        'Twelve-thousand square metres of held quiet.',
+        '13,000 m² of private land — no roads, no neighbours, no shared buildings.',
       [Language.NL]:
-        'Twaalfduizend vierkante meter gedragen stilte.',
+        '13.000 m² eigen terrein — geen wegen, geen buren, geen gedeelde gebouwen.',
       [Language.DE]:
-        'Zwölftausend Quadratmeter getragene Stille.',
+        '13.000 m² Privatgelände — keine Straßen, keine Nachbarn, keine geteilten Gebäude.',
       [Language.ES]:
         'Doce mil metros cuadrados de silencio sostenido.',
       [Language.FR]:
@@ -76,11 +76,11 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
     },
     caption: {
       [Language.EN]:
-        'A practice hall that warms slowly, lights low, and a kitchen that respects your schedule of meals.',
+        'A 65m² heated hay-barn shala, low lighting, and a kitchen that runs on your meditation schedule.',
       [Language.NL]:
-        'Een praktijkzaal die langzaam opwarmt, gedempt licht, en een keuken die jouw maaltijdschema respecteert.',
+        'Een verwarmde shala van 65m² in de hooischuur, gedempt licht en een keuken die meedraait op jouw meditatieschema.',
       [Language.DE]:
-        'Ein Praxisraum, der langsam warm wird, gedämpftes Licht und eine Küche, die deinen Mahlzeitenplan respektiert.',
+        'Eine beheizte 65m²-Shala in der Heuscheune, gedämpftes Licht und eine Küche, die sich nach deinem Meditationsplan richtet.',
       [Language.ES]:
         'Una sala de práctica que se calienta poco a poco, luz tenue y una cocina que respeta tu horario de comidas.',
       [Language.FR]:
@@ -90,24 +90,24 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
   sections: [
     {
       h2: {
-        [Language.EN]: 'A precedent of practice',
-        [Language.NL]: 'Een traditie van beoefening',
-        [Language.DE]: 'Eine Tradition der Praxis',
+        [Language.EN]: 'A hay-barn shala built for long silent sittings',
+        [Language.NL]: 'Een shala in de hooischuur, gemaakt voor lange stille zittingen',
+        [Language.DE]: 'Eine Heuscheunen-Shala für lange stille Sitzungen',
         [Language.ES]: 'Una trayectoria de práctica',
         [Language.FR]: 'Une tradition de pratique',
       },
       body: {
         [Language.EN]: [
-          'Geshe Pema Dorjee has taught Tibetan Buddhism here in two annual retreats since the venue opened. The 7 AM to 8 PM rhythm of his programme has shaped how the kitchen, the heating, and the hot water are scheduled. Other lineages have built on top of that — Vipassana, Zen, breath-based meditation.',
-          'You bring your teacher and your tradition. We bring a venue that already knows what a meditation day asks of it.',
+          'The Hay House is a 65m² heated practice hall with wooden floors, dimmable light, and room for twenty cushions in a circle. Geshe Pema Dorjee has taught Tibetan Buddhism here in two annual retreats since the venue opened — the 7 AM to 8 PM rhythm of his programme has shaped how the kitchen, the heating, and the hot water run. Vipassana, Zen, and breath-based meditation groups have used the same shape since.',
+          'You bring the teacher and the lineage. We bring a meditation retreat venue that already knows what a long sitting day asks of it.',
         ],
         [Language.NL]: [
-          'Geshe Pema Dorjee geeft hier sinds de opening jaarlijks twee Tibetaans-boeddhistische retraites. Zijn programma loopt van 7.00 tot 20.00 uur — de keuken, de verwarming en het warme water zijn daarop afgestemd. Andere tradities hebben daarop voortgebouwd: Vipassana, Zen, ademgerichte meditatie.',
-          'Jij brengt je leraar en je traditie. Wij bieden een plek die al weet wat een meditatiedag vraagt.',
+          'Het Hay House is een verwarmde praktijkruimte van 65m² met houten vloeren, dimbaar licht en plek voor twintig kussens in een kring. Geshe Pema Dorjee geeft hier sinds de opening jaarlijks twee Tibetaans-boeddhistische retraites — zijn programma loopt van 7.00 tot 20.00 uur en de keuken, verwarming en warm water zijn daarop afgestemd. Vipassana-, Zen- en ademgerichte meditatiegroepen werken sindsdien met dezelfde structuur.',
+          'Jij brengt de leraar en de traditie mee. Wij bieden een meditatie-retraitelocatie die al weet wat een lange zitdag vraagt.',
         ],
         [Language.DE]: [
-          'Geshe Pema Dorjee unterrichtet hier seit der Eröffnung in zwei jährlichen Retreats tibetischen Buddhismus. Sein Programm läuft von 7 bis 20 Uhr — Küche, Heizung und Warmwasser sind darauf eingestellt. Andere Linien haben darauf aufgebaut: Vipassana, Zen, atemorientierte Meditation.',
-          'Du bringst deinen Lehrer und deine Tradition mit. Wir bieten einen Ort, der schon weiß, was ein Meditationstag von ihm verlangt.',
+          'Das Hay House ist eine beheizte 65m²-Praxishalle mit Holzboden, dimmbarem Licht und Platz für zwanzig Kissen im Kreis. Geshe Pema Dorjee unterrichtet hier seit der Eröffnung in zwei jährlichen Retreats tibetischen Buddhismus — sein Programm läuft von 7 bis 20 Uhr, und Küche, Heizung und Warmwasser sind darauf eingestellt. Vipassana-, Zen- und atemorientierte Meditationsgruppen arbeiten seither mit derselben Form.',
+          'Du bringst Lehrer und Linie mit. Wir bringen einen Meditations-Retreat-Ort, der schon weiß, was ein langer Sitztag verlangt.',
         ],
         [Language.ES]: [
           'Geshe Pema Dorjee ha enseñado budismo tibetano aquí en dos retiros anuales desde que abrió el lugar. El ritmo de su programa, de 7:00 a 20:00, ha marcado cómo se organizan la cocina, la calefacción y el agua caliente. Otras tradiciones se han apoyado en eso — Vipassana, Zen, meditación basada en la respiración.',
@@ -129,24 +129,24 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
     },
     {
       h2: {
-        [Language.EN]: 'Held by silence — not by walls',
-        [Language.NL]: 'Gedragen door stilte — niet door muren',
-        [Language.DE]: 'Getragen von Stille — nicht von Wänden',
+        [Language.EN]: 'Silent practice space with no shared neighbours',
+        [Language.NL]: 'Stille praktijkruimte zonder gedeelde buren',
+        [Language.DE]: 'Stiller Praxisraum ohne geteilte Nachbarn',
         [Language.ES]: 'Sostenido por el silencio — no por las paredes',
         [Language.FR]: 'Porté par le silence — pas par les murs',
       },
       body: {
         [Language.EN]: [
-          'The farm sits on its own 1.3 hectares of land. There are no shared buildings, no neighbouring guests, no parking lot facing the practice room. The closest road is a quiet country lane, and beyond it: fields, the Sallandse Heuvelrug, the IJssel river.',
-          'Walking meditation has somewhere to go. Silent meals have somewhere to be eaten. Rooms can stay closed for a noble silence that does not have to be defended.',
+          'The farm sits on its own 1.3 hectares (13,000 m²) in rural Overijssel, 15 minutes from Zwolle. There are no shared buildings, no neighbouring guests, and no parking lot facing the practice room. The closest road is a quiet country lane — beyond it, fields, the Sallandse Heuvelrug, and the IJssel river.',
+          'Walking meditation has somewhere to go. Silent meals have somewhere to be eaten. A noble silence holds without anyone having to defend it. For a Buddhist retreat or a fully silent meditation retreat, that lack of background traffic is half the work done.',
         ],
         [Language.NL]: [
-          'De boerderij ligt op een eigen terrein van 1,3 hectare. Er zijn geen gedeelde gebouwen, geen andere gasten, geen parkeerplaats die uitkijkt op de praktijkruimte. De dichtstbijzijnde weg is een stille landweg, en daarachter: velden, de Sallandse Heuvelrug, de IJssel.',
-          'Voor loopmeditatie is er ruimte om te lopen. Voor stille maaltijden is er een eigen plek. Kamers kunnen dicht blijven voor een edele stilte die niemand hoeft te verdedigen.',
+          'De boerderij ligt op een eigen terrein van 1,3 hectare (13.000 m²) in landelijk Overijssel, 15 minuten van Zwolle. Er zijn geen gedeelde gebouwen, geen andere gasten, geen parkeerplaats die uitkijkt op de praktijkruimte. De dichtstbijzijnde weg is een stille landweg, en daarachter: velden, de Sallandse Heuvelrug, de IJssel.',
+          'Voor loopmeditatie is er ruimte om te lopen. Voor stille maaltijden is er een eigen plek. Een edele stilte houdt stand zonder dat iemand hem hoeft te verdedigen. Voor een boeddhistische retraite of een volledig stille meditatieretraite is die afwezigheid van achtergrondverkeer al het halve werk.',
         ],
         [Language.DE]: [
-          'Der Hof liegt auf eigenem Grund von 1,3 Hektar. Es gibt keine geteilten Gebäude, keine Nachbargäste, keinen Parkplatz vor dem Praxisraum. Die nächste Straße ist ein ruhiger Feldweg, und dahinter: Felder, die Sallandse Heuvelrug, die IJssel.',
-          'Für Gehmeditation gibt es Raum zum Gehen. Für schweigende Mahlzeiten gibt es einen eigenen Platz. Türen dürfen geschlossen bleiben für ein edles Schweigen, das niemand verteidigen muss.',
+          'Der Hof liegt auf eigenem Grund von 1,3 Hektar (13.000 m²) im ländlichen Overijssel, 15 Minuten von Zwolle. Es gibt keine geteilten Gebäude, keine Nachbargäste, keinen Parkplatz vor dem Praxisraum. Die nächste Straße ist ein ruhiger Feldweg — dahinter Felder, die Sallandse Heuvelrug und die IJssel.',
+          'Für Gehmeditation gibt es Raum zum Gehen. Für schweigende Mahlzeiten gibt es einen eigenen Platz. Ein edles Schweigen trägt, ohne dass jemand es verteidigen muss. Für ein buddhistisches Retreat oder ein vollständig stilles Meditations-Retreat ist genau dieses Fehlen von Hintergrundverkehr schon die halbe Arbeit.',
         ],
         [Language.ES]: [
           'La granja se asienta en sus propias 1,3 hectares de terreno. No hay edificios compartidos, ni huéspedes vecinos, ni un aparcamiento frente a la sala de práctica. La carretera más cercana es un camino rural tranquilo, y más allá: campos, la Sallandse Heuvelrug, el río IJssel.',
