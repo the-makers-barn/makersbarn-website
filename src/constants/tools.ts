@@ -74,3 +74,30 @@ export const SILO_TO_TOOL_ROUTE: Partial<Record<Route, Route>> = {
   [Route.MEDITATION_RETREATS]: Route.MEDITATION_RETREAT_PRICING_CALCULATOR,
   [Route.COACHING_INTENSIVES]: Route.COACHING_RETREAT_PRICING_CALCULATOR,
 }
+
+export enum TimelinePreset {
+  THREE_MONTHS = 3,
+  SIX_MONTHS = 6,
+  NINE_MONTHS = 9,
+  TWELVE_MONTHS = 12,
+}
+
+export enum CalendarPhaseId {
+  FOUNDATION = 'foundation',
+  ANCHOR = 'anchor',
+  LAUNCH = 'launch',
+  LOCK_IN = 'lock-in',
+  FINAL_WEEKS = 'final-weeks',
+  POST_RETREAT = 'post-retreat',
+}
+
+export enum MilestoneStatus {
+  PENDING = 'pending',
+  DONE = 'done',
+  DISMISSED = 'dismissed',
+}
+
+export enum ToolKind {
+  CALCULATOR = 'calculator',
+  PLANNER = 'planner',
+}
