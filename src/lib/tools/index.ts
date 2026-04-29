@@ -1,4 +1,3 @@
-export * from './calendar/email'
 export * from './calendar/presets'
 export * from './calendar/state'
 export * from './formatters'
