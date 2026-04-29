@@ -223,11 +223,11 @@ export const CALENDAR_CONTENT: CalendarContent = {
         },
         [CalendarPhaseId.LOCK_IN]: {
           kind: 'modify',
-          patch: { range: en('2–4 weeks before'), rangeStartMonth: 1, rangeEndMonth: 0 },
+          patch: { range: en('2–4 weeks before'), rangeStartMonth: 1, rangeEndMonth: 0.5 },
         },
         [CalendarPhaseId.FINAL_WEEKS]: {
           kind: 'modify',
-          patch: { range: en('0–2 weeks before'), rangeStartMonth: 1, rangeEndMonth: 0 },
+          patch: { range: en('0–2 weeks before'), rangeStartMonth: 0.5, rangeEndMonth: 0 },
         },
       },
     },
