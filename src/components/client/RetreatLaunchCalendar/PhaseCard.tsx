@@ -2,7 +2,7 @@
 
 import type { Dispatch, ReactNode } from 'react'
 
-import { MilestoneStatus, type CalendarPhaseId } from '@/constants/tools'
+import { MilestoneStatus } from '@/constants/tools'
 import type { Dictionary } from '@/i18n/types'
 import type { CalendarAction } from '@/lib/tools/calendar/state'
 import { Language } from '@/types/common'
@@ -29,13 +29,6 @@ function resolveStatus(
   milestoneId: string,
 ): MilestoneStatus {
   return state.itemStates[milestoneId] ?? MilestoneStatus.PENDING
-}
-
-function countCustomItemsInPhase(
-  customItems: CustomMilestone[],
-  phaseId: CalendarPhaseId,
-): number {
-  return customItems.filter((c) => c.phaseId === phaseId).length
 }
 
 export function PhaseCard(props: PhaseCardProps): ReactNode {
@@ -109,7 +102,6 @@ export function PhaseCard(props: PhaseCardProps): ReactNode {
           placeholder={t.tools.calendar.customItem.placeholder}
           addLabel={t.tools.calendar.customItem.addLabel}
           disabled={disabled}
-          currentCount={countCustomItemsInPhase(state.customItems, phase.id)}
           onAdd={(text) =>
             dispatch({ type: 'ADD_CUSTOM', phaseId: phase.id, text })
           }

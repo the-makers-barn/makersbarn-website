@@ -14,7 +14,6 @@ describe('CustomItemInput', () => {
         placeholder="Add a milestone"
         addLabel="Add"
         disabled={false}
-        currentCount={0}
         onAdd={vi.fn()}
       />,
     )
@@ -30,7 +29,6 @@ describe('CustomItemInput', () => {
         placeholder="Add a milestone"
         addLabel="Add"
         disabled={false}
-        currentCount={0}
         onAdd={onAdd}
       />,
     )
@@ -43,19 +41,52 @@ describe('CustomItemInput', () => {
     expect(input).toHaveValue('')
   })
 
-  it('shows current/max counter using configured limits', () => {
+  it('shows 0/MAX counter when input is empty', () => {
     render(
       <CustomItemInput
         phaseId={CalendarPhaseId.FOUNDATION}
         placeholder="Add"
         addLabel="Add"
         disabled={false}
-        currentCount={3}
         onAdd={vi.fn()}
       />,
     )
     expect(
-      screen.getByText(`3/${CALENDAR_CUSTOM_ITEM_LIMITS.MAX_TEXT_LENGTH}`),
+      screen.getByText(`0/${CALENDAR_CUSTOM_ITEM_LIMITS.MAX_TEXT_LENGTH}`),
     ).toBeInTheDocument()
+  })
+
+  it('updates the counter to current/MAX as the user types characters', async () => {
+    render(
+      <CustomItemInput
+        phaseId={CalendarPhaseId.FOUNDATION}
+        placeholder="Add a milestone"
+        addLabel="Add"
+        disabled={false}
+        onAdd={vi.fn()}
+      />,
+    )
+    const input = screen.getByPlaceholderText('Add a milestone')
+    await userEvent.type(input, 'hello')
+    expect(
+      screen.getByText(`5/${CALENDAR_CUSTOM_ITEM_LIMITS.MAX_TEXT_LENGTH}`),
+    ).toBeInTheDocument()
+  })
+
+  it('caps input at MAX_TEXT_LENGTH via the maxLength attribute', () => {
+    render(
+      <CustomItemInput
+        phaseId={CalendarPhaseId.FOUNDATION}
+        placeholder="Add a milestone"
+        addLabel="Add"
+        disabled={false}
+        onAdd={vi.fn()}
+      />,
+    )
+    const input = screen.getByPlaceholderText('Add a milestone')
+    expect(input).toHaveAttribute(
+      'maxLength',
+      String(CALENDAR_CUSTOM_ITEM_LIMITS.MAX_TEXT_LENGTH),
+    )
   })
 })

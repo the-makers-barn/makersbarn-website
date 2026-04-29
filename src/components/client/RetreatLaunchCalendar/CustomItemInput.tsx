@@ -11,14 +11,13 @@ export interface CustomItemInputProps {
   placeholder: string
   addLabel: string
   disabled: boolean
-  currentCount: number
   onAdd: (text: string) => void
 }
 
 const INPUT_NAME_PREFIX = 'calendar-custom-item-'
 
 export function CustomItemInput(props: CustomItemInputProps): ReactNode {
-  const { phaseId, placeholder, addLabel, disabled, currentCount, onAdd } = props
+  const { phaseId, placeholder, addLabel, disabled, onAdd } = props
   const [value, setValue] = useState('')
   const trimmed = value.trim()
   const isEmpty = trimmed.length === 0
@@ -53,7 +52,7 @@ export function CustomItemInput(props: CustomItemInputProps): ReactNode {
         {addLabel}
       </button>
       <span className={styles.customItemCounter} aria-live="polite">
-        {currentCount}/{CALENDAR_CUSTOM_ITEM_LIMITS.MAX_TEXT_LENGTH}
+        {value.length}/{CALENDAR_CUSTOM_ITEM_LIMITS.MAX_TEXT_LENGTH}
       </span>
     </form>
   )
