@@ -839,6 +839,11 @@ export interface ToolsCalendarTranslations {
     hostARetreatTitle: string
     profitabilityCalculatorTitle: string
   }
+  crossLinks: {
+    heading: string
+    intro: string
+    linkLabel: string
+  }
   sticky: {
     cta: string
   }

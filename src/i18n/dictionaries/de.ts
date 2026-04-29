@@ -902,6 +902,11 @@ export const de: Dictionary = {
         hostARetreatTitle: 'Host a retreat at MakersBarn',
         profitabilityCalculatorTitle: 'Retreat Profitability Calculator',
       },
+      crossLinks: {
+        heading: 'Other runways',
+        intro: 'Less or more time? Try one of the other variants of this calendar.',
+        linkLabel: '{months}-month plan',
+      },
       sticky: {
         cta: 'Host your retreat at MakersBarn →',
       },
