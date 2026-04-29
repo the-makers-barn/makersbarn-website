@@ -3,24 +3,6 @@ import type { CalculatorVariantContent } from '@/types/tools'
 import { localized } from './helpers'
 
 export const GENERIC_CONTENT: CalculatorVariantContent = {
-  howToSteps: [
-    localized(
-      'Set the group size and number of nights for your retreat — most working formats sit between 8 and 16 guests over 3 to 7 nights, depending on retreat type.',
-      'Stel de groepsgrootte en het aantal nachten van je retraite in — de meeste werkbare formats zitten tussen 8 en 16 gasten over 3 tot 7 nachten, afhankelijk van het retraitetype.',
-    ),
-    localized(
-      'Set the price per guest using the benchmark range, then sanity-check it against comparable European retreats in the same niche.',
-      'Stel de prijs per gast in met de benchmarkrange als richtlijn en toets hem aan vergelijkbare Europese retraites in dezelfde niche.',
-    ),
-    localized(
-      'Enter every cost line you have on paper — venue, food, your own facilitator fee, any co-facilitators, marketing, travel, and insurance.',
-      'Vul elke kostenpost in die je op papier hebt — locatie, eten, je eigen facilitator fee, eventuele co-facilitators, marketing, reizen en verzekering.',
-    ),
-    localized(
-      'Read the live summary on the right for profit, margin, breakeven occupancy, and profit per planning day, and stress-test the numbers at 60 to 70 percent occupancy before committing.',
-      'Lees rechts de live samenvatting voor winst, marge, break-even bezetting en winst per planningsdag, en test de getallen op 60 tot 70 procent bezetting voordat je je vastlegt.',
-    ),
-  ],
   guideSections: [
     {
       heading: localized(

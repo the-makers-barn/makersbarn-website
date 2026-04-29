@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 
 import { RetreatProfitabilityCalculator } from '@/components/client'
-import { StructuredData, ToolPageShell } from '@/components/server'
+import { StructuredData, ToolPageShell, VenueCostExplainer } from '@/components/server'
 import {
   generateBreadcrumbListSchema,
   generateFaqPageSchema,
-  generateHowToSchema,
   generateWebApplicationSchema,
 } from '@/lib/structuredData'
 import { CALCULATOR_VARIANTS, CALCULATOR_CONTENT } from '@/data/tools'
@@ -55,11 +54,6 @@ export default async function YogaCalculatorPage({ params }: PageProps) {
       url,
       description: config.copy.metaDescription[validLocale],
     }),
-    generateHowToSchema({
-      name: t.tools.howTo.heading,
-      description: config.copy.heroIntro[validLocale],
-      steps: content.howToSteps.map((s) => s[validLocale]),
-    }),
     generateFaqPageSchema(
       content.faq.map((e) => ({
         question: e.question[validLocale],
@@ -84,8 +78,13 @@ export default async function YogaCalculatorPage({ params }: PageProps) {
             t={t}
           />
         }
-        howToHeading={t.tools.howTo.heading}
-        howToSteps={content.howToSteps.map((s) => s[validLocale])}
+        belowTool={
+          <VenueCostExplainer
+            heading={t.tools.calculator.venueExplainer.heading}
+            paragraphs={[...t.tools.calculator.venueExplainer.paragraphs]}
+            example={t.tools.calculator.venueExplainer.example}
+          />
+        }
         guideSections={content.guideSections.map((s) => ({
           heading: s.heading[validLocale],
           paragraphs: s.body.map((p) => p[validLocale]),

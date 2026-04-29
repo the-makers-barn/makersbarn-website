@@ -27,8 +27,9 @@ export interface ToolPageShellProps {
     afterIntro?: ReactNode
   }
   tool: ReactNode
-  howToHeading: string
-  howToSteps: string[]
+  belowTool?: ReactNode
+  howToHeading?: string
+  howToSteps?: string[]
   guideSections: ToolPageShellGuideSection[]
   faqHeading: string
   faqEntries: ToolPageShellFaqEntry[]
@@ -40,6 +41,7 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
   const {
     hero,
     tool,
+    belowTool,
     howToHeading,
     howToSteps,
     guideSections,
@@ -60,16 +62,20 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
 
       {tool}
 
-      <section className={styles.howTo} aria-labelledby="how-to">
-        <h2 id="how-to" className={styles.sectionTitle}>
-          {howToHeading}
-        </h2>
-        <ol className={styles.howToList}>
-          {howToSteps.map((step) => (
-            <li key={step}>{step}</li>
-          ))}
-        </ol>
-      </section>
+      {belowTool}
+
+      {howToHeading && howToSteps && howToSteps.length > 0 && (
+        <section className={styles.howTo} aria-labelledby="how-to">
+          <h2 id="how-to" className={styles.sectionTitle}>
+            {howToHeading}
+          </h2>
+          <ol className={styles.howToList}>
+            {howToSteps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </section>
+      )}
 
       <section className={styles.guide}>
         {guideSections.map((section) => (

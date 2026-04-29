@@ -6,6 +6,7 @@ import { decodeCalculatorInputs, encodeCalculatorInputs } from './urlState'
 
 const sample: CalculatorInputs = {
   guests: 12,
+  teamCount: 2,
   nights: 5,
   pricePerGuest: 1200,
   venuePerNight: 900,
@@ -17,6 +18,8 @@ const sample: CalculatorInputs = {
   paymentFeePercent: 3,
   planningDays: 5,
   hiresFacilitators: true,
+  pricesIncludeVat: true,
+  vatPercent: 9,
 }
 
 describe('encodeCalculatorInputs', () => {

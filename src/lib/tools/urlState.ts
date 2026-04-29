@@ -14,6 +14,7 @@ interface FieldSpec {
 
 const FIELD_SPECS: FieldSpec[] = [
   { key: 'guests', param: CALCULATOR_URL_PARAMS.GUESTS, min: CALCULATOR_INPUT_RANGES.GUESTS_MIN, max: CALCULATOR_INPUT_RANGES.GUESTS_MAX },
+  { key: 'teamCount', param: CALCULATOR_URL_PARAMS.TEAM_COUNT, min: CALCULATOR_INPUT_RANGES.TEAM_COUNT_MIN, max: CALCULATOR_INPUT_RANGES.TEAM_COUNT_MAX },
   { key: 'nights', param: CALCULATOR_URL_PARAMS.NIGHTS, min: CALCULATOR_INPUT_RANGES.NIGHTS_MIN, max: CALCULATOR_INPUT_RANGES.NIGHTS_MAX },
   { key: 'pricePerGuest', param: CALCULATOR_URL_PARAMS.PRICE_PER_GUEST, min: CALCULATOR_INPUT_RANGES.PRICE_PER_GUEST_MIN, max: CALCULATOR_INPUT_RANGES.PRICE_PER_GUEST_MAX },
   { key: 'venuePerNight', param: CALCULATOR_URL_PARAMS.VENUE, min: CALCULATOR_INPUT_RANGES.VENUE_PER_NIGHT_MIN, max: CALCULATOR_INPUT_RANGES.VENUE_PER_NIGHT_MAX },
@@ -24,6 +25,7 @@ const FIELD_SPECS: FieldSpec[] = [
   { key: 'insurance', param: CALCULATOR_URL_PARAMS.INSURANCE, min: CALCULATOR_INPUT_RANGES.INSURANCE_MIN, max: CALCULATOR_INPUT_RANGES.INSURANCE_MAX },
   { key: 'paymentFeePercent', param: CALCULATOR_URL_PARAMS.PAYMENT_FEE_PERCENT, min: CALCULATOR_INPUT_RANGES.PAYMENT_FEE_PERCENT_MIN, max: CALCULATOR_INPUT_RANGES.PAYMENT_FEE_PERCENT_MAX },
   { key: 'planningDays', param: CALCULATOR_URL_PARAMS.PLANNING_DAYS, min: CALCULATOR_INPUT_RANGES.PLANNING_DAYS_MIN, max: CALCULATOR_INPUT_RANGES.PLANNING_DAYS_MAX },
+  { key: 'vatPercent', param: CALCULATOR_URL_PARAMS.VAT_PERCENT, min: CALCULATOR_INPUT_RANGES.VAT_PERCENT_MIN, max: CALCULATOR_INPUT_RANGES.VAT_PERCENT_MAX },
 ]
 
 export function encodeCalculatorInputs(inputs: CalculatorInputs): URLSearchParams {
@@ -32,6 +34,7 @@ export function encodeCalculatorInputs(inputs: CalculatorInputs): URLSearchParam
     params.set(spec.param, String(inputs[spec.key]))
   }
   params.set(CALCULATOR_URL_PARAMS.HIRES_FACILITATORS, inputs.hiresFacilitators ? '1' : '0')
+  params.set(CALCULATOR_URL_PARAMS.PRICES_INCLUDE_VAT, inputs.pricesIncludeVat ? '1' : '0')
   return params
 }
 
@@ -56,6 +59,12 @@ export function decodeCalculatorInputs(
   }
   if (!decoded.hiresFacilitators) {
     decoded.facilitatorFee = 0
+  }
+  const vatRaw = params.get(CALCULATOR_URL_PARAMS.PRICES_INCLUDE_VAT)
+  if (vatRaw === '1') {
+    decoded.pricesIncludeVat = true
+  } else if (vatRaw === '0') {
+    decoded.pricesIncludeVat = false
   }
   return decoded
 }

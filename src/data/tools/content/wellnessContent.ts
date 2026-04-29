@@ -3,24 +3,6 @@ import type { CalculatorVariantContent } from '@/types/tools'
 import { localized } from './helpers'
 
 export const WELLNESS_CONTENT: CalculatorVariantContent = {
-  howToSteps: [
-    localized(
-      'Set the group size and number of nights — wellness and detox retreats usually run 6 to 8 nights, with medical or fasting programs stretching to 10 to 14, and groups of 10 to 20 guests.',
-      'Stel de groepsgrootte en het aantal nachten in — wellness- en detoxretraites duren meestal 6 tot 8 nachten, met medische of vastenprogramma’s die uitlopen tot 10 tot 14, en groepen van 10 tot 20 gasten.',
-    ),
-    localized(
-      'Set the price per guest using the benchmark range, remembering that wellness pricing sits noticeably above generic yoga retreats once organic catering and treatments are included.',
-      'Stel de prijs per gast in met de benchmarkrange als richtlijn, en houd er rekening mee dat wellnessprijzen duidelijk boven generieke yoga retraites liggen zodra biologische catering en behandelingen worden meegerekend.',
-    ),
-    localized(
-      'Enter every cost line — venue, organic food, your facilitator fee, practitioner or therapist fees, marketing, travel, and insurance. Treatment-heavy programs need a dedicated practitioner cost line, not a vague extras bucket.',
-      'Vul elke kostenpost in — locatie, biologisch eten, je eigen facilitator fee, vergoedingen voor behandelaars of therapeuten, marketing, reizen en verzekering. Behandelprogramma’s hebben een aparte kostenpost voor behandelaars nodig, geen vage extras-categorie.',
-    ),
-    localized(
-      'Read the live summary on the right for profit, margin, breakeven occupancy, and profit per planning day, and stress-test the numbers at 60 to 70 percent occupancy before you commit to a venue.',
-      'Lees rechts de live samenvatting voor winst, marge, break-even bezetting en winst per planningsdag, en test de getallen op 60 tot 70 procent bezetting voordat je een locatie vastlegt.',
-    ),
-  ],
   guideSections: [
     {
       heading: localized(

@@ -4,6 +4,7 @@ import type { Route } from '@/types/navigation'
 
 export interface CalculatorInputs {
   guests: number
+  teamCount: number
   nights: number
   pricePerGuest: number
   venuePerNight: number
@@ -15,6 +16,8 @@ export interface CalculatorInputs {
   paymentFeePercent: number
   planningDays: number
   hiresFacilitators: boolean
+  pricesIncludeVat: boolean
+  vatPercent: number
 }
 
 export interface CalculatorCostBreakdown {
@@ -39,12 +42,17 @@ export interface CalculatorResults {
 
 export type LocalizedString = Record<Language, string>
 
+export interface BenchmarkPrice {
+  amounts: readonly number[]
+  template: LocalizedString
+}
+
 export interface VariantBenchmarks {
-  pricePerGuest: LocalizedString
-  foodPerGuestPerDay: LocalizedString
-  facilitatorFee: LocalizedString
+  pricePerGuest: BenchmarkPrice
+  foodPerGuestPerDay: BenchmarkPrice
+  facilitatorFee: BenchmarkPrice
   marketingAndOther: LocalizedString
-  venuePerNight: LocalizedString
+  venuePerNight: BenchmarkPrice
 }
 
 export interface VariantCopy {
@@ -75,7 +83,6 @@ export interface CalculatorFaqEntry {
 }
 
 export interface CalculatorVariantContent {
-  howToSteps: LocalizedString[]
   guideSections: CalculatorContentSection[]
   faq: CalculatorFaqEntry[]
 }

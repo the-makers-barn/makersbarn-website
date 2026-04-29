@@ -3,24 +3,6 @@ import type { CalculatorVariantContent } from '@/types/tools'
 import { localized } from './helpers'
 
 export const COACHING_CONTENT: CalculatorVariantContent = {
-  howToSteps: [
-    localized(
-      'Set the group size and number of nights — coaching retreats and intensives typically run 4 to 8 participants over 3 to 5 nights, with weekend VIP intensives at the short end and week-long mastermind retreats at the longer end.',
-      'Stel de groepsgrootte en het aantal nachten in — coaching retraites en intensives draaien meestal 4 tot 8 deelnemers over 3 tot 5 nachten, met weekend VIP intensives aan de korte kant en week-lange mastermind retraites aan de langere kant.',
-    ),
-    localized(
-      'Set the price per guest using the benchmark range, but expect coaching retreat pricing to vary much more widely than yoga or wellness — credentials, niche, and positioning move the price by a factor of 5 or more, not 20 percent.',
-      'Stel de prijs per gast in met de benchmarkrange, maar verwacht dat de prijzen voor coaching retraites veel breder uiteenlopen dan bij yoga of wellness — credentials, niche en positionering verschuiven de prijs met een factor 5 of meer, niet met 20 procent.',
-    ),
-    localized(
-      'Enter every cost line — venue, catering, your own coaching fee, any co-facilitator or specialist day rates, marketing, travel, and insurance. Coaching retreats typically have lower marketing cost as a percentage but higher facilitator compensation than other retreat types.',
-      'Vul elke kostenpost in — locatie, catering, je eigen coachingfee, dagtarieven van eventuele co-facilitators of specialisten, marketing, reizen en verzekering. Coaching retraites hebben meestal lagere marketingkosten als percentage maar een hogere facilitatorvergoeding dan andere retraitetypen.',
-    ),
-    localized(
-      'Read the live summary on the right for profit, margin, breakeven, and profit per planning day, and stress-test the numbers at 60 to 75 percent occupancy — small groups make every empty seat hurt more than on a larger retreat.',
-      'Lees rechts de live samenvatting voor winst, marge, break-even en winst per planningsdag, en test de getallen op 60 tot 75 procent bezetting — kleine groepen maken elke lege plek pijnlijker dan op een grotere retraite.',
-    ),
-  ],
   guideSections: [
     {
       heading: localized(

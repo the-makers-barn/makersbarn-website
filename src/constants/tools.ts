@@ -19,6 +19,8 @@ export const TOOL_VARIANT_ROUTES: Record<ToolVariant, Route> = {
 export const CALCULATOR_INPUT_RANGES = {
   GUESTS_MIN: 4,
   GUESTS_MAX: 30,
+  TEAM_COUNT_MIN: 0,
+  TEAM_COUNT_MAX: 10,
   NIGHTS_MIN: 2,
   NIGHTS_MAX: 10,
   PRICE_PER_GUEST_MIN: 500,
@@ -39,14 +41,20 @@ export const CALCULATOR_INPUT_RANGES = {
   PAYMENT_FEE_PERCENT_MAX: 20,
   PLANNING_DAYS_MIN: 0,
   PLANNING_DAYS_MAX: 365,
+  VAT_PERCENT_MIN: 0,
+  VAT_PERCENT_MAX: 30,
 } as const
 
 export const CALCULATOR_INPUT_DEFAULTS = {
   PAYMENT_FEE_PERCENT: 3,
+  TEAM_COUNT: 2,
+  VAT_PERCENT: 21,
+  PRICES_INCLUDE_VAT: true,
 } as const
 
 export const CALCULATOR_URL_PARAMS = {
   GUESTS: 'g',
+  TEAM_COUNT: 'tc',
   NIGHTS: 'n',
   PRICE_PER_GUEST: 'p',
   VENUE: 'v',
@@ -58,6 +66,8 @@ export const CALCULATOR_URL_PARAMS = {
   PAYMENT_FEE_PERCENT: 'pf',
   PLANNING_DAYS: 'pd',
   HIRES_FACILITATORS: 'h',
+  PRICES_INCLUDE_VAT: 'btw',
+  VAT_PERCENT: 'vp',
 } as const
 
 export const MAKERSBARN_CTA_QUERY_PARAM = 'src' as const

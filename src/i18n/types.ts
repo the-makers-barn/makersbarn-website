@@ -664,21 +664,38 @@ export interface ToolsCalculatorInputsTranslations {
   costsSectionDescription: string
   guestsLabel: string
   guestsUnit: string
+  teamBlockTitle: string
+  teamBlockDescription: string
+  teamCountLabel: string
+  teamCountUnit: string
+  teamCountHelper: string
   nightsLabel: string
   nightsUnit: string
   pricePerGuestLabel: string
   venuePerNightLabel: string
   venueUnit: string
+  venueAllPeopleNote: string
   foodPerGuestPerDayLabel: string
   foodUnit: string
+  foodAllPeopleNote: string
   marketingAndOtherLabel: string
   advancedLabel: string
   travelLabel: string
   insuranceLabel: string
   paymentFeePercentLabel: string
+  vatToggleLabel: string
+  vatToggleHelper: string
+  vatPercentLabel: string
+  vatPercentHelper: string
   planningDaysLabel: string
   daysUnit: string
   resetLabel: string
+}
+
+export interface ToolsCalculatorVenueExplainerTranslations {
+  heading: string
+  paragraphs: readonly string[]
+  example: string
 }
 
 export interface ToolsCalculatorResultsTranslations {
@@ -691,6 +708,9 @@ export interface ToolsCalculatorResultsTranslations {
   metricsLabel: string
   breakevenSentence: string
   breakevenImpossible: string
+  vatNoticeNet: string
+  vatNoticeGross: string
+  vatGrossHint: string
   breakdownLabels: {
     venue: string
     food: string
@@ -733,6 +753,7 @@ export interface ToolsCalculatorMakersBarnCtaTranslations {
 export interface ToolsCalculatorTranslations {
   inputs: ToolsCalculatorInputsTranslations
   results: ToolsCalculatorResultsTranslations
+  venueExplainer: ToolsCalculatorVenueExplainerTranslations
   email: ToolsCalculatorEmailTranslations
   share: ToolsCalculatorShareTranslations
   makersbarnCta: ToolsCalculatorMakersBarnCtaTranslations
@@ -745,10 +766,6 @@ export interface ToolsHubTranslations {
   title: string
   intro: string
   toolCardCta: string
-}
-
-export interface ToolsHowToTranslations {
-  heading: string
 }
 
 export interface ToolsRelatedTranslations {
@@ -853,7 +870,6 @@ export interface ToolsTranslations {
   hub: ToolsHubTranslations
   calculator: ToolsCalculatorTranslations
   calendar: ToolsCalendarTranslations
-  howTo: ToolsHowToTranslations
   related: ToolsRelatedTranslations
   faq: ToolsFaqTranslations
 }

@@ -3,24 +3,6 @@ import type { CalculatorVariantContent } from '@/types/tools'
 import { localized } from './helpers'
 
 export const MEDITATION_CONTENT: CalculatorVariantContent = {
-  howToSteps: [
-    localized(
-      'Set the group size and number of nights — most meditation retreats run 12 to 16 sitters over 3 to 5 nights, with longer 7 to 10 night silent intensives at the upper end.',
-      'Stel de groepsgrootte en het aantal nachten in — de meeste meditatieretraites draaien 12 tot 16 deelnemers over 3 tot 5 nachten, met langere 7 tot 10-daagse stille intensives aan de bovenkant.',
-    ),
-    localized(
-      'Set the price per guest using the benchmark range, and decide upfront whether you are running a fixed-fee model or splitting a course fee from a separate dana offering for the teacher.',
-      'Stel de prijs per gast in met de benchmarkrange als richtlijn, en beslis vooraf of je met een vaste prijs werkt of een cursusbijdrage afsplitst van een aparte dana-bijdrage voor de docent.',
-    ),
-    localized(
-      'Enter the costs you have on paper — venue, vegetarian meals, your own fee or expected dana, any guest teacher day rate, marketing, travel, and insurance.',
-      'Voer de kosten in die je op papier hebt staan — locatie, vegetarische maaltijden, je eigen fee of verwachte dana, het dagtarief van een eventuele gastdocent, marketing, reizen en verzekering.',
-    ),
-    localized(
-      'Read the live summary on the right for profit, margin, breakeven occupancy, and profit per planning day, and stress-test the numbers at 60 to 70 percent occupancy before committing to a venue minimum.',
-      'Lees rechts de live samenvatting voor winst, marge, break-even bezetting en winst per planningsdag, en test de getallen op 60 tot 70 procent bezetting voordat je je vastlegt aan een minimum afnameplicht.',
-    ),
-  ],
   guideSections: [
     {
       heading: localized(

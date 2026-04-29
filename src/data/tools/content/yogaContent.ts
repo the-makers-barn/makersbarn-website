@@ -3,24 +3,6 @@ import type { CalculatorVariantContent } from '@/types/tools'
 import { localized } from './helpers'
 
 export const YOGA_CONTENT: CalculatorVariantContent = {
-  howToSteps: [
-    localized(
-      'Set the group size and number of nights for your yoga retreat — most facilitators run 8 to 15 students over 4 to 7 nights.',
-      'Stel de groepsgrootte en het aantal nachten van je yoga retraite in — de meeste facilitators draaien 8 tot 15 deelnemers over 4 tot 7 nachten.',
-    ),
-    localized(
-      'Set the price per guest, using the benchmark range as a sanity check against comparable European retreats.',
-      'Bepaal de prijs per gast en gebruik de benchmarkrange als toets tegenover vergelijkbare Europese retraites.',
-    ),
-    localized(
-      'Enter the costs you have on paper — venue, food, your own fee, co-teachers, travel, marketing, and insurance.',
-      'Voer de kosten in die je op papier hebt staan — locatie, eten, je eigen fee, co-docenten, reizen, marketing en verzekering.',
-    ),
-    localized(
-      'Read the live summary on the right for profit, margin, breakeven occupancy, and profit per planning day.',
-      'Lees rechts de live samenvatting voor winst, marge, break-even bezetting en winst per planningsdag.',
-    ),
-  ],
   guideSections: [
     {
       heading: localized(

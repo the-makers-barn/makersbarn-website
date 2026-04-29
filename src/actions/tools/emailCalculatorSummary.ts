@@ -20,6 +20,7 @@ const rateLimiter = new RateLimiter({
 
 const InputsSchema = z.object({
   guests: z.number().int().min(CALCULATOR_INPUT_RANGES.GUESTS_MIN).max(CALCULATOR_INPUT_RANGES.GUESTS_MAX),
+  teamCount: z.number().int().min(CALCULATOR_INPUT_RANGES.TEAM_COUNT_MIN).max(CALCULATOR_INPUT_RANGES.TEAM_COUNT_MAX),
   nights: z.number().int().min(CALCULATOR_INPUT_RANGES.NIGHTS_MIN).max(CALCULATOR_INPUT_RANGES.NIGHTS_MAX),
   pricePerGuest: z.number().min(CALCULATOR_INPUT_RANGES.PRICE_PER_GUEST_MIN).max(CALCULATOR_INPUT_RANGES.PRICE_PER_GUEST_MAX),
   venuePerNight: z.number().min(CALCULATOR_INPUT_RANGES.VENUE_PER_NIGHT_MIN).max(CALCULATOR_INPUT_RANGES.VENUE_PER_NIGHT_MAX),
@@ -31,6 +32,8 @@ const InputsSchema = z.object({
   paymentFeePercent: z.number().min(CALCULATOR_INPUT_RANGES.PAYMENT_FEE_PERCENT_MIN).max(CALCULATOR_INPUT_RANGES.PAYMENT_FEE_PERCENT_MAX),
   planningDays: z.number().min(CALCULATOR_INPUT_RANGES.PLANNING_DAYS_MIN).max(CALCULATOR_INPUT_RANGES.PLANNING_DAYS_MAX),
   hiresFacilitators: z.boolean(),
+  pricesIncludeVat: z.boolean(),
+  vatPercent: z.number().min(CALCULATOR_INPUT_RANGES.VAT_PERCENT_MIN).max(CALCULATOR_INPUT_RANGES.VAT_PERCENT_MAX),
 }) satisfies z.ZodType<CalculatorInputs>
 
 const RequestSchema = z.object({
@@ -194,9 +197,11 @@ function buildAdminHtml(data: EmailCalculatorSummaryData, results: CalculatorRes
     <h3>Their numbers</h3>
     <ul>
       <li>Guests × nights: ${inputs.guests} × ${inputs.nights}</li>
+      <li>Team headcount onsite: ${inputs.teamCount}</li>
+      <li>Prices entered: ${inputs.pricesIncludeVat ? `incl. ${inputs.vatPercent}% BTW` : 'excl. BTW'}</li>
       <li>Price per guest: ${formatEuro(inputs.pricePerGuest)}</li>
       <li>Venue per night: ${formatEuro(inputs.venuePerNight)} (${formatEuro(inputs.venuePerNight * inputs.nights)} total)</li>
-      <li>Food per guest per day: ${formatEuro(inputs.foodPerGuestPerDay)}</li>
+      <li>Food per person per day: ${formatEuro(inputs.foodPerGuestPerDay)}</li>
       <li>Facilitator fee: ${formatEuro(inputs.facilitatorFee)}</li>
       <li>Marketing &amp; other: ${formatEuro(inputs.marketingAndOther)}</li>
     </ul>
