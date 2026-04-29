@@ -72,8 +72,6 @@ export default async function CanonicalCalculatorPage({ params }: PageProps) {
     <>
       <StructuredData data={schemas} />
       <ToolPageShell
-        locale={validLocale}
-        t={t}
         hero={{
           eyebrow: config.copy.heroEyebrow[validLocale],
           title: config.copy.heroTitle[validLocale],

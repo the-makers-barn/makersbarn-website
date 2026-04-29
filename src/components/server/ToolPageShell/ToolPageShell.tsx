@@ -1,9 +1,6 @@
 import Link from 'next/link'
 import type { ReactNode } from 'react'
 
-import { Language } from '@/types/common'
-import type { Dictionary } from '@/i18n/types'
-
 import styles from './ToolPageShell.module.css'
 
 export interface ToolPageShellRelatedCard {
@@ -23,8 +20,6 @@ export interface ToolPageShellFaqEntry {
 }
 
 export interface ToolPageShellProps {
-  locale: Language
-  t: Dictionary
   hero: {
     eyebrow: string
     title: string
@@ -82,10 +77,7 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
         </ol>
       </section>
 
-      <section className={styles.guide} aria-labelledby="guide">
-        <h2 id="guide" className={styles.sectionTitle}>
-          {hero.title}
-        </h2>
+      <section className={styles.guide}>
         {guideSections.map((section) => (
           <div key={section.heading} className={styles.guideSection}>
             <h3 className={styles.guideHeading}>{section.heading}</h3>
