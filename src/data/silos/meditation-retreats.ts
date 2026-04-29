@@ -6,23 +6,23 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
   route: Route.MEDITATION_RETREATS,
   heroImageSrc: IMAGES.accommodation.fieldWalking,
   heroImageAlt: {
-    [Language.EN]: 'Retreat guests walking in silence through the fields at The Makers Barn',
-    [Language.NL]: 'Retraite-gasten lopen in stilte door de velden bij The Makers Barn',
-    [Language.DE]: 'Retreat-Gäste, die schweigend durch die Felder bei The Makers Barn gehen',
+    [Language.EN]: 'Walking meditation through the open fields at The Makers Barn',
+    [Language.NL]: 'Loopmeditatie door de open velden bij The Makers Barn',
+    [Language.DE]: 'Gehmeditation durch die offenen Felder bei The Makers Barn',
   },
   meta: {
     title: {
-      [Language.EN]: 'Silent Meditation & Buddhist Retreat Venue — Overijssel, NL',
-      [Language.NL]: 'Stille Meditatie- & Boeddhistische Retraite Locatie — Overijssel',
-      [Language.DE]: 'Stille Meditations- & buddhistische Retreats — Overijssel',
+      [Language.EN]: 'Meditation & Buddhist Retreat Venue — Overijssel, Netherlands',
+      [Language.NL]: 'Meditatie- & Boeddhistische Retraite Locatie — Overijssel',
+      [Language.DE]: 'Meditations- & buddhistische Retreats — Overijssel, Niederlande',
     },
     description: {
       [Language.EN]:
-        'Silent meditation and Buddhist retreat venue in Overijssel, Netherlands. 1.3 hectares of private land, 14 beds, 65m² heated shala, 15 min from Zwolle.',
+        'Meditation, dharma, and Buddhist retreat venue in rural Overijssel — a 1.3-hectare farm with open Dutch fields, 14 beds, 65m² heated shala. 15 min from Zwolle.',
       [Language.NL]:
-        'Locatie voor stille meditatie- en boeddhistische retraites in Overijssel. 1,3 hectare eigen terrein, 14 bedden, verwarmde shala van 65m², 15 min van Zwolle.',
+        'Locatie voor meditatie-, dharma- en boeddhistische retraites in landelijk Overijssel — boerderij van 1,3 hectare met open Nederlandse velden, 14 bedden, verwarmde shala van 65m². 15 min van Zwolle.',
       [Language.DE]:
-        'Ort für stille Meditations- und buddhistische Retreats in Overijssel, Niederlande. 1,3 Hektar eigenes Land, 14 Betten, beheizte 65m²-Shala, 15 Min. von Zwolle.',
+        'Ort für Meditations-, Dharma- und buddhistische Retreats im ländlichen Overijssel — 1,3 Hektar Hof mit offenen niederländischen Feldern, 14 Betten, beheizte 65m²-Shala. 15 Min. von Zwolle.',
     },
   },
   hero: {
@@ -32,27 +32,27 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
       [Language.DE]: 'Für Meditations- und Dharma-Gruppen',
     },
     title: {
-      [Language.EN]: 'Silent Meditation & Buddhist Retreats — Private Venue in Overijssel',
-      [Language.NL]: 'Stille Meditatie- & Boeddhistische Retraites — Privé-locatie in Overijssel',
-      [Language.DE]: 'Stille Meditations- & buddhistische Retreats — privater Ort in Overijssel',
+      [Language.EN]: 'Meditation, Zen & Buddhist Retreats — A Rural Farm in Overijssel',
+      [Language.NL]: 'Meditatie-, Zen- & Boeddhistische Retraites — een boerderij op het Overijsselse platteland',
+      [Language.DE]: 'Meditations-, Zen- und buddhistische Retreats — ein Hof im ländlichen Overijssel',
     },
     subtitle: {
       [Language.EN]:
-        'A 1.3-hectare private farm in rural Overijssel — no shared buildings, no neighbouring guests, 15 minutes from Zwolle. A working venue for silent retreats and Buddhist groups.',
+        'A 1.3-hectare private farm in rural Overijssel, with open Dutch fields and big skies, 15 minutes from Zwolle. A working venue for meditation, dharma, and Buddhist groups.',
       [Language.NL]:
-        'Een eigen boerderij van 1,3 hectare in landelijk Overijssel — geen gedeelde gebouwen, geen andere gasten, 15 minuten van Zwolle. Een werkende locatie voor stille retraites en boeddhistische groepen.',
+        'Een eigen boerderij van 1,3 hectare in landelijk Overijssel, met open Nederlandse velden en weidse luchten, 15 minuten van Zwolle. Een werkende locatie voor meditatie-, dharma- en boeddhistische groepen.',
       [Language.DE]:
-        'Ein 1,3 Hektar großer Privathof im ländlichen Overijssel — keine geteilten Gebäude, keine Nachbargäste, 15 Minuten von Zwolle. Ein eingespielter Ort für stille Retreats und buddhistische Gruppen.',
+        'Ein 1,3 Hektar großer Privathof im ländlichen Overijssel mit offenen niederländischen Feldern und weitem Himmel, 15 Minuten von Zwolle. Ein eingespielter Ort für Meditations-, Dharma- und buddhistische Gruppen.',
     },
   },
   hook: {
     text: {
       [Language.EN]:
-        '13,000 m² of private land — no roads, no neighbours, no shared buildings.',
+        '13,000 m² of private farm in rural Overijssel — open Dutch skies, fields, and the Sallandse Heuvelrug nearby.',
       [Language.NL]:
-        '13.000 m² eigen terrein — geen wegen, geen buren, geen gedeelde gebouwen.',
+        '13.000 m² eigen boerderij in landelijk Overijssel — weidse Nederlandse luchten, velden en de Sallandse Heuvelrug om de hoek.',
       [Language.DE]:
-        '13.000 m² Privatgelände — keine Straßen, keine Nachbarn, keine geteilten Gebäude.',
+        '13.000 m² eigener Hof im ländlichen Overijssel — weiter niederländischer Himmel, Felder und die Sallandse Heuvelrug gleich nebenan.',
     },
     caption: {
       [Language.EN]:
@@ -66,9 +66,9 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
   sections: [
     {
       h2: {
-        [Language.EN]: 'A hay-barn shala built for long silent sittings',
-        [Language.NL]: 'Een shala in de hooischuur, gemaakt voor lange stille zittingen',
-        [Language.DE]: 'Eine Heuscheunen-Shala für lange stille Sitzungen',
+        [Language.EN]: 'A hay-barn shala built for meditation and dharma teaching',
+        [Language.NL]: 'Een shala in de hooischuur, gemaakt voor meditatie en dharmalessen',
+        [Language.DE]: 'Eine Heuscheunen-Shala für Meditation und Dharma-Unterweisung',
       },
       body: {
         [Language.EN]: [
@@ -93,22 +93,22 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
     },
     {
       h2: {
-        [Language.EN]: 'Silent practice space with no shared neighbours',
-        [Language.NL]: 'Stille praktijkruimte zonder gedeelde buren',
-        [Language.DE]: 'Stiller Praxisraum ohne geteilte Nachbarn',
+        [Language.EN]: 'Open Dutch fields and big skies for walking practice',
+        [Language.NL]: 'Open Nederlandse velden en weidse luchten voor loopmeditatie',
+        [Language.DE]: 'Offene niederländische Felder und weiter Himmel für die Gehmeditation',
       },
       body: {
         [Language.EN]: [
-          'The farm sits on its own 1.3 hectares (13,000 m²) in rural Overijssel, 15 minutes from Zwolle. There are no shared buildings, no neighbouring guests, and no parking lot facing the practice room. The closest road is a quiet country lane — beyond it, fields, the Sallandse Heuvelrug, and the IJssel river.',
-          'Walking meditation has somewhere to go. Silent meals have somewhere to be eaten. A noble silence holds without anyone having to defend it. For a Buddhist retreat or a fully silent meditation retreat, that lack of background traffic is half the work done.',
+          'The farm sits on its own 1.3 hectares (13,000 m²) in rural Overijssel, 15 minutes from Zwolle. Beyond a quiet country lane: fields, the Sallandse Heuvelrug, and the IJssel river. Big Dutch skies, wide horizons, and the kind of calm a working farm naturally holds.',
+          'Walking meditation has somewhere to go. Mindful meals have somewhere to be eaten. For a Buddhist retreat, a meditation retreat, or a dharma intensive, the open countryside does half the work for you.',
         ],
         [Language.NL]: [
-          'De boerderij ligt op een eigen terrein van 1,3 hectare (13.000 m²) in landelijk Overijssel, 15 minuten van Zwolle. Er zijn geen gedeelde gebouwen, geen andere gasten, geen parkeerplaats die uitkijkt op de praktijkruimte. De dichtstbijzijnde weg is een stille landweg, en daarachter: velden, de Sallandse Heuvelrug, de IJssel.',
-          'Voor loopmeditatie is er ruimte om te lopen. Voor stille maaltijden is er een eigen plek. Een edele stilte houdt stand zonder dat iemand hem hoeft te verdedigen. Voor een boeddhistische retraite of een volledig stille meditatieretraite is die afwezigheid van achtergrondverkeer al het halve werk.',
+          'De boerderij ligt op een eigen terrein van 1,3 hectare (13.000 m²) in landelijk Overijssel, 15 minuten van Zwolle. Achter de stille landweg: velden, de Sallandse Heuvelrug en de IJssel. Weidse Nederlandse luchten, brede horizonnen en de rust die een werkende boerderij vanzelf met zich meebrengt.',
+          'Voor loopmeditatie is er ruimte om te lopen. Voor aandachtige maaltijden is er een eigen plek. Voor een boeddhistische retraite, een meditatieretraite of een dharma-intensief doet het open platteland al het halve werk voor je.',
         ],
         [Language.DE]: [
-          'Der Hof liegt auf eigenem Grund von 1,3 Hektar (13.000 m²) im ländlichen Overijssel, 15 Minuten von Zwolle. Es gibt keine geteilten Gebäude, keine Nachbargäste, keinen Parkplatz vor dem Praxisraum. Die nächste Straße ist ein ruhiger Feldweg — dahinter Felder, die Sallandse Heuvelrug und die IJssel.',
-          'Für Gehmeditation gibt es Raum zum Gehen. Für schweigende Mahlzeiten gibt es einen eigenen Platz. Ein edles Schweigen trägt, ohne dass jemand es verteidigen muss. Für ein buddhistisches Retreat oder ein vollständig stilles Meditations-Retreat ist genau dieses Fehlen von Hintergrundverkehr schon die halbe Arbeit.',
+          'Der Hof liegt auf eigenem Grund von 1,3 Hektar (13.000 m²) im ländlichen Overijssel, 15 Minuten von Zwolle. Hinter einem ruhigen Feldweg: Felder, die Sallandse Heuvelrug und die IJssel. Weiter niederländischer Himmel, breite Horizonte und die Ruhe, die ein arbeitender Hof von Natur aus trägt.',
+          'Für Gehmeditation gibt es Raum zum Gehen. Für achtsame Mahlzeiten gibt es einen eigenen Platz. Für ein buddhistisches Retreat, ein Meditations-Retreat oder ein Dharma-Intensiv übernimmt die offene Landschaft schon die halbe Arbeit.',
         ],
       },
       imageSrc: IMAGES.accommodation.outsideWalk,
@@ -120,22 +120,22 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
     },
     {
       h2: {
-        [Language.EN]: 'Accommodating silence, schedules, and shrine rooms',
-        [Language.NL]: 'Ruimte voor stilte, ritme en altaren',
-        [Language.DE]: 'Raum für Stille, Tagesablauf und Altarräume',
+        [Language.EN]: 'Shrine rooms, vegetarian catering, and a meditation-day kitchen',
+        [Language.NL]: 'Altaarruimtes, vegetarische catering en een keuken die meedraait op je meditatiedag',
+        [Language.DE]: 'Altarräume, vegetarisches Catering und eine Küche, die mit dem Meditationstag mitläuft',
       },
       body: {
         [Language.EN]: [
           'The Hay House practice barn doubles as a shrine room. We have stored thangkas and altars between retreats and helped set them up before. Vegetarian and Ayurvedic-leaning catering is part of the network we work with.',
-          'Sleeping is across single, twin, and shared rooms in Horizon, plus the Cosmos cabin for a teacher. The full venue takes up to fourteen overnight, with day-program capacity of twenty in the practice space.',
+          'Sleeping is across single, twin, and shared rooms in Horizon, plus the Cosmos cabin — used as a private teacher\'s lodge or shared between two members of your group, whichever fits. The full venue takes up to fourteen overnight, with day-program capacity of twenty in the practice space.',
         ],
         [Language.NL]: [
           'De Hay House-praktijkruimte fungeert ook als altaarruimte. We hebben thangka’s en altaren tussen retraites door voor groepen bewaard, en helpen graag bij het opbouwen. Vegetarische en ayurvedisch-geïnspireerde catering hoort bij het netwerk waarmee we werken.',
-          'Slapen kan in eenpersoons-, tweepersoons- en gedeelde kamers in Horizon, plus de Cosmos cabin voor een leraar. De volledige locatie biedt slaapplek voor veertien, met een dagprogramma-capaciteit van twintig in de praktijkruimte.',
+          'Slapen kan in eenpersoons-, tweepersoons- en gedeelde kamers in Horizon, plus de Cosmos cabin — als privéverblijf voor een leraar of gedeeld door twee mensen uit je groep, wat het beste past. De volledige locatie biedt slaapplek voor veertien, met een dagprogramma-capaciteit van twintig in de praktijkruimte.',
         ],
         [Language.DE]: [
           'Die Hay House-Praxisscheune dient zugleich als Altarraum. Wir haben Thangkas und Altäre schon zwischen Retreats gelagert und beim Aufbau geholfen. Vegetarisches und ayurvedisch geprägtes Catering gehört zum Netzwerk, mit dem wir arbeiten.',
-          'Geschlafen wird in Einzel-, Doppel- und Mehrbettzimmern in Horizon, dazu die Cosmos-Hütte für einen Lehrer. Der ganze Ort bietet bis zu vierzehn Übernachtungsplätze, mit einer Tagesprogramm-Kapazität von zwanzig im Praxisraum.',
+          'Geschlafen wird in Einzel-, Doppel- und Mehrbettzimmern in Horizon, dazu die Cosmos-Hütte — entweder als private Lehrer-Unterkunft oder von zwei Personen aus eurer Gruppe geteilt, je nachdem, was passt. Der ganze Ort bietet bis zu vierzehn Übernachtungsplätze, mit einer Tagesprogramm-Kapazität von zwanzig im Praxisraum.',
         ],
       },
     },
@@ -144,9 +144,9 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
     {
       number: '13.000+ m²',
       description: {
-        [Language.EN]: 'Of private land — full buyout, no shared buildings or neighbouring guests',
-        [Language.NL]: 'Eigen terrein — volledige buyout, geen gedeelde gebouwen of andere gasten',
-        [Language.DE]: 'Eigenes Gelände — kompletter Buyout, keine geteilten Gebäude oder Nachbargäste',
+        [Language.EN]: 'Of private farm in rural Overijssel — full buyout, open fields and big skies',
+        [Language.NL]: 'Eigen boerderij in landelijk Overijssel — volledige buyout, open velden en weidse luchten',
+        [Language.DE]: 'Eigener Hof im ländlichen Overijssel — kompletter Buyout, offene Felder und weiter Himmel',
       },
     },
     {
@@ -160,9 +160,9 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
     {
       number: '14',
       description: {
-        [Language.EN]: 'Beds across Horizon and Cosmos for sangha and teachers',
-        [Language.NL]: 'Bedden verdeeld over Horizon en Cosmos voor sangha en leraren',
-        [Language.DE]: 'Betten verteilt auf Horizon und Cosmos für Sangha und Lehrer',
+        [Language.EN]: 'Beds across Horizon and the Cosmos cabin for your sangha',
+        [Language.NL]: 'Bedden verdeeld over Horizon en de Cosmos cabin voor jouw sangha',
+        [Language.DE]: 'Betten verteilt auf Horizon und die Cosmos-Hütte für eure Sangha',
       },
     },
   ],
@@ -208,9 +208,9 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
       {
         time: '12:30',
         activity: {
-          [Language.EN]: 'Lunch (silent)',
-          [Language.NL]: 'Lunch (in stilte)',
-          [Language.DE]: 'Mittagessen (in Stille)',
+          [Language.EN]: 'Lunch',
+          [Language.NL]: 'Lunch',
+          [Language.DE]: 'Mittagessen',
         },
       },
       {
@@ -250,17 +250,17 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
   faq: [
     {
       question: {
-        [Language.EN]: 'Can we hold a fully silent retreat?',
-        [Language.NL]: 'Kunnen we een volledig stille retraite houden?',
-        [Language.DE]: 'Können wir ein komplett stilles Retreat halten?',
+        [Language.EN]: 'What meditation traditions have you hosted?',
+        [Language.NL]: 'Welke meditatietradities hebben jullie ontvangen?',
+        [Language.DE]: 'Welche Meditationstraditionen habt ihr schon empfangen?',
       },
       answer: {
         [Language.EN]:
-          'Yes — full buyout means no other guests will speak in the spaces. We brief our team to stay quiet and only intervene if needed. Many groups do extended silent stretches without issue.',
+          'Tibetan Buddhism, Vipassana, Zen, and breath-based meditation groups have all run programmes here. The venue fits any meditation, dharma, or Buddhist retreat that combines sitting practice, teaching, and walking outside. The buildings sit close together, so we are not the right space for deep noble-silence retreats — but for meditation work with talks, dharma teaching, and shared meals, the venue is well suited.',
         [Language.NL]:
-          'Ja — bij een volledige buyout zijn er geen andere gasten die in de ruimtes spreken. Ons team houdt zich stil en grijpt alleen in als het nodig is. Veel groepen houden moeiteloos langere periodes van stilte aan.',
+          'Tibetaans-boeddhistische, Vipassana-, Zen- en ademgerichte meditatiegroepen hebben hier al hun programma’s gedraaid. De locatie past bij elke meditatie-, dharma- of boeddhistische retraite met zitpraktijk, onderricht en wandelen buiten. De gebouwen staan dicht bij elkaar, dus voor diepe noble-silence-retraites zijn we niet de juiste plek — voor meditatiewerk met dharmalessen, onderricht en gezamenlijke maaltijden zit de locatie als gegoten.',
         [Language.DE]:
-          'Ja — beim vollen Buyout sprechen keine anderen Gäste in den Räumen. Wir weisen unser Team an, leise zu bleiben und nur einzugreifen, wenn es nötig ist. Viele Gruppen halten lange stille Phasen problemlos durch.',
+          'Tibetisch-buddhistische, Vipassana-, Zen- und atemorientierte Meditationsgruppen haben hier schon ihre Programme abgehalten. Der Ort passt zu jedem Meditations-, Dharma- oder buddhistischen Retreat, das Sitzpraxis, Unterweisung und Gehen draußen verbindet. Die Gebäude stehen nah beieinander – für tiefe Schweige-Retreats sind wir deshalb nicht der richtige Ort. Für Meditationsarbeit mit Vorträgen, Dharma-Unterweisung und gemeinsamen Mahlzeiten passt der Ort sehr gut.',
       },
     },
     {
@@ -295,25 +295,25 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
     },
     {
       question: {
-        [Language.EN]: 'How does silence work at meal times?',
-        [Language.NL]: 'Hoe werkt stilte tijdens maaltijden?',
-        [Language.DE]: 'Wie funktioniert die Stille bei den Mahlzeiten?',
+        [Language.EN]: 'Can a teacher stay in a private cabin?',
+        [Language.NL]: 'Kan een leraar in een privé-cabin verblijven?',
+        [Language.DE]: 'Kann ein Lehrer in einer privaten Hütte wohnen?',
       },
       answer: {
         [Language.EN]:
-          'Meals are served in Horizon’s kitchen and dining area. We can plate before guests arrive so the meal stays fully silent, or set up a serve-yourself station — whichever you prefer.',
+          'Yes — the Cosmos cabin is a separate wooden lodge with its own bedroom, kitchen, and bathroom. It works as a private teacher\'s lodge, or as a quieter room shared between two members of your group.',
         [Language.NL]:
-          'Maaltijden worden geserveerd in de keuken en eetruimte van Horizon. We kunnen alvast opdienen voordat iedereen binnenkomt, zodat de maaltijd volledig stil blijft, of een buffet inrichten — net wat jullie willen.',
+          'Ja — de Cosmos cabin is een aparte houten lodge met eigen slaapkamer, keuken en badkamer. Hij werkt als privéverblijf voor een leraar, of als rustigere kamer gedeeld door twee mensen uit je groep.',
         [Language.DE]:
-          'Die Mahlzeiten werden in der Küche und im Essbereich von Horizon serviert. Wir richten die Teller schon an, bevor die Gäste kommen, damit die Mahlzeit ganz still bleibt, oder wir stellen eine Selbstbedienungsstation auf — ganz wie ihr wollt.',
+          'Ja — die Cosmos-Hütte ist eine eigene Holz-Lodge mit Schlafzimmer, Küche und Bad. Sie eignet sich als private Lehrer-Unterkunft oder als ruhigeres Zimmer, das zwei Personen aus eurer Gruppe teilen.',
       },
     },
   ],
   finalCta: {
     title: {
-      [Language.EN]: 'Hold your retreat in a place where silence is already at home',
-      [Language.NL]: 'Houd je retraite op een plek waar stilte al thuis is',
-      [Language.DE]: 'Halte dein Retreat an einem Ort, an dem die Stille schon zu Hause ist',
+      [Language.EN]: 'Bring your meditation or dharma retreat to a rural Dutch farm',
+      [Language.NL]: 'Breng je meditatie- of dharmaretraite naar een boerderij op het Nederlandse platteland',
+      [Language.DE]: 'Bring dein Meditations- oder Dharma-Retreat auf einen Hof im ländlichen Holland',
     },
     body: {
       [Language.EN]:
@@ -334,7 +334,7 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
     linkedEventIds: ['https://themakersbarn.nl/experiences/shanti-deva-retreat#event'],
     keywords: {
       [Language.EN]: [
-        'silent retreat venue Netherlands',
+        'meditation retreat venue Netherlands',
         'meditation retreat venue Europe',
         'Vipassana retreat venue',
         'Buddhist retreat venue',
@@ -342,11 +342,11 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
         'Zen retreat venue',
         'mindfulness retreat venue',
         'dharma retreat venue',
-        'shrine room retreat venue',
-        'silent meditation venue Overijssel',
+        'spiritual retreat venue Netherlands',
+        'meditation retreat venue Overijssel',
       ],
       [Language.NL]: [
-        'stille retraite locatie Nederland',
+        'meditatie retraite locatie Nederland',
         'meditatie retraite locatie',
         'Vipassana retraite locatie',
         'boeddhistische retraite locatie',
@@ -354,15 +354,17 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
         'Zen retraite locatie',
         'mindfulness retraite locatie',
         'dharma retraite locatie',
+        'spirituele retraite locatie Nederland',
       ],
       [Language.DE]: [
-        'Schweige-Retreat Niederlande',
+        'Meditations-Retreat Niederlande',
         'Meditations-Retreat-Ort',
         'Vipassana-Retreat-Ort',
         'buddhistischer Retreat-Ort',
         'tibetisch-buddhistisches Retreat',
         'Zen-Retreat-Ort',
         'Achtsamkeits-Retreat-Ort',
+        'spirituelles Retreat Niederlande',
       ],
     },
   },
