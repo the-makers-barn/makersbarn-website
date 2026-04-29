@@ -87,6 +87,19 @@
 .relatedCardTitle { font-family: var(--font-playfair); margin: 0; font-size: var(--font-size-lg); }
 .relatedCardArrow { color: var(--color-primary); font-weight: 600; }
 
+.relatedCardPrimary {
+  display: grid;
+  gap: 0.5rem;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.relatedCardPrimary .relatedCardTitle { color: var(--color-text-inverse); }
+.relatedCardPrimary .relatedCardArrow { color: var(--color-secondary); font-weight: 600; }
+
 .translationNotice {
   background: rgba(184, 137, 74, 0.1);
   border-left: 3px solid var(--color-secondary);
