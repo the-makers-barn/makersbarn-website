@@ -39,6 +39,7 @@ export interface ToolPageShellProps {
   faqEntries: ToolPageShellFaqEntry[]
   relatedHeading: string
   relatedCards: ToolPageShellRelatedCard[]
+  translationNotice?: string
 }
 
 export function ToolPageShell(props: ToolPageShellProps): ReactNode {
@@ -52,6 +53,7 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
     faqEntries,
     relatedHeading,
     relatedCards,
+    translationNotice,
   } = props
 
   return (
@@ -63,6 +65,10 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
         {hero.afterIntro}
       </header>
 
+      {translationNotice && (
+        <div className={styles.translationNotice}>{translationNotice}</div>
+      )}
+
       {tool}
 
       <section className={styles.howTo} aria-labelledby="how-to">
@@ -70,8 +76,8 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
           {howToHeading}
         </h2>
         <ol className={styles.howToList}>
-          {howToSteps.map((step, i) => (
-            <li key={i}>{step}</li>
+          {howToSteps.map((step) => (
+            <li key={step}>{step}</li>
           ))}
         </ol>
       </section>
@@ -80,11 +86,11 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
         <h2 id="guide" className={styles.sectionTitle}>
           {hero.title}
         </h2>
-        {guideSections.map((section, i) => (
-          <div key={i} className={styles.guideSection}>
+        {guideSections.map((section) => (
+          <div key={section.heading} className={styles.guideSection}>
             <h3 className={styles.guideHeading}>{section.heading}</h3>
-            {section.paragraphs.map((paragraph, j) => (
-              <p key={j} className={styles.guideParagraph}>{paragraph}</p>
+            {section.paragraphs.map((paragraph) => (
+              <p key={paragraph} className={styles.guideParagraph}>{paragraph}</p>
             ))}
           </div>
         ))}
@@ -95,8 +101,8 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
           {faqHeading}
         </h2>
         <div className={styles.faqList}>
-          {faqEntries.map((entry, i) => (
-            <details key={i} className={styles.faqItem}>
+          {faqEntries.map((entry) => (
+            <details key={entry.question} className={styles.faqItem}>
               <summary className={styles.faqQuestion}>{entry.question}</summary>
               <p className={styles.faqAnswer}>{entry.answer}</p>
             </details>
