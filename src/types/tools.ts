@@ -1,5 +1,6 @@
+import type { CalendarPhaseId, MilestoneStatus, TimelinePreset, ToolKind, ToolVariant } from '@/constants/tools'
 import type { Language } from '@/types/common'
-import type { ToolVariant } from '@/constants/tools'
+import type { Route } from '@/types/navigation'
 
 export interface CalculatorInputs {
   guests: number
@@ -87,4 +88,82 @@ export interface EmailCalculatorSummaryData {
   variant: ToolVariant
   newsletterOptIn: boolean
   locale: Language
+}
+
+export type MilestoneNonDefaultStatus =
+  | MilestoneStatus.DONE
+  | MilestoneStatus.DISMISSED
+
+export interface CalendarMilestone {
+  id: string
+  text: LocalizedString
+}
+
+export interface CalendarPhase {
+  id: CalendarPhaseId
+  range: LocalizedString
+  rangeStartMonth: number
+  rangeEndMonth: number
+  eyebrow: LocalizedString
+  title: LocalizedString
+  milestones: CalendarMilestone[]
+}
+
+export type CalendarPhaseOverride =
+  | {
+      kind: 'modify'
+      patch: Partial<Omit<CalendarPhase, 'id' | 'milestones'>>
+      extraMilestones?: Array<{
+        position: 'prepend' | 'append' | { afterId: string }
+        milestone: CalendarMilestone
+      }>
+    }
+  | { kind: 'remove' }
+
+export interface CalendarPresetOverride {
+  impactSubtitle: LocalizedString
+  phases?: Partial<Record<CalendarPhaseId, CalendarPhaseOverride>>
+}
+
+export interface CalendarContent {
+  canonical: CalendarPhase[]
+  overrides: Partial<Record<TimelinePreset, CalendarPresetOverride>>
+}
+
+export interface CustomMilestone {
+  id: string
+  phaseId: CalendarPhaseId
+  text: string
+  status: MilestoneStatus
+}
+
+export interface CalendarState {
+  schemaVersion: 1
+  itemStates: Record<string, MilestoneNonDefaultStatus>
+  customItems: CustomMilestone[]
+}
+
+export interface EmailCalendarPlanInput {
+  email: string
+  preset: TimelinePreset
+  itemStates: Record<string, MilestoneNonDefaultStatus>
+  customItems: Array<{
+    phaseId: CalendarPhaseId
+    text: string
+    status: MilestoneNonDefaultStatus
+  }>
+  contactConsent: boolean
+}
+
+export interface EmailCalendarPlanResult {
+  ok: boolean
+  error?: 'rate_limit' | 'invalid_email' | 'validation' | 'send_failed'
+}
+
+export interface ToolsHubItem {
+  kind: ToolKind
+  route: Route
+  eyebrow: LocalizedString
+  title: LocalizedString
+  intro: LocalizedString
 }
