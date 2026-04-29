@@ -10,15 +10,15 @@ import { PhaseCard } from './PhaseCard'
 
 const samplePhase: CalendarPhase = {
   id: CalendarPhaseId.FOUNDATION,
-  range: { en: 'Months 12–10', nl: 'Maanden 12–10', de: '', es: '', fr: '' },
+  range: { en: 'Months 12–10', nl: 'Maanden 12–10', de: '' },
   rangeStartMonth: 12,
   rangeEndMonth: 10,
-  eyebrow: { en: 'Phase 1', nl: 'Fase 1', de: '', es: '', fr: '' },
-  title: { en: 'Foundation', nl: 'Fundament', de: '', es: '', fr: '' },
+  eyebrow: { en: 'Phase 1', nl: 'Fase 1', de: '' },
+  title: { en: 'Foundation', nl: 'Fundament', de: '' },
   milestones: [
     {
       id: 'p1-vision',
-      text: { en: 'Define your retreat vision', nl: 'Bepaal je visie', de: '', es: '', fr: '' },
+      text: { en: 'Define your retreat vision', nl: 'Bepaal je visie', de: '' },
     },
   ],
 }

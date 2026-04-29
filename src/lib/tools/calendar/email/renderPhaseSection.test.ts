@@ -6,7 +6,7 @@ import { Language } from '@/types/common'
 
 import { renderPhaseSection } from './renderPhaseSection'
 
-const localized = (s: string): Record<Language, string> => ({ en: s, nl: s, de: s, es: s, fr: s })
+const localized = (s: string): Record<Language, string> => ({ en: s, nl: s, de: s })
 
 const samplePhase: CalendarPhase = {
   id: CalendarPhaseId.FOUNDATION,

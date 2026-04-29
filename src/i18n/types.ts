@@ -856,7 +856,6 @@ export interface ToolsTranslations {
   howTo: ToolsHowToTranslations
   related: ToolsRelatedTranslations
   faq: ToolsFaqTranslations
-  translationNotice: string
 }
 
 /**

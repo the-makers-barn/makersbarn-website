@@ -920,6 +920,5 @@ export const de: Dictionary = {
     faq: {
       heading: 'Frequently asked questions',
     },
-    translationNotice: 'Diese Tools sind auf Englisch, Niederländisch und Deutsch verfügbar. Lies sie auf Englisch, während wir weitere Sprachen ergänzen.',
   },
 } as const

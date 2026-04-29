@@ -925,6 +925,5 @@ export const nl: Dictionary = {
     faq: {
       heading: 'Veelgestelde vragen',
     },
-    translationNotice: 'Deze tools zijn beschikbaar in het Engels, Nederlands en Duits. Lees in het Engels terwijl we naar meer talen uitbreiden.',
   },
 } as const

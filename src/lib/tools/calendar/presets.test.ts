@@ -7,7 +7,7 @@ import type { Language } from '@/types/common'
 import { resolvePhases } from './presets'
 
 const localized = (s: string): Record<Language, string> => ({
-  en: s, nl: s, de: s, es: s, fr: s,
+  en: s, nl: s, de: s,
 })
 
 const milestone = (id: string, text = id): CalendarMilestone => ({ id, text: localized(text) })

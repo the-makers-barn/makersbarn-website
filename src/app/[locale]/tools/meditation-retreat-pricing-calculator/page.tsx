@@ -14,7 +14,7 @@ import { Route } from '@/types'
 import { SITE_CONFIG } from '@/constants/site'
 import { generatePageMetadata } from '@/lib/metadata'
 import { getLocalizedPath } from '@/lib/routing'
-import { getValidLocale, shouldShowTranslationNotice } from '@/lib/locale'
+import { getValidLocale } from '@/lib/locale'
 import { getServerTranslations } from '@/i18n'
 
 interface PageProps {
@@ -100,9 +100,6 @@ export default async function MeditationCalculatorPage({ params }: PageProps) {
           href: getLocalizedPath(TOOL_VARIANT_ROUTES[rv], validLocale),
           title: CALCULATOR_VARIANTS[rv].copy.heroTitle[validLocale],
         }))}
-        translationNotice={
-          shouldShowTranslationNotice(validLocale) ? t.tools.translationNotice : undefined
-        }
       />
     </>
   )

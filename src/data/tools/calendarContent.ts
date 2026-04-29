@@ -3,9 +3,9 @@ import type { CalendarContent, CalendarMilestone, CalendarPhase, LocalizedString
 
 import { CALENDAR_MILESTONE_IDS } from './calendarMilestoneIds'
 
-// During scaffolding, NL/DE/ES/FR strings are EN-verbatim per CLAUDE.md i18n policy.
+// During scaffolding, NL/DE strings are EN-verbatim per CLAUDE.md i18n policy.
 // Real NL/DE translations land in a later commit.
-const en = (s: string): LocalizedString => ({ en: s, nl: s, de: s, es: s, fr: s })
+const en = (s: string): LocalizedString => ({ en: s, nl: s, de: s })
 
 const milestone = (id: string, text: string): CalendarMilestone => ({ id, text: en(text) })
 

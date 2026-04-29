@@ -34,7 +34,6 @@ export interface ToolPageShellProps {
   faqEntries: ToolPageShellFaqEntry[]
   relatedHeading: string
   relatedCards: ToolPageShellRelatedCard[]
-  translationNotice?: string
 }
 
 export function ToolPageShell(props: ToolPageShellProps): ReactNode {
@@ -48,7 +47,6 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
     faqEntries,
     relatedHeading,
     relatedCards,
-    translationNotice,
   } = props
 
   return (
@@ -59,10 +57,6 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
         <p className={styles.intro}>{hero.intro}</p>
         {hero.afterIntro}
       </header>
-
-      {translationNotice && (
-        <div className={styles.translationNotice}>{translationNotice}</div>
-      )}
 
       {tool}
 

@@ -25,8 +25,6 @@ const allLocalesSameString = (value: string): LocalizedString => ({
   [Language.EN]: value,
   [Language.NL]: value,
   [Language.DE]: value,
-  [Language.ES]: value,
-  [Language.FR]: value,
 })
 
 const interpolate = (template: string, months: string): string =>

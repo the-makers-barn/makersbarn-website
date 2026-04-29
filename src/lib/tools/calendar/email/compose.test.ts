@@ -6,7 +6,7 @@ import type { CalendarPhase, CustomMilestone, MilestoneNonDefaultStatus } from '
 
 import { composeEmailHtml } from './compose'
 
-const localized = (s: string): Record<Language, string> => ({ en: s, nl: s, de: s, es: s, fr: s })
+const localized = (s: string): Record<Language, string> => ({ en: s, nl: s, de: s })
 
 const phases: CalendarPhase[] = [
   {
