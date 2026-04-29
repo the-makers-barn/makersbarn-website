@@ -9,6 +9,25 @@ const en = (s: string): LocalizedString => ({ en: s, nl: s, de: s, es: s, fr: s 
 
 const milestone = (id: string, text: string): CalendarMilestone => ({ id, text: en(text) })
 
+// P1_* milestones reused in 6-month and 3-month preset overrides — single source of truth
+// for text, since these IDs survive the Foundation→Anchor merge per spec §4.2.
+const M_P1_VISION = milestone(
+  CALENDAR_MILESTONE_IDS.P1_VISION,
+  'Define your retreat vision, theme, and the transformation it offers',
+)
+const M_P1_AVATAR = milestone(
+  CALENDAR_MILESTONE_IDS.P1_AVATAR,
+  'Identify your ideal guest avatar',
+)
+const M_P1_BUDGET = milestone(
+  CALENDAR_MILESTONE_IDS.P1_BUDGET,
+  'Draft an initial budget with a 10–15% buffer',
+)
+const M_P1_PRICING_MODEL = milestone(
+  CALENDAR_MILESTONE_IDS.P1_PRICING_MODEL,
+  'Decide on pricing strategy and payment model',
+)
+
 const PHASE_FOUNDATION: CalendarPhase = {
   id: CalendarPhaseId.FOUNDATION,
   range: en('9–12 months before'),
@@ -17,12 +36,12 @@ const PHASE_FOUNDATION: CalendarPhase = {
   eyebrow: en('Phase 1 · Foundation'),
   title: en('Set the vision and secure your venue'),
   milestones: [
-    milestone(CALENDAR_MILESTONE_IDS.P1_VISION, 'Define your retreat vision, theme, and the transformation it offers'),
-    milestone(CALENDAR_MILESTONE_IDS.P1_AVATAR, 'Identify your ideal guest avatar'),
+    M_P1_VISION,
+    M_P1_AVATAR,
     milestone(CALENDAR_MILESTONE_IDS.P1_FORMAT, 'Decide on length, group size, and residential vs day-retreat format'),
-    milestone(CALENDAR_MILESTONE_IDS.P1_BUDGET, 'Draft an initial budget with a 10–15% buffer'),
+    M_P1_BUDGET,
     milestone(CALENDAR_MILESTONE_IDS.P1_VENUE_SCOUT, 'Begin venue scouting (popular venues book 12 months out)'),
-    milestone(CALENDAR_MILESTONE_IDS.P1_PRICING_MODEL, 'Decide on pricing strategy and payment model'),
+    M_P1_PRICING_MODEL,
     milestone(CALENDAR_MILESTONE_IDS.P1_RESEARCH, 'Research comparable retreats in your niche'),
     milestone(CALENDAR_MILESTONE_IDS.P1_COFACILITATOR_DECISION, 'Decide whether to co-lead or hire facilitators'),
     milestone(CALENDAR_MILESTONE_IDS.P1_LEGAL_RESEARCH, 'Research legal and tax implications of hosting a retreat'),
@@ -173,10 +192,10 @@ export const CALENDAR_CONTENT: CalendarContent = {
           },
           extraMilestones: [
             // Foundation milestones with original IDs preserved (mandate per spec §4.2)
-            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_VISION, 'Define your retreat vision, theme, and the transformation it offers') },
-            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_AVATAR, 'Identify your ideal guest avatar') },
-            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_BUDGET, 'Draft an initial budget with a 10–15% buffer') },
-            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_PRICING_MODEL, 'Decide on pricing strategy and payment model') },
+            { position: 'prepend', milestone: M_P1_VISION },
+            { position: 'prepend', milestone: M_P1_AVATAR },
+            { position: 'prepend', milestone: M_P1_BUDGET },
+            { position: 'prepend', milestone: M_P1_PRICING_MODEL },
             // Preset-specific 6-month sprint milestones
             { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M6_SPRINT_VENUE_LOCK, 'Lock the venue this week — book one of your top three options') },
             { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M6_SPRINT_PARALLEL_LANDING, 'Build the landing page in parallel with venue selection — no waiting') },
@@ -208,8 +227,8 @@ export const CALENDAR_CONTENT: CalendarContent = {
           },
           extraMilestones: [
             { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_VENUE_PREBOOKED, 'Confirm your venue is already booked or book within the week') },
-            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_VISION, 'Define your retreat vision, theme, and the transformation it offers') },
-            { position: 'prepend', milestone: milestone(CALENDAR_MILESTONE_IDS.P1_AVATAR, 'Identify your ideal guest avatar') },
+            { position: 'prepend', milestone: M_P1_VISION },
+            { position: 'prepend', milestone: M_P1_AVATAR },
             { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_FOUNDING_TIER, 'Open a founding-cohort pricing tier to incentivize fast registration') },
             { position: 'append', milestone: milestone(CALENDAR_MILESTONE_IDS.M3_LIMITED_COHORT, 'Cap cohort size honestly — smaller intimate retreats sell faster') },
           ],

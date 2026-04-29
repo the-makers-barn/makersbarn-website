@@ -70,4 +70,12 @@ describe('CALENDAR_CONTENT regression — content × resolver', () => {
       }
     }
   })
+
+  it('3-month preset has clean fractional boundary between LOCK_IN and FINAL_WEEKS', () => {
+    const phases = resolvePhases(CALENDAR_CONTENT, TimelinePreset.THREE_MONTHS)
+    const lockIn = phases.find((p) => p.id === CalendarPhaseId.LOCK_IN)!
+    const finalWeeks = phases.find((p) => p.id === CalendarPhaseId.FINAL_WEEKS)!
+    expect(lockIn.rangeEndMonth).toBe(0.5)
+    expect(finalWeeks.rangeStartMonth).toBe(0.5)
+  })
 })
