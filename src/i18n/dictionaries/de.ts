@@ -12,6 +12,7 @@ export const de: Dictionary = {
     surroundings: 'Umgebung',
     contact: 'Kontakt',
     book: 'Buchen',
+    hostARetreat: 'Retreat veranstalten',
   },
 
   hero: {
@@ -223,6 +224,7 @@ export const de: Dictionary = {
   footer: {
     getInTouch: 'Kontakt aufnehmen',
     followUs: 'Folge uns',
+    explore: 'Entdecken',
     tagline: 'Where creativity meets tranquility',
     copyright: "The MakersBarn.",
     viewLocation: 'Standort ansehen',
@@ -644,9 +646,9 @@ export const de: Dictionary = {
     metaDescription:
       'Veranstalte deinen Retreat bei The Makers Barn. Ein Hof aus den 1920er-Jahren in Overijssel für Yoga, Meditation, Schreiben, Teams, Atemarbeit und mehr.',
     eyebrow: 'Retreat veranstalten',
-    title: 'Leise Wege, einen Hof aus den 1920ern zu nutzen',
+    title: 'Retreats, die wir bei The Makers Barn ausrichten',
     intro:
-      'The Makers Barn trägt ganz unterschiedliche Arten von Arbeit. Wähle die Retreat-Art, die passt – jede Seite geht ins Detail, was wir für genau diese Art von Gruppe bieten.',
+      'Ein paar Beispiele für Gruppen, zu denen The Makers Barn gut passt. Wähl die Art, die deiner am nächsten kommt – jede Seite geht tiefer ins Detail, und wir ergänzen weitere, sobald neue Retreat-Formen hier ihren Platz finden.',
     cardCta: 'Diese Retreat-Art ansehen',
     helpTitle: 'Nicht sicher, was passt?',
     helpBody:

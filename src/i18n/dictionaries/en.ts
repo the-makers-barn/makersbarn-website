@@ -9,6 +9,7 @@ export const en: Dictionary = {
     surroundings: 'Surroundings',
     contact: 'Contact',
     book: 'Book',
+    hostARetreat: 'Host a Retreat',
   },
 
   hero: {
@@ -220,6 +221,7 @@ export const en: Dictionary = {
   footer: {
     getInTouch: 'Get in Touch',
     followUs: 'Follow Us',
+    explore: 'Explore',
     tagline: 'Where creativity meets tranquility',
     copyright: "The MakersBarn.",
     viewLocation: 'View location',
@@ -641,9 +643,9 @@ export const en: Dictionary = {
     metaDescription:
       'Host your retreat at The Makers Barn. A 1920s farm in Overijssel for yoga, meditation, writers, teams, breathwork, and more.',
     eyebrow: 'Host a retreat',
-    title: 'Quiet ways to use a 1920s farm',
+    title: 'Retreats we host at The Makers Barn',
     intro:
-      'The Makers Barn holds different kinds of work well. Pick the retreat type that fits — each page goes deeper into what we offer for that specific kind of group.',
+      'A few examples of the groups The Makers Barn fits well. Pick the type closest to yours — each page goes deeper, and we keep adding more as new kinds of retreat find their way here.',
     cardCta: 'See this retreat type',
     helpTitle: 'Not sure which fits?',
     helpBody:

@@ -12,6 +12,7 @@ export const nl: Dictionary = {
     surroundings: 'Omgeving',
     contact: 'Contact',
     book: 'Boek',
+    hostARetreat: 'Organiseer een retraite',
   },
 
   hero: {
@@ -223,6 +224,7 @@ export const nl: Dictionary = {
   footer: {
     getInTouch: 'Neem contact op',
     followUs: 'Volg ons',
+    explore: 'Ontdek',
     tagline: 'Where creativity meets tranquility',
     copyright: "The MakersBarn.",
     viewLocation: 'Bekijk locatie',
@@ -649,9 +651,9 @@ export const nl: Dictionary = {
     metaDescription:
       'Organiseer je retraite bij The Makers Barn. Een boerderij uit 1920 in Overijssel voor yoga, meditatie, schrijvers, teams, ademwerk en meer.',
     eyebrow: 'Organiseer een retraite',
-    title: 'Rustige manieren om een boerderij uit 1920 te gebruiken',
+    title: 'Retraites die we organiseren bij The Makers Barn',
     intro:
-      'The Makers Barn leent zich voor verschillende soorten werk. Kies het retraite-type dat past — elke pagina gaat dieper in op wat we voor zo’n groep bieden.',
+      'Een paar voorbeelden van groepen waar The Makers Barn goed bij past. Kies het type dat het dichtst bij dat van jou ligt — elke pagina gaat dieper in op wat we bieden, en we voegen er meer toe naarmate nieuwe vormen van retraites hier hun weg vinden.',
     cardCta: 'Bekijk dit retraite-type',
     helpTitle: 'Niet zeker welke past?',
     helpBody:
