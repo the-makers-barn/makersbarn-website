@@ -1,0 +1,496 @@
+/* Layout C2 — vertical stepper with month-range rail.
+ * Brand palette pulled from globals.css:
+ *   --color-primary  #294b3a  (rail, headings)
+ *   --color-secondary #b8894a  (eyebrow, accents)
+ *   --color-text     #1f130c
+ */
+
+.root {
+  display: grid;
+  gap: 1.5rem;
+  background: var(--color-background, #fff);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.impactSubtitle {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(184, 137, 74, 0.08);
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}
+
+/* ─── Preset switcher ─────────────────────────── */
+
+.presetSwitcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  background: rgba(41, 75, 58, 0.04);
+  border-radius: 0.75rem;
+}
+
+.presetTab {
+  flex: 1 1 auto;
+  min-width: 5rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.presetTab:hover {
+  background: rgba(41, 75, 58, 0.08);
+  color: var(--color-text);
+}
+
+.presetTabActive {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.presetTabActive:hover {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* ─── Phase list (vertical stepper) ───────────── */
+
+.phaseList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.phaseListItem {
+  display: block;
+}
+
+.phaseCard {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  align-items: start;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+
+.phaseRail {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(41, 75, 58, 0.06);
+  border-left: 3px solid var(--color-primary);
+}
+
+.phaseRailRange {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+}
+
+.phaseRailLabel {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-tertiary);
+}
+
+@media (max-width: 640px) {
+  .phaseCard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .phaseRail {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.35rem 0.6rem;
+    width: auto;
+    justify-self: start;
+    border-left: none;
+    border-radius: 999px;
+    background: rgba(41, 75, 58, 0.08);
+  }
+
+  .phaseRailRange {
+    font-size: var(--font-size-sm);
+  }
+}
+
+.phaseContent {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.phaseEyebrow {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.phaseTitle {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-xl);
+  color: var(--color-text);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+}
+
+/* ─── Milestone list ──────────────────────────── */
+
+.milestoneList,
+.customItemList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.milestoneItem {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.5rem;
+}
+
+.milestoneItem:hover {
+  background: rgba(41, 75, 58, 0.03);
+}
+
+.milestoneCheckbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.15rem;
+  cursor: pointer;
+}
+
+.milestoneCheckbox input[type='checkbox'] {
+  accent-color: var(--color-primary);
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+.milestoneCheckbox input[type='checkbox']:disabled {
+  cursor: not-allowed;
+}
+
+.milestoneText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: var(--line-height-normal);
+  word-break: break-word;
+}
+
+.milestoneTextDismissed {
+  text-decoration: line-through;
+  color: var(--color-text-tertiary);
+}
+
+.milestoneDismissButton {
+  align-self: start;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.4rem;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.milestoneDismissButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-text);
+}
+
+.milestoneDismissButton[aria-pressed='true'] {
+  background: rgba(184, 137, 74, 0.1);
+  border-color: rgba(184, 137, 74, 0.3);
+  color: var(--color-secondary);
+}
+
+.milestoneDismissButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ─── Custom items ────────────────────────────── */
+
+.customItemRow {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr) auto auto;
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.5rem;
+  background: rgba(184, 137, 74, 0.04);
+}
+
+.customItemBadge {
+  align-self: center;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.customItemRemove {
+  align-self: start;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.4rem;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.customItemRemove:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-text-error);
+}
+
+.customItemRemove:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.customItemInput {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: stretch;
+  margin-top: 0.5rem;
+}
+
+.customItemInput input[type='text'] {
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-quicksand);
+  color: var(--color-text);
+  background: #fff;
+}
+
+.customItemInput input[type='text']:focus {
+  outline: 2px solid rgba(41, 75, 58, 0.3);
+  outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+
+.customItemInput input[type='text']:disabled {
+  background: rgba(0, 0, 0, 0.03);
+  cursor: not-allowed;
+}
+
+.customItemAddBtn {
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.customItemAddBtn:hover:not(:disabled) {
+  background: #1f3a2c;
+}
+
+.customItemAddBtn:disabled {
+  background: rgba(0, 0, 0, 0.15);
+  cursor: not-allowed;
+}
+
+.customItemCounter {
+  grid-column: 1 / -1;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-align: right;
+}
+
+/* ─── Inline phase CTA ────────────────────────── */
+
+.inlineCta {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  margin-top: 0.75rem;
+  border-radius: 0.6rem;
+  background: rgba(41, 75, 58, 0.05);
+  border: 1px solid rgba(41, 75, 58, 0.12);
+}
+
+.inlineCtaTitle {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-md);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.inlineCtaBody {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}
+
+.inlineCtaLink {
+  align-self: start;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.inlineCtaLink:hover {
+  color: var(--color-secondary);
+}
+
+/* ─── Email plan form ─────────────────────────── */
+
+.emailForm {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background: rgba(41, 75, 58, 0.04);
+  border: 1px solid rgba(41, 75, 58, 0.1);
+}
+
+.emailFormHeading {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.emailFormInput {
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-quicksand);
+  color: var(--color-text);
+  background: #fff;
+}
+
+.emailFormInput:focus {
+  outline: 2px solid rgba(41, 75, 58, 0.3);
+  outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+
+.emailFormCheckbox {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+  cursor: pointer;
+}
+
+.emailFormCheckbox input[type='checkbox'] {
+  margin-top: 0.2rem;
+  accent-color: var(--color-primary);
+}
+
+.emailFormSubmit {
+  justify-self: start;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.emailFormSubmit:hover:not(:disabled) {
+  background: #1f3a2c;
+}
+
+.emailFormSubmit:disabled {
+  background: rgba(0, 0, 0, 0.15);
+  cursor: not-allowed;
+}
+
+.emailFormStatus {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.emailFormStatus[data-state='success'] {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.emailFormStatus[data-state='error'] {
+  color: var(--color-text-error);
+}
+
+/* ─── Reset button ────────────────────────────── */
+
+.resetRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.resetButton {
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.4rem;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.resetButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-text);
+}
+
+.resetButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
