@@ -1,4 +1,5 @@
 export * from './calculatorVariants'
 export * from './calculatorContent'
+export * from './calendarContent'
 export * from './calendarMilestoneIds'
 export * from './calendarSchemas'
