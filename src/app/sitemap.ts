@@ -11,6 +11,10 @@ const TOOL_ROUTE_PATHS = new Set<string>([
   Route.WELLNESS_RETREAT_PRICING_CALCULATOR,
   Route.MEDITATION_RETREAT_PRICING_CALCULATOR,
   Route.COACHING_RETREAT_PRICING_CALCULATOR,
+  Route.THREE_MONTH_RETREAT_LAUNCH_CALENDAR,
+  Route.SIX_MONTH_RETREAT_LAUNCH_CALENDAR,
+  Route.NINE_MONTH_RETREAT_LAUNCH_CALENDAR,
+  Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR,
 ])
 
 const TOOL_LOCALES = [Language.EN, Language.NL, Language.DE]
@@ -127,6 +131,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       path: Route.COACHING_RETREAT_PRICING_CALCULATOR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.THREE_MONTH_RETREAT_LAUNCH_CALENDAR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.SIX_MONTH_RETREAT_LAUNCH_CALENDAR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.NINE_MONTH_RETREAT_LAUNCH_CALENDAR,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      path: Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
