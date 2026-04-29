@@ -213,12 +213,16 @@ describe('emailCalendarPlan rate limiting and security', () => {
       })
       expect(result.ok).toBe(true)
     }
+    const sendEmailCallsBefore = sendEmailMock.mock.calls.length
+    const slackCallsBefore = sendSlackMessageMock.mock.calls.length
     const result = await emailCalendarPlan({
       ...validPayload,
       email: 'extra@example.com',
     })
     expect(result.ok).toBe(false)
     expect(result.error).toBe('rate_limit')
+    expect(sendEmailMock.mock.calls.length).toBe(sendEmailCallsBefore)
+    expect(sendSlackMessageMock.mock.calls.length).toBe(slackCallsBefore)
   })
 
   it('returns rate_limit when the per-email rate limit is exceeded', async () => {
@@ -233,12 +237,16 @@ describe('emailCalendarPlan rate limiting and security', () => {
       const result = await emailCalendarPlan(validPayload)
       expect(result.ok).toBe(true)
     }
+    const sendEmailCallsBefore = sendEmailMock.mock.calls.length
+    const slackCallsBefore = sendSlackMessageMock.mock.calls.length
     getClientIdentifierMock.mockResolvedValueOnce(
       distinctIps[CALENDAR_RATE_LIMIT_EMAIL.MAX_REQUESTS],
     )
     const result = await emailCalendarPlan(validPayload)
     expect(result.ok).toBe(false)
     expect(result.error).toBe('rate_limit')
+    expect(sendEmailMock.mock.calls.length).toBe(sendEmailCallsBefore)
+    expect(sendSlackMessageMock.mock.calls.length).toBe(slackCallsBefore)
   })
 
   it('returns rate_limit when the global circuit breaker trips', async () => {
@@ -253,6 +261,8 @@ describe('emailCalendarPlan rate limiting and security', () => {
       })
       expect(result.ok).toBe(true)
     }
+    const sendEmailCallsBefore = sendEmailMock.mock.calls.length
+    const slackCallsBefore = sendSlackMessageMock.mock.calls.length
     getClientIdentifierMock.mockResolvedValueOnce(MOCK_CLIENT_IP_ALT)
     const result = await emailCalendarPlan({
       ...validPayload,
@@ -260,6 +270,8 @@ describe('emailCalendarPlan rate limiting and security', () => {
     })
     expect(result.ok).toBe(false)
     expect(result.error).toBe('rate_limit')
+    expect(sendEmailMock.mock.calls.length).toBe(sendEmailCallsBefore)
+    expect(sendSlackMessageMock.mock.calls.length).toBe(slackCallsBefore)
   })
 
   it('returns send_failed when Postmark throws', async () => {
