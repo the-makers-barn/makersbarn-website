@@ -632,6 +632,9 @@ export const es: Dictionary = {
     toolCtaTitle: 'Pricing your retreat?',
     toolCtaBody: 'Use our free calculator to plan your revenue, costs, profit margin, and breakeven occupancy.',
     toolCtaLabel: 'Open the calculator',
+    calendarCtaTitle: 'Planning the timeline?',
+    calendarCtaBody: 'Use our free 12-month launch calendar to plan phases, milestones, and the realistic timeline that actually works.',
+    calendarCtaLabel: 'Open the launch calendar',
   },
 
   comparisonTeaser: {
@@ -711,6 +714,17 @@ export const es: Dictionary = {
       body:
         'Si estás sopesando una pequeña granja privada frente a un hotel-retiro comercial, hemos escrito una comparación honesta a dos columnas. Capacidad, cocina, paisaje sonoro, lo que cambias y lo que ganas, sin discurso de ventas.',
       ctaLabel: 'Lee la comparación',
+    },
+    toolsBlock: {
+      eyebrow: 'Free planning tools',
+      title: 'Tools for retreat hosts',
+      intro: 'Free, ungated tools to help you plan a retreat that actually works — at MakersBarn or anywhere else.',
+      calendarTitle: 'The 12-Month Retreat Launch Calendar',
+      calendarBody: 'Phases, milestones, and the realistic timeline. Pick your runway (3, 6, 9, or 12 months) and check off the work as you finish it.',
+      calendarCtaLabel: 'Open the launch calendar',
+      calculatorTitle: 'Retreat Profitability Calculator',
+      calculatorBody: 'Plan your revenue, costs, profit margin, and breakeven occupancy before you commit to a venue.',
+      calculatorCtaLabel: 'Open the calculator',
     },
   },
 

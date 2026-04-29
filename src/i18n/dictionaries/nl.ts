@@ -633,6 +633,9 @@ export const nl: Dictionary = {
     toolCtaTitle: 'Prijs je retraite plannen?',
     toolCtaBody: 'Gebruik onze gratis calculator om omzet, kosten, marge en break-even te plannen.',
     toolCtaLabel: 'Open de calculator',
+    calendarCtaTitle: 'De timing plannen?',
+    calendarCtaBody: 'Gebruik onze gratis 12-maanden launch-kalender om fasen, mijlpalen en de realistische planning uit te werken.',
+    calendarCtaLabel: 'Open de launch-kalender',
   },
 
   comparisonTeaser: {
@@ -712,6 +715,17 @@ export const nl: Dictionary = {
       body:
         'Als je een kleine eigen boerderij afweegt tegen een commerciële retraitelocatie, schreven we een eerlijke vergelijking. Capaciteit, keuken, geluidsbeeld, wat je inruilt en wat je wint — zonder verkooppraatje.',
       ctaLabel: 'Lees de vergelijking',
+    },
+    toolsBlock: {
+      eyebrow: 'Gratis planningstools',
+      title: 'Tools voor retraitebegeleiders',
+      intro: 'Gratis tools om je te helpen een retraite te plannen die echt werkt — bij MakersBarn of elders.',
+      calendarTitle: 'De 12-maanden launch-kalender',
+      calendarBody: 'Fasen, mijlpalen en de realistische planning. Kies je aanloopduur (3, 6, 9 of 12 maanden) en streep af wat je hebt afgerond.',
+      calendarCtaLabel: 'Open de launch-kalender',
+      calculatorTitle: 'Winstgevendheidscalculator voor retraites',
+      calculatorBody: 'Plan omzet, kosten, marge en break-even-bezetting voordat je een locatie vastlegt.',
+      calculatorCtaLabel: 'Open de calculator',
     },
   },
 

@@ -226,6 +226,109 @@
   transform: translateX(3px);
 }
 
+.toolsBlock {
+  padding: 1rem 1.5rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .toolsBlock {
+    padding: 1rem 4rem 5rem;
+  }
+}
+
+.toolsBlockInner {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: rgba(41, 75, 58, 0.06);
+  border-radius: 14px;
+  padding: 2.5rem 1.75rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .toolsBlockInner {
+    padding: 2.75rem 3rem;
+  }
+}
+
+.toolsBlockEyebrow {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.toolsBlockTitle {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+}
+
+.toolsBlockIntro {
+  margin: 0 auto 2rem;
+  max-width: 56ch;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+.toolsBlockGrid {
+  display: grid;
+  gap: 1rem;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .toolsBlockGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.toolCard {
+  display: grid;
+  gap: 0.75rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem 1.75rem;
+  border: 1px solid rgba(31, 19, 12, 0.08);
+}
+
+.toolCardTitle {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+}
+
+.toolCardBody {
+  margin: 0;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+.toolCardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.toolCardCta:hover { color: #a47736; }
+.toolCardCta svg { transition: transform 0.2s ease; }
+.toolCardCta:hover svg { transform: translateX(3px); }
+
 .help {
   background-color: #ffffff;
   padding: 4.5rem 1.5rem 5.5rem;

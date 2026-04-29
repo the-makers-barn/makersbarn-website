@@ -592,6 +592,9 @@ export interface SilosChromeTranslations {
   toolCtaTitle: string
   toolCtaBody: string
   toolCtaLabel: string
+  calendarCtaTitle: string
+  calendarCtaBody: string
+  calendarCtaLabel: string
 }
 
 /**
@@ -633,6 +636,17 @@ export interface RetreatsHubTranslations {
     headline: string
     body: string
     ctaLabel: string
+  }
+  toolsBlock: {
+    eyebrow: string
+    title: string
+    intro: string
+    calendarTitle: string
+    calendarBody: string
+    calendarCtaLabel: string
+    calculatorTitle: string
+    calculatorBody: string
+    calculatorCtaLabel: string
   }
 }
 

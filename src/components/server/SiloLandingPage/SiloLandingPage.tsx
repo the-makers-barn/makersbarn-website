@@ -51,6 +51,31 @@ function ArrowLeftIcon() {
   )
 }
 
+interface ToolCtaBlockProps {
+  href: string
+  title: string
+  body: string
+  ctaLabel: string
+  ariaLabelledBy: string
+}
+
+function ToolCtaBlock({ href, title, body, ctaLabel, ariaLabelledBy }: ToolCtaBlockProps) {
+  return (
+    <section className={styles.toolCta} aria-labelledby={ariaLabelledBy}>
+      <div className={styles.toolCtaInner}>
+        <h2 id={ariaLabelledBy} className={styles.toolCtaTitle}>
+          {title}
+        </h2>
+        <p className={styles.toolCtaBody}>{body}</p>
+        <Link href={href} className={styles.primaryCta}>
+          {ctaLabel}
+          <ArrowRightIcon />
+        </Link>
+      </div>
+    </section>
+  )
+}
+
 interface SiloLandingPageProps {
   silo: SiloContent
   locale: Language
@@ -87,6 +112,7 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
   const contactHref = getLocalizedPath(Route.CONTACT, locale)
   const toolRoute = SILO_TO_TOOL_ROUTE[silo.route]
   const toolHref = toolRoute ? getLocalizedPath(toolRoute, locale) : null
+  const calendarHref = getLocalizedPath(Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR, locale)
 
   return (
     <>
@@ -213,19 +239,22 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
         </section>
 
         {toolHref && (
-          <section className={styles.toolCta} aria-labelledby="silo-tool-cta">
-            <div className={styles.toolCtaInner}>
-              <h2 id="silo-tool-cta" className={styles.toolCtaTitle}>
-                {t.silos.toolCtaTitle}
-              </h2>
-              <p className={styles.toolCtaBody}>{t.silos.toolCtaBody}</p>
-              <Link href={toolHref} className={styles.primaryCta}>
-                {t.silos.toolCtaLabel}
-                <ArrowRightIcon />
-              </Link>
-            </div>
-          </section>
+          <ToolCtaBlock
+            href={toolHref}
+            title={t.silos.toolCtaTitle}
+            body={t.silos.toolCtaBody}
+            ctaLabel={t.silos.toolCtaLabel}
+            ariaLabelledBy="silo-tool-cta"
+          />
         )}
+
+        <ToolCtaBlock
+          href={calendarHref}
+          title={t.silos.calendarCtaTitle}
+          body={t.silos.calendarCtaBody}
+          ctaLabel={t.silos.calendarCtaLabel}
+          ariaLabelledBy="silo-calendar-cta"
+        />
 
         <ComparisonTeaser locale={locale} t={t} />
 

@@ -172,6 +172,40 @@ export default async function HostARetreatPage({ params }: PageProps) {
           </div>
         </section>
 
+        <section className={styles.toolsBlock} aria-labelledby="tools-block-title">
+          <div className={styles.toolsBlockInner}>
+            <p className={styles.toolsBlockEyebrow}>{t.retreats.toolsBlock.eyebrow}</p>
+            <h2 className={styles.toolsBlockTitle} id="tools-block-title">
+              {t.retreats.toolsBlock.title}
+            </h2>
+            <p className={styles.toolsBlockIntro}>{t.retreats.toolsBlock.intro}</p>
+            <div className={styles.toolsBlockGrid}>
+              <article className={styles.toolCard}>
+                <h3 className={styles.toolCardTitle}>{t.retreats.toolsBlock.calendarTitle}</h3>
+                <p className={styles.toolCardBody}>{t.retreats.toolsBlock.calendarBody}</p>
+                <Link
+                  href={getLocalizedPath(Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR, validLocale)}
+                  className={styles.toolCardCta}
+                >
+                  {t.retreats.toolsBlock.calendarCtaLabel}
+                  <ArrowRightIcon />
+                </Link>
+              </article>
+              <article className={styles.toolCard}>
+                <h3 className={styles.toolCardTitle}>{t.retreats.toolsBlock.calculatorTitle}</h3>
+                <p className={styles.toolCardBody}>{t.retreats.toolsBlock.calculatorBody}</p>
+                <Link
+                  href={getLocalizedPath(Route.RETREAT_PROFITABILITY_CALCULATOR, validLocale)}
+                  className={styles.toolCardCta}
+                >
+                  {t.retreats.toolsBlock.calculatorCtaLabel}
+                  <ArrowRightIcon />
+                </Link>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section className={styles.help}>
           <h2 className={styles.helpTitle}>{t.retreats.helpTitle}</h2>
           <p className={styles.helpBody}>{t.retreats.helpBody}</p>
