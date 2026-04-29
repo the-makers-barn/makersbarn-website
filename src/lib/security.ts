@@ -216,3 +216,18 @@ export class RateLimiter {
     }
   }
 }
+
+const CONTROL_CHARS = /[\x00-\x1F\x7F]/g
+const ZERO_WIDTH_CHARS = /[​-‍﻿]/g
+const BIDI_OVERRIDE_CHARS = /[‪-‮⁦-⁩]/g
+const ANGLE_BRACKETS = /[<>]/g
+
+export function sanitizePlainText(input: string, maxLength: number): string {
+  return input
+    .replace(CONTROL_CHARS, '')
+    .replace(ZERO_WIDTH_CHARS, '')
+    .replace(BIDI_OVERRIDE_CHARS, '')
+    .replace(ANGLE_BRACKETS, '')
+    .trim()
+    .slice(0, maxLength)
+}
