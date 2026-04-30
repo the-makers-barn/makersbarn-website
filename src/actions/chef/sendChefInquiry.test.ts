@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { CHEF_INQUIRY_MESSAGES } from '@/constants/chef'
+import { CHEF_INQUIRY_MESSAGES, CHEF_INQUIRY_RATE_LIMIT } from '@/constants/chef'
 import { sendChefInquiryEmails } from '@/services/email'
 import { sendSlackMessage } from '@/services/slack'
 import { Language } from '@/types'
@@ -63,8 +63,8 @@ describe('sendChefInquiry', () => {
 
   it('rate-limit hit: returns rate_limited and does not call Postmark or Slack', async () => {
     const { sendChefInquiry } = await import('./sendChefInquiry')
-    // 5 succeeds, 6th hits the limit (CHEF_INQUIRY_RATE_LIMIT.MAX_REQUESTS = 5)
-    for (let i = 0; i < 5; i++) {
+    // Consume MAX_REQUESTS slots, then the next call should hit the limit.
+    for (let i = 0; i < CHEF_INQUIRY_RATE_LIMIT.MAX_REQUESTS; i++) {
       await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
     }
     vi.mocked(sendChefInquiryEmails).mockClear()
@@ -89,8 +89,8 @@ describe('sendChefInquiry', () => {
   it('draft chef in production: returns chef_not_found', async () => {
     const ORIGINAL = process.env.VERCEL_ENV
     process.env.VERCEL_ENV = 'production'
+    // beforeEach already reset modules; import here picks up the mutated env.
     try {
-      vi.resetModules()
       const { sendChefInquiry } = await import('./sendChefInquiry')
       // Liesbeth is DRAFT — getChefBySlug should return undefined in prod.
       const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
