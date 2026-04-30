@@ -4,7 +4,7 @@ import * as postmark from 'postmark'
 import { revalidatePath } from 'next/cache'
 
 import { createLogger, escapeHtml, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
-import type { ValidatedBookingFormData } from '@/types'
+import type { Chef, Language, ValidatedBookingFormData } from '@/types'
 
 const logger = createLogger('email-service')
 
@@ -329,5 +329,88 @@ The Makers Barn Team
   } catch (error) {
     logger.error('Failed to send booking email', { userEmail: formData.email }, error)
     return { success: false, error }
+  }
+}
+
+export type ChefInquiryEmailInput = {
+  chef: Chef
+  visitorName: string
+  visitorEmail: string
+  dates: string
+  groupSize: number
+  location: string
+  dietary: string
+  message: string
+  visitorLocale: Language
+  chefDetailUrl: string
+}
+
+function buildChefEmailHtml(input: ChefInquiryEmailInput): string {
+  const dietaryLine = input.dietary ? escapeHtml(input.dietary) : '—'
+  return `
+    <p>You have a new retreat inquiry via your MakersBarn directory page.</p>
+    <table style="border-collapse:collapse">
+      <tr><td><strong>Name:</strong></td><td>${escapeHtml(input.visitorName)}</td></tr>
+      <tr><td><strong>Email:</strong></td><td>${escapeHtml(input.visitorEmail)}</td></tr>
+      <tr><td><strong>Group size:</strong></td><td>${input.groupSize}</td></tr>
+      <tr><td><strong>Dates:</strong></td><td>${escapeHtml(input.dates)}</td></tr>
+      <tr><td><strong>Location:</strong></td><td>${escapeHtml(input.location)}</td></tr>
+      <tr><td><strong>Dietary:</strong></td><td>${dietaryLine}</td></tr>
+    </table>
+    <p><strong>Message:</strong></p>
+    <pre style="white-space:pre-wrap;font-family:inherit">${escapeHtml(input.message)}</pre>
+    <hr />
+    <p style="font-size:12px;color:#666">
+      This inquiry came via <a href="${input.chefDetailUrl}">${input.chefDetailUrl}</a>.
+      Reply directly to ${escapeHtml(input.visitorEmail)} to take the conversation off-platform.
+      A copy was sent to MakersBarn for our records.
+    </p>
+  `.trim()
+}
+
+function buildVisitorEmailHtml(input: ChefInquiryEmailInput): string {
+  return `
+  <p>Hi ${escapeHtml(input.visitorName)},</p>
+  <p>Thanks for reaching out via MakersBarn — your inquiry has been forwarded to ${escapeHtml(input.chef.name)}.</p>
+  <p>${escapeHtml(input.chef.name)} usually responds within 2–3 days. If you don't hear back, just reply to this email and we'll follow up on your behalf.</p>
+  <p>— The MakersBarn team</p>
+`.trim()
+}
+
+export async function sendChefInquiryEmails(
+  input: ChefInquiryEmailInput
+): Promise<{ success: boolean; error?: string }> {
+  const apiToken = process.env.POSTMARKAPP_API_TOKEN
+  const sender = process.env.POSTMARK_SENDER_EMAIL
+  const adminEmail = process.env.POSTMARK_ADMIN_EMAIL
+
+  if (!apiToken || !sender || !adminEmail) {
+    return { success: false, error: 'missing_postmark_config' }
+  }
+
+  const client = new postmark.ServerClient(apiToken)
+
+  try {
+    await client.sendEmail({
+      From: sender,
+      To: input.chef.inquiryEmail,
+      Cc: adminEmail,
+      ReplyTo: input.visitorEmail,
+      Subject: `New retreat inquiry from ${input.visitorName} via MakersBarn`,
+      HtmlBody: buildChefEmailHtml(input),
+      MessageStream: 'outbound',
+    })
+
+    await client.sendEmail({
+      From: sender,
+      To: input.visitorEmail,
+      Subject: `Your inquiry to ${input.chef.name} is on its way`,
+      HtmlBody: buildVisitorEmailHtml(input),
+      MessageStream: 'outbound',
+    })
+
+    return { success: true }
+  } catch (err) {
+    return { success: false, error: err instanceof Error ? err.message : 'postmark_send_failed' }
   }
 }

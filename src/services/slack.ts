@@ -182,3 +182,19 @@ export function formatPartialBookingMessage(data: PartialBookingContactData): st
 
   return lines.join('\n')
 }
+
+export function formatChefInquirySlackMessage(input: {
+  chefName: string
+  visitorName: string
+  visitorEmail: string
+  groupSize: number
+  dates: string
+  location: string
+}): string {
+  return [
+    `*New chef inquiry* — ${input.chefName}`,
+    `From: ${input.visitorName} <${input.visitorEmail}>`,
+    `Group: ${input.groupSize} guests · ${input.dates}`,
+    `Where: ${input.location}`,
+  ].join('\n')
+}
