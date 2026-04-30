@@ -1,12 +1,13 @@
 import { ChefStatus } from '@/constants/chef'
 import type { Chef } from '@/types'
 
+import { LIESBETH_VAN_DER_VELDEN_CHEF } from './liesbeth-van-der-velden'
+
 // Chefs are added one file per chef. Import each here and append to ALL_CHEFS.
 // Naming convention: <SLUG_UPPER_SNAKE>_CHEF (mirrors YOGA_TEACHERS_SILO).
-// Task 7 adds the first chef (LIESBETH_VAN_DER_VELDEN_CHEF).
 
 export const ALL_CHEFS: readonly Chef[] = [
-  // LIESBETH_VAN_DER_VELDEN_CHEF, etc.
+  LIESBETH_VAN_DER_VELDEN_CHEF,
 ]
 
 export const CHEFS_BY_SLUG: Readonly<Record<string, Chef | undefined>> = Object.fromEntries(
