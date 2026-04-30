@@ -217,7 +217,17 @@ export const CHEF_INQUIRY_LIMITS = {
 Modify `src/constants/index.ts` — add at the bottom:
 
 ```ts
-export * from './chef'
+export {
+  ChefStatus,
+  RetreatType,
+  DietaryCapability,
+  PriceTier,
+  DayRateUnit,
+  NlRegion,
+  NL_REGION_COORDINATES,
+  CHEF_INQUIRY_RATE_LIMIT,
+  CHEF_INQUIRY_LIMITS,
+} from './chef'
 ```
 
 - [ ] **Step 3: Verify TypeScript compiles**
@@ -373,7 +383,22 @@ export type Chef = {
 Modify `src/types/index.ts` — add at the bottom (preserve existing exports):
 
 ```ts
-export * from './chef'
+export type {
+  LocalizedWithFallback,
+  IsoDateString,
+  ImageRef,
+  ChefHomeBase,
+  ChefGroupSize,
+  ChefDayRate,
+  ChefGallery,
+  ChefAbout,
+  ChefSignatureDish,
+  ChefTestimonial,
+  ChefAtAGlance,
+  ChefPastRetreat,
+  Chef,
+} from './chef'
+export { asIsoDateString } from './chef'
 ```
 
 - [ ] **Step 3: Verify TypeScript compiles**
@@ -515,7 +540,7 @@ Expected: PASS, 3 tests.
 Modify `src/lib/index.ts` — append:
 
 ```ts
-export * from './chef/localized'
+export { localize } from './chef/localized'
 ```
 
 - [ ] **Step 6: Commit**
