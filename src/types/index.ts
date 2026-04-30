@@ -12,6 +12,7 @@ export * from './comparison'
 export * from './tools'
 export type {
   Chef,
+  ChefInquiryDict,
   LocalizedWithFallback,
   ImageRef,
   IsoDateString,
