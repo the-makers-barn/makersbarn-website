@@ -1,0 +1,77 @@
+.strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #f3eede;
+  border-radius: 0.25rem;
+  margin: 0;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-tertiary);
+}
+
+.value {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  margin: 0;
+  line-height: var(--line-height-snug);
+}
+
+.dayRate {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.dayRateAmount {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-3xl);
+  color: var(--color-text);
+}
+
+.dayRateUnit {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+.tier {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.tierDotFilled {
+  color: var(--color-text);
+}
+
+.tierDotEmpty {
+  color: var(--color-text-tertiary);
+  opacity: 0.4;
+}
+
+@media (max-width: 1023px) {
+  .strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .strip {
+    grid-template-columns: 1fr;
+  }
+}
