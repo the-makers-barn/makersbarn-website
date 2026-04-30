@@ -1,10 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { CHEF_INQUIRY_MESSAGES } from '@/constants/chef'
 import { sendChefInquiryEmails } from '@/services/email'
 import { sendSlackMessage } from '@/services/slack'
 import { Language } from '@/types'
-
-import { sendChefInquiry } from './sendChefInquiry'
 
 vi.mock('@/services/email', () => ({
   sendChefInquiryEmails: vi.fn(),
@@ -45,6 +44,7 @@ const buildFormData = (overrides: Record<string, string> = {}): FormData => {
 
 describe('sendChefInquiry', () => {
   beforeEach(() => {
+    vi.resetModules()
     vi.mocked(sendChefInquiryEmails).mockResolvedValue({ success: true })
     vi.mocked(sendSlackMessage).mockResolvedValue({ success: true })
   })
@@ -54,9 +54,92 @@ describe('sendChefInquiry', () => {
   })
 
   it('happy path: sends email to chef and notifies Slack', async () => {
+    const { sendChefInquiry } = await import('./sendChefInquiry')
     const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
     expect(result.success).toBe(true)
     expect(sendChefInquiryEmails).toHaveBeenCalledOnce()
+    expect(sendSlackMessage).toHaveBeenCalledOnce()
+  })
+
+  it('rate-limit hit: returns rate_limited and does not call Postmark or Slack', async () => {
+    const { sendChefInquiry } = await import('./sendChefInquiry')
+    // 5 succeeds, 6th hits the limit (CHEF_INQUIRY_RATE_LIMIT.MAX_REQUESTS = 5)
+    for (let i = 0; i < 5; i++) {
+      await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+    }
+    vi.mocked(sendChefInquiryEmails).mockClear()
+    vi.mocked(sendSlackMessage).mockClear()
+
+    const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+    expect(result.success).toBe(false)
+    expect(result.message).toBe(CHEF_INQUIRY_MESSAGES.RATE_LIMITED)
+    expect(sendChefInquiryEmails).not.toHaveBeenCalled()
+    expect(sendSlackMessage).not.toHaveBeenCalled()
+  })
+
+  it('unknown chef slug: returns chef_not_found and does not call Postmark or Slack', async () => {
+    const { sendChefInquiry } = await import('./sendChefInquiry')
+    const result = await sendChefInquiry('definitely-not-a-real-chef', buildFormData())
+    expect(result.success).toBe(false)
+    expect(result.message).toBe(CHEF_INQUIRY_MESSAGES.CHEF_NOT_FOUND)
+    expect(sendChefInquiryEmails).not.toHaveBeenCalled()
+    expect(sendSlackMessage).not.toHaveBeenCalled()
+  })
+
+  it('draft chef in production: returns chef_not_found', async () => {
+    const ORIGINAL = process.env.VERCEL_ENV
+    process.env.VERCEL_ENV = 'production'
+    try {
+      vi.resetModules()
+      const { sendChefInquiry } = await import('./sendChefInquiry')
+      // Liesbeth is DRAFT — getChefBySlug should return undefined in prod.
+      const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+      expect(result.success).toBe(false)
+      expect(result.message).toBe(CHEF_INQUIRY_MESSAGES.CHEF_NOT_FOUND)
+    } finally {
+      if (ORIGINAL === undefined) {
+        delete process.env.VERCEL_ENV
+      } else {
+        process.env.VERCEL_ENV = ORIGINAL
+      }
+    }
+  })
+
+  it('honeypot triggered: returns silent success and does not call Postmark or Slack', async () => {
+    const { sendChefInquiry } = await import('./sendChefInquiry')
+    const result = await sendChefInquiry(
+      'liesbeth-van-der-velden',
+      buildFormData({ honeypot: 'spammer' })
+    )
+    expect(result.success).toBe(true)
+    expect(sendChefInquiryEmails).not.toHaveBeenCalled()
+    expect(sendSlackMessage).not.toHaveBeenCalled()
+  })
+
+  it('validation error: returns errors map and does not call Postmark or Slack', async () => {
+    const { sendChefInquiry } = await import('./sendChefInquiry')
+    const result = await sendChefInquiry(
+      'liesbeth-van-der-velden',
+      buildFormData({ email: 'not-an-email' })
+    )
+    expect(result.success).toBe(false)
+    expect(result.message).toBe(CHEF_INQUIRY_MESSAGES.VALIDATION)
+    expect(result.errors).toBeDefined()
+    expect(result.errors?.email).toBeDefined()
+    expect(sendChefInquiryEmails).not.toHaveBeenCalled()
+    expect(sendSlackMessage).not.toHaveBeenCalled()
+  })
+
+  it('Postmark failure: returns email_failed but Slack was still notified', async () => {
+    const { sendChefInquiry } = await import('./sendChefInquiry')
+    vi.mocked(sendChefInquiryEmails).mockResolvedValueOnce({
+      success: false,
+      error: 'postmark exploded',
+    })
+    const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+    expect(result.success).toBe(false)
+    expect(result.message).toBe(CHEF_INQUIRY_MESSAGES.EMAIL_FAILED)
+    // Slack was called BEFORE the email attempt (per the action's order)
     expect(sendSlackMessage).toHaveBeenCalledOnce()
   })
 })
