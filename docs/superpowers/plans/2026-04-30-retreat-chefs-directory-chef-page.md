@@ -772,7 +772,11 @@ describe('chef registry', () => {
   })
 
   afterEach(() => {
-    process.env.VERCEL_ENV = ORIGINAL_VERCEL_ENV
+    if (ORIGINAL_VERCEL_ENV === undefined) {
+      delete process.env.VERCEL_ENV
+    } else {
+      process.env.VERCEL_ENV = ORIGINAL_VERCEL_ENV
+    }
     vi.resetModules()
   })
 
@@ -834,7 +838,7 @@ import type { Chef } from '@/types'
 
 export const ALL_CHEFS: readonly Chef[] = [
   // LIESBETH_VAN_DER_VELDEN_CHEF,
-] as const
+]
 
 export const CHEFS_BY_SLUG: Readonly<Record<string, Chef>> = Object.fromEntries(
   ALL_CHEFS.map((chef) => [chef.slug, chef])
@@ -1169,7 +1173,7 @@ import { LIESBETH_VAN_DER_VELDEN_CHEF } from './liesbeth-van-der-velden'
 
 export const ALL_CHEFS: readonly Chef[] = [
   LIESBETH_VAN_DER_VELDEN_CHEF,
-] as const
+]
 ```
 
 (Leave `CHEFS_BY_SLUG`, `PUBLISHED_CHEFS`, `getChefsForEnv`, `getChefBySlug` unchanged.)

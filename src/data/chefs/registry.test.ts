@@ -10,7 +10,11 @@ describe('chef registry', () => {
   })
 
   afterEach(() => {
-    process.env.VERCEL_ENV = ORIGINAL_VERCEL_ENV
+    if (ORIGINAL_VERCEL_ENV === undefined) {
+      delete process.env.VERCEL_ENV
+    } else {
+      process.env.VERCEL_ENV = ORIGINAL_VERCEL_ENV
+    }
     vi.resetModules()
   })
 

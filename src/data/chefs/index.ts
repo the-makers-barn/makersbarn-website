@@ -7,7 +7,7 @@ import type { Chef } from '@/types'
 
 export const ALL_CHEFS: readonly Chef[] = [
   // LIESBETH_VAN_DER_VELDEN_CHEF, etc.
-] as const
+]
 
 export const CHEFS_BY_SLUG: Readonly<Record<string, Chef | undefined>> = Object.fromEntries(
   ALL_CHEFS.map((chef) => [chef.slug, chef])
