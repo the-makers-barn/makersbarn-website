@@ -58,15 +58,23 @@ export function getPathWithoutLocale(path: string): string {
 export function getLocaleFromPath(path: string): Language | null {
   // Ensure path starts with /
   const normalizedPath = path.startsWith('/') ? path : `/${path}`
-  
+
   // Split the path into segments
   const segments = normalizedPath.split('/').filter(Boolean)
-  
+
   // Check if the first segment is a valid locale
   if (segments.length > 0 && isValidLocale(segments[0])) {
     return segments[0]
   }
-  
+
   return null
+}
+
+/**
+ * Build the localized URL for a chef detail page.
+ * Example: chefDetailPath('liesbeth-van-der-velden', Language.EN) → '/en/chefs/liesbeth-van-der-velden'
+ */
+export function chefDetailPath(slug: string, locale: Language): string {
+  return `/${locale}/chefs/${slug}`
 }
 

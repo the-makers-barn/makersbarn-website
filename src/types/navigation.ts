@@ -29,6 +29,7 @@ export enum Route {
   SIX_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/6-month-retreat-launch-calendar',
   NINE_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/9-month-retreat-launch-calendar',
   TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/12-month-retreat-launch-calendar',
+  CHEFS = '/chefs',
 }
 
 export interface NavLink {
