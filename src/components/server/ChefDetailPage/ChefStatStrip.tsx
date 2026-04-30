@@ -45,7 +45,7 @@ export async function ChefStatStrip({ chef, lang }: Props) {
         <dd className={styles.dayRate}>
           <span className={styles.dayRateAmount}>{currencyFormatter.format(chef.dayRate.amountEur)}</span>
           <span className={styles.dayRateUnit}>{dict.chef.statStrip.dayRateUnit}</span>
-          <span className={styles.tier} aria-label={`${tierWordLabel} pricing`}>
+          <span className={styles.tier} aria-label={dict.chef.statStrip.tierAriaLabel.replace('{tier}', tierWordLabel)}>
             {Array.from({ length: TOTAL_TIER_DOTS }).map((_, i) => (
               <span
                 key={i}

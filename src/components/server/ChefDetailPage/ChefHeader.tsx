@@ -49,7 +49,7 @@ export async function ChefHeader({ chef, lang }: Props) {
         <div className={styles.text}>
           <h1 className={styles.name}>{chef.name}</h1>
           <p className={styles.tagline}>{localize(chef.tagline, lang)}</p>
-          <ul className={cn(styles.metaLine)} aria-label="Chef summary">
+          <ul className={cn(styles.metaLine)} aria-label={dict.chef.headerMeta.summaryAriaLabel}>
             <li>{locationLine}</li>
             <li>{guestsLabel}</li>
             <li>{languagesLabel}</li>
