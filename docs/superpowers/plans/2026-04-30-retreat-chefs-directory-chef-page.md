@@ -937,9 +937,9 @@ Modify `src/data/imageAltText.ts` — add entries for each chef image. Match the
   [Language.DE]: 'Rezeptkarte auf Holzfläche mit Limetten und Kräutern',
 },
 'chef.liesbeth-van-der-velden.gallery-4': {
-  [Language.EN]: 'Plated dishes with sliced meat, beetroot, and roasted vegetables',
-  [Language.NL]: 'Borden met gesneden vlees, biet en geroosterde groenten',
-  [Language.DE]: 'Teller mit aufgeschnittenem Fleisch, Rote Bete und geröstetem Gemüse',
+  [Language.EN]: 'Plated family-style dishes with roasted vegetables and grains',
+  [Language.NL]: 'Family-style borden met geroosterde groenten en granen',
+  [Language.DE]: 'Family-Style-Teller mit geröstetem Gemüse und Körnern',
 },
 ```
 
@@ -963,14 +963,12 @@ import type { Chef } from '@/types'
 import { asIsoDateString } from '@/types/chef'
 
 export const LIESBETH_VAN_DER_VELDEN_CHEF: Chef = {
-  // — Identity & gating —
   slug: 'liesbeth-van-der-velden',
   status: ChefStatus.DRAFT, // Flip to PUBLISHED only after the chef has approved the page.
   primaryLanguage: Language.NL,
   inquiryEmail: 'liesbeth@example.com', // TODO during onboarding: replace with real address
   updatedAt: asIsoDateString('2026-04-30'),
 
-  // — Header —
   name: 'Liesbeth van der Velden',
   avatar: {
     src: '/images/chefs/liesbeth-van-der-velden/avatar.jpg',
@@ -988,7 +986,6 @@ export const LIESBETH_VAN_DER_VELDEN_CHEF: Chef = {
   languagesSpoken: [Language.NL, Language.EN, Language.DE],
   yearsExperience: 12,
 
-  // — Stat strip —
   rightFor: [RetreatType.YOGA, RetreatType.WELLNESS, RetreatType.CREATIVE],
   cuisineStyles: [
     {
@@ -1019,7 +1016,6 @@ export const LIESBETH_VAN_DER_VELDEN_CHEF: Chef = {
     tier: PriceTier.PREMIUM,
   },
 
-  // — Body —
   gallery: {
     hero: {
       src: '/images/chefs/liesbeth-van-der-velden/hero.jpg',
@@ -1046,9 +1042,9 @@ export const LIESBETH_VAN_DER_VELDEN_CHEF: Chef = {
   },
   about: {
     headline: {
-      [Language.EN]: 'Plant-forward, fire-cooked, deeply Dutch.',
-      [Language.NL]: 'Plantaardig, op vuur bereid, door en door Nederlands.',
-      [Language.DE]: 'Pflanzenbasiert, am Feuer gegart, zutiefst niederländisch.',
+      [Language.EN]: 'Slow food, real fire, and harvest that tastes of where it grew.',
+      [Language.NL]: 'Langzaam eten, echt vuur, en oogst die smaakt naar de plek waar het groeide.',
+      [Language.DE]: 'Langsames Essen, echtes Feuer und eine Ernte, die nach dem Ort schmeckt, an dem sie wuchs.',
     },
     paragraphs: [
       {
@@ -1134,7 +1130,6 @@ export const LIESBETH_VAN_DER_VELDEN_CHEF: Chef = {
     },
   ],
 
-  // — Sidebar —
   atAGlance: {
     sourcing: {
       [Language.EN]: 'Local farms within 30km, foraged herbs, no airfreight',
@@ -1153,10 +1148,10 @@ export const LIESBETH_VAN_DER_VELDEN_CHEF: Chef = {
     },
   },
   pastRetreats: [
-    { name: 'Stillpoint', url: 'https://example.com/stillpoint' },
-    { name: 'De Stilte', url: 'https://example.com/de-stilte' },
-    { name: 'Bos & Lucht', url: 'https://example.com/bos-en-lucht' },
-    { name: 'Yogagarden NL', url: 'https://example.com/yogagarden' },
+    { name: 'Stillpoint' },
+    { name: 'De Stilte' },
+    { name: 'Bos & Lucht' },
+    { name: 'Yogagarden NL' },
   ],
 }
 ```

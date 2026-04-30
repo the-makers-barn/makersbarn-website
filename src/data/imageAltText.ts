@@ -248,9 +248,9 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.DE]: 'Rezeptkarte auf Holzfläche mit Limetten und Kräutern',
   },
   'chef.liesbeth-van-der-velden.gallery-4': {
-    [Language.EN]: 'Plated dishes with sliced meat, beetroot, and roasted vegetables',
-    [Language.NL]: 'Borden met gesneden vlees, biet en geroosterde groenten',
-    [Language.DE]: 'Teller mit aufgeschnittenem Fleisch, Rote Bete und geröstetem Gemüse',
+    [Language.EN]: 'Plated family-style dishes with roasted vegetables and grains',
+    [Language.NL]: 'Family-style borden met geroosterde groenten en granen',
+    [Language.DE]: 'Family-Style-Teller mit geröstetem Gemüse und Körnern',
   },
 } as const
 
