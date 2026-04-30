@@ -1,0 +1,26 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.main {
+  min-width: 0;
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page {
+    padding-bottom: 5rem; /* leave room for sticky CTA */
+  }
+}
