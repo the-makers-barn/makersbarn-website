@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 
 import { SITE_CONFIG } from '@/constants/site'
+import { PUBLISHED_CHEFS } from '@/data/chefs'
 import { getLocalizedPath } from '@/lib/routing'
 import { Route, Language } from '@/types'
 
@@ -71,6 +72,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: pageRoute.changeFrequency,
         priority: pageRoute.priority,
+      })
+    }
+  }
+
+  // Chef detail pages — always published-only, regardless of VERCEL_ENV.
+  // Drafts must never appear in the sitemap (per design spec §6.4).
+  for (const chef of PUBLISHED_CHEFS) {
+    for (const locale of allLocales) {
+      routes.push({
+        url: `${baseUrl}/${locale}/chefs/${chef.slug}`,
+        lastModified: new Date(chef.updatedAt),
+        changeFrequency: 'monthly',
+        priority: 0.7,
       })
     }
   }
