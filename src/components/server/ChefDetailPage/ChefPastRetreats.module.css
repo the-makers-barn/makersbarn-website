@@ -1,4 +1,4 @@
-.card { background: #f3eede; padding: 1.25rem; border-radius: 0.25rem; margin-top: 1rem; }
+.card { background: var(--color-surface-warm); padding: 1.25rem; border-radius: 0.25rem; margin-top: 1rem; }
 .label {
   font-family: var(--font-quicksand);
   font-size: var(--font-size-xs);

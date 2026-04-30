@@ -15,7 +15,7 @@
   margin: 0;
 }
 .card {
-  background: #f3eede;
+  background: var(--color-surface-warm);
   border-radius: 0.25rem;
   padding: 1rem 1.25rem;
 }
