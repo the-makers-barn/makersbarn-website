@@ -10,4 +10,20 @@ export * from './booking'
 export * from './silo'
 export * from './comparison'
 export * from './tools'
-export * from './chef'
+export type {
+  Chef,
+  LocalizedWithFallback,
+  ImageRef,
+  IsoDateString,
+  ChefHomeBase,
+  ChefGroupSize,
+  ChefDayRate,
+  ChefGallery,
+  ChefAbout,
+  ChefSignatureDish,
+  ChefTestimonial,
+  ChefAtAGlance,
+  ChefPastRetreat,
+} from './chef'
+
+export { asIsoDateString } from './chef'

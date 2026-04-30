@@ -11,4 +11,14 @@ export * from './typography'
 export * from './analytics'
 export * from './redirects'
 export * from './tools'
-export * from './chef'
+export {
+  ChefStatus,
+  RetreatType,
+  DietaryCapability,
+  PriceTier,
+  DayRateUnit,
+  NlRegion,
+  NL_REGION_COORDINATES,
+  CHEF_INQUIRY_RATE_LIMIT,
+  CHEF_INQUIRY_LIMITS,
+} from './chef'
