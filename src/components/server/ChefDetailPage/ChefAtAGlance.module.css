@@ -1,0 +1,13 @@
+.card { background: #f3eede; padding: 1.25rem; border-radius: 0.25rem; margin-top: 1rem; }
+.label {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-tertiary);
+  margin: 0 0 0.75rem;
+}
+.list { margin: 0; }
+.row { display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.row:last-child { border-bottom: none; }
+.dt { font-family: var(--font-quicksand); font-size: var(--font-size-sm); color: var(--color-text-tertiary); margin: 0; }
+.dd { font-family: var(--font-quicksand); font-size: var(--font-size-sm); color: var(--color-text); margin: 0; text-align: right; }
