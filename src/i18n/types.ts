@@ -1,5 +1,6 @@
 import { AccommodationCabin, Language } from '@/types'
 import type { DietaryCapability, NlRegion, RetreatType } from '@/constants/chef'
+import type { ChefInquiryDict } from '@/types/chef'
 
 /**
  * Navigation translations
@@ -889,8 +890,9 @@ export interface ChefDictionary {
     dayRate: string
     dayRateUnit: string
     tierLabel: { budget: string; standard: string; premium: string }
+    tierAriaLabel: string
   }
-  headerMeta: { guests: string; yearsCooking: string }
+  headerMeta: { guests: string; yearsCooking: string; summaryAriaLabel: string }
   about: string
   signatureDishes: string
   signatureDishItemPrefix: string
@@ -917,30 +919,7 @@ export interface ChefDictionary {
     dietary: Record<DietaryCapability, string>
     region: Record<NlRegion, string>
   }
-  inquiry: {
-    modalTitle: string
-    closeAriaLabel: string
-    field: {
-      name: string
-      email: string
-      dates: string
-      groupSize: string
-      location: string
-      dietary: string
-      message: string
-    }
-    consent: string
-    submit: string
-    submitting: string
-    success: { title: string; body: string }
-    errors: {
-      rate_limited: string
-      validation: string
-      chef_not_found: string
-      email_failed: string
-      unexpected_error: string
-    }
-  }
+  inquiry: ChefInquiryDict
 }
 
 /**

@@ -90,6 +90,7 @@ export type ChefInquiryDict = {
     name: string
     email: string
     dates: string
+    datesPlaceholder: string
     groupSize: string
     location: string
     dietary: string
