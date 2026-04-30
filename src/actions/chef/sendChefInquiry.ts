@@ -1,6 +1,6 @@
 'use server'
 
-import { CHEF_INQUIRY_LIMITS, CHEF_INQUIRY_RATE_LIMIT } from '@/constants/chef'
+import { CHEF_INQUIRY_LIMITS, CHEF_INQUIRY_MESSAGES, CHEF_INQUIRY_RATE_LIMIT } from '@/constants/chef'
 import { getChefBySlug } from '@/data/chefs'
 import {
   RateLimiter,
@@ -40,13 +40,13 @@ export async function sendChefInquiry(
 
   if (!rateLimiter.isAllowed(clientId)) {
     logger.warn('Rate limit exceeded', { clientId, chefSlug })
-    return { success: false, message: 'rate_limited' }
+    return { success: false, message: CHEF_INQUIRY_MESSAGES.RATE_LIMITED }
   }
 
   const chef = getChefBySlug(chefSlug)
   if (!chef) {
     logger.warn('Chef not found or draft-in-prod', { clientId, chefSlug })
-    return { success: false, message: 'chef_not_found' }
+    return { success: false, message: CHEF_INQUIRY_MESSAGES.CHEF_NOT_FOUND }
   }
 
   const raw = {
@@ -66,7 +66,7 @@ export async function sendChefInquiry(
     const errors = Object.fromEntries(
       parsed.error.issues.map((issue) => [issue.path.join('.'), issue.message])
     )
-    return { success: false, message: 'validation', errors }
+    return { success: false, message: CHEF_INQUIRY_MESSAGES.VALIDATION, errors }
   }
 
   const data = parsed.data
@@ -131,11 +131,14 @@ export async function sendChefInquiry(
     })
     if (!emailResult.success) {
       logger.error('Chef inquiry email send failed', { chefSlug, visitorEmail: maskedEmail }, emailResult.error)
-      return { success: false, message: 'email_failed' }
+      return { success: false, message: CHEF_INQUIRY_MESSAGES.EMAIL_FAILED }
+    }
+    if (emailResult.visitorConfirmationFailed) {
+      logger.warn('Visitor confirmation email failed; chef was notified', { chefSlug, visitorEmail: maskedEmail, error: emailResult.error })
     }
   } catch (err) {
     logger.error('Chef inquiry email send threw', { chefSlug, visitorEmail: maskedEmail }, err)
-    return { success: false, message: 'unexpected_error' }
+    return { success: false, message: CHEF_INQUIRY_MESSAGES.UNEXPECTED_ERROR }
   }
 
   logger.info('Chef inquiry submission completed', { chefSlug, visitorEmail: maskedEmail })

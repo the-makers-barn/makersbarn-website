@@ -83,6 +83,17 @@ export const CHEF_INQUIRY_ERROR_CODES = {
   CONSENT_REQUIRED: 'consent_required',
 } as const
 
+// Result message codes returned by sendChefInquiry — consumed by the form component.
+export const CHEF_INQUIRY_MESSAGES = {
+  RATE_LIMITED: 'rate_limited',
+  CHEF_NOT_FOUND: 'chef_not_found',
+  VALIDATION: 'validation',
+  EMAIL_FAILED: 'email_failed',
+  UNEXPECTED_ERROR: 'unexpected_error',
+} as const
+
+export type ChefInquiryMessageCode = typeof CHEF_INQUIRY_MESSAGES[keyof typeof CHEF_INQUIRY_MESSAGES]
+
 // Form field length bounds — used by both Zod schema and dictionary error messages.
 export const CHEF_INQUIRY_LIMITS = {
   NAME_MIN: 2,

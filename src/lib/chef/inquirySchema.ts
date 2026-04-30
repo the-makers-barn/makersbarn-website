@@ -11,7 +11,8 @@ export const chefInquirySchema = z.object({
     .string()
     .trim()
     .min(CHEF_INQUIRY_LIMITS.NAME_MIN)
-    .max(CHEF_INQUIRY_LIMITS.NAME_MAX),
+    .max(CHEF_INQUIRY_LIMITS.NAME_MAX)
+    .regex(NO_CRLF),
   email: z
     .string()
     .trim()

@@ -13,6 +13,8 @@ const EMAIL_SUBJECTS = {
   USER_CONFIRMATION: 'Thank you for contacting The Makers Barn',
   BOOKING_ADMIN_NOTIFICATION: 'New Booking Request - The Makers Barn',
   BOOKING_USER_CONFIRMATION: 'Thank you for your booking request - The Makers Barn',
+  CHEF_INQUIRY_TO_CHEF: (visitorName: string) => `New retreat inquiry from ${visitorName} via MakersBarn`,
+  CHEF_INQUIRY_TO_VISITOR: (chefName: string) => `Your inquiry to ${chefName} is on its way`,
 } as const
 
 interface EmailResult {
@@ -347,6 +349,7 @@ export type ChefInquiryEmailInput = {
 
 function buildChefEmailHtml(input: ChefInquiryEmailInput): string {
   const dietaryLine = input.dietary ? escapeHtml(input.dietary) : '—'
+  const escapedUrl = escapeHtml(input.chefDetailUrl)
   return `
     <p>You have a new retreat inquiry via your MakersBarn directory page.</p>
     <table style="border-collapse:collapse">
@@ -361,7 +364,7 @@ function buildChefEmailHtml(input: ChefInquiryEmailInput): string {
     <pre style="white-space:pre-wrap;font-family:inherit">${escapeHtml(input.message)}</pre>
     <hr />
     <p style="font-size:12px;color:#666">
-      This inquiry came via <a href="${input.chefDetailUrl}">${input.chefDetailUrl}</a>.
+      This inquiry came via <a href="${escapedUrl}">${escapedUrl}</a>.
       Reply directly to ${escapeHtml(input.visitorEmail)} to take the conversation off-platform.
       A copy was sent to MakersBarn for our records.
     </p>
@@ -377,9 +380,15 @@ function buildVisitorEmailHtml(input: ChefInquiryEmailInput): string {
 `.trim()
 }
 
+function normalizeRecipients(raw: string): string {
+  return raw.includes(',')
+    ? raw.split(',').map(addr => addr.trim()).join(',')
+    : raw
+}
+
 export async function sendChefInquiryEmails(
   input: ChefInquiryEmailInput
-): Promise<{ success: boolean; error?: string }> {
+): Promise<{ success: boolean; error?: string; visitorConfirmationFailed?: boolean }> {
   const apiToken = process.env.POSTMARKAPP_API_TOKEN
   const sender = process.env.POSTMARK_SENDER_EMAIL
   const adminEmail = process.env.POSTMARK_ADMIN_EMAIL
@@ -389,28 +398,33 @@ export async function sendChefInquiryEmails(
   }
 
   const client = new postmark.ServerClient(apiToken)
+  const normalizedAdminEmail = normalizeRecipients(adminEmail)
 
   try {
     await client.sendEmail({
       From: sender,
       To: input.chef.inquiryEmail,
-      Cc: adminEmail,
+      Cc: normalizedAdminEmail,
       ReplyTo: input.visitorEmail,
-      Subject: `New retreat inquiry from ${input.visitorName} via MakersBarn`,
+      Subject: EMAIL_SUBJECTS.CHEF_INQUIRY_TO_CHEF(input.visitorName),
       HtmlBody: buildChefEmailHtml(input),
       MessageStream: 'outbound',
     })
+  } catch (err) {
+    return { success: false, error: err instanceof Error ? err.message : 'chef_email_failed' }
+  }
 
+  try {
     await client.sendEmail({
       From: sender,
       To: input.visitorEmail,
-      Subject: `Your inquiry to ${input.chef.name} is on its way`,
+      Subject: EMAIL_SUBJECTS.CHEF_INQUIRY_TO_VISITOR(input.chef.name),
       HtmlBody: buildVisitorEmailHtml(input),
       MessageStream: 'outbound',
     })
-
-    return { success: true }
   } catch (err) {
-    return { success: false, error: err instanceof Error ? err.message : 'postmark_send_failed' }
+    return { success: true, visitorConfirmationFailed: true, error: err instanceof Error ? err.message : 'visitor_email_failed' }
   }
+
+  return { success: true }
 }

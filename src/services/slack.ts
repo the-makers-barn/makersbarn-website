@@ -192,9 +192,9 @@ export function formatChefInquirySlackMessage(input: {
   location: string
 }): string {
   return [
-    `*New chef inquiry* — ${input.chefName}`,
-    `From: ${input.visitorName} <${input.visitorEmail}>`,
-    `Group: ${input.groupSize} guests · ${input.dates}`,
-    `Where: ${input.location}`,
+    `*New chef inquiry* — ${escapeSlackMarkdown(input.chefName)}`,
+    `From: ${escapeSlackMarkdown(input.visitorName)} <${escapeSlackMarkdown(input.visitorEmail)}>`,
+    `Group: ${input.groupSize} guests · ${escapeSlackMarkdown(input.dates)}`,
+    `Where: ${escapeSlackMarkdown(input.location)}`,
   ].join('\n')
 }

@@ -22,4 +22,6 @@ export {
   CHEF_INQUIRY_RATE_LIMIT,
   CHEF_INQUIRY_LIMITS,
   CHEF_INQUIRY_ERROR_CODES,
+  CHEF_INQUIRY_MESSAGES,
 } from './chef'
+export type { ChefInquiryMessageCode } from './chef'

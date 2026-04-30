@@ -1,8 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { Language } from '@/types'
 import { sendChefInquiryEmails } from '@/services/email'
 import { sendSlackMessage } from '@/services/slack'
+import { Language } from '@/types'
 
 import { sendChefInquiry } from './sendChefInquiry'
 

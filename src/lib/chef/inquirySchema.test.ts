@@ -50,6 +50,10 @@ describe('chefInquirySchema', () => {
     expect(chefInquirySchema.safeParse({ ...validInput, email: 'evil@x.com\r\nBcc: a@b.com' }).success).toBe(false)
   })
 
+  it('rejects name with CR/LF (header injection guard)', () => {
+    expect(chefInquirySchema.safeParse({ ...validInput, name: 'evil\r\nBcc: a@b.com' }).success).toBe(false)
+  })
+
   it('rejects group size below minimum', () => {
     expect(chefInquirySchema.safeParse({ ...validInput, groupSize: CHEF_INQUIRY_LIMITS.GROUP_SIZE_MIN - 1 }).success).toBe(false)
   })
