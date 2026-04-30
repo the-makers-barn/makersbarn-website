@@ -87,6 +87,7 @@ export const CHEF_INQUIRY_ERROR_CODES = {
 export const CHEF_INQUIRY_LIMITS = {
   NAME_MIN: 2,
   NAME_MAX: 80,
+  EMAIL_MAX: 254,          // RFC 5321 hard cap
   DATES_MIN: 2,
   DATES_MAX: 80,
   GROUP_SIZE_MIN: 2,

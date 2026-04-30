@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-import { BOOKING_FIELD_LIMITS } from '@/constants/booking'
 import { CHEF_INQUIRY_ERROR_CODES, CHEF_INQUIRY_LIMITS } from '@/constants/chef'
 
 // Reject email values containing CR/LF — guards against header injection
@@ -18,7 +17,7 @@ export const chefInquirySchema = z.object({
     .trim()
     .email()
     .regex(NO_CRLF)
-    .max(BOOKING_FIELD_LIMITS.EMAIL_MAX),
+    .max(CHEF_INQUIRY_LIMITS.EMAIL_MAX),
   dates: z
     .string()
     .trim()
