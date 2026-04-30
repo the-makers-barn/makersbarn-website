@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 import { SITE_CONFIG } from '@/constants/site'
 import { PUBLISHED_CHEFS } from '@/data/chefs'
-import { getLocalizedPath } from '@/lib/routing'
+import { getLocalizedPath, getChefDetailPath } from '@/lib/routing'
 import { Route, Language } from '@/types'
 
 const TOOL_ROUTE_PATHS = new Set<string>([
@@ -81,7 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const chef of PUBLISHED_CHEFS) {
     for (const locale of allLocales) {
       routes.push({
-        url: `${baseUrl}/${locale}/chefs/${chef.slug}`,
+        url: `${baseUrl}${getChefDetailPath(chef.slug, locale)}`,
         lastModified: new Date(chef.updatedAt),
         changeFrequency: 'monthly',
         priority: 0.7,
