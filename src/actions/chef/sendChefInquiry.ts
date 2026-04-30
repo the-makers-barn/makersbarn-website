@@ -1,6 +1,7 @@
 'use server'
 
 import { CHEF_INQUIRY_LIMITS, CHEF_INQUIRY_MESSAGES, CHEF_INQUIRY_RATE_LIMIT } from '@/constants/chef'
+import { SITE_CONFIG } from '@/constants/site'
 import { getChefBySlug } from '@/data/chefs'
 import {
   RateLimiter,
@@ -90,7 +91,7 @@ export async function sendChefInquiry(
     message: sanitizePlainText(data.message, CHEF_INQUIRY_LIMITS.MESSAGE_MAX),
   }
 
-  const chefDetailUrl = `https://makersbarn.nl${getChefDetailPath(chef.slug, visitorLocale)}`
+  const chefDetailUrl = `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, visitorLocale)}`
   const maskedEmail = maskEmail(data.email)
   logger.info('Chef inquiry submission started', { chefSlug, visitorEmail: maskedEmail })
 

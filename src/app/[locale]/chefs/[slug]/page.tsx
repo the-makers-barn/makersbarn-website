@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { ChefDetailPage } from '@/components/server/ChefDetailPage'
+import { SITE_CONFIG } from '@/constants/site'
 import { getChefBySlug, getChefsForEnv } from '@/data/chefs'
 import { localize } from '@/lib'
 import { getChefDetailPath } from '@/lib/routing'
@@ -14,8 +15,6 @@ export function generateStaticParams(): { slug: string }[] {
 }
 
 type Params = { locale: Language; slug: string }
-
-const SITE_URL = 'https://makersbarn.nl'
 
 const titleByLang: Record<Language, (chefName: string, region: string) => string> = {
   [Language.EN]: (name, region) => `${name} — Retreat Chef in ${region}, Netherlands`,
@@ -36,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const regionLabel = formatRegionLabel(chef.homeBase.region)
   const title = titleByLang[locale](chef.name, regionLabel)
   const description = localize(chef.tagline, locale)
-  const canonical = `${SITE_URL}${getChefDetailPath(chef.slug, locale)}`
+  const canonical = `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, locale)}`
   const isProd = process.env.VERCEL_ENV === 'production'
 
   return {
@@ -45,10 +44,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     alternates: {
       canonical,
       languages: {
-        en: `${SITE_URL}${getChefDetailPath(chef.slug, Language.EN)}`,
-        nl: `${SITE_URL}${getChefDetailPath(chef.slug, Language.NL)}`,
-        de: `${SITE_URL}${getChefDetailPath(chef.slug, Language.DE)}`,
-        'x-default': `${SITE_URL}${getChefDetailPath(chef.slug, Language.EN)}`,
+        en: `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, Language.EN)}`,
+        nl: `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, Language.NL)}`,
+        de: `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, Language.DE)}`,
+        'x-default': `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, Language.EN)}`,
       },
     },
     openGraph: {
@@ -56,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       description,
       type: 'profile',
       url: canonical,
-      images: [{ url: `${SITE_URL}${chef.gallery.hero.src}`, width: 1200, height: 630 }],
+      images: [{ url: `${SITE_CONFIG.url}${chef.gallery.hero.src}`, width: 1200, height: 630 }],
     },
     twitter: { card: 'summary_large_image', title, description },
     robots: isProd ? undefined : { index: false, follow: false },
