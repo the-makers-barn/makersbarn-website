@@ -6,6 +6,7 @@ import { SITE_CONFIG } from '@/constants/site'
 import { getChefBySlug, getChefsForEnv } from '@/data/chefs'
 import { localize } from '@/lib'
 import { getChefDetailPath } from '@/lib/routing'
+import { getServerTranslations } from '@/i18n'
 import { Language } from '@/types'
 
 export const dynamicParams = false
@@ -16,15 +17,6 @@ export function generateStaticParams(): { slug: string }[] {
 
 type Params = { locale: Language; slug: string }
 
-const titleByLang: Record<Language, (chefName: string, region: string) => string> = {
-  [Language.EN]: (name, region) => `${name} — Retreat Chef in ${region}, Netherlands`,
-  [Language.NL]: (name, region) => `${name} — Retreatchef in ${region}, Nederland`,
-  [Language.DE]: (name, region) => `${name} — Retreat-Koch in ${region}, Niederlande`,
-}
-
-const formatRegionLabel = (region: string): string =>
-  region.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
-
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { locale, slug } = await params
   const chef = getChefBySlug(slug)
@@ -32,8 +24,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     return {}
   }
 
-  const regionLabel = formatRegionLabel(chef.homeBase.region)
-  const title = titleByLang[locale](chef.name, regionLabel)
+  const dict = await getServerTranslations(locale)
+  const regionLabel = dict.chef.enums.region[chef.homeBase.region]
+  const title = dict.chef.metaTitle.replace('{name}', chef.name).replace('{region}', regionLabel)
   const description = localize(chef.tagline, locale)
   const canonical = `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, locale)}`
   const isProd = process.env.VERCEL_ENV === 'production'

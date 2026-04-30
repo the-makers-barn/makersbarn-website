@@ -944,6 +944,7 @@ export const de: Dictionary = {
   chef: {
     backLink: '← Weitere Chefs entdecken',
     draftBadge: 'ENTWURF — nur Vorschau',
+    metaTitle: '{name} — Retreat-Koch in {region}, Niederlande',
     cta: { sendInquiry: 'Anfrage an {name} senden' },
     statStrip: {
       rightFor: 'GEEIGNET FÜR',

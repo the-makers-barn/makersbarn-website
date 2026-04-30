@@ -882,6 +882,7 @@ export interface ToolsTranslations {
 export interface ChefDictionary {
   backLink: string
   draftBadge: string
+  metaTitle: string
   cta: { sendInquiry: string }
   statStrip: {
     rightFor: string
