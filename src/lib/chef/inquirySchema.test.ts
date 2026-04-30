@@ -21,9 +21,21 @@ describe('chefInquirySchema', () => {
     expect(chefInquirySchema.safeParse(validInput).success).toBe(true)
   })
 
-  it('accepts missing optional dietary field', () => {
+  it('accepts empty dietary string', () => {
+    expect(chefInquirySchema.safeParse({ ...validInput, dietary: '' }).success).toBe(true)
+  })
+
+  it('accepts absent dietary key (defaults to empty string)', () => {
     const { dietary: _dietary, ...rest } = validInput
-    expect(chefInquirySchema.safeParse({ ...rest, dietary: '' }).success).toBe(true)
+    const parsed = chefInquirySchema.safeParse(rest)
+    expect(parsed.success).toBe(true)
+    if (parsed.success) {
+      expect(parsed.data.dietary).toBe('')
+    }
+  })
+
+  it('rejects whitespace-only name (trimmed to empty)', () => {
+    expect(chefInquirySchema.safeParse({ ...validInput, name: '   ' }).success).toBe(false)
   })
 
   it('rejects missing name', () => {

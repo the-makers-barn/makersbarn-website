@@ -77,6 +77,12 @@ export const CHEF_INQUIRY_RATE_LIMIT = {
   MAX_REQUESTS: 5,
 } as const
 
+// Validation error codes — used by the inquiry schema and consumed by the
+// server action to map to localized i18n strings.
+export const CHEF_INQUIRY_ERROR_CODES = {
+  CONSENT_REQUIRED: 'consent_required',
+} as const
+
 // Form field length bounds — used by both Zod schema and dictionary error messages.
 export const CHEF_INQUIRY_LIMITS = {
   NAME_MIN: 2,

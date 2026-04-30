@@ -1,12 +1,11 @@
 import { z } from 'zod'
 
-import { CHEF_INQUIRY_LIMITS } from '@/constants/chef'
+import { BOOKING_FIELD_LIMITS } from '@/constants/booking'
+import { CHEF_INQUIRY_ERROR_CODES, CHEF_INQUIRY_LIMITS } from '@/constants/chef'
 
 // Reject email values containing CR/LF — guards against header injection
 // when the email is reflected into Postmark addresses.
 const NO_CRLF = /^[^\r\n]+$/
-
-const EMAIL_MAX_LENGTH = 254 // RFC 5321 hard cap
 
 export const chefInquirySchema = z.object({
   name: z
@@ -19,7 +18,7 @@ export const chefInquirySchema = z.object({
     .trim()
     .email()
     .regex(NO_CRLF)
-    .max(EMAIL_MAX_LENGTH),
+    .max(BOOKING_FIELD_LIMITS.EMAIL_MAX),
   dates: z
     .string()
     .trim()
@@ -47,7 +46,7 @@ export const chefInquirySchema = z.object({
     .min(CHEF_INQUIRY_LIMITS.MESSAGE_MIN)
     .max(CHEF_INQUIRY_LIMITS.MESSAGE_MAX),
   honeypot: z.string().default(''),
-  consent: z.literal(true, { error: 'consent_required' }),
+  consent: z.literal(true, { error: CHEF_INQUIRY_ERROR_CODES.CONSENT_REQUIRED }),
 })
 
 export type ChefInquiryInput = z.infer<typeof chefInquirySchema>
