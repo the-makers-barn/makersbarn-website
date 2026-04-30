@@ -1,5 +1,3 @@
-import { Language } from '@/types'
-
 export enum ChefStatus {
   DRAFT = 'draft',
   PUBLISHED = 'published',
@@ -35,6 +33,7 @@ export enum PriceTier {
   PREMIUM = 'premium',   // €€€
 }
 
+// Extensible: additional billing units (e.g. PER_GROUP_PER_DAY) may be added here.
 export enum DayRateUnit {
   PER_PERSON_PER_DAY = 'per_person_per_day',
 }
@@ -88,11 +87,8 @@ export const CHEF_INQUIRY_LIMITS = {
   GROUP_SIZE_MAX: 60,
   LOCATION_MIN: 2,
   LOCATION_MAX: 120,
+  DIETARY_MIN: 0,
   DIETARY_MAX: 500,
   MESSAGE_MIN: 20,
   MESSAGE_MAX: 1500,
 } as const
-
-// Identity check: explicitly reference Language so eslint doesn't flag the import as unused
-// once we wire languagesSpoken[] arrays at chef-data-file authoring time.
-export const CHEF_PRIMARY_LANGUAGE_DEFAULT: Language = Language.NL
