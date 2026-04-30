@@ -1,8 +1,10 @@
 import { Language } from '@/types'
 
 /**
- * Centralized mapping of image paths to multilingual alt text.
- * Keyed by image file paths (e.g., '/images/sauna.jpg').
+ * Centralized mapping of image keys to multilingual alt text.
+ * Keys are either file paths (e.g., '/images/sauna.jpg') or logical identifiers
+ * (e.g., 'chef.liesbeth-van-der-velden.avatar') — chef images use logical keys
+ * so file paths can evolve (jpg→webp/avif) without breaking the registry.
  * Each entry contains alt text for each supported language.
  */
 export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
