@@ -9,11 +9,28 @@ import {
 import { Language } from '@/types/common'
 
 /**
- * Localized<T> requires the EN value, allows optional NL/DE values.
+ * LocalizedWithFallback<T> requires the EN value, allows optional NL/DE values.
  * Use the `localize(field, lang)` helper at render time — it falls back to EN
  * when the requested language is missing.
+ *
+ * Contrast with `LocalizedString` / `ComparisonLocalizedString` (tools.ts) which require
+ * all three locales. This type intentionally only mandates EN and falls back at runtime.
  */
-export type Localized<T> = { [Language.EN]: T } & Partial<Record<Language.NL | Language.DE, T>>
+export type LocalizedWithFallback<T> = { [Language.EN]: T } & Partial<Record<Language.NL | Language.DE, T>>
+
+/**
+ * Branded string for ISO 8601 date strings (e.g. '2026-04-30').
+ * Construct via the asIsoDateString() helper at data-file authoring time
+ * so the brand carries the validation guarantee.
+ */
+export type IsoDateString = string & { readonly __brand: 'IsoDateString' }
+
+/**
+ * Construct an IsoDateString. Use at data-file authoring time only.
+ * No runtime validation — the contract is "the author asserts this is a valid ISO date."
+ * Future Task 7 (Liesbeth fixture) and any later chef data files use this helper.
+ */
+export const asIsoDateString = (s: string): IsoDateString => s as IsoDateString
 
 export type ImageRef = {
   /** Path relative to /public, e.g. '/images/chefs/liesbeth-van-der-velden/hero.jpg' */
@@ -39,25 +56,25 @@ export type ChefGallery = {
 }
 
 export type ChefAbout = {
-  headline: Localized<string>
-  paragraphs: Localized<string>[]
+  headline: LocalizedWithFallback<string>
+  paragraphs: LocalizedWithFallback<string>[]
 }
 
 export type ChefSignatureDish = {
-  name: Localized<string>
-  note: Localized<string>
+  name: LocalizedWithFallback<string>
+  note: LocalizedWithFallback<string>
 }
 
 export type ChefTestimonial = {
-  quote: Localized<string>
+  quote: LocalizedWithFallback<string>
   author: string
-  role: Localized<string>
+  role: LocalizedWithFallback<string>
 }
 
 export type ChefAtAGlance = {
-  sourcing: Localized<string>
-  credentials: Localized<string>
-  press?: Localized<string>
+  sourcing: LocalizedWithFallback<string>
+  credentials: LocalizedWithFallback<string>
+  press?: LocalizedWithFallback<string>
 }
 
 export type ChefPastRetreat = {
@@ -72,13 +89,13 @@ export type Chef = {
   status: ChefStatus
   primaryLanguage: Language
   inquiryEmail: string
-  /** ISO date string, drives sitemap lastModified. */
-  updatedAt: string
+  /** ISO date string (use asIsoDateString helper at the data-file authoring site). Drives sitemap lastModified. */
+  updatedAt: IsoDateString
 
   // Header
   name: string
   avatar: ImageRef
-  tagline: Localized<string>
+  tagline: LocalizedWithFallback<string>
   homeBase: ChefHomeBase
   servesRegions: NlRegion[]
   travelsNationwide: boolean
@@ -88,7 +105,7 @@ export type Chef = {
 
   // Stat strip
   rightFor: RetreatType[]
-  cuisineStyles: Localized<string>[]
+  cuisineStyles: LocalizedWithFallback<string>[]
   dietaryCapabilities: DietaryCapability[]
   dayRate: ChefDayRate
 

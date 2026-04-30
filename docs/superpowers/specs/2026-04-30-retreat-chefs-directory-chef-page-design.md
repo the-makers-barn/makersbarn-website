@@ -24,7 +24,7 @@ Chef onboarding is a manual cold-outreach process: build the page locally with r
 - Drafts are reachable on Vercel preview URLs with a visible `DRAFT` badge but never reachable in production and never appear in `sitemap.ts`.
 - Inquiry form submits via the existing Postmark + Slack infrastructure with shared rate limiting, structured validation, and a clear consent step.
 - Each chef's data lives in a single TypeScript file under `src/data/chefs/` matching the established `silos/` pattern, allowing per-chef PRs and clean `git blame`.
-- Chrome (labels, form, errors) is fully translated EN/NL/DE; chef-specific content (bio, dishes) is `Localized<T>` with EN required and NL/DE optional, falling back to EN at render.
+- Chrome (labels, form, errors) is fully translated EN/NL/DE; chef-specific content (bio, dishes) is `LocalizedWithFallback<T>` with EN required and NL/DE optional, falling back to EN at render.
 
 ---
 
@@ -37,7 +37,7 @@ Chef onboarding is a manual cold-outreach process: build the page locally with r
 | 3  | **Detail-page only in v1**. Listing page deferred. Back link ("← Discover more chefs") renders as a non-link visual element for now. |
 | 4  | **~10–20 chefs at launch** via cold outreach. All shipped initially as `DRAFT`; flipped to `PUBLISHED` after each chef approves. |
 | 5  | **Draft/published gate**: in `VERCEL_ENV === 'production'`, only `PUBLISHED` chefs render; others `notFound()`. In dev and Vercel preview deployments (`VERCEL_ENV !== 'production'`), all chefs render with a visible `DraftBadge`. |
-| 6  | **i18n**: `Localized<T>` type requires EN, allows optional NL/DE. Runtime helper `localize(field, lang)` falls back to EN when a translation is missing. Chrome strings (labels, form, errors) are fully translated EN/NL/DE in `src/i18n/dictionaries/`. |
+| 6  | **i18n**: `LocalizedWithFallback<T>` type requires EN, allows optional NL/DE. Runtime helper `localize(field, lang)` falls back to EN when a translation is missing. Chrome strings (labels, form, errors) are fully translated EN/NL/DE in `src/i18n/dictionaries/`. |
 | 7  | **URL pattern**: `/{locale}/chefs/{slug}`. Slug = kebab-case of chef name. |
 | 8  | **"Save to shortlist" omitted in v1**. Will be reconsidered if/when a listing or comparison page is built. |
 | 9  | **Past Retreats outbound links**: links render as `<a target="_blank" rel="noopener nofollow">` to honor the neutral-directory stance. |
@@ -75,7 +75,10 @@ Lives in `src/types/chef.ts`. Reuses the existing `Language` enum from `src/type
 ```ts
 import { Language } from '@/types'
 
-export type Localized<T> = { [Language.EN]: T } & Partial<Record<Language.NL | Language.DE, T>>
+export type LocalizedWithFallback<T> = { [Language.EN]: T } & Partial<Record<Language.NL | Language.DE, T>>
+
+export type IsoDateString = string & { readonly __brand: 'IsoDateString' }
+export const asIsoDateString = (s: string): IsoDateString => s as IsoDateString
 
 export type Chef = {
   // — Identity & gating —
@@ -83,12 +86,12 @@ export type Chef = {
   status: ChefStatus                        // DRAFT | PUBLISHED
   primaryLanguage: Language                 // chef's native language; used for chef-facing email chrome
   inquiryEmail: string                      // where Send-Inquiry routes
-  updatedAt: string                         // ISO date — drives sitemap lastModified
+  updatedAt: IsoDateString                  // ISO date (use asIsoDateString) — drives sitemap lastModified
 
   // — Header —
   name: string                              // 'Liesbeth van der Velden'
   avatar: ImageRef                          // circular 240x240+ photo
-  tagline: Localized<string>                // 'Plant-forward, fire-cooked, deeply Dutch'
+  tagline: LocalizedWithFallback<string>    // 'Plant-forward, fire-cooked, deeply Dutch'
   homeBase: { city: string; region: NlRegion }
   servesRegions: NlRegion[]                 // for 'Strongest in...' label + small map
   travelsNationwide: boolean                // toggles 'Travels nationwide' vs 'Travels regionally'
@@ -98,21 +101,21 @@ export type Chef = {
 
   // — Stat strip —
   rightFor: RetreatType[]
-  cuisineStyles: Localized<string>[]        // free-text, e.g. 'Plant-based', 'Fire / live-fire'
+  cuisineStyles: LocalizedWithFallback<string>[]  // free-text, e.g. 'Plant-based', 'Fire / live-fire'
   dietaryCapabilities: DietaryCapability[]
   dayRate: { amountEur: number; unit: DayRateUnit; tier: PriceTier }
 
   // — Body —
   gallery: { hero: ImageRef; supporting: ImageRef[] }   // hero + 4–8 supporting
-  about: { headline: Localized<string>; paragraphs: Localized<string>[] }
-  signatureDishes: { name: Localized<string>; note: Localized<string> }[]
-  testimonials: { quote: Localized<string>; author: string; role: Localized<string> }[]
+  about: { headline: LocalizedWithFallback<string>; paragraphs: LocalizedWithFallback<string>[] }
+  signatureDishes: { name: LocalizedWithFallback<string>; note: LocalizedWithFallback<string> }[]
+  testimonials: { quote: LocalizedWithFallback<string>; author: string; role: LocalizedWithFallback<string> }[]
 
   // — Sidebar —
   atAGlance: {
-    sourcing: Localized<string>
-    credentials: Localized<string>
-    press?: Localized<string>
+    sourcing: LocalizedWithFallback<string>
+    credentials: LocalizedWithFallback<string>
+    press?: LocalizedWithFallback<string>
   }
   pastRetreats: { name: string; url?: string }[]
 }
@@ -188,9 +191,9 @@ export enum NlRegion {
 ```ts
 // src/lib/chef/localized.ts
 import { Language } from '@/types'
-import type { Localized } from '@/types/chef'
+import type { LocalizedWithFallback } from '@/types/chef'
 
-export function localize<T>(field: Localized<T>, lang: Language): T {
+export function localize<T>(field: LocalizedWithFallback<T>, lang: Language): T {
   return field[lang] ?? field[Language.EN]
 }
 ```
@@ -288,7 +291,7 @@ src/
 │   └── ...                               # one file per chef
 │
 ├── constants/chef.ts                     # All chef-related enums
-├── types/chef.ts                         # Chef, Localized<T>, ImageRef
+├── types/chef.ts                         # Chef, LocalizedWithFallback<T>, IsoDateString, ImageRef
 └── i18n/dictionaries/{en,nl,de}.ts       # Add `chef` namespace
 ```
 
@@ -540,7 +543,7 @@ Rationale: chefs are individuals, so `Person` + nested `Offer` is more accurate 
 
 ## 7. i18n & Formatting
 
-### 7.1 `Localized<T>` semantics
+### 7.1 `LocalizedWithFallback<T>` semantics
 
 - Type requires EN, allows optional NL/DE.
 - Runtime `localize(field, lang)` returns `field[lang] ?? field[Language.EN]`.

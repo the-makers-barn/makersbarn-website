@@ -17,7 +17,7 @@
 ### Created
 ```
 src/constants/chef.ts                                             # Enums + region coordinates
-src/types/chef.ts                                                 # Chef, Localized<T>, ImageRef
+src/types/chef.ts                                                 # Chef, LocalizedWithFallback<T>, IsoDateString, ImageRef
 src/lib/chef/localized.ts                                         # localize<T>() helper
 src/lib/chef/localized.test.ts
 src/lib/chef/inquirySchema.ts                                     # Zod schema
@@ -256,11 +256,28 @@ import {
 } from '@/constants/chef'
 
 /**
- * Localized<T> requires the EN value, allows optional NL/DE values.
+ * LocalizedWithFallback<T> requires the EN value, allows optional NL/DE values.
  * Use the `localize(field, lang)` helper at render time — it falls back to EN
  * when the requested language is missing.
+ *
+ * Contrast with `LocalizedString` / `ComparisonLocalizedString` (tools.ts) which require
+ * all three locales. This type intentionally only mandates EN and falls back at runtime.
  */
-export type Localized<T> = { [Language.EN]: T } & Partial<Record<Language.NL | Language.DE, T>>
+export type LocalizedWithFallback<T> = { [Language.EN]: T } & Partial<Record<Language.NL | Language.DE, T>>
+
+/**
+ * Branded string for ISO 8601 date strings (e.g. '2026-04-30').
+ * Construct via the asIsoDateString() helper at data-file authoring time
+ * so the brand carries the validation guarantee.
+ */
+export type IsoDateString = string & { readonly __brand: 'IsoDateString' }
+
+/**
+ * Construct an IsoDateString. Use at data-file authoring time only.
+ * No runtime validation — the contract is "the author asserts this is a valid ISO date."
+ * Future Task 7 (Liesbeth fixture) and any later chef data files use this helper.
+ */
+export const asIsoDateString = (s: string): IsoDateString => s as IsoDateString
 
 export type ImageRef = {
   /** Path relative to /public, e.g. '/images/chefs/liesbeth-van-der-velden/hero.jpg' */
@@ -286,25 +303,25 @@ export type ChefGallery = {
 }
 
 export type ChefAbout = {
-  headline: Localized<string>
-  paragraphs: Localized<string>[]
+  headline: LocalizedWithFallback<string>
+  paragraphs: LocalizedWithFallback<string>[]
 }
 
 export type ChefSignatureDish = {
-  name: Localized<string>
-  note: Localized<string>
+  name: LocalizedWithFallback<string>
+  note: LocalizedWithFallback<string>
 }
 
 export type ChefTestimonial = {
-  quote: Localized<string>
+  quote: LocalizedWithFallback<string>
   author: string
-  role: Localized<string>
+  role: LocalizedWithFallback<string>
 }
 
 export type ChefAtAGlance = {
-  sourcing: Localized<string>
-  credentials: Localized<string>
-  press?: Localized<string>
+  sourcing: LocalizedWithFallback<string>
+  credentials: LocalizedWithFallback<string>
+  press?: LocalizedWithFallback<string>
 }
 
 export type ChefPastRetreat = {
@@ -319,13 +336,13 @@ export type Chef = {
   status: ChefStatus
   primaryLanguage: Language
   inquiryEmail: string
-  /** ISO date string, drives sitemap lastModified. */
-  updatedAt: string
+  /** ISO date string (use asIsoDateString helper at the data-file authoring site). Drives sitemap lastModified. */
+  updatedAt: IsoDateString
 
   // Header
   name: string
   avatar: ImageRef
-  tagline: Localized<string>
+  tagline: LocalizedWithFallback<string>
   homeBase: ChefHomeBase
   servesRegions: NlRegion[]
   travelsNationwide: boolean
@@ -335,7 +352,7 @@ export type Chef = {
 
   // Stat strip
   rightFor: RetreatType[]
-  cuisineStyles: Localized<string>[]
+  cuisineStyles: LocalizedWithFallback<string>[]
   dietaryCapabilities: DietaryCapability[]
   dayRate: ChefDayRate
 
@@ -368,7 +385,7 @@ Expected: PASS.
 
 ```bash
 git add src/types/chef.ts src/types/index.ts
-git commit -m "feat(chefs): add Chef and Localized<T> types"
+git commit -m "feat(chefs): add Chef, LocalizedWithFallback<T>, and IsoDateString types"
 ```
 
 ---
@@ -481,9 +498,9 @@ Create `src/lib/chef/localized.ts`:
 
 ```ts
 import { Language } from '@/types'
-import type { Localized } from '@/types'
+import type { LocalizedWithFallback } from '@/types'
 
-export function localize<T>(field: Localized<T>, lang: Language): T {
+export function localize<T>(field: LocalizedWithFallback<T>, lang: Language): T {
   return field[lang] ?? field[Language.EN]
 }
 ```
@@ -689,13 +706,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { ChefStatus } from '@/constants/chef'
 import { Language } from '@/types'
 import type { Chef } from '@/types'
+import { asIsoDateString } from '@/types/chef'
 
 const baseChef = (overrides: Partial<Chef>): Chef => ({
   slug: 'test-chef',
   status: ChefStatus.PUBLISHED,
   primaryLanguage: Language.EN,
   inquiryEmail: 'test@example.com',
-  updatedAt: '2026-04-30',
+  updatedAt: asIsoDateString('2026-04-30'),
   name: 'Test Chef',
   avatar: { src: '/images/chefs/test/avatar.jpg', altKey: 'chef.test.avatar' },
   tagline: { [Language.EN]: 'A test chef' },
@@ -861,7 +879,7 @@ These placeholders only need to exist at build time. Real images come during che
 
 - [ ] **Step 2: Register alt text for each image**
 
-Modify `src/data/imageAltText.ts` — add entries for each chef image. Match the existing pattern in the file (likely a flat object keyed by `altKey` with `Localized<string>` values):
+Modify `src/data/imageAltText.ts` — add entries for each chef image. Match the existing pattern in the file (likely a flat object keyed by `altKey` with `LocalizedWithFallback<string>` values):
 
 ```ts
 'chef.liesbeth-van-der-velden.avatar': {
@@ -913,6 +931,7 @@ import {
 } from '@/constants/chef'
 import { Language } from '@/types'
 import type { Chef } from '@/types'
+import { asIsoDateString } from '@/types/chef'
 
 export const LIESBETH_VAN_DER_VELDEN_CHEF: Chef = {
   // — Identity & gating —
@@ -920,7 +939,7 @@ export const LIESBETH_VAN_DER_VELDEN_CHEF: Chef = {
   status: ChefStatus.DRAFT, // Flip to PUBLISHED only after the chef has approved the page.
   primaryLanguage: Language.NL,
   inquiryEmail: 'liesbeth@example.com', // TODO during onboarding: replace with real address
-  updatedAt: '2026-04-30',
+  updatedAt: asIsoDateString('2026-04-30'),
 
   // — Header —
   name: 'Liesbeth van der Velden',
