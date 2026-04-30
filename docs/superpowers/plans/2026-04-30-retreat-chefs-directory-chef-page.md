@@ -75,7 +75,7 @@ docs/superpowers/chef-publishing-checklist.md
 src/types/index.ts                                                # Re-export Chef types
 src/constants/index.ts                                            # Re-export ChefStatus, RetreatType, etc.
 src/lib/index.ts                                                  # Re-export localize
-src/lib/routing.ts                                                # Add chefDetailPath helper
+src/lib/routing.ts                                                # Add getChefDetailPath helper
 src/types/navigation.ts                                           # Add Route.CHEF_DETAIL
 src/i18n/dictionaries/en.ts                                       # Add chef namespace
 src/i18n/dictionaries/nl.ts                                       # Add chef namespace
@@ -406,12 +406,12 @@ Note the exact location and member style.
 Modify `src/types/navigation.ts`. Inside the `Route` enum, add (preserving the existing style — string-valued enums with route paths):
 
 ```ts
-CHEF_DETAIL = '/chefs',  // base path; full URL composed with slug via chefDetailPath()
+CHEF_DETAIL = '/chefs',  // base path; full URL composed with slug via getChefDetailPath()
 ```
 
 If the existing pattern uses suffix-included paths, add it there. Match exact style of the surrounding members.
 
-- [ ] **Step 3: Add `chefDetailPath` helper to `lib/routing.ts`**
+- [ ] **Step 3: Add `getChefDetailPath` helper to `lib/routing.ts`**
 
 Modify `src/lib/routing.ts` — append:
 
@@ -420,10 +420,10 @@ import { Language } from '@/types'
 
 /**
  * Build the localized URL for a chef detail page.
- * Example: chefDetailPath('liesbeth-van-der-velden', Language.EN) → '/en/chefs/liesbeth-van-der-velden'
+ * Example: getChefDetailPath('liesbeth-van-der-velden', Language.EN) → '/en/chefs/liesbeth-van-der-velden'
  */
-export function chefDetailPath(slug: string, locale: Language): string {
-  return `/${locale}/chefs/${slug}`
+export function getChefDetailPath(slug: string, locale: Language): string {
+  return `/${locale}${Route.CHEFS}/${slug}`
 }
 ```
 
@@ -438,7 +438,7 @@ Expected: PASS.
 
 ```bash
 git add src/types/navigation.ts src/lib/routing.ts
-git commit -m "feat(chefs): add CHEF_DETAIL route and chefDetailPath helper"
+git commit -m "feat(chefs): add CHEF_DETAIL route and getChefDetailPath helper"
 ```
 
 ---
@@ -1376,7 +1376,7 @@ import {
   formatChefInquirySlackMessage,
   sendSlackMessage,
 } from '@/services/slack'
-import { chefDetailPath } from '@/lib/routing'
+import { getChefDetailPath } from '@/lib/routing'
 import { Language } from '@/types'
 
 const logger = createLogger('chef-inquiry-action')
@@ -1453,7 +1453,7 @@ export async function sendChefInquiry(
     message: sanitizePlainText(data.message, CHEF_INQUIRY_LIMITS.MESSAGE_MAX),
   }
 
-  const chefDetailUrl = `https://makersbarn.nl${chefDetailPath(chef.slug, visitorLocale)}`
+  const chefDetailUrl = `https://makersbarn.nl${getChefDetailPath(chef.slug, visitorLocale)}`
   const maskedEmail = maskEmail(data.email)
   logger.info('Chef inquiry submission started', { chefSlug, visitorEmail: maskedEmail })
 
@@ -3694,7 +3694,7 @@ import { notFound } from 'next/navigation'
 import { ChefDetailPage } from '@/components/server/ChefDetailPage'
 import { getChefBySlug, getChefsForEnv } from '@/data/chefs'
 import { localize } from '@/lib'
-import { chefDetailPath } from '@/lib/routing'
+import { getChefDetailPath } from '@/lib/routing'
 import type { Language } from '@/types'
 
 export const dynamicParams = false
@@ -3719,7 +3719,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const title = titleByLang[locale] ?? titleByLang.en
   const description = localize(chef.tagline, locale)
 
-  const canonical = `https://makersbarn.nl${chefDetailPath(chef.slug, locale)}`
+  const canonical = `https://makersbarn.nl${getChefDetailPath(chef.slug, locale)}`
   const isProd = process.env.VERCEL_ENV === 'production'
 
   return {
@@ -3728,10 +3728,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     alternates: {
       canonical,
       languages: {
-        en: `https://makersbarn.nl${chefDetailPath(chef.slug, 'en' as Language)}`,
-        nl: `https://makersbarn.nl${chefDetailPath(chef.slug, 'nl' as Language)}`,
-        de: `https://makersbarn.nl${chefDetailPath(chef.slug, 'de' as Language)}`,
-        'x-default': `https://makersbarn.nl${chefDetailPath(chef.slug, 'en' as Language)}`,
+        en: `https://makersbarn.nl${getChefDetailPath(chef.slug, 'en' as Language)}`,
+        nl: `https://makersbarn.nl${getChefDetailPath(chef.slug, 'nl' as Language)}`,
+        de: `https://makersbarn.nl${getChefDetailPath(chef.slug, 'de' as Language)}`,
+        'x-default': `https://makersbarn.nl${getChefDetailPath(chef.slug, 'en' as Language)}`,
       },
     },
     openGraph: {

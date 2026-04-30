@@ -349,7 +349,7 @@ A single shared `nl-outline.svg` lives at `public/images/chefs/_assets/nl-outlin
 - `getServerTranslations` (existing i18n helper) — used by every server component for chrome.
 - `cn` utility (existing `lib/cn`) — class-name composition.
 - Typography CSS variables from `src/constants/typography.ts` and `globals.css` — never hardcoded font sizes/colors.
-- `Route` enum (existing `src/types`) — extended with `Route.CHEF_DETAIL` and a `chefDetailPath(slug, locale)` helper.
+- `Route` enum (existing `src/types`) — extended with `Route.CHEF_DETAIL` and a `getChefDetailPath(slug, locale)` helper.
 
 ---
 
