@@ -13,7 +13,7 @@ type Props = { chef: Chef; lang: Language; inquiryDict: ChefInquiryDict }
 
 export function ChefInquiryModal({ chef, lang, inquiryDict }: Props) {
   const [isOpen, setIsOpen] = useState(false)
-  const dialogRef = useRef<HTMLDivElement>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
   const close = useCallback(() => {
     setIsOpen(false)
@@ -21,6 +21,16 @@ export function ChefInquiryModal({ chef, lang, inquiryDict }: Props) {
       history.replaceState(null, '', window.location.pathname + window.location.search)
     }
   }, [])
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) { return }
+    if (isOpen && !dialog.open) {
+      dialog.showModal()
+    } else if (!isOpen && dialog.open) {
+      dialog.close()
+    }
+  }, [isOpen])
 
   // Open via hash navigation (#chef-inquiry).
   useEffect(() => {
@@ -36,51 +46,31 @@ export function ChefInquiryModal({ chef, lang, inquiryDict }: Props) {
     }
   }, [])
 
-  // Esc to close.
-  useEffect(() => {
-    if (!isOpen) {
-      return
-    }
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        close()
-      }
-    }
-    window.addEventListener('keydown', handler)
-    return () => {
-      window.removeEventListener('keydown', handler)
-    }
-  }, [isOpen, close])
-
-  if (!isOpen) {
-    return null
-  }
-
   const title = inquiryDict.modalTitle.replace('{name}', chef.name)
 
   return (
-    <div className={styles.overlay} onClick={close} aria-hidden={false}>
-      <div
-        ref={dialogRef}
-        className={styles.modal}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="chef-inquiry-title"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className={styles.modalHeader}>
-          <h2 id="chef-inquiry-title" className={styles.modalTitle}>{title}</h2>
-          <button
-            type="button"
-            onClick={close}
-            className={styles.closeButton}
-            aria-label={inquiryDict.closeAriaLabel}
-          >
-            ×
-          </button>
+    <dialog
+      ref={dialogRef}
+      onClose={close}
+      onClick={(e) => { if (e.target === dialogRef.current) { close() } }}
+      className={styles.dialog}
+    >
+      {isOpen && (
+        <div className={styles.modal}>
+          <div className={styles.modalHeader}>
+            <h2 id="chef-inquiry-title" className={styles.modalTitle}>{title}</h2>
+            <button
+              type="button"
+              onClick={close}
+              className={styles.closeButton}
+              aria-label={inquiryDict.closeAriaLabel}
+            >
+              ×
+            </button>
+          </div>
+          <ChefInquiryForm chef={chef} lang={lang} inquiryDict={inquiryDict} />
         </div>
-        <ChefInquiryForm chef={chef} lang={lang} inquiryDict={inquiryDict} onSuccess={close} />
-      </div>
-    </div>
+      )}
+    </dialog>
   )
 }

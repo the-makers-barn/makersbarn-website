@@ -1,16 +1,15 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
 
+import type { SendChefInquiryResult } from '@/actions/chef/sendChefInquiry'
 import { sendChefInquiry } from '@/actions/chef/sendChefInquiry'
 import { CHEF_INQUIRY_LIMITS } from '@/constants/chef'
 import type { Chef, ChefInquiryDict, Language } from '@/types'
 
 import styles from './ChefInquiryForm.module.css'
 
-type Props = { chef: Chef; lang: Language; inquiryDict: ChefInquiryDict; onSuccess: () => void }
-
-type ActionResult = { success: boolean; message?: string; errors?: Record<string, string> }
+type Props = { chef: Chef; lang: Language; inquiryDict: ChefInquiryDict }
 
 const interpolate = (template: string, vars: Record<string, string>): string =>
   Object.entries(vars).reduce((s, [k, v]) => s.replace(`{${k}}`, v), template)
@@ -23,11 +22,18 @@ const resolveErrorMessage = (
   return key in errors ? errors[key] : errors.unexpected_error
 }
 
-function buildSubmitAction(slug: string, lang: Language, onSuccess: () => void) {
-  return async (_prev: ActionResult | null, formData: FormData): Promise<ActionResult> => {
+function buildSubmitAction(
+  slug: string,
+  lang: Language,
+  onSubmittedEmail: (email: string) => void,
+) {
+  return async (_prev: SendChefInquiryResult | null, formData: FormData): Promise<SendChefInquiryResult> => {
     formData.set('locale', lang)
     const result = await sendChefInquiry(slug, formData)
-    if (result.success) { onSuccess() }
+    if (result.success) {
+      const email = formData.get('email')
+      if (typeof email === 'string') { onSubmittedEmail(email) }
+    }
     return result
   }
 }
@@ -54,6 +60,7 @@ function FormFields({ fieldDict, errors, messageLabel }: FieldsProps) {
           type="text"
           name="name"
           required
+          autoFocus
           minLength={CHEF_INQUIRY_LIMITS.NAME_MIN}
           maxLength={CHEF_INQUIRY_LIMITS.NAME_MAX}
           aria-invalid={Boolean(errors?.name)}
@@ -83,7 +90,7 @@ function FormFields({ fieldDict, errors, messageLabel }: FieldsProps) {
           required
           minLength={CHEF_INQUIRY_LIMITS.DATES_MIN}
           maxLength={CHEF_INQUIRY_LIMITS.DATES_MAX}
-          placeholder="5–9 May 2026"
+          placeholder={fieldDict.datesPlaceholder}
         />
       </label>
 
@@ -155,11 +162,29 @@ function FormFooter({ consentLabel, errorMessage, pending, submitLabel, submitti
   )
 }
 
-export function ChefInquiryForm({ chef, lang, inquiryDict, onSuccess }: Props) {
-  const [state, formAction, pending] = useActionState<ActionResult | null, FormData>(
-    buildSubmitAction(chef.slug, lang, onSuccess),
+type SuccessPanelProps = { title: string; body: string }
+
+function SuccessPanel({ title, body }: SuccessPanelProps) {
+  return (
+    <div className={styles.successPanel} role="status">
+      <p className={styles.successTitle}>{title}</p>
+      <p className={styles.successBody}>{body}</p>
+    </div>
+  )
+}
+
+export function ChefInquiryForm({ chef, lang, inquiryDict }: Props) {
+  const [submittedEmail, setSubmittedEmail] = useState<string | null>(null)
+  const [state, formAction, pending] = useActionState<SendChefInquiryResult | null, FormData>(
+    buildSubmitAction(chef.slug, lang, setSubmittedEmail),
     null,
   )
+
+  if (state?.success && submittedEmail !== null) {
+    const successTitle = interpolate(inquiryDict.success.title, { name: chef.name })
+    const successBody = interpolate(inquiryDict.success.body, { name: chef.name, email: submittedEmail })
+    return <SuccessPanel title={successTitle} body={successBody} />
+  }
 
   const messageLabel = interpolate(inquiryDict.field.message, { name: chef.name })
   const consentLabel = interpolate(inquiryDict.consent, { name: chef.name })
