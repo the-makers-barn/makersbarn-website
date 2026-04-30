@@ -1,4 +1,5 @@
 import { AccommodationCabin, Language } from '@/types'
+import type { DietaryCapability, NlRegion, RetreatType } from '@/constants/chef'
 
 /**
  * Navigation translations
@@ -877,7 +878,7 @@ export interface ToolsTranslations {
 /**
  * Chef detail page translations
  */
-export type ChefDictionary = {
+export interface ChefDictionary {
   backLink: string
   draftBadge: string
   cta: { sendInquiry: string }
@@ -912,9 +913,9 @@ export type ChefDictionary = {
     pastRetreats: string
   }
   enums: {
-    retreatType: Record<string, string>
-    dietary: Record<string, string>
-    region: Record<string, string>
+    retreatType: Record<RetreatType, string>
+    dietary: Record<DietaryCapability, string>
+    region: Record<NlRegion, string>
   }
   inquiry: {
     modalTitle: string

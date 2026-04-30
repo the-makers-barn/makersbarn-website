@@ -948,7 +948,7 @@ export const de: Dictionary = {
     statStrip: {
       rightFor: 'GEEIGNET FÜR',
       cooks: 'KOCHT',
-      accommodates: 'BERÜCKSICHTIGT',
+      accommodates: 'ERNÄHRUNG',
       dayRate: 'TAGESSATZ',
       dayRateUnit: 'p.P. / Tag',
       tierLabel: { budget: 'Budget', standard: 'Standard', premium: 'Premium' },
@@ -982,11 +982,11 @@ export const de: Dictionary = {
       retreatType: {
         yoga: 'Yoga-Retreats',
         wellness: 'Wellness',
-        creative: 'Kreative Treffen',
+        creative: 'Kreative Zusammenkünfte',
         corporate: 'Firmen-Offsites',
         breathwork: 'Atemarbeit',
         meditation: 'Meditation',
-        writing: 'Schreib-Retreats',
+        writing: 'Schreibretreats',
         photography: 'Fotografie-Retreats',
       },
       dietary: {

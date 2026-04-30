@@ -948,12 +948,12 @@ export const nl: Dictionary = {
 
   chef: {
     backLink: '← Ontdek meer chefs',
-    draftBadge: 'CONCEPT — alleen voor voorbeeld',
+    draftBadge: 'CONCEPT — alleen ter preview',
     cta: { sendInquiry: 'Stuur {name} een aanvraag' },
     statStrip: {
       rightFor: 'GESCHIKT VOOR',
       cooks: 'KOOKT',
-      accommodates: 'GESCHIKT BIJ',
+      accommodates: 'DIËTEN',
       dayRate: 'DAGTARIEF',
       dayRateUnit: 'pp / dag',
       tierLabel: { budget: 'Budget', standard: 'Standaard', premium: 'Premium' },
@@ -1002,7 +1002,7 @@ export const nl: Dictionary = {
         nut_free: 'Notenvrij',
         kosher: 'Koosjer',
         halal: 'Halal',
-        allergy_aware: 'Allergie-bewust',
+        allergy_aware: 'Allergiebewust',
         raw: 'Rauwkost',
         keto: 'Keto',
       },
