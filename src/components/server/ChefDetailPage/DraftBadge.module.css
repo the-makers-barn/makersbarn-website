@@ -1,0 +1,14 @@
+.badge {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fef3c7;
+  color: #92400e;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wide);
+  border-bottom: 1px solid #fbbf24;
+}
