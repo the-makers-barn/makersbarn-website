@@ -875,6 +875,74 @@ export interface ToolsTranslations {
 }
 
 /**
+ * Chef detail page translations
+ */
+export type ChefDictionary = {
+  backLink: string
+  draftBadge: string
+  cta: { sendInquiry: string }
+  statStrip: {
+    rightFor: string
+    cooks: string
+    accommodates: string
+    dayRate: string
+    dayRateUnit: string
+    tierLabel: { budget: string; standard: string; premium: string }
+  }
+  headerMeta: { guests: string; yearsCooking: string }
+  about: string
+  signatureDishes: string
+  signatureDishItemPrefix: string
+  testimonials: string
+  sidebar: {
+    operatesIn: string
+    travelsNationwide: string
+    travelsRegional: string
+    strongestIn: string
+    homeBase: string
+    atAGlance: string
+    atAGlanceLabels: {
+      groupSize: string
+      languages: string
+      experience: string
+      sourcing: string
+      credentials: string
+      press: string
+    }
+    pastRetreats: string
+  }
+  enums: {
+    retreatType: Record<string, string>
+    dietary: Record<string, string>
+    region: Record<string, string>
+  }
+  inquiry: {
+    modalTitle: string
+    closeAriaLabel: string
+    field: {
+      name: string
+      email: string
+      dates: string
+      groupSize: string
+      location: string
+      dietary: string
+      message: string
+    }
+    consent: string
+    submit: string
+    submitting: string
+    success: { title: string; body: string }
+    errors: {
+      rate_limited: string
+      validation: string
+      chef_not_found: string
+      email_failed: string
+      unexpected_error: string
+    }
+  }
+}
+
+/**
  * Complete dictionary structure for a single language
  */
 export interface Dictionary {
@@ -900,6 +968,7 @@ export interface Dictionary {
   retreats: RetreatsHubTranslations
   comparisonTeaser: ComparisonTeaserTranslations
   tools: ToolsTranslations
+  chef: ChefDictionary
 }
 
 /**
