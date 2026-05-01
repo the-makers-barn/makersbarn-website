@@ -1065,9 +1065,7 @@ export const de: Dictionary = {
       h1: 'Private chefs for retreats in the Netherlands',
       subtitle: 'A practical guide to finding, evaluating, and booking a chef for your retreat — plus the small directory we have curated at Makers Barn.',
     },
-    intro: {
-      paragraph: 'Most retreat hosts underestimate what booking a chef actually involves. Lead times, dietary fit, on-site logistics, and pricing structures vary widely. This guide covers what to look for, how pricing works in the Netherlands, and where to find chefs who travel.',
-    },
+    intro: 'Most retreat hosts underestimate what booking a chef actually involves. Lead times, dietary fit, on-site logistics, and pricing structures vary widely. This guide covers what to look for, how pricing works in the Netherlands, and where to find chefs who travel.',
     sections: {
       whatToLookFor: {
         h2: 'What to look for in a retreat chef',
@@ -1099,7 +1097,7 @@ export const de: Dictionary = {
       framingLine: 'These are chefs we have worked with and trust. Most travel beyond Makers Barn.',
       card: {
         viewProfile: 'View profile',
-        draftBadge: 'Draft',
+        draftBadge: 'DRAFT',
       },
     },
     launchingSoon: {
@@ -1107,14 +1105,12 @@ export const de: Dictionary = {
       body: 'We are vetting chefs in small batches. The guidance above is free to use — and if you would like to be matched when chefs go live, tell us what you are planning.',
       inlineCtaLabel: 'Tell us what you are planning →',
     },
-    facts: {
-      items: [
-        { number: '8–20', description: 'Typical retreat group size' },
-        { number: '€350–€650', description: 'Day-rate range for one chef' },
-        { number: '4–8 wks', description: 'Typical lead time to book' },
-        { number: '12 provinces', description: 'Coverage across the Netherlands' },
-      ],
-    },
+    facts: [
+      { number: '8–20', description: 'Typical retreat group size' },
+      { number: '€350–€650', description: 'Day-rate range for one chef' },
+      { number: '4–8 wks', description: 'Typical lead time to book' },
+      { number: '12 provinces', description: 'Coverage across the Netherlands' },
+    ],
     faq: {
       h2: 'Frequently asked questions',
       items: [

@@ -481,7 +481,7 @@ export interface ChefsListingDualCtaCard {
 export interface ChefsListingDict {
   meta: { title: string; description: string }
   hero: { eyebrow: string; h1: string; subtitle: string }
-  intro: { paragraph: string }
+  intro: string
   sections: {
     whatToLookFor: ChefsListingSection
     pricing: ChefsListingSection
@@ -497,9 +497,7 @@ export interface ChefsListingDict {
     body: string
     inlineCtaLabel: string
   }
-  facts: {
-    items: readonly ChefsListingFactItem[]
-  }
+  facts: readonly ChefsListingFactItem[]
   faq: {
     h2: string
     items: readonly ChefsListingFaqItem[]
