@@ -81,7 +81,7 @@ export function QuestionForm({ contactIntent }: QuestionFormProps = {}) {
         setStatusMessage(statusMessages[FormStatus.ERROR])
       }
     },
-    [formData, statusMessages]
+    [formData, statusMessages, contactIntent]
   )
 
   const isSubmitting = status === FormStatus.LOADING

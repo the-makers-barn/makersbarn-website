@@ -1,5 +1,11 @@
 import { ContactIntent } from '@/types'
 
+/**
+ * Both maps below use `Record<ContactIntent, string | undefined>` (NOT
+ * `Partial<Record<...>>`) on purpose: every intent value MUST appear as a key
+ * so adding a new ContactIntent member elsewhere produces a compile error
+ * here until the new intent is explicitly handled (label or `undefined`).
+ */
 export const CONTACT_SOURCE_SLACK_LABEL: Record<ContactIntent, string | undefined> = {
   [ContactIntent.QUESTION]: undefined,
   [ContactIntent.BOOKING]: undefined,
