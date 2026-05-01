@@ -180,7 +180,7 @@ export enum ContactIntent {
 chefsListing: {
   meta: { title: string; description: string },
   hero: { eyebrow: string; h1: string; subtitle: string },
-  intro: { paragraph: string },
+  intro: string,
   sections: {
     whatToLookFor: { h2: string; paragraphs: readonly string[] },
     pricing:       { h2: string; paragraphs: readonly string[] },
@@ -196,9 +196,7 @@ chefsListing: {
     body: string,
     inlineCtaLabel: string,             // "Tell us what you're planning →"
   },
-  facts: {
-    items: ReadonlyArray<{ number: string; description: string }>,  // 3-4 items
-  },
+  facts: ReadonlyArray<{ number: string; description: string }>,  // 3-4 items
   faq: {
     h2: string,
     items: ReadonlyArray<{ question: string; answer: string }>,     // 5-6 items
