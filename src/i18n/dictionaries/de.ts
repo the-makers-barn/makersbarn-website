@@ -12,6 +12,8 @@ export const de: Dictionary = {
     surroundings: 'Umgebung',
     contact: 'Kontakt',
     book: 'Buchen',
+    // TODO(i18n): translate to de
+    chefs: 'Chefs',
   },
 
   hero: {

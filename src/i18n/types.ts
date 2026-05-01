@@ -13,6 +13,7 @@ export interface NavTranslations {
   surroundings: string
   contact: string
   book: string
+  chefs: string
 }
 
 /**

@@ -9,6 +9,7 @@ export const en: Dictionary = {
     surroundings: 'Surroundings',
     contact: 'Contact',
     book: 'Book',
+    chefs: 'Chefs',
   },
 
   hero: {

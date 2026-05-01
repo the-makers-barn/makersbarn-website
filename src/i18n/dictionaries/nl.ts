@@ -12,6 +12,8 @@ export const nl: Dictionary = {
     surroundings: 'Omgeving',
     contact: 'Contact',
     book: 'Boek',
+    // TODO(i18n): translate to nl
+    chefs: 'Chefs',
   },
 
   hero: {
