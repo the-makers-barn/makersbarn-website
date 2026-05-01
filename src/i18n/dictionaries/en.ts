@@ -1151,5 +1151,8 @@ export const en: Dictionary = {
         button: 'Apply to join',
       },
     },
+    crossLink: {
+      label: 'Working with a chef? See our guide →',
+    },
   },
 } as const

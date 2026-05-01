@@ -1162,5 +1162,8 @@ export const nl: Dictionary = {
         button: 'Apply to join',
       },
     },
+    crossLink: {
+      label: 'Working with a chef? See our guide →',  // TODO(i18n): translate
+    },
   },
 } as const

@@ -315,6 +315,12 @@ export default async function ExperiencesPage({ params }: ExperiencesPageProps) 
 
         <hr className={styles.divider} />
 
+        <p style={{ textAlign: 'center', margin: '2rem 0' }}>
+          <Link href={getLocalizedPath(Route.CHEFS, validLocale)}>
+            {t.chefsListing.crossLink.label}
+          </Link>
+        </p>
+
         {/* CTA Footer */}
         <footer className={styles.ctaFooter}>
           <h2 className={styles.ctaTitle}>{t.experiences.ctaTitle}</h2>

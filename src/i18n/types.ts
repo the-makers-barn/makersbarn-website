@@ -507,6 +507,7 @@ export interface ChefsListingDict {
     looking: ChefsListingDualCtaCard
     join: ChefsListingDualCtaCard
   }
+  crossLink: { label: string }
 }
 
 /**

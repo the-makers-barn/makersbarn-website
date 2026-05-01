@@ -214,6 +214,12 @@ export default async function HostARetreatPage({ params }: PageProps) {
             <ArrowRightIcon />
           </Link>
         </section>
+
+        <p style={{ textAlign: 'center', margin: '2rem 0' }}>
+          <Link href={getLocalizedPath(Route.CHEFS, validLocale)}>
+            {t.chefsListing.crossLink.label}
+          </Link>
+        </p>
       </div>
     </>
   )
