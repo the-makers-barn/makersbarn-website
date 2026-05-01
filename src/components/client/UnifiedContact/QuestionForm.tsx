@@ -31,7 +31,7 @@ const FORM_FIELD_IDS = {
   MESSAGE: 'question-message',
 } as const
 
-export function QuestionForm({ contactIntent: _contactIntent }: QuestionFormProps = {}) {
+export function QuestionForm({ contactIntent }: QuestionFormProps = {}) {
   const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM_DATA)
   const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE)
   const [statusMessage, setStatusMessage] = useState<string>('')
@@ -61,7 +61,11 @@ export function QuestionForm({ contactIntent: _contactIntent }: QuestionFormProp
       setStatusMessage(statusMessages[FormStatus.LOADING])
 
       try {
-        const result = await submitContactForm(formData)
+        const payload: ContactFormData = {
+          ...formData,
+          ...(contactIntent ? { source: contactIntent } : {}),
+        }
+        const result = await submitContactForm(payload)
 
         if (result.success) {
           track(AnalyticsEvent.QUESTION_FORM_SUBMITTED)

@@ -4,7 +4,7 @@
 
 import { z } from 'zod'
 
-import { RetreatType, type ValidatedBookingFormData } from '@/types'
+import { ContactIntent, RetreatType, type ValidatedBookingFormData } from '@/types'
 import { BOOKING_FIELD_LIMITS, RETREAT_TYPE_LABELS } from '@/constants'
 
 const VALIDATION_LIMITS = {
@@ -93,6 +93,7 @@ export const ContactFormSchema = z.object({
     .min(VALIDATION_LIMITS.MESSAGE_MIN, VALIDATION_MESSAGES.MESSAGE_REQUIRED)
     .max(VALIDATION_LIMITS.MESSAGE_MAX, VALIDATION_MESSAGES.MESSAGE_TOO_LONG)
     .trim(),
+  source: z.nativeEnum(ContactIntent).optional(),
 })
 
 export type ValidatedContactFormData = z.infer<typeof ContactFormSchema>

@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache'
 
 import { createLogger, escapeHtml, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
 import type { Chef, Language, ValidatedBookingFormData } from '@/types'
+import { CONTACT_SOURCE_EMAIL_SUBJECT_PREFIX } from '@/constants'
 
 const logger = createLogger('email-service')
 
@@ -79,12 +80,17 @@ export async function sendEmail(formData: ValidatedContactFormData): Promise<Ema
     recipientCount: adminEmails.split(',').length 
   })
 
+  const sourcePrefix = formData.source ? CONTACT_SOURCE_EMAIL_SUBJECT_PREFIX[formData.source] : undefined
+  const adminSubject = sourcePrefix
+    ? `${sourcePrefix} ${EMAIL_SUBJECTS.ADMIN_NOTIFICATION}`
+    : EMAIL_SUBJECTS.ADMIN_NOTIFICATION
+
   try {
     // Send notification email to admin(s)
     const adminEmailResponse = await client.sendEmail({
       From: senderEmail,
       To: adminEmails,
-      Subject: EMAIL_SUBJECTS.ADMIN_NOTIFICATION,
+      Subject: adminSubject,
       HtmlBody: `
         <h2>New Contact Form Submission</h2>
         <p>You have received a new inquiry from the website contact form.</p>

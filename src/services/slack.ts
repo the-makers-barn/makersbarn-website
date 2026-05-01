@@ -1,5 +1,6 @@
 import { createLogger, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
 import type { ValidatedBookingFormData, PartialBookingContactData } from '@/types'
+import { CONTACT_SOURCE_SLACK_LABEL } from '@/constants'
 
 const logger = createLogger('slack-service')
 
@@ -92,6 +93,11 @@ export function formatContactFormMessage(data: ValidatedContactFormData): string
 
   if (data.phone) {
     lines.push(`*Phone:* ${escapeSlackMarkdown(data.phone)}`)
+  }
+
+  const sourceLabel = data.source ? CONTACT_SOURCE_SLACK_LABEL[data.source] : undefined
+  if (sourceLabel) {
+    lines.push(`*Source:* ${sourceLabel}`)
   }
 
   lines.push('', `*Message:*`, escapeSlackMarkdown(data.message))
