@@ -15,4 +15,6 @@ export enum FormStatus {
 export enum ContactIntent {
   QUESTION = 'question',
   BOOKING = 'booking',
+  LOOKING_FOR_CHEF = 'looking-for-chef',
+  CHEF_JOIN = 'chef-join',
 }
