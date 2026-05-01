@@ -28,6 +28,12 @@ lerna-debug.log*
 # Superpowers brainstorming companion
 .superpowers/
 
+# Claude Code working notes (per global CLAUDE.md convention)
+claudedocs/
+
+# Playwright MCP browser automation cache
+.playwright-mcp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

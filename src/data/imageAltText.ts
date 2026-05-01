@@ -254,5 +254,422 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.NL]: 'Family-style borden met geroosterde groenten en granen',
     [Language.DE]: 'Family-Style-Teller mit geröstetem Gemüse und Körnern',
   },
+
+  // Chef: Brenda Anna (Brenda Anna aan de KOOK)
+  'chef.brenda-anna.avatar': {
+    [Language.EN]: 'Portrait of chef Brenda Anna',
+    [Language.NL]: 'Portret van chef Brenda Anna',
+    [Language.DE]: 'Porträt von Chefköchin Brenda Anna',
+  },
+  'chef.brenda-anna.hero': {
+    [Language.EN]: 'Brenda Anna in her kitchen, plating plant-based retreat food',
+    [Language.NL]: 'Brenda Anna in haar keuken, plantaardig retraite-eten opmakend',
+    [Language.DE]: 'Brenda Anna in ihrer Küche, pflanzliches Retreat-Essen anrichtend',
+  },
+  'chef.brenda-anna.gallery-1': {
+    [Language.EN]: 'Brenda Anna preparing a vegetarian dish',
+    [Language.NL]: 'Brenda Anna bereidt een vegetarisch gerecht',
+    [Language.DE]: 'Brenda Anna bereitet ein vegetarisches Gericht zu',
+  },
+  'chef.brenda-anna.gallery-2': {
+    [Language.EN]: 'Brenda Anna at work in the kitchen',
+    [Language.NL]: 'Brenda Anna aan het werk in de keuken',
+    [Language.DE]: 'Brenda Anna bei der Arbeit in der Küche',
+  },
+  'chef.brenda-anna.gallery-3': {
+    [Language.EN]: 'Fragrant spiced Indian vegetable and lentil soup',
+    [Language.NL]: 'Geurige Indiase groente- en linzensoep',
+    [Language.DE]: 'Würzige indische Gemüse-Linsen-Suppe',
+  },
+
+  // Chef: Anne Hopman (Buro Broccoli)
+  'chef.buro-broccoli.avatar': {
+    [Language.EN]: 'Portrait of Anne Hopman, vegan retreat chef behind Buro Broccoli',
+    [Language.NL]: 'Portret van Anne Hopman, vegan retraitekok achter Buro Broccoli',
+    [Language.DE]: 'Porträt von Anne Hopman, veganer Retreat-Köchin hinter Buro Broccoli',
+  },
+  'chef.buro-broccoli.hero': {
+    [Language.EN]: 'Vegan retreat dish plated by Buro Broccoli',
+    [Language.NL]: 'Vegan retraite­gerecht opgemaakt door Buro Broccoli',
+    [Language.DE]: 'Veganes Retreat-Gericht von Buro Broccoli angerichtet',
+  },
+  'chef.buro-broccoli.gallery-1': {
+    [Language.EN]: 'Plant-based catering plate from Buro Broccoli',
+    [Language.NL]: 'Plantaardig cateringgerecht van Buro Broccoli',
+    [Language.DE]: 'Pflanzliches Catering-Gericht von Buro Broccoli',
+  },
+  'chef.buro-broccoli.gallery-2': {
+    [Language.EN]: 'Buro Broccoli vegan menu component, organic and gluten-free',
+    [Language.NL]: 'Onderdeel van een Buro Broccoli vegan menu, biologisch en glutenvrij',
+    [Language.DE]: 'Bestandteil eines Buro-Broccoli-Veganmenüs, biologisch und glutenfrei',
+  },
+  'chef.buro-broccoli.gallery-3': {
+    [Language.EN]: 'Vegan retreat spread by Buro Broccoli',
+    [Language.NL]: 'Vegan retraite­buffet van Buro Broccoli',
+    [Language.DE]: 'Veganes Retreat-Buffet von Buro Broccoli',
+  },
+
+  // Chef: Alexandra van Rijen (De Groene Chef)
+  'chef.de-groene-chef.avatar': {
+    [Language.EN]: 'Portrait of Alexandra van Rijen, chef behind De Groene Chef',
+    [Language.NL]: 'Portret van Alexandra van Rijen, chef achter De Groene Chef',
+    [Language.DE]: 'Porträt von Alexandra van Rijen, Chefköchin hinter De Groene Chef',
+  },
+  'chef.de-groene-chef.hero': {
+    [Language.EN]: 'Plant-based shared dinner served by De Groene Chef',
+    [Language.NL]: 'Plantaardig deeldiner geserveerd door De Groene Chef',
+    [Language.DE]: 'Pflanzliches Gemeinschaftsessen serviert von De Groene Chef',
+  },
+  'chef.de-groene-chef.gallery-1': {
+    [Language.EN]: 'Outdoor wedding catering by De Groene Chef',
+    [Language.NL]: 'Buitencatering bij een bruiloft door De Groene Chef',
+    [Language.DE]: 'Open-Air-Hochzeitscatering von De Groene Chef',
+  },
+  'chef.de-groene-chef.gallery-2': {
+    [Language.EN]: 'Plant-based borrelplank styled by De Groene Chef',
+    [Language.NL]: 'Plantaardige borrelplank gestyled door De Groene Chef',
+    [Language.DE]: 'Pflanzliche Borrelplank von De Groene Chef gestaltet',
+  },
+  'chef.de-groene-chef.gallery-3': {
+    [Language.EN]: 'Plated plant-based dish from De Groene Chef',
+    [Language.NL]: 'Plantaardig gerecht van De Groene Chef',
+    [Language.DE]: 'Pflanzliches Gericht von De Groene Chef',
+  },
+
+  // Chef: De Kookstudio (Belgium)
+  'chef.de-kookstudio.avatar': {
+    [Language.EN]: 'Portrait of the De Kookstudio founder',
+    [Language.NL]: 'Portret van de oprichter van De Kookstudio',
+    [Language.DE]: 'Porträt der Gründerin von De Kookstudio',
+  },
+  'chef.de-kookstudio.hero': {
+    [Language.EN]: 'De Kookstudio chef preparing plant-based retreat food',
+    [Language.NL]: 'Chef van De Kookstudio bereidt plantaardig retreat-eten',
+    [Language.DE]: 'Köchin von De Kookstudio bereitet pflanzliches Retreat-Essen zu',
+  },
+
+  // Chef: Eveline Delnooz (Eveline Cooks)
+  'chef.eveline-cooks.avatar': {
+    [Language.EN]: 'Portrait of vegan chef Eveline Delnooz of Eveline Cooks',
+    [Language.NL]: 'Portret van vegan chef Eveline Delnooz van Eveline Cooks',
+    [Language.DE]: 'Porträt der veganen Köchin Eveline Delnooz von Eveline Cooks',
+  },
+  'chef.eveline-cooks.hero': {
+    [Language.EN]: 'Eveline Delnooz cooking outdoors during golden hour',
+    [Language.NL]: 'Eveline Delnooz kookt buiten tijdens golden hour',
+    [Language.DE]: 'Eveline Delnooz kocht draußen in der goldenen Stunde',
+  },
+  'chef.eveline-cooks.gallery-1': {
+    [Language.EN]: 'Plated dish from the cookbook Vegan de wereld rond',
+    [Language.NL]: 'Gerecht uit het kookboek Vegan de wereld rond',
+    [Language.DE]: 'Gericht aus dem Kochbuch Vegan de wereld rond',
+  },
+  'chef.eveline-cooks.gallery-2': {
+    [Language.EN]: 'Eveline Cooks plant-based catering spread',
+    [Language.NL]: 'Plantaardige cateringopstelling van Eveline Cooks',
+    [Language.DE]: 'Pflanzliches Catering-Buffet von Eveline Cooks',
+  },
+  'chef.eveline-cooks.gallery-3': {
+    [Language.EN]: 'Vegan world-cuisine dishes by Eveline Cooks',
+    [Language.NL]: 'Vegan wereldgerechten van Eveline Cooks',
+    [Language.DE]: 'Vegane Weltgerichte von Eveline Cooks',
+  },
+
+  // Chef: Marko (Groentje)
+  'chef.groentje.avatar': {
+    [Language.EN]: 'Marko of Groentje preparing a plant-based home dinner',
+    [Language.NL]: 'Marko van Groentje bereidt een plantaardig thuisdiner',
+    [Language.DE]: 'Marko von Groentje bereitet ein pflanzliches Hausdinner zu',
+  },
+  'chef.groentje.hero': {
+    [Language.EN]: 'Plant-based catering spread laid out for a group',
+    [Language.NL]: 'Plantaardige catering uitgestald voor een gezelschap',
+    [Language.DE]: 'Pflanzliches Catering-Buffet für eine Gruppe',
+  },
+  'chef.groentje.gallery-1': {
+    [Language.EN]: 'Vegan chocolate cake by Groentje',
+    [Language.NL]: 'Vegan chocoladetaart van Groentje',
+    [Language.DE]: 'Veganer Schokoladenkuchen von Groentje',
+  },
+  'chef.groentje.gallery-2': {
+    [Language.EN]: 'Vegan high tea spread by Groentje',
+    [Language.NL]: 'Vegan high tea van Groentje',
+    [Language.DE]: 'Veganer High Tea von Groentje',
+  },
+  'chef.groentje.gallery-3': {
+    [Language.EN]: 'Plant-based lunch plated by Groentje',
+    [Language.NL]: 'Plantaardige lunch van Groentje',
+    [Language.DE]: 'Pflanzliches Mittagessen von Groentje',
+  },
+
+  // Chef: Jennifer Abeck (ChefRetreats)
+  'chef.jennifer-abeck.avatar': {
+    [Language.EN]: 'Portrait of chef Jennifer Abeck',
+    [Language.NL]: 'Portret van chef Jennifer Abeck',
+    [Language.DE]: 'Porträt der Köchin Jennifer Abeck',
+  },
+  'chef.jennifer-abeck.hero': {
+    [Language.EN]: 'Plated wellness meal styled by Jennifer Abeck',
+    [Language.NL]: 'Welzijnsgerecht opgemaakt door Jennifer Abeck',
+    [Language.DE]: 'Wellness-Gericht angerichtet von Jennifer Abeck',
+  },
+  'chef.jennifer-abeck.gallery-1': {
+    [Language.EN]: 'Fresh, plant-forward dish from a yoga retreat menu',
+    [Language.NL]: 'Verse, plantaardige creatie van een yoga-retraitemenu',
+    [Language.DE]: 'Frisches, pflanzenbetontes Gericht aus einem Yoga-Retreat-Menü',
+  },
+  'chef.jennifer-abeck.gallery-2': {
+    [Language.EN]: 'Catering setup at a women\'s wellness event',
+    [Language.NL]: 'Catering-opstelling bij een women\'s wellness-event',
+    [Language.DE]: 'Catering-Aufbau bei einem Frauen-Wellness-Event',
+  },
+  'chef.jennifer-abeck.gallery-3': {
+    [Language.EN]: 'Nourishing retreat dish with locally sourced ingredients',
+    [Language.NL]: 'Voedzaam retraitegerecht met lokaal ingekochte ingrediënten',
+    [Language.DE]: 'Nahrhaftes Retreat-Gericht mit lokal bezogenen Zutaten',
+  },
+
+  // Chef: Karin van Hal (Cuisine Pachamama)
+  'chef.karin-van-hal.avatar': {
+    [Language.EN]: 'Portrait of Karin van Hal, plant-based chef behind Cuisine Pachamama',
+    [Language.NL]: 'Portret van Karin van Hal, plantaardige chef achter Cuisine Pachamama',
+    [Language.DE]: 'Porträt von Karin van Hal, pflanzliche Köchin hinter Cuisine Pachamama',
+  },
+  'chef.karin-van-hal.hero': {
+    [Language.EN]: 'Plant-based dish styled by Karin van Hal of Cuisine Pachamama',
+    [Language.NL]: 'Plantaardig gerecht gestyled door Karin van Hal van Cuisine Pachamama',
+    [Language.DE]: 'Pflanzliches Gericht gestaltet von Karin van Hal von Cuisine Pachamama',
+  },
+  'chef.karin-van-hal.gallery-1': {
+    [Language.EN]: 'Colourful retreat plate from Cuisine Pachamama',
+    [Language.NL]: 'Kleurrijk retraitegerecht van Cuisine Pachamama',
+    [Language.DE]: 'Farbenfrohes Retreat-Gericht von Cuisine Pachamama',
+  },
+  'chef.karin-van-hal.gallery-2': {
+    [Language.EN]: 'Plant-based course plated by Cuisine Pachamama',
+    [Language.NL]: 'Plantaardig gerecht opgemaakt door Cuisine Pachamama',
+    [Language.DE]: 'Pflanzlicher Gang angerichtet von Cuisine Pachamama',
+  },
+  'chef.karin-van-hal.gallery-3': {
+    [Language.EN]: 'Healing-retreat dish styled by Karin van Hal',
+    [Language.NL]: 'Healing-retraitegerecht gestyled door Karin van Hal',
+    [Language.DE]: 'Healing-Retreat-Gericht gestaltet von Karin van Hal',
+  },
+
+  // Chef: Marjolijn (La Mama Gaia)
+  'chef.la-mama-gaia.avatar': {
+    [Language.EN]: 'Portrait of Marjolijn, plant-forward private chef behind La Mama Gaia',
+    [Language.NL]: 'Portret van Marjolijn, plantaardige privéchef achter La Mama Gaia',
+    [Language.DE]: 'Porträt von Marjolijn, pflanzlicher Privatköchin hinter La Mama Gaia',
+  },
+  'chef.la-mama-gaia.hero': {
+    [Language.EN]: 'Colourful plant-based dish plated by chef Marjolijn of La Mama Gaia',
+    [Language.NL]: 'Kleurrijk plantaardig gerecht gepresenteerd door chef Marjolijn van La Mama Gaia',
+    [Language.DE]: 'Farbenfrohes pflanzliches Gericht von Köchin Marjolijn von La Mama Gaia',
+  },
+  'chef.la-mama-gaia.gallery-1': {
+    [Language.EN]: 'Vegan retreat dish from a La Mama Gaia private chef menu',
+    [Language.NL]: 'Veganistisch retraitegerecht van een La Mama Gaia-privéchefmenu',
+    [Language.DE]: 'Veganes Retreat-Gericht aus einem La-Mama-Gaia-Privatkochmenü',
+  },
+  'chef.la-mama-gaia.gallery-2': {
+    [Language.EN]: 'Plant-based seasonal plate prepared by La Mama Gaia for a retreat',
+    [Language.NL]: 'Plantaardig seizoensgerecht bereid door La Mama Gaia voor een retreat',
+    [Language.DE]: 'Pflanzliches Saisongericht zubereitet von La Mama Gaia für ein Retreat',
+  },
+  'chef.la-mama-gaia.gallery-3': {
+    [Language.EN]: 'Wholefood vegetarian dish styled by La Mama Gaia',
+    [Language.NL]: 'Volwaardig vegetarisch gerecht gestyled door La Mama Gaia',
+    [Language.DE]: 'Vollwertiges vegetarisches Gericht gestaltet von La Mama Gaia',
+  },
+
+  // Chef: Marije van den Oever (Grote Pannen / Studiomamma)
+  'chef.marije-grote-pannen.avatar': {
+    [Language.EN]: 'Portrait of Marije van den Oever, chef behind Grote Pannen',
+    [Language.NL]: 'Portret van Marije van den Oever, chef achter Grote Pannen',
+    [Language.DE]: 'Porträt von Marije van den Oever, Chefköchin hinter Grote Pannen',
+  },
+  'chef.marije-grote-pannen.hero': {
+    [Language.EN]: 'Retreat catering spread by Grote Pannen',
+    [Language.NL]: 'Retraite­catering van Grote Pannen',
+    [Language.DE]: 'Retreat-Catering von Grote Pannen',
+  },
+  'chef.marije-grote-pannen.gallery-1': {
+    [Language.EN]: 'Plated dish from a Grote Pannen retreat menu',
+    [Language.NL]: 'Gerecht van een Grote Pannen retraitemenu',
+    [Language.DE]: 'Gericht aus einem Grote-Pannen-Retreat-Menü',
+  },
+  'chef.marije-grote-pannen.gallery-2': {
+    [Language.EN]: 'Multi-day retreat meal prepared by Grote Pannen',
+    [Language.NL]: 'Maaltijd voor een meerdaagse retraite bereid door Grote Pannen',
+    [Language.DE]: 'Mahlzeit für ein mehrtägiges Retreat zubereitet von Grote Pannen',
+  },
+  'chef.marije-grote-pannen.gallery-3': {
+    [Language.EN]: 'Shared family-style table set by Grote Pannen',
+    [Language.NL]: 'Gedeelde family-style tafel gedekt door Grote Pannen',
+    [Language.DE]: 'Family-Style-Tafel gedeckt von Grote Pannen',
+  },
+
+  // Chef: Jill & Chris (Planticious Bliss)
+  'chef.planticious-bliss.avatar': {
+    [Language.EN]: 'Jill and Chris, founders of Planticious Bliss',
+    [Language.NL]: 'Jill en Chris, oprichters van Planticious Bliss',
+    [Language.DE]: 'Jill und Chris, Gründer von Planticious Bliss',
+  },
+  'chef.planticious-bliss.hero': {
+    [Language.EN]: 'Plant-based plated course by Planticious Bliss',
+    [Language.NL]: 'Plantaardig bord van Planticious Bliss',
+    [Language.DE]: 'Pflanzlicher Gang von Planticious Bliss',
+  },
+  'chef.planticious-bliss.gallery-1': {
+    [Language.EN]: 'Plant-based dish from a Planticious Bliss retreat menu',
+    [Language.NL]: 'Plantaardig gerecht van een Planticious Bliss retraite-menu',
+    [Language.DE]: 'Pflanzliches Gericht aus einem Planticious-Bliss-Retreat-Menü',
+  },
+  'chef.planticious-bliss.gallery-2': {
+    [Language.EN]: 'Planticious Bliss event-style plant-based plating',
+    [Language.NL]: 'Plantaardige presentatie van Planticious Bliss bij een event',
+    [Language.DE]: 'Pflanzliche Event-Präsentation von Planticious Bliss',
+  },
+  'chef.planticious-bliss.gallery-3': {
+    [Language.EN]: 'Bespoke plant-based course by Planticious Bliss',
+    [Language.NL]: 'Plantaardig gerecht op maat van Planticious Bliss',
+    [Language.DE]: 'Maßgeschneidertes pflanzliches Gericht von Planticious Bliss',
+  },
+
+  // Chef: Loes (Rebelicious kookt)
+  'chef.rebelicious.avatar': {
+    [Language.EN]: 'Portrait of chef Loes of Rebelicious kookt',
+    [Language.NL]: 'Portret van chef Loes van Rebelicious kookt',
+    [Language.DE]: 'Porträt der Köchin Loes von Rebelicious kookt',
+  },
+  'chef.rebelicious.hero': {
+    [Language.EN]: 'Colourful vegan salad bowl by Rebelicious',
+    [Language.NL]: 'Kleurrijke vegan saladekom van Rebelicious',
+    [Language.DE]: 'Farbenfrohe vegane Salatschüssel von Rebelicious',
+  },
+  'chef.rebelicious.gallery-1': {
+    [Language.EN]: 'Plant-based catering plate by Rebelicious',
+    [Language.NL]: 'Plantaardig cateringgerecht van Rebelicious',
+    [Language.DE]: 'Pflanzliches Catering-Gericht von Rebelicious',
+  },
+  'chef.rebelicious.gallery-2': {
+    [Language.EN]: 'Vegan cake by chef Loes of Rebelicious',
+    [Language.NL]: 'Vegan taart van chef Loes van Rebelicious',
+    [Language.DE]: 'Veganer Kuchen von Köchin Loes von Rebelicious',
+  },
+  'chef.rebelicious.gallery-3': {
+    [Language.EN]: 'Shared dining spread by Rebelicious',
+    [Language.NL]: 'Aanschuifdiner van Rebelicious',
+    [Language.DE]: 'Gemeinschaftliches Essen von Rebelicious',
+  },
+
+  // Chef: Kaitlyn Kinder (Rooted in Raw)
+  'chef.rooted-in-raw.avatar': {
+    [Language.EN]: 'Portrait of Kaitlyn Kinder, plant-based chef behind Rooted in Raw',
+    [Language.NL]: 'Portret van Kaitlyn Kinder, plantaardige chef achter Rooted in Raw',
+    [Language.DE]: 'Porträt von Kaitlyn Kinder, pflanzlicher Köchin hinter Rooted in Raw',
+  },
+  'chef.rooted-in-raw.hero': {
+    [Language.EN]: 'Kaitlyn Kinder cooking on a retreat in Croatia',
+    [Language.NL]: 'Kaitlyn Kinder kookt op een retreat in Kroatië',
+    [Language.DE]: 'Kaitlyn Kinder kocht bei einem Retreat in Kroatien',
+  },
+  'chef.rooted-in-raw.gallery-1': {
+    [Language.EN]: 'Plated raw vegan dish from Rooted in Raw',
+    [Language.NL]: 'Rauw vegan gerecht van Rooted in Raw',
+    [Language.DE]: 'Rohveganes Gericht von Rooted in Raw',
+  },
+  'chef.rooted-in-raw.gallery-2': {
+    [Language.EN]: 'Plant-based meal prepared by Rooted in Raw',
+    [Language.NL]: 'Plantaardige maaltijd bereid door Rooted in Raw',
+    [Language.DE]: 'Pflanzliches Gericht zubereitet von Rooted in Raw',
+  },
+  'chef.rooted-in-raw.gallery-3': {
+    [Language.EN]: 'Raw vegan plate styled for a retreat table',
+    [Language.NL]: 'Rauw vegan bord opgemaakt voor een retraitetafel',
+    [Language.DE]: 'Rohveganes Gericht für eine Retreat-Tafel angerichtet',
+  },
+
+  // Chef: Suzanne van den Heuvel (Studio Gember)
+  'chef.suzanne-van-den-heuvel.avatar': {
+    [Language.EN]: 'Portrait of chef Suzanne van den Heuvel, founder of Studio Gember',
+    [Language.NL]: 'Portret van chef Suzanne van den Heuvel, oprichter van Studio Gember',
+    [Language.DE]: 'Porträt der Köchin Suzanne van den Heuvel, Gründerin von Studio Gember',
+  },
+  'chef.suzanne-van-den-heuvel.hero': {
+    [Language.EN]: 'Vegetarian natural-cuisine spread by Studio Gember on a retreat table',
+    [Language.NL]: 'Vegetarische natuurkeuken van Studio Gember op een retraitetafel',
+    [Language.DE]: 'Vegetarische Naturküche von Studio Gember auf einer Retreat-Tafel',
+  },
+  'chef.suzanne-van-den-heuvel.gallery-1': {
+    [Language.EN]: 'Plant-based dish prepared with attention by Studio Gember',
+    [Language.NL]: 'Plantaardig gerecht met aandacht bereid door Studio Gember',
+    [Language.DE]: 'Pflanzliches Gericht mit Achtsamkeit zubereitet von Studio Gember',
+  },
+  'chef.suzanne-van-den-heuvel.gallery-2': {
+    [Language.EN]: 'Mindful retreat meal served family-style by Studio Gember',
+    [Language.NL]: 'Mindful retraitemaaltijd, family-style geserveerd door Studio Gember',
+    [Language.DE]: 'Achtsame Retreat-Mahlzeit, family-style serviert von Studio Gember',
+  },
+  'chef.suzanne-van-den-heuvel.gallery-3': {
+    [Language.EN]: 'Vegetarian buffet plated for a silence retreat group',
+    [Language.NL]: 'Vegetarisch buffet opgemaakt voor een stilteretraite-groep',
+    [Language.DE]: 'Vegetarisches Buffet angerichtet für eine Stille-Retreat-Gruppe',
+  },
+
+  // Chef: Michel (The Food Circle)
+  'chef.the-food-circle.avatar': {
+    [Language.EN]: 'Michel of The Food Circle, organic vegan retreat chef',
+    [Language.NL]: 'Michel van The Food Circle, biologisch vegan retraitekok',
+    [Language.DE]: 'Michel von The Food Circle, biologischer veganer Retreat-Koch',
+  },
+  'chef.the-food-circle.hero': {
+    [Language.EN]: 'Hand-baked sourdough loaf by The Food Circle',
+    [Language.NL]: 'Met de hand gebakken zuurdesembrood van The Food Circle',
+    [Language.DE]: 'Handgebackenes Sauerteigbrot von The Food Circle',
+  },
+  'chef.the-food-circle.gallery-1': {
+    [Language.EN]: 'Plant-based retreat dish styled on a wooden board',
+    [Language.NL]: 'Plantaardig retraitegerecht op een houten plank',
+    [Language.DE]: 'Pflanzliches Retreat-Gericht auf einem Holzbrett angerichtet',
+  },
+  'chef.the-food-circle.gallery-2': {
+    [Language.EN]: 'Fermented vegetables prepared in The Food Circle kitchen',
+    [Language.NL]: 'Gefermenteerde groenten uit de keuken van The Food Circle',
+    [Language.DE]: 'Fermentiertes Gemüse aus der Küche von The Food Circle',
+  },
+  'chef.the-food-circle.gallery-3': {
+    [Language.EN]: 'Fresh hand-made pasta by The Food Circle',
+    [Language.NL]: 'Verse handgemaakte pasta van The Food Circle',
+    [Language.DE]: 'Frische handgemachte Pasta von The Food Circle',
+  },
+
+  // Chef: Renate Vermeulen (Vega Happie)
+  'chef.vega-happie.avatar': {
+    [Language.EN]: 'Portrait of Renate Vermeulen, owner-chef of Vega Happie',
+    [Language.NL]: 'Portret van Renate Vermeulen, eigenaar-chef van Vega Happie',
+    [Language.DE]: 'Porträt von Renate Vermeulen, Inhaber-Köchin von Vega Happie',
+  },
+  'chef.vega-happie.hero': {
+    [Language.EN]: 'Vega Happie vegan catering spread plated for a group',
+    [Language.NL]: 'Vegan cateringopstelling van Vega Happie voor een groep',
+    [Language.DE]: 'Veganes Catering-Buffet von Vega Happie für eine Gruppe',
+  },
+  'chef.vega-happie.gallery-1': {
+    [Language.EN]: 'Plant-based cooking workshop in progress at a guest\'s home',
+    [Language.NL]: 'Plantaardige kookworkshop aan huis bij een gastheer',
+    [Language.DE]: 'Pflanzlicher Kochworkshop bei einer Gastgeberin zu Hause',
+  },
+  'chef.vega-happie.gallery-2': {
+    [Language.EN]: 'Renate preparing a vegan dish in the kitchen',
+    [Language.NL]: 'Renate bereidt een vegan gerecht in de keuken',
+    [Language.DE]: 'Renate bereitet ein veganes Gericht in der Küche zu',
+  },
+  'chef.vega-happie.gallery-3': {
+    [Language.EN]: 'Workshop participants plating vegan dishes together',
+    [Language.NL]: 'Workshopdeelnemers presenteren samen vegan gerechten',
+    [Language.DE]: 'Workshop-Teilnehmer richten gemeinsam vegane Gerichte an',
+  },
 } as const
 
