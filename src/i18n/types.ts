@@ -490,7 +490,7 @@ export interface ChefsListingDict {
   grid: {
     h2: string
     framingLine: string
-    card: { viewProfile: string; draftBadge: string }
+    card: { viewProfile: string; draftBadge: string; cuisinesAriaLabel: string }
   }
   launchingSoon: {
     headline: string

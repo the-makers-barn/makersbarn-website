@@ -42,7 +42,7 @@ export async function ChefCard({ chef, lang }: Props) {
         {chef.homeBase.city} · {regionLabel}
       </p>
       <p className={styles.tagline}>{localize(chef.tagline, lang)}</p>
-      <ul className={styles.chips} aria-label="Cuisine styles">
+      <ul className={styles.chips} aria-label={cardCopy.cuisinesAriaLabel}>
         {cuisines.map((style, i) => (
           <li key={i} className={styles.chip}>
             {localize(style, lang)}

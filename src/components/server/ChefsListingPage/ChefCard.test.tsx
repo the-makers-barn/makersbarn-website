@@ -28,7 +28,7 @@ vi.mock('@/i18n/server', () => ({
       },
     },
     chefsListing: {
-      grid: { card: { viewProfile: 'View profile', draftBadge: 'DRAFT' } },
+      grid: { card: { viewProfile: 'View profile', draftBadge: 'DRAFT', cuisinesAriaLabel: 'Cuisine styles' } },
     },
   }),
 }))

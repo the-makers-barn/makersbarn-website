@@ -1093,6 +1093,7 @@ export const en: Dictionary = {
       card: {
         viewProfile: 'View profile',
         draftBadge: 'DRAFT',
+        cuisinesAriaLabel: 'Cuisine styles',
       },
     },
     launchingSoon: {
