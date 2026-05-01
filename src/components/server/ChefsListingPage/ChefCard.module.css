@@ -1,0 +1,85 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: var(--color-background);
+  border: 1px solid rgba(31, 19, 12, 0.08);
+  border-radius: 8px;
+  position: relative;
+}
+
+.draftBadge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--chef-draft-badge-color, var(--color-text-tertiary));
+  background: var(--chef-draft-badge-bg, rgba(184, 137, 74, 0.12));
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.avatarWrapper {
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-xl);
+  color: var(--color-text);
+  margin: 0 0 0.25rem;
+}
+
+.location {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: 0 0 0.75rem;
+}
+
+.tagline {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 1rem;
+}
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.chip {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  background: rgba(41, 75, 58, 0.08);
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+}
+
+.viewProfile {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.viewProfile:hover {
+  text-decoration: underline;
+}
