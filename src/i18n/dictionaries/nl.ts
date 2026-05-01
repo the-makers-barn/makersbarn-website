@@ -12,8 +12,7 @@ export const nl: Dictionary = {
     surroundings: 'Omgeving',
     contact: 'Contact',
     book: 'Boek',
-    // TODO(i18n): translate to nl
-    chefs: 'Chefs',
+    chefs: 'Koks',
   },
 
   hero: {
@@ -89,10 +88,9 @@ export const nl: Dictionary = {
     },
     mapTitle: 'Locatiekaart met Maker\'s Barn',
     questionFormImageAlt: 'Gezellige bank bij de Hay House accommodatie',
-    // TODO(i18n): translate to nl — placeholder copy from en.ts (Phase 6)
     intentLeadIn: {
-      looking: "You're asking about finding a chef for your retreat. Tell us what you're planning and we'll match from our directory or point you elsewhere.",
-      join: "You're asking about joining the Makers Barn chef directory. Tell us about your kitchen and we'll be in touch.",
+      looking: 'Je vraagt naar het vinden van een kok voor je retraite. Vertel ons wat je van plan bent en we koppelen je aan iemand uit onze gids of wijzen je de weg.',
+      join: 'Je vraagt naar toelating tot de Makers Barn koksengids. Vertel ons over je keuken en we nemen contact met je op.',
     },
   },
 
@@ -1061,109 +1059,108 @@ export const nl: Dictionary = {
     },
   },
 
-  // TODO(i18n): translate to nl — placeholder copy from en.ts (Phase 6)
   chefsListing: {
     meta: {
-      title: 'Private chefs for retreats in the Netherlands',
-      description: 'A practical guide to finding, evaluating, and booking a private chef for your retreat in the Netherlands. Pricing, lead times, dietary fit, and our curated directory.',
+      title: 'Privékoks voor retraites in Nederland',
+      description: 'Een praktische gids voor het vinden, beoordelen en boeken van een privékok voor je retraite in Nederland. Prijzen, doorlooptijden, dieetwensen en onze samengestelde gids.',
     },
     hero: {
-      eyebrow: 'Chefs',
-      h1: 'Private chefs for retreats in the Netherlands',
-      subtitle: 'A practical guide to finding, evaluating, and booking a chef for your retreat — plus the small directory we have curated at Makers Barn.',
+      eyebrow: 'Koks',
+      h1: 'Privékoks voor retraites in Nederland',
+      subtitle: 'Een praktische gids voor het vinden, beoordelen en boeken van een kok voor je retraite — plus de zorgvuldig samengestelde gids van Makers Barn.',
     },
-    intro: 'Most retreat hosts underestimate what booking a chef actually involves. Lead times, dietary fit, on-site logistics, and pricing structures vary widely. This guide covers what to look for, how pricing works in the Netherlands, and where to find chefs who travel.',
+    intro: 'De meeste retraite-organisatoren onderschatten wat er bij het boeken van een kok komt kijken. Doorlooptijden, dieetwensen, logistiek op locatie en prijsstructuren lopen sterk uiteen. Deze gids behandelt waar je op moet letten, hoe de prijzen in Nederland werken en waar je koks vindt die bereid zijn te reizen.',
     sections: {
       whatToLookFor: {
-        h2: 'What to look for in a retreat chef',
+        h2: 'Waar je op moet letten bij een retraitkok',
         paragraphs: [
-          'Cooking for a retreat is closer to running a small kitchen than catering an event. Look for chefs with experience cooking for sustained groups of 8–20 over multiple days, not just one-off dinners — the rhythm, sourcing, and recovery between services is genuinely different.',
-          'Ask how they handle dietary mixing: how do they keep a vegan main satisfying when half the table is omnivore, and how do they avoid making accommodations feel like an afterthought? Strong retreat chefs treat dietary diversity as a creative constraint, not a logistical one.',
-          'Confirm sourcing transparency. Most NL retreat chefs work with one or two specific farms, dairies, or fishmongers. If they cannot name them, that is a signal worth probing.',
+          'Koken voor een retraite lijkt meer op het runnen van een kleine keuken dan op het cateren van een evenement. Zoek naar koks met ervaring in het meerdere dagen achtereen koken voor groepen van 8–20 personen — niet alleen voor eenmalige diners. Het ritme, de inkoop en het herstel tussen de maaltijden zijn echt anders.',
+          'Vraag hoe ze omgaan met het mengen van dieetwensen: hoe houden ze een veganistische hoofdmaaltijd bevredigend wanneer de helft van de tafel omnivoor is, en hoe voorkomen ze dat aanpassingen als een bijzaak aanvoelen? Sterke retraitkoks zien dieetdiversiteit als een creatieve uitdaging, niet als een logistiek probleem.',
+          'Controleer de transparantie over inkoop. De meeste Nederlandse retraitkoks werken met één of twee vaste boerderijen, zuivelbedrijven of vishandelaren. Als ze die niet kunnen benoemen, is dat een signaal dat het waard is om door te vragen.',
         ],
       },
       pricing: {
-        h2: 'How retreat-chef pricing works in the Netherlands',
+        h2: 'Hoe de prijzen van retraitkoks in Nederland werken',
         paragraphs: [
-          'Three pricing structures dominate the Dutch market. Day rates (€350–€650/day for one chef, plus food cost) suit retreats where you want flexibility on menu and shopping. Per-meal pricing (€18–€45 per person per meal, all-in) is common for shorter retreats and gives you a clean per-head budget. All-inclusive packages (€80–€150 per person per day) wrap food, prep, service, and cleanup into one number — useful when you want to hand the kitchen off entirely.',
-          'Watch for what is excluded. Travel time, kitchen prep equipment, dishwashing labour, and dietary substitutions are the most common line items that quietly inflate the final invoice. Ask for a sample contract before committing.',
-          'Lead times are 4–8 weeks for established chefs, longer in peak season (May–September). Book early.',
+          'Drie prijsstructuren domineren de Nederlandse markt. Dagtarieven (€350–€650/dag voor één kok, plus voedselkosten) zijn geschikt voor retraites waarbij je flexibiliteit wilt in menu en inkoop. Prijzen per maaltijd (€18–€45 per persoon per maaltijd, alles inbegrepen) zijn gebruikelijk voor kortere retraites en geven je een helder budget per hoofd. All-inclusive pakketten (€80–€150 per persoon per dag) bundelen eten, voorbereiding, bediening en opruimen in één bedrag — handig als je de keuken volledig wilt uitbesteden.',
+          'Let op wat er niet is inbegrepen. Reistijd, keukenapparatuur, afwaswerk en dieetaanpassingen zijn de meest voorkomende posten die de uiteindelijke factuur stilletjes opdrijven. Vraag altijd om een voorbeeldcontract voordat je akkoord gaat.',
+          'De doorlooptijd is 4–8 wkn voor gevestigde koks, langer in het hoogseizoen (mei–september). Boek op tijd.',
         ],
       },
       coverage: {
-        h2: 'Regional coverage and travel',
+        h2: 'Regionale dekking en reizen',
         paragraphs: [
-          'Most established retreat chefs are based in Noord-Holland, Utrecht, or Gelderland and travel to venues in Drenthe, Friesland, Overijssel, and Flevoland for retreats lasting two days or more. Travel within the country is generally included in day rates above €450; below that, expect a kilometric supplement.',
-          'For multi-day retreats outside their home province, most chefs prefer overnight accommodation on-site rather than commuting. Plan one bed for the chef in your booking.',
-          'If you are hosting at Makers Barn in Drenthe, our directory below is curated for our venue but most chefs in it travel beyond it.',
+          'De meeste gevestigde retraitkoks zijn gebaseerd in Noord-Holland, Utrecht of Gelderland en reizen naar locaties in Drenthe, Friesland, Overijssel en Flevoland voor retraites van twee dagen of langer. Reizen binnen Nederland is over het algemeen inbegrepen bij dagtarieven boven €450; daaronder kun je een kilometertoeslag verwachten.',
+          'Voor meerdaagse retraites buiten hun thuisprovincie geven de meeste koks de voorkeur aan overnachting op locatie in plaats van pendelen. Plan een extra bed voor de kok in je boeking.',
+          'Als je host in Makers Barn in Drenthe, is onze gids hieronder samengesteld voor onze locatie — maar de meeste koks daarin reizen ook verder.',
         ],
       },
     },
     grid: {
-      h2: 'Chefs in our directory',
-      framingLine: 'These are chefs we have worked with and trust. Most travel beyond Makers Barn.',
+      h2: 'Koks in onze gids',
+      framingLine: 'Dit zijn koks met wie we hebben samengewerkt en die we vertrouwen. De meesten reizen ook buiten Makers Barn.',
       card: {
-        viewProfile: 'View profile',
-        draftBadge: 'DRAFT',
-        cuisinesAriaLabel: 'Cuisine styles',
+        viewProfile: 'Bekijk profiel',
+        draftBadge: 'CONCEPT',
+        cuisinesAriaLabel: 'Kookstijlen',
       },
     },
     launchingSoon: {
-      headline: 'Our directory is in private beta.',
-      body: 'We are vetting chefs in small batches. The guidance above is free to use — and if you would like to be matched when chefs go live, tell us what you are planning.',
-      inlineCtaLabel: 'Tell us what you are planning →',
+      headline: 'Onze gids is in besloten beta.',
+      body: 'We beoordelen koks in kleine groepen. De bovenstaande informatie is vrij te gebruiken — en als je gekoppeld wilt worden zodra er koks beschikbaar zijn, vertel ons wat je van plan bent.',
+      inlineCtaLabel: 'Vertel ons wat je van plan bent →',
     },
     facts: [
-      { number: '8–20', description: 'Typical retreat group size' },
-      { number: '€350–€650', description: 'Day-rate range for one chef' },
-      { number: '4–8 wks', description: 'Typical lead time to book' },
-      { number: '12 provinces', description: 'Coverage across the Netherlands' },
+      { number: '8–20', description: 'Gebruikelijke groepsgrootte voor een retraite' },
+      { number: '€350–€650', description: 'Dagtarief voor één kok' },
+      { number: '4–8 wkn', description: 'Gebruikelijke doorlooptijd om te boeken' },
+      { number: '12 provincies', description: 'Dekking door heel Nederland' },
     ],
     faq: {
-      h2: 'Frequently asked questions',
+      h2: 'Veelgestelde vragen',
       items: [
         {
-          question: 'How much does a private chef cost for a retreat in the Netherlands?',
-          answer: 'Day rates run €350–€650 for a single chef plus food cost. Per-meal pricing is €18–€45 per person. All-inclusive packages run €80–€150 per person per day. Final cost depends on group size, dietary complexity, and whether prep equipment is provided.',
+          question: 'Wat kost een privékok voor een retraite in Nederland?',
+          answer: 'Dagtarieven liggen tussen €350–€650 voor één kok plus voedselkosten. Prijzen per maaltijd zijn €18–€45 per persoon. All-inclusive pakketten kosten €80–€150 per persoon per dag. De uiteindelijke kosten hangen af van groepsgrootte, dieetcomplexiteit en of keukenapparatuur aanwezig is.',
         },
         {
-          question: 'What is the typical lead time to book a retreat chef?',
-          answer: 'Plan 4–8 weeks for most established chefs, longer between May and September. Last-minute bookings (under two weeks) are possible but expect a smaller pool to choose from.',
+          question: 'Wat is de gebruikelijke doorlooptijd voor het boeken van een retraitkok?',
+          answer: 'Reken op 4–8 weken voor de meeste gevestigde koks, langer tussen mei en september. Last-minute boekingen (minder dan twee weken van tevoren) zijn mogelijk, maar verwacht dan een kleinere keuze.',
         },
         {
-          question: 'Do chefs travel to retreat venues?',
-          answer: "Most established retreat chefs travel within the Netherlands. Travel is usually included in day rates above €450; below that, expect a per-kilometre supplement. For multi-day retreats outside the chef's home province, plan an overnight bed for them on-site.",
+          question: 'Reizen koks naar retraitelocaties?',
+          answer: 'De meeste gevestigde retraitkoks reizen door heel Nederland. Reizen is doorgaans inbegrepen bij dagtarieven boven €450; daaronder kun je een kilometertoeslag verwachten. Voor meerdaagse retraites buiten de thuisprovincie van de kok plan je een overnachtingsplek voor hen op locatie.',
         },
         {
-          question: 'How do chefs handle dietary requirements?',
-          answer: 'Strong retreat chefs handle vegetarian, vegan, gluten-free, and dairy-free as standard. Allergies (nut, shellfish, sesame) and medical diets (FODMAP, low-histamine) are typically supported with two weeks notice. Always share dietary needs at the time of booking, not the week before.',
+          question: 'Hoe gaan koks om met dieetwensen?',
+          answer: 'Sterke retraitkoks verwerken vegetarisch, veganistisch, glutenvrij en zuivelvrij als standaard. Allergieën (noten, schaal- en schelpdieren, sesam) en medische diëten (FODMAP, laag-histamine) worden doorgaans ondersteund met twee weken opzegtermijn. Deel dieetwensen altijd bij de boeking, niet de week ervoor.',
         },
         {
-          question: 'Who contracts the chef — the venue or the host?',
-          answer: "Almost always the host. Venues like Makers Barn introduce chefs and may handle scheduling, but the contractual relationship and payment runs directly between host and chef. Confirm this on your venue's booking terms.",
+          question: 'Wie sluit het contract met de kok — de locatie of de organisator?',
+          answer: 'Vrijwel altijd de organisator. Locaties zoals Makers Barn stellen koks voor en kunnen de planning regelen, maar de contractuele relatie en betaling lopen rechtstreeks tussen organisator en kok. Controleer dit in de boekingsvoorwaarden van je locatie.',
         },
         {
-          question: 'Can I cook myself instead?',
-          answer: 'Yes — many smaller retreats (under 10 people, simpler menus) self-cater successfully. Hiring a chef pays off above 12 guests, with multiple dietary requirements, or when the host is also a teacher and cannot afford the kitchen overhead.',
+          question: 'Kan ik ook zelf koken?',
+          answer: 'Ja — veel kleinere retraites (minder dan 10 personen, eenvoudiger menu\'s) doen dit met succes. Een kok inhuren loont boven 12 gasten, bij meerdere dieetwensen, of wanneer de organisator ook docent is en de keuken er niet bij kan hebben.',
         },
       ],
     },
     dualCta: {
       looking: {
-        eyebrow: 'For retreat hosts',
-        h3: 'Need help finding the right chef?',
-        body: 'Tell us what you are planning. We will match from our directory or point you elsewhere.',
-        button: 'Get matched',
+        eyebrow: 'Voor retraite-organisatoren',
+        h3: 'Hulp nodig bij het vinden van de juiste kok?',
+        body: 'Vertel ons wat je van plan bent. We koppelen je aan iemand uit onze gids of wijzen je de weg.',
+        button: 'Vind een kok',
       },
       join: {
-        eyebrow: 'For chefs',
-        h3: 'Are you a chef working in the Netherlands?',
-        body: 'Apply to join the Makers Barn directory.',
-        button: 'Apply to join',
+        eyebrow: 'Voor koks',
+        h3: 'Ben je een kok die in Nederland werkt?',
+        body: 'Solliciteer om toe te treden tot de Makers Barn koksengids.',
+        button: 'Solliciteer',
       },
     },
     crossLink: {
-      label: 'Working with a chef? See our guide →',  // TODO(i18n): translate
+      label: 'Werken met een kok? Bekijk onze gids →',
     },
   },
 } as const
