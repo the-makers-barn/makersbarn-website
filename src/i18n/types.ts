@@ -450,6 +450,64 @@ export interface UnifiedContactTranslations {
   }
   mapTitle: string
   questionFormImageAlt: string
+  intentLeadIn: {
+    looking: string
+    join: string
+  }
+}
+
+export interface ChefsListingFaqItem {
+  question: string
+  answer: string
+}
+
+export interface ChefsListingFactItem {
+  number: string
+  description: string
+}
+
+export interface ChefsListingSection {
+  h2: string
+  paragraphs: readonly string[]
+}
+
+export interface ChefsListingDualCtaCard {
+  eyebrow: string
+  h3: string
+  body: string
+  button: string
+}
+
+export interface ChefsListingDict {
+  meta: { title: string; description: string }
+  hero: { eyebrow: string; h1: string; subtitle: string }
+  intro: { paragraph: string }
+  sections: {
+    whatToLookFor: ChefsListingSection
+    pricing: ChefsListingSection
+    coverage: ChefsListingSection
+  }
+  grid: {
+    h2: string
+    framingLine: string
+    card: { viewProfile: string; draftBadge: string }
+  }
+  launchingSoon: {
+    headline: string
+    body: string
+    inlineCtaLabel: string
+  }
+  facts: {
+    items: readonly ChefsListingFactItem[]
+  }
+  faq: {
+    h2: string
+    items: readonly ChefsListingFaqItem[]
+  }
+  dualCta: {
+    looking: ChefsListingDualCtaCard
+    join: ChefsListingDualCtaCard
+  }
 }
 
 /**
@@ -950,6 +1008,7 @@ export interface Dictionary {
   comparisonTeaser: ComparisonTeaserTranslations
   tools: ToolsTranslations
   chef: ChefDictionary
+  chefsListing: ChefsListingDict
 }
 
 /**
