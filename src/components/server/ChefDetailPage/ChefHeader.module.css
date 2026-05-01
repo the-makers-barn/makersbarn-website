@@ -11,6 +11,14 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-tertiary);
   letter-spacing: var(--letter-spacing-wide);
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--color-text);
+  text-decoration: underline;
 }
 
 .identity {

@@ -1,8 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { getServerTranslations } from '@/i18n/server'
 import { cn, localize, getImageAltText } from '@/lib'
+import { getLocalizedPath } from '@/lib/routing'
 import type { Chef, Language } from '@/types'
+import { Route } from '@/types/navigation'
 
 import styles from './ChefHeader.module.css'
 
@@ -34,9 +37,9 @@ export async function ChefHeader({ chef, lang }: Props) {
 
   return (
     <header className={styles.header}>
-      <div className={styles.backLink} aria-disabled="true">
+      <Link href={getLocalizedPath(Route.CHEFS, lang)} className={styles.backLink}>
         {dict.chef.backLink}
-      </div>
+      </Link>
       <div className={styles.identity}>
         <Image
           src={chef.avatar.src}
