@@ -1,6 +1,7 @@
 export * from './routes'
 export * from './languages'
 export * from './animation'
+export * from './chefsListing'
 export * from './footer'
 export * from './hero'
 export * from './colors'
