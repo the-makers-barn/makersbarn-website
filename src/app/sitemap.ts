@@ -38,6 +38,7 @@ const PAGE_ROUTES: readonly PageRoute[] = [
   { path: Route.WRITING_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.TEAM_OFFSITES, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.BREATHWORK_SOUND_HEALING, changeFrequency: 'monthly', priority: 0.85 },
+  { path: Route.CHEFS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.COACHING_INTENSIVES, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.SOMATIC_THERAPY_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.WELLNESS_DETOX_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
