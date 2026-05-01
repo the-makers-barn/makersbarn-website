@@ -8,10 +8,14 @@ import { track } from '@vercel/analytics'
 import { IMAGES } from '@/data'
 import { submitContactForm } from '@/actions'
 import { AnalyticsEvent } from '@/constants'
-import { FormStatus, type ContactFormData } from '@/types'
+import { FormStatus, type ContactFormData, type ContactIntent } from '@/types'
 import { useTranslation } from '@/context'
 
 import styles from './QuestionForm.module.css'
+
+interface QuestionFormProps {
+  contactIntent?: ContactIntent
+}
 
 const INITIAL_FORM_DATA: ContactFormData = {
   name: '',
@@ -27,7 +31,7 @@ const FORM_FIELD_IDS = {
   MESSAGE: 'question-message',
 } as const
 
-export function QuestionForm() {
+export function QuestionForm({ contactIntent: _contactIntent }: QuestionFormProps = {}) {
   const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM_DATA)
   const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE)
   const [statusMessage, setStatusMessage] = useState<string>('')
