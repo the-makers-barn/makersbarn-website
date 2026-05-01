@@ -163,9 +163,9 @@ export function UnifiedContact() {
             ) : (
               <motion.div
                 key="question"
-                role="tabpanel"
-                id="question-panel"
-                aria-labelledby="question-tab"
+                {...(intent === ContactIntent.QUESTION
+                  ? { role: 'tabpanel' as const, id: 'question-panel', 'aria-labelledby': 'question-tab' }
+                  : {})}
                 variants={CONTENT_VARIANTS}
                 initial="hidden"
                 animate="visible"

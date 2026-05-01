@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { UnifiedContact } from './UnifiedContact'
 
@@ -46,6 +46,10 @@ function setHash(hash: string) {
 }
 
 describe('UnifiedContact', () => {
+  beforeEach(() => {
+    setHash('question')
+  })
+
   it('renders QuestionForm and the looking lead-in for #looking-for-chef', () => {
     setHash('looking-for-chef')
     render(<UnifiedContact />)
@@ -74,5 +78,23 @@ describe('UnifiedContact', () => {
     render(<UnifiedContact />)
     expect(screen.getByTestId('question-form')).toBeInTheDocument()
     expect(screen.queryByText(/asking about/)).not.toBeInTheDocument()
+  })
+
+  it('omits tabpanel role/id/aria-labelledby when intent is a chef intent', () => {
+    setHash('looking-for-chef')
+    const { container } = render(<UnifiedContact />)
+    const panel = container.querySelector('[data-testid="question-form"]')?.parentElement
+    expect(panel).not.toHaveAttribute('role', 'tabpanel')
+    expect(panel).not.toHaveAttribute('id', 'question-panel')
+    expect(panel).not.toHaveAttribute('aria-labelledby', 'question-tab')
+  })
+
+  it('keeps tabpanel role/id/aria-labelledby when intent is QUESTION', () => {
+    setHash('question')
+    const { container } = render(<UnifiedContact />)
+    const panel = container.querySelector('[data-testid="question-form"]')?.parentElement
+    expect(panel).toHaveAttribute('role', 'tabpanel')
+    expect(panel).toHaveAttribute('id', 'question-panel')
+    expect(panel).toHaveAttribute('aria-labelledby', 'question-tab')
   })
 })
