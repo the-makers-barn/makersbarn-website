@@ -171,6 +171,7 @@ export const AUDIT_VARIANT_TO_TOOL_VARIANT: Record<AuditVariant, ToolVariant> = 
   [AuditVariant.COACHING]: ToolVariant.COACHING,
 }
 
+
 export const CALENDAR_STORAGE_KEY = 'mb_retreat_launch_calendar_v1'
 export const CALENDAR_DEFAULT_PRESET = TimelinePreset.TWELVE_MONTHS
 
@@ -260,6 +261,30 @@ export const AGENDA_NICHE_TO_CALCULATOR: Record<AgendaNiche, Route> = {
   [AgendaNiche.MEDITATION]: Route.MEDITATION_RETREAT_PRICING_CALCULATOR,
   [AgendaNiche.COACHING]: Route.COACHING_RETREAT_PRICING_CALCULATOR,
 } as const
+
+/**
+ * Audit ↔ Agenda crosswalk. Audit catches mistakes before they happen
+ * (the "what could go wrong"); Agenda turns the right answer into a
+ * day-by-day plan (the "now build it"). Niche-matched in both directions.
+ * FIRST_TIME audit falls through to the generic agenda — first-time
+ * hosts benefit more from a starting template than a niche-specific one.
+ */
+export const AUDIT_VARIANT_TO_AGENDA_NICHE: Record<AuditVariant, AgendaNiche> = {
+  [AuditVariant.GENERIC]: AgendaNiche.GENERIC,
+  [AuditVariant.FIRST_TIME]: AgendaNiche.GENERIC,
+  [AuditVariant.YOGA]: AgendaNiche.YOGA,
+  [AuditVariant.WELLNESS]: AgendaNiche.WELLNESS,
+  [AuditVariant.MEDITATION]: AgendaNiche.MEDITATION,
+  [AuditVariant.COACHING]: AgendaNiche.COACHING,
+}
+
+export const AGENDA_NICHE_TO_AUDIT_VARIANT: Record<AgendaNiche, AuditVariant> = {
+  [AgendaNiche.GENERIC]: AuditVariant.GENERIC,
+  [AgendaNiche.YOGA]: AuditVariant.YOGA,
+  [AgendaNiche.WELLNESS]: AuditVariant.WELLNESS,
+  [AgendaNiche.MEDITATION]: AuditVariant.MEDITATION,
+  [AgendaNiche.COACHING]: AuditVariant.COACHING,
+}
 
 export const AGENDA_LENGTHS_ORDER: readonly AgendaLength[] = [
   AgendaLength.TWO_DAY,

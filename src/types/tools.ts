@@ -224,6 +224,7 @@ export interface AuditUiLabels {
   hostARetreatTitle: LocalizedString
   pricingCalculatorTitle: LocalizedString
   calendarTitle: LocalizedString
+  agendaBuilderTitle: LocalizedString
   previewHeading: LocalizedString
   previewIntro: LocalizedString
   sourcesHeading: LocalizedString

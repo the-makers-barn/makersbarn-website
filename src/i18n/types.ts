@@ -998,6 +998,7 @@ export interface ToolsAgendaTranslations {
     heading: string
     hostARetreatTitle: string
     launchCalendarTitle: string
+    auditTitle: string
   }
   crossLinks: {
     heading: string

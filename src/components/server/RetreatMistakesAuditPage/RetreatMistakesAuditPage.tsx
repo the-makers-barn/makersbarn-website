@@ -4,7 +4,9 @@ import type { ReactNode } from 'react'
 import { RetreatMistakesAudit } from '@/components/client'
 import { ToolPageShell } from '@/components/server/ToolPageShell'
 import {
+  AGENDA_NICHE_ROUTES,
   AUDIT_VARIANT_ROUTES,
+  AUDIT_VARIANT_TO_AGENDA_NICHE,
   AUDIT_VARIANT_TO_TOOL_VARIANT,
   AUDIT_VARIANTS_DISPLAY_ORDER,
   type AuditVariant,
@@ -95,11 +97,18 @@ export function RetreatMistakesAuditPage({ variant, locale }: Props): ReactNode 
   const matchedCalculatorTitle =
     CALCULATOR_VARIANTS[AUDIT_VARIANT_TO_TOOL_VARIANT[variant]].copy.heroTitle[locale]
 
+  const matchedAgendaRoute =
+    AGENDA_NICHE_ROUTES[AUDIT_VARIANT_TO_AGENDA_NICHE[variant]]
+
   const relatedCards = [
     {
       href: getLocalizedPath(Route.HOST_A_RETREAT, locale),
       title: AUDIT_LABELS.hostARetreatTitle[locale],
       isPrimary: true,
+    },
+    {
+      href: getLocalizedPath(matchedAgendaRoute, locale),
+      title: AUDIT_LABELS.agendaBuilderTitle[locale],
     },
     {
       href: getLocalizedPath(matchedCalculatorRoute, locale),

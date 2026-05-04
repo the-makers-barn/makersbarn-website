@@ -49,6 +49,7 @@ export const AUDIT_LABELS: AuditUiLabels = {
   relatedHeading: localized('Related tools', 'Gerelateerde tools', 'Verwandte Tools'),
   hostARetreatTitle: localized('Host a retreat at The Makers Barn', 'Organiseer een retraite bij The Makers Barn', 'Retreat im The Makers Barn veranstalten'),
   pricingCalculatorTitle: localized('Run the pricing calculator', 'Open de prijscalculator', 'Den Preisrechner nutzen'),
+  agendaBuilderTitle: localized('Build the day-by-day schedule', 'Bouw het dag-tot-dag schema', 'Den Tag-für-Tag-Ablauf erstellen'),
   calendarTitle: localized('See the 6-month launch calendar', 'Bekijk de lanceringskalender van 6 maanden', 'Den 6-Monats-Launchkalender ansehen'),
   previewHeading: localized('A preview of the most-flagged mistakes', 'Een voorproefje van de meest voorkomende fouten', 'Eine Vorschau auf die häufigsten Fehler'),
   previewIntro: localized('Not ready to take the audit yet? Here\'s a quick read of the mistakes that show up most often when retreat hosts look back at editions that didn\'t work.', 'Nog niet klaar voor de audit? Hieronder een korte blik op de fouten die het vaakst terugkomen wanneer retraite-hosts terugkijken op edities die niet liepen.', 'Noch nicht bereit für das Audit? Hier ein kurzer Überblick über die Fehler, die am häufigsten auftauchen, wenn Retreat-Hosts auf Editionen zurückblicken, die nicht funktioniert haben.'),

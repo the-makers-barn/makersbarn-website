@@ -1057,6 +1057,7 @@ export const nl: Dictionary = {
         heading: 'Related tools',
         hostARetreatTitle: 'Host a retreat at MakersBarn',
         launchCalendarTitle: '12-Month Retreat Launch Calendar',
+        auditTitle: 'Doe de Retreat Mistakes Audit van 5 minuten',
       },
       crossLinks: {
         heading: 'Designing for a different group?',
