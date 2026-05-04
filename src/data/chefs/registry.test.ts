@@ -36,4 +36,36 @@ describe('chef registry', () => {
       expect(getChefBySlug(chef.slug)).toBe(chef)
     }
   })
+
+  it('getChefsForListing returns PUBLISHED_CHEFS in production', async () => {
+    const ORIGINAL = process.env.VERCEL_ENV
+    process.env.VERCEL_ENV = 'production'
+    try {
+      vi.resetModules()
+      const { getChefsForListing, PUBLISHED_CHEFS } = await import('./index')
+      expect(getChefsForListing()).toEqual(PUBLISHED_CHEFS)
+    } finally {
+      if (ORIGINAL === undefined) {
+        delete process.env.VERCEL_ENV
+      } else {
+        process.env.VERCEL_ENV = ORIGINAL
+      }
+    }
+  })
+
+  it('getChefsForListing returns ALL_CHEFS outside production', async () => {
+    const ORIGINAL = process.env.VERCEL_ENV
+    process.env.VERCEL_ENV = 'preview'
+    try {
+      vi.resetModules()
+      const { getChefsForListing, ALL_CHEFS } = await import('./index')
+      expect(getChefsForListing()).toEqual(ALL_CHEFS)
+    } finally {
+      if (ORIGINAL === undefined) {
+        delete process.env.VERCEL_ENV
+      } else {
+        process.env.VERCEL_ENV = ORIGINAL
+      }
+    }
+  })
 })

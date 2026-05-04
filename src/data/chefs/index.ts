@@ -53,6 +53,21 @@ export const PUBLISHED_CHEFS: readonly Chef[] = ALL_CHEFS.filter(
 )
 
 /**
+ * Chefs to render in the public listing.
+ *
+ * - Production: PUBLISHED only — the public directory must not expose drafts
+ *   before the chef has approved their profile.
+ * - Preview / development: ALL_CHEFS — so the team can review draft profiles
+ *   in the listing layout before flipping them live.
+ *
+ * Direct chef URLs (/chefs/<slug>) ignore this and always resolve via
+ * getChefBySlug; drafts remain reachable by direct link in every env.
+ */
+export function getChefsForListing(): readonly Chef[] {
+  return process.env.VERCEL_ENV === 'production' ? PUBLISHED_CHEFS : ALL_CHEFS
+}
+
+/**
  * Returns the chef for a slug, or undefined if not found.
  *
  * Drafts are reachable by direct URL in every environment so that the team can

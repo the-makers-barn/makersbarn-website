@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import { ChefsListingPage } from '@/components/server'
-import { PUBLISHED_CHEFS } from '@/data/chefs'
+import { PUBLISHED_CHEFS, getChefsForListing } from '@/data/chefs'
 import { getServerTranslations } from '@/i18n'
 import { generatePageMetadata } from '@/lib/metadata'
 import { getValidLocale } from '@/lib/locale'
@@ -31,12 +31,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ChefsListingRoute({ params }: PageProps) {
   const { locale } = await params
   const validLocale = getValidLocale(locale)
-  // Listing only ever shows PUBLISHED chefs so that drafts are not exposed in
-  // the public directory before the chef has approved their profile. Drafts
-  // remain reachable by direct URL via /chefs/[slug] for review/onboarding.
+  // Production listing = PUBLISHED only (public-safe). Preview/dev listing =
+  // ALL chefs so the team can review drafts in the grid layout. Direct chef
+  // URLs always resolve regardless of status — see getChefBySlug.
   return (
     <ChefsListingPage
-      chefs={PUBLISHED_CHEFS}
+      chefs={getChefsForListing()}
       publishedChefs={PUBLISHED_CHEFS}
       lang={validLocale}
     />
