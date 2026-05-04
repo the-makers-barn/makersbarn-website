@@ -1,4 +1,4 @@
-import type { CalendarPhaseId, MilestoneStatus, TimelinePreset, ToolKind, ToolVariant } from '@/constants/tools'
+import type { AuditVariant, CalendarPhaseId, MilestoneStatus, TimelinePreset, ToolKind, ToolVariant } from '@/constants/tools'
 import type { Language } from '@/types/common'
 import type { Route } from '@/types/navigation'
 
@@ -173,4 +173,28 @@ export interface ToolsHubItem {
   eyebrow: LocalizedString
   title: LocalizedString
   intro: LocalizedString
+}
+
+export interface AuditVariantCopy {
+  heroEyebrow: LocalizedString
+  heroTitle: LocalizedString
+  heroIntro: LocalizedString
+  metaTitle: LocalizedString
+  metaDescription: LocalizedString
+}
+
+export interface AuditFaqEntry {
+  question: LocalizedString
+  answer: LocalizedString
+}
+
+export interface AuditVariantConfig {
+  variant: AuditVariant
+  copy: AuditVariantCopy
+  /** Niche-specific extras appended to the question bank for this variant. */
+  extraQuestionIds?: readonly string[]
+  /** Question IDs to hide for this variant (e.g. "FIRST_TIME" hides power-mix). */
+  hideQuestionIds?: readonly string[]
+  faq: readonly AuditFaqEntry[]
+  relatedVariants: readonly AuditVariant[]
 }

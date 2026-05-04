@@ -15,6 +15,12 @@ const TOOL_ROUTE_PATHS = new Set<string>([
   Route.SIX_MONTH_RETREAT_LAUNCH_CALENDAR,
   Route.NINE_MONTH_RETREAT_LAUNCH_CALENDAR,
   Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR,
+  Route.RETREAT_MISTAKES_AUDIT,
+  Route.YOGA_RETREAT_MISTAKES_AUDIT,
+  Route.WELLNESS_RETREAT_MISTAKES_AUDIT,
+  Route.MEDITATION_RETREAT_MISTAKES_AUDIT,
+  Route.COACHING_RETREAT_MISTAKES_AUDIT,
+  Route.FIRST_TIME_RETREAT_HOST_AUDIT,
 ])
 
 const TOOL_LOCALES: readonly Language[] = [Language.EN, Language.NL, Language.DE]
@@ -52,6 +58,12 @@ const PAGE_ROUTES: readonly PageRoute[] = [
   { path: Route.SIX_MONTH_RETREAT_LAUNCH_CALENDAR, changeFrequency: 'monthly', priority: 0.7 },
   { path: Route.NINE_MONTH_RETREAT_LAUNCH_CALENDAR, changeFrequency: 'monthly', priority: 0.7 },
   { path: Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR, changeFrequency: 'monthly', priority: 0.7 },
+  { path: Route.RETREAT_MISTAKES_AUDIT, changeFrequency: 'monthly', priority: 0.7 },
+  { path: Route.YOGA_RETREAT_MISTAKES_AUDIT, changeFrequency: 'monthly', priority: 0.7 },
+  { path: Route.WELLNESS_RETREAT_MISTAKES_AUDIT, changeFrequency: 'monthly', priority: 0.7 },
+  { path: Route.MEDITATION_RETREAT_MISTAKES_AUDIT, changeFrequency: 'monthly', priority: 0.7 },
+  { path: Route.COACHING_RETREAT_MISTAKES_AUDIT, changeFrequency: 'monthly', priority: 0.7 },
+  { path: Route.FIRST_TIME_RETREAT_HOST_AUDIT, changeFrequency: 'monthly', priority: 0.7 },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

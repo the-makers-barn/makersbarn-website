@@ -110,7 +110,37 @@ export enum MilestoneStatus {
 export enum ToolKind {
   CALCULATOR = 'calculator',
   PLANNER = 'planner',
+  AUDIT = 'audit',
 }
+
+export enum AuditVariant {
+  GENERIC = 'generic',
+  YOGA = 'yoga',
+  WELLNESS = 'wellness',
+  MEDITATION = 'meditation',
+  COACHING = 'coaching',
+  FIRST_TIME = 'first-time',
+}
+
+export const AUDIT_VARIANT_ROUTES: Record<AuditVariant, Route> = {
+  [AuditVariant.GENERIC]: Route.RETREAT_MISTAKES_AUDIT,
+  [AuditVariant.YOGA]: Route.YOGA_RETREAT_MISTAKES_AUDIT,
+  [AuditVariant.WELLNESS]: Route.WELLNESS_RETREAT_MISTAKES_AUDIT,
+  [AuditVariant.MEDITATION]: Route.MEDITATION_RETREAT_MISTAKES_AUDIT,
+  [AuditVariant.COACHING]: Route.COACHING_RETREAT_MISTAKES_AUDIT,
+  [AuditVariant.FIRST_TIME]: Route.FIRST_TIME_RETREAT_HOST_AUDIT,
+}
+
+export const AUDIT_VARIANTS_DISPLAY_ORDER: readonly AuditVariant[] = [
+  AuditVariant.GENERIC,
+  AuditVariant.FIRST_TIME,
+  AuditVariant.YOGA,
+  AuditVariant.WELLNESS,
+  AuditVariant.MEDITATION,
+  AuditVariant.COACHING,
+] as const
+
+export const AUDIT_STORAGE_KEY = 'mb_retreat_mistakes_audit_v1'
 
 export const CALENDAR_STORAGE_KEY = 'mb_retreat_launch_calendar_v1'
 export const CALENDAR_DEFAULT_PRESET = TimelinePreset.TWELVE_MONTHS

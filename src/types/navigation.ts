@@ -29,6 +29,12 @@ export enum Route {
   SIX_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/6-month-retreat-launch-calendar',
   NINE_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/9-month-retreat-launch-calendar',
   TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR = '/tools/12-month-retreat-launch-calendar',
+  RETREAT_MISTAKES_AUDIT = '/tools/retreat-mistakes-audit',
+  YOGA_RETREAT_MISTAKES_AUDIT = '/tools/yoga-retreat-mistakes-audit',
+  WELLNESS_RETREAT_MISTAKES_AUDIT = '/tools/wellness-retreat-mistakes-audit',
+  MEDITATION_RETREAT_MISTAKES_AUDIT = '/tools/meditation-retreat-mistakes-audit',
+  COACHING_RETREAT_MISTAKES_AUDIT = '/tools/coaching-retreat-mistakes-audit',
+  FIRST_TIME_RETREAT_HOST_AUDIT = '/tools/first-time-retreat-host-audit',
 }
 
 export interface NavLink {
