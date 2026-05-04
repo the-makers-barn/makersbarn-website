@@ -1,4 +1,13 @@
-import type { CalendarPhaseId, MilestoneStatus, TimelinePreset, ToolKind, ToolVariant } from '@/constants/tools'
+import type {
+  AgendaBlockType,
+  AgendaLength,
+  AgendaNiche,
+  CalendarPhaseId,
+  MilestoneStatus,
+  TimelinePreset,
+  ToolKind,
+  ToolVariant,
+} from '@/constants/tools'
 import type { Language } from '@/types/common'
 import type { Route } from '@/types/navigation'
 
@@ -173,4 +182,83 @@ export interface ToolsHubItem {
   eyebrow: LocalizedString
   title: LocalizedString
   intro: LocalizedString
+}
+
+export interface AgendaDefaultBlock {
+  id: string
+  type: AgendaBlockType
+  startMinute: number
+  durationMinute: number
+  title: LocalizedString
+  notes?: LocalizedString
+}
+
+export interface AgendaDefaultDay {
+  dayIndex: number
+  title: LocalizedString
+  blocks: AgendaDefaultBlock[]
+}
+
+export interface AgendaDefaultPlan {
+  niche: AgendaNiche
+  length: AgendaLength
+  days: AgendaDefaultDay[]
+}
+
+export interface AgendaBlockOverride {
+  startMinute?: number
+  durationMinute?: number
+  title?: string
+  notes?: string
+}
+
+export interface AgendaCustomBlock {
+  id: string
+  dayIndex: number
+  type: AgendaBlockType
+  startMinute: number
+  durationMinute: number
+  title: string
+  notes: string
+}
+
+export interface AgendaState {
+  schemaVersion: 1
+  niche: AgendaNiche
+  length: AgendaLength
+  hiddenBlockIds: Record<string, true>
+  blockOverrides: Record<string, AgendaBlockOverride>
+  customBlocks: AgendaCustomBlock[]
+}
+
+export interface AgendaResolvedBlock {
+  id: string
+  dayIndex: number
+  type: AgendaBlockType
+  startMinute: number
+  durationMinute: number
+  title: string
+  notes: string
+  isCustom: boolean
+}
+
+export interface AgendaResolvedDay {
+  dayIndex: number
+  title: string
+  blocks: AgendaResolvedBlock[]
+}
+
+export interface EmailAgendaPlanInput {
+  email: string
+  niche: AgendaNiche
+  length: AgendaLength
+  hiddenBlockIds: string[]
+  blockOverrides: Array<{ blockId: string } & AgendaBlockOverride>
+  customBlocks: Array<Omit<AgendaCustomBlock, 'id'>>
+  contactConsent: boolean
+}
+
+export interface EmailAgendaPlanResult {
+  ok: boolean
+  error?: 'rate_limit' | 'invalid_email' | 'validation' | 'send_failed'
 }

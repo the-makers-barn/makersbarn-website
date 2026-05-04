@@ -866,10 +866,128 @@ export interface ToolsCalendarTranslations {
   }
 }
 
+/**
+ * Retreat Agenda Builder tool translations.
+ * Strings prefixed with `// {var}` accept template-style interpolation —
+ * supported placeholders: `{niche}`, `{length}`, `{nicheLabel}`.
+ */
+export interface ToolsAgendaTranslations {
+  metaTitle: string
+  metaDescription: string
+  heroEyebrow: string
+  heroTitle: string
+  heroIntro: string
+  heroAfterIntro: string
+  nicheLabels: {
+    generic: string
+    yoga: string
+    wellness: string
+    meditation: string
+    coaching: string
+  }
+  blockTypeLabels: {
+    ritual: string
+    practice: string
+    workshop: string
+    meal: string
+    free: string
+    rest: string
+    travel: string
+  }
+  lengthSwitcher: {
+    label: string
+    preset2: string
+    preset3: string
+    preset5: string
+    preset7: string
+  }
+  dayHeading: string
+  warnings: {
+    heading: string
+    tooMuchStructured: string
+    noFreeTime: string
+    overlongBlock: string
+    earlyStart: string
+    lateEnd: string
+    overlap: string
+  }
+  block: {
+    timeLabel: string
+    durationLabel: string
+    titleLabel: string
+    notesLabel: string
+    typeLabel: string
+    edit: string
+    save: string
+    cancel: string
+    hide: string
+    restore: string
+    remove: string
+  }
+  addBlock: {
+    button: string
+    heading: string
+    submit: string
+    cancel: string
+    titlePlaceholder: string
+    notesPlaceholder: string
+    capReached: string
+    totalCapReached: string
+  }
+  emptyDay: string
+  print: {
+    button: string
+    heading: string
+  }
+  reset: {
+    button: string
+    confirm: string
+  }
+  emailForm: {
+    heading: string
+    placeholder: string
+    contactConsent: string
+    submit: string
+    sending: string
+    success: string
+    errorRateLimit: string
+    errorInvalidEmail: string
+    errorGeneric: string
+    errorSendFailed: string
+  }
+  email: {
+    subject: string
+    greeting: string
+    intro: string
+    backToPlanCta: string
+    backToPlanLabel: string
+    signoff: string
+  }
+  howTo: {
+    heading: string
+    steps: readonly string[]
+  }
+  faq: {
+    heading: string
+    entries: readonly { question: string; answer: string }[]
+  }
+  related: {
+    heading: string
+    hostARetreatTitle: string
+    profitabilityCalculatorTitle: string
+    launchCalendarTitle: string
+  }
+  crossLinks: {
+    heading: string
+    intro: string
+  }
+}
+
 export interface ToolsTranslations {
   hub: ToolsHubTranslations
   calculator: ToolsCalculatorTranslations
   calendar: ToolsCalendarTranslations
+  agenda: ToolsAgendaTranslations
   related: ToolsRelatedTranslations
   faq: ToolsFaqTranslations
 }

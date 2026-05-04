@@ -1,0 +1,49 @@
+.crossLinks {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(41, 75, 58, 0.04);
+  border-radius: 1rem;
+}
+
+.crossLinksInner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.crossLinksHeading {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.crossLinksIntro {
+  margin: 0 0 1rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.crossLinksList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.crossLinksItem {
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(41, 75, 58, 0.2);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.crossLinksItem:hover {
+  background: rgba(41, 75, 58, 0.06);
+}
