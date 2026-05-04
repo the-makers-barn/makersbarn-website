@@ -146,21 +146,25 @@ export function RetreatMistakesAuditPage({ variant, locale }: Props): ReactNode 
   )
 
   const sourcesBlock = (
-    <section className={styles.sources} aria-labelledby="audit-sources">
-      <h2 id="audit-sources" className={styles.sourcesHeading}>
+    <details className={styles.sources}>
+      <summary className={styles.sourcesSummary}>
         {AUDIT_LABELS.sourcesHeading[locale]}
-      </h2>
+      </summary>
       <p className={styles.sourcesIntro}>{AUDIT_LABELS.sourcesIntro[locale]}</p>
       <ul className={styles.sourcesList}>
         {AUDIT_SOURCES.map((source) => (
           <li key={source.url}>
-            <a href={source.url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={source.url}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
               {source.name}
             </a>
           </li>
         ))}
       </ul>
-    </section>
+    </details>
   )
 
   return (
