@@ -934,6 +934,7 @@ export const de: Dictionary = {
       },
     },
     agenda: {
+      rootAriaLabel: 'Retreat agenda builder',
       blockTypeLabels: {
         ritual: 'Ritual',
         practice: 'Practice',
@@ -984,6 +985,11 @@ export const de: Dictionary = {
         totalCapReached: 'You have reached the total custom-block limit',
       },
       emptyDay: 'No blocks for this day yet — add one to get started.',
+      inlineHostCta: {
+        title: 'Need a venue for the retreat?',
+        body: 'MakersBarn is a quiet retreat venue in the Dutch countryside, designed for slow-living retreats. Dates fill 9–12 months out.',
+        linkLabel: 'Check MakersBarn dates →',
+      },
       print: {
         button: 'Print agenda',
         heading: 'Use the print dialog to save as PDF or print on paper.',
@@ -1055,7 +1061,7 @@ export const de: Dictionary = {
           heroTitle: 'The Retreat Agenda Builder',
           heroIntro: 'Design the day-by-day flow of your retreat in under ten minutes. Pick a length, work from research-backed defaults, then hide what does not fit, edit what is close, and add what is missing — until the schedule matches your group, venue, and theme.',
           heroAfterIntro: 'Already have your dates? Pair this with the Launch Calendar and Profitability Calculator below.',
-          shortLabel: 'Retreat',
+          shortLabel: 'Any retreat',
           relatedCalculatorTitle: 'Retreat Profitability Calculator',
           guideSections: [
             {

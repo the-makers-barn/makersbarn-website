@@ -897,6 +897,7 @@ export interface AgendaNicheCopy {
 }
 
 export interface ToolsAgendaTranslations {
+  rootAriaLabel: string
   blockTypeLabels: {
     ritual: string
     practice: string
@@ -947,6 +948,11 @@ export interface ToolsAgendaTranslations {
     totalCapReached: string
   }
   emptyDay: string
+  inlineHostCta: {
+    title: string
+    body: string
+    linkLabel: string
+  }
   print: {
     button: string
     heading: string

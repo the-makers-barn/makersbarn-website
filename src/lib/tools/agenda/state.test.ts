@@ -143,6 +143,27 @@ describe('migrateAgendaState', () => {
     expect(migrateAgendaState({ schemaVersion: 99 })).toBeNull()
   })
 
+  it('returns null for unknown niche (would otherwise crash resolver)', () => {
+    const state = { ...createDefaultAgendaState(NICHE), niche: 'unknown-niche' }
+    expect(migrateAgendaState(state)).toBeNull()
+  })
+
+  it('returns null for unknown length (would otherwise crash resolver)', () => {
+    const state = { ...createDefaultAgendaState(NICHE), length: 99 }
+    expect(migrateAgendaState(state)).toBeNull()
+  })
+
+  it('returns null when required fields are missing', () => {
+    expect(
+      migrateAgendaState({
+        schemaVersion: 1,
+        niche: NICHE,
+        length: AgendaLength.THREE_DAY,
+        // hiddenBlockIds, blockOverrides, customBlocks all missing
+      }),
+    ).toBeNull()
+  })
+
   it('passes through current schema', () => {
     const state = createDefaultAgendaState(NICHE)
     expect(migrateAgendaState(state)).toEqual(state)

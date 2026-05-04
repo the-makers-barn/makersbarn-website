@@ -25,8 +25,6 @@ export interface RetreatAgendaBuilderProps {
   t: Dictionary
 }
 
-const ROOT_ARIA_LABEL = 'Retreat agenda builder'
-
 export function RetreatAgendaBuilder(props: RetreatAgendaBuilderProps): ReactNode {
   const { niche, locale, t } = props
   const { state, hasHydrated, dispatch } = useAgendaState(niche)
@@ -61,7 +59,7 @@ export function RetreatAgendaBuilder(props: RetreatAgendaBuilderProps): ReactNod
   }
 
   return (
-    <section className={styles.root} aria-label={ROOT_ARIA_LABEL}>
+    <section className={styles.root} aria-label={t.tools.agenda.rootAriaLabel}>
       <LengthSwitcher
         current={state.length}
         onChange={handleLengthChange}

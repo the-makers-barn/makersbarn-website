@@ -254,7 +254,7 @@ export const AGENDA_PAYLOAD_MAX_BYTES = 200_000
 
 export const AGENDA_LEAD_SOURCES = {
   EMAIL_FOOTER: 'email-agenda-plan',
-  RELATED_HOST: 'tool-agenda-related-host',
+  ARRIVAL_DAY_CTA: 'tool-agenda-arrival-day',
 } as const
 
 /**

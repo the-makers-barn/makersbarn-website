@@ -1,6 +1,8 @@
 import {
   AGENDA_CUSTOM_BLOCK_LIMITS,
   AGENDA_DEFAULT_LENGTH,
+  AGENDA_LENGTHS_ORDER,
+  AGENDA_NICHE_ORDER,
   AgendaBlockType,
   AgendaLength,
   AgendaNiche,
@@ -234,6 +236,9 @@ export function agendaReducer(state: AgendaState, action: AgendaAction): AgendaS
       if (action.length === state.length) {
         return state
       }
+      // Custom blocks for now-out-of-range dayIndex stay in state; they are
+      // hidden from the rendered agenda by the resolver but reappear if the
+      // user grows the length back. Intentional — preserves user work.
       return { ...state, length: action.length }
     case 'TOGGLE_HIDE_DEFAULT':
       return toggleHidden(state, action.blockId)
@@ -257,13 +262,36 @@ export function agendaReducer(state: AgendaState, action: AgendaAction): AgendaS
   }
 }
 
+function isAgendaNiche(value: unknown): value is AgendaNiche {
+  return (AGENDA_NICHE_ORDER as readonly string[]).includes(value as string)
+}
+
+function isAgendaLength(value: unknown): value is AgendaLength {
+  return (AGENDA_LENGTHS_ORDER as readonly number[]).includes(value as number)
+}
+
 export function migrateAgendaState(raw: unknown): AgendaState | null {
   if (typeof raw !== 'object' || raw === null) {
     return null
   }
-  const candidate = raw as Partial<AgendaState>
+  const candidate = raw as Record<string, unknown>
   if (candidate.schemaVersion !== CURRENT_SCHEMA_VERSION) {
     return null
   }
-  return candidate as AgendaState
+  if (!isAgendaNiche(candidate.niche)) {
+    return null
+  }
+  if (!isAgendaLength(candidate.length)) {
+    return null
+  }
+  if (
+    typeof candidate.hiddenBlockIds !== 'object' ||
+    candidate.hiddenBlockIds === null ||
+    typeof candidate.blockOverrides !== 'object' ||
+    candidate.blockOverrides === null ||
+    !Array.isArray(candidate.customBlocks)
+  ) {
+    return null
+  }
+  return candidate as unknown as AgendaState
 }

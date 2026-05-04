@@ -262,6 +262,14 @@
   border: 1px solid rgba(41, 75, 58, 0.12);
 }
 
+.editFormHeading {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
 .editGrid {
   display: grid;
   gap: 0.5rem;
@@ -384,6 +392,45 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-tertiary);
   font-style: italic;
+}
+
+/* ─── Inline host CTA ─────────────────────────── */
+
+.inlineCta {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.9rem 1.1rem;
+  margin-top: 0.5rem;
+  border-radius: 0.6rem;
+  background: rgba(41, 75, 58, 0.05);
+  border: 1px solid rgba(41, 75, 58, 0.12);
+}
+
+.inlineCtaTitle {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-md);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.inlineCtaBody {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}
+
+.inlineCtaLink {
+  align-self: start;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.inlineCtaLink:hover {
+  color: var(--color-secondary);
 }
 
 /* ─── Email form ─────────────────────────────── */

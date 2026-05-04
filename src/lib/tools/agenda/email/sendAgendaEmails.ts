@@ -62,12 +62,8 @@ async function sendUserEmail(
   const { data, resolvedDays, locale } = input
   const t = await getServerTranslations(locale)
   const lengthValue = String(data.length)
-  const subject = t.tools.agenda.email.subject
-    .replaceAll('{length}', lengthValue)
-    .replaceAll('{niche}', data.niche)
-  const greeting = t.tools.agenda.email.greeting
-    .replaceAll('{length}', lengthValue)
-    .replaceAll('{niche}', data.niche)
+  const subject = t.tools.agenda.email.subject.replaceAll('{length}', lengthValue)
+  const greeting = t.tools.agenda.email.greeting.replaceAll('{length}', lengthValue)
   const route = AGENDA_NICHE_ROUTES[data.niche]
   const ctaUrl = `${SITE_BASE_URL}${getLocalizedPath(route, locale)}`
   const html = renderAgendaEmailHtml({

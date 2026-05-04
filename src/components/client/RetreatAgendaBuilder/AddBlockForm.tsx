@@ -4,7 +4,7 @@ import { useState, type Dispatch, type ReactNode } from 'react'
 
 import { AGENDA_CUSTOM_BLOCK_LIMITS, AgendaBlockType } from '@/constants/tools'
 import type { Dictionary } from '@/i18n/types'
-import { parseTimeToMinutes } from '@/lib/tools/agenda/format'
+import { formatMinutesAsTime, parseTimeToMinutes } from '@/lib/tools/agenda/format'
 import type { AgendaAction } from '@/lib/tools/agenda/state'
 
 import styles from './RetreatAgendaBuilder.module.css'
@@ -19,12 +19,24 @@ const BLOCK_TYPE_OPTIONS: AgendaBlockType[] = [
   AgendaBlockType.TRAVEL,
 ]
 
-const DEFAULT_NEW_BLOCK = {
-  time: '14:00',
-  duration: '60',
-  title: '',
-  notes: '',
-  type: AgendaBlockType.WORKSHOP,
+const FALLBACK_START_MIN = 14 * 60
+
+interface NewBlockDraft {
+  time: string
+  duration: string
+  title: string
+  notes: string
+  type: AgendaBlockType
+}
+
+function buildInitialDraft(suggestedStartMin: number): NewBlockDraft {
+  return {
+    time: formatMinutesAsTime(suggestedStartMin),
+    duration: '60',
+    title: '',
+    notes: '',
+    type: AgendaBlockType.WORKSHOP,
+  }
 }
 
 export interface AddBlockFormProps {
@@ -32,6 +44,12 @@ export interface AddBlockFormProps {
   disabled: boolean
   isAtPerDayLimit: boolean
   isAtTotalLimit: boolean
+  /**
+   * Minute-of-day where the next block should default. Caller passes the end
+   * time of the last block on the day so a freshly-added block lands after
+   * the existing schedule rather than at a static 14:00.
+   */
+  suggestedStartMin?: number
   dispatch: Dispatch<AgendaAction>
   t: Dictionary
 }
@@ -41,6 +59,7 @@ export function AddBlockForm({
   disabled,
   isAtPerDayLimit,
   isAtTotalLimit,
+  suggestedStartMin,
   dispatch,
   t,
 }: AddBlockFormProps): ReactNode {
@@ -48,7 +67,10 @@ export function AddBlockForm({
   const blockLabels = t.tools.agenda.block
   const blockTypeLabels = t.tools.agenda.blockTypeLabels
   const [open, setOpen] = useState(false)
-  const [draft, setDraft] = useState(DEFAULT_NEW_BLOCK)
+  const initialStart = suggestedStartMin ?? FALLBACK_START_MIN
+  const [draft, setDraft] = useState<NewBlockDraft>(() =>
+    buildInitialDraft(initialStart),
+  )
 
   const buttonDisabled = disabled || isAtPerDayLimit || isAtTotalLimit
 
@@ -70,7 +92,7 @@ export function AddBlockForm({
       title: draft.title,
       notes: draft.notes,
     })
-    setDraft(DEFAULT_NEW_BLOCK)
+    setDraft(buildInitialDraft(initialStart))
     setOpen(false)
   }
 
@@ -96,7 +118,7 @@ export function AddBlockForm({
   }
 
   const handleCancel = (): void => {
-    setDraft(DEFAULT_NEW_BLOCK)
+    setDraft(buildInitialDraft(initialStart))
     setOpen(false)
   }
 
@@ -108,9 +130,7 @@ export function AddBlockForm({
         handleSubmit()
       }}
     >
-      <p className={styles.warningsHeading} style={{ fontSize: 'var(--font-size-sm)' }}>
-        {labels.heading}
-      </p>
+      <h4 className={styles.editFormHeading}>{labels.heading}</h4>
       <div className={styles.editGrid}>
         <label className={styles.editField}>
           {blockLabels.timeLabel}
