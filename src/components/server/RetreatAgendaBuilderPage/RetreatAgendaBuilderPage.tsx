@@ -6,6 +6,7 @@ import { ToolPageShell } from '@/components/server/ToolPageShell'
 import {
   AGENDA_NICHE_ORDER,
   AGENDA_NICHE_ROUTES,
+  AGENDA_NICHE_TO_CALCULATOR,
   AgendaNiche,
 } from '@/constants/tools'
 import type { Dictionary } from '@/i18n/types'
@@ -15,16 +16,10 @@ import { Route } from '@/types/navigation'
 
 import styles from './RetreatAgendaBuilderPage.module.css'
 
-const NICHE_LABEL_PLACEHOLDER = '{nicheLabel}'
-
 interface Props {
   niche: AgendaNiche
   locale: Language
   t: Dictionary
-}
-
-function nicheLabelFor(niche: AgendaNiche, t: Dictionary): string {
-  return t.tools.agenda.nicheLabels[niche]
 }
 
 interface CrossLink {
@@ -41,7 +36,7 @@ function buildCrossLinks(
   return AGENDA_NICHE_ORDER.filter((niche) => niche !== active).map((niche) => ({
     niche,
     href: getLocalizedPath(AGENDA_NICHE_ROUTES[niche], locale),
-    label: nicheLabelFor(niche, t),
+    label: t.tools.agenda.niches[niche].shortLabel,
   }))
 }
 
@@ -57,32 +52,34 @@ export function RetreatAgendaBuilderPage({
   t,
 }: Props): ReactNode {
   const agenda = t.tools.agenda
-  const nicheLabel = nicheLabelFor(niche, t)
-  const heroTitle = agenda.heroTitle.replaceAll(NICHE_LABEL_PLACEHOLDER, nicheLabel)
-  const heroIntro = agenda.heroIntro.replaceAll(NICHE_LABEL_PLACEHOLDER, nicheLabel)
+  const nicheCopy = agenda.niches[niche]
   const heroAfterIntro = (
-    <p style={HERO_AFTER_INTRO_STYLES}>{agenda.heroAfterIntro}</p>
+    <p style={HERO_AFTER_INTRO_STYLES}>{nicheCopy.heroAfterIntro}</p>
   )
 
   const crossLinks = buildCrossLinks(niche, locale, t)
-  const faqEntries = agenda.faq.entries.map((e) => ({
-    question: e.question,
-    answer: e.answer,
+  const faqEntries = [
+    ...nicheCopy.faqExtras.map((e) => ({ question: e.question, answer: e.answer })),
+    ...agenda.faq.entries.map((e) => ({ question: e.question, answer: e.answer })),
+  ]
+  const guideSections = nicheCopy.guideSections.map((section) => ({
+    heading: section.heading,
+    paragraphs: [...section.paragraphs],
   }))
 
   return (
     <>
       <ToolPageShell
         hero={{
-          eyebrow: agenda.heroEyebrow,
-          title: heroTitle,
-          intro: heroIntro,
+          eyebrow: nicheCopy.heroEyebrow,
+          title: nicheCopy.heroTitle,
+          intro: nicheCopy.heroIntro,
           afterIntro: heroAfterIntro,
         }}
         tool={<RetreatAgendaBuilder niche={niche} locale={locale} t={t} />}
         howToHeading={agenda.howTo.heading}
         howToSteps={[...agenda.howTo.steps]}
-        guideSections={[]}
+        guideSections={guideSections}
         faqHeading={agenda.faq.heading}
         faqEntries={faqEntries}
         relatedHeading={agenda.related.heading}
@@ -93,8 +90,8 @@ export function RetreatAgendaBuilderPage({
             isPrimary: true,
           },
           {
-            href: getLocalizedPath(Route.RETREAT_PROFITABILITY_CALCULATOR, locale),
-            title: agenda.related.profitabilityCalculatorTitle,
+            href: getLocalizedPath(AGENDA_NICHE_TO_CALCULATOR[niche], locale),
+            title: nicheCopy.relatedCalculatorTitle,
           },
           {
             href: getLocalizedPath(Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR, locale),

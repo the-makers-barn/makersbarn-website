@@ -868,23 +868,35 @@ export interface ToolsCalendarTranslations {
 
 /**
  * Retreat Agenda Builder tool translations.
- * Strings prefixed with `// {var}` accept template-style interpolation —
- * supported placeholders: `{niche}`, `{length}`, `{nicheLabel}`.
+ *
+ * Per-niche copy lives under `niches.<niche>` so each landing page has
+ * unique meta, hero, guide, and FAQ content (avoiding duplicate-content
+ * SEO issues across the 5 niche routes).
  */
-export interface ToolsAgendaTranslations {
+export interface AgendaGuideSection {
+  heading: string
+  paragraphs: readonly string[]
+}
+
+export interface AgendaFaqEntry {
+  question: string
+  answer: string
+}
+
+export interface AgendaNicheCopy {
   metaTitle: string
   metaDescription: string
   heroEyebrow: string
   heroTitle: string
   heroIntro: string
   heroAfterIntro: string
-  nicheLabels: {
-    generic: string
-    yoga: string
-    wellness: string
-    meditation: string
-    coaching: string
-  }
+  shortLabel: string
+  guideSections: readonly AgendaGuideSection[]
+  faqExtras: readonly AgendaFaqEntry[]
+  relatedCalculatorTitle: string
+}
+
+export interface ToolsAgendaTranslations {
   blockTypeLabels: {
     ritual: string
     practice: string
@@ -969,17 +981,23 @@ export interface ToolsAgendaTranslations {
   }
   faq: {
     heading: string
-    entries: readonly { question: string; answer: string }[]
+    entries: readonly AgendaFaqEntry[]
   }
   related: {
     heading: string
     hostARetreatTitle: string
-    profitabilityCalculatorTitle: string
     launchCalendarTitle: string
   }
   crossLinks: {
     heading: string
     intro: string
+  }
+  niches: {
+    generic: AgendaNicheCopy
+    yoga: AgendaNicheCopy
+    wellness: AgendaNicheCopy
+    meditation: AgendaNicheCopy
+    coaching: AgendaNicheCopy
   }
 }
 

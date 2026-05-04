@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { AgendaBlockType } from '@/constants/tools'
+import { AgendaBlockType, AgendaNiche } from '@/constants/tools'
 import type { AgendaResolvedBlock, AgendaResolvedDay } from '@/types/tools'
 
 import { buildAgendaWarnings } from './validation'
@@ -79,6 +79,40 @@ describe('buildAgendaWarnings', () => {
       ]),
     ])
     expect(warnings.some((w) => w.code === 'overlap')).toBe(true)
+  })
+
+  it('skips noFreeTime warning on travel/arrival days', () => {
+    const warnings = buildAgendaWarnings([
+      day([
+        block(14 * 60, 120, AgendaBlockType.TRAVEL, 'Arrival'),
+        block(17 * 60, 75, AgendaBlockType.RITUAL, 'Opening circle'),
+        block(19 * 60, 75, AgendaBlockType.MEAL, 'Welcome dinner'),
+      ]),
+    ])
+    expect(warnings.some((w) => w.code === 'noFreeTime')).toBe(false)
+  })
+
+  it('skips earlyStart warning when niche is meditation', () => {
+    const warnings = buildAgendaWarnings(
+      [
+        day([
+          block(6 * 60, 60, AgendaBlockType.PRACTICE, 'Sitting 1'),
+          block(13 * 60, 60, AgendaBlockType.REST),
+        ]),
+      ],
+      { niche: AgendaNiche.MEDITATION },
+    )
+    expect(warnings.some((w) => w.code === 'earlyStart')).toBe(false)
+  })
+
+  it('uses niche-specific structured-time threshold', () => {
+    // Coaching cap is 8h; 6h of workshops shouldn't trip
+    const blocks = Array.from({ length: 4 }, (_, i) =>
+      block(9 * 60 + i * 100, 90, AgendaBlockType.WORKSHOP),
+    )
+    blocks.push(block(15 * 60, 75, AgendaBlockType.FREE))
+    const warnings = buildAgendaWarnings([day(blocks)], { niche: AgendaNiche.COACHING })
+    expect(warnings.some((w) => w.code === 'tooMuchStructured')).toBe(false)
   })
 
   it('returns no warnings for a balanced day', () => {

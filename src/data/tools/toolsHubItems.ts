@@ -20,12 +20,18 @@ const CALENDAR_INTRO_TEMPLATE_EN =
   'Plan your retreat over {months} months with check-offs, custom milestones, and email-the-list.'
 const MONTHS_PLACEHOLDER = '{months}'
 
-const AGENDA_EYEBROW_EN = 'Free planning tool'
+const AGENDA_EYEBROW_BY_NICHE_EN: Record<AgendaNiche, string> = {
+  [AgendaNiche.GENERIC]: 'Free planning tool',
+  [AgendaNiche.YOGA]: 'Free planning tool · Yoga',
+  [AgendaNiche.WELLNESS]: 'Free planning tool · Wellness',
+  [AgendaNiche.MEDITATION]: 'Free planning tool · Meditation',
+  [AgendaNiche.COACHING]: 'Free planning tool · Coaching',
+}
 const AGENDA_TITLE_BY_NICHE_EN: Record<AgendaNiche, string> = {
   [AgendaNiche.GENERIC]: 'The Retreat Agenda Builder',
-  [AgendaNiche.YOGA]: 'The Yoga Retreat Agenda Builder',
-  [AgendaNiche.WELLNESS]: 'The Wellness Retreat Agenda Builder',
-  [AgendaNiche.MEDITATION]: 'The Meditation Retreat Agenda Builder',
+  [AgendaNiche.YOGA]: 'The Yoga Retreat Schedule Builder',
+  [AgendaNiche.WELLNESS]: 'The Wellness Retreat Schedule Builder',
+  [AgendaNiche.MEDITATION]: 'The Meditation Retreat Schedule Builder',
   [AgendaNiche.COACHING]: 'The Coaching Retreat Agenda Builder',
 }
 const AGENDA_INTRO_BY_NICHE_EN: Record<AgendaNiche, string> = {
@@ -88,7 +94,7 @@ const buildCalculatorItem = (variant: ToolVariant): ToolsHubItem => ({
 const buildAgendaItem = (niche: AgendaNiche): ToolsHubItem => ({
   kind: ToolKind.AGENDA,
   route: AGENDA_NICHE_ROUTES[niche],
-  eyebrow: allLocalesSameString(AGENDA_EYEBROW_EN),
+  eyebrow: allLocalesSameString(AGENDA_EYEBROW_BY_NICHE_EN[niche]),
   title: allLocalesSameString(AGENDA_TITLE_BY_NICHE_EN[niche]),
   intro: allLocalesSameString(AGENDA_INTRO_BY_NICHE_EN[niche]),
 })

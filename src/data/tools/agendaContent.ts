@@ -55,7 +55,7 @@ function arrivalDaySpecs(niche: AgendaNiche): BlockSpec[] {
       ? {
           slug: 'evening-orientation',
           type: AgendaBlockType.RITUAL,
-          start: hm(20, 0),
+          start: hm(20, 30),
           duration: 45,
           title: 'Orientation & noble silence begins',
           notes: 'Walk through the silence guidelines before retiring.',

@@ -934,19 +934,6 @@ export const de: Dictionary = {
       },
     },
     agenda: {
-      metaTitle: 'The {nicheLabel} Retreat Agenda Builder | MakersBarn',
-      metaDescription: 'A free, opinionated {nicheLabel} retreat agenda builder — opinionated day-by-day defaults you can edit, hide, and add to. Email or print your plan when ready.',
-      heroEyebrow: 'Free planning tool',
-      heroTitle: 'The {nicheLabel} Retreat Agenda Builder',
-      heroIntro: 'Design the day-by-day flow of your {nicheLabel} retreat. Start from research-backed defaults, then add, edit, hide, or replace blocks until the agenda fits your group. Save it to your inbox or print it for the door of every cabin.',
-      heroAfterIntro: 'Already have your dates? Pair this with the Launch Calendar and Profitability Calculator below.',
-      nicheLabels: {
-        generic: 'retreat',
-        yoga: 'yoga retreat',
-        wellness: 'wellness retreat',
-        meditation: 'meditation retreat',
-        coaching: 'coaching retreat',
-      },
       blockTypeLabels: {
         ritual: 'Ritual',
         practice: 'Practice',
@@ -1018,7 +1005,7 @@ export const de: Dictionary = {
         errorSendFailed: 'Send failed — please retry.',
       },
       email: {
-        subject: 'Your {length}-day {niche} retreat agenda',
+        subject: 'Your {length}-day retreat agenda',
         greeting: 'Your {length}-day retreat agenda',
         intro: 'Here is the day-by-day plan you saved on the agenda builder — defaults, your edits, and any custom blocks you added.',
         backToPlanCta: 'Continue editing your agenda online:',
@@ -1045,8 +1032,6 @@ export const de: Dictionary = {
           { question: 'Should I follow the defaults exactly?', answer: 'No — the defaults are a starting point grounded in best practice. Your group, venue, and theme are unique. Hide what does not fit, edit what is close, and add what is missing.' },
           { question: 'How is this different from a calendar app?', answer: 'A calendar app starts blank. This builder starts opinionated — with the patterns that consistently work for the niche you chose. You spend your time customising, not designing from scratch.' },
           { question: 'Can I share the agenda with co-hosts?', answer: 'Yes — email yourself the agenda from the form below. The plan is printed in full in that email so co-hosts and participants alike can read it without opening the tool.' },
-          { question: 'Does the builder work for silent retreats?', answer: 'Yes — pick the meditation niche. Defaults include four sittings per day, walking meditation, dharma talk, and Noble Silence overnight, modelled on Plum Village and vipassana conventions.' },
-          { question: 'What about a corporate offsite?', answer: 'The coaching variant is the closest match — 90-minute hot-seats, integration walks, commitments circle. We may add a dedicated team-offsite niche in a future update.' },
           { question: 'Is my agenda saved across devices?', answer: 'No — your edits live on this device only. Use the email-the-agenda option to take your plan with you or share with co-hosts.' },
           { question: 'Should I run the Profitability Calculator before or after this?', answer: 'Before. Validate the numbers first; design the days only when you know the retreat is viable. The calculator is in the related tools below.' },
           { question: 'When should I lock the agenda?', answer: 'A draft 6–8 weeks out is typical, with a final version 1–2 weeks before. Build flex into the agenda so you can adjust based on the energy of the actual group.' },
@@ -1056,12 +1041,213 @@ export const de: Dictionary = {
       related: {
         heading: 'Related tools',
         hostARetreatTitle: 'Host a retreat at MakersBarn',
-        profitabilityCalculatorTitle: 'Retreat Profitability Calculator',
         launchCalendarTitle: '12-Month Retreat Launch Calendar',
       },
       crossLinks: {
-        heading: 'Other niches',
-        intro: 'Designing for a different group? Try one of the niche-specific defaults.',
+        heading: 'Designing for a different group?',
+        intro: 'Each variant has its own defaults — modelled on the patterns that work for that niche.',
+      },
+      niches: {
+        generic: {
+          metaTitle: 'Retreat Agenda Builder — Free Day-by-Day Schedule Template',
+          metaDescription: 'Free retreat agenda builder with research-backed daily defaults. Edit blocks, add your own, email or print. No signup. Works for any retreat.',
+          heroEyebrow: 'Free planning tool',
+          heroTitle: 'The Retreat Agenda Builder',
+          heroIntro: 'Design the day-by-day flow of your retreat in under ten minutes. Pick a length, work from research-backed defaults, then hide what does not fit, edit what is close, and add what is missing — until the schedule matches your group, venue, and theme.',
+          heroAfterIntro: 'Already have your dates? Pair this with the Launch Calendar and Profitability Calculator below.',
+          shortLabel: 'Retreat',
+          relatedCalculatorTitle: 'Retreat Profitability Calculator',
+          guideSections: [
+            {
+              heading: 'What makes a retreat schedule actually work',
+              paragraphs: [
+                'Three patterns show up in nearly every retreat that participants rate as transformational, regardless of niche. First, the day mirrors a natural energy curve: dynamic in the morning, reflective after lunch, integrative in the evening. Second, structured content stays under four hours per day — past that point, the group stops integrating and starts performing. Third, at least one hour of unstructured time per day is non-negotiable. Most facilitators discover the third rule the hard way, after a retreat that overran every block by twenty minutes.',
+                'The defaults in this builder bake those three rules in. You can ignore them — every retreat is different — but you will see warnings if you stray too far. Treat them as nudges, not blockers.',
+              ],
+            },
+            {
+              heading: 'Common scheduling traps',
+              paragraphs: [
+                'Stacking the morning. Two ninety-minute workshops back-to-back before lunch sounds productive on paper. By 11am the group is cognitively saturated and the afternoon has nowhere to land. Spread the work across the day instead.',
+                'Underestimating transitions. A ten-minute buffer between every block compounds — across a seven-block day that is over an hour of buffer time. The builder includes natural buffers in the defaults; do not squeeze them out.',
+                'Programming around your strongest content. It is tempting to put your signature workshop on Day 1, when the group is freshest. The reverse usually works better: arrive, settle, then dive into the deepest material on Day 2 or 3 once the container has formed.',
+              ],
+            },
+            {
+              heading: 'When to lock the agenda — and when not to',
+              paragraphs: [
+                'Most retreat hosts draft the agenda 6–8 weeks out and lock the final version 1–2 weeks before. That cadence gives time to adjust based on the actual registrants — group size, experience level, dietary needs, energy.',
+                'Build in optional blocks. Two or three slots labelled "optional" or "choose your own" across the retreat means you can flex with the room without rewriting the whole schedule. The most experienced facilitators we know plan tightly and then improvise within that structure.',
+              ],
+            },
+          ],
+          faqExtras: [
+            { question: 'How long should each session be?', answer: 'Default to ninety minutes for teaching and workshop blocks. It is long enough to go deep, short enough that attention holds. Practice and ritual blocks vary: thirty minutes for an opening circle, 45–60 for a guided practice, 60–75 for a workshop discussion.' },
+            { question: 'Should I plan every minute of the retreat?', answer: 'No. Plan the structured blocks; leave breathing room around them. A retreat that is 100% scheduled feels like a conference. Build in soft transitions where the next block does not start sharply — meals especially.' },
+            { question: 'What if my group’s energy is different on the day?', answer: 'Adjust. The agenda is a plan, not a contract. Cut a workshop short if the group has gone deep, or extend free time if energy is low. The schedule serves the group, not the reverse.' },
+            { question: 'How do I price a retreat to match the agenda I am building?', answer: 'Use the Profitability Calculator linked below — it factors group size, nights, venue, and your facilitator fee. Pair it with this builder so you are not designing a 7-day retreat that the numbers cannot support.' },
+          ],
+        },
+        yoga: {
+          metaTitle: 'Yoga Retreat Schedule Builder — Free Itinerary Template',
+          metaDescription: 'Plan a balanced yoga retreat schedule with morning vinyasa, yin, pranayama, and protected free time. Free, editable, no signup. Email or print your itinerary.',
+          heroEyebrow: 'Free planning tool · Yoga',
+          heroTitle: 'The Yoga Retreat Schedule Builder',
+          heroIntro: 'Plan a yoga retreat day that respects the body’s natural rhythm. The defaults pair morning vinyasa with afternoon yin or restorative practice, build in a workshop or pranayama deep-dive, and protect free time for spa, walks, or solo practice. Edit anything to fit your style and lineage.',
+          heroAfterIntro: 'Pricing the retreat next? Use the Yoga Retreat Pricing Calculator below.',
+          shortLabel: 'Yoga retreat',
+          relatedCalculatorTitle: 'Yoga Retreat Pricing Calculator',
+          guideSections: [
+            {
+              heading: 'Anatomy of a balanced yoga retreat day',
+              paragraphs: [
+                'A well-paced yoga retreat day has six anchors: a strong morning practice when the body is ready for asana, a nourishing breakfast, one teaching or pranayama block, lunch, protected unstructured time, and a softer evening practice that brings the nervous system down. Most retreats that under-deliver miss either the protected free time or the parasympathetic evening practice.',
+                'The defaults here put vinyasa at 7am — early enough to honour the brahma muhurta tradition without making it a 5am wake-up that exhausts the group by Day 3. Yin or restorative lands at 4pm, when the body has been moving and is ready to release. The rest is breathing room.',
+              ],
+            },
+            {
+              heading: 'Why morning vinyasa, evening yin (and not the reverse)',
+              paragraphs: [
+                'Asana is most accessible to most students mid-morning, when the spine has had time to wake up and core temperature is rising. Vinyasa or hatha at 7–9am uses that window. Inversions, arm balances, and deeper backbends fit here too if you have a more advanced group.',
+                'Yin and restorative work better in the late afternoon and evening because parasympathetic activation supports sleep and integration. A 4pm yin class — long holds, props, gentle breathwork — followed by dinner and a quiet evening is the most consistent recipe for participants reporting they slept the deepest of their lives.',
+              ],
+            },
+            {
+              heading: 'Free time is part of the practice',
+              paragraphs: [
+                'Yoga retreats that schedule six or more hours of asana per day end up exhausted, achy, and cranky. The body needs time to integrate. Two practices per day — one strong, one gentle — totalling 3 to 3.5 hours of asana is the upper bound for most groups.',
+                'Protect a 2–3 hour midday window with no scheduled content. Some students will book massages, others will walk or read or nap. That choice is itself part of the retreat.',
+              ],
+            },
+          ],
+          faqExtras: [
+            { question: 'How many yoga sessions per day?', answer: 'Two is the sweet spot for most retreats: one stronger morning class (vinyasa, hatha, or ashtanga) and one softer afternoon class (yin, restorative, or guided meditation). A third optional session works for advanced groups, but make it optional.' },
+            { question: 'Should I do morning and evening practice?', answer: 'Yes — and the evening practice should be markedly different from the morning. If morning is dynamic, evening is still. If morning is silent, evening can be sound bath or kirtan. Contrast keeps the day textured.' },
+            { question: 'How long should a yoga retreat be?', answer: '3–7 nights is the typical range. A weekend (2–3 nights) suits beginners and locals. Five nights is the sweet spot for transformation. Seven-plus works for international destinations or teacher trainings — but expect Day 4 to feel flat without a built-in rest day.' },
+            { question: 'Do I need to teach pranayama too?', answer: 'Not required, but a 30–45 minute pranayama or meditation block (often after morning asana, before breakfast) deepens the retreat significantly. If you are not comfortable teaching it, bring in a guest teacher for that one block.' },
+            { question: 'What if some students have injuries?', answer: 'Pre-retreat intake form. Ask about injuries, medications, and recent surgeries. Adjust the schedule (or have private modifications ready) for anyone who flags. The agenda is the menu — meet each student where they are.' },
+          ],
+        },
+        wellness: {
+          metaTitle: 'Wellness Retreat Schedule Builder — Detox & Spa Itinerary',
+          metaDescription: 'Plan a wellness or detox retreat with nervous-system practices, spa windows, and integration time. Free, editable agenda builder. No signup, no fluff.',
+          heroEyebrow: 'Free planning tool · Wellness',
+          heroTitle: 'The Wellness Retreat Schedule Builder',
+          heroIntro: 'Design a wellness retreat that resets the nervous system without overwhelming the group. The defaults blend morning movement with workshops on breath, sleep, and habit change, protect generous spa-treatment windows, and end the day with a reflection circle or gentle yin.',
+          heroAfterIntro: 'Pricing the retreat next? Use the Wellness Retreat Pricing Calculator below.',
+          shortLabel: 'Wellness retreat',
+          relatedCalculatorTitle: 'Wellness Retreat Pricing Calculator',
+          guideSections: [
+            {
+              heading: 'What makes a wellness retreat different from a yoga retreat',
+              paragraphs: [
+                'Yoga retreats are built around asana practice. Wellness retreats are built around regulating the nervous system. The difference shows up in the schedule: a wellness day usually has only one movement block (often gentler than a yoga retreat’s morning vinyasa), more workshop time on practical health topics, and a much larger window for treatments and spa.',
+                'If your retreat title includes words like reset, detox, restore, or rejuvenate, you are hosting a wellness retreat — and the defaults here will fit better than the yoga template.',
+              ],
+            },
+            {
+              heading: 'Why nervous-system work belongs in the morning',
+              paragraphs: [
+                'The first structured block of the day frames everything that follows. Starting with a slower, vagus-nerve-friendly practice — gentle yoga, breathwork, qi gong — primes the group for the rest of the day. Starting with a high-intensity workout has the opposite effect: cortisol spikes, sleep suffers.',
+                'The 7:00–8:00am movement default in this builder is intentionally short and gentle. If your retreat is more athletic, lengthen it to 75–90 minutes and add a second walk or stretch in the afternoon.',
+              ],
+            },
+            {
+              heading: 'Spa-time as a structural block, not an afterthought',
+              paragraphs: [
+                'Most wellness retreats book massages and treatments during "free time" and watch the schedule unravel as appointments overlap with workshops. Treat the spa window as a real, named block on the agenda — 1:45pm to 4:00pm in the defaults — and slot appointments only inside it.',
+                'Communicate this to participants on Day 1. Hand out a spa menu, let them book in, and they will respect the schedule because they know exactly when they need to be where.',
+              ],
+            },
+          ],
+          faqExtras: [
+            { question: 'Should we keep meals together?', answer: 'Yes for most wellness retreats — meals are a connection point and a teaching opportunity (introducing the day’s nutritional theme, plating principles, mindful eating). Reserve solo meals for true silent retreats.' },
+            { question: 'How do treatments fit into the schedule?', answer: 'Block a single 2–2.5 hour spa window each afternoon and run all appointments inside it. Avoid scheduling treatments during workshops or meals — participants will be split between the two and resent both.' },
+            { question: 'What about a detox or fasting day?', answer: 'If you are including a fasting day, lighten the schedule dramatically: drop the workshops, add restorative yoga or sound bath, expand free time. Hungry brains cannot absorb teaching.' },
+            { question: 'How quiet is too quiet?', answer: 'Wellness retreats benefit from partial silence — the morning before breakfast, perhaps an evening hour. Full Noble Silence is for meditation retreats; in a wellness context it can feel imposed if the group came to connect.' },
+            { question: 'Do I need a nutritionist or doctor on-site?', answer: 'For most wellness retreats, no — a thoughtful menu and clear health disclaimers in the registration form are enough. For true detox or fasting retreats, having a qualified professional available (even on-call) is responsible practice.' },
+          ],
+        },
+        meditation: {
+          metaTitle: 'Meditation Retreat Schedule — Vipassana & Silent Itinerary',
+          metaDescription: 'Plan a silent or meditation retreat with sittings, walking meditation, dharma talks, and Noble Silence. Free agenda builder, modelled on Plum Village & vipassana.',
+          heroEyebrow: 'Free planning tool · Meditation',
+          heroTitle: 'The Meditation Retreat Schedule Builder',
+          heroIntro: 'Plan a meditation retreat with the rhythm that Plum Village and vipassana traditions have refined over decades: four sittings, walking meditation between them, a daily dharma talk, and Noble Silence from the last evening sit through the next morning’s breakfast. Edit to fit your tradition.',
+          heroAfterIntro: 'Pricing the retreat next? Use the Meditation Retreat Pricing Calculator below.',
+          shortLabel: 'Meditation retreat',
+          relatedCalculatorTitle: 'Meditation Retreat Pricing Calculator',
+          guideSections: [
+            {
+              heading: 'Why four sittings, not five',
+              paragraphs: [
+                'Three sittings is too few — the day collapses around them and the container weakens. Five or more, and most participants without a strong existing practice reach diminishing returns. Four sittings of 45–60 minutes each, spaced through the day, is the convention in both Theravada vipassana lineages and Plum Village’s mindfulness tradition for good reason.',
+                'The defaults place sittings at 6am, 9am, mid-afternoon, and 7:30pm. That spacing matches circadian rhythms — strongest concentration in the morning, a gentler middle sit after the midday rest, and a final sit that closes the day before Noble Silence begins.',
+              ],
+            },
+            {
+              heading: 'Walking meditation between sittings',
+              paragraphs: [
+                'Walking meditation is not filler. It is where embodied awareness is consolidated and where the body recovers from sitting still. A 30–45 minute walking meditation between two sittings extends the meditative state without forcing the body to stay seated.',
+                'Indoor or outdoor walking both work. Walking outdoors adds nature contact, which supports parasympathetic activation; indoor walking is more controlled and works in any weather. The defaults assume one of each per day.',
+              ],
+            },
+            {
+              heading: 'Noble Silence and the social container',
+              paragraphs: [
+                'Noble Silence is not just personal practice — it is a group container. When the silence runs from the last evening sit through breakfast, the social pressure to perform drops away and people drop into themselves. The defaults make this explicit: a "Noble Silence begins" block at 8:45pm, breaking only at breakfast.',
+                'First-time silent retreatants often find the first 24 hours hardest. Brief the group on Day 1 about what to expect: the inner restlessness around hour twelve, the settling that usually comes around hour 36, and the clarity that often arrives by Day 3 or 4.',
+              ],
+            },
+          ],
+          faqExtras: [
+            { question: 'How long should each sitting be?', answer: '45 minutes is the standard for most lineages. Some traditions sit for 60 minutes; some shorten to 30 for groups with less experience. Vipassana retreats typically scale up — 45 minutes on Day 1, 60-plus by Day 4.' },
+            { question: 'Do I need to lead the dharma talks?', answer: 'If you are certified to teach, yes. If not, use recorded talks (Plum Village offers many freely) or invite a guest teacher for that one block. The dharma talk is the intellectual scaffolding for the practice — do not skip it.' },
+            { question: 'What about beginners on a silent retreat?', answer: 'Plan a longer Day 1 orientation (1.5–2 hours instead of 60 minutes) and consider a "practice-only" period before silence begins. Many retreats run beginner-friendly versions with shorter sittings (30 minutes) and optional partial silence — that is a valid adaptation.' },
+            { question: 'Can a meditation retreat be shorter than 7 days?', answer: 'Yes — weekend silent retreats (2–3 nights) work as introductions. They do not reach the deeper settling of a full week, but they are an honest gateway into the practice. Use the 2-day or 3-day variants here for that format.' },
+            { question: 'Should I include yoga or movement?', answer: 'Most modern silent retreats include 30–45 minutes of yoga or qi gong before the morning sit. It is not strictly traditional, but it makes long sittings physically possible for most participants. The defaults assume this — adapt to your tradition.' },
+          ],
+        },
+        coaching: {
+          metaTitle: 'Coaching Retreat Agenda — Mastermind Schedule Template',
+          metaDescription: 'Plan a coaching, mastermind, or leadership retreat with 90-min hot-seats, integration walks, and a commitments circle. Free agenda builder, fully editable.',
+          heroEyebrow: 'Free planning tool · Coaching',
+          heroTitle: 'The Coaching Retreat Agenda Builder',
+          heroIntro: 'Plan a coaching, mastermind, or leadership retreat that turns into commitments. The defaults schedule 90-minute hot-seats with structured space between them, paired integration walks for the back-channel processing that makes the work stick, and a closing accountability circle that locks in what each person leaves with.',
+          heroAfterIntro: 'Pricing the retreat next? Use the Coaching Retreat Pricing Calculator below.',
+          shortLabel: 'Coaching retreat',
+          relatedCalculatorTitle: 'Coaching Retreat Pricing Calculator',
+          guideSections: [
+            {
+              heading: 'Hot-seats are 90 minutes — here is why',
+              paragraphs: [
+                'Coaching, mastermind, and leadership work happens in 90-minute blocks because attention peaks there. Shorter blocks (60 min) leave the conversation surface-level. Longer blocks (2-plus hours) drift, repeat, and lose the room. The 90-minute container has been refined in coaching traditions from Strategic Coach to YPO forums for the same reason.',
+                'Inside each 90 minutes, expect roughly ten minutes of context-setting, sixty minutes of focused work on one person’s challenge, and twenty minutes for the group to reflect back what they heard. A facilitator who watches the clock is doing their job.',
+              ],
+            },
+            {
+              heading: 'Integration walks between sessions',
+              paragraphs: [
+                'Two 90-minute hot-seats back-to-back without space between them is a waste — the second person’s work will not land, because the group is still processing the first. A 30-minute integration walk, ideally in pairs, is where the back-channel processing happens.',
+                'Give the walk a structured prompt: "What did you notice about how she framed the problem?" or "What did the group reflect back that you would want to apply to your own situation?" Without a prompt, the conversation drifts to weekend plans.',
+              ],
+            },
+            {
+              heading: 'The commitments circle is the most important block',
+              paragraphs: [
+                'Coaching retreats live or die in the final session. A commitments circle — each person, in front of the group, names one specific action they will take in the next 30 days — is the single block that determines whether the retreat translates into change.',
+                'Make it specific. "I will think about it" is not a commitment. "By next Friday, I will have the conversation with my co-founder" is. Hold the room to that standard. Follow up two weeks later with a group email or call asking how each commitment landed.',
+              ],
+            },
+          ],
+          faqExtras: [
+            { question: 'How many hot-seats per day?', answer: 'Four is the maximum for most groups. Two before lunch, two after — with an integration walk between each pair. More than four and the group stops contributing meaningfully. Fewer than four and you waste the retreat’s intensity.' },
+            { question: 'What if my group is bigger than 6?', answer: 'Hot-seats do not scale beyond 8–10 people. For larger groups, split into pods of 5–6, run hot-seats in parallel pods, and bring the full group together for opening, closing, and meals. The default agenda assumes a single pod.' },
+            { question: 'Should the facilitator participate in the hot-seat?', answer: 'Usually no — the facilitator’s job is to hold space, watch time, and reflect back patterns. Some senior coaches take a hot-seat at the end of the retreat to model vulnerability, but it is not required.' },
+            { question: 'How do I structure a corporate offsite vs a coaching retreat?', answer: 'Corporate offsites usually run shorter (2.5 days), have more facilitator-led content (less peer hot-seat), and end with team commitments rather than individual commitments. The coaching defaults here are closer to a mastermind retreat — adapt by replacing some hot-seats with strategy workshops.' },
+            { question: 'When should I run the next retreat?', answer: 'Most mastermind groups run 2–4 retreats per year. The first one tends to be deeper (the container forms); subsequent retreats deepen the work. Do not run them less than three months apart — people need time to act on commitments before the next one.' },
+          ],
+        },
       },
     },
     related: {

@@ -21,19 +21,15 @@ interface PageProps {
 
 const NICHE = AgendaNiche.WELLNESS
 const ROUTE = Route.WELLNESS_RETREAT_AGENDA_BUILDER
-const NICHE_LABEL_PLACEHOLDER = '{nicheLabel}'
-
-const interpolate = (template: string, nicheLabel: string): string =>
-  template.replaceAll(NICHE_LABEL_PLACEHOLDER, nicheLabel)
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params
   const validLocale = getValidLocale(locale)
   const t = await getServerTranslations(validLocale)
-  const nicheLabel = t.tools.agenda.nicheLabels[NICHE]
+  const nicheCopy = t.tools.agenda.niches[NICHE]
   return generatePageMetadata({
-    title: interpolate(t.tools.agenda.metaTitle, nicheLabel),
-    description: interpolate(t.tools.agenda.metaDescription, nicheLabel),
+    title: nicheCopy.metaTitle,
+    description: nicheCopy.metaDescription,
     path: ROUTE,
     locale: validLocale,
   })
@@ -43,27 +39,30 @@ export default async function WellnessRetreatAgendaBuilderRoute({ params }: Page
   const { locale } = await params
   const validLocale = getValidLocale(locale)
   const t = await getServerTranslations(validLocale)
-  const nicheLabel = t.tools.agenda.nicheLabels[NICHE]
+  const nicheCopy = t.tools.agenda.niches[NICHE]
   const url = `${SITE_CONFIG.url}${getLocalizedPath(ROUTE, validLocale)}`
-  const heroTitle = interpolate(t.tools.agenda.heroTitle, nicheLabel)
+  const allFaqEntries = [
+    ...nicheCopy.faqExtras,
+    ...t.tools.agenda.faq.entries,
+  ]
 
   const schemas = [
     generateBreadcrumbListSchema([
       { name: 'Home', path: Route.HOME },
       { name: t.tools.hub.title, path: Route.TOOLS },
-      { name: heroTitle, path: ROUTE },
+      { name: nicheCopy.heroTitle, path: ROUTE },
     ]),
     generateWebApplicationSchema({
-      name: heroTitle,
+      name: nicheCopy.heroTitle,
       url,
-      description: interpolate(t.tools.agenda.metaDescription, nicheLabel),
+      description: nicheCopy.metaDescription,
     }),
     generateHowToSchema({
       name: t.tools.agenda.howTo.heading,
-      description: interpolate(t.tools.agenda.heroIntro, nicheLabel),
+      description: nicheCopy.heroIntro,
       steps: t.tools.agenda.howTo.steps,
     }),
-    generateFaqPageSchema(t.tools.agenda.faq.entries),
+    generateFaqPageSchema(allFaqEntries),
   ]
 
   return (

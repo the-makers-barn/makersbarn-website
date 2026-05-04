@@ -37,8 +37,8 @@ export function RetreatAgendaBuilder(props: RetreatAgendaBuilderProps): ReactNod
     [plan, state, locale],
   )
   const warnings = useMemo(
-    () => buildAgendaWarnings(resolved.days),
-    [resolved.days],
+    () => buildAgendaWarnings(resolved.days, { niche }),
+    [resolved.days, niche],
   )
 
   const handleLengthChange = (length: AgendaLength): void => {

@@ -1,4 +1,10 @@
-import { AGENDA_RULES, AgendaBlockType } from '@/constants/tools'
+import {
+  AGENDA_MAX_STRUCTURED_MIN_BY_NICHE,
+  AGENDA_NICHES_SKIP_EARLY_START,
+  AGENDA_RULES,
+  AgendaBlockType,
+  type AgendaNiche,
+} from '@/constants/tools'
 import type { AgendaResolvedBlock, AgendaResolvedDay } from '@/types/tools'
 
 export type AgendaWarningCode =
@@ -55,10 +61,19 @@ function findOverlap(
   return null
 }
 
-function dayWarnings(day: AgendaResolvedDay): AgendaWarning[] {
+interface DayContext {
+  maxStructuredMin: number
+  skipEarlyStart: boolean
+}
+
+function isTransitDay(day: AgendaResolvedDay): boolean {
+  return day.blocks.some((b) => b.type === AgendaBlockType.TRAVEL)
+}
+
+function dayWarnings(day: AgendaResolvedDay, ctx: DayContext): AgendaWarning[] {
   const warnings: AgendaWarning[] = []
   const structured = structuredMinutes(day.blocks)
-  if (structured > AGENDA_RULES.MAX_STRUCTURED_MIN_PER_DAY) {
+  if (structured > ctx.maxStructuredMin) {
     warnings.push({
       code: 'tooMuchStructured',
       dayIndex: day.dayIndex,
@@ -66,6 +81,7 @@ function dayWarnings(day: AgendaResolvedDay): AgendaWarning[] {
     })
   }
   if (
+    !isTransitDay(day) &&
     freeMinutes(day.blocks) < AGENDA_RULES.MIN_FREE_MIN_PER_DAY &&
     day.blocks.length > 0
   ) {
@@ -86,7 +102,11 @@ function dayWarnings(day: AgendaResolvedDay): AgendaWarning[] {
   const earliest = day.blocks
     .map((b) => b.startMinute)
     .reduce<number | null>((min, cur) => (min === null || cur < min ? cur : min), null)
-  if (earliest !== null && earliest < AGENDA_RULES.EARLY_START_THRESHOLD_MIN) {
+  if (
+    !ctx.skipEarlyStart &&
+    earliest !== null &&
+    earliest < AGENDA_RULES.EARLY_START_THRESHOLD_MIN
+  ) {
     warnings.push({ code: 'earlyStart', dayIndex: day.dayIndex, detail: { minutes: earliest } })
   }
   const latest = day.blocks
@@ -106,6 +126,22 @@ function dayWarnings(day: AgendaResolvedDay): AgendaWarning[] {
   return warnings
 }
 
-export function buildAgendaWarnings(days: AgendaResolvedDay[]): AgendaWarning[] {
-  return days.flatMap(dayWarnings)
+export interface BuildAgendaWarningsOptions {
+  niche?: AgendaNiche
+}
+
+const DEFAULT_MAX_STRUCTURED_MIN = 4 * 60
+
+export function buildAgendaWarnings(
+  days: AgendaResolvedDay[],
+  options: BuildAgendaWarningsOptions = {},
+): AgendaWarning[] {
+  const maxStructuredMin = options.niche
+    ? AGENDA_MAX_STRUCTURED_MIN_BY_NICHE[options.niche]
+    : DEFAULT_MAX_STRUCTURED_MIN
+  const skipEarlyStart = options.niche
+    ? AGENDA_NICHES_SKIP_EARLY_START.has(options.niche)
+    : false
+  const ctx: DayContext = { maxStructuredMin, skipEarlyStart }
+  return days.flatMap((day) => dayWarnings(day, ctx))
 }

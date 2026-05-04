@@ -195,6 +195,14 @@ export const AGENDA_NICHE_ROUTES: Record<AgendaNiche, Route> = {
   [AgendaNiche.COACHING]: Route.COACHING_RETREAT_AGENDA_BUILDER,
 } as const
 
+export const AGENDA_NICHE_TO_CALCULATOR: Record<AgendaNiche, Route> = {
+  [AgendaNiche.GENERIC]: Route.RETREAT_PROFITABILITY_CALCULATOR,
+  [AgendaNiche.YOGA]: Route.YOGA_RETREAT_PRICING_CALCULATOR,
+  [AgendaNiche.WELLNESS]: Route.WELLNESS_RETREAT_PRICING_CALCULATOR,
+  [AgendaNiche.MEDITATION]: Route.MEDITATION_RETREAT_PRICING_CALCULATOR,
+  [AgendaNiche.COACHING]: Route.COACHING_RETREAT_PRICING_CALCULATOR,
+} as const
+
 export const AGENDA_LENGTHS_ORDER: readonly AgendaLength[] = [
   AgendaLength.TWO_DAY,
   AgendaLength.THREE_DAY,
@@ -253,11 +261,27 @@ export const AGENDA_LEAD_SOURCES = {
  * Opinionated retreat-design rules. Used by the validation lib to
  * surface soft warnings. Sourced from Yoga Alliance, Insight Timer,
  * Plum Village, Offsite.com — see CLAUDE proposal for citations.
+ *
+ * `maxStructuredMinPerDay` varies per niche because the meaning of
+ * "structured" is niche-dependent: a meditation retreat genuinely runs
+ * 6+ hours of practice (and that is the design), whereas a wellness
+ * retreat at 6 hours is over-programmed.
  */
 export const AGENDA_RULES = {
-  MAX_STRUCTURED_MIN_PER_DAY: 4 * 60,
   MIN_FREE_MIN_PER_DAY: 60,
   MAX_BLOCK_MIN: 90,
   EARLY_START_THRESHOLD_MIN: 7 * 60,
   LATE_END_THRESHOLD_MIN: 22 * 60,
 } as const
+
+export const AGENDA_MAX_STRUCTURED_MIN_BY_NICHE: Record<AgendaNiche, number> = {
+  [AgendaNiche.GENERIC]: 5 * 60,
+  [AgendaNiche.YOGA]: 5 * 60 + 30,
+  [AgendaNiche.WELLNESS]: 5 * 60,
+  [AgendaNiche.MEDITATION]: 8 * 60,
+  [AgendaNiche.COACHING]: 8 * 60,
+}
+
+export const AGENDA_NICHES_SKIP_EARLY_START: ReadonlySet<AgendaNiche> = new Set([
+  AgendaNiche.MEDITATION,
+])
