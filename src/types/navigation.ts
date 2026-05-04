@@ -35,6 +35,11 @@ export enum Route {
   MEDITATION_RETREAT_MISTAKES_AUDIT = '/tools/meditation-retreat-mistakes-audit',
   COACHING_RETREAT_MISTAKES_AUDIT = '/tools/coaching-retreat-mistakes-audit',
   FIRST_TIME_RETREAT_HOST_AUDIT = '/tools/first-time-retreat-host-audit',
+  RETREAT_AGENDA_BUILDER = '/tools/retreat-agenda-builder',
+  YOGA_RETREAT_AGENDA_BUILDER = '/tools/yoga-retreat-agenda-builder',
+  WELLNESS_RETREAT_AGENDA_BUILDER = '/tools/wellness-retreat-agenda-builder',
+  MEDITATION_RETREAT_AGENDA_BUILDER = '/tools/meditation-retreat-agenda-builder',
+  COACHING_RETREAT_AGENDA_BUILDER = '/tools/coaching-retreat-agenda-builder',
 }
 
 export interface NavLink {
