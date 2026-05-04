@@ -7,7 +7,7 @@ import { generateEventVenueSchema, generatePageBreadcrumbs } from '@/lib/structu
 import { getLocalizedPath } from '@/lib/routing'
 import { Language, Route, SiloContent } from '@/types'
 import type { Dictionary } from '@/i18n/types'
-import { SILO_TO_TOOL_ROUTE } from '@/constants/tools'
+import { SILO_TO_AUDIT_ROUTE, SILO_TO_TOOL_ROUTE } from '@/constants/tools'
 
 import styles from './SiloLandingPage.module.css'
 
@@ -82,6 +82,43 @@ interface SiloLandingPageProps {
   t: Dictionary
 }
 
+interface ToolCtaTrioProps {
+  toolHref: string | null
+  calendarHref: string
+  auditHref: string
+  t: Dictionary
+}
+
+function ToolCtaTrio({ toolHref, calendarHref, auditHref, t }: ToolCtaTrioProps) {
+  return (
+    <>
+      {toolHref && (
+        <ToolCtaBlock
+          href={toolHref}
+          title={t.silos.toolCtaTitle}
+          body={t.silos.toolCtaBody}
+          ctaLabel={t.silos.toolCtaLabel}
+          ariaLabelledBy="silo-tool-cta"
+        />
+      )}
+      <ToolCtaBlock
+        href={calendarHref}
+        title={t.silos.calendarCtaTitle}
+        body={t.silos.calendarCtaBody}
+        ctaLabel={t.silos.calendarCtaLabel}
+        ariaLabelledBy="silo-calendar-cta"
+      />
+      <ToolCtaBlock
+        href={auditHref}
+        title={t.silos.auditCtaTitle}
+        body={t.silos.auditCtaBody}
+        ctaLabel={t.silos.auditCtaLabel}
+        ariaLabelledBy="silo-audit-cta"
+      />
+    </>
+  )
+}
+
 function buildFaqSchema(silo: SiloContent, locale: Language) {
   return {
     '@context': 'https://schema.org',
@@ -113,6 +150,8 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
   const toolRoute = SILO_TO_TOOL_ROUTE[silo.route]
   const toolHref = toolRoute ? getLocalizedPath(toolRoute, locale) : null
   const calendarHref = getLocalizedPath(Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR, locale)
+  const auditRoute = SILO_TO_AUDIT_ROUTE[silo.route] ?? Route.RETREAT_MISTAKES_AUDIT
+  const auditHref = getLocalizedPath(auditRoute, locale)
 
   return (
     <>
@@ -238,22 +277,11 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
           </div>
         </section>
 
-        {toolHref && (
-          <ToolCtaBlock
-            href={toolHref}
-            title={t.silos.toolCtaTitle}
-            body={t.silos.toolCtaBody}
-            ctaLabel={t.silos.toolCtaLabel}
-            ariaLabelledBy="silo-tool-cta"
-          />
-        )}
-
-        <ToolCtaBlock
-          href={calendarHref}
-          title={t.silos.calendarCtaTitle}
-          body={t.silos.calendarCtaBody}
-          ctaLabel={t.silos.calendarCtaLabel}
-          ariaLabelledBy="silo-calendar-cta"
+        <ToolCtaTrio
+          toolHref={toolHref}
+          calendarHref={calendarHref}
+          auditHref={auditHref}
+          t={t}
         />
 
         <ComparisonTeaser locale={locale} t={t} />

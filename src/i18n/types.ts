@@ -595,6 +595,9 @@ export interface SilosChromeTranslations {
   calendarCtaTitle: string
   calendarCtaBody: string
   calendarCtaLabel: string
+  auditCtaTitle: string
+  auditCtaBody: string
+  auditCtaLabel: string
 }
 
 /**
@@ -770,6 +773,7 @@ export interface ToolsHubTranslations {
 
 export interface ToolsRelatedTranslations {
   heading: string
+  auditCardTitle: string
 }
 
 export interface ToolsFaqTranslations {
@@ -855,6 +859,7 @@ export interface ToolsCalendarTranslations {
     heading: string
     hostARetreatTitle: string
     profitabilityCalculatorTitle: string
+    auditTitle: string
   }
   crossLinks: {
     heading: string
@@ -993,6 +998,7 @@ export interface ToolsAgendaTranslations {
     heading: string
     hostARetreatTitle: string
     launchCalendarTitle: string
+    auditTitle: string
   }
   crossLinks: {
     heading: string

@@ -104,6 +104,10 @@ export function RetreatLaunchCalendarPage({
             href: getLocalizedPath(Route.RETREAT_PROFITABILITY_CALCULATOR, locale),
             title: calendar.related.profitabilityCalculatorTitle,
           },
+          {
+            href: getLocalizedPath(Route.RETREAT_MISTAKES_AUDIT, locale),
+            title: calendar.related.auditTitle,
+          },
         ]}
       />
       <section className={styles.crossLinks} aria-labelledby="calendar-cross-links">

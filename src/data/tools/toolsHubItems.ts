@@ -2,6 +2,9 @@ import {
   AGENDA_NICHE_ORDER,
   AGENDA_NICHE_ROUTES,
   AgendaNiche,
+  AUDIT_VARIANT_ROUTES,
+  AUDIT_VARIANTS_DISPLAY_ORDER,
+  AuditVariant,
   CALENDAR_PRESETS_ORDER,
   CALENDAR_ROUTE_BY_PRESET,
   TOOL_VARIANT_ROUTES,
@@ -12,6 +15,7 @@ import {
 import { Language } from '@/types/common'
 import type { LocalizedString, ToolsHubItem } from '@/types/tools'
 
+import { AUDIT_VARIANTS } from './mistakeAuditVariants'
 import { CALCULATOR_VARIANTS } from './calculatorVariants'
 
 const CALENDAR_EYEBROW_EN = 'Free planning tool'
@@ -91,6 +95,14 @@ const buildCalculatorItem = (variant: ToolVariant): ToolsHubItem => ({
   intro: CALCULATOR_VARIANTS[variant].copy.heroIntro,
 })
 
+const buildAuditItem = (variant: AuditVariant): ToolsHubItem => ({
+  kind: ToolKind.AUDIT,
+  route: AUDIT_VARIANT_ROUTES[variant],
+  eyebrow: AUDIT_VARIANTS[variant].copy.heroEyebrow,
+  title: AUDIT_VARIANTS[variant].copy.heroTitle,
+  intro: AUDIT_VARIANTS[variant].copy.heroIntro,
+})
+
 const buildAgendaItem = (niche: AgendaNiche): ToolsHubItem => ({
   kind: ToolKind.AGENDA,
   route: AGENDA_NICHE_ROUTES[niche],
@@ -103,4 +115,5 @@ export const TOOLS_HUB_ITEMS: readonly ToolsHubItem[] = [
   ...CALENDAR_DISPLAY_ORDER.map(buildCalendarItem),
   ...AGENDA_NICHE_ORDER.map(buildAgendaItem),
   ...CALCULATOR_DISPLAY_ORDER.map(buildCalculatorItem),
+  ...AUDIT_VARIANTS_DISPLAY_ORDER.map(buildAuditItem),
 ]

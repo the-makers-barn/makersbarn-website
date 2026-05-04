@@ -1,0 +1,219 @@
+.preview {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.previewIntro {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+}
+
+.previewList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.previewItem {
+  padding: 1.1rem 1.2rem;
+  border-radius: 0.75rem;
+  background: rgba(184, 137, 74, 0.06);
+  border-left: 3px solid var(--color-secondary);
+}
+
+.previewCategory {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.previewTitle {
+  margin: 0.3rem 0 0.5rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+.previewBody {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.sources {
+  margin-top: 2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: rgba(41, 75, 58, 0.03);
+  border: 1px solid rgba(41, 75, 58, 0.1);
+}
+
+.sources[open] {
+  padding-bottom: 1.25rem;
+}
+
+.sourcesSummary {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-base);
+  color: var(--color-primary);
+  cursor: pointer;
+  list-style: none;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sourcesSummary::-webkit-details-marker {
+  display: none;
+}
+
+.sourcesSummary::before {
+  content: '+';
+  display: inline-block;
+  width: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  transition: transform 0.15s ease;
+}
+
+.sources[open] > .sourcesSummary::before {
+  content: '−';
+}
+
+.sourcesSummary:hover {
+  color: var(--color-secondary);
+}
+
+.sourcesIntro {
+  margin: 0.5rem 0 0.75rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.sourcesList {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.sourcesList a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ─── Authorship card (subtle Makers Barn brand) ─── */
+
+.authorship {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(
+    180deg,
+    rgba(184, 137, 74, 0.06) 0%,
+    rgba(41, 75, 58, 0.04) 100%
+  );
+  border-left: 3px solid var(--color-secondary);
+}
+
+.authorshipEyebrow {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.authorshipTitle {
+  margin: 0.4rem 0 0.6rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+.authorshipBody {
+  margin: 0 0 0.85rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.authorshipCta {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-secondary);
+  padding-bottom: 1px;
+}
+
+.authorshipCta:hover {
+  color: var(--color-secondary);
+}
+
+/* ─── Cross-links between audit variants ─── */
+
+.crossLinks {
+  margin-top: 3rem;
+  padding: 2rem 1.5rem;
+  background: rgba(41, 75, 58, 0.04);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.crossLinksHeading {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+}
+
+.crossLinksIntro {
+  margin: 0 0 1rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.crossLinksList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.crossLinksItem {
+  display: block;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.5rem;
+  background: var(--color-background, #fff);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.05s ease;
+}
+
+.crossLinksItem:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}

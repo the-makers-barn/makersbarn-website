@@ -6,8 +6,10 @@ import { ToolPageShell } from '@/components/server/ToolPageShell'
 import {
   AGENDA_NICHE_ORDER,
   AGENDA_NICHE_ROUTES,
+  AGENDA_NICHE_TO_AUDIT_VARIANT,
   AGENDA_NICHE_TO_CALCULATOR,
   AgendaNiche,
+  AUDIT_VARIANT_ROUTES,
 } from '@/constants/tools'
 import type { Dictionary } from '@/i18n/types'
 import { getLocalizedPath } from '@/lib/routing'
@@ -88,6 +90,13 @@ export function RetreatAgendaBuilderPage({
             href: getLocalizedPath(Route.HOST_A_RETREAT, locale),
             title: agenda.related.hostARetreatTitle,
             isPrimary: true,
+          },
+          {
+            href: getLocalizedPath(
+              AUDIT_VARIANT_ROUTES[AGENDA_NICHE_TO_AUDIT_VARIANT[niche]],
+              locale,
+            ),
+            title: agenda.related.auditTitle,
           },
           {
             href: getLocalizedPath(AGENDA_NICHE_TO_CALCULATOR[niche], locale),
