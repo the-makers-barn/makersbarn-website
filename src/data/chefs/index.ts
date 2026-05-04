@@ -52,20 +52,14 @@ export const PUBLISHED_CHEFS: readonly Chef[] = ALL_CHEFS.filter(
   (chef) => chef.status === ChefStatus.PUBLISHED
 )
 
-export function getChefsForEnv(): readonly Chef[] {
-  return process.env.VERCEL_ENV === 'production' ? PUBLISHED_CHEFS : ALL_CHEFS
-}
-
 /**
- * Returns the chef for a slug, or undefined if not found OR if the chef is a
- * draft and we are in production. Single source of truth — used by both the
- * route handler and the inquiry server action.
+ * Returns the chef for a slug, or undefined if not found.
+ *
+ * Drafts are reachable by direct URL in every environment so that the team can
+ * share a profile preview link with the chef during onboarding. The DraftBadge
+ * surfaces the draft state visually, and the route handler emits noindex for
+ * drafts so search engines do not pick them up.
  */
 export function getChefBySlug(slug: string): Chef | undefined {
-  const chef = CHEFS_BY_SLUG[slug]
-  if (!chef) { return undefined }
-  if (process.env.VERCEL_ENV === 'production' && chef.status !== ChefStatus.PUBLISHED) {
-    return undefined
-  }
-  return chef
+  return CHEFS_BY_SLUG[slug]
 }

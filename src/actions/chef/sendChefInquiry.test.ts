@@ -86,16 +86,17 @@ describe('sendChefInquiry', () => {
     expect(sendSlackMessage).not.toHaveBeenCalled()
   })
 
-  it('draft chef in production: returns chef_not_found', async () => {
+  it('draft chef in production: still accepts inquiry (drafts are reachable by direct link)', async () => {
     const ORIGINAL = process.env.VERCEL_ENV
     process.env.VERCEL_ENV = 'production'
-    // beforeEach already reset modules; import here picks up the mutated env.
     try {
       const { sendChefInquiry } = await import('./sendChefInquiry')
-      // Liesbeth is DRAFT — getChefBySlug should return undefined in prod.
+      // Liesbeth is DRAFT — drafts must remain reachable by direct URL in every
+      // environment so the chef can review their profile during onboarding.
       const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
-      expect(result.success).toBe(false)
-      expect(result.message).toBe(CHEF_INQUIRY_MESSAGES.CHEF_NOT_FOUND)
+      expect(result.success).toBe(true)
+      expect(sendChefInquiryEmails).toHaveBeenCalledOnce()
+      expect(sendSlackMessage).toHaveBeenCalledOnce()
     } finally {
       if (ORIGINAL === undefined) {
         delete process.env.VERCEL_ENV

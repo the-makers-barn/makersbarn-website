@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { ChefDetailPage } from '@/components/server/ChefDetailPage'
+import { ChefStatus } from '@/constants/chef'
 import { SITE_CONFIG } from '@/constants/site'
-import { getChefBySlug, getChefsForEnv } from '@/data/chefs'
+import { ALL_CHEFS, getChefBySlug } from '@/data/chefs'
 import { localize } from '@/lib'
 import { getChefDetailPath } from '@/lib/routing'
 import { getServerTranslations } from '@/i18n'
@@ -12,7 +13,10 @@ import { Language } from '@/types'
 export const dynamicParams = false
 
 export function generateStaticParams(): { slug: string }[] {
-  return getChefsForEnv().map((chef) => ({ slug: chef.slug }))
+  // Pre-render every chef URL — including drafts — so direct profile links work
+  // in every environment. Drafts are kept out of the public listing and sitemap;
+  // the metadata below adds noindex so search engines skip them.
+  return ALL_CHEFS.map((chef) => ({ slug: chef.slug }))
 }
 
 type Params = { locale: Language; slug: string }
@@ -30,6 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const description = localize(chef.tagline, locale)
   const canonical = `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, locale)}`
   const isProd = process.env.VERCEL_ENV === 'production'
+  const isDraft = chef.status === ChefStatus.DRAFT
+  const shouldNoIndex = !isProd || isDraft
 
   return {
     title,
@@ -51,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       images: [{ url: `${SITE_CONFIG.url}${chef.gallery.hero.src}`, width: 1200, height: 630 }],
     },
     twitter: { card: 'summary_large_image', title, description },
-    robots: isProd ? undefined : { index: false, follow: false },
+    robots: shouldNoIndex ? { index: false, follow: false } : undefined,
   }
 }
 
