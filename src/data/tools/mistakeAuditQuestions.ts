@@ -100,9 +100,9 @@ export const AUDIT_QUESTIONS: readonly AuditQuestion[] = [
     id: 'p1-priced-from-fear',
     category: AuditCategory.PRICING,
     multiplier: 2,
-    prompt: en("How did you decide your ticket price?"),
+    prompt: en('How did you decide your ticket price?'),
     fix: en(
-      'Pricing from fear is the #1 reason retreats break even or lose money. Build the price up from real costs (your time, hidden fees, payment processing, taxes) plus the margin you actually need to live.',
+      "Pricing from fear is the most common reason retreats break even or lose money. Build the price up from real costs — your own time, hidden fees, payment processing, tax — plus the margin you actually need.",
     ),
     crossLinkToolKey: 'pricing',
     options: [
@@ -297,7 +297,7 @@ export const AUDIT_QUESTIONS: readonly AuditQuestion[] = [
   {
     id: 'pr3-outcomes-promised',
     category: AuditCategory.PROGRAMME,
-    prompt: en('How many transformation outcomes does your sales page promise?'),
+    prompt: en('How many transformations does your sales page promise?'),
     fix: en(
       'Promising "more money + best-shape body + better relationships + spiritual awakening" reads as disjointed. Pick one transformation and own it.',
     ),
@@ -377,7 +377,7 @@ export const AUDIT_QUESTIONS: readonly AuditQuestion[] = [
   {
     id: 'f1-who-its-for',
     category: AuditCategory.FIT,
-    prompt: en("Can you describe who this retreat is for in one sentence?"),
+    prompt: en('Can you describe who this retreat is for in one sentence?'),
     fix: en(
       "Retreats that try to please everyone please no one. \"For burnt-out 35-50 yr-old founders\" outsells \"for anyone seeking peace\" every time.",
     ),
@@ -403,7 +403,7 @@ export const AUDIT_QUESTIONS: readonly AuditQuestion[] = [
   {
     id: 'f3-power-mix',
     category: AuditCategory.FIT,
-    prompt: en("Are you mixing groups with strong power or skill differences (e.g. boss + reports, beginners + 20-year practitioners)?"),
+    prompt: en('Does the group mix strong power or skill differences?'),
     fix: en(
       'Mixed-power rooms suppress the very vulnerability the retreat is selling. If you must mix, structure for it (sub-groups, ground rules, optional sessions).',
     ),

@@ -57,7 +57,7 @@ const GENERIC: AuditVariantConfig = {
     heroEyebrow: SHARED_EYEBROW,
     heroTitle: sameAcrossLocales('The Retreat Mistakes Audit'),
     heroIntro: sameAcrossLocales(
-      'Before you sign a venue or open ticket sales, run the 25 most common mistakes against your plan. Five minutes, no signup, a personalised risk report at the end.',
+      "Before you sign a venue or open ticket sales, run the 25 most common retreat-host mistakes against your plan. The audit takes five minutes, scores risk across six categories — pricing, audience, venue, programme, legal, group fit — and gives you a personalised report ranking the mistakes most worth fixing first. Nothing is sent or stored unless you ask. Built from a meta-review of two dozen retreat-industry sources.",
     ),
     metaTitle: sameAcrossLocales(
       'Retreat Mistakes Audit — Free 25-question readiness check',
@@ -83,7 +83,7 @@ const FIRST_TIME: AuditVariantConfig = {
       'First-Time Retreat Host Audit',
     ),
     heroIntro: sameAcrossLocales(
-      'Hosting your first retreat is largely a question of which mistakes you walk into. This audit runs the 25 most common ones — pricing, audience, venue, programme, legal — past your plan in five minutes.',
+      "Hosting your first retreat is largely a question of which mistakes you walk into. The same handful — pricing for sell-out, building before the list exists, booking a venue you have not stayed at, relying on the venue's insurance — show up across every retreat post-mortem. This 5-minute audit runs the 25 most common first-time mistakes past your plan and ranks the ones most worth fixing first. No signup, nothing saved server-side.",
     ),
     metaTitle: sameAcrossLocales(
       'First-Time Retreat Host Audit — Avoid the 25 Most Common Mistakes',
@@ -106,7 +106,7 @@ const YOGA: AuditVariantConfig = {
     heroEyebrow: SHARED_EYEBROW,
     heroTitle: sameAcrossLocales('Yoga Retreat Mistakes Audit'),
     heroIntro: sameAcrossLocales(
-      'Yoga retreats live or die on three things: the warm list you bring, the price you set, and the venue contract you signed. This 5-minute audit runs the 25 most common yoga-retreat mistakes past your plan and tells you which ones to fix first.',
+      "Yoga retreats live or die on three things: the warm list you bring, the price you set, and the venue contract you signed. Get any one of those wrong and the retreat either does not fill or does not pay. This 5-minute audit runs the 25 most common yoga-retreat mistakes past your plan — pricing tier, marketing runway, insurance gaps, programme density — and ranks the ones most worth fixing first.",
     ),
     metaTitle: sameAcrossLocales(
       'Yoga Retreat Mistakes Audit — Free 5-Minute Readiness Check',
@@ -129,7 +129,7 @@ const WELLNESS: AuditVariantConfig = {
     heroEyebrow: SHARED_EYEBROW,
     heroTitle: sameAcrossLocales('Wellness Retreat Mistakes Audit'),
     heroIntro: sameAcrossLocales(
-      'Wellness retreats run longer and cost more — which means each common mistake costs more too. This audit walks the 25 most common wellness-retreat mistakes past your plan in five minutes.',
+      "Wellness retreats run longer and cost more, which means each common mistake costs more too. A flat cancellation policy, an under-buffered budget, an insurance line that does not cover guest practitioners — any of these can absorb the entire margin on a 7-day programme. This 5-minute audit runs the 25 most common wellness-retreat mistakes past your plan and ranks the ones most worth fixing first.",
     ),
     metaTitle: sameAcrossLocales(
       'Wellness Retreat Mistakes Audit — Free 5-Minute Readiness Check',
@@ -152,7 +152,7 @@ const MEDITATION: AuditVariantConfig = {
     heroEyebrow: SHARED_EYEBROW,
     heroTitle: sameAcrossLocales('Meditation Retreat Mistakes Audit'),
     heroIntro: sameAcrossLocales(
-      'Meditation retreats fail on different patterns — over-promising silent transformation, mixing acute distress into a contemplative space, opaque cancellation policies. This 5-minute audit runs the 25 most common ones past your plan.',
+      "Meditation retreats fail on a different pattern from yoga or wellness — over-promising silent transformation, skipping participant screening, getting blindsided by a dharma centre's cancellation policy. This 5-minute audit runs the 25 most common meditation-retreat mistakes past your plan and ranks the ones most worth fixing first. Particular focus on participant screening and contemplative-format risk.",
     ),
     metaTitle: sameAcrossLocales(
       'Meditation Retreat Mistakes Audit — Free 5-Minute Readiness Check',
@@ -175,7 +175,7 @@ const COACHING: AuditVariantConfig = {
     heroEyebrow: SHARED_EYEBROW,
     heroTitle: sameAcrossLocales('Coaching Retreat Mistakes Audit'),
     heroIntro: sameAcrossLocales(
-      'Coaching intensives are smaller, higher-ticket, and unforgiving on group fit. This 5-minute audit runs the 25 most common coaching-retreat mistakes — pricing, audience, group composition, legal — past your plan.',
+      "Coaching intensives are smaller, higher-ticket, and unforgiving on group composition. Losing one guest from a six-person retreat is a 17% revenue hit; mixing power dynamics in the same room kills the vulnerability the retreat is selling. This 5-minute audit runs the 25 most common coaching-retreat mistakes past your plan — pricing, audience, group composition, legal — and ranks the ones most worth fixing first.",
     ),
     metaTitle: sameAcrossLocales(
       'Coaching Retreat Mistakes Audit — Free 5-Minute Readiness Check',

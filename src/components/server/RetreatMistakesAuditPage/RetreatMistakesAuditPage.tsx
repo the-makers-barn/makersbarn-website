@@ -6,54 +6,41 @@ import {
   AUDIT_VARIANT_ROUTES,
   type AuditVariant,
 } from '@/constants/tools'
-import { AUDIT_VARIANTS } from '@/data/tools'
+import {
+  AUDIT_CONTENT,
+  AUDIT_LABELS,
+  AUDIT_SOURCES,
+  AUDIT_VARIANTS,
+} from '@/data/tools'
 import { getLocalizedPath } from '@/lib/routing'
 import type { Language } from '@/types/common'
 import { Route } from '@/types/navigation'
+
+import styles from './RetreatMistakesAuditPage.module.css'
 
 interface Props {
   variant: AuditVariant
   locale: Language
 }
 
-const HARDCODED_LABELS = {
-  reportHeading: 'Your retreat risk report',
-  resultLeadIn:
-    "Here's where your plan sits across the six common-mistake categories. Below the cards are the specific items most worth fixing first, ranked by impact.",
-  nextLabel: 'Next',
-  backLabel: 'Back',
-  restartLabel: 'Restart audit',
-  howToHeading: 'How the audit works',
-  howToSteps: [
-    'Answer 25 multiple-choice questions about your retreat plan — pricing, audience, venue, programme, legal, fit.',
-    'Each answer scores risk against the most-cited mistakes in retreat-industry sources.',
-    'You get a per-category risk band (low / watch / high) and the top mistakes to fix first.',
-    'Nothing is saved server-side until you ask. Run the audit again as your plan firms up.',
-  ],
-  faqHeading: 'Frequently asked',
-  relatedHeading: 'Related tools',
-  hostARetreatTitle: 'Host a retreat at The Makers Barn',
-  pricingCalculatorTitle: 'Run the pricing calculator',
-  calendarTitle: 'See the 6-month launch calendar',
-} as const
-
 export function RetreatMistakesAuditPage({ variant, locale }: Props): ReactNode {
   const config = AUDIT_VARIANTS[variant]
+  const content = AUDIT_CONTENT[variant]
   const copy = config.copy
 
   const relatedCards = [
     {
       href: getLocalizedPath(Route.HOST_A_RETREAT, locale),
-      title: HARDCODED_LABELS.hostARetreatTitle,
+      title: AUDIT_LABELS.hostARetreatTitle[locale],
       isPrimary: true,
     },
     {
       href: getLocalizedPath(Route.RETREAT_PROFITABILITY_CALCULATOR, locale),
-      title: HARDCODED_LABELS.pricingCalculatorTitle,
+      title: AUDIT_LABELS.pricingCalculatorTitle[locale],
     },
     {
       href: getLocalizedPath(Route.SIX_MONTH_RETREAT_LAUNCH_CALENDAR, locale),
-      title: HARDCODED_LABELS.calendarTitle,
+      title: AUDIT_LABELS.calendarTitle[locale],
     },
     ...config.relatedVariants.slice(0, 2).map((v) => ({
       href: getLocalizedPath(AUDIT_VARIANT_ROUTES[v], locale),
@@ -61,10 +48,57 @@ export function RetreatMistakesAuditPage({ variant, locale }: Props): ReactNode 
     })),
   ]
 
-  const faqEntries = config.faq.map((entry) => ({
-    question: entry.question[locale],
-    answer: entry.answer[locale],
+  const faqEntries = [
+    ...content.nicheFaq.map((entry) => ({
+      question: entry.question[locale],
+      answer: entry.answer[locale],
+    })),
+    ...config.faq.map((entry) => ({
+      question: entry.question[locale],
+      answer: entry.answer[locale],
+    })),
+  ]
+
+  const guideSections = content.guideSections.map((section) => ({
+    heading: section.heading[locale],
+    paragraphs: section.paragraphs.map((p) => p[locale]),
   }))
+
+  const previewBlock = (
+    <section className={styles.preview} aria-labelledby="audit-preview">
+      <h2 id="audit-preview">{AUDIT_LABELS.previewHeading[locale]}</h2>
+      <p className={styles.previewIntro}>
+        {AUDIT_LABELS.previewIntro[locale]}
+      </p>
+      <ul className={styles.previewList}>
+        {content.previewMistakes.map((item) => (
+          <li key={item.title[locale]} className={styles.previewItem}>
+            <p className={styles.previewCategory}>{item.category[locale]}</p>
+            <p className={styles.previewTitle}>{item.title[locale]}</p>
+            <p className={styles.previewBody}>{item.body[locale]}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+
+  const sourcesBlock = (
+    <section className={styles.sources} aria-labelledby="audit-sources">
+      <h2 id="audit-sources" className={styles.sourcesHeading}>
+        {AUDIT_LABELS.sourcesHeading[locale]}
+      </h2>
+      <p className={styles.sourcesIntro}>{AUDIT_LABELS.sourcesIntro[locale]}</p>
+      <ul className={styles.sourcesList}>
+        {AUDIT_SOURCES.map((source) => (
+          <li key={source.url}>
+            <a href={source.url} target="_blank" rel="noopener noreferrer">
+              {source.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
 
   return (
     <ToolPageShell
@@ -77,19 +111,21 @@ export function RetreatMistakesAuditPage({ variant, locale }: Props): ReactNode 
         <RetreatMistakesAudit
           variant={variant}
           locale={locale}
-          reportHeading={HARDCODED_LABELS.reportHeading}
-          resultLeadIn={HARDCODED_LABELS.resultLeadIn}
-          nextLabel={HARDCODED_LABELS.nextLabel}
-          backLabel={HARDCODED_LABELS.backLabel}
-          restartLabel={HARDCODED_LABELS.restartLabel}
+          labels={AUDIT_LABELS}
         />
       }
-      howToHeading={HARDCODED_LABELS.howToHeading}
-      howToSteps={[...HARDCODED_LABELS.howToSteps]}
-      guideSections={[]}
-      faqHeading={HARDCODED_LABELS.faqHeading}
+      belowTool={
+        <>
+          {previewBlock}
+          {sourcesBlock}
+        </>
+      }
+      howToHeading={AUDIT_LABELS.howToHeading[locale]}
+      howToSteps={AUDIT_LABELS.howToSteps.map((step) => step[locale])}
+      guideSections={guideSections}
+      faqHeading={AUDIT_LABELS.faqHeading[locale]}
       faqEntries={faqEntries}
-      relatedHeading={HARDCODED_LABELS.relatedHeading}
+      relatedHeading={AUDIT_LABELS.relatedHeading[locale]}
       relatedCards={relatedCards}
     />
   )

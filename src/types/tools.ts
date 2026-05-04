@@ -188,6 +188,38 @@ export interface AuditFaqEntry {
   answer: LocalizedString
 }
 
+export interface AuditUiLabels {
+  introEyebrow: LocalizedString
+  introTitle: LocalizedString
+  introBody: LocalizedString
+  introBullets: readonly LocalizedString[]
+  introCta: LocalizedString
+  reportHeading: LocalizedString
+  resultLeadIn: LocalizedString
+  resultVerdictTemplate: LocalizedString
+  resultBandLabels: {
+    green: LocalizedString
+    amber: LocalizedString
+    red: LocalizedString
+  }
+  fixesHeading: LocalizedString
+  nextLabel: LocalizedString
+  backLabel: LocalizedString
+  restartLabel: LocalizedString
+  progressLabel: LocalizedString
+  howToHeading: LocalizedString
+  howToSteps: readonly LocalizedString[]
+  faqHeading: LocalizedString
+  relatedHeading: LocalizedString
+  hostARetreatTitle: LocalizedString
+  pricingCalculatorTitle: LocalizedString
+  calendarTitle: LocalizedString
+  previewHeading: LocalizedString
+  previewIntro: LocalizedString
+  sourcesHeading: LocalizedString
+  sourcesIntro: LocalizedString
+}
+
 export interface AuditVariantConfig {
   variant: AuditVariant
   copy: AuditVariantCopy

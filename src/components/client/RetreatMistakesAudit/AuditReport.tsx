@@ -2,6 +2,7 @@
 
 import { AUDIT_CATEGORY_LABELS, type AuditQuestion } from '@/data/tools'
 import type { Language } from '@/types/common'
+import type { AuditUiLabels } from '@/types/tools'
 
 import styles from './RetreatMistakesAudit.module.css'
 import {
@@ -14,16 +15,8 @@ interface Props {
   perCategory: readonly CategoryRisk[]
   flagged: readonly FlaggedMistake[]
   locale: Language
-  reportHeading: string
-  resultLeadIn: string
-  restartLabel: string
+  labels: AuditUiLabels
   onRestart: () => void
-}
-
-const BAND_LABELS: Record<RiskBand, string> = {
-  green: 'Low risk',
-  amber: 'Watch this',
-  red: 'High risk',
 }
 
 const BAND_CARD_CLASS: Record<RiskBand, string> = {
@@ -42,22 +35,44 @@ const renderFix = (item: FlaggedMistake, locale: Language) => {
   )
 }
 
+const tally = (perCategory: readonly CategoryRisk[]) => {
+  const counts = { red: 0, amber: 0, green: 0 }
+  for (const item of perCategory) {
+    counts[item.band] += 1
+  }
+  return counts
+}
+
+const interpolateVerdict = (
+  template: string,
+  counts: { red: number; amber: number; green: number },
+): string =>
+  template
+    .replace('{red}', String(counts.red))
+    .replace('{amber}', String(counts.amber))
+    .replace('{green}', String(counts.green))
+
 export function AuditReport({
   perCategory,
   flagged,
   locale,
-  reportHeading,
-  resultLeadIn,
-  restartLabel,
+  labels,
   onRestart,
 }: Props) {
+  const counts = tally(perCategory)
+  const verdict = interpolateVerdict(
+    labels.resultVerdictTemplate[locale],
+    counts,
+  )
+
   return (
     <section
       className={`${styles.root} ${styles.report}`}
       aria-live="polite"
     >
-      <h2 className={styles.reportHeading}>{reportHeading}</h2>
-      <p>{resultLeadIn}</p>
+      <h2 className={styles.reportHeading}>{labels.reportHeading[locale]}</h2>
+      <p className={styles.reportVerdict}>{verdict}</p>
+      <p className={styles.reportIntro}>{labels.resultLeadIn[locale]}</p>
 
       <div className={styles.categoryGrid}>
         {perCategory.map(({ category, band }) => (
@@ -68,15 +83,22 @@ export function AuditReport({
             <p className={styles.categoryCardLabel}>
               {AUDIT_CATEGORY_LABELS[category][locale]}
             </p>
-            <p className={styles.categoryCardBand}>{BAND_LABELS[band]}</p>
+            <p className={styles.categoryCardBand}>
+              {labels.resultBandLabels[band][locale]}
+            </p>
           </article>
         ))}
       </div>
 
       {flagged.length > 0 && (
-        <ul className={styles.fixList}>
-          {flagged.map((item) => renderFix(item, locale))}
-        </ul>
+        <>
+          <h3 className={styles.fixesHeading}>
+            {labels.fixesHeading[locale]}
+          </h3>
+          <ul className={styles.fixList}>
+            {flagged.map((item) => renderFix(item, locale))}
+          </ul>
+        </>
       )}
 
       <button
@@ -84,7 +106,7 @@ export function AuditReport({
         className={styles.restartButton}
         onClick={onRestart}
       >
-        {restartLabel}
+        {labels.restartLabel[locale]}
       </button>
     </section>
   )
