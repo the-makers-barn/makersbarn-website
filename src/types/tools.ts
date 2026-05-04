@@ -218,6 +218,12 @@ export interface AuditUiLabels {
   previewIntro: LocalizedString
   sourcesHeading: LocalizedString
   sourcesIntro: LocalizedString
+  authorshipEyebrow: LocalizedString
+  authorshipTitle: LocalizedString
+  authorshipBody: LocalizedString
+  authorshipCta: LocalizedString
+  crossLinksHeading: LocalizedString
+  crossLinksIntro: LocalizedString
 }
 
 export interface AuditVariantConfig {

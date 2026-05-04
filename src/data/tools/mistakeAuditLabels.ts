@@ -69,4 +69,14 @@ export const AUDIT_LABELS: AuditUiLabels = {
   sourcesIntro: t(
     'The audit reflects guidance that recurs across at least three independent retreat-industry sources. The full list:',
   ),
+  authorshipEyebrow: t('About this audit'),
+  authorshipTitle: t('Built by retreat hosts who see these mistakes happen'),
+  authorshipBody: t(
+    "We run The Makers Barn — a slow-living retreat venue in the Dutch countryside — and see the same handful of organiser mistakes repeat across every season. The audit is what we wish first-time hosts had run before they signed a venue contract or opened ticket sales. It is free to use, and there is no signup.",
+  ),
+  authorshipCta: t('Visit The Makers Barn →'),
+  crossLinksHeading: t('Run the audit for a different niche'),
+  crossLinksIntro: t(
+    'Each variant tunes the questions and the long-form content to the niche. Pick the one closest to your retreat:',
+  ),
 }

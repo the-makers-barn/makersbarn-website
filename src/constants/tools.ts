@@ -85,6 +85,13 @@ export const SILO_TO_TOOL_ROUTE: Partial<Record<Route, Route>> = {
   [Route.COACHING_INTENSIVES]: Route.COACHING_RETREAT_PRICING_CALCULATOR,
 }
 
+export const SILO_TO_AUDIT_ROUTE: Partial<Record<Route, Route>> = {
+  [Route.YOGA_TEACHERS]: Route.YOGA_RETREAT_MISTAKES_AUDIT,
+  [Route.WELLNESS_DETOX_RETREATS]: Route.WELLNESS_RETREAT_MISTAKES_AUDIT,
+  [Route.MEDITATION_RETREATS]: Route.MEDITATION_RETREAT_MISTAKES_AUDIT,
+  [Route.COACHING_INTENSIVES]: Route.COACHING_RETREAT_MISTAKES_AUDIT,
+}
+
 export enum TimelinePreset {
   THREE_MONTHS = 3,
   SIX_MONTHS = 6,
@@ -141,6 +148,27 @@ export const AUDIT_VARIANTS_DISPLAY_ORDER: readonly AuditVariant[] = [
 ] as const
 
 export const AUDIT_STORAGE_KEY = 'mb_retreat_mistakes_audit_v1'
+
+/**
+ * Each calculator variant has a matching audit variant — used to cross-link
+ * "sanity-check your assumptions" from the calculator to the audit and back.
+ */
+export const TOOL_VARIANT_TO_AUDIT_VARIANT: Record<ToolVariant, AuditVariant> = {
+  [ToolVariant.GENERIC]: AuditVariant.GENERIC,
+  [ToolVariant.YOGA]: AuditVariant.YOGA,
+  [ToolVariant.WELLNESS]: AuditVariant.WELLNESS,
+  [ToolVariant.MEDITATION]: AuditVariant.MEDITATION,
+  [ToolVariant.COACHING]: AuditVariant.COACHING,
+}
+
+export const AUDIT_VARIANT_TO_TOOL_VARIANT: Record<AuditVariant, ToolVariant> = {
+  [AuditVariant.GENERIC]: ToolVariant.GENERIC,
+  [AuditVariant.FIRST_TIME]: ToolVariant.GENERIC,
+  [AuditVariant.YOGA]: ToolVariant.YOGA,
+  [AuditVariant.WELLNESS]: ToolVariant.WELLNESS,
+  [AuditVariant.MEDITATION]: ToolVariant.MEDITATION,
+  [AuditVariant.COACHING]: ToolVariant.COACHING,
+}
 
 export const CALENDAR_STORAGE_KEY = 'mb_retreat_launch_calendar_v1'
 export const CALENDAR_DEFAULT_PRESET = TimelinePreset.TWELVE_MONTHS

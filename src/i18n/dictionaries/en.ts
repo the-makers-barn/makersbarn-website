@@ -628,6 +628,9 @@ export const en: Dictionary = {
     calendarCtaTitle: 'Planning the timeline?',
     calendarCtaBody: 'Use our free 12-month launch calendar to plan phases, milestones, and the realistic timeline that actually works.',
     calendarCtaLabel: 'Open the launch calendar',
+    auditCtaTitle: 'Spot the mistakes before you sign',
+    auditCtaBody: 'Run the 25 most common retreat-host mistakes against your plan. 5 minutes, no signup, personalised risk report.',
+    auditCtaLabel: 'Take the 5-minute audit',
   },
 
   comparisonTeaser: {
@@ -920,6 +923,7 @@ export const en: Dictionary = {
         heading: 'Related tools',
         hostARetreatTitle: 'Host a retreat at MakersBarn',
         profitabilityCalculatorTitle: 'Retreat Profitability Calculator',
+        auditTitle: 'Retreat Mistakes Audit',
       },
       crossLinks: {
         heading: 'Other runways',
@@ -931,7 +935,8 @@ export const en: Dictionary = {
       },
     },
     related: {
-      heading: 'Related calculators',
+      heading: 'Related tools',
+      auditCardTitle: 'Sanity-check the assumptions: take the 5-minute mistakes audit',
     },
     faq: {
       heading: 'Frequently asked questions',

@@ -8,7 +8,7 @@ import {
   generateWebApplicationSchema,
 } from '@/lib/structuredData'
 import { CALCULATOR_VARIANTS, CALCULATOR_CONTENT } from '@/data/tools'
-import { ToolVariant, TOOL_VARIANT_ROUTES } from '@/constants/tools'
+import { AUDIT_VARIANT_ROUTES, TOOL_VARIANT_ROUTES, TOOL_VARIANT_TO_AUDIT_VARIANT, ToolVariant } from '@/constants/tools'
 import { Route } from '@/types'
 import { SITE_CONFIG } from '@/constants/site'
 import { generatePageMetadata } from '@/lib/metadata'
@@ -95,10 +95,20 @@ export default async function CanonicalCalculatorPage({ params }: PageProps) {
           answer: e.answer[validLocale],
         }))}
         relatedHeading={t.tools.related.heading}
-        relatedCards={config.relatedVariants.map((rv) => ({
-          href: getLocalizedPath(TOOL_VARIANT_ROUTES[rv], validLocale),
-          title: CALCULATOR_VARIANTS[rv].copy.heroTitle[validLocale],
-        }))}
+        relatedCards={[
+          {
+            href: getLocalizedPath(
+              AUDIT_VARIANT_ROUTES[TOOL_VARIANT_TO_AUDIT_VARIANT[VARIANT]],
+              validLocale,
+            ),
+            title: t.tools.related.auditCardTitle,
+            isPrimary: true,
+          },
+          ...config.relatedVariants.map((rv) => ({
+            href: getLocalizedPath(TOOL_VARIANT_ROUTES[rv], validLocale),
+            title: CALCULATOR_VARIANTS[rv].copy.heroTitle[validLocale],
+          })),
+        ]}
       />
     </>
   )

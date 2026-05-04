@@ -172,7 +172,7 @@ const FIRST_TIME_CONTENT: AuditVariantContent = {
           "Second — not collecting deposits before holding the venue. A first-time host putting down 5,000 euros of their own money to hold a venue, while still hoping people sign up, is how the retreat becomes a personal financial event regardless of how it goes. Get three or four deposits in first.",
         ),
         sameAcrossLocales(
-          "Third — assuming the venue's insurance covers you. It does not. Carry your own general-liability cover and have guests sign a full assumption-of-risk form. The cost of doing this is small. The cost of skipping it, in the event you need it, is not recoverable.",
+          "Third — assuming the venue's insurance covers you. It does not. Carry your own general-liability cover and have guests sign a full assumption-of-risk form. The cost of doing this is small. The cost of skipping it, in the event you need it, is not recoverable. (For context, this is one of the questions we ask every host who books The Makers Barn — not because we need an answer, but because the ones who do not have one are the ones we worry about.)",
         ),
       ],
     },
@@ -230,7 +230,7 @@ const FIRST_TIME_CONTENT: AuditVariantContent = {
     {
       question: sameAcrossLocales('Should a first-time host work with a retreat venue or hire à la carte?'),
       answer: sameAcrossLocales(
-        "A dedicated retreat venue with itemised, all-in pricing usually has fewer hidden costs and clearer contracts than an à la carte arrangement. The audit's venue questions are tuned to surface those hidden-cost risks.",
+        "A dedicated retreat venue with itemised, all-in pricing — like ours at The Makers Barn — usually has fewer hidden costs and clearer contracts than an à la carte arrangement. The audit's venue questions are tuned to surface those hidden-cost risks regardless of which path you choose.",
       ),
     },
   ],

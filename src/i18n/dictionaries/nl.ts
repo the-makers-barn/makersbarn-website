@@ -636,6 +636,9 @@ export const nl: Dictionary = {
     calendarCtaTitle: 'De timing plannen?',
     calendarCtaBody: 'Gebruik onze gratis 12-maanden launch-kalender om fasen, mijlpalen en de realistische planning uit te werken.',
     calendarCtaLabel: 'Open de launch-kalender',
+    auditCtaTitle: 'Spot de fouten voor je tekent',
+    auditCtaBody: 'Loop de 25 meest gemaakte retraitefouten langs je plan. 5 minuten, geen aanmelding, een persoonlijk risicoverslag.',
+    auditCtaLabel: 'Doe de audit van 5 minuten',
   },
 
   comparisonTeaser: {
@@ -928,6 +931,7 @@ export const nl: Dictionary = {
         heading: 'Related tools',
         hostARetreatTitle: 'Host a retreat at MakersBarn',
         profitabilityCalculatorTitle: 'Retreat Profitability Calculator',
+        auditTitle: 'Audit retraitefouten',
       },
       crossLinks: {
         heading: 'Other runways',
@@ -939,7 +943,8 @@ export const nl: Dictionary = {
       },
     },
     related: {
-      heading: 'Gerelateerde calculators',
+      heading: 'Gerelateerde tools',
+      auditCardTitle: 'Check je aannames: doe de audit van 5 minuten',
     },
     faq: {
       heading: 'Veelgestelde vragen',
