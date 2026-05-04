@@ -1057,12 +1057,12 @@ export const de: Dictionary = {
   chefsListing: {
     meta: {
       title: 'Privatköche für Retreats in den Niederlanden',
-      description: 'Ein praktischer Leitfaden zum Finden, Bewerten und Buchen eines Privatkochs für dein Retreat in den Niederlanden. Preise, Vorlaufzeiten, Ernährungsanforderungen und unser kuratiertes Verzeichnis.',
+      description: 'Ein Verzeichnis von Retreat-Köchen, die in den gesamten Niederlanden arbeiten, plus ein praktischer Leitfaden zum Bewerten und Buchen des richtigen Kochs für dein Retreat. Preise, Vorlaufzeiten, Ernährungsanforderungen.',
     },
     hero: {
       eyebrow: 'Köche',
       h1: 'Privatköche für Retreats in den Niederlanden',
-      subtitle: 'Ein praktischer Leitfaden zum Finden, Bewerten und Buchen eines Kochs für dein Retreat — plus das kuratierte Verzeichnis von Makers Barn.',
+      subtitle: 'Ein Verzeichnis von Retreat-Köchen, die in den gesamten Niederlanden arbeiten, plus ein praktischer Leitfaden zum Bewerten und Buchen des richtigen Kochs für dein Retreat.',
     },
     intro: 'Die meisten Retreat-Veranstalter unterschätzen, was die Buchung eines Kochs tatsächlich bedeutet. Vorlaufzeiten, Ernährungsanforderungen, Logistik vor Ort und Preisstrukturen variieren stark. Dieser Leitfaden erklärt, worauf du achten solltest, wie die Preisgestaltung in den Niederlanden funktioniert und wo du Köche findest, die auch reisen.',
     sections: {
@@ -1077,7 +1077,7 @@ export const de: Dictionary = {
       pricing: {
         h2: 'Wie die Preisgestaltung für Retreat-Köche in den Niederlanden funktioniert',
         paragraphs: [
-          'Drei Preismodelle dominieren den niederländischen Markt. Tagessätze (€350–€650/Tag für einen Koch, zuzüglich Lebensmittelkosten) eignen sich für Retreats, bei denen du Flexibilität bei Menü und Einkauf möchtest. Preise pro Mahlzeit (€18–€45 pro Person, all-in) sind bei kürzeren Retreats üblich und geben dir ein klares Budget pro Kopf. Komplettpakete (€80–€150 pro Person und Tag) fassen Lebensmittel, Vorbereitung, Service und Reinigung in einer Zahl zusammen — praktisch, wenn du die Küche vollständig abgeben möchtest.',
+          'Drei Preismodelle dominieren den niederländischen Markt. Tagessätze (€350–€650/Tag für einen Koch, zuzüglich Lebensmittelkosten) eignen sich für Retreats, bei denen du Flexibilität bei Menü und Einkauf möchtest. Preise pro Mahlzeit (€18–€45 pro Person, all-in) sind bei kürzeren Retreats üblich und geben dir ein klares Budget pro Kopf. Komplettpakete (€35–€100+ pro Person und Tag) fassen Lebensmittel, Vorbereitung, Service und Reinigung in einer Zahl zusammen — praktisch, wenn du die Küche vollständig abgeben möchtest.',
           'Achte darauf, was ausgeschlossen ist. Anfahrtszeit, Küchenausrüstung, Spülarbeit und Sonderwünsche bei der Ernährung sind die häufigsten Posten, die die Endrechnung still und leise in die Höhe treiben. Bitte vor der Buchung um einen Mustervertrag.',
           'Die Vorlaufzeit beträgt für etablierte Köche 4–8 Wo., in der Hauptsaison (Mai–September) länger. Frühzeitig buchen.',
         ],
@@ -1087,13 +1087,13 @@ export const de: Dictionary = {
         paragraphs: [
           'Die meisten etablierten Retreat-Köche sind in Noord-Holland, Utrecht oder Gelderland ansässig und reisen für Retreats ab zwei Tagen zu Veranstaltungsorten in Drenthe, Friesland, Overijssel und Flevoland. Fahrten innerhalb des Landes sind in der Regel bei Tagessätzen über €450 enthalten; darunter ist ein Kilometeraufschlag üblich.',
           'Bei mehrtägigen Retreats außerhalb ihrer Heimatprovinz bevorzugen die meisten Köche eine Übernachtungsmöglichkeit vor Ort statt einer täglichen Anfahrt. Plane eine Unterkunft für den Koch in deiner Buchung ein.',
-          'Wenn du in Makers Barn in Drenthe veranstaltest, ist unser untenstehend genanntes Verzeichnis auf unseren Veranstaltungsort abgestimmt — die meisten darin aufgeführten Köche reisen jedoch auch darüber hinaus.',
+          'Das untenstehende Verzeichnis umfasst Köche, die in den gesamten Niederlanden arbeiten. Wenn du in Makers Barn in Wijhe (Overijssel) veranstaltest, kontaktiere die Köche direkt, um die Verfügbarkeit für deine Termine zu bestätigen.',
         ],
       },
     },
     grid: {
-      h2: 'Köche in unserem Verzeichnis',
-      framingLine: 'Das sind Köche, mit denen wir gearbeitet haben und denen wir vertrauen. Die meisten reisen auch über Makers Barn hinaus.',
+      h2: 'Retreat-Köche in den Niederlanden',
+      framingLine: 'Die Profile basieren auf den öffentlich verfügbaren Informationen jedes Kochs. Kontaktiere sie direkt, um Verfügbarkeit, Preis und Eignung zu bestätigen.',
       card: {
         viewProfile: 'Profil ansehen',
         draftBadge: 'ENTWURF',
@@ -1116,7 +1116,7 @@ export const de: Dictionary = {
       items: [
         {
           question: 'Was kostet ein Privatkoch für ein Retreat in den Niederlanden?',
-          answer: 'Tagessätze liegen bei €350–€650 für einen Koch zuzüglich Lebensmittelkosten. Der Preis pro Mahlzeit beträgt €18–€45 pro Person. Komplettpakete kosten €80–€150 pro Person und Tag. Die Endkosten hängen von Gruppengröße, Ernährungskomplexität und der Verfügbarkeit von Küchenausrüstung ab.',
+          answer: 'Tagessätze liegen bei €350–€650 für einen Koch zuzüglich Lebensmittelkosten. Der Preis pro Mahlzeit beträgt €18–€45 pro Person. Komplettpakete kosten €35–€100+ pro Person und Tag. Die Endkosten hängen von Gruppengröße, Ernährungskomplexität und der Verfügbarkeit von Küchenausrüstung ab.',
         },
         {
           question: 'Wie lange ist die typische Vorlaufzeit für die Buchung eines Retreat-Kochs?',

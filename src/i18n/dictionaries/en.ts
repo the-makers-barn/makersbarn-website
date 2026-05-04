@@ -1054,12 +1054,12 @@ export const en: Dictionary = {
   chefsListing: {
     meta: {
       title: 'Private chefs for retreats in the Netherlands',
-      description: 'A practical guide to finding, evaluating, and booking a private chef for your retreat in the Netherlands. Pricing, lead times, dietary fit, and our curated directory.',
+      description: 'A directory of retreat chefs working across the Netherlands, plus a practical guide to evaluating and booking the right one for your retreat. Pricing, lead times, dietary fit.',
     },
     hero: {
       eyebrow: 'Chefs',
       h1: 'Private chefs for retreats in the Netherlands',
-      subtitle: 'A practical guide to finding, evaluating, and booking a chef for your retreat — plus the small directory we have curated at Makers Barn.',
+      subtitle: 'A directory of retreat chefs working across the Netherlands, plus a practical guide to evaluating and booking the right one for your retreat.',
     },
     intro: 'Most retreat hosts underestimate what booking a chef actually involves. Lead times, dietary fit, on-site logistics, and pricing structures vary widely. This guide covers what to look for, how pricing works in the Netherlands, and where to find chefs who travel.',
     sections: {
@@ -1074,7 +1074,7 @@ export const en: Dictionary = {
       pricing: {
         h2: 'How retreat-chef pricing works in the Netherlands',
         paragraphs: [
-          'Three pricing structures dominate the Dutch market. Day rates (€350–€650/day for one chef, plus food cost) suit retreats where you want flexibility on menu and shopping. Per-meal pricing (€18–€45 per person per meal, all-in) is common for shorter retreats and gives you a clean per-head budget. All-inclusive packages (€80–€150 per person per day) wrap food, prep, service, and cleanup into one number — useful when you want to hand the kitchen off entirely.',
+          'Three pricing structures dominate the Dutch market. Day rates (€350–€650/day for one chef, plus food cost) suit retreats where you want flexibility on menu and shopping. Per-meal pricing (€18–€45 per person per meal, all-in) is common for shorter retreats and gives you a clean per-head budget. All-inclusive packages (€35–€100+ per person per day) wrap food, prep, service, and cleanup into one number — useful when you want to hand the kitchen off entirely.',
           'Watch for what is excluded. Travel time, kitchen prep equipment, dishwashing labour, and dietary substitutions are the most common line items that quietly inflate the final invoice. Ask for a sample contract before committing.',
           'Lead times are 4–8 weeks for established chefs, longer in peak season (May–September). Book early.',
         ],
@@ -1084,13 +1084,13 @@ export const en: Dictionary = {
         paragraphs: [
           'Most established retreat chefs are based in Noord-Holland, Utrecht, or Gelderland and travel to venues in Drenthe, Friesland, Overijssel, and Flevoland for retreats lasting two days or more. Travel within the country is generally included in day rates above €450; below that, expect a kilometric supplement.',
           'For multi-day retreats outside their home province, most chefs prefer overnight accommodation on-site rather than commuting. Plan one bed for the chef in your booking.',
-          'If you are hosting at Makers Barn in Drenthe, our directory below is curated for our venue but most chefs in it travel beyond it.',
+          'The directory below covers chefs working across the Netherlands. If you are hosting at Makers Barn in Wijhe (Overijssel), reach out to chefs directly to confirm availability for your dates.',
         ],
       },
     },
     grid: {
-      h2: 'Chefs in our directory',
-      framingLine: 'These are chefs we have worked with and trust. Most travel beyond Makers Barn.',
+      h2: 'Retreat chefs in the Netherlands',
+      framingLine: 'Profiles are built from each chef\'s publicly available information. Reach out directly to confirm availability, pricing, and fit.',
       card: {
         viewProfile: 'View profile',
         draftBadge: 'DRAFT',
@@ -1113,7 +1113,7 @@ export const en: Dictionary = {
       items: [
         {
           question: 'How much does a private chef cost for a retreat in the Netherlands?',
-          answer: 'Day rates run €350–€650 for a single chef plus food cost. Per-meal pricing is €18–€45 per person. All-inclusive packages run €80–€150 per person per day. Final cost depends on group size, dietary complexity, and whether prep equipment is provided.',
+          answer: 'Day rates run €350–€650 for a single chef plus food cost. Per-meal pricing is €18–€45 per person. All-inclusive packages run €35–€100+ per person per day. Final cost depends on group size, dietary complexity, and whether prep equipment is provided.',
         },
         {
           question: 'What is the typical lead time to book a retreat chef?',

@@ -1062,12 +1062,12 @@ export const nl: Dictionary = {
   chefsListing: {
     meta: {
       title: 'Privékoks voor retraites in Nederland',
-      description: 'Een praktische gids voor het vinden, beoordelen en boeken van een privékok voor je retraite in Nederland. Prijzen, doorlooptijden, dieetwensen en onze samengestelde gids.',
+      description: 'Een gids van retraitkoks die door heel Nederland werken, plus praktisch advies over het beoordelen en boeken van de juiste kok voor je retraite. Prijzen, doorlooptijden, dieetwensen.',
     },
     hero: {
       eyebrow: 'Koks',
       h1: 'Privékoks voor retraites in Nederland',
-      subtitle: 'Een praktische gids voor het vinden, beoordelen en boeken van een kok voor je retraite — plus de zorgvuldig samengestelde gids van Makers Barn.',
+      subtitle: 'Een gids van retraitkoks die door heel Nederland werken, plus praktisch advies over het beoordelen en boeken van de juiste kok voor je retraite.',
     },
     intro: 'De meeste retraite-organisatoren onderschatten wat er bij het boeken van een kok komt kijken. Doorlooptijden, dieetwensen, logistiek op locatie en prijsstructuren lopen sterk uiteen. Deze gids behandelt waar je op moet letten, hoe de prijzen in Nederland werken en waar je koks vindt die bereid zijn te reizen.',
     sections: {
@@ -1082,7 +1082,7 @@ export const nl: Dictionary = {
       pricing: {
         h2: 'Hoe de prijzen van retraitkoks in Nederland werken',
         paragraphs: [
-          'Drie prijsstructuren domineren de Nederlandse markt. Dagtarieven (€350–€650/dag voor één kok, plus voedselkosten) zijn geschikt voor retraites waarbij je flexibiliteit wilt in menu en inkoop. Prijzen per maaltijd (€18–€45 per persoon per maaltijd, alles inbegrepen) zijn gebruikelijk voor kortere retraites en geven je een helder budget per hoofd. All-inclusive pakketten (€80–€150 per persoon per dag) bundelen eten, voorbereiding, bediening en opruimen in één bedrag — handig als je de keuken volledig wilt uitbesteden.',
+          'Drie prijsstructuren domineren de Nederlandse markt. Dagtarieven (€350–€650/dag voor één kok, plus voedselkosten) zijn geschikt voor retraites waarbij je flexibiliteit wilt in menu en inkoop. Prijzen per maaltijd (€18–€45 per persoon per maaltijd, alles inbegrepen) zijn gebruikelijk voor kortere retraites en geven je een helder budget per hoofd. All-inclusive pakketten (€35–€100+ per persoon per dag) bundelen eten, voorbereiding, bediening en opruimen in één bedrag — handig als je de keuken volledig wilt uitbesteden.',
           'Let op wat er niet is inbegrepen. Reistijd, keukenapparatuur, afwaswerk en dieetaanpassingen zijn de meest voorkomende posten die de uiteindelijke factuur stilletjes opdrijven. Vraag altijd om een voorbeeldcontract voordat je akkoord gaat.',
           'De doorlooptijd is 4–8 wkn voor gevestigde koks, langer in het hoogseizoen (mei–september). Boek op tijd.',
         ],
@@ -1092,13 +1092,13 @@ export const nl: Dictionary = {
         paragraphs: [
           'De meeste gevestigde retraitkoks zijn gebaseerd in Noord-Holland, Utrecht of Gelderland en reizen naar locaties in Drenthe, Friesland, Overijssel en Flevoland voor retraites van twee dagen of langer. Reizen binnen Nederland is over het algemeen inbegrepen bij dagtarieven boven €450; daaronder kun je een kilometertoeslag verwachten.',
           'Voor meerdaagse retraites buiten hun thuisprovincie geven de meeste koks de voorkeur aan overnachting op locatie in plaats van pendelen. Plan een extra bed voor de kok in je boeking.',
-          'Als je host in Makers Barn in Drenthe, is onze gids hieronder samengesteld voor onze locatie — maar de meeste koks daarin reizen ook verder.',
+          'De gids hieronder bevat koks die door heel Nederland werken. Als je host bij Makers Barn in Wijhe (Overijssel), neem dan rechtstreeks contact op met de koks om beschikbaarheid voor jouw data te bevestigen.',
         ],
       },
     },
     grid: {
-      h2: 'Koks in onze gids',
-      framingLine: 'Dit zijn koks met wie we hebben samengewerkt en die we vertrouwen. De meesten reizen ook buiten Makers Barn.',
+      h2: 'Retraitkoks in Nederland',
+      framingLine: 'Profielen zijn samengesteld op basis van openbaar beschikbare informatie van elke kok. Neem rechtstreeks contact op om beschikbaarheid, prijs en match te bevestigen.',
       card: {
         viewProfile: 'Bekijk profiel',
         draftBadge: 'CONCEPT',
@@ -1121,7 +1121,7 @@ export const nl: Dictionary = {
       items: [
         {
           question: 'Wat kost een privékok voor een retraite in Nederland?',
-          answer: 'Dagtarieven liggen tussen €350–€650 voor één kok plus voedselkosten. Prijzen per maaltijd zijn €18–€45 per persoon. All-inclusive pakketten kosten €80–€150 per persoon per dag. De uiteindelijke kosten hangen af van groepsgrootte, dieetcomplexiteit en of keukenapparatuur aanwezig is.',
+          answer: 'Dagtarieven liggen tussen €350–€650 voor één kok plus voedselkosten. Prijzen per maaltijd zijn €18–€45 per persoon. All-inclusive pakketten kosten €35–€100+ per persoon per dag. De uiteindelijke kosten hangen af van groepsgrootte, dieetcomplexiteit en of keukenapparatuur aanwezig is.',
         },
         {
           question: 'Wat is de gebruikelijke doorlooptijd voor het boeken van een retraitkok?',

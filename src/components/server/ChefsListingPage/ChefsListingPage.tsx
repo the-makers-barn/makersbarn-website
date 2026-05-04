@@ -28,11 +28,11 @@ export async function ChefsListingPage({ chefs, publishedChefs, lang }: Props) {
       <main className={styles.page}>
         <ChefsHero lang={lang} />
         <ChefsIntro lang={lang} />
+        <ChefGrid chefs={chefs} lang={lang} />
+        <ChefsFactsStrip lang={lang} />
         <ChefsContentSection h2={sections.whatToLookFor.h2} paragraphs={sections.whatToLookFor.paragraphs} />
         <ChefsContentSection h2={sections.pricing.h2} paragraphs={sections.pricing.paragraphs} />
         <ChefsContentSection h2={sections.coverage.h2} paragraphs={sections.coverage.paragraphs} />
-        <ChefGrid chefs={chefs} lang={lang} />
-        <ChefsFactsStrip lang={lang} />
         <ChefsFaq lang={lang} />
         <ChefsDualCta lang={lang} />
       </main>
