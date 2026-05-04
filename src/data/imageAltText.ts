@@ -510,6 +510,18 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.DE]: 'Family-Style-Tafel gedeckt von Grote Pannen',
   },
 
+  // Chef: Nitzan Zeira
+  'chef.nitzan-zeira.avatar': {
+    [Language.EN]: 'Portrait of Nitzan Zeira, vegan and Ayurvedic chef in Amsterdam',
+    [Language.NL]: 'Portret van Nitzan Zeira, vegan en Ayurvedische chef in Amsterdam',
+    [Language.DE]: 'Porträt von Nitzan Zeira, veganer und ayurvedischer Köchin in Amsterdam',
+  },
+  'chef.nitzan-zeira.hero': {
+    [Language.EN]: 'Plant-based dish styled by chef Nitzan Zeira',
+    [Language.NL]: 'Plantaardig gerecht opgemaakt door chef Nitzan Zeira',
+    [Language.DE]: 'Pflanzliches Gericht angerichtet von Köchin Nitzan Zeira',
+  },
+
   // Chef: Jill & Chris (Planticious Bliss)
   'chef.planticious-bliss.avatar': {
     [Language.EN]: 'Jill and Chris, founders of Planticious Bliss',

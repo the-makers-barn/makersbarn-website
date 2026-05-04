@@ -12,6 +12,7 @@ import { KARIN_VAN_HAL_CHEF } from './karin-van-hal'
 import { LA_MAMA_GAIA_CHEF } from './la-mama-gaia'
 import { LIESBETH_VAN_DER_VELDEN_CHEF } from './liesbeth-van-der-velden'
 import { MARIJE_GROTE_PANNEN_CHEF } from './marije-grote-pannen'
+import { NITZAN_ZEIRA_CHEF } from './nitzan-zeira'
 import { PLANTICIOUS_BLISS_CHEF } from './planticious-bliss'
 import { REBELICIOUS_CHEF } from './rebelicious'
 import { ROOTED_IN_RAW_CHEF } from './rooted-in-raw'
@@ -34,6 +35,7 @@ export const ALL_CHEFS: readonly Chef[] = [
   KARIN_VAN_HAL_CHEF,
   LA_MAMA_GAIA_CHEF,
   MARIJE_GROTE_PANNEN_CHEF,
+  NITZAN_ZEIRA_CHEF,
   PLANTICIOUS_BLISS_CHEF,
   REBELICIOUS_CHEF,
   ROOTED_IN_RAW_CHEF,
