@@ -10,6 +10,7 @@ export const de: Dictionary = {
     facilities: 'Räume',
     experiences: 'Zu Gast sein',
     surroundings: 'Umgebung',
+    tools: 'Gratis-Tools',
     contact: 'Kontakt',
     book: 'Buchen',
   },
@@ -729,12 +730,47 @@ export const de: Dictionary = {
 
   tools: {
     hub: {
-      metaTitle: 'Free Tools for Retreat Facilitators',
-      metaDescription: 'Free, ungated calculators and tools for retreat facilitators — pricing, profitability, and planning.',
-      eyebrow: 'Free Tools',
-      title: 'Tools for retreat facilitators',
-      intro: 'Plan, price, and run more profitable retreats. These tools are free, with no signup required, and work for any venue — including the one you\'re considering at MakersBarn.',
-      toolCardCta: 'Open the tool',
+      metaTitle: 'Gratis-Tools für Retreat-Leitende',
+      metaDescription: 'Kostenlose Rechner und Tools für Retreat-Leitende — Preisgestaltung, Rentabilität und Planung. Keine Anmeldung nötig.',
+      eyebrow: 'Gratis-Tools',
+      title: 'Ein Werkzeugkasten für Retreat-Hosts',
+      intro: 'Plane, kalkuliere und führe profitablere Retreats durch. Zwanzig kostenlose Tools — ohne Anmeldung, ohne E-Mail-Hürde — die für jeden Ort funktionieren, auch für den, den du bei MakersBarn in Betracht ziehst.',
+      toolCardCta: 'Öffnen',
+      jumpToLabel: 'Springe zu',
+      workflowEyebrow: 'Wie alles zusammenpasst',
+      workflowTitle: 'Vier Schritte von der Idee zum Retreat, das läuft',
+      workflowIntro: 'Jedes Tool steht für sich, aber zusammen decken sie den ganzen Bogen ab — vom Sanity-Check bis zum Tagesplan.',
+      workflowSteps: [
+        { title: 'Audit', body: 'Fang die Fehler ab, bevor sie dich Geld kosten. 10 Fragen, 5 Minuten.' },
+        { title: 'Rechnen', body: 'Preise, Marge und Break-even — bevor du dich auf einen Ort festlegst.' },
+        { title: 'Planen', body: 'Ein realistischer Launch-Zeitplan über 3, 6, 9 oder 12 Monate mit Meilensteinen.' },
+        { title: 'Tagesplan', body: 'Ein Tag-für-Tag-Plan mit sinnvollen Vorgaben, die du anpassen kannst.' },
+      ],
+      freeBadge: '100% gratis',
+      noSignupBadge: 'Keine Anmeldung',
+      multilingualBadge: 'EN · NL · DE',
+      categories: {
+        audit: {
+          label: 'Fehler-Audits',
+          title: 'Prüfe deinen Retreat-Plan',
+          description: 'Ein 10-Fragen-Check, der die blinden Flecken aufdeckt, die sowohl Erstlinge als auch erfahrene Hosts übersehen — Preis, Programm, Logistik und Gruppendynamik.',
+        },
+        calculator: {
+          label: 'Preisrechner',
+          title: 'Setze deine Preise mit Rückgrat',
+          description: 'Sieh Umsatz, Gesamtkosten, Marge und Break-even-Belegung in Echtzeit. Nischen-typische Vorgaben aus Yoga-, Wellness-, Meditations- und Coaching-Benchmarks.',
+        },
+        planner: {
+          label: 'Launch-Kalender',
+          title: 'Plane deinen Launch über die Zeit',
+          description: 'Vier Vorlaufzeiten vom 3-Monats-Sprint bis zum 12-Monats-Aufbau. Phase-für-Phase-Meilensteine zum Abhaken, Anpassen und an dich selbst per Mail senden.',
+        },
+        agenda: {
+          label: 'Tagesplan-Builder',
+          title: 'Gestalte den Tag-für-Tag-Ablauf',
+          description: 'Klar strukturierte Retreat-Pläne mit nischen-passenden Vorgaben — Vinyasa-Flows, Sitz-Geh-Sitz-Zyklen, Coaching-Hot-Seats — alles editierbar.',
+        },
+      },
     },
     calculator: {
       inputs: {

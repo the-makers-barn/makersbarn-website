@@ -9,6 +9,7 @@ export interface NavTranslations {
   facilities: string
   experiences: string
   surroundings: string
+  tools: string
   contact: string
   book: string
 }
@@ -762,6 +763,12 @@ export interface ToolsCalculatorTranslations {
   makersbarnCta: ToolsCalculatorMakersBarnCtaTranslations
 }
 
+export interface ToolsHubCategoryTranslations {
+  label: string
+  title: string
+  description: string
+}
+
 export interface ToolsHubTranslations {
   metaTitle: string
   metaDescription: string
@@ -769,6 +776,20 @@ export interface ToolsHubTranslations {
   title: string
   intro: string
   toolCardCta: string
+  jumpToLabel: string
+  workflowEyebrow: string
+  workflowTitle: string
+  workflowIntro: string
+  workflowSteps: readonly { title: string; body: string }[]
+  freeBadge: string
+  noSignupBadge: string
+  multilingualBadge: string
+  categories: {
+    audit: ToolsHubCategoryTranslations
+    calculator: ToolsHubCategoryTranslations
+    planner: ToolsHubCategoryTranslations
+    agenda: ToolsHubCategoryTranslations
+  }
 }
 
 export interface ToolsRelatedTranslations {
