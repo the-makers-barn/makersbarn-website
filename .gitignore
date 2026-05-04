@@ -52,3 +52,7 @@ coverage/
 # Vercel
 .vercel
 .env*.local
+
+# Translation pipeline intermediates (see scripts/extract_audit_strings.py)
+tmp/
+__pycache__/
