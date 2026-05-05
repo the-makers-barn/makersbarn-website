@@ -1132,7 +1132,7 @@ export const en: Dictionary = {
         },
         {
           question: 'Can I cook myself instead?',
-          answer: 'Yes — many smaller retreats (under 10 people, simpler menus) self-cater successfully. Hiring a chef pays off above 12 guests, with multiple dietary requirements, or when the host is also a teacher and cannot afford the kitchen overhead.',
+          answer: 'You can — but cooking for a retreat is not the same as cooking at home. You\'re producing 9–15 sustained services across multiple days for a group with mixed dietary needs, alongside sourcing, prep, and cleanup, while the retreat programme keeps moving. We strongly recommend bringing in someone with retreat-cooking experience: it lets the host stay present with the guests instead of disappearing into the kitchen, and it is often the difference between a good retreat and a great one.',
         },
       ],
     },

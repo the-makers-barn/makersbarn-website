@@ -1140,7 +1140,7 @@ export const nl: Dictionary = {
         },
         {
           question: 'Kan ik ook zelf koken?',
-          answer: 'Ja — veel kleinere retraites (minder dan 10 personen, eenvoudiger menu\'s) doen dit met succes. Een kok inhuren loont boven 12 gasten, bij meerdere dieetwensen, of wanneer de organisator ook docent is en de keuken er niet bij kan hebben.',
+          answer: 'Het kan — maar koken voor een retraite is iets anders dan thuis koken. Je maakt 9–15 maaltijden over meerdere dagen voor een groep met uiteenlopende dieetwensen, naast inkoop, voorbereiding en opruimen, terwijl het retraite­programma gewoon doorloopt. We raden sterk aan iemand met retraitkok-ervaring in te zetten: dat houdt de host bij de gasten in plaats van in de keuken, en is vaak het verschil tussen een goede en een uitstekende retraite.',
         },
       ],
     },

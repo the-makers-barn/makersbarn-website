@@ -1135,7 +1135,7 @@ export const de: Dictionary = {
         },
         {
           question: 'Kann ich auch selbst kochen?',
-          answer: 'Ja — viele kleinere Retreats (unter 10 Personen, einfachere Menüs) versorgen sich erfolgreich selbst. Die Buchung eines Kochs lohnt sich ab 12 Gästen, bei mehreren Ernährungsanforderungen oder wenn der Gastgeber gleichzeitig als Kursleiter tätig ist und sich nicht den Aufwand in der Küche leisten kann.',
+          answer: 'Möglich ist es — aber Kochen für ein Retreat ist nicht dasselbe wie Kochen zu Hause. Du bereitest 9–15 Mahlzeiten über mehrere Tage für eine Gruppe mit unterschiedlichen Ernährungsbedürfnissen zu, dazu Einkauf, Vorbereitung und Reinigung, während das Retreat-Programm weiterläuft. Wir empfehlen ausdrücklich, jemanden mit Retreat-Koch-Erfahrung einzubinden: Das hält den Gastgeber bei den Teilnehmenden statt in der Küche, und ist oft der Unterschied zwischen einem guten und einem ausgezeichneten Retreat.',
         },
       ],
     },
