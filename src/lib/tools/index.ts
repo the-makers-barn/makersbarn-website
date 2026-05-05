@@ -1,3 +1,4 @@
+export * from './agenda'
 export * from './calendar/presets'
 export * from './calendar/state'
 export * from './formatters'

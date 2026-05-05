@@ -1,4 +1,10 @@
 import {
+  AGENDA_NICHE_ORDER,
+  AGENDA_NICHE_ROUTES,
+  AgendaNiche,
+  AUDIT_VARIANT_ROUTES,
+  AUDIT_VARIANTS_DISPLAY_ORDER,
+  AuditVariant,
   CALENDAR_PRESETS_ORDER,
   CALENDAR_ROUTE_BY_PRESET,
   TOOL_VARIANT_ROUTES,
@@ -9,6 +15,7 @@ import {
 import { Language } from '@/types/common'
 import type { LocalizedString, ToolsHubItem } from '@/types/tools'
 
+import { AUDIT_VARIANTS } from './mistakeAuditVariants'
 import { CALCULATOR_VARIANTS } from './calculatorVariants'
 
 const CALENDAR_EYEBROW_EN = 'Free planning tool'
@@ -16,6 +23,33 @@ const CALENDAR_TITLE_TEMPLATE_EN = 'The {months}-Month Retreat Launch Calendar'
 const CALENDAR_INTRO_TEMPLATE_EN =
   'Plan your retreat over {months} months with check-offs, custom milestones, and email-the-list.'
 const MONTHS_PLACEHOLDER = '{months}'
+
+const AGENDA_EYEBROW_BY_NICHE_EN: Record<AgendaNiche, string> = {
+  [AgendaNiche.GENERIC]: 'Free planning tool',
+  [AgendaNiche.YOGA]: 'Free planning tool · Yoga',
+  [AgendaNiche.WELLNESS]: 'Free planning tool · Wellness',
+  [AgendaNiche.MEDITATION]: 'Free planning tool · Meditation',
+  [AgendaNiche.COACHING]: 'Free planning tool · Coaching',
+}
+const AGENDA_TITLE_BY_NICHE_EN: Record<AgendaNiche, string> = {
+  [AgendaNiche.GENERIC]: 'The Retreat Agenda Builder',
+  [AgendaNiche.YOGA]: 'The Yoga Retreat Schedule Builder',
+  [AgendaNiche.WELLNESS]: 'The Wellness Retreat Schedule Builder',
+  [AgendaNiche.MEDITATION]: 'The Meditation Retreat Schedule Builder',
+  [AgendaNiche.COACHING]: 'The Coaching Retreat Agenda Builder',
+}
+const AGENDA_INTRO_BY_NICHE_EN: Record<AgendaNiche, string> = {
+  [AgendaNiche.GENERIC]:
+    'Design the day-by-day flow of your retreat. Opinionated defaults you can edit, hide, and add to.',
+  [AgendaNiche.YOGA]:
+    'A day-by-day yoga retreat schedule with vinyasa, yin, and integration time built in. Edit to fit your group.',
+  [AgendaNiche.WELLNESS]:
+    'A wellness retreat schedule with nervous-system practices, spa windows, and protected free time.',
+  [AgendaNiche.MEDITATION]:
+    'A silent retreat schedule modelled on Plum Village and vipassana — four sittings, walking, dharma talk.',
+  [AgendaNiche.COACHING]:
+    'A coaching retreat schedule with 90-minute hot-seats, integration walks, and a commitments circle.',
+}
 
 /**
  * Calendar copy ships EN-verbatim across locales for v1 — proper NL/DE
@@ -61,7 +95,25 @@ const buildCalculatorItem = (variant: ToolVariant): ToolsHubItem => ({
   intro: CALCULATOR_VARIANTS[variant].copy.heroIntro,
 })
 
+const buildAuditItem = (variant: AuditVariant): ToolsHubItem => ({
+  kind: ToolKind.AUDIT,
+  route: AUDIT_VARIANT_ROUTES[variant],
+  eyebrow: AUDIT_VARIANTS[variant].copy.heroEyebrow,
+  title: AUDIT_VARIANTS[variant].copy.heroTitle,
+  intro: AUDIT_VARIANTS[variant].copy.heroIntro,
+})
+
+const buildAgendaItem = (niche: AgendaNiche): ToolsHubItem => ({
+  kind: ToolKind.AGENDA,
+  route: AGENDA_NICHE_ROUTES[niche],
+  eyebrow: allLocalesSameString(AGENDA_EYEBROW_BY_NICHE_EN[niche]),
+  title: allLocalesSameString(AGENDA_TITLE_BY_NICHE_EN[niche]),
+  intro: allLocalesSameString(AGENDA_INTRO_BY_NICHE_EN[niche]),
+})
+
 export const TOOLS_HUB_ITEMS: readonly ToolsHubItem[] = [
   ...CALENDAR_DISPLAY_ORDER.map(buildCalendarItem),
+  ...AGENDA_NICHE_ORDER.map(buildAgendaItem),
   ...CALCULATOR_DISPLAY_ORDER.map(buildCalculatorItem),
+  ...AUDIT_VARIANTS_DISPLAY_ORDER.map(buildAuditItem),
 ]

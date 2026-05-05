@@ -655,6 +655,9 @@ export interface SilosChromeTranslations {
   calendarCtaTitle: string
   calendarCtaBody: string
   calendarCtaLabel: string
+  auditCtaTitle: string
+  auditCtaBody: string
+  auditCtaLabel: string
 }
 
 /**
@@ -830,6 +833,7 @@ export interface ToolsHubTranslations {
 
 export interface ToolsRelatedTranslations {
   heading: string
+  auditCardTitle: string
 }
 
 export interface ToolsFaqTranslations {
@@ -915,6 +919,7 @@ export interface ToolsCalendarTranslations {
     heading: string
     hostARetreatTitle: string
     profitabilityCalculatorTitle: string
+    auditTitle: string
   }
   crossLinks: {
     heading: string
@@ -926,10 +931,153 @@ export interface ToolsCalendarTranslations {
   }
 }
 
+/**
+ * Retreat Agenda Builder tool translations.
+ *
+ * Per-niche copy lives under `niches.<niche>` so each landing page has
+ * unique meta, hero, guide, and FAQ content (avoiding duplicate-content
+ * SEO issues across the 5 niche routes).
+ */
+export interface AgendaGuideSection {
+  heading: string
+  paragraphs: readonly string[]
+}
+
+export interface AgendaFaqEntry {
+  question: string
+  answer: string
+}
+
+export interface AgendaNicheCopy {
+  metaTitle: string
+  metaDescription: string
+  heroEyebrow: string
+  heroTitle: string
+  heroIntro: string
+  heroAfterIntro: string
+  shortLabel: string
+  guideSections: readonly AgendaGuideSection[]
+  faqExtras: readonly AgendaFaqEntry[]
+  relatedCalculatorTitle: string
+}
+
+export interface ToolsAgendaTranslations {
+  rootAriaLabel: string
+  blockTypeLabels: {
+    ritual: string
+    practice: string
+    workshop: string
+    meal: string
+    free: string
+    rest: string
+    travel: string
+  }
+  lengthSwitcher: {
+    label: string
+    preset2: string
+    preset3: string
+    preset5: string
+    preset7: string
+  }
+  dayHeading: string
+  warnings: {
+    heading: string
+    tooMuchStructured: string
+    noFreeTime: string
+    overlongBlock: string
+    earlyStart: string
+    lateEnd: string
+    overlap: string
+  }
+  block: {
+    timeLabel: string
+    durationLabel: string
+    titleLabel: string
+    notesLabel: string
+    typeLabel: string
+    edit: string
+    save: string
+    cancel: string
+    hide: string
+    restore: string
+    remove: string
+  }
+  addBlock: {
+    button: string
+    heading: string
+    submit: string
+    cancel: string
+    titlePlaceholder: string
+    notesPlaceholder: string
+    capReached: string
+    totalCapReached: string
+  }
+  emptyDay: string
+  inlineHostCta: {
+    title: string
+    body: string
+    linkLabel: string
+  }
+  print: {
+    button: string
+    heading: string
+  }
+  reset: {
+    button: string
+    confirm: string
+  }
+  emailForm: {
+    heading: string
+    placeholder: string
+    contactConsent: string
+    submit: string
+    sending: string
+    success: string
+    errorRateLimit: string
+    errorInvalidEmail: string
+    errorGeneric: string
+    errorSendFailed: string
+  }
+  email: {
+    subject: string
+    greeting: string
+    intro: string
+    backToPlanCta: string
+    backToPlanLabel: string
+    signoff: string
+  }
+  howTo: {
+    heading: string
+    steps: readonly string[]
+  }
+  faq: {
+    heading: string
+    entries: readonly AgendaFaqEntry[]
+  }
+  related: {
+    heading: string
+    hostARetreatTitle: string
+    launchCalendarTitle: string
+    auditTitle: string
+  }
+  crossLinks: {
+    heading: string
+    intro: string
+  }
+  niches: {
+    generic: AgendaNicheCopy
+    yoga: AgendaNicheCopy
+    wellness: AgendaNicheCopy
+    meditation: AgendaNicheCopy
+    coaching: AgendaNicheCopy
+  }
+}
+
 export interface ToolsTranslations {
   hub: ToolsHubTranslations
   calculator: ToolsCalculatorTranslations
   calendar: ToolsCalendarTranslations
+  agenda: ToolsAgendaTranslations
   related: ToolsRelatedTranslations
   faq: ToolsFaqTranslations
 }

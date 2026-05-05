@@ -1,4 +1,14 @@
-import type { CalendarPhaseId, MilestoneStatus, TimelinePreset, ToolKind, ToolVariant } from '@/constants/tools'
+import type {
+  AgendaBlockType,
+  AgendaLength,
+  AgendaNiche,
+  AuditVariant,
+  CalendarPhaseId,
+  MilestoneStatus,
+  TimelinePreset,
+  ToolKind,
+  ToolVariant,
+} from '@/constants/tools'
 import type { Language } from '@/types/common'
 import type { Route } from '@/types/navigation'
 
@@ -173,4 +183,146 @@ export interface ToolsHubItem {
   eyebrow: LocalizedString
   title: LocalizedString
   intro: LocalizedString
+}
+
+export interface AuditVariantCopy {
+  heroEyebrow: LocalizedString
+  heroTitle: LocalizedString
+  heroIntro: LocalizedString
+  metaTitle: LocalizedString
+  metaDescription: LocalizedString
+}
+
+export interface AuditFaqEntry {
+  question: LocalizedString
+  answer: LocalizedString
+}
+
+export interface AuditUiLabels {
+  introEyebrow: LocalizedString
+  introTitle: LocalizedString
+  introBody: LocalizedString
+  introBullets: readonly LocalizedString[]
+  introCta: LocalizedString
+  reportHeading: LocalizedString
+  resultLeadIn: LocalizedString
+  resultVerdictTemplate: LocalizedString
+  resultBandLabels: {
+    green: LocalizedString
+    amber: LocalizedString
+    red: LocalizedString
+  }
+  fixesHeading: LocalizedString
+  nextLabel: LocalizedString
+  backLabel: LocalizedString
+  restartLabel: LocalizedString
+  progressLabel: LocalizedString
+  howToHeading: LocalizedString
+  howToSteps: readonly LocalizedString[]
+  faqHeading: LocalizedString
+  relatedHeading: LocalizedString
+  hostARetreatTitle: LocalizedString
+  pricingCalculatorTitle: LocalizedString
+  calendarTitle: LocalizedString
+  agendaBuilderTitle: LocalizedString
+  previewHeading: LocalizedString
+  previewIntro: LocalizedString
+  sourcesHeading: LocalizedString
+  sourcesIntro: LocalizedString
+  authorshipEyebrow: LocalizedString
+  authorshipTitle: LocalizedString
+  authorshipBody: LocalizedString
+  authorshipCta: LocalizedString
+  crossLinksHeading: LocalizedString
+  crossLinksIntro: LocalizedString
+}
+
+export interface AuditVariantConfig {
+  variant: AuditVariant
+  copy: AuditVariantCopy
+  /** Niche-specific extras appended to the question bank for this variant. */
+  extraQuestionIds?: readonly string[]
+  /** Question IDs to hide for this variant (e.g. "FIRST_TIME" hides power-mix). */
+  hideQuestionIds?: readonly string[]
+  faq: readonly AuditFaqEntry[]
+  relatedVariants: readonly AuditVariant[]
+}
+
+export interface AgendaDefaultBlock {
+  id: string
+  type: AgendaBlockType
+  startMinute: number
+  durationMinute: number
+  title: LocalizedString
+  notes?: LocalizedString
+}
+
+export interface AgendaDefaultDay {
+  dayIndex: number
+  title: LocalizedString
+  blocks: AgendaDefaultBlock[]
+}
+
+export interface AgendaDefaultPlan {
+  niche: AgendaNiche
+  length: AgendaLength
+  days: AgendaDefaultDay[]
+}
+
+export interface AgendaBlockOverride {
+  startMinute?: number
+  durationMinute?: number
+  title?: string
+  notes?: string
+}
+
+export interface AgendaCustomBlock {
+  id: string
+  dayIndex: number
+  type: AgendaBlockType
+  startMinute: number
+  durationMinute: number
+  title: string
+  notes: string
+}
+
+export interface AgendaState {
+  schemaVersion: 1
+  niche: AgendaNiche
+  length: AgendaLength
+  hiddenBlockIds: Record<string, true>
+  blockOverrides: Record<string, AgendaBlockOverride>
+  customBlocks: AgendaCustomBlock[]
+}
+
+export interface AgendaResolvedBlock {
+  id: string
+  dayIndex: number
+  type: AgendaBlockType
+  startMinute: number
+  durationMinute: number
+  title: string
+  notes: string
+  isCustom: boolean
+}
+
+export interface AgendaResolvedDay {
+  dayIndex: number
+  title: string
+  blocks: AgendaResolvedBlock[]
+}
+
+export interface EmailAgendaPlanInput {
+  email: string
+  niche: AgendaNiche
+  length: AgendaLength
+  hiddenBlockIds: string[]
+  blockOverrides: Array<{ blockId: string } & AgendaBlockOverride>
+  customBlocks: Array<Omit<AgendaCustomBlock, 'id'>>
+  contactConsent: boolean
+}
+
+export interface EmailAgendaPlanResult {
+  ok: boolean
+  error?: 'rate_limit' | 'invalid_email' | 'validation' | 'send_failed'
 }
