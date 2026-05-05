@@ -46,6 +46,15 @@ export async function Footer({ locale }: FooterProps = {}) {
   const t = await getServerTranslations(language)
   const currentYear = new Date().getFullYear()
 
+  const exploreLinks: Array<{ href: string; label: string }> = [
+    { href: getLocalizedPath(Route.HOME, language), label: t.nav.home },
+    { href: getLocalizedPath(Route.ABOUT, language), label: t.nav.about },
+    { href: getLocalizedPath(Route.FACILITIES, language), label: t.nav.facilities },
+    { href: getLocalizedPath(Route.HOST_A_RETREAT, language), label: t.nav.hostARetreat },
+    { href: getLocalizedPath(Route.EXPERIENCES, language), label: t.nav.experiences },
+    { href: getLocalizedPath(Route.CONTACT, language), label: t.nav.contact },
+  ]
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -78,7 +87,16 @@ export async function Footer({ locale }: FooterProps = {}) {
           </div>
 
           <div className={`${styles.section} ${styles.sectionCenter}`}>
-            <p className={styles.tagline}>{t.footer.tagline}</p>
+            <h3 className={styles.heading}>{t.footer.explore}</h3>
+            <ul className={styles.linkList}>
+              {exploreLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className={styles.navLink}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className={`${styles.section} ${styles.sectionRight}`}>
@@ -106,6 +124,7 @@ export async function Footer({ locale }: FooterProps = {}) {
         </div>
 
         <div className={styles.bottom}>
+          <p className={styles.tagline}>{t.footer.tagline}</p>
           <p className={styles.copyright}>
             &copy; {currentYear} {t.footer.copyright}
           </p>

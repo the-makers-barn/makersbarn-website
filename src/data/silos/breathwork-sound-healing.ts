@@ -12,17 +12,17 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
   },
   meta: {
     title: {
-      [Language.EN]: 'Breathwork & Sound Healing Retreat Venue — Netherlands',
-      [Language.NL]: 'Ademwerk- & sound healing-retraitelocatie — Nederland',
-      [Language.DE]: 'Retreat-Location für Atemarbeit & Klangheilung — Niederlande',
+      [Language.EN]: 'Breathwork & Sound Healing Retreats — Overijssel, Netherlands',
+      [Language.NL]: 'Ademwerk- & klankhealing-retraites — Overijssel, Nederland',
+      [Language.DE]: 'Atemarbeit- & Klangheilung-Retreats — Overijssel, Niederlande',
     },
     description: {
       [Language.EN]:
-        'A heated wooden hay barn that hums when the bowls do. A held space for breathwork and sound retreats in Overijssel. Sauna, fire circle, and a swimming pond for aftercare.',
+        'Venue for breathwork & sound healing retreats in Overijssel — heated 65 m² practice barn, fire circle, sauna, 14 beds. Full buyout, 15 min from Zwolle.',
       [Language.NL]:
-        'Een verwarmde houten hooischuur die meeklinkt met de bowls. Een gedragen ruimte voor ademwerk- en klankretraites in Overijssel. Sauna, vuurplaats en een zwemvijver voor de aftercare.',
+        'Locatie voor ademwerk- en klankhealing-retraites in Overijssel — verwarmde 65 m² praktijkruimte, vuurplaats, sauna, 14 bedden. Volledige buyout, 15 min van Zwolle.',
       [Language.DE]:
-        'Eine beheizte hölzerne Heuscheune, die mitschwingt, wenn die Klangschalen erklingen. Ein gehaltener Raum für Atem- und Klangretreats in Overijssel. Sauna, Feuerstelle und ein Schwimmteich für die Nachsorge.',
+        'Ort für Atemarbeit- & Klangheilung-Retreats in Overijssel — beheizte 65 m² Übungsscheune, Feuerstelle, Sauna, 14 Betten. Voller Buyout, 15 Min von Zwolle.',
     },
   },
   hero: {
@@ -32,56 +32,56 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
       [Language.DE]: 'Für Atem- und Klangbegleiter:innen',
     },
     title: {
-      [Language.EN]: 'A Held Space for Breathwork & Sound Retreats',
-      [Language.NL]: 'Een gedragen ruimte voor ademwerk- en klankretraites',
-      [Language.DE]: 'Ein gehaltener Raum für Atem- und Klangretreats',
+      [Language.EN]: 'Breathwork & Sound Healing Retreats — Heated Barn, Fire Circle & Sauna in Overijssel',
+      [Language.NL]: 'Ademwerk- & klankhealing-retraites — verwarmde schuur, vuurplaats en sauna in Overijssel',
+      [Language.DE]: 'Atemarbeit- & Klangheilung-Retreats — beheizte Scheune, Feuerstelle und Sauna in Overijssel',
     },
     subtitle: {
       [Language.EN]:
-        'Acoustics that breathe. Heated wooden floor for two-hour lie-downs. Fields outside, fire circle outside, sauna for what comes up afterwards.',
+        'A 65 m² heated wooden hay barn with sound system and dimmable lighting, twenty mats and bolsters on hand, a fire circle twenty steps away, and a sauna for the hours after the session. Full buyout, fifteen minutes from Zwolle.',
       [Language.NL]:
-        'Akoestiek die ademt. Verwarmde houten vloer voor lig-sessies van twee uur. Velden buiten, vuurplaats buiten, sauna voor wat daarna naar boven komt.',
+        'Een verwarmde houten hooischuur van 65 m² met geluidssysteem en dimbare verlichting, twintig matten en bolsters bij de hand, een vuurplaats op twintig passen en een sauna voor de uren na de sessie. Volledige buyout, vijftien minuten van Zwolle.',
       [Language.DE]:
-        'Eine Akustik, die atmet. Beheizter Holzboden für zweistündige Liegeritte. Felder draußen, Feuerstelle draußen, Sauna für das, was danach hochkommt.',
+        'Eine beheizte hölzerne Heuscheune mit 65 m², Soundsystem und dimmbarem Licht, zwanzig Matten und Bolster bereit, eine Feuerstelle zwanzig Schritte entfernt und eine Sauna für die Stunden nach der Session. Voller Buyout, fünfzehn Minuten von Zwolle.',
     },
   },
   hook: {
     text: {
       [Language.EN]:
-        'A hay barn that hums when the bowls do.',
+        'A 65 m² heated wooden practice barn for the breathwork or sound session — and a fire circle, sauna, and swimming pond for what comes after.',
       [Language.NL]:
-        'Een hooischuur die meeklinkt met de bowls.',
+        'Een verwarmde houten praktijkruimte van 65 m² voor de ademwerk- of klanksessie — en een vuurplaats, sauna en zwemvijver voor wat daarna komt.',
       [Language.DE]:
-        'Eine Heuscheune, die mitschwingt, wenn die Klangschalen erklingen.',
+        'Eine beheizte hölzerne Übungsscheune mit 65 m² für die Atem- oder Klangsession — und eine Feuerstelle, Sauna und ein Schwimmteich für die Zeit danach.',
     },
     caption: {
       [Language.EN]:
-        'No neighbours, no shared walls, no programme on the other side of the door.',
+        'Full venue buyout on a 1.3-hectare farm. No neighbours, no shared walls, no other group on the other side of the door.',
       [Language.NL]:
-        'Geen buren, geen gedeelde muren, geen ander programma aan de andere kant van de deur.',
+        'Volledige buyout op een boerderij van 1,3 hectare. Geen buren, geen gedeelde muren, geen andere groep aan de andere kant van de deur.',
       [Language.DE]:
-        'Keine Nachbarn, keine geteilten Wände, kein anderes Programm hinter der Tür.',
+        'Voller Buyout auf einem 1,3 Hektar großen Hof. Keine Nachbarn, keine geteilten Wände, keine andere Gruppe hinter der Tür.',
     },
   },
   sections: [
     {
       h2: {
-        [Language.EN]: 'Acoustics that breathe',
-        [Language.NL]: 'Akoestiek die ademt',
-        [Language.DE]: 'Eine Akustik, die atmet',
+        [Language.EN]: 'A Heated 65 m² Hay Barn Built for Breathwork & Sound Sessions',
+        [Language.NL]: 'Een verwarmde hooischuur van 65 m² gemaakt voor ademwerk- en klanksessies',
+        [Language.DE]: 'Eine beheizte 65 m² Heuscheune, gemacht für Atem- und Klangsessions',
       },
       body: {
         [Language.EN]: [
-          'The Hay House is sixty-five square metres of heated wooden floor under a wooden ceiling. The room is warm before the first inhale, the floor stays warm through the longest journey, and the wood has the kind of acoustic decay that bowls and breath can rest into.',
-          'The space holds twenty mats laid out generously. Twelve to fourteen with bolsters, blankets, and full-body lie-downs is the comfortable maximum for an active session.',
+          'The Hay House is sixty-five square metres of heated wooden floor under a wooden ceiling. The room is warm before the first inhale, the floor stays warm through the longest breathwork journey, and the wood gives sound bowls and voice a clean, unhurried decay to work with. Sound system with bluetooth and aux, dimmable lighting, blackout option for sound healing in the dark.',
+          'The space holds twenty mats laid out generously. For an active breathwork retreat, twelve to fourteen with full bolsters, blankets, and head-to-toe lie-downs is the comfortable maximum.',
         ],
         [Language.NL]: [
-          'Het Hay House is vijfenzestig vierkante meter verwarmde houten vloer onder een houten plafond. De ruimte is warm voor de eerste inademing, de vloer blijft warm door de langste reis, en het hout heeft het soort akoestische nagalm waar bowls en adem in kunnen rusten.',
-          'Er passen twintig matten ruim opgesteld. Twaalf tot veertien deelnemers met bolsters, dekens en uitgestrekte lig-sessies is het comfortabele maximum voor een actieve sessie.',
+          'Het Hay House is vijfenzestig vierkante meter verwarmde houten vloer onder een houten plafond. De ruimte is warm vóór de eerste inademing, de vloer blijft warm tijdens de langste ademwerkreis, en het hout geeft klankschalen en stem een schone, rustige nagalm om mee te werken. Geluidssysteem met bluetooth en aux, dimbare verlichting, blackout-optie voor klankhealing in het donker.',
+          'Er passen twintig matten ruim opgesteld. Voor een actieve ademwerkretraite is twaalf tot veertien deelnemers met volle bolsters, dekens en uitgestrekte lig-sessies het comfortabele maximum.',
         ],
         [Language.DE]: [
-          'Das Hay House sind fünfundsechzig Quadratmeter beheizter Holzboden unter einer Holzdecke. Der Raum ist warm vor dem ersten Einatmen, der Boden bleibt durch die längste Reise hindurch warm, und das Holz hat genau jenes akustische Nachklingen, in das Klangschalen und Atem sich legen können.',
-          'Der Raum fasst zwanzig großzügig ausgelegte Matten. Zwölf bis vierzehn mit Bolstern, Decken und ganzkörperlichem Liegen sind das komfortable Maximum für eine aktive Sitzung.',
+          'Das Hay House sind fünfundsechzig Quadratmeter beheizter Holzboden unter einer Holzdecke. Der Raum ist warm vor dem ersten Einatmen, der Boden bleibt durch die längste Atemreise hindurch warm, und das Holz gibt Klangschalen und Stimme einen sauberen, ruhigen Nachklang zum Arbeiten. Soundsystem mit Bluetooth und Aux, dimmbares Licht, Blackout-Option für Klangheilung im Dunkeln.',
+          'Der Raum fasst zwanzig großzügig ausgelegte Matten. Für ein aktives Atem-Retreat sind zwölf bis vierzehn Teilnehmende mit vollen Bolstern, Decken und Liegen von Kopf bis Fuß das komfortable Maximum.',
         ],
       },
       imageSrc: IMAGES.accommodation.hayHouseSun,
@@ -93,22 +93,22 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
     },
     {
       h2: {
-        [Language.EN]: 'Aftercare built into the venue',
-        [Language.NL]: 'Aftercare ingebakken in de locatie',
-        [Language.DE]: 'Nachsorge, fest in den Ort eingebaut',
+        [Language.EN]: 'Sauna, Fire Circle, and Swimming Pond for After the Breathwork Session',
+        [Language.NL]: 'Sauna, vuurplaats en zwemvijver voor na de ademwerksessie',
+        [Language.DE]: 'Sauna, Feuerstelle und Schwimmteich für die Zeit nach der Atemsession',
       },
       body: {
         [Language.EN]: [
-          'After a long breathwork or sound journey, what people need is rarely a hotel corridor. The fire circle is twenty steps from the practice barn. The sauna and hot tub are another twenty. The swimming pond is a slow walk through the trees.',
-          'Mornings open onto a 1.3-hectare farm — fields to walk, paths through the planted woodland, a teahouse with a single chair facing the window. Integration has somewhere to go that is not a parking lot.',
+          'After a long breathwork or sound healing journey, what people need is rarely a hotel corridor. The fire circle is twenty steps from the practice barn. The sauna and hot tub are another twenty. The swimming pond is a slow walk through the trees.',
+          'Mornings open onto a 1.3-hectare farm in rural Overijssel, fifteen minutes from Zwolle — fields to walk, paths through the planted woodland, a teahouse with a single chair facing the window. Integration has somewhere to go that is not a parking lot.',
         ],
         [Language.NL]: [
-          'Na een lange ademwerk- of klankreis is een hotelgang zelden wat mensen nodig hebben. De vuurplaats is twintig passen van de praktijkruimte. De sauna en hot tub nog eens twintig. De zwemvijver ligt op een rustige wandeling door de bomen.',
-          'Ochtenden openen op een boerderij van 1,3 hectare — velden om te lopen, paden door het aangeplante bos, een theehuis met één stoel naar het raam toe. Integratie heeft een plek om naartoe te gaan die geen parkeerplaats is.',
+          'Na een lange ademwerk- of klankhealingreis is een hotelgang zelden wat mensen nodig hebben. De vuurplaats is twintig passen van de praktijkruimte. De sauna en hot tub nog eens twintig. De zwemvijver ligt op een rustige wandeling door de bomen.',
+          'Ochtenden openen op een boerderij van 1,3 hectare in landelijk Overijssel, vijftien minuten van Zwolle — velden om te lopen, paden door het aangeplante bos, een theehuis met één stoel naar het raam toe. Integratie heeft een plek om naartoe te gaan die geen parkeerplaats is.',
         ],
         [Language.DE]: [
-          'Nach einer langen Atem- oder Klangreise braucht man selten einen Hotelflur. Die Feuerstelle ist zwanzig Schritte von der Übungsscheune entfernt. Sauna und Whirlpool noch einmal zwanzig. Der Schwimmteich ist ein langsamer Spaziergang durch die Bäume.',
-          'Die Morgen öffnen sich auf einen 1,3 Hektar großen Hof — Felder zum Gehen, Pfade durch den angepflanzten Wald, ein Teehaus mit einem einzigen Stuhl zum Fenster hin. Integration hat einen Ort, der kein Parkplatz ist.',
+          'Nach einer langen Atem- oder Klangheilungsreise braucht man selten einen Hotelflur. Die Feuerstelle ist zwanzig Schritte von der Übungsscheune entfernt. Sauna und Whirlpool noch einmal zwanzig. Der Schwimmteich ist ein langsamer Spaziergang durch die Bäume.',
+          'Die Morgen öffnen sich auf einen 1,3 Hektar großen Hof im ländlichen Overijssel, fünfzehn Minuten von Zwolle — Felder zum Gehen, Pfade durch den angepflanzten Wald, ein Teehaus mit einem einzigen Stuhl zum Fenster hin. Integration hat einen Ort, der kein Parkplatz ist.',
         ],
       },
       imageSrc: IMAGES.accommodation.pondComplete,
@@ -120,21 +120,21 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
     },
     {
       h2: {
-        [Language.EN]: 'What facilitators say to bring',
-        [Language.NL]: 'Wat begeleiders meebrengen',
-        [Language.DE]: 'Was Begleiter:innen mitbringen',
+        [Language.EN]: 'Equipment, Mats and Catering for Your Sound Healing Retreat',
+        [Language.NL]: 'Materialen, matten en catering voor je klankhealing-retraite',
+        [Language.DE]: 'Equipment, Matten und Catering für dein Klangheilung-Retreat',
       },
       body: {
         [Language.EN]: [
-          'Most facilitators bring their own bowls, drums, or playlists. We provide twenty mats, blankets, and bolsters; sound system with bluetooth and aux; mood lighting on dimmers; eye masks for purchase. We can also arrange a private chef for the post-journey meals if your retreat asks for that.',
+          'Most facilitators bring their own bowls, drums, or playlists for the sound healing or breathwork retreat. We provide twenty mats, blankets, and bolsters; sound system with bluetooth and aux; mood lighting on dimmers; eye masks for purchase. We can also arrange a private chef for the post-journey meals if your retreat asks for that.',
           'For groups doing deep or vulnerable inner work, we keep the venue closed to other guests for the full duration. Full buyout, no exceptions.',
         ],
         [Language.NL]: [
-          'De meeste begeleiders brengen hun eigen bowls, drums of playlists mee. Wij leveren twintig matten, dekens en bolsters; geluidssysteem met bluetooth en aux; sfeerverlichting met dimmers; oogmaskers te koop. We kunnen ook een privékok regelen voor de maaltijden na de reis, als je retraite daarom vraagt.',
+          'De meeste begeleiders brengen hun eigen bowls, drums of playlists mee voor de klankhealing- of ademwerkretraite. Wij leveren twintig matten, dekens en bolsters; geluidssysteem met bluetooth en aux; sfeerverlichting met dimmers; oogmaskers te koop. We kunnen ook een privékok regelen voor de maaltijden na de reis, als je retraite daarom vraagt.',
           'Voor groepen die diep of kwetsbaar innerlijk werk doen, houden we de locatie de volledige duur gesloten voor andere gasten. Volledige buyout, geen uitzonderingen.',
         ],
         [Language.DE]: [
-          'Die meisten Begleiter:innen bringen ihre eigenen Klangschalen, Trommeln oder Playlists mit. Wir stellen zwanzig Matten, Decken und Bolster; Soundsystem mit Bluetooth und Aux; dimmbare Stimmungsbeleuchtung; Augenmasken zum Kauf. Wir können auch eine private Köchin für die Mahlzeiten nach der Reise organisieren, wenn dein Retreat das verlangt.',
+          'Die meisten Begleiter:innen bringen ihre eigenen Klangschalen, Trommeln oder Playlists für das Klangheilung- oder Atemarbeit-Retreat mit. Wir stellen zwanzig Matten, Decken und Bolster; Soundsystem mit Bluetooth und Aux; dimmbare Stimmungsbeleuchtung; Augenmasken zum Kauf. Wir können auch eine private Köchin für die Mahlzeiten nach der Reise organisieren, wenn dein Retreat das verlangt.',
           'Für Gruppen, die tiefe oder verletzliche innere Arbeit machen, halten wir den Ort für die gesamte Dauer für andere Gäste geschlossen. Voller Buyout, keine Ausnahmen.',
         ],
       },
@@ -230,9 +230,9 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
   ],
   finalCta: {
     title: {
-      [Language.EN]: 'A held space for the journey, and the day after the journey',
-      [Language.NL]: 'Een gedragen ruimte voor de reis, en de dag erna',
-      [Language.DE]: 'Ein gehaltener Raum für die Reise — und den Tag danach',
+      [Language.EN]: 'Bring your breathwork or sound healing retreat to a venue built for the practice — and the integration after',
+      [Language.NL]: 'Breng je ademwerk- of klankhealing-retraite naar een locatie die gemaakt is voor de praktijk — en voor de integratie erna',
+      [Language.DE]: 'Bring dein Atemarbeit- oder Klangheilung-Retreat an einen Ort, der für die Praxis gemacht ist — und für die Integration danach',
     },
     body: {
       [Language.EN]:
@@ -245,9 +245,9 @@ export const BREATHWORK_SOUND_HEALING_SILO: SiloContent = {
   },
   organizerSeo: {
     audience: {
-      [Language.EN]: 'Breathwork facilitators, sound healers, and ceremonial practitioners running held residentials',
-      [Language.NL]: 'Ademwerk-facilitators, klankbeoefenaars en ceremoniële begeleiders die residentiële retraites leiden',
-      [Language.DE]: 'Atem-Facilitator:innen, Klangpraktizierende und zeremonielle Begleiter:innen für gehaltene Residentials',
+      [Language.EN]: 'Breathwork facilitators, sound healers, and ceremonial practitioners running multi-day residential retreats',
+      [Language.NL]: 'Ademwerk-facilitators, klankbeoefenaars en ceremoniële begeleiders die meerdaagse residentiële retraites leiden',
+      [Language.DE]: 'Atem-Facilitator:innen, Klangpraktizierende und zeremonielle Begleiter:innen, die mehrtägige Residential-Retreats leiten',
     },
     cohortSize: { min: 8, max: 16 },
     keywords: {

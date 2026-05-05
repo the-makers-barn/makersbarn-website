@@ -12,6 +12,7 @@ export interface NavTranslations {
   tools: string
   contact: string
   book: string
+  hostARetreat: string
 }
 
 /**
@@ -83,6 +84,7 @@ export interface ContactTranslations {
 export interface FooterTranslations {
   getInTouch: string
   followUs: string
+  explore: string
   tagline: string
   copyright: string
   viewLocation: string
