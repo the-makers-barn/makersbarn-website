@@ -1093,7 +1093,7 @@ export const de: Dictionary = {
     },
     grid: {
       h2: 'Retreat-Köche in den Niederlanden',
-      framingLine: 'Verifizierte Retreat-Köche in den Niederlanden. Jedes Profil wird vom Koch selbst geprüft und freigegeben — kontaktiere sie direkt, um deine Termine zu planen.',
+      framingLine: 'Verifizierte Retreat-Köche in den Niederlanden. Jedes Profil wird vom Koch selbst geprüft und freigegeben — entdecke den richtigen Koch für dein Retreat.',
       card: {
         viewProfile: 'Profil ansehen',
         draftBadge: 'ENTWURF',
@@ -1107,9 +1107,8 @@ export const de: Dictionary = {
     },
     facts: [
       { number: '8–20', description: 'Typische Retreat-Gruppengröße' },
-      { number: '€350–€650', description: 'Tagessatz-Spanne für einen Koch' },
+      { number: '€35–€100+', description: 'Pro Person und Tag, Basis — Anreise & Extras können hinzukommen' },
       { number: '4–8 Wo.', description: 'Typische Vorlaufzeit für die Buchung' },
-      { number: '12 Provinzen', description: 'Abdeckung in den Niederlanden' },
     ],
     faq: {
       h2: 'Häufig gestellte Fragen',

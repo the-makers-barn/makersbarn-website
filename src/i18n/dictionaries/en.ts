@@ -1090,7 +1090,7 @@ export const en: Dictionary = {
     },
     grid: {
       h2: 'Retreat chefs in the Netherlands',
-      framingLine: 'Verified retreat chefs in the Netherlands. Every profile is reviewed and approved by the chef themselves — reach out directly to plan your dates.',
+      framingLine: 'Verified retreat chefs in the Netherlands. Every profile is reviewed and approved by the chef themselves — explore to find the right one for your retreat.',
       card: {
         viewProfile: 'View profile',
         draftBadge: 'DRAFT',
@@ -1104,9 +1104,8 @@ export const en: Dictionary = {
     },
     facts: [
       { number: '8–20', description: 'Typical retreat group size' },
-      { number: '€350–€650', description: 'Day-rate range for one chef' },
+      { number: '€35–€100+', description: 'Per person per day, base — travel & extras may apply' },
       { number: '4–8 wks', description: 'Typical lead time to book' },
-      { number: '12 provinces', description: 'Coverage across the Netherlands' },
     ],
     faq: {
       h2: 'Frequently asked questions',

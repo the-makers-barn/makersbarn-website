@@ -1098,7 +1098,7 @@ export const nl: Dictionary = {
     },
     grid: {
       h2: 'Retraitkoks in Nederland',
-      framingLine: 'Geverifieerde retraitkoks in Nederland. Elk profiel is door de kok zelf gecontroleerd en goedgekeurd — neem rechtstreeks contact op om je data te plannen.',
+      framingLine: 'Geverifieerde retraitkoks in Nederland. Elk profiel is door de kok zelf gecontroleerd en goedgekeurd — verken om de juiste kok voor jouw retraite te vinden.',
       card: {
         viewProfile: 'Bekijk profiel',
         draftBadge: 'CONCEPT',
@@ -1112,9 +1112,8 @@ export const nl: Dictionary = {
     },
     facts: [
       { number: '8–20', description: 'Gebruikelijke groepsgrootte voor een retraite' },
-      { number: '€350–€650', description: 'Dagtarief voor één kok' },
+      { number: '€35–€100+', description: 'Per persoon per dag, basis — reizen & extra\'s kunnen erbij komen' },
       { number: '4–8 wkn', description: 'Gebruikelijke doorlooptijd om te boeken' },
-      { number: '12 provincies', description: 'Dekking door heel Nederland' },
     ],
     faq: {
       h2: 'Veelgestelde vragen',
