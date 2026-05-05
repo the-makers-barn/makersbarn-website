@@ -192,9 +192,9 @@ export default async function ToolsHubPage({ params }: PageProps) {
             >
               <header className={styles.categoryHeader}>
                 <span className={styles.categoryIcon} aria-hidden>
-                  <CategoryIcon kind={kind} size={40} />
+                  <CategoryIcon kind={kind} size={64} />
                 </span>
-                <div>
+                <div className={styles.categoryHeaderText}>
                   <p className={styles.categoryLabel}>{cat.label}</p>
                   <h2 id={`${CATEGORY_ANCHOR[kind]}-heading`} className={styles.categoryTitle}>
                     {cat.title}
