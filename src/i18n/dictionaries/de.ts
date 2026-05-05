@@ -1093,7 +1093,7 @@ export const de: Dictionary = {
     },
     grid: {
       h2: 'Retreat-Köche in den Niederlanden',
-      framingLine: 'Die Profile basieren auf den öffentlich verfügbaren Informationen jedes Kochs. Kontaktiere sie direkt, um Verfügbarkeit, Preis und Eignung zu bestätigen.',
+      framingLine: 'Verifizierte Retreat-Köche in den Niederlanden. Jedes Profil wird vom Koch selbst geprüft und freigegeben — kontaktiere sie direkt, um deine Termine zu planen.',
       card: {
         viewProfile: 'Profil ansehen',
         draftBadge: 'ENTWURF',

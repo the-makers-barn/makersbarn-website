@@ -1098,7 +1098,7 @@ export const nl: Dictionary = {
     },
     grid: {
       h2: 'Retraitkoks in Nederland',
-      framingLine: 'Profielen zijn samengesteld op basis van openbaar beschikbare informatie van elke kok. Neem rechtstreeks contact op om beschikbaarheid, prijs en match te bevestigen.',
+      framingLine: 'Geverifieerde retraitkoks in Nederland. Elk profiel is door de kok zelf gecontroleerd en goedgekeurd — neem rechtstreeks contact op om je data te plannen.',
       card: {
         viewProfile: 'Bekijk profiel',
         draftBadge: 'CONCEPT',

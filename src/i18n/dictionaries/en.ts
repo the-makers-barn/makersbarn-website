@@ -1090,7 +1090,7 @@ export const en: Dictionary = {
     },
     grid: {
       h2: 'Retreat chefs in the Netherlands',
-      framingLine: 'Profiles are built from each chef\'s publicly available information. Reach out directly to confirm availability, pricing, and fit.',
+      framingLine: 'Verified retreat chefs in the Netherlands. Every profile is reviewed and approved by the chef themselves — reach out directly to plan your dates.',
       card: {
         viewProfile: 'View profile',
         draftBadge: 'DRAFT',
