@@ -83,6 +83,19 @@ export type ChefPastRetreat = {
   url?: string
 }
 
+/**
+ * A non-retreat offering — e.g. a single-day workshop lunch, an optional add-on,
+ * or a private cooking class. The `priceLine` is intentionally a free-form
+ * localized string so each chef can describe their pricing scheme accurately
+ * (per-person, minimum-fee, optional add-on, etc.) without us inventing a tier
+ * for every variant.
+ */
+export type ChefAdditionalOffering = {
+  name: LocalizedWithFallback<string>
+  priceLine: LocalizedWithFallback<string>
+  description?: LocalizedWithFallback<string>
+}
+
 export type ChefInquiryDict = {
   modalTitle: string
   closeAriaLabel: string
@@ -144,4 +157,17 @@ export type Chef = {
   // Sidebar
   atAGlance: ChefAtAGlance
   pastRetreats: ChefPastRetreat[]
+
+  /**
+   * What the chef expects from the venue's kitchen. Optional — only rendered
+   * when present. Free-form localized prose so each chef can describe their
+   * minimum equipment + nice-to-haves in their own words.
+   */
+  kitchenRequirements?: LocalizedWithFallback<string>
+
+  /**
+   * Non-retreat services the chef offers (workshops, single-day lunches,
+   * cooking classes). Optional — only rendered when at least one is present.
+   */
+  additionalOfferings?: ChefAdditionalOffering[]
 }

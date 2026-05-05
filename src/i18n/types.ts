@@ -850,6 +850,17 @@ export interface ToolsHubTranslations {
     planner: ToolsHubCategoryTranslations
     agenda: ToolsHubCategoryTranslations
   }
+  chefsSection: {
+    workflowQuestion: string
+    workflowBody: string
+    label: string
+    title: string
+    description: string
+    cardTag: string
+    cardTitle: string
+    cardBody: string
+    cardCta: string
+  }
 }
 
 export interface ToolsRelatedTranslations {
@@ -1117,6 +1128,7 @@ export interface ChefDictionary {
     accommodates: string
     dayRate: string
     dayRateUnit: string
+    dayRateExBtw: string
     tierLabel: { budget: string; standard: string; premium: string }
     tierAriaLabel: string
   }
@@ -1126,6 +1138,7 @@ export interface ChefDictionary {
   signatureDishes: string
   signatureDishItemPrefix: string
   testimonials: string
+  additionalOfferings: string
   sidebar: {
     operatesIn: string
     travelsNationwide: string
@@ -1142,6 +1155,7 @@ export interface ChefDictionary {
       press: string
     }
     pastRetreats: string
+    kitchenRequirements: string
   }
   enums: {
     retreatType: Record<RetreatType, string>

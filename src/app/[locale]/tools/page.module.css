@@ -366,8 +366,20 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+@media (max-width: 880px) {
+  .workflowSteps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .workflowSteps {
+    grid-template-columns: 1fr;
+  }
 }
 
 .workflowStep {
@@ -451,6 +463,48 @@
 
 .workflowStepLink:hover .workflowStepCount {
   color: var(--color-secondary);
+}
+
+/* ---------- Highlighted category (chefs section on top) ---------- */
+
+.categoryHighlighted {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184, 137, 74, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(184, 137, 74, 0.07) 0%, rgba(41, 75, 58, 0.025) 100%);
+  border: 1px solid rgba(184, 137, 74, 0.28);
+  border-left: 3px solid var(--color-secondary);
+  box-shadow: 0 6px 24px rgba(184, 137, 74, 0.10);
+}
+
+.categoryHighlighted .categoryIcon {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.65), transparent 70%),
+    linear-gradient(135deg, rgba(184, 137, 74, 0.34), rgba(41, 75, 58, 0.15));
+  color: var(--color-secondary);
+}
+
+/* ---------- Highlighted workflow step (chefs entry in the grid) ---------- */
+
+.workflowStepHighlighted .workflowStepLink {
+  border-color: rgba(184, 137, 74, 0.32);
+  background:
+    linear-gradient(180deg, rgba(184, 137, 74, 0.06) 0%, rgba(255, 255, 255, 1) 100%);
+  box-shadow: 0 4px 14px rgba(184, 137, 74, 0.12);
+}
+
+.workflowStepHighlighted .workflowStepIcon {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), transparent 70%),
+    linear-gradient(135deg, rgba(184, 137, 74, 0.34), rgba(41, 75, 58, 0.15));
+  color: var(--color-secondary);
+}
+
+.workflowStepHighlighted .workflowStepCount {
+  color: var(--color-secondary);
+}
+
+.workflowStepHighlighted .workflowStepCount::before {
+  content: '';
 }
 
 /* ---------- Responsive ---------- */

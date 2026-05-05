@@ -22,10 +22,17 @@ export async function ChefAtAGlance({ chef, lang }: Props) {
   const rows: { label: string; value: string }[] = [
     { label: labels.groupSize, value: groupSize },
     { label: labels.languages, value: languages },
-    { label: labels.experience, value: dict.chef.headerMeta.yearsCooking.replace('{years}', String(chef.yearsExperience)) },
+  ]
+  if (chef.yearsExperience > 0) {
+    rows.push({
+      label: labels.experience,
+      value: dict.chef.headerMeta.yearsCooking.replace('{years}', String(chef.yearsExperience)),
+    })
+  }
+  rows.push(
     { label: labels.sourcing, value: localize(chef.atAGlance.sourcing, lang) },
     { label: labels.credentials, value: localize(chef.atAGlance.credentials, lang) },
-  ]
+  )
   if (chef.atAGlance.press) {
     rows.push({ label: labels.press, value: localize(chef.atAGlance.press, lang) })
   }

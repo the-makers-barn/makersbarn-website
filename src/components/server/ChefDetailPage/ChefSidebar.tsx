@@ -1,6 +1,7 @@
 import type { Chef, Language } from '@/types'
 
 import { ChefAtAGlance } from './ChefAtAGlance'
+import { ChefKitchenRequirements } from './ChefKitchenRequirements'
 import { ChefOperatesIn } from './ChefOperatesIn'
 import { ChefPastRetreats } from './ChefPastRetreats'
 import styles from './ChefSidebar.module.css'
@@ -12,6 +13,7 @@ export function ChefSidebar({ chef, lang }: Props) {
     <aside className={styles.sidebar}>
       <ChefOperatesIn chef={chef} lang={lang} />
       <ChefAtAGlance chef={chef} lang={lang} />
+      <ChefKitchenRequirements chef={chef} lang={lang} />
       <ChefPastRetreats chef={chef} lang={lang} />
     </aside>
   )

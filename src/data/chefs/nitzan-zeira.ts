@@ -14,7 +14,7 @@ export const NITZAN_ZEIRA_CHEF: Chef = {
   status: ChefStatus.DRAFT,
   primaryLanguage: Language.EN,
   inquiryEmail: 'Nitzanzeira.nz@gmail.com',
-  updatedAt: asIsoDateString('2026-05-04'),
+  updatedAt: asIsoDateString('2026-05-05'),
 
   name: 'Nitzan Zeira',
   avatar: {
@@ -43,7 +43,7 @@ export const NITZAN_ZEIRA_CHEF: Chef = {
     DietaryCapability.VEGETARIAN,
   ], // TODO_FROM_CHEF: confirm allergy-aware / gluten-free / dairy-free capabilities
   dayRate: {
-    amountEur: 0, // TODO_FROM_CHEF: actual day rate — not on CV
+    amountEur: 60, // per person per day, excl. BTW, excl. travel (train tickets)
     unit: DayRateUnit.PER_PERSON_PER_DAY,
     tier: PriceTier.STANDARD,
   },
@@ -97,4 +97,11 @@ export const NITZAN_ZEIRA_CHEF: Chef = {
     { name: 'SKRAPS solidarity kitchen' },
     { name: 'Foodbank Maastricht' },
   ],
+
+  kitchenRequirements: {
+    [Language.EN]:
+      'Oven, a stove with at least two hobs, a refrigerator with enough storage for the duration of the retreat, and a sink. Cooking equipment: three pots, two pans, a blender, chopping boards, utensils, bowls and plates.',
+    [Language.NL]:
+      'Oven, een fornuis met minimaal twee branders, een koelkast met voldoende ruimte voor de duur van de retraite, en een spoelbak. Kookgerei: drie pannen, twee koekenpannen, een blender, snijplanken, keukengerei, kommen en borden.',
+  },
 }

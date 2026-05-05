@@ -6,6 +6,7 @@ import { getImageAltText } from '@/lib'
 import type { Chef, Language } from '@/types'
 
 import { ChefAbout } from './ChefAbout'
+import { ChefAdditionalOfferings } from './ChefAdditionalOfferings'
 import { ChefHeader } from './ChefHeader'
 import { ChefSidebar } from './ChefSidebar'
 import { ChefSignatureDishes } from './ChefSignatureDishes'
@@ -47,6 +48,7 @@ export async function ChefDetailPage({ chef, lang }: Props) {
             )}
             <ChefAbout chef={chef} lang={lang} />
             <ChefSignatureDishes chef={chef} lang={lang} />
+            <ChefAdditionalOfferings chef={chef} lang={lang} />
             <ChefTestimonials chef={chef} lang={lang} />
           </main>
           <ChefSidebar chef={chef} lang={lang} />

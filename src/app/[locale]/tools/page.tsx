@@ -14,7 +14,8 @@ import {
   generateBreadcrumbListSchema,
   generateCollectionPageSchema,
 } from '@/lib/structuredData'
-import { Route } from '@/types'
+import { Language, Route } from '@/types'
+import type { ToolsHubTranslations } from '@/i18n/types'
 import type { ToolsHubItem } from '@/types/tools'
 
 import styles from './page.module.css'
@@ -42,6 +43,28 @@ const CATEGORY_ANCHOR: Record<ToolKind, string> = {
   [ToolKind.CALCULATOR]: 'calculators',
   [ToolKind.PLANNER]: 'calendars',
   [ToolKind.AGENDA]: 'agendas',
+}
+
+const CHEFS_ANCHOR = 'chefs'
+
+function ChefIcon({ size = 28 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M6 14h12v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z" />
+      <path d="M6 14a3.5 3.5 0 0 1-1.4-6.7A4 4 0 0 1 12 4.5a4 4 0 0 1 7.4 2.8A3.5 3.5 0 0 1 18 14" />
+      <path d="M9 17h.01M12 17h.01M15 17h.01" />
+    </svg>
+  )
 }
 
 function CategoryIcon({ kind, size = 28 }: { kind: ToolKind; size?: number }) {
@@ -86,6 +109,124 @@ function CategoryIcon({ kind, size = 28 }: { kind: ToolKind; size?: number }) {
         </svg>
       )
   }
+}
+
+function ChefsSection({
+  chefs,
+  chefsHref,
+}: {
+  chefs: ToolsHubTranslations['chefsSection']
+  chefsHref: string
+}) {
+  return (
+    <>
+      <div className={styles.divider} aria-hidden>
+        <span />
+      </div>
+      <section
+        id={CHEFS_ANCHOR}
+        className={`${styles.category} ${styles.categoryHighlighted}`}
+        aria-labelledby="chefs-heading"
+      >
+        <header className={styles.categoryHeader}>
+          <span className={styles.categoryIcon} aria-hidden>
+            <ChefIcon size={64} />
+          </span>
+          <div className={styles.categoryHeaderText}>
+            <p className={styles.categoryLabel}>{chefs.label}</p>
+            <h2 id="chefs-heading" className={styles.categoryTitle}>
+              {chefs.title}
+            </h2>
+            <p className={styles.categoryDescription}>{chefs.description}</p>
+          </div>
+        </header>
+
+        <Link href={chefsHref} className={styles.primaryCard}>
+          <span className={styles.primaryCardTag}>{chefs.cardTag}</span>
+          <span className={styles.primaryCardTitle}>{chefs.cardTitle}</span>
+          <span className={styles.primaryCardDescription}>{chefs.cardBody}</span>
+          <span className={styles.primaryCardCta}>
+            {chefs.cardCta}
+            <span aria-hidden>→</span>
+          </span>
+        </Link>
+      </section>
+    </>
+  )
+}
+
+function CategorySection({
+  kind,
+  category,
+  items,
+  primaryCardCta,
+  locale,
+}: {
+  kind: ToolKind
+  category: ToolsHubTranslations['categories'][keyof ToolsHubTranslations['categories']]
+  items: ToolsHubItem[]
+  primaryCardCta: string
+  locale: Language
+}) {
+  if (items.length === 0) {
+    return null
+  }
+  const [primary, ...variants] = items
+  const primaryHref = getLocalizedPath(primary.route, locale)
+  const anchor = CATEGORY_ANCHOR[kind]
+  return (
+    <Fragment>
+      <div className={styles.divider} aria-hidden>
+        <span />
+      </div>
+      <section
+        id={anchor}
+        className={styles.category}
+        aria-labelledby={`${anchor}-heading`}
+      >
+        <header className={styles.categoryHeader}>
+          <span className={styles.categoryIcon} aria-hidden>
+            <CategoryIcon kind={kind} size={64} />
+          </span>
+          <div className={styles.categoryHeaderText}>
+            <p className={styles.categoryLabel}>{category.label}</p>
+            <h2 id={`${anchor}-heading`} className={styles.categoryTitle}>
+              {category.title}
+            </h2>
+            <p className={styles.categoryDescription}>{category.description}</p>
+          </div>
+        </header>
+
+        <Link href={primaryHref} className={styles.primaryCard}>
+          <span className={styles.primaryCardTag}>{primary.tag[locale]}</span>
+          <span className={styles.primaryCardTitle}>{primary.title[locale]}</span>
+          <span className={styles.primaryCardDescription}>{primary.intro[locale]}</span>
+          <span className={styles.primaryCardCta}>
+            {primaryCardCta}
+            <span aria-hidden>→</span>
+          </span>
+        </Link>
+
+        {variants.length > 0 && (
+          <div className={styles.variantsBlock}>
+            <p className={styles.variantsLabel}>{category.variantsLabel}</p>
+            <ul className={styles.variantsList}>
+              {variants.map((item) => {
+                const href = getLocalizedPath(item.route, locale)
+                return (
+                  <li key={item.route}>
+                    <Link href={href} className={styles.variantPill}>
+                      {item.tag[locale]}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        )}
+      </section>
+    </Fragment>
+  )
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -157,9 +298,22 @@ export default async function ToolsHubPage({ params }: PageProps) {
           </h2>
           <p className={styles.workflowIntro}>{hub.workflowIntro}</p>
           <ul className={styles.workflowSteps}>
+            <li className={`${styles.workflowStep} ${styles.workflowStepHighlighted}`}>
+              <a href={`#${CHEFS_ANCHOR}`} className={styles.workflowStepLink}>
+                <span className={styles.workflowStepIcon} aria-hidden>
+                  <ChefIcon size={48} />
+                </span>
+                <h3 className={styles.workflowStepTitle}>
+                  {hub.chefsSection.workflowQuestion}
+                </h3>
+                <p className={styles.workflowStepBody}>
+                  {hub.chefsSection.workflowBody}
+                </p>
+                <span className={styles.workflowStepCount}>{hub.chefsSection.cardCta}</span>
+              </a>
+            </li>
             {CATEGORY_ORDER.map((kind, index) => {
               const step = hub.workflowSteps[index]
-              const count = itemsByKind[kind].length
               return (
                 <li key={kind} className={styles.workflowStep}>
                   <a href={`#${CATEGORY_ANCHOR[kind]}`} className={styles.workflowStepLink}>
@@ -168,7 +322,6 @@ export default async function ToolsHubPage({ params }: PageProps) {
                     </span>
                     <h3 className={styles.workflowStepTitle}>{step.title}</h3>
                     <p className={styles.workflowStepBody}>{step.body}</p>
-                    <span className={styles.workflowStepCount}>{count}</span>
                   </a>
                 </li>
               )
@@ -176,70 +329,21 @@ export default async function ToolsHubPage({ params }: PageProps) {
           </ul>
         </section>
 
-        {CATEGORY_ORDER.map((kind) => {
-          const cat = hub.categories[CATEGORY_KEY_BY_KIND[kind]]
-          const items = itemsByKind[kind]
-          if (items.length === 0) {
-            return null
-          }
-          const [primary, ...variants] = items
-          const primaryHref = getLocalizedPath(primary.route, validLocale)
-          return (
-            <Fragment key={kind}>
-              <div className={styles.divider} aria-hidden>
-                <span />
-              </div>
-              <section
-                id={CATEGORY_ANCHOR[kind]}
-                className={styles.category}
-                aria-labelledby={`${CATEGORY_ANCHOR[kind]}-heading`}
-              >
-                <header className={styles.categoryHeader}>
-                  <span className={styles.categoryIcon} aria-hidden>
-                    <CategoryIcon kind={kind} size={64} />
-                  </span>
-                  <div className={styles.categoryHeaderText}>
-                    <p className={styles.categoryLabel}>{cat.label}</p>
-                    <h2 id={`${CATEGORY_ANCHOR[kind]}-heading`} className={styles.categoryTitle}>
-                      {cat.title}
-                    </h2>
-                    <p className={styles.categoryDescription}>{cat.description}</p>
-                  </div>
-                </header>
+        <ChefsSection
+          chefs={hub.chefsSection}
+          chefsHref={getLocalizedPath(Route.CHEFS, validLocale)}
+        />
 
-                <Link href={primaryHref} className={styles.primaryCard}>
-                  <span className={styles.primaryCardTag}>{primary.tag[validLocale]}</span>
-                  <span className={styles.primaryCardTitle}>{primary.title[validLocale]}</span>
-                  <span className={styles.primaryCardDescription}>
-                    {primary.intro[validLocale]}
-                  </span>
-                  <span className={styles.primaryCardCta}>
-                    {hub.toolCardCta}
-                    <span aria-hidden>→</span>
-                  </span>
-                </Link>
-
-                {variants.length > 0 && (
-                  <div className={styles.variantsBlock}>
-                    <p className={styles.variantsLabel}>{cat.variantsLabel}</p>
-                    <ul className={styles.variantsList}>
-                      {variants.map((item) => {
-                        const href = getLocalizedPath(item.route, validLocale)
-                        return (
-                          <li key={item.route}>
-                            <Link href={href} className={styles.variantPill}>
-                              {item.tag[validLocale]}
-                            </Link>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </div>
-                )}
-              </section>
-            </Fragment>
-          )
-        })}
+        {CATEGORY_ORDER.map((kind) => (
+          <CategorySection
+            key={kind}
+            kind={kind}
+            category={hub.categories[CATEGORY_KEY_BY_KIND[kind]]}
+            items={itemsByKind[kind]}
+            primaryCardCta={hub.toolCardCta}
+            locale={validLocale}
+          />
+        ))}
 
       </main>
     </>

@@ -14,7 +14,7 @@ export const BRENDA_ANNA_CHEF: Chef = {
   status: ChefStatus.DRAFT, // Flip to PUBLISHED only after the chef has approved the page.
   primaryLanguage: Language.NL,
   inquiryEmail: 'info@brenda-anna-aandekook.nl',
-  updatedAt: asIsoDateString('2026-05-01'),
+  updatedAt: asIsoDateString('2026-05-05'),
 
   name: 'Brenda Anna', // TODO_FROM_CHEF: confirm full legal/professional name (surname not on public site)
   avatar: {
@@ -22,15 +22,15 @@ export const BRENDA_ANNA_CHEF: Chef = {
     altKey: 'chef.brenda-anna.avatar',
   },
   tagline: {
-    [Language.EN]: 'Vegan & vegetarian, preferably organic, always delicious',
-    [Language.NL]: 'Vegan & vega, liefst bio en altijd lekker',
+    [Language.EN]: 'Vegan Indian-style cooking — preferably organic, always delicious',
+    [Language.NL]: 'Vegan Indiaas geïnspireerd koken — liefst bio en altijd lekker',
   },
   homeBase: { city: 'Wervershoof', region: NlRegion.NOORD_HOLLAND },
   servesRegions: [NlRegion.NOORD_HOLLAND],
   travelsNationwide: true, // TODO_FROM_CHEF: confirm travel radius — site does not state a hard boundary
   groupSize: { min: 8, max: 30 }, // TODO_FROM_CHEF: site mentions "20 tot circa 100+ personen"; defaulting to retreat-friendly window pending confirmation
   languagesSpoken: [Language.NL], // TODO_FROM_CHEF: confirm whether EN/DE service is offered
-  yearsExperience: 0, // TODO_FROM_CHEF: site states "meer dan 25 jaar vegetarisch" cooking and "since 2011" as business — confirm a single number to display
+  yearsExperience: 25, // floor of "more than 25 years vegetarian cooking" per her site; matches the credentials line
 
   rightFor: [
     RetreatType.YOGA,
@@ -49,9 +49,9 @@ export const BRENDA_ANNA_CHEF: Chef = {
     DietaryCapability.VEGETARIAN,
   ], // TODO_FROM_CHEF: confirm whether gluten-free, dairy-free, allergy-aware menus are available
   dayRate: {
-    amountEur: 0, // TODO_FROM_CHEF: site does not publish pricing — quote-based
+    amountEur: 55, // base price per person per day, excl. BTW, excl. travel (~€99)
     unit: DayRateUnit.PER_PERSON_PER_DAY,
-    tier: PriceTier.STANDARD, // TODO_FROM_CHEF: confirm tier once a typical day rate is shared
+    tier: PriceTier.STANDARD,
   },
 
   gallery: {
@@ -203,4 +203,56 @@ export const BRENDA_ANNA_CHEF: Chef = {
     },
   },
   pastRetreats: [], // TODO_FROM_CHEF: site references a 3-day International Event at Sai Temple Onderdijk and an Ice & Fire Weekend (Feb 2022); confirm whether to list publicly
+
+  kitchenRequirements: {
+    [Language.EN]:
+      'A stove with an oven is handy. A food processor and an immersion blender would be great. Plenty of plates, cutlery and serving dishes. The more refrigeration, the better.',
+    [Language.NL]:
+      'Een fornuis met oven is handig. Een keukenmachine en een staafmixer zouden fijn zijn. Voldoende borden, bestek en serveerschalen. Hoe meer koelruimte, hoe beter.',
+  },
+
+  additionalOfferings: [
+    {
+      name: {
+        [Language.EN]: 'Single-day workshop lunch',
+        [Language.NL]: 'Workshoplunch voor één dag',
+      },
+      priceLine: {
+        [Language.EN]: '€19.50 pp · ex. VAT · travel €99',
+        [Language.NL]: '€19,50 pp · excl. btw · reiskosten €99',
+      },
+      description: {
+        [Language.EN]:
+          'An extended, nourishing plant-based lunch built for one-day workshops and retreats. Best paired in a stretch of days so travel is shared across multiple events.',
+        [Language.NL]:
+          'Een uitgebreide, voedzame plantaardige lunch voor één-daagse workshops en retraites. Het mooist gecombineerd in opeenvolgende dagen zodat de reiskosten gedeeld worden.',
+      },
+    },
+    {
+      name: {
+        [Language.EN]: 'Optional snack: smoothie or fresh vegetable juice',
+        [Language.NL]: 'Optionele snack: smoothie of verse groentesap',
+      },
+      priceLine: {
+        [Language.EN]: '€3.50 pp · add-on',
+        [Language.NL]: '€3,50 pp · extra optie',
+      },
+    },
+    {
+      name: {
+        [Language.EN]: 'Private cooking workshop',
+        [Language.NL]: 'Privé kookworkshop',
+      },
+      priceLine: {
+        [Language.EN]: '€79 pp · ex. VAT · min. 4 participants (€316) · travel €99',
+        [Language.NL]: '€79 pp · excl. btw · min. 4 deelnemers (€316) · reiskosten €99',
+      },
+      description: {
+        [Language.EN]:
+          'A relaxed, hands-on workshop where guests prepare a flavourful plant-based meal together and share it afterwards. The minimum fee makes smaller groups feel intimate and private at the same total price.',
+        [Language.NL]:
+          'Een ontspannen, hands-on workshop waarin gasten samen een smaakvolle plantaardige maaltijd bereiden en die daarna delen. Door het minimumtarief blijft de prijs voor kleinere groepjes hetzelfde, met een meer privé en persoonlijke ervaring tot gevolg.',
+      },
+    },
+  ],
 }

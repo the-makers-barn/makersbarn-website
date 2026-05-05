@@ -22,10 +22,9 @@ export async function ChefHeader({ chef, lang }: Props) {
     .replace('{min}', String(chef.groupSize.min))
     .replace('{max}', String(chef.groupSize.max))
 
-  const yearsLabel = dict.chef.headerMeta.yearsCooking.replace(
-    '{years}',
-    String(chef.yearsExperience)
-  )
+  const yearsLabel = chef.yearsExperience > 0
+    ? dict.chef.headerMeta.yearsCooking.replace('{years}', String(chef.yearsExperience))
+    : null
 
   const languagesLabel = listFormatter.format(
     chef.languagesSpoken.map((l) => languageNames.of(l) ?? l)
@@ -72,7 +71,7 @@ export async function ChefHeader({ chef, lang }: Props) {
             <li>{locationLine}</li>
             <li>{guestsLabel}</li>
             <li>{languagesLabel}</li>
-            <li>{yearsLabel}</li>
+            {yearsLabel && <li>{yearsLabel}</li>}
           </ul>
           <div className={styles.ctaRow}>
             <a href="#chef-inquiry" className={styles.primaryCta}>

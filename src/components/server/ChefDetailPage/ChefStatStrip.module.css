@@ -59,6 +59,15 @@
   letter-spacing: 0.02em;
 }
 
+.dayRateExBtw {
+  font-family: var(--font-quicksand);
+  font-size: 0.66rem;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.04em;
+  font-style: italic;
+  margin-top: 0.05rem;
+}
+
 .tier {
   font-family: var(--font-quicksand);
   font-size: 0.66rem;
