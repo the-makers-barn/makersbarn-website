@@ -31,8 +31,18 @@
      ======================================================================== */
   --color-background-white: #ffffff;
   --color-background-warm: #e8e0d5;
+  /* Warm sand card background — used by chef detail page section cards */
+  --color-surface-warm: #f3eede;
   --color-success: #25d366;
   --color-error: #dc3545;
+
+  /* Warning / draft semantics */
+  --color-warning-bg: #fef3c7;
+  --color-warning-text: #92400e;
+  --color-warning-border: #fbbf24;
+
+  /* Error background (pairs with --color-text-error for error banners) */
+  --color-error-bg: #fef2f2;
 
   /* Border and shadow tokens */
   --color-border-light: rgba(41, 75, 58, 0.1);

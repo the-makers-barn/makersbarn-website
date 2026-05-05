@@ -56,6 +56,26 @@
 }
 
 /* ==========================================================================
+   Chef-intent Lead-in Panel
+   ========================================================================== */
+.leadInSection {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--color-background);
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 4px;
+}
+
+.leadInText {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* ==========================================================================
    Form Section
    ========================================================================== */
 .formSection {

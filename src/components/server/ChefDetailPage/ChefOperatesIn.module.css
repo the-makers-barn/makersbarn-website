@@ -1,0 +1,99 @@
+.card {
+  padding: 0;
+  margin: 0;
+}
+
+.label {
+  font-family: var(--font-quicksand);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--color-secondary);
+  opacity: 0.7;
+}
+
+.travels {
+  font-family: var(--font-playfair);
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.005em;
+}
+
+.strongest {
+  font-family: var(--font-quicksand);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.mapBlock {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  background:
+    radial-gradient(ellipse at 25% 20%, rgba(184, 137, 74, 0.07), transparent 65%),
+    rgba(31, 19, 12, 0.025);
+  border: 1px solid rgba(31, 19, 12, 0.06);
+  border-radius: 4px;
+  min-width: 0;
+}
+
+.map {
+  width: 72px;
+  height: 86px;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.dot {
+  fill: var(--color-secondary);
+  filter: drop-shadow(0 0 4px rgba(184, 137, 74, 0.5));
+}
+
+.placeBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+}
+
+.placePrimary {
+  font-family: var(--font-playfair);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  color: var(--color-text);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  /* Long city names like 'Ruisbroek (Puurs-Sint-Amands)' wrap to 2 lines instead
+     of overlapping the map. */
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.placeSecondary {
+  font-family: var(--font-quicksand);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-tertiary);
+  line-height: 1.4;
+}

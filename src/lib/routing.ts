@@ -1,4 +1,5 @@
 import { Language } from '@/types'
+import { Route } from '@/types/navigation'
 
 import { isValidLocale } from './locale'
 
@@ -36,16 +37,16 @@ export function replaceLocaleInPath(path: string, newLocale: Language): string {
 export function getPathWithoutLocale(path: string): string {
   // Ensure path starts with /
   const normalizedPath = path.startsWith('/') ? path : `/${path}`
-  
+
   // Split the path into segments
   const segments = normalizedPath.split('/').filter(Boolean)
-  
+
   // If the first segment is a valid locale, remove it
   if (segments.length > 0 && isValidLocale(segments[0])) {
     const pathWithoutLocale = '/' + segments.slice(1).join('/')
     return pathWithoutLocale || '/'
   }
-  
+
   // Return the original path if no locale prefix found
   return normalizedPath
 }
@@ -58,15 +59,23 @@ export function getPathWithoutLocale(path: string): string {
 export function getLocaleFromPath(path: string): Language | null {
   // Ensure path starts with /
   const normalizedPath = path.startsWith('/') ? path : `/${path}`
-  
+
   // Split the path into segments
   const segments = normalizedPath.split('/').filter(Boolean)
-  
+
   // Check if the first segment is a valid locale
   if (segments.length > 0 && isValidLocale(segments[0])) {
     return segments[0]
   }
-  
+
   return null
+}
+
+/**
+ * Build the localized URL for a chef detail page.
+ * Example: getChefDetailPath('eveline-cooks', Language.EN) → '/en/chefs/eveline-cooks'
+ */
+export function getChefDetailPath(slug: string, locale: Language): string {
+  return `/${locale}${Route.CHEFS}/${slug}`
 }
 

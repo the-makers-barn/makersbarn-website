@@ -1,0 +1,9 @@
+.page {
+  display: block;
+  width: 100%;
+}
+
+.faqWrapper {
+  margin: 4rem auto 0;
+  padding: 0 1.5rem;
+}

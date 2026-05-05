@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
 
 import { SITE_CONFIG } from '@/constants/site'
-import { getLocalizedPath } from '@/lib/routing'
+import { PUBLISHED_CHEFS } from '@/data/chefs'
+import { getLocalizedPath, getChefDetailPath } from '@/lib/routing'
 import { Route, Language } from '@/types'
 
 const TOOL_ROUTE_PATHS = new Set<string>([
@@ -48,6 +49,7 @@ const PAGE_ROUTES: readonly PageRoute[] = [
   { path: Route.WRITING_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.TEAM_OFFSITES, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.BREATHWORK_SOUND_HEALING, changeFrequency: 'monthly', priority: 0.85 },
+  { path: Route.CHEFS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.COACHING_INTENSIVES, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.SOMATIC_THERAPY_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.WELLNESS_DETOX_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
@@ -93,6 +95,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: pageRoute.changeFrequency,
         priority: pageRoute.priority,
+      })
+    }
+  }
+
+  // Chef detail pages — always published-only, regardless of VERCEL_ENV.
+  // Drafts must never appear in the sitemap (per design spec §6.4).
+  for (const chef of PUBLISHED_CHEFS) {
+    for (const locale of allLocales) {
+      routes.push({
+        url: `${baseUrl}${getChefDetailPath(chef.slug, locale)}`,
+        lastModified: new Date(chef.updatedAt),
+        changeFrequency: 'monthly',
+        priority: 0.7,
       })
     }
   }

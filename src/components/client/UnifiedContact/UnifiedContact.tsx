@@ -131,24 +131,22 @@ export function UnifiedContact() {
         />
       </section>
 
+      {/* Chef-intent lead-in panel */}
+      {(intent === ContactIntent.LOOKING_FOR_CHEF || intent === ContactIntent.CHEF_JOIN) && (
+        <section className={styles.leadInSection}>
+          <p className={styles.leadInText}>
+            {intent === ContactIntent.LOOKING_FOR_CHEF
+              ? unifiedContact.intentLeadIn.looking
+              : unifiedContact.intentLeadIn.join}
+          </p>
+        </section>
+      )}
+
       {/* Form Section */}
       <section className={styles.formSection}>
         <div className={styles.formWrapper}>
           <AnimatePresence mode="wait">
-            {intent === ContactIntent.QUESTION ? (
-              <motion.div
-                key="question"
-                role="tabpanel"
-                id="question-panel"
-                aria-labelledby="question-tab"
-                variants={CONTENT_VARIANTS}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                <QuestionForm />
-              </motion.div>
-            ) : (
+            {intent === ContactIntent.BOOKING ? (
               <motion.div
                 key="booking"
                 role="tabpanel"
@@ -162,11 +160,24 @@ export function UnifiedContact() {
               >
                 <BookingForm />
               </motion.div>
+            ) : (
+              <motion.div
+                key="question"
+                {...(intent === ContactIntent.QUESTION
+                  ? { role: 'tabpanel' as const, id: 'question-panel', 'aria-labelledby': 'question-tab' }
+                  : {})}
+                variants={CONTENT_VARIANTS}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <QuestionForm contactIntent={intent} />
+              </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Contact Alternatives - Only show for question mode */}
-          {intent === ContactIntent.QUESTION && (
+          {/* Contact Alternatives - shown for any non-BOOKING intent */}
+          {intent !== ContactIntent.BOOKING && (
             <div className={styles.contactAlternatives}>
               <div className={styles.alternativeRow}>
                 <p className={styles.alternativeText}>{contact.emailAlternative.text}</p>

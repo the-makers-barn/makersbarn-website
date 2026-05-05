@@ -1,0 +1,1 @@
+export { ChefDetailPage } from './ChefDetailPage'

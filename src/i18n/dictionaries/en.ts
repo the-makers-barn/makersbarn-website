@@ -10,6 +10,7 @@ export const en: Dictionary = {
     tools: 'Free tools',
     contact: 'Contact',
     book: 'Book',
+    chefs: 'Chefs',
   },
 
   hero: {
@@ -85,6 +86,10 @@ export const en: Dictionary = {
     },
     mapTitle: 'Location map showing Maker\'s Barn',
     questionFormImageAlt: 'Cozy bench at the Hay House accommodation',
+    intentLeadIn: {
+      looking: "You're asking about finding a chef for your retreat. Tell us what you're planning and we'll match from our directory or point you elsewhere.",
+      join: "You're asking about joining the Makers Barn chef directory. Tell us about your kitchen and we'll be in touch.",
+    },
   },
 
   booking: {
@@ -731,16 +736,16 @@ export const en: Dictionary = {
       metaDescription: 'Free, ungated calculators and tools for retreat facilitators — pricing, profitability, and planning.',
       eyebrow: 'Free Tools',
       title: 'A toolkit for retreat hosts',
-      intro: 'Plan, price, and run more profitable retreats. Twenty free tools — no signup, no email wall — that work for any venue, including the one you\'re considering at MakersBarn.',
+      intro: 'Five hard questions, twenty free tools, one vetted chef directory. No signup, no email wall — and it works for any venue, including the one you\'re considering at MakersBarn.',
       toolCardCta: 'Open',
       workflowEyebrow: 'Pick where to start',
-      workflowTitle: 'What do you need to figure out?',
-      workflowIntro: 'Four areas of retreat hosting, each with its own tool. Use one, use all four — they work in any order.',
+      workflowTitle: 'The five questions every retreat host has to answer',
+      workflowIntro: 'Five hard parts of running a retreat, each with its own answer. Use one, use all five — they work in any order.',
       workflowSteps: [
-        { title: 'Audit', body: 'Catch the mistakes before they cost you. 10 questions, 5 minutes.' },
-        { title: 'Calculate', body: 'Pricing, profit margin, and break-even — before you commit to a venue.' },
-        { title: 'Plan', body: 'A realistic 3, 6, 9 or 12-month launch timeline with milestones.' },
-        { title: 'Schedule', body: 'A day-by-day agenda with sensible defaults you can edit.' },
+        { title: 'What am I overlooking?', body: 'A 10-question audit to catch the blind spots before they cost you.' },
+        { title: 'Will I make money?', body: 'Pricing, profit margin, and the headcount you need to break even.' },
+        { title: 'When can I launch?', body: 'A realistic 3, 6, 9 or 12-month timeline with milestones.' },
+        { title: 'What does a day look like?', body: 'A day-by-day agenda with sensible defaults you can edit.' },
       ],
       freeBadge: '100% free',
       noSignupBadge: 'No signup',
@@ -769,6 +774,17 @@ export const en: Dictionary = {
           description: 'Opinionated retreat schedules with niche-appropriate defaults — vinyasa flows, sit-walk-sit cycles, hot-seat coaching slots — all editable.',
           variantsLabel: 'Or use a niche-tuned version:',
         },
+      },
+      chefsSection: {
+        workflowQuestion: 'Who\'s going to cook?',
+        workflowBody: 'A directory of vetted retreat chefs working across the Netherlands.',
+        label: 'Retreat chefs',
+        title: 'Find a chef who can cook for your retreat',
+        description: 'Cooking for a retreat is closer to running a small kitchen than catering an event. Browse vetted profiles, day rates, lead times, and what to ask before you book.',
+        cardTag: 'Directory',
+        cardTitle: 'Retreat chefs in the Netherlands',
+        cardBody: 'Every profile is reviewed and approved by the chef themselves. Day rates, dietary fit, lead times, and travel coverage — all on the listing.',
+        cardCta: 'Browse chefs',
       },
     },
     calculator: {
@@ -1302,6 +1318,222 @@ export const en: Dictionary = {
     },
     faq: {
       heading: 'Frequently asked questions',
+    },
+  },
+
+  chef: {
+    backLink: 'Discover more chefs',
+    draftBadge: 'DRAFT — preview only',
+    metaTitle: '{name} — Retreat Chef in {region}, Netherlands',
+    cta: { sendInquiry: 'Send {name} an inquiry' },
+    statStrip: {
+      rightFor: 'RIGHT FOR',
+      cooks: 'COOKS',
+      accommodates: 'ACCOMMODATES',
+      dayRate: 'DAY RATE',
+      dayRateUnit: 'pp / day',
+      dayRateExBtw: 'ex. VAT · travel quoted separately',
+      tierLabel: { budget: 'Budget', standard: 'Standard', premium: 'Premium' },
+      tierAriaLabel: '{tier} pricing',
+    },
+    headerMeta: {
+      guests: '{min} – {max} guests',
+      yearsCooking: '{years} years cooking',
+      summaryAriaLabel: 'Chef summary',
+    },
+    galleryLabel: 'From the kitchen',
+    about: 'ABOUT',
+    signatureDishes: 'SIGNATURE DISHES',
+    signatureDishItemPrefix: 'NO. {n}',
+    testimonials: 'WHAT ORGANIZERS SAY',
+    additionalOfferings: 'OTHER OFFERINGS',
+    sidebar: {
+      operatesIn: 'OPERATES IN',
+      travelsNationwide: 'Travels nationwide',
+      travelsRegional: 'Travels regionally',
+      strongestIn: 'Strongest in {regions}',
+      homeBase: 'Home base',
+      atAGlance: 'AT A GLANCE',
+      atAGlanceLabels: {
+        groupSize: 'Group size',
+        languages: 'Languages',
+        experience: 'Experience',
+        sourcing: 'Sourcing',
+        credentials: 'Credentials',
+        press: 'Press',
+      },
+      pastRetreats: 'PAST RETREATS',
+      kitchenRequirements: 'KITCHEN REQUIREMENTS',
+    },
+    enums: {
+      retreatType: {
+        yoga: 'Yoga retreats',
+        wellness: 'Wellness',
+        creative: 'Creative gatherings',
+        corporate: 'Corporate offsites',
+        breathwork: 'Breathwork',
+        meditation: 'Meditation',
+        writing: 'Writing retreats',
+        photography: 'Photography retreats',
+      },
+      dietary: {
+        vegan: 'Vegan',
+        vegetarian: 'Vegetarian',
+        gluten_free: 'Gluten-free',
+        dairy_free: 'Dairy-free',
+        nut_free: 'Nut-free',
+        kosher: 'Kosher',
+        halal: 'Halal',
+        allergy_aware: 'Allergy-aware',
+        raw: 'Raw',
+        keto: 'Keto',
+      },
+      region: {
+        drenthe: 'Drenthe',
+        flevoland: 'Flevoland',
+        friesland: 'Friesland',
+        gelderland: 'Gelderland',
+        groningen: 'Groningen',
+        limburg: 'Limburg',
+        noord_brabant: 'Noord-Brabant',
+        noord_holland: 'Noord-Holland',
+        overijssel: 'Overijssel',
+        utrecht: 'Utrecht',
+        zeeland: 'Zeeland',
+        zuid_holland: 'Zuid-Holland',
+      },
+    },
+    inquiry: {
+      modalTitle: 'Send {name} an inquiry',
+      closeAriaLabel: 'Close inquiry form',
+      field: {
+        name: 'Your name',
+        email: 'Email',
+        dates: 'Retreat dates (rough is fine)',
+        datesPlaceholder: '5–9 May 2026',
+        groupSize: 'Group size',
+        location: 'Where will the retreat happen?',
+        dietary: 'Dietary needs / preferences (optional)',
+        message: 'Tell {name} about your retreat',
+      },
+      consent: 'I consent to MakersBarn forwarding this inquiry to {name}.',
+      submit: 'Send inquiry',
+      submitting: 'Sending…',
+      success: {
+        title: 'Your inquiry is on its way to {name}',
+        body: '{name} usually responds within 2–3 days. We sent you a confirmation at {email}.',
+      },
+      errors: {
+        rate_limited: 'Too many requests. Please try again in a few minutes.',
+        validation: 'Please check the highlighted fields and try again.',
+        chef_not_found: 'This chef is not available right now. Please try again later.',
+        email_failed: "We couldn't deliver your inquiry. Please try again or email us directly.",
+        unexpected_error: 'Something went wrong. Please try again.',
+      },
+    },
+  },
+
+  chefsListing: {
+    meta: {
+      title: 'Private chefs for retreats in the Netherlands',
+      description: 'A directory of retreat chefs working across the Netherlands, plus a practical guide to evaluating and booking the right one for your retreat. Pricing, lead times, dietary fit.',
+    },
+    hero: {
+      eyebrow: 'Chefs',
+      h1: 'Private chefs for retreats in the Netherlands',
+      subtitle: 'A directory of retreat chefs working across the Netherlands, plus a practical guide to evaluating and booking the right one for your retreat.',
+    },
+    intro: 'Most retreat hosts underestimate what booking a chef actually involves. Lead times, dietary fit, on-site logistics, and pricing structures vary widely. This guide covers what to look for, how pricing works in the Netherlands, and where to find chefs who travel.',
+    sections: {
+      whatToLookFor: {
+        h2: 'What to look for in a retreat chef',
+        paragraphs: [
+          'Cooking for a retreat is closer to running a small kitchen than catering an event. Look for chefs with experience cooking for sustained groups of 8–20 over multiple days, not just one-off dinners — the rhythm, sourcing, and recovery between services is genuinely different.',
+          'Ask how they handle dietary mixing: how do they keep a vegan main satisfying when half the table is omnivore, and how do they avoid making accommodations feel like an afterthought? Strong retreat chefs treat dietary diversity as a creative constraint, not a logistical one.',
+          'Confirm sourcing transparency. Most NL retreat chefs work with one or two specific farms, dairies, or fishmongers. If they cannot name them, that is a signal worth probing.',
+        ],
+      },
+      pricing: {
+        h2: 'How retreat-chef pricing works in the Netherlands',
+        paragraphs: [
+          'Two pricing structures dominate the Dutch market. Day rates (€350–€650/day for one chef, plus food cost) suit retreats where you want flexibility on menu and shopping. Per-meal pricing (€35–€90+ per person per meal — extras like travel may apply) is common for shorter retreats and gives you a clean per-head budget.',
+          'Watch for what is excluded. Travel time, kitchen prep equipment, dishwashing labour, and dietary substitutions are the most common line items that quietly inflate the final invoice. Ask for a sample contract before committing.',
+          'Lead times are 4–8 weeks for established chefs, longer in peak season (May–September). Book early.',
+        ],
+      },
+      coverage: {
+        h2: 'Regional coverage and travel',
+        paragraphs: [
+          'Most established retreat chefs are based in Noord-Holland, Utrecht, or Gelderland and travel to venues in Drenthe, Friesland, Overijssel, and Flevoland for retreats lasting two days or more. Travel within the country is generally included in day rates above €450; below that, expect a kilometric supplement.',
+          'For multi-day retreats outside their home province, most chefs prefer overnight accommodation on-site rather than commuting. Plan one bed for the chef in your booking.',
+          'The directory below covers chefs working across the Netherlands. If you are hosting at Makers Barn in Wijhe (Overijssel), reach out to chefs directly to confirm availability for your dates.',
+        ],
+      },
+    },
+    grid: {
+      h2: 'Retreat chefs in the Netherlands',
+      framingLine: 'Verified retreat chefs in the Netherlands. Every profile is reviewed and approved by the chef themselves — explore to find the right one for your retreat.',
+      card: {
+        viewProfile: 'View profile',
+        draftBadge: 'DRAFT',
+        cuisinesAriaLabel: 'Cuisine styles',
+      },
+    },
+    launchingSoon: {
+      headline: 'Our directory is in private beta.',
+      body: 'We are vetting chefs in small batches. The guidance above is free to use — and if you would like to be matched when chefs go live, tell us what you are planning.',
+      inlineCtaLabel: 'Tell us what you are planning →',
+    },
+    facts: [
+      { number: '8–20', description: 'Typical retreat group size' },
+      { number: '€35–€90+', description: 'Per person per meal, base — travel & extras may apply' },
+      { number: '4–8 wks', description: 'Typical lead time to book' },
+    ],
+    faq: {
+      h2: 'Frequently asked questions',
+      items: [
+        {
+          question: 'How much does a private chef cost for a retreat in the Netherlands?',
+          answer: 'Day rates run €350–€650 for a single chef plus food cost. Per-meal pricing is €35–€90+ per person — extras like travel may apply. Final cost depends on group size, dietary complexity, and whether prep equipment is provided.',
+        },
+        {
+          question: 'What is the typical lead time to book a retreat chef?',
+          answer: 'Plan 4–8 weeks for most established chefs, longer between May and September. Last-minute bookings (under two weeks) are possible but expect a smaller pool to choose from.',
+        },
+        {
+          question: 'Do chefs travel to retreat venues?',
+          answer: "Most established retreat chefs travel within the Netherlands. Travel is usually included in day rates above €450; below that, expect a per-kilometre supplement. For multi-day retreats outside the chef's home province, plan an overnight bed for them on-site.",
+        },
+        {
+          question: 'How do chefs handle dietary requirements?',
+          answer: 'Strong retreat chefs handle vegetarian, vegan, gluten-free, and dairy-free as standard. Allergies (nut, shellfish, sesame) and medical diets (FODMAP, low-histamine) are typically supported with two weeks notice. Always share dietary needs at the time of booking, not the week before.',
+        },
+        {
+          question: 'Who contracts the chef — the venue or the host?',
+          answer: "Almost always the host. Venues like Makers Barn introduce chefs and may handle scheduling, but the contractual relationship and payment runs directly between host and chef. Confirm this on your venue's booking terms.",
+        },
+        {
+          question: 'Can I cook myself instead?',
+          answer: 'You can — but cooking for a retreat is not the same as cooking at home. You\'re producing 9–15 sustained services across multiple days for a group with mixed dietary needs, alongside sourcing, prep, and cleanup, while the retreat programme keeps moving. We strongly recommend bringing in someone with retreat-cooking experience: it lets the host stay present with the guests instead of disappearing into the kitchen. When the cooking is not handled well, the whole retreat suffers — guests notice immediately, the energy of the programme drops, and the host loses the room.',
+        },
+      ],
+    },
+    dualCta: {
+      looking: {
+        eyebrow: 'For retreat hosts',
+        h3: 'Need help finding the right chef?',
+        body: 'Tell us what you are planning. We will match from our directory or point you elsewhere.',
+        button: 'Get matched',
+      },
+      join: {
+        eyebrow: 'For chefs',
+        h3: 'Are you a chef working in the Netherlands?',
+        body: 'Apply to join the Makers Barn directory.',
+        button: 'Apply to join',
+      },
+    },
+    crossLink: {
+      label: 'Working with a chef? See our guide →',
     },
   },
 } as const

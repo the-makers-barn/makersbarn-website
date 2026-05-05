@@ -1,10 +1,3 @@
-export interface ContactFormData {
-  name: string
-  email: string
-  phone: string
-  message: string
-}
-
 export enum FormStatus {
   IDLE = 'idle',
   LOADING = 'loading',
@@ -15,4 +8,14 @@ export enum FormStatus {
 export enum ContactIntent {
   QUESTION = 'question',
   BOOKING = 'booking',
+  LOOKING_FOR_CHEF = 'looking-for-chef',
+  CHEF_JOIN = 'chef-join',
+}
+
+export interface ContactFormData {
+  name: string
+  email: string
+  phone: string
+  message: string
+  source?: ContactIntent
 }

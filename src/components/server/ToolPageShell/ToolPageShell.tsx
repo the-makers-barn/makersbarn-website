@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import type { ReactNode } from 'react'
 
+import { Faq, type FaqEntry } from '../Faq'
+
 import styles from './ToolPageShell.module.css'
 
 export interface ToolPageShellRelatedCard {
@@ -14,10 +16,7 @@ export interface ToolPageShellGuideSection {
   paragraphs: string[]
 }
 
-export interface ToolPageShellFaqEntry {
-  question: string
-  answer: string
-}
+export type ToolPageShellFaqEntry = FaqEntry
 
 export interface ToolPageShellProps {
   hero: {
@@ -88,19 +87,7 @@ export function ToolPageShell(props: ToolPageShellProps): ReactNode {
         ))}
       </section>
 
-      <section className={styles.faq} aria-labelledby="faq">
-        <h2 id="faq" className={styles.sectionTitle}>
-          {faqHeading}
-        </h2>
-        <div className={styles.faqList}>
-          {faqEntries.map((entry) => (
-            <details key={entry.question} className={styles.faqItem}>
-              <summary className={styles.faqQuestion}>{entry.question}</summary>
-              <p className={styles.faqAnswer}>{entry.answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+      <Faq heading={faqHeading} entries={faqEntries} />
 
       {relatedCards.length > 0 && (
         <section className={styles.related} aria-labelledby="related">

@@ -13,6 +13,7 @@ export const nl: Dictionary = {
     tools: 'Gratis tools',
     contact: 'Contact',
     book: 'Boek',
+    chefs: 'Koks',
   },
 
   hero: {
@@ -88,6 +89,10 @@ export const nl: Dictionary = {
     },
     mapTitle: 'Locatiekaart met Maker\'s Barn',
     questionFormImageAlt: 'Gezellige bank bij de Hay House accommodatie',
+    intentLeadIn: {
+      looking: 'Je vraagt naar het vinden van een kok voor je retraite. Vertel ons wat je van plan bent en we koppelen je aan iemand uit onze gids of wijzen je de weg.',
+      join: 'Je vraagt naar toelating tot de Makers Barn koksengids. Vertel ons over je keuken en we nemen contact met je op.',
+    },
   },
 
   booking: {
@@ -739,16 +744,16 @@ export const nl: Dictionary = {
       metaDescription: 'Gratis calculators en tools voor retraitebegeleiders — prijsbepaling, winstgevendheid en planning. Geen aanmelding.',
       eyebrow: 'Gratis tools',
       title: 'Een toolkit voor retraitehosts',
-      intro: 'Plan, prijs en draai winstgevendere retraites. Twintig gratis tools — geen aanmelding, geen e-mailmuur — die werken voor elke locatie, ook die je bij MakersBarn overweegt.',
+      intro: 'Vijf lastige vragen, twintig gratis tools, één gids van gecheckte chefs. Geen aanmelding, geen e-mailmuur — en het werkt voor elke locatie, ook die je bij MakersBarn overweegt.',
       toolCardCta: 'Openen',
       workflowEyebrow: 'Kies waar je begint',
-      workflowTitle: 'Wat moet je uitzoeken?',
-      workflowIntro: 'Vier vlakken van retraite-hosting, elk met een eigen tool. Gebruik er één, gebruik ze alle vier — in elke volgorde.',
+      workflowTitle: 'De vijf vragen die elke retraitehost moet beantwoorden',
+      workflowIntro: 'Vijf lastige onderdelen van een retraite organiseren, elk met een eigen antwoord. Gebruik er één, gebruik ze alle vijf — in elke volgorde.',
       workflowSteps: [
-        { title: 'Audit', body: 'Vang de fouten voordat ze je geld kosten. 10 vragen, 5 minuten.' },
-        { title: 'Bereken', body: 'Prijzen, marge en break-even — voordat je een locatie vastlegt.' },
-        { title: 'Plan', body: 'Een realistische lanceringsplanning van 3, 6, 9 of 12 maanden met mijlpalen.' },
-        { title: 'Schema', body: 'Een dagelijkse agenda met zinnige standaarden die je kunt aanpassen.' },
+        { title: 'Wat zie ik over het hoofd?', body: 'Een audit van 10 vragen die de blinde vlekken blootlegt voordat ze je geld kosten.' },
+        { title: 'Word ik er winstgevend mee?', body: 'Prijzen, marge en het aantal gasten dat je nodig hebt om break-even te draaien.' },
+        { title: 'Wanneer kan ik lanceren?', body: 'Een realistische planning van 3, 6, 9 of 12 maanden met mijlpalen.' },
+        { title: 'Hoe ziet een dag eruit?', body: 'Een dagelijkse agenda met zinnige standaarden die je kunt aanpassen.' },
       ],
       freeBadge: '100% gratis',
       noSignupBadge: 'Geen aanmelding',
@@ -777,6 +782,17 @@ export const nl: Dictionary = {
           description: 'Onderbouwde retraiteschema\'s met niche-passende standaarden — vinyasa-flows, zit-loop-zitcycli, coaching hot-seats — allemaal bewerkbaar.',
           variantsLabel: 'Of gebruik een niche-versie:',
         },
+      },
+      chefsSection: {
+        workflowQuestion: 'Wie kookt er?',
+        workflowBody: 'Een gids van gecheckte retraitechefs die door heel Nederland werken.',
+        label: 'Retraitechefs',
+        title: 'Vind een chef die voor je retraite kan koken',
+        description: 'Koken voor een retraite lijkt meer op het runnen van een kleine keuken dan op catering. Bekijk gecheckte profielen, dagtarieven, doorlooptijden, en wat je vóór een boeking moet vragen.',
+        cardTag: 'Gids',
+        cardTitle: 'Retraitechefs in Nederland',
+        cardBody: 'Elk profiel is gecontroleerd en goedgekeurd door de chef zelf. Dagtarieven, dieetwensen, doorlooptijden en reisdekking — allemaal op de listing.',
+        cardCta: 'Bekijk chefs',
       },
     },
     calculator: {
@@ -1310,6 +1326,222 @@ export const nl: Dictionary = {
     },
     faq: {
       heading: 'Veelgestelde vragen',
+    },
+  },
+
+  chef: {
+    backLink: 'Ontdek meer chefs',
+    draftBadge: 'CONCEPT — alleen ter preview',
+    metaTitle: '{name} — Retreatchef in {region}, Nederland',
+    cta: { sendInquiry: 'Stuur {name} een aanvraag' },
+    statStrip: {
+      rightFor: 'GESCHIKT VOOR',
+      cooks: 'KOOKT',
+      accommodates: 'DIËTEN',
+      dayRate: 'DAGTARIEF',
+      dayRateUnit: 'pp / dag',
+      dayRateExBtw: 'excl. btw · reiskosten op aanvraag',
+      tierLabel: { budget: 'Budget', standard: 'Standaard', premium: 'Premium' },
+      tierAriaLabel: '{tier} prijspeil',
+    },
+    headerMeta: {
+      guests: '{min} – {max} gasten',
+      yearsCooking: '{years} jaar kookervaring',
+      summaryAriaLabel: 'Chef-overzicht',
+    },
+    galleryLabel: 'Uit de keuken',
+    about: 'OVER',
+    signatureDishes: 'SIGNATUURGERECHTEN',
+    signatureDishItemPrefix: 'NR. {n}',
+    testimonials: 'WAT ORGANISATOREN ZEGGEN',
+    additionalOfferings: 'OVERIGE DIENSTEN',
+    sidebar: {
+      operatesIn: 'WERKT IN',
+      travelsNationwide: 'Reist door heel Nederland',
+      travelsRegional: 'Werkt regionaal',
+      strongestIn: 'Sterkst in {regions}',
+      homeBase: 'Standplaats',
+      atAGlance: 'IN HET KORT',
+      atAGlanceLabels: {
+        groupSize: 'Groepsgrootte',
+        languages: 'Talen',
+        experience: 'Ervaring',
+        sourcing: 'Inkoop',
+        credentials: 'Kwalificaties',
+        press: 'Pers',
+      },
+      pastRetreats: 'EERDERE RETRAITES',
+      kitchenRequirements: 'KEUKENBENODIGDHEDEN',
+    },
+    enums: {
+      retreatType: {
+        yoga: 'Yoga-retraites',
+        wellness: 'Wellness',
+        creative: 'Creatieve bijeenkomsten',
+        corporate: 'Bedrijfsuitjes',
+        breathwork: 'Ademwerk',
+        meditation: 'Meditatie',
+        writing: 'Schrijfretraites',
+        photography: 'Fotografie-retraites',
+      },
+      dietary: {
+        vegan: 'Veganistisch',
+        vegetarian: 'Vegetarisch',
+        gluten_free: 'Glutenvrij',
+        dairy_free: 'Lactosevrij',
+        nut_free: 'Notenvrij',
+        kosher: 'Koosjer',
+        halal: 'Halal',
+        allergy_aware: 'Allergiebewust',
+        raw: 'Rauwkost',
+        keto: 'Keto',
+      },
+      region: {
+        drenthe: 'Drenthe',
+        flevoland: 'Flevoland',
+        friesland: 'Friesland',
+        gelderland: 'Gelderland',
+        groningen: 'Groningen',
+        limburg: 'Limburg',
+        noord_brabant: 'Noord-Brabant',
+        noord_holland: 'Noord-Holland',
+        overijssel: 'Overijssel',
+        utrecht: 'Utrecht',
+        zeeland: 'Zeeland',
+        zuid_holland: 'Zuid-Holland',
+      },
+    },
+    inquiry: {
+      modalTitle: 'Stuur {name} een aanvraag',
+      closeAriaLabel: 'Sluit aanvraagformulier',
+      field: {
+        name: 'Je naam',
+        email: 'E-mail',
+        dates: 'Retraite-data (een schatting is genoeg)',
+        datesPlaceholder: '5–9 mei 2026',
+        groupSize: 'Groepsgrootte',
+        location: 'Waar vindt de retraite plaats?',
+        dietary: 'Dieetwensen / voorkeuren (optioneel)',
+        message: 'Vertel {name} over je retraite',
+      },
+      consent: 'Ik geef toestemming dat MakersBarn deze aanvraag doorstuurt naar {name}.',
+      submit: 'Aanvraag versturen',
+      submitting: 'Versturen…',
+      success: {
+        title: 'Je aanvraag is onderweg naar {name}',
+        body: '{name} reageert meestal binnen 2–3 dagen. We hebben je een bevestiging gestuurd op {email}.',
+      },
+      errors: {
+        rate_limited: 'Te veel aanvragen. Probeer het over een paar minuten opnieuw.',
+        validation: 'Controleer de gemarkeerde velden en probeer het opnieuw.',
+        chef_not_found: 'Deze chef is op dit moment niet beschikbaar. Probeer het later opnieuw.',
+        email_failed: 'We konden je aanvraag niet bezorgen. Probeer het opnieuw of mail ons rechtstreeks.',
+        unexpected_error: 'Er ging iets mis. Probeer het opnieuw.',
+      },
+    },
+  },
+
+  chefsListing: {
+    meta: {
+      title: 'Privékoks voor retraites in Nederland',
+      description: 'Een gids van retraitkoks die door heel Nederland werken, plus praktisch advies over het beoordelen en boeken van de juiste kok voor je retraite. Prijzen, doorlooptijden, dieetwensen.',
+    },
+    hero: {
+      eyebrow: 'Koks',
+      h1: 'Privékoks voor retraites in Nederland',
+      subtitle: 'Een gids van retraitkoks die door heel Nederland werken, plus praktisch advies over het beoordelen en boeken van de juiste kok voor je retraite.',
+    },
+    intro: 'De meeste retraite-organisatoren onderschatten wat er bij het boeken van een kok komt kijken. Doorlooptijden, dieetwensen, logistiek op locatie en prijsstructuren lopen sterk uiteen. Deze gids behandelt waar je op moet letten, hoe de prijzen in Nederland werken en waar je koks vindt die bereid zijn te reizen.',
+    sections: {
+      whatToLookFor: {
+        h2: 'Waar je op moet letten bij een retraitkok',
+        paragraphs: [
+          'Koken voor een retraite lijkt meer op het runnen van een kleine keuken dan op het cateren van een evenement. Zoek naar koks met ervaring in het meerdere dagen achtereen koken voor groepen van 8–20 personen — niet alleen voor eenmalige diners. Het ritme, de inkoop en het herstel tussen de maaltijden zijn echt anders.',
+          'Vraag hoe ze omgaan met het mengen van dieetwensen: hoe houden ze een veganistische hoofdmaaltijd bevredigend wanneer de helft van de tafel omnivoor is, en hoe voorkomen ze dat aanpassingen als een bijzaak aanvoelen? Sterke retraitkoks zien dieetdiversiteit als een creatieve uitdaging, niet als een logistiek probleem.',
+          'Controleer de transparantie over inkoop. De meeste Nederlandse retraitkoks werken met één of twee vaste boerderijen, zuivelbedrijven of vishandelaren. Als ze die niet kunnen benoemen, is dat een signaal dat het waard is om door te vragen.',
+        ],
+      },
+      pricing: {
+        h2: 'Hoe de prijzen van retraitkoks in Nederland werken',
+        paragraphs: [
+          'Twee prijsstructuren domineren de Nederlandse markt. Dagtarieven (€350–€650/dag voor één kok, plus voedselkosten) zijn geschikt voor retraites waarbij je flexibiliteit wilt in menu en inkoop. Prijzen per maaltijd (€35–€90+ per persoon per maaltijd — extra\'s zoals reizen kunnen erbij komen) zijn gebruikelijk voor kortere retraites en geven je een helder budget per hoofd.',
+          'Let op wat er niet is inbegrepen. Reistijd, keukenapparatuur, afwaswerk en dieetaanpassingen zijn de meest voorkomende posten die de uiteindelijke factuur stilletjes opdrijven. Vraag altijd om een voorbeeldcontract voordat je akkoord gaat.',
+          'De doorlooptijd is 4–8 wkn voor gevestigde koks, langer in het hoogseizoen (mei–september). Boek op tijd.',
+        ],
+      },
+      coverage: {
+        h2: 'Regionale dekking en reizen',
+        paragraphs: [
+          'De meeste gevestigde retraitkoks zijn gebaseerd in Noord-Holland, Utrecht of Gelderland en reizen naar locaties in Drenthe, Friesland, Overijssel en Flevoland voor retraites van twee dagen of langer. Reizen binnen Nederland is over het algemeen inbegrepen bij dagtarieven boven €450; daaronder kun je een kilometertoeslag verwachten.',
+          'Voor meerdaagse retraites buiten hun thuisprovincie geven de meeste koks de voorkeur aan overnachting op locatie in plaats van pendelen. Plan een extra bed voor de kok in je boeking.',
+          'De gids hieronder bevat koks die door heel Nederland werken. Als je host bij Makers Barn in Wijhe (Overijssel), neem dan rechtstreeks contact op met de koks om beschikbaarheid voor jouw data te bevestigen.',
+        ],
+      },
+    },
+    grid: {
+      h2: 'Retraitkoks in Nederland',
+      framingLine: 'Geverifieerde retraitkoks in Nederland. Elk profiel is door de kok zelf gecontroleerd en goedgekeurd — verken om de juiste kok voor jouw retraite te vinden.',
+      card: {
+        viewProfile: 'Bekijk profiel',
+        draftBadge: 'CONCEPT',
+        cuisinesAriaLabel: 'Kookstijlen',
+      },
+    },
+    launchingSoon: {
+      headline: 'Onze gids is in besloten beta.',
+      body: 'We beoordelen koks in kleine groepen. De bovenstaande informatie is vrij te gebruiken — en als je gekoppeld wilt worden zodra er koks beschikbaar zijn, vertel ons wat je van plan bent.',
+      inlineCtaLabel: 'Vertel ons wat je van plan bent →',
+    },
+    facts: [
+      { number: '8–20', description: 'Gebruikelijke groepsgrootte voor een retraite' },
+      { number: '€35–€90+', description: 'Per persoon per maaltijd, basis — reizen & extra\'s kunnen erbij komen' },
+      { number: '4–8 wkn', description: 'Gebruikelijke doorlooptijd om te boeken' },
+    ],
+    faq: {
+      h2: 'Veelgestelde vragen',
+      items: [
+        {
+          question: 'Wat kost een privékok voor een retraite in Nederland?',
+          answer: 'Dagtarieven liggen tussen €350–€650 voor één kok plus voedselkosten. Prijzen per maaltijd zijn €35–€90+ per persoon — extra\'s zoals reizen kunnen erbij komen. De uiteindelijke kosten hangen af van groepsgrootte, dieetcomplexiteit en of keukenapparatuur aanwezig is.',
+        },
+        {
+          question: 'Wat is de gebruikelijke doorlooptijd voor het boeken van een retraitkok?',
+          answer: 'Reken op 4–8 weken voor de meeste gevestigde koks, langer tussen mei en september. Last-minute boekingen (minder dan twee weken van tevoren) zijn mogelijk, maar verwacht dan een kleinere keuze.',
+        },
+        {
+          question: 'Reizen koks naar retraitelocaties?',
+          answer: 'De meeste gevestigde retraitkoks reizen door heel Nederland. Reizen is doorgaans inbegrepen bij dagtarieven boven €450; daaronder kun je een kilometertoeslag verwachten. Voor meerdaagse retraites buiten de thuisprovincie van de kok plan je een overnachtingsplek voor hen op locatie.',
+        },
+        {
+          question: 'Hoe gaan koks om met dieetwensen?',
+          answer: 'Sterke retraitkoks verwerken vegetarisch, veganistisch, glutenvrij en zuivelvrij als standaard. Allergieën (noten, schaal- en schelpdieren, sesam) en medische diëten (FODMAP, laag-histamine) worden doorgaans ondersteund met twee weken opzegtermijn. Deel dieetwensen altijd bij de boeking, niet de week ervoor.',
+        },
+        {
+          question: 'Wie sluit het contract met de kok — de locatie of de organisator?',
+          answer: 'Vrijwel altijd de organisator. Locaties zoals Makers Barn stellen koks voor en kunnen de planning regelen, maar de contractuele relatie en betaling lopen rechtstreeks tussen organisator en kok. Controleer dit in de boekingsvoorwaarden van je locatie.',
+        },
+        {
+          question: 'Kan ik ook zelf koken?',
+          answer: 'Het kan — maar koken voor een retraite is iets anders dan thuis koken. Je maakt 9–15 maaltijden over meerdere dagen voor een groep met uiteenlopende dieetwensen, naast inkoop, voorbereiding en opruimen, terwijl het retraite­programma gewoon doorloopt. We raden sterk aan iemand met retraitkok-ervaring in te zetten: dat houdt de host bij de gasten in plaats van in de keuken. Als het koken niet goed gaat, lijdt de hele retraite eronder — gasten merken het direct, het programma verliest energie, en de host raakt het contact met de groep kwijt.',
+        },
+      ],
+    },
+    dualCta: {
+      looking: {
+        eyebrow: 'Voor retraite-organisatoren',
+        h3: 'Hulp nodig bij het vinden van de juiste kok?',
+        body: 'Vertel ons wat je van plan bent. We koppelen je aan iemand uit onze gids of wijzen je de weg.',
+        button: 'Vind een kok',
+      },
+      join: {
+        eyebrow: 'Voor koks',
+        h3: 'Ben je een kok die in Nederland werkt?',
+        body: 'Solliciteer om toe te treden tot de Makers Barn koksengids.',
+        button: 'Solliciteer',
+      },
+    },
+    crossLink: {
+      label: 'Werken met een kok? Bekijk onze gids →',
     },
   },
 } as const

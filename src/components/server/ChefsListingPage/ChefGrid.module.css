@@ -1,0 +1,37 @@
+.section {
+  margin: 4rem auto;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+}
+
+.h2 {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-3xl);
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+
+.framingLine {
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  margin: 0 0 2rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

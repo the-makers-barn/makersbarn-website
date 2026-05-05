@@ -13,6 +13,7 @@ export const de: Dictionary = {
     tools: 'Gratis-Tools',
     contact: 'Kontakt',
     book: 'Buchen',
+    chefs: 'Köche',
   },
 
   hero: {
@@ -88,6 +89,10 @@ export const de: Dictionary = {
     },
     mapTitle: 'Standortkarte mit Maker\'s Barn',
     questionFormImageAlt: 'Gemütliche Bank vor dem Hay House',
+    intentLeadIn: {
+      looking: 'Du fragst nach einem Koch für dein Retreat. Erzähl uns, was du planst – wir vermitteln aus unserem Verzeichnis oder helfen dir weiter.',
+      join: 'Du möchtest dich im Makers Barn Köche-Verzeichnis eintragen. Erzähl uns von deiner Arbeit – wir melden uns bei dir.',
+    },
   },
 
   booking: {
@@ -734,16 +739,16 @@ export const de: Dictionary = {
       metaDescription: 'Kostenlose Rechner und Tools für Retreat-Leitende — Preisgestaltung, Rentabilität und Planung. Keine Anmeldung nötig.',
       eyebrow: 'Gratis-Tools',
       title: 'Ein Werkzeugkasten für Retreat-Hosts',
-      intro: 'Plane, kalkuliere und führe profitablere Retreats durch. Zwanzig kostenlose Tools — ohne Anmeldung, ohne E-Mail-Hürde — die für jeden Ort funktionieren, auch für den, den du bei MakersBarn in Betracht ziehst.',
+      intro: 'Fünf harte Fragen, zwanzig kostenlose Tools, ein geprüftes Koch-Verzeichnis. Keine Anmeldung, keine E-Mail-Hürde — und es funktioniert für jeden Ort, auch für den, den du bei MakersBarn in Betracht ziehst.',
       toolCardCta: 'Öffnen',
       workflowEyebrow: 'Wähle, wo du startest',
-      workflowTitle: 'Was musst du klären?',
-      workflowIntro: 'Vier Bereiche des Retreat-Hostings, jeder mit einem eigenen Tool. Nimm einen, nimm alle vier — in beliebiger Reihenfolge.',
+      workflowTitle: 'Die fünf Fragen, die jede:r Retreat-Host beantworten muss',
+      workflowIntro: 'Fünf harte Stellen beim Retreat-Hosting, jede mit einer eigenen Antwort. Nimm eine, nimm alle fünf — in beliebiger Reihenfolge.',
       workflowSteps: [
-        { title: 'Audit', body: 'Fang die Fehler ab, bevor sie dich Geld kosten. 10 Fragen, 5 Minuten.' },
-        { title: 'Rechnen', body: 'Preise, Marge und Break-even — bevor du dich auf einen Ort festlegst.' },
-        { title: 'Planen', body: 'Ein realistischer Launch-Zeitplan über 3, 6, 9 oder 12 Monate mit Meilensteinen.' },
-        { title: 'Tagesplan', body: 'Ein Tag-für-Tag-Plan mit sinnvollen Vorgaben, die du anpassen kannst.' },
+        { title: 'Was übersehe ich?', body: 'Ein 10-Fragen-Audit, das die blinden Flecken aufdeckt, bevor sie dich Geld kosten.' },
+        { title: 'Werde ich profitabel?', body: 'Preise, Marge und die Teilnehmerzahl, die du für den Break-even brauchst.' },
+        { title: 'Wann kann ich starten?', body: 'Ein realistischer Zeitplan über 3, 6, 9 oder 12 Monate mit Meilensteinen.' },
+        { title: 'Wie sieht ein Tag aus?', body: 'Ein Tag-für-Tag-Plan mit sinnvollen Vorgaben, die du anpassen kannst.' },
       ],
       freeBadge: '100% gratis',
       noSignupBadge: 'Keine Anmeldung',
@@ -772,6 +777,17 @@ export const de: Dictionary = {
           description: 'Klar strukturierte Retreat-Pläne mit nischen-passenden Vorgaben — Vinyasa-Flows, Sitz-Geh-Sitz-Zyklen, Coaching-Hot-Seats — alles editierbar.',
           variantsLabel: 'Oder nutze eine Nischen-Version:',
         },
+      },
+      chefsSection: {
+        workflowQuestion: 'Wer kocht?',
+        workflowBody: 'Ein Verzeichnis geprüfter Retreat-Köch:innen, die in den ganzen Niederlanden arbeiten.',
+        label: 'Retreat-Köch:innen',
+        title: 'Finde eine Köchin oder einen Koch für dein Retreat',
+        description: 'Für ein Retreat zu kochen ähnelt eher einer kleinen Küche als einem Catering. Sieh dir geprüfte Profile, Tagessätze, Vorlaufzeiten und das, was du vor einer Buchung fragen solltest, an.',
+        cardTag: 'Verzeichnis',
+        cardTitle: 'Retreat-Köch:innen in den Niederlanden',
+        cardBody: 'Jedes Profil ist geprüft und von der Köchin oder dem Koch selbst freigegeben. Tagessätze, Ernährungsweisen, Vorlaufzeiten und Reiseabdeckung — alles in der Übersicht.',
+        cardCta: 'Köche durchsuchen',
       },
     },
     calculator: {
@@ -1305,6 +1321,222 @@ export const de: Dictionary = {
     },
     faq: {
       heading: 'Frequently asked questions',
+    },
+  },
+
+  chef: {
+    backLink: 'Weitere Chefs entdecken',
+    draftBadge: 'ENTWURF — nur Vorschau',
+    metaTitle: '{name} — Retreat-Koch in {region}, Niederlande',
+    cta: { sendInquiry: 'Anfrage an {name} senden' },
+    statStrip: {
+      rightFor: 'GEEIGNET FÜR',
+      cooks: 'KOCHT',
+      accommodates: 'ERNÄHRUNG',
+      dayRate: 'TAGESSATZ',
+      dayRateUnit: 'p.P. / Tag',
+      dayRateExBtw: 'exkl. MwSt. · Reisekosten auf Anfrage',
+      tierLabel: { budget: 'Budget', standard: 'Standard', premium: 'Premium' },
+      tierAriaLabel: '{tier}-Preisniveau',
+    },
+    headerMeta: {
+      guests: '{min} – {max} Gäste',
+      yearsCooking: '{years} Jahre Kocherfahrung',
+      summaryAriaLabel: 'Chef-Übersicht',
+    },
+    galleryLabel: 'Aus der Küche',
+    about: 'ÜBER',
+    signatureDishes: 'SIGNATURGERICHTE',
+    signatureDishItemPrefix: 'NR. {n}',
+    testimonials: 'WAS ORGANISATOREN SAGEN',
+    additionalOfferings: 'WEITERE ANGEBOTE',
+    sidebar: {
+      operatesIn: 'TÄTIG IN',
+      travelsNationwide: 'Reist landesweit',
+      travelsRegional: 'Tätig regional',
+      strongestIn: 'Am stärksten in {regions}',
+      homeBase: 'Standort',
+      atAGlance: 'AUF EINEN BLICK',
+      atAGlanceLabels: {
+        groupSize: 'Gruppengröße',
+        languages: 'Sprachen',
+        experience: 'Erfahrung',
+        sourcing: 'Bezug',
+        credentials: 'Qualifikationen',
+        press: 'Presse',
+      },
+      pastRetreats: 'FRÜHERE RETREATS',
+      kitchenRequirements: 'KÜCHENANFORDERUNGEN',
+    },
+    enums: {
+      retreatType: {
+        yoga: 'Yoga-Retreats',
+        wellness: 'Wellness',
+        creative: 'Kreative Zusammenkünfte',
+        corporate: 'Firmen-Offsites',
+        breathwork: 'Atemarbeit',
+        meditation: 'Meditation',
+        writing: 'Schreibretreats',
+        photography: 'Fotografie-Retreats',
+      },
+      dietary: {
+        vegan: 'Vegan',
+        vegetarian: 'Vegetarisch',
+        gluten_free: 'Glutenfrei',
+        dairy_free: 'Laktosefrei',
+        nut_free: 'Nussfrei',
+        kosher: 'Koscher',
+        halal: 'Halal',
+        allergy_aware: 'Allergiebewusst',
+        raw: 'Rohkost',
+        keto: 'Keto',
+      },
+      region: {
+        drenthe: 'Drenthe',
+        flevoland: 'Flevoland',
+        friesland: 'Friesland',
+        gelderland: 'Gelderland',
+        groningen: 'Groningen',
+        limburg: 'Limburg',
+        noord_brabant: 'Noord-Brabant',
+        noord_holland: 'Noord-Holland',
+        overijssel: 'Overijssel',
+        utrecht: 'Utrecht',
+        zeeland: 'Zeeland',
+        zuid_holland: 'Zuid-Holland',
+      },
+    },
+    inquiry: {
+      modalTitle: 'Anfrage an {name} senden',
+      closeAriaLabel: 'Anfrageformular schließen',
+      field: {
+        name: 'Dein Name',
+        email: 'E-Mail',
+        dates: 'Retreat-Daten (eine grobe Schätzung reicht)',
+        datesPlaceholder: '5.–9. Mai 2026',
+        groupSize: 'Gruppengröße',
+        location: 'Wo findet das Retreat statt?',
+        dietary: 'Ernährungsbedürfnisse / Vorlieben (optional)',
+        message: 'Erzähl {name} von deinem Retreat',
+      },
+      consent: 'Ich willige ein, dass MakersBarn diese Anfrage an {name} weiterleitet.',
+      submit: 'Anfrage senden',
+      submitting: 'Wird gesendet…',
+      success: {
+        title: 'Deine Anfrage ist auf dem Weg zu {name}',
+        body: '{name} antwortet in der Regel innerhalb von 2–3 Tagen. Wir haben dir eine Bestätigung an {email} gesendet.',
+      },
+      errors: {
+        rate_limited: 'Zu viele Anfragen. Bitte versuche es in ein paar Minuten erneut.',
+        validation: 'Bitte überprüfe die markierten Felder und versuche es erneut.',
+        chef_not_found: 'Dieser Chef ist gerade nicht verfügbar. Bitte versuche es später erneut.',
+        email_failed: 'Wir konnten deine Anfrage nicht zustellen. Bitte versuche es erneut oder schreib uns direkt.',
+        unexpected_error: 'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
+      },
+    },
+  },
+
+  chefsListing: {
+    meta: {
+      title: 'Privatköche für Retreats in den Niederlanden',
+      description: 'Ein Verzeichnis von Retreat-Köchen, die in den gesamten Niederlanden arbeiten, plus ein praktischer Leitfaden zum Bewerten und Buchen des richtigen Kochs für dein Retreat. Preise, Vorlaufzeiten, Ernährungsanforderungen.',
+    },
+    hero: {
+      eyebrow: 'Köche',
+      h1: 'Privatköche für Retreats in den Niederlanden',
+      subtitle: 'Ein Verzeichnis von Retreat-Köchen, die in den gesamten Niederlanden arbeiten, plus ein praktischer Leitfaden zum Bewerten und Buchen des richtigen Kochs für dein Retreat.',
+    },
+    intro: 'Die meisten Retreat-Veranstalter unterschätzen, was die Buchung eines Kochs tatsächlich bedeutet. Vorlaufzeiten, Ernährungsanforderungen, Logistik vor Ort und Preisstrukturen variieren stark. Dieser Leitfaden erklärt, worauf du achten solltest, wie die Preisgestaltung in den Niederlanden funktioniert und wo du Köche findest, die auch reisen.',
+    sections: {
+      whatToLookFor: {
+        h2: 'Worauf du bei einem Retreat-Koch achten solltest',
+        paragraphs: [
+          'Das Kochen für ein Retreat ähnelt eher dem Betrieb einer kleinen Küche als dem Catering einer Veranstaltung. Suche nach Köchen mit Erfahrung im Kochen für Gruppen von 8–20 Personen über mehrere Tage hinweg — nicht nur für einmalige Abendessen. Der Rhythmus, die Beschaffung und die Erholung zwischen den Mahlzeiten sind grundlegend anders.',
+          'Frage, wie der Koch mit unterschiedlichen Ernährungsanforderungen umgeht: Wie bleibt ein veganes Hauptgericht befriedigend, wenn die Hälfte der Gruppe Allesesser ist — und wie vermeidet er, dass Sonderwünsche wie ein Anhängsel wirken? Starke Retreat-Köche sehen Ernährungsvielfalt als kreative Herausforderung, nicht als logistisches Problem.',
+          'Achte auf Transparenz bei der Beschaffung. Die meisten Retreat-Köche in den Niederlanden arbeiten mit ein oder zwei bestimmten Höfen, Molkereien oder Fischhändlern zusammen. Wenn jemand diese nicht benennen kann, ist das ein Zeichen, dem es sich lohnt nachzugehen.',
+        ],
+      },
+      pricing: {
+        h2: 'Wie die Preisgestaltung für Retreat-Köche in den Niederlanden funktioniert',
+        paragraphs: [
+          'Zwei Preismodelle dominieren den niederländischen Markt. Tagessätze (€350–€650/Tag für einen Koch, zuzüglich Lebensmittelkosten) eignen sich für Retreats, bei denen du Flexibilität bei Menü und Einkauf möchtest. Preise pro Mahlzeit (€35–€90+ pro Person pro Mahlzeit — Extras wie Anreise können hinzukommen) sind bei kürzeren Retreats üblich und geben dir ein klares Budget pro Kopf.',
+          'Achte darauf, was ausgeschlossen ist. Anfahrtszeit, Küchenausrüstung, Spülarbeit und Sonderwünsche bei der Ernährung sind die häufigsten Posten, die die Endrechnung still und leise in die Höhe treiben. Bitte vor der Buchung um einen Mustervertrag.',
+          'Die Vorlaufzeit beträgt für etablierte Köche 4–8 Wo., in der Hauptsaison (Mai–September) länger. Frühzeitig buchen.',
+        ],
+      },
+      coverage: {
+        h2: 'Regionale Abdeckung und Reisebereitschaft',
+        paragraphs: [
+          'Die meisten etablierten Retreat-Köche sind in Noord-Holland, Utrecht oder Gelderland ansässig und reisen für Retreats ab zwei Tagen zu Veranstaltungsorten in Drenthe, Friesland, Overijssel und Flevoland. Fahrten innerhalb des Landes sind in der Regel bei Tagessätzen über €450 enthalten; darunter ist ein Kilometeraufschlag üblich.',
+          'Bei mehrtägigen Retreats außerhalb ihrer Heimatprovinz bevorzugen die meisten Köche eine Übernachtungsmöglichkeit vor Ort statt einer täglichen Anfahrt. Plane eine Unterkunft für den Koch in deiner Buchung ein.',
+          'Das untenstehende Verzeichnis umfasst Köche, die in den gesamten Niederlanden arbeiten. Wenn du in Makers Barn in Wijhe (Overijssel) veranstaltest, kontaktiere die Köche direkt, um die Verfügbarkeit für deine Termine zu bestätigen.',
+        ],
+      },
+    },
+    grid: {
+      h2: 'Retreat-Köche in den Niederlanden',
+      framingLine: 'Verifizierte Retreat-Köche in den Niederlanden. Jedes Profil wird vom Koch selbst geprüft und freigegeben — entdecke den richtigen Koch für dein Retreat.',
+      card: {
+        viewProfile: 'Profil ansehen',
+        draftBadge: 'ENTWURF',
+        cuisinesAriaLabel: 'Küchenstile',
+      },
+    },
+    launchingSoon: {
+      headline: 'Unser Verzeichnis befindet sich in einer geschlossenen Beta.',
+      body: 'Wir prüfen Köche in kleinen Gruppen. Den obigen Leitfaden kannst du frei nutzen — und wenn du vermittelt werden möchtest, sobald Köche verfügbar sind, erzähl uns einfach, was du planst.',
+      inlineCtaLabel: 'Erzähl uns, was du planst →',
+    },
+    facts: [
+      { number: '8–20', description: 'Typische Retreat-Gruppengröße' },
+      { number: '€35–€90+', description: 'Pro Person pro Mahlzeit, Basis — Anreise & Extras können hinzukommen' },
+      { number: '4–8 Wo.', description: 'Typische Vorlaufzeit für die Buchung' },
+    ],
+    faq: {
+      h2: 'Häufig gestellte Fragen',
+      items: [
+        {
+          question: 'Was kostet ein Privatkoch für ein Retreat in den Niederlanden?',
+          answer: 'Tagessätze liegen bei €350–€650 für einen Koch zuzüglich Lebensmittelkosten. Der Preis pro Mahlzeit beträgt €35–€90+ pro Person — Extras wie Anreise können hinzukommen. Die Endkosten hängen von Gruppengröße, Ernährungskomplexität und der Verfügbarkeit von Küchenausrüstung ab.',
+        },
+        {
+          question: 'Wie lange ist die typische Vorlaufzeit für die Buchung eines Retreat-Kochs?',
+          answer: 'Plane 4–8 Wo. für die meisten etablierten Köche, länger zwischen Mai und September. Kurzfristige Buchungen (unter zwei Wochen) sind möglich, aber die Auswahl ist dann eingeschränkter.',
+        },
+        {
+          question: 'Reisen Köche zu Retreat-Veranstaltungsorten?',
+          answer: 'Die meisten etablierten Retreat-Köche reisen innerhalb der Niederlande. Fahrtkosten sind in der Regel bei Tagessätzen über €450 inbegriffen; darunter ist ein Kilometer-Aufschlag zu erwarten. Bei mehrtägigen Retreats außerhalb der Heimatprovinz des Kochs solltest du eine Übernachtungsmöglichkeit vor Ort einplanen.',
+        },
+        {
+          question: 'Wie gehen Köche mit Ernährungsanforderungen um?',
+          answer: 'Starke Retreat-Köche handhaben vegetarische, vegane, glutenfreie und laktosefreie Ernährung als Standard. Allergien (Nüsse, Meeresfrüchte, Sesam) und medizinische Diäten (FODMAP, Histaminintoleranz) werden in der Regel mit zwei Wochen Vorlaufzeit berücksichtigt. Teile Ernährungsbedürfnisse immer zum Zeitpunkt der Buchung mit — nicht erst die Woche davor.',
+        },
+        {
+          question: 'Wer schließt den Vertrag mit dem Koch — der Veranstaltungsort oder der Gastgeber?',
+          answer: 'Fast immer der Gastgeber. Veranstaltungsorte wie Makers Barn stellen Köche vor und können bei der Terminplanung helfen, aber die Vertragsbeziehung und Zahlung läuft direkt zwischen Gastgeber und Koch. Prüfe dies in den Buchungsbedingungen deines Veranstaltungsortes.',
+        },
+        {
+          question: 'Kann ich auch selbst kochen?',
+          answer: 'Möglich ist es — aber Kochen für ein Retreat ist nicht dasselbe wie Kochen zu Hause. Du bereitest 9–15 Mahlzeiten über mehrere Tage für eine Gruppe mit unterschiedlichen Ernährungsbedürfnissen zu, dazu Einkauf, Vorbereitung und Reinigung, während das Retreat-Programm weiterläuft. Wir empfehlen ausdrücklich, jemanden mit Retreat-Koch-Erfahrung einzubinden: Das hält den Gastgeber bei den Teilnehmenden statt in der Küche. Wenn das Kochen nicht gut läuft, leidet das gesamte Retreat — Gäste merken es sofort, das Programm verliert Energie, und der Gastgeber verliert den Kontakt zur Gruppe.',
+        },
+      ],
+    },
+    dualCta: {
+      looking: {
+        eyebrow: 'Für Retreat-Veranstalter',
+        h3: 'Brauchst du Hilfe beim Finden des richtigen Kochs?',
+        body: 'Erzähl uns, was du planst. Wir vermitteln aus unserem Verzeichnis oder helfen dir weiter.',
+        button: 'Koch finden',
+      },
+      join: {
+        eyebrow: 'Für Köche',
+        h3: 'Bist du Koch und arbeitest in den Niederlanden?',
+        body: 'Bewirb dich für das Makers Barn Verzeichnis.',
+        button: 'Bewerben',
+      },
+    },
+    crossLink: {
+      label: 'Zusammenarbeit mit einem Koch? Unser Leitfaden →',
     },
   },
 } as const

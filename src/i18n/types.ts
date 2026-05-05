@@ -1,4 +1,6 @@
 import { AccommodationCabin, Language } from '@/types'
+import type { DietaryCapability, NlRegion, RetreatType } from '@/constants/chef'
+import type { ChefInquiryDict } from '@/types/chef'
 
 /**
  * Navigation translations
@@ -12,6 +14,7 @@ export interface NavTranslations {
   tools: string
   contact: string
   book: string
+  chefs: string
 }
 
 /**
@@ -449,6 +452,63 @@ export interface UnifiedContactTranslations {
   }
   mapTitle: string
   questionFormImageAlt: string
+  intentLeadIn: {
+    looking: string
+    join: string
+  }
+}
+
+export interface ChefsListingFaqItem {
+  question: string
+  answer: string
+}
+
+export interface ChefsListingFactItem {
+  number: string
+  description: string
+}
+
+export interface ChefsListingSection {
+  h2: string
+  paragraphs: readonly string[]
+}
+
+export interface ChefsListingDualCtaCard {
+  eyebrow: string
+  h3: string
+  body: string
+  button: string
+}
+
+export interface ChefsListingDict {
+  meta: { title: string; description: string }
+  hero: { eyebrow: string; h1: string; subtitle: string }
+  intro: string
+  sections: {
+    whatToLookFor: ChefsListingSection
+    pricing: ChefsListingSection
+    coverage: ChefsListingSection
+  }
+  grid: {
+    h2: string
+    framingLine: string
+    card: { viewProfile: string; draftBadge: string; cuisinesAriaLabel: string }
+  }
+  launchingSoon: {
+    headline: string
+    body: string
+    inlineCtaLabel: string
+  }
+  facts: readonly ChefsListingFactItem[]
+  faq: {
+    h2: string
+    items: readonly ChefsListingFaqItem[]
+  }
+  dualCta: {
+    looking: ChefsListingDualCtaCard
+    join: ChefsListingDualCtaCard
+  }
+  crossLink: { label: string }
 }
 
 /**
@@ -790,6 +850,17 @@ export interface ToolsHubTranslations {
     planner: ToolsHubCategoryTranslations
     agenda: ToolsHubCategoryTranslations
   }
+  chefsSection: {
+    workflowQuestion: string
+    workflowBody: string
+    label: string
+    title: string
+    description: string
+    cardTag: string
+    cardTitle: string
+    cardBody: string
+    cardCta: string
+  }
 }
 
 export interface ToolsRelatedTranslations {
@@ -1044,6 +1115,57 @@ export interface ToolsTranslations {
 }
 
 /**
+ * Chef detail page translations
+ */
+export interface ChefDictionary {
+  backLink: string
+  draftBadge: string
+  metaTitle: string
+  cta: { sendInquiry: string }
+  statStrip: {
+    rightFor: string
+    cooks: string
+    accommodates: string
+    dayRate: string
+    dayRateUnit: string
+    dayRateExBtw: string
+    tierLabel: { budget: string; standard: string; premium: string }
+    tierAriaLabel: string
+  }
+  headerMeta: { guests: string; yearsCooking: string; summaryAriaLabel: string }
+  galleryLabel: string
+  about: string
+  signatureDishes: string
+  signatureDishItemPrefix: string
+  testimonials: string
+  additionalOfferings: string
+  sidebar: {
+    operatesIn: string
+    travelsNationwide: string
+    travelsRegional: string
+    strongestIn: string
+    homeBase: string
+    atAGlance: string
+    atAGlanceLabels: {
+      groupSize: string
+      languages: string
+      experience: string
+      sourcing: string
+      credentials: string
+      press: string
+    }
+    pastRetreats: string
+    kitchenRequirements: string
+  }
+  enums: {
+    retreatType: Record<RetreatType, string>
+    dietary: Record<DietaryCapability, string>
+    region: Record<NlRegion, string>
+  }
+  inquiry: ChefInquiryDict
+}
+
+/**
  * Complete dictionary structure for a single language
  */
 export interface Dictionary {
@@ -1069,6 +1191,8 @@ export interface Dictionary {
   retreats: RetreatsHubTranslations
   comparisonTeaser: ComparisonTeaserTranslations
   tools: ToolsTranslations
+  chef: ChefDictionary
+  chefsListing: ChefsListingDict
 }
 
 /**

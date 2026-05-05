@@ -1,5 +1,6 @@
 import { createLogger, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
 import type { ValidatedBookingFormData, PartialBookingContactData } from '@/types'
+import { CONTACT_SOURCE_SLACK_LABEL } from '@/constants'
 
 const logger = createLogger('slack-service')
 
@@ -94,6 +95,11 @@ export function formatContactFormMessage(data: ValidatedContactFormData): string
     lines.push(`*Phone:* ${escapeSlackMarkdown(data.phone)}`)
   }
 
+  const sourceLabel = data.source ? CONTACT_SOURCE_SLACK_LABEL[data.source] : undefined
+  if (sourceLabel) {
+    lines.push(`*Source:* ${sourceLabel}`)
+  }
+
   lines.push('', `*Message:*`, escapeSlackMarkdown(data.message))
 
   return lines.join('\n')
@@ -181,4 +187,20 @@ export function formatPartialBookingMessage(data: PartialBookingContactData): st
   lines.push('', '_Follow up if they do not complete the booking._')
 
   return lines.join('\n')
+}
+
+export function formatChefInquirySlackMessage(input: {
+  chefName: string
+  visitorName: string
+  visitorEmail: string
+  groupSize: number
+  dates: string
+  location: string
+}): string {
+  return [
+    `*New chef inquiry* — ${escapeSlackMarkdown(input.chefName)}`,
+    `From: ${escapeSlackMarkdown(input.visitorName)} <${escapeSlackMarkdown(input.visitorEmail)}>`,
+    `Group: ${input.groupSize} guests · ${escapeSlackMarkdown(input.dates)}`,
+    `Where: ${escapeSlackMarkdown(input.location)}`,
+  ].join('\n')
 }

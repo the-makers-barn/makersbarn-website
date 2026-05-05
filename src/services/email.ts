@@ -4,7 +4,8 @@ import * as postmark from 'postmark'
 import { revalidatePath } from 'next/cache'
 
 import { createLogger, escapeHtml, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
-import type { ValidatedBookingFormData } from '@/types'
+import type { Chef, Language, ValidatedBookingFormData } from '@/types'
+import { CONTACT_SOURCE_EMAIL_SUBJECT_PREFIX } from '@/constants'
 
 const logger = createLogger('email-service')
 
@@ -13,6 +14,8 @@ const EMAIL_SUBJECTS = {
   USER_CONFIRMATION: 'Thank you for contacting The Makers Barn',
   BOOKING_ADMIN_NOTIFICATION: 'New Booking Request - The Makers Barn',
   BOOKING_USER_CONFIRMATION: 'Thank you for your booking request - The Makers Barn',
+  CHEF_INQUIRY_TO_CHEF: (visitorName: string) => `New retreat inquiry from ${visitorName} via MakersBarn`,
+  CHEF_INQUIRY_TO_VISITOR: (chefName: string) => `Your inquiry to ${chefName} is on its way`,
 } as const
 
 interface EmailResult {
@@ -77,12 +80,17 @@ export async function sendEmail(formData: ValidatedContactFormData): Promise<Ema
     recipientCount: adminEmails.split(',').length 
   })
 
+  const sourcePrefix = formData.source ? CONTACT_SOURCE_EMAIL_SUBJECT_PREFIX[formData.source] : undefined
+  const adminSubject = sourcePrefix
+    ? `${sourcePrefix} ${EMAIL_SUBJECTS.ADMIN_NOTIFICATION}`
+    : EMAIL_SUBJECTS.ADMIN_NOTIFICATION
+
   try {
     // Send notification email to admin(s)
     const adminEmailResponse = await client.sendEmail({
       From: senderEmail,
       To: adminEmails,
-      Subject: EMAIL_SUBJECTS.ADMIN_NOTIFICATION,
+      Subject: adminSubject,
       HtmlBody: `
         <h2>New Contact Form Submission</h2>
         <p>You have received a new inquiry from the website contact form.</p>
@@ -330,4 +338,99 @@ The Makers Barn Team
     logger.error('Failed to send booking email', { userEmail: formData.email }, error)
     return { success: false, error }
   }
+}
+
+export type ChefInquiryEmailInput = {
+  chef: Chef
+  visitorName: string
+  visitorEmail: string
+  dates: string
+  groupSize: number
+  location: string
+  dietary: string
+  message: string
+  visitorLocale: Language
+  chefDetailUrl: string
+}
+
+function buildChefEmailHtml(input: ChefInquiryEmailInput): string {
+  const dietaryLine = input.dietary ? escapeHtml(input.dietary) : '—'
+  const escapedUrl = escapeHtml(input.chefDetailUrl)
+  return `
+    <p>You have a new retreat inquiry via your MakersBarn directory page.</p>
+    <table style="border-collapse:collapse">
+      <tr><td><strong>Name:</strong></td><td>${escapeHtml(input.visitorName)}</td></tr>
+      <tr><td><strong>Email:</strong></td><td>${escapeHtml(input.visitorEmail)}</td></tr>
+      <tr><td><strong>Group size:</strong></td><td>${input.groupSize}</td></tr>
+      <tr><td><strong>Dates:</strong></td><td>${escapeHtml(input.dates)}</td></tr>
+      <tr><td><strong>Location:</strong></td><td>${escapeHtml(input.location)}</td></tr>
+      <tr><td><strong>Dietary:</strong></td><td>${dietaryLine}</td></tr>
+    </table>
+    <p><strong>Message:</strong></p>
+    <pre style="white-space:pre-wrap;font-family:inherit">${escapeHtml(input.message)}</pre>
+    <hr />
+    <p style="font-size:12px;color:#666">
+      This inquiry came via <a href="${escapedUrl}">${escapedUrl}</a>.
+      Reply directly to ${escapeHtml(input.visitorEmail)} to take the conversation off-platform.
+      A copy was sent to MakersBarn for our records.
+    </p>
+  `.trim()
+}
+
+function buildVisitorEmailHtml(input: ChefInquiryEmailInput): string {
+  return `
+  <p>Hi ${escapeHtml(input.visitorName)},</p>
+  <p>Thanks for reaching out via MakersBarn — your inquiry has been forwarded to ${escapeHtml(input.chef.name)}.</p>
+  <p>${escapeHtml(input.chef.name)} usually responds within 2–3 days. If you don't hear back, just reply to this email and we'll follow up on your behalf.</p>
+  <p>— The MakersBarn team</p>
+`.trim()
+}
+
+function normalizeRecipients(raw: string): string {
+  return raw.includes(',')
+    ? raw.split(',').map(addr => addr.trim()).join(',')
+    : raw
+}
+
+export async function sendChefInquiryEmails(
+  input: ChefInquiryEmailInput
+): Promise<{ success: boolean; error?: string; visitorConfirmationFailed?: boolean }> {
+  const apiToken = process.env.POSTMARKAPP_API_TOKEN
+  const sender = process.env.POSTMARK_SENDER_EMAIL
+  const adminEmail = process.env.POSTMARK_ADMIN_EMAIL
+
+  if (!apiToken || !sender || !adminEmail) {
+    return { success: false, error: 'missing_postmark_config' }
+  }
+
+  const client = new postmark.ServerClient(apiToken)
+  const normalizedAdminEmail = normalizeRecipients(adminEmail)
+
+  try {
+    await client.sendEmail({
+      From: sender,
+      To: input.chef.inquiryEmail,
+      Cc: normalizedAdminEmail,
+      ReplyTo: input.visitorEmail,
+      Subject: EMAIL_SUBJECTS.CHEF_INQUIRY_TO_CHEF(input.visitorName),
+      HtmlBody: buildChefEmailHtml(input),
+      MessageStream: 'outbound',
+    })
+  } catch (err) {
+    return { success: false, error: err instanceof Error ? err.message : 'chef_email_failed' }
+  }
+
+  try {
+    await client.sendEmail({
+      From: sender,
+      To: input.visitorEmail,
+      Subject: EMAIL_SUBJECTS.CHEF_INQUIRY_TO_VISITOR(input.chef.name),
+      HtmlBody: buildVisitorEmailHtml(input),
+      MessageStream: 'outbound',
+    })
+  } catch (err) {
+    return { success: true, visitorConfirmationFailed: true, error: err instanceof Error ? err.message : 'visitor_email_failed' }
+  }
+
+  return { success: true }
 }

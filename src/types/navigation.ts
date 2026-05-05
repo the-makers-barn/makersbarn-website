@@ -19,6 +19,7 @@ export enum Route {
   WELLNESS_DETOX_RETREATS = '/wellness-detox-retreats',
   CIRCLE_RETREATS = '/circle-retreats',
   PHOTOGRAPHY_WORKSHOPS = '/photography-workshops',
+  CHEFS = '/chefs',
   TOOLS = '/tools',
   RETREAT_PROFITABILITY_CALCULATOR = '/tools/retreat-profitability-calculator',
   YOGA_RETREAT_PRICING_CALCULATOR = '/tools/yoga-retreat-pricing-calculator',
