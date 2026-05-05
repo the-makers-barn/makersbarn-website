@@ -51,6 +51,40 @@ const AGENDA_INTRO_BY_NICHE_EN: Record<AgendaNiche, string> = {
     'A coaching retreat schedule with 90-minute hot-seats, integration walks, and a commitments circle.',
 }
 
+const NICHE_TAGS: Record<AgendaNiche, LocalizedString> = {
+  [AgendaNiche.GENERIC]: { en: 'Any retreat', nl: 'Elke retraite', de: 'Jedes Retreat' },
+  [AgendaNiche.YOGA]: { en: 'Yoga', nl: 'Yoga', de: 'Yoga' },
+  [AgendaNiche.WELLNESS]: { en: 'Wellness', nl: 'Wellness', de: 'Wellness' },
+  [AgendaNiche.MEDITATION]: { en: 'Meditation', nl: 'Meditatie', de: 'Meditation' },
+  [AgendaNiche.COACHING]: { en: 'Coaching', nl: 'Coaching', de: 'Coaching' },
+}
+
+const TOOL_VARIANT_TAGS: Record<ToolVariant, LocalizedString> = {
+  [ToolVariant.GENERIC]: { en: 'Any retreat', nl: 'Elke retraite', de: 'Jedes Retreat' },
+  [ToolVariant.YOGA]: { en: 'Yoga', nl: 'Yoga', de: 'Yoga' },
+  [ToolVariant.WELLNESS]: { en: 'Wellness', nl: 'Wellness', de: 'Wellness' },
+  [ToolVariant.MEDITATION]: { en: 'Meditation', nl: 'Meditatie', de: 'Meditation' },
+  [ToolVariant.COACHING]: { en: 'Coaching', nl: 'Coaching', de: 'Coaching' },
+}
+
+const AUDIT_VARIANT_TAGS: Record<AuditVariant, LocalizedString> = {
+  [AuditVariant.GENERIC]: { en: 'Any retreat', nl: 'Elke retraite', de: 'Jedes Retreat' },
+  [AuditVariant.FIRST_TIME]: { en: 'First-time host', nl: 'Eerste keer', de: 'Erste Mal' },
+  [AuditVariant.YOGA]: { en: 'Yoga', nl: 'Yoga', de: 'Yoga' },
+  [AuditVariant.WELLNESS]: { en: 'Wellness', nl: 'Wellness', de: 'Wellness' },
+  [AuditVariant.MEDITATION]: { en: 'Meditation', nl: 'Meditatie', de: 'Meditation' },
+  [AuditVariant.COACHING]: { en: 'Coaching', nl: 'Coaching', de: 'Coaching' },
+}
+
+const calendarTagFor = (preset: TimelinePreset): LocalizedString => {
+  const months = String(preset)
+  return {
+    en: `${months} months`,
+    nl: `${months} maanden`,
+    de: `${months} Monate`,
+  }
+}
+
 /**
  * Calendar copy ships EN-verbatim across locales for v1 — proper NL/DE
  * translations land in Phase 8.
@@ -76,6 +110,7 @@ const buildCalendarItem = (preset: TimelinePreset): ToolsHubItem => {
     eyebrow: allLocalesSameString(CALENDAR_EYEBROW_EN),
     title: allLocalesSameString(interpolate(CALENDAR_TITLE_TEMPLATE_EN, months)),
     intro: allLocalesSameString(interpolate(CALENDAR_INTRO_TEMPLATE_EN, months)),
+    tag: calendarTagFor(preset),
   }
 }
 
@@ -93,6 +128,7 @@ const buildCalculatorItem = (variant: ToolVariant): ToolsHubItem => ({
   eyebrow: CALCULATOR_VARIANTS[variant].copy.heroEyebrow,
   title: CALCULATOR_VARIANTS[variant].copy.heroTitle,
   intro: CALCULATOR_VARIANTS[variant].copy.heroIntro,
+  tag: TOOL_VARIANT_TAGS[variant],
 })
 
 const buildAuditItem = (variant: AuditVariant): ToolsHubItem => ({
@@ -101,6 +137,7 @@ const buildAuditItem = (variant: AuditVariant): ToolsHubItem => ({
   eyebrow: AUDIT_VARIANTS[variant].copy.heroEyebrow,
   title: AUDIT_VARIANTS[variant].copy.heroTitle,
   intro: AUDIT_VARIANTS[variant].copy.heroIntro,
+  tag: AUDIT_VARIANT_TAGS[variant],
 })
 
 const buildAgendaItem = (niche: AgendaNiche): ToolsHubItem => ({
@@ -109,6 +146,7 @@ const buildAgendaItem = (niche: AgendaNiche): ToolsHubItem => ({
   eyebrow: allLocalesSameString(AGENDA_EYEBROW_BY_NICHE_EN[niche]),
   title: allLocalesSameString(AGENDA_TITLE_BY_NICHE_EN[niche]),
   intro: allLocalesSameString(AGENDA_INTRO_BY_NICHE_EN[niche]),
+  tag: NICHE_TAGS[niche],
 })
 
 export const TOOLS_HUB_ITEMS: readonly ToolsHubItem[] = [
