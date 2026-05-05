@@ -146,35 +146,41 @@ export default async function ToolsHubPage({ params }: PageProps) {
           <ul className={styles.badges} aria-label="Tool benefits">
             <li className={styles.badge}>{hub.freeBadge}</li>
             <li className={styles.badge}>{hub.noSignupBadge}</li>
-            <li className={styles.badge}>{hub.multilingualBadge}</li>
           </ul>
-          <nav className={styles.jumpNav} aria-label={hub.jumpToLabel}>
-            <span className={styles.jumpLabel}>{hub.jumpToLabel}</span>
-            <ul className={styles.jumpList}>
-              {CATEGORY_ORDER.map((kind) => {
-                const cat = hub.categories[CATEGORY_KEY_BY_KIND[kind]]
-                const count = itemsByKind[kind].length
-                return (
-                  <li key={kind}>
-                    <a href={`#${CATEGORY_ANCHOR[kind]}`} className={styles.jumpLink}>
-                      <span className={styles.jumpIcon} aria-hidden>
-                        <CategoryIcon kind={kind} />
-                      </span>
-                      <span className={styles.jumpText}>
-                        <span className={styles.jumpTitle}>{cat.label}</span>
-                        <span className={styles.jumpCount}>{count}</span>
-                      </span>
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
         </header>
+
+        <section className={styles.workflow} aria-labelledby="workflow-heading">
+          <p className={styles.workflowEyebrow}>{hub.workflowEyebrow}</p>
+          <h2 id="workflow-heading" className={styles.workflowTitle}>
+            {hub.workflowTitle}
+          </h2>
+          <p className={styles.workflowIntro}>{hub.workflowIntro}</p>
+          <ol className={styles.workflowSteps}>
+            {CATEGORY_ORDER.map((kind, index) => {
+              const step = hub.workflowSteps[index]
+              const count = itemsByKind[kind].length
+              return (
+                <li key={kind} className={styles.workflowStep}>
+                  <a href={`#${CATEGORY_ANCHOR[kind]}`} className={styles.workflowStepLink}>
+                    <span className={styles.workflowNumber}>{index + 1}</span>
+                    <h3 className={styles.workflowStepTitle}>{step.title}</h3>
+                    <p className={styles.workflowStepBody}>{step.body}</p>
+                    <span className={styles.workflowStepCount}>{count}</span>
+                  </a>
+                </li>
+              )
+            })}
+          </ol>
+        </section>
 
         {CATEGORY_ORDER.map((kind) => {
           const cat = hub.categories[CATEGORY_KEY_BY_KIND[kind]]
           const items = itemsByKind[kind]
+          if (items.length === 0) {
+            return null
+          }
+          const [primary, ...variants] = items
+          const primaryHref = getLocalizedPath(primary.route, validLocale)
           return (
             <section
               key={kind}
@@ -194,46 +200,40 @@ export default async function ToolsHubPage({ params }: PageProps) {
                   <p className={styles.categoryDescription}>{cat.description}</p>
                 </div>
               </header>
-              <ul className={styles.toolList}>
-                {items.map((item) => {
-                  const href = getLocalizedPath(item.route, validLocale)
-                  return (
-                    <li key={item.route}>
-                      <Link href={href} className={styles.toolCard}>
-                        <span className={styles.toolCardTag}>{item.tag[validLocale]}</span>
-                        <span className={styles.toolCardTitle}>{item.title[validLocale]}</span>
-                        <span className={styles.toolCardDescription}>
-                          {item.intro[validLocale]}
-                        </span>
-                        <span className={styles.toolCardCta}>
-                          {hub.toolCardCta}
-                          <span aria-hidden>→</span>
-                        </span>
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
+
+              <Link href={primaryHref} className={styles.primaryCard}>
+                <span className={styles.primaryCardTag}>{primary.tag[validLocale]}</span>
+                <span className={styles.primaryCardTitle}>{primary.title[validLocale]}</span>
+                <span className={styles.primaryCardDescription}>
+                  {primary.intro[validLocale]}
+                </span>
+                <span className={styles.primaryCardCta}>
+                  {hub.toolCardCta}
+                  <span aria-hidden>→</span>
+                </span>
+              </Link>
+
+              {variants.length > 0 && (
+                <div className={styles.variantsBlock}>
+                  <p className={styles.variantsLabel}>{cat.variantsLabel}</p>
+                  <ul className={styles.variantsList}>
+                    {variants.map((item) => {
+                      const href = getLocalizedPath(item.route, validLocale)
+                      return (
+                        <li key={item.route}>
+                          <Link href={href} className={styles.variantPill}>
+                            {item.tag[validLocale]}
+                          </Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              )}
             </section>
           )
         })}
 
-        <section className={styles.workflow} aria-labelledby="workflow-heading">
-          <p className={styles.workflowEyebrow}>{hub.workflowEyebrow}</p>
-          <h2 id="workflow-heading" className={styles.workflowTitle}>
-            {hub.workflowTitle}
-          </h2>
-          <p className={styles.workflowIntro}>{hub.workflowIntro}</p>
-          <ol className={styles.workflowSteps}>
-            {hub.workflowSteps.map((step, index) => (
-              <li key={step.title} className={styles.workflowStep}>
-                <span className={styles.workflowNumber}>{index + 1}</span>
-                <h3 className={styles.workflowStepTitle}>{step.title}</h3>
-                <p className={styles.workflowStepBody}>{step.body}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
       </main>
     </>
   )

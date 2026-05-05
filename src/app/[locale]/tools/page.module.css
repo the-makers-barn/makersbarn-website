@@ -47,7 +47,7 @@
 .badges {
   list-style: none;
   padding: 0;
-  margin: 0 0 2.5rem;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -66,82 +66,6 @@
   color: var(--color-primary);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-}
-
-/* ---------- Jump nav ---------- */
-
-.jumpNav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.jumpLabel {
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wide);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-tertiary);
-  font-weight: 600;
-}
-
-.jumpList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 0.75rem;
-}
-
-.jumpLink {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 0.85rem 1rem;
-  background: var(--color-background);
-  border: 1px solid rgba(41, 75, 58, 0.14);
-  border-radius: 0.85rem;
-  text-decoration: none;
-  color: var(--color-text);
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-}
-
-.jumpLink:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-secondary);
-  box-shadow: 0 6px 18px rgba(41, 75, 58, 0.08);
-}
-
-.jumpIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 0.55rem;
-  background: rgba(41, 75, 58, 0.08);
-  color: var(--color-primary);
-  flex-shrink: 0;
-}
-
-.jumpText {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  min-width: 0;
-}
-
-.jumpTitle {
-  font-weight: 600;
-  font-size: var(--font-size-sm);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.jumpCount {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-tertiary);
 }
 
 /* ---------- Category section ---------- */
@@ -196,25 +120,15 @@
   line-height: var(--line-height-relaxed);
 }
 
-/* ---------- Tool cards grid ---------- */
+/* ---------- Primary card (the recommended tool for the category) ---------- */
 
-.toolList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-}
-
-.toolCard {
+.primaryCard {
   position: relative;
   display: grid;
-  gap: 0.6rem;
-  padding: 1.5rem;
-  height: 100%;
+  gap: 0.65rem;
+  padding: 1.75rem 2rem;
   background: var(--color-background);
-  border: 1px solid rgba(41, 75, 58, 0.10);
+  border: 1px solid rgba(41, 75, 58, 0.12);
   border-radius: 1rem;
   text-decoration: none;
   color: var(--color-text);
@@ -222,34 +136,34 @@
   overflow: hidden;
 }
 
-.toolCard::before {
+.primaryCard::before {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
-  width: 4rem;
-  height: 4rem;
-  background: radial-gradient(circle at top right, rgba(184, 137, 74, 0.18), transparent 70%);
+  width: 8rem;
+  height: 8rem;
+  background: radial-gradient(circle at top right, rgba(184, 137, 74, 0.20), transparent 70%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-.toolCard:hover {
-  transform: translateY(-3px);
+.primaryCard:hover {
+  transform: translateY(-2px);
   border-color: var(--color-secondary);
-  box-shadow: 0 10px 28px rgba(41, 75, 58, 0.10);
+  box-shadow: 0 12px 32px rgba(41, 75, 58, 0.10);
 }
 
-.toolCard:hover::before {
+.primaryCard:hover::before {
   opacity: 1;
 }
 
-.toolCardTag {
+.primaryCardTag {
   align-self: start;
   display: inline-flex;
-  padding: 0.25rem 0.65rem;
-  background: rgba(41, 75, 58, 0.08);
+  padding: 0.3rem 0.75rem;
+  background: rgba(41, 75, 58, 0.10);
   color: var(--color-primary);
   font-size: var(--font-size-xs);
   font-weight: 600;
@@ -258,51 +172,94 @@
   border-radius: 9999px;
 }
 
-.toolCardTitle {
+.primaryCardTitle {
   font-family: var(--font-playfair);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   line-height: var(--line-height-snug);
   color: var(--color-text);
 }
 
-.toolCardDescription {
+.primaryCardDescription {
   color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
+  max-width: 60ch;
 }
 
-.toolCardCta {
+.primaryCardCta {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-top: auto;
   padding-top: 0.4rem;
   color: var(--color-primary);
   font-weight: 600;
   font-size: var(--font-size-sm);
 }
 
-.toolCard:hover .toolCardCta {
+.primaryCard:hover .primaryCardCta {
   color: var(--color-secondary);
 }
 
-.toolCardCta span {
+.primaryCardCta span {
   transition: transform 0.2s ease;
 }
 
-.toolCard:hover .toolCardCta span {
+.primaryCard:hover .primaryCardCta span {
   transform: translateX(3px);
 }
 
-/* ---------- Workflow ---------- */
+/* ---------- Variant pills ---------- */
+
+.variantsBlock {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.variantsLabel {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+.variantsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.variantPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  background: var(--color-background);
+  border: 1px solid rgba(41, 75, 58, 0.18);
+  border-radius: 9999px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.variantPill:hover {
+  border-color: var(--color-secondary);
+  background: rgba(184, 137, 74, 0.08);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* ---------- Workflow (top-of-page overview) ---------- */
 
 .workflow {
-  margin-top: 5rem;
-  padding: 3rem 2rem;
-  border-radius: 1.5rem;
-  background:
-    linear-gradient(135deg, rgba(41, 75, 58, 0.06) 0%, rgba(184, 137, 74, 0.08) 100%);
-  text-align: center;
+  margin-bottom: 4rem;
+  text-align: left;
 }
 
 .workflowEyebrow {
@@ -316,20 +273,19 @@
 
 .workflowTitle {
   font-family: var(--font-playfair);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
-  margin: 0 0 0.75rem;
-  max-width: 28ch;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 0 0.5rem;
+  max-width: 32ch;
 }
 
 .workflowIntro {
   color: var(--color-text-muted);
-  max-width: 48rem;
-  margin: 0 auto 2.5rem;
+  max-width: 56rem;
+  margin: 0 0 1.75rem;
   line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-sm);
 }
 
 .workflowSteps {
@@ -337,18 +293,32 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
-  text-align: left;
-  counter-reset: workflow-step;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
 .workflowStep {
+  margin: 0;
+}
+
+.workflowStepLink {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 1.5rem 1.25rem 1.25rem;
   background: var(--color-background);
-  border-radius: 0.9rem;
   border: 1px solid rgba(41, 75, 58, 0.10);
+  border-radius: 0.9rem;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.workflowStepLink:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-secondary);
+  box-shadow: 0 8px 22px rgba(41, 75, 58, 0.08);
 }
 
 .workflowNumber {
@@ -374,10 +344,27 @@
 }
 
 .workflowStepBody {
-  margin: 0;
+  margin: 0 0 0.85rem;
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);
+}
+
+.workflowStepCount {
+  margin-top: auto;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.workflowStepCount::before {
+  content: '→ ';
+}
+
+.workflowStepLink:hover .workflowStepCount {
+  color: var(--color-secondary);
 }
 
 /* ---------- Responsive ---------- */

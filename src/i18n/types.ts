@@ -767,6 +767,8 @@ export interface ToolsHubCategoryTranslations {
   label: string
   title: string
   description: string
+  /** Prompt above the niche/variant chooser pills (e.g. "Or pick your niche"). */
+  variantsLabel: string
 }
 
 export interface ToolsHubTranslations {
@@ -776,14 +778,12 @@ export interface ToolsHubTranslations {
   title: string
   intro: string
   toolCardCta: string
-  jumpToLabel: string
   workflowEyebrow: string
   workflowTitle: string
   workflowIntro: string
   workflowSteps: readonly { title: string; body: string }[]
   freeBadge: string
   noSignupBadge: string
-  multilingualBadge: string
   categories: {
     audit: ToolsHubCategoryTranslations
     calculator: ToolsHubCategoryTranslations
