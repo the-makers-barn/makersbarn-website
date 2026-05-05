@@ -43,14 +43,14 @@ const CATEGORY_ANCHOR: Record<ToolKind, string> = {
   [ToolKind.AGENDA]: 'agendas',
 }
 
-function CategoryIcon({ kind }: { kind: ToolKind }) {
+function CategoryIcon({ kind, size = 28 }: { kind: ToolKind; size?: number }) {
   const common = {
-    width: 28,
-    height: 28,
+    width: size,
+    height: size,
     viewBox: '0 0 24 24',
     fill: 'none' as const,
     stroke: 'currentColor',
-    strokeWidth: 1.6,
+    strokeWidth: 1.5,
     strokeLinecap: 'round' as const,
     strokeLinejoin: 'round' as const,
     'aria-hidden': true,
@@ -155,14 +155,16 @@ export default async function ToolsHubPage({ params }: PageProps) {
             {hub.workflowTitle}
           </h2>
           <p className={styles.workflowIntro}>{hub.workflowIntro}</p>
-          <ol className={styles.workflowSteps}>
+          <ul className={styles.workflowSteps}>
             {CATEGORY_ORDER.map((kind, index) => {
               const step = hub.workflowSteps[index]
               const count = itemsByKind[kind].length
               return (
                 <li key={kind} className={styles.workflowStep}>
                   <a href={`#${CATEGORY_ANCHOR[kind]}`} className={styles.workflowStepLink}>
-                    <span className={styles.workflowNumber}>{index + 1}</span>
+                    <span className={styles.workflowStepIcon} aria-hidden>
+                      <CategoryIcon kind={kind} size={48} />
+                    </span>
                     <h3 className={styles.workflowStepTitle}>{step.title}</h3>
                     <p className={styles.workflowStepBody}>{step.body}</p>
                     <span className={styles.workflowStepCount}>{count}</span>
@@ -170,7 +172,7 @@ export default async function ToolsHubPage({ params }: PageProps) {
                 </li>
               )
             })}
-          </ol>
+          </ul>
         </section>
 
         {CATEGORY_ORDER.map((kind) => {
@@ -190,7 +192,7 @@ export default async function ToolsHubPage({ params }: PageProps) {
             >
               <header className={styles.categoryHeader}>
                 <span className={styles.categoryIcon} aria-hidden>
-                  <CategoryIcon kind={kind} />
+                  <CategoryIcon kind={kind} size={40} />
                 </span>
                 <div>
                   <p className={styles.categoryLabel}>{cat.label}</p>

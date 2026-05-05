@@ -741,9 +741,9 @@ export const nl: Dictionary = {
       title: 'Een toolkit voor retraitehosts',
       intro: 'Plan, prijs en draai winstgevendere retraites. Twintig gratis tools — geen aanmelding, geen e-mailmuur — die werken voor elke locatie, ook die je bij MakersBarn overweegt.',
       toolCardCta: 'Openen',
-      workflowEyebrow: 'Hoe ze samenwerken',
-      workflowTitle: 'Vier stappen van idee naar een retraite die loopt',
-      workflowIntro: 'Elke tool staat op zichzelf, maar samen dekken ze de hele boog — van sanity-check tot schema. Tik op een stap om naar de bijbehorende tools te gaan.',
+      workflowEyebrow: 'Kies waar je begint',
+      workflowTitle: 'Wat moet je uitzoeken?',
+      workflowIntro: 'Vier vlakken van retraite-hosting, elk met een eigen tool. Gebruik er één, gebruik ze alle vier — in elke volgorde.',
       workflowSteps: [
         { title: 'Audit', body: 'Vang de fouten voordat ze je geld kosten. 10 vragen, 5 minuten.' },
         { title: 'Bereken', body: 'Prijzen, marge en break-even — voordat je een locatie vastlegt.' },

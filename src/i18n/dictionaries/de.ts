@@ -736,9 +736,9 @@ export const de: Dictionary = {
       title: 'Ein Werkzeugkasten für Retreat-Hosts',
       intro: 'Plane, kalkuliere und führe profitablere Retreats durch. Zwanzig kostenlose Tools — ohne Anmeldung, ohne E-Mail-Hürde — die für jeden Ort funktionieren, auch für den, den du bei MakersBarn in Betracht ziehst.',
       toolCardCta: 'Öffnen',
-      workflowEyebrow: 'Wie alles zusammenpasst',
-      workflowTitle: 'Vier Schritte von der Idee zum Retreat, das läuft',
-      workflowIntro: 'Jedes Tool steht für sich, aber zusammen decken sie den ganzen Bogen ab — vom Sanity-Check bis zum Tagesplan. Tippe auf einen Schritt, um zu den passenden Tools zu springen.',
+      workflowEyebrow: 'Wähle, wo du startest',
+      workflowTitle: 'Was musst du klären?',
+      workflowIntro: 'Vier Bereiche des Retreat-Hostings, jeder mit einem eigenen Tool. Nimm einen, nimm alle vier — in beliebiger Reihenfolge.',
       workflowSteps: [
         { title: 'Audit', body: 'Fang die Fehler ab, bevor sie dich Geld kosten. 10 Fragen, 5 Minuten.' },
         { title: 'Rechnen', body: 'Preise, Marge und Break-even — bevor du dich auf einen Ort festlegst.' },

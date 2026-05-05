@@ -733,9 +733,9 @@ export const en: Dictionary = {
       title: 'A toolkit for retreat hosts',
       intro: 'Plan, price, and run more profitable retreats. Twenty free tools — no signup, no email wall — that work for any venue, including the one you\'re considering at MakersBarn.',
       toolCardCta: 'Open',
-      workflowEyebrow: 'How it fits together',
-      workflowTitle: 'Four steps from idea to a retreat that runs',
-      workflowIntro: 'Each tool stands alone, but together they cover the full arc — from sanity-check to schedule. Tap a step to jump to its tools.',
+      workflowEyebrow: 'Pick where to start',
+      workflowTitle: 'What do you need to figure out?',
+      workflowIntro: 'Four areas of retreat hosting, each with its own tool. Use one, use all four — they work in any order.',
       workflowSteps: [
         { title: 'Audit', body: 'Catch the mistakes before they cost you. 10 questions, 5 minutes.' },
         { title: 'Calculate', body: 'Pricing, profit margin, and break-even — before you commit to a venue.' },
