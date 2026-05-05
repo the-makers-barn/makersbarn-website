@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import { NlRegion } from '@/constants/chef'
-import { LIESBETH_VAN_DER_VELDEN_CHEF } from '@/data/chefs/liesbeth-van-der-velden'
+import { EVELINE_COOKS_CHEF } from '@/data/chefs/eveline-cooks'
 import { Language } from '@/types'
 
 import { buildChefStructuredDataLd } from './ChefStructuredData'
@@ -32,7 +32,7 @@ function parseLdFromContainer(container: HTMLElement): Record<string, unknown> {
 
 describe('ChefStructuredData', () => {
   it('emits valid JSON-LD with @type Person and chef name', () => {
-    const ld = buildChefStructuredDataLd(LIESBETH_VAN_DER_VELDEN_CHEF, Language.EN, EN_REGION_LABELS)
+    const ld = buildChefStructuredDataLd(EVELINE_COOKS_CHEF, Language.EN, EN_REGION_LABELS)
     const { container } = render(
       <script
         type="application/ld+json"
@@ -41,12 +41,12 @@ describe('ChefStructuredData', () => {
     )
     const json = parseLdFromContainer(container)
     expect(json['@type']).toBe('Person')
-    expect(json.name).toBe(LIESBETH_VAN_DER_VELDEN_CHEF.name)
+    expect(json.name).toBe(EVELINE_COOKS_CHEF.name)
     expect(json.jobTitle).toBe('Retreat Chef')
   })
 
   it('includes makesOffer with areaServed matching servesRegions count', () => {
-    const ld = buildChefStructuredDataLd(LIESBETH_VAN_DER_VELDEN_CHEF, Language.EN, EN_REGION_LABELS)
+    const ld = buildChefStructuredDataLd(EVELINE_COOKS_CHEF, Language.EN, EN_REGION_LABELS)
     const { container } = render(
       <script
         type="application/ld+json"
@@ -55,13 +55,13 @@ describe('ChefStructuredData', () => {
     )
     const json = parseLdFromContainer(container)
     const makesOffer = json.makesOffer as { areaServed: unknown[]; priceCurrency: string; price: number }
-    expect(makesOffer.areaServed).toHaveLength(LIESBETH_VAN_DER_VELDEN_CHEF.servesRegions.length)
+    expect(makesOffer.areaServed).toHaveLength(EVELINE_COOKS_CHEF.servesRegions.length)
     expect(makesOffer.priceCurrency).toBe('EUR')
-    expect(makesOffer.price).toBe(LIESBETH_VAN_DER_VELDEN_CHEF.dayRate.amountEur)
+    expect(makesOffer.price).toBe(EVELINE_COOKS_CHEF.dayRate.amountEur)
   })
 
   it('includes knowsLanguage from languagesSpoken', () => {
-    const ld = buildChefStructuredDataLd(LIESBETH_VAN_DER_VELDEN_CHEF, Language.EN, EN_REGION_LABELS)
+    const ld = buildChefStructuredDataLd(EVELINE_COOKS_CHEF, Language.EN, EN_REGION_LABELS)
     const { container } = render(
       <script
         type="application/ld+json"
@@ -69,6 +69,6 @@ describe('ChefStructuredData', () => {
       />,
     )
     const json = parseLdFromContainer(container)
-    expect(json.knowsLanguage).toEqual(LIESBETH_VAN_DER_VELDEN_CHEF.languagesSpoken)
+    expect(json.knowsLanguage).toEqual(EVELINE_COOKS_CHEF.languagesSpoken)
   })
 })

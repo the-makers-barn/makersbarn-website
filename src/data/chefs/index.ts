@@ -10,7 +10,6 @@ import { GROENTJE_CHEF } from './groentje'
 import { JENNIFER_ABECK_CHEF } from './jennifer-abeck'
 import { KARIN_VAN_HAL_CHEF } from './karin-van-hal'
 import { LA_MAMA_GAIA_CHEF } from './la-mama-gaia'
-import { LIESBETH_VAN_DER_VELDEN_CHEF } from './liesbeth-van-der-velden'
 import { MARIJE_GROTE_PANNEN_CHEF } from './marije-grote-pannen'
 import { NITZAN_ZEIRA_CHEF } from './nitzan-zeira'
 import { PLANTICIOUS_BLISS_CHEF } from './planticious-bliss'
@@ -24,7 +23,6 @@ import { VEGA_HAPPIE_CHEF } from './vega-happie'
 // Naming convention: <SLUG_UPPER_SNAKE>_CHEF (mirrors YOGA_TEACHERS_SILO).
 
 export const ALL_CHEFS: readonly Chef[] = [
-  LIESBETH_VAN_DER_VELDEN_CHEF,
   BRENDA_ANNA_CHEF,
   BURO_BROCCOLI_CHEF,
   DE_GROENE_CHEF_CHEF,

@@ -11,7 +11,7 @@ const validInput = {
   groupSize: 12,
   location: 'MakersBarn, Overijssel',
   dietary: '3 vegan, 1 gluten-free',
-  message: 'Hi Liesbeth, looking for a chef for our 5-day yoga retreat in May. Group of 12.',
+  message: 'Hi Eveline, looking for a chef for our 5-day yoga retreat in May. Group of 12.',
   honeypot: '',
   consent: true,
 }

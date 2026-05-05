@@ -28,12 +28,12 @@ export type IsoDateString = string & { readonly __brand: 'IsoDateString' }
 /**
  * Construct an IsoDateString. Use at data-file authoring time only.
  * No runtime validation — the contract is "the author asserts this is a valid ISO date."
- * Future Task 7 (Liesbeth fixture) and any later chef data files use this helper.
+ * Chef data files use this helper at authoring time.
  */
 export const asIsoDateString = (s: string): IsoDateString => s as IsoDateString
 
 export type ImageRef = {
-  /** Path relative to /public, e.g. '/images/chefs/liesbeth-van-der-velden/hero.jpg' */
+  /** Path relative to /public, e.g. '/images/chefs/eveline-cooks/hero.jpg' */
   src: string
   /** Key into src/data/imageAltText.ts (existing i18n alt-text registry) */
   altKey: string

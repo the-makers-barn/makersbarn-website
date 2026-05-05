@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { ChefStatus } from '@/constants/chef'
-import { LIESBETH_VAN_DER_VELDEN_CHEF } from '@/data/chefs/liesbeth-van-der-velden'
+import { EVELINE_COOKS_CHEF } from '@/data/chefs/eveline-cooks'
 import { Language } from '@/types'
 
 import { buildChefsListingStructuredDataLd } from './ChefsStructuredData'
@@ -41,7 +41,7 @@ describe('buildChefsListingStructuredDataLd', () => {
   })
 
   it('emits ItemList with positions when publishedChefs is non-empty', () => {
-    const published = { ...LIESBETH_VAN_DER_VELDEN_CHEF, status: ChefStatus.PUBLISHED }
+    const published = { ...EVELINE_COOKS_CHEF, status: ChefStatus.PUBLISHED }
     const ld = buildChefsListingStructuredDataLd({
       lang: Language.EN,
       publishedChefs: [published],

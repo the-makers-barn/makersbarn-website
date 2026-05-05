@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { isValidElement } from 'react'
 
-import { LIESBETH_VAN_DER_VELDEN_CHEF } from '@/data/chefs/liesbeth-van-der-velden'
+import { EVELINE_COOKS_CHEF } from '@/data/chefs/eveline-cooks'
 import { Language } from '@/types'
 
 import { ChefsListingPage } from './ChefsListingPage'
@@ -42,7 +42,7 @@ describe('ChefsListingPage', () => {
 
   it('returns a JSX element with one chef', async () => {
     const result = await ChefsListingPage({
-      chefs: [LIESBETH_VAN_DER_VELDEN_CHEF],
+      chefs: [EVELINE_COOKS_CHEF],
       publishedChefs: [],
       lang: Language.EN,
     })

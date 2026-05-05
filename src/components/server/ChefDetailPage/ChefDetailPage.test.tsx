@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { isValidElement } from 'react'
 
-import { LIESBETH_VAN_DER_VELDEN_CHEF } from '@/data/chefs/liesbeth-van-der-velden'
+import { EVELINE_COOKS_CHEF } from '@/data/chefs/eveline-cooks'
 import { ChefStatus } from '@/constants/chef'
 import { Language } from '@/types'
 
@@ -41,19 +41,19 @@ vi.mock('@/i18n/server', () => ({
 }))
 
 describe('ChefDetailPage', () => {
-  it('returns a JSX element for the Liesbeth fixture', async () => {
-    const result = await ChefDetailPage({ chef: LIESBETH_VAN_DER_VELDEN_CHEF, lang: Language.EN })
+  it('returns a JSX element for the Eveline fixture', async () => {
+    const result = await ChefDetailPage({ chef: EVELINE_COOKS_CHEF, lang: Language.EN })
     expect(isValidElement(result)).toBe(true)
   })
 
   it('includes DraftBadge when chef status is DRAFT', async () => {
-    const draftChef = { ...LIESBETH_VAN_DER_VELDEN_CHEF, status: ChefStatus.DRAFT }
+    const draftChef = { ...EVELINE_COOKS_CHEF, status: ChefStatus.DRAFT }
     const result = await ChefDetailPage({ chef: draftChef, lang: Language.EN })
     expect(isValidElement(result)).toBe(true)
   })
 
   it('does not render DraftBadge for PUBLISHED chefs', async () => {
-    const publishedChef = { ...LIESBETH_VAN_DER_VELDEN_CHEF, status: ChefStatus.PUBLISHED }
+    const publishedChef = { ...EVELINE_COOKS_CHEF, status: ChefStatus.PUBLISHED }
     const result = await ChefDetailPage({ chef: publishedChef, lang: Language.EN })
     expect(isValidElement(result)).toBe(true)
   })

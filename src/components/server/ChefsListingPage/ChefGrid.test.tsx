@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import { LIESBETH_VAN_DER_VELDEN_CHEF } from '@/data/chefs/liesbeth-van-der-velden'
+import { EVELINE_COOKS_CHEF } from '@/data/chefs/eveline-cooks'
 import { Language } from '@/types'
 
 import { ChefGrid } from './ChefGrid'
@@ -37,7 +37,7 @@ describe('ChefGrid', () => {
   })
 
   it('renders cards when chefs is non-empty', async () => {
-    const result = await ChefGrid({ chefs: [LIESBETH_VAN_DER_VELDEN_CHEF], lang: Language.EN })
+    const result = await ChefGrid({ chefs: [EVELINE_COOKS_CHEF], lang: Language.EN })
     render(result)
     expect(screen.getByRole('article')).toBeInTheDocument()
     expect(screen.queryByText('Soon.')).not.toBeInTheDocument()
@@ -49,7 +49,7 @@ describe('ChefGrid', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Chefs in our directory' })).toBeInTheDocument()
     expect(screen.getByText('These are chefs we trust.')).toBeInTheDocument()
 
-    const populated = await ChefGrid({ chefs: [LIESBETH_VAN_DER_VELDEN_CHEF], lang: Language.EN })
+    const populated = await ChefGrid({ chefs: [EVELINE_COOKS_CHEF], lang: Language.EN })
     rerender(populated)
     expect(screen.getByRole('heading', { level: 2, name: 'Chefs in our directory' })).toBeInTheDocument()
     expect(screen.getByText('These are chefs we trust.')).toBeInTheDocument()

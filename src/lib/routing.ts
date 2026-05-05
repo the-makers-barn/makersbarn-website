@@ -73,7 +73,7 @@ export function getLocaleFromPath(path: string): Language | null {
 
 /**
  * Build the localized URL for a chef detail page.
- * Example: getChefDetailPath('liesbeth-van-der-velden', Language.EN) → '/en/chefs/liesbeth-van-der-velden'
+ * Example: getChefDetailPath('eveline-cooks', Language.EN) → '/en/chefs/eveline-cooks'
  */
 export function getChefDetailPath(slug: string, locale: Language): string {
   return `/${locale}${Route.CHEFS}/${slug}`

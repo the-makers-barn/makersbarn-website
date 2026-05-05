@@ -31,7 +31,7 @@ const buildFormData = (overrides: Record<string, string> = {}): FormData => {
   fd.set('dietary', '3 vegan, 1 gluten-free')
   fd.set(
     'message',
-    'Hi Liesbeth, looking for a chef for our 5-day yoga retreat in May. Group of 12.'
+    'Hi Eveline, looking for a chef for our 5-day yoga retreat in May. Group of 12.'
   )
   fd.set('honeypot', '')
   fd.set('consent', 'true')
@@ -55,7 +55,7 @@ describe('sendChefInquiry', () => {
 
   it('happy path: sends email to chef and notifies Slack', async () => {
     const { sendChefInquiry } = await import('./sendChefInquiry')
-    const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+    const result = await sendChefInquiry('eveline-cooks', buildFormData())
     expect(result.success).toBe(true)
     expect(sendChefInquiryEmails).toHaveBeenCalledOnce()
     expect(sendSlackMessage).toHaveBeenCalledOnce()
@@ -65,12 +65,12 @@ describe('sendChefInquiry', () => {
     const { sendChefInquiry } = await import('./sendChefInquiry')
     // Consume MAX_REQUESTS slots, then the next call should hit the limit.
     for (let i = 0; i < CHEF_INQUIRY_RATE_LIMIT.MAX_REQUESTS; i++) {
-      await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+      await sendChefInquiry('eveline-cooks', buildFormData())
     }
     vi.mocked(sendChefInquiryEmails).mockClear()
     vi.mocked(sendSlackMessage).mockClear()
 
-    const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+    const result = await sendChefInquiry('eveline-cooks', buildFormData())
     expect(result.success).toBe(false)
     expect(result.message).toBe(CHEF_INQUIRY_MESSAGES.RATE_LIMITED)
     expect(sendChefInquiryEmails).not.toHaveBeenCalled()
@@ -91,9 +91,9 @@ describe('sendChefInquiry', () => {
     process.env.VERCEL_ENV = 'production'
     try {
       const { sendChefInquiry } = await import('./sendChefInquiry')
-      // Liesbeth is DRAFT — drafts must remain reachable by direct URL in every
+      // Eveline is DRAFT — drafts must remain reachable by direct URL in every
       // environment so the chef can review their profile during onboarding.
-      const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+      const result = await sendChefInquiry('eveline-cooks', buildFormData())
       expect(result.success).toBe(true)
       expect(sendChefInquiryEmails).toHaveBeenCalledOnce()
       expect(sendSlackMessage).toHaveBeenCalledOnce()
@@ -109,7 +109,7 @@ describe('sendChefInquiry', () => {
   it('honeypot triggered: returns silent success and does not call Postmark or Slack', async () => {
     const { sendChefInquiry } = await import('./sendChefInquiry')
     const result = await sendChefInquiry(
-      'liesbeth-van-der-velden',
+      'eveline-cooks',
       buildFormData({ honeypot: 'spammer' })
     )
     expect(result.success).toBe(true)
@@ -120,7 +120,7 @@ describe('sendChefInquiry', () => {
   it('validation error: returns errors map and does not call Postmark or Slack', async () => {
     const { sendChefInquiry } = await import('./sendChefInquiry')
     const result = await sendChefInquiry(
-      'liesbeth-van-der-velden',
+      'eveline-cooks',
       buildFormData({ email: 'not-an-email' })
     )
     expect(result.success).toBe(false)
@@ -137,7 +137,7 @@ describe('sendChefInquiry', () => {
       success: false,
       error: 'postmark exploded',
     })
-    const result = await sendChefInquiry('liesbeth-van-der-velden', buildFormData())
+    const result = await sendChefInquiry('eveline-cooks', buildFormData())
     expect(result.success).toBe(false)
     expect(result.message).toBe(CHEF_INQUIRY_MESSAGES.EMAIL_FAILED)
     // Slack was called BEFORE the email attempt (per the action's order)

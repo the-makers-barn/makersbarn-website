@@ -3,7 +3,7 @@ import { Language } from '@/types'
 /**
  * Centralized mapping of image keys to multilingual alt text.
  * Keys are either file paths (e.g., '/images/sauna.jpg') or logical identifiers
- * (e.g., 'chef.liesbeth-van-der-velden.avatar') — chef images use logical keys
+ * (e.g., 'chef.eveline-cooks.avatar') — chef images use logical keys
  * so file paths can evolve (jpg→webp/avif) without breaking the registry.
  * Each entry contains alt text for each supported language.
  */
@@ -226,38 +226,6 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.EN]: 'Makers Barn Logo',
     [Language.NL]: 'Makers Barn Logo',
     [Language.DE]: 'Makers Barn Logo',
-  },
-
-  // Chef: Liesbeth van der Velden
-  'chef.liesbeth-van-der-velden.avatar': {
-    [Language.EN]: 'Portrait of chef Liesbeth van der Velden',
-    [Language.NL]: 'Portret van chef Liesbeth van der Velden',
-    [Language.DE]: 'Porträt von Chefköchin Liesbeth van der Velden',
-  },
-  'chef.liesbeth-van-der-velden.hero': {
-    [Language.EN]: 'Plated dish on a long table set for a retreat dinner',
-    [Language.NL]: 'Bord met gerecht op een lange retraite-tafel',
-    [Language.DE]: 'Angerichteter Teller auf einer langen Retreat-Tafel',
-  },
-  'chef.liesbeth-van-der-velden.gallery-1': {
-    [Language.EN]: 'Family-style spread with multiple shared dishes',
-    [Language.NL]: 'Family-style maaltijd met meerdere gedeelde gerechten',
-    [Language.DE]: 'Family-Style-Tafel mit mehreren geteilten Gerichten',
-  },
-  'chef.liesbeth-van-der-velden.gallery-2': {
-    [Language.EN]: 'Plated breakfast bowl with vegetables and herbs',
-    [Language.NL]: 'Ontbijtbord met groenten en kruiden',
-    [Language.DE]: 'Frühstücksschale mit Gemüse und Kräutern',
-  },
-  'chef.liesbeth-van-der-velden.gallery-3': {
-    [Language.EN]: 'Recipe card on a wooden surface with limes and herbs',
-    [Language.NL]: 'Receptkaart op een houten oppervlak met limoenen en kruiden',
-    [Language.DE]: 'Rezeptkarte auf Holzfläche mit Limetten und Kräutern',
-  },
-  'chef.liesbeth-van-der-velden.gallery-4': {
-    [Language.EN]: 'Plated family-style dishes with roasted vegetables and grains',
-    [Language.NL]: 'Family-style borden met geroosterde groenten en granen',
-    [Language.DE]: 'Family-Style-Teller mit geröstetem Gemüse und Körnern',
   },
 
   // Chef: Brenda Anna (Brenda Anna aan de KOOK)
