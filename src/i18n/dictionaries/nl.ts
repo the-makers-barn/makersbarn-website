@@ -1082,7 +1082,7 @@ export const nl: Dictionary = {
       pricing: {
         h2: 'Hoe de prijzen van retraitkoks in Nederland werken',
         paragraphs: [
-          'Drie prijsstructuren domineren de Nederlandse markt. Dagtarieven (€350–€650/dag voor één kok, plus voedselkosten) zijn geschikt voor retraites waarbij je flexibiliteit wilt in menu en inkoop. Prijzen per maaltijd (€18–€45 per persoon per maaltijd, alles inbegrepen) zijn gebruikelijk voor kortere retraites en geven je een helder budget per hoofd. All-inclusive pakketten (€35–€100+ per persoon per dag) bundelen eten, voorbereiding, bediening en opruimen in één bedrag — handig als je de keuken volledig wilt uitbesteden.',
+          'Drie prijsstructuren domineren de Nederlandse markt. Dagtarieven (€350–€650/dag voor één kok, plus voedselkosten) zijn geschikt voor retraites waarbij je flexibiliteit wilt in menu en inkoop. Prijzen per maaltijd (€35–€90+ per persoon per maaltijd — extra\'s zoals reizen kunnen erbij komen) zijn gebruikelijk voor kortere retraites en geven je een helder budget per hoofd. All-inclusive pakketten (€35–€100+ per persoon per dag) bundelen eten, voorbereiding, bediening en opruimen in één bedrag — handig als je de keuken volledig wilt uitbesteden.',
           'Let op wat er niet is inbegrepen. Reistijd, keukenapparatuur, afwaswerk en dieetaanpassingen zijn de meest voorkomende posten die de uiteindelijke factuur stilletjes opdrijven. Vraag altijd om een voorbeeldcontract voordat je akkoord gaat.',
           'De doorlooptijd is 4–8 wkn voor gevestigde koks, langer in het hoogseizoen (mei–september). Boek op tijd.',
         ],
@@ -1120,7 +1120,7 @@ export const nl: Dictionary = {
       items: [
         {
           question: 'Wat kost een privékok voor een retraite in Nederland?',
-          answer: 'Dagtarieven liggen tussen €350–€650 voor één kok plus voedselkosten. Prijzen per maaltijd zijn €18–€45 per persoon. All-inclusive pakketten kosten €35–€100+ per persoon per dag. De uiteindelijke kosten hangen af van groepsgrootte, dieetcomplexiteit en of keukenapparatuur aanwezig is.',
+          answer: 'Dagtarieven liggen tussen €350–€650 voor één kok plus voedselkosten. Prijzen per maaltijd zijn €35–€90+ per persoon — extra\'s zoals reizen kunnen erbij komen. All-inclusive pakketten kosten €35–€100+ per persoon per dag. De uiteindelijke kosten hangen af van groepsgrootte, dieetcomplexiteit en of keukenapparatuur aanwezig is.',
         },
         {
           question: 'Wat is de gebruikelijke doorlooptijd voor het boeken van een retraitkok?',

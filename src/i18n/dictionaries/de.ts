@@ -1077,7 +1077,7 @@ export const de: Dictionary = {
       pricing: {
         h2: 'Wie die Preisgestaltung für Retreat-Köche in den Niederlanden funktioniert',
         paragraphs: [
-          'Drei Preismodelle dominieren den niederländischen Markt. Tagessätze (€350–€650/Tag für einen Koch, zuzüglich Lebensmittelkosten) eignen sich für Retreats, bei denen du Flexibilität bei Menü und Einkauf möchtest. Preise pro Mahlzeit (€18–€45 pro Person, all-in) sind bei kürzeren Retreats üblich und geben dir ein klares Budget pro Kopf. Komplettpakete (€35–€100+ pro Person und Tag) fassen Lebensmittel, Vorbereitung, Service und Reinigung in einer Zahl zusammen — praktisch, wenn du die Küche vollständig abgeben möchtest.',
+          'Drei Preismodelle dominieren den niederländischen Markt. Tagessätze (€350–€650/Tag für einen Koch, zuzüglich Lebensmittelkosten) eignen sich für Retreats, bei denen du Flexibilität bei Menü und Einkauf möchtest. Preise pro Mahlzeit (€35–€90+ pro Person pro Mahlzeit — Extras wie Anreise können hinzukommen) sind bei kürzeren Retreats üblich und geben dir ein klares Budget pro Kopf. Komplettpakete (€35–€100+ pro Person und Tag) fassen Lebensmittel, Vorbereitung, Service und Reinigung in einer Zahl zusammen — praktisch, wenn du die Küche vollständig abgeben möchtest.',
           'Achte darauf, was ausgeschlossen ist. Anfahrtszeit, Küchenausrüstung, Spülarbeit und Sonderwünsche bei der Ernährung sind die häufigsten Posten, die die Endrechnung still und leise in die Höhe treiben. Bitte vor der Buchung um einen Mustervertrag.',
           'Die Vorlaufzeit beträgt für etablierte Köche 4–8 Wo., in der Hauptsaison (Mai–September) länger. Frühzeitig buchen.',
         ],
@@ -1115,7 +1115,7 @@ export const de: Dictionary = {
       items: [
         {
           question: 'Was kostet ein Privatkoch für ein Retreat in den Niederlanden?',
-          answer: 'Tagessätze liegen bei €350–€650 für einen Koch zuzüglich Lebensmittelkosten. Der Preis pro Mahlzeit beträgt €18–€45 pro Person. Komplettpakete kosten €35–€100+ pro Person und Tag. Die Endkosten hängen von Gruppengröße, Ernährungskomplexität und der Verfügbarkeit von Küchenausrüstung ab.',
+          answer: 'Tagessätze liegen bei €350–€650 für einen Koch zuzüglich Lebensmittelkosten. Der Preis pro Mahlzeit beträgt €35–€90+ pro Person — Extras wie Anreise können hinzukommen. Komplettpakete kosten €35–€100+ pro Person und Tag. Die Endkosten hängen von Gruppengröße, Ernährungskomplexität und der Verfügbarkeit von Küchenausrüstung ab.',
         },
         {
           question: 'Wie lange ist die typische Vorlaufzeit für die Buchung eines Retreat-Kochs?',
