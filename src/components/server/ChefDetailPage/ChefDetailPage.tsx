@@ -9,7 +9,6 @@ import { ChefAbout } from './ChefAbout'
 import { ChefHeader } from './ChefHeader'
 import { ChefSidebar } from './ChefSidebar'
 import { ChefSignatureDishes } from './ChefSignatureDishes'
-import { ChefStatStrip } from './ChefStatStrip'
 import { ChefStickyHeader } from './ChefStickyHeader'
 import { ChefStructuredData } from './ChefStructuredData'
 import { ChefTestimonials } from './ChefTestimonials'
@@ -36,7 +35,6 @@ export async function ChefDetailPage({ chef, lang }: Props) {
       />
       <article className={styles.page}>
         <ChefHeader chef={chef} lang={lang} />
-        <ChefStatStrip chef={chef} lang={lang} />
         <div className={styles.grid}>
           <main className={styles.main}>
             {chef.gallery.supporting.length > 0 && (

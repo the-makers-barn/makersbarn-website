@@ -7,6 +7,7 @@ import { getLocalizedPath } from '@/lib/routing'
 import type { Chef, Language } from '@/types'
 import { Route } from '@/types/navigation'
 
+import { ChefStatStrip } from './ChefStatStrip'
 import styles from './ChefHeader.module.css'
 
 type Props = { chef: Chef; lang: Language }
@@ -34,6 +35,9 @@ export async function ChefHeader({ chef, lang }: Props) {
   const ctaLabel = dict.chef.cta.sendInquiry.replace('{name}', firstName)
   const regionLabel = dict.chef.enums.region[chef.homeBase.region]
   const locationLine = `${chef.homeBase.city}, ${regionLabel}`
+  const primaryCuisine = chef.cuisineStyles.length > 0
+    ? localize(chef.cuisineStyles[0], lang)
+    : null
 
   return (
     <header className={styles.header}>
@@ -43,9 +47,11 @@ export async function ChefHeader({ chef, lang }: Props) {
 
       <div className={styles.layout}>
         <div className={styles.portraitWrap}>
-          <span aria-hidden="true" className={styles.portraitTag}>
-            <span className={styles.portraitTagDot} /> Retreat chef
-          </span>
+          {primaryCuisine && (
+            <span aria-hidden="true" className={styles.portraitTag}>
+              <span className={styles.portraitTagDot} /> {primaryCuisine}
+            </span>
+          )}
           <div className={styles.portrait}>
             <Image
               src={chef.avatar.src}
@@ -73,6 +79,9 @@ export async function ChefHeader({ chef, lang }: Props) {
               {ctaLabel}
               <span aria-hidden="true" className={styles.ctaArrow}>→</span>
             </a>
+          </div>
+          <div className={styles.specSheet}>
+            <ChefStatStrip chef={chef} lang={lang} />
           </div>
         </div>
       </div>

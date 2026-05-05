@@ -1,5 +1,5 @@
 .header {
-  padding: 1.5rem 0 3rem;
+  padding: 1.5rem 0 2rem;
   position: relative;
 }
 
@@ -32,9 +32,9 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 440px 1fr;
+  grid-template-columns: 380px 1fr;
   gap: 3rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 /* ---------- portrait column ---------- */
@@ -45,14 +45,14 @@
 
 .portraitTag {
   position: absolute;
-  top: -0.4rem;
-  left: -0.4rem;
+  top: -0.55rem;
+  left: -0.55rem;
   z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   background: var(--color-background);
-  padding: 0.4rem 0.85rem;
+  padding: 0.45rem 0.95rem;
   font-family: var(--font-quicksand);
   font-size: 0.7rem;
   letter-spacing: 0.22em;
@@ -60,6 +60,11 @@
   color: var(--color-text);
   border: 1px solid rgba(31, 19, 12, 0.12);
   border-radius: 999px;
+  font-weight: 500;
+  max-width: calc(100% + 1.1rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .portraitTagDot {
@@ -68,11 +73,12 @@
   border-radius: 50%;
   background: var(--color-secondary);
   display: inline-block;
+  flex-shrink: 0;
 }
 
 .portrait {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   width: 100%;
   overflow: hidden;
   border-radius: 4px;
@@ -83,11 +89,10 @@
 }
 
 .portrait::after {
-  /* subtle warm overlay so the photo reads cohesively with the page palette */
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(31, 19, 12, 0) 60%, rgba(31, 19, 12, 0.18));
+  background: linear-gradient(180deg, rgba(31, 19, 12, 0) 65%, rgba(31, 19, 12, 0.22));
   pointer-events: none;
 }
 
@@ -100,17 +105,17 @@
 .text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 0.5rem;
+  padding-top: 0.25rem;
+  min-width: 0;
 }
 
 .name {
   font-family: var(--font-playfair);
-  font-size: clamp(2.75rem, 5.4vw, 4.5rem);
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
   line-height: 0.96;
   letter-spacing: -0.02em;
   color: var(--color-text);
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.1rem;
   font-weight: 500;
 }
 
@@ -118,16 +123,16 @@
   width: 64px;
   height: 1px;
   background: var(--color-secondary);
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.1rem;
 }
 
 .tagline {
   font-family: var(--font-playfair);
   font-style: italic;
-  font-size: clamp(1.125rem, 1.8vw, 1.45rem);
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
   line-height: 1.4;
   color: var(--color-text-muted);
-  margin: 0 0 1.75rem;
+  margin: 0 0 1.5rem;
   max-width: 38rem;
 }
 
@@ -137,9 +142,9 @@
   gap: 0.5rem 1.25rem;
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem;
+  margin: 0 0 1.75rem;
   font-family: var(--font-quicksand);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-text-tertiary);
@@ -165,6 +170,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .primaryCta {
@@ -173,7 +179,7 @@
   gap: 0.65rem;
   background: var(--color-text);
   color: var(--color-text-inverse);
-  padding: 1rem 1.65rem;
+  padding: 0.95rem 1.6rem;
   border-radius: 999px;
   font-family: var(--font-quicksand);
   font-size: 0.95rem;
@@ -199,6 +205,26 @@
   transition: transform 0.25s ease;
 }
 
+/* The embedded spec sheet (ChefStatStrip) sits in the right column to balance
+   the height of the portrait and pull the most actionable facts above-the-fold. */
+.specSheet {
+  margin-top: auto;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(31, 19, 12, 0.1);
+  position: relative;
+}
+
+.specSheet::before {
+  /* Small gold accent tick aligned with the rule */
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 24px;
+  height: 1px;
+  background: var(--color-secondary);
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1023px) {
@@ -214,24 +240,24 @@
   .name {
     font-size: clamp(2.25rem, 7vw, 3.25rem);
   }
+
+  .specSheet {
+    margin-top: 1rem;
+  }
 }
 
 @media (max-width: 639px) {
   .header {
-    padding: 1rem 0 2rem;
+    padding: 1rem 0 1.5rem;
   }
 
   .portraitWrap {
     max-width: 100%;
   }
 
-  .portrait {
-    aspect-ratio: 4 / 5;
-  }
-
   .metaLine {
     gap: 0.4rem 1rem;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
 
   .metaLine li {

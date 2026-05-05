@@ -3,32 +3,17 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
   margin: 0;
-  padding: 1.5rem 0;
-  border-top: 1px solid rgba(31, 19, 12, 0.1);
-  border-bottom: 1px solid rgba(31, 19, 12, 0.1);
+  padding: 0;
   position: relative;
 }
-
-.strip::before,
-.strip::after {
-  /* Subtle gold accent ticks at the start and end of the strip */
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 1px;
-  background: var(--color-secondary);
-  top: -1px;
-}
-
-.strip::before { left: 0; }
-.strip::after { right: 0; }
 
 .cell {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  padding: 0 1.5rem;
+  gap: 0.45rem;
+  padding: 0 1.1rem;
   border-right: 1px solid rgba(31, 19, 12, 0.08);
+  min-width: 0;
 }
 
 .cell:first-child { padding-left: 0; }
@@ -36,7 +21,7 @@
 
 .label {
   font-family: var(--font-quicksand);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-secondary);
@@ -45,7 +30,7 @@
 
 .value {
   font-family: var(--font-playfair);
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   line-height: 1.35;
   color: var(--color-text);
   margin: 0;
@@ -61,7 +46,7 @@
 
 .dayRateAmount {
   font-family: var(--font-playfair);
-  font-size: 2rem;
+  font-size: 1.85rem;
   line-height: 1;
   color: var(--color-text);
   letter-spacing: -0.01em;
@@ -69,14 +54,14 @@
 
 .dayRateUnit {
   font-family: var(--font-quicksand);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   color: var(--color-text-tertiary);
   letter-spacing: 0.02em;
 }
 
 .tier {
   font-family: var(--font-quicksand);
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-text-tertiary);
@@ -96,7 +81,7 @@
 @media (max-width: 1023px) {
   .strip {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 0;
+    gap: 1.25rem 0;
   }
 
   .cell {
@@ -117,14 +102,13 @@
 @media (max-width: 639px) {
   .strip {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 1.25rem 0;
+    gap: 1rem;
   }
 
   .cell {
     padding: 0 !important;
     border-right: none !important;
-    padding-bottom: 1.25rem !important;
+    padding-bottom: 1rem !important;
     border-bottom: 1px solid rgba(31, 19, 12, 0.08);
   }
 

@@ -944,7 +944,7 @@ export const en: Dictionary = {
   },
 
   chef: {
-    backLink: '← Discover more chefs',
+    backLink: 'Discover more chefs',
     draftBadge: 'DRAFT — preview only',
     metaTitle: '{name} — Retreat Chef in {region}, Netherlands',
     cta: { sendInquiry: 'Send {name} an inquiry' },
