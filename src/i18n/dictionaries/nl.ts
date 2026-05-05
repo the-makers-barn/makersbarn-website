@@ -1140,7 +1140,7 @@ export const nl: Dictionary = {
         },
         {
           question: 'Kan ik ook zelf koken?',
-          answer: 'Het kan — maar koken voor een retraite is iets anders dan thuis koken. Je maakt 9–15 maaltijden over meerdere dagen voor een groep met uiteenlopende dieetwensen, naast inkoop, voorbereiding en opruimen, terwijl het retraite­programma gewoon doorloopt. We raden sterk aan iemand met retraitkok-ervaring in te zetten: dat houdt de host bij de gasten in plaats van in de keuken, en is vaak het verschil tussen een goede en een uitstekende retraite.',
+          answer: 'Het kan — maar koken voor een retraite is iets anders dan thuis koken. Je maakt 9–15 maaltijden over meerdere dagen voor een groep met uiteenlopende dieetwensen, naast inkoop, voorbereiding en opruimen, terwijl het retraite­programma gewoon doorloopt. We raden sterk aan iemand met retraitkok-ervaring in te zetten: dat houdt de host bij de gasten in plaats van in de keuken. Als het koken niet goed gaat, lijdt de hele retraite eronder — gasten merken het direct, het programma verliest energie, en de host raakt het contact met de groep kwijt.',
         },
       ],
     },

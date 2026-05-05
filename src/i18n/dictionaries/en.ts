@@ -1132,7 +1132,7 @@ export const en: Dictionary = {
         },
         {
           question: 'Can I cook myself instead?',
-          answer: 'You can — but cooking for a retreat is not the same as cooking at home. You\'re producing 9–15 sustained services across multiple days for a group with mixed dietary needs, alongside sourcing, prep, and cleanup, while the retreat programme keeps moving. We strongly recommend bringing in someone with retreat-cooking experience: it lets the host stay present with the guests instead of disappearing into the kitchen, and it is often the difference between a good retreat and a great one.',
+          answer: 'You can — but cooking for a retreat is not the same as cooking at home. You\'re producing 9–15 sustained services across multiple days for a group with mixed dietary needs, alongside sourcing, prep, and cleanup, while the retreat programme keeps moving. We strongly recommend bringing in someone with retreat-cooking experience: it lets the host stay present with the guests instead of disappearing into the kitchen. When the cooking is not handled well, the whole retreat suffers — guests notice immediately, the energy of the programme drops, and the host loses the room.',
         },
       ],
     },
