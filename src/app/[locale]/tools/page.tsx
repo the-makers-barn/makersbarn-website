@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -184,55 +185,59 @@ export default async function ToolsHubPage({ params }: PageProps) {
           const [primary, ...variants] = items
           const primaryHref = getLocalizedPath(primary.route, validLocale)
           return (
-            <section
-              key={kind}
-              id={CATEGORY_ANCHOR[kind]}
-              className={styles.category}
-              aria-labelledby={`${CATEGORY_ANCHOR[kind]}-heading`}
-            >
-              <header className={styles.categoryHeader}>
-                <span className={styles.categoryIcon} aria-hidden>
-                  <CategoryIcon kind={kind} size={64} />
-                </span>
-                <div className={styles.categoryHeaderText}>
-                  <p className={styles.categoryLabel}>{cat.label}</p>
-                  <h2 id={`${CATEGORY_ANCHOR[kind]}-heading`} className={styles.categoryTitle}>
-                    {cat.title}
-                  </h2>
-                  <p className={styles.categoryDescription}>{cat.description}</p>
-                </div>
-              </header>
+            <Fragment key={kind}>
+              <div className={styles.divider} aria-hidden>
+                <span />
+              </div>
+              <section
+                id={CATEGORY_ANCHOR[kind]}
+                className={styles.category}
+                aria-labelledby={`${CATEGORY_ANCHOR[kind]}-heading`}
+              >
+                <header className={styles.categoryHeader}>
+                  <span className={styles.categoryIcon} aria-hidden>
+                    <CategoryIcon kind={kind} size={64} />
+                  </span>
+                  <div className={styles.categoryHeaderText}>
+                    <p className={styles.categoryLabel}>{cat.label}</p>
+                    <h2 id={`${CATEGORY_ANCHOR[kind]}-heading`} className={styles.categoryTitle}>
+                      {cat.title}
+                    </h2>
+                    <p className={styles.categoryDescription}>{cat.description}</p>
+                  </div>
+                </header>
 
-              <Link href={primaryHref} className={styles.primaryCard}>
-                <span className={styles.primaryCardTag}>{primary.tag[validLocale]}</span>
-                <span className={styles.primaryCardTitle}>{primary.title[validLocale]}</span>
-                <span className={styles.primaryCardDescription}>
-                  {primary.intro[validLocale]}
-                </span>
-                <span className={styles.primaryCardCta}>
-                  {hub.toolCardCta}
-                  <span aria-hidden>→</span>
-                </span>
-              </Link>
+                <Link href={primaryHref} className={styles.primaryCard}>
+                  <span className={styles.primaryCardTag}>{primary.tag[validLocale]}</span>
+                  <span className={styles.primaryCardTitle}>{primary.title[validLocale]}</span>
+                  <span className={styles.primaryCardDescription}>
+                    {primary.intro[validLocale]}
+                  </span>
+                  <span className={styles.primaryCardCta}>
+                    {hub.toolCardCta}
+                    <span aria-hidden>→</span>
+                  </span>
+                </Link>
 
-              {variants.length > 0 && (
-                <div className={styles.variantsBlock}>
-                  <p className={styles.variantsLabel}>{cat.variantsLabel}</p>
-                  <ul className={styles.variantsList}>
-                    {variants.map((item) => {
-                      const href = getLocalizedPath(item.route, validLocale)
-                      return (
-                        <li key={item.route}>
-                          <Link href={href} className={styles.variantPill}>
-                            {item.tag[validLocale]}
-                          </Link>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              )}
-            </section>
+                {variants.length > 0 && (
+                  <div className={styles.variantsBlock}>
+                    <p className={styles.variantsLabel}>{cat.variantsLabel}</p>
+                    <ul className={styles.variantsList}>
+                      {variants.map((item) => {
+                        const href = getLocalizedPath(item.route, validLocale)
+                        return (
+                          <li key={item.route}>
+                            <Link href={href} className={styles.variantPill}>
+                              {item.tag[validLocale]}
+                            </Link>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                )}
+              </section>
+            </Fragment>
           )
         })}
 
