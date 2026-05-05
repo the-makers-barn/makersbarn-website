@@ -183,6 +183,11 @@ export interface ToolsHubItem {
   eyebrow: LocalizedString
   title: LocalizedString
   intro: LocalizedString
+  /**
+   * Short label for the in-card pill (e.g. "Yoga", "12 months", "First-time").
+   * Used to differentiate variants within a category at a glance.
+   */
+  tag: LocalizedString
 }
 
 export interface AuditVariantCopy {

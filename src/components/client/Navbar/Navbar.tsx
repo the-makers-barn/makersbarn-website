@@ -35,6 +35,7 @@ const NAV_ROUTES = [
   { href: Route.FACILITIES, key: 'facilities' as const },
   { href: Route.ABOUT, key: 'about' as const },
   { href: Route.EXPERIENCES, key: 'experiences' as const },
+  { href: Route.TOOLS, key: 'tools' as const },
   { href: Route.CHEFS, key: 'chefs' as const },
 ]
 
