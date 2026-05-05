@@ -9,6 +9,11 @@ import { Language } from '@/types'
  */
 export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
   // Hero images
+  '/images/chefs/chefs-hero.png': {
+    [Language.EN]: 'Hands plating a retreat dish — chef directory hero',
+    [Language.NL]: 'Handen leggen een retraitegerecht op — chef-gids hero',
+    [Language.DE]: 'Hände richten ein Retreat-Gericht an — Hero-Bild der Köcheübersicht',
+  },
   '/images/field-walking-women.jpg': {
     [Language.EN]: 'Retreat guests walking through the fields around The Makers Barn',
     [Language.NL]: 'Retreat gasten wandelend door de velden rondom The Makers Barn',
