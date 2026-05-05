@@ -18,7 +18,8 @@ export async function ChefTestimonials({ chef, lang }: Props) {
       <ul className={styles.grid}>
         {chef.testimonials.map((t, i) => (
           <li key={i} className={styles.card}>
-            <blockquote className={styles.quote}>"{localize(t.quote, lang)}"</blockquote>
+            <span aria-hidden="true" className={styles.quoteMark}>&ldquo;</span>
+            <blockquote className={styles.quote}>{localize(t.quote, lang)}</blockquote>
             <div className={styles.attribution}>
               <span className={styles.author}>{t.author}</span>
               <span className={styles.role}>{localize(t.role, lang)}</span>

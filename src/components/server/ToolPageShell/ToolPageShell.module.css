@@ -40,7 +40,7 @@
   line-height: var(--line-height-relaxed);
 }
 
-.howTo, .guide, .faq, .related {
+.howTo, .guide, .related {
   display: grid;
   gap: 1rem;
   max-width: 56rem;
@@ -94,15 +94,6 @@
 .guideSection { display: grid; gap: 0.75rem; margin-bottom: 2rem; }
 .guideHeading { font-family: var(--font-playfair); font-size: var(--font-size-xl); margin: 0; }
 .guideParagraph { margin: 0; line-height: var(--line-height-relaxed); color: var(--color-text-muted); }
-
-.faqList { display: grid; gap: 0.5rem; }
-.faqItem {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 0.5rem;
-  padding: 1rem 1.25rem;
-}
-.faqQuestion { font-weight: 600; cursor: pointer; }
-.faqAnswer { margin: 0.75rem 0 0; color: var(--color-text-muted); line-height: var(--line-height-relaxed); }
 
 .relatedGrid {
   display: grid;

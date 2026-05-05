@@ -1,11 +1,12 @@
 import { getServerTranslations } from '@/i18n/server'
 import type { Chef, Language } from '@/types'
 
+import { Faq } from '../Faq'
+
 import { ChefGrid } from './ChefGrid'
 import { ChefsContentSection } from './ChefsContentSection'
 import { ChefsDualCta } from './ChefsDualCta'
 import { ChefsFactsStrip } from './ChefsFactsStrip'
-import { ChefsFaq } from './ChefsFaq'
 import { ChefsHero } from './ChefsHero'
 import { ChefsIntro } from './ChefsIntro'
 import { ChefsStructuredData } from './ChefsStructuredData'
@@ -22,6 +23,7 @@ interface Props {
 export async function ChefsListingPage({ chefs, publishedChefs, lang }: Props) {
   const dict = await getServerTranslations(lang)
   const sections = dict.chefsListing.sections
+  const { h2: faqHeading, items: faqItems } = dict.chefsListing.faq
   return (
     <>
       <ChefsStructuredData lang={lang} publishedChefs={publishedChefs} />
@@ -33,7 +35,9 @@ export async function ChefsListingPage({ chefs, publishedChefs, lang }: Props) {
         <ChefsContentSection h2={sections.whatToLookFor.h2} paragraphs={sections.whatToLookFor.paragraphs} />
         <ChefsContentSection h2={sections.pricing.h2} paragraphs={sections.pricing.paragraphs} />
         <ChefsContentSection h2={sections.coverage.h2} paragraphs={sections.coverage.paragraphs} />
-        <ChefsFaq lang={lang} />
+        <div className={styles.faqWrapper}>
+          <Faq heading={faqHeading} entries={faqItems} />
+        </div>
         <ChefsDualCta lang={lang} />
       </main>
     </>

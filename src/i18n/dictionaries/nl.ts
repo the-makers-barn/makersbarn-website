@@ -970,6 +970,7 @@ export const nl: Dictionary = {
       yearsCooking: '{years} jaar kookervaring',
       summaryAriaLabel: 'Chef-overzicht',
     },
+    galleryLabel: 'Uit de keuken',
     about: 'OVER',
     signatureDishes: 'SIGNATUURGERECHTEN',
     signatureDishItemPrefix: 'NR. {n}',

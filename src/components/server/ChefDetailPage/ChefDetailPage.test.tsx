@@ -12,6 +12,8 @@ import { ChefDetailPage } from './ChefDetailPage'
 vi.mock('@/i18n/server', () => ({
   getServerTranslations: vi.fn().mockResolvedValue({
     chef: {
+      cta: { sendInquiry: 'Send {name} an inquiry' },
+      galleryLabel: 'From the kitchen',
       inquiry: {
         modalTitle: 'Send {name} an inquiry',
         closeAriaLabel: 'Close inquiry form',

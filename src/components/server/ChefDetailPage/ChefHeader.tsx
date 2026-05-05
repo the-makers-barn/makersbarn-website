@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { getServerTranslations } from '@/i18n/server'
-import { cn, localize, getImageAltText } from '@/lib'
+import { localize, getImageAltText } from '@/lib'
 import { getLocalizedPath } from '@/lib/routing'
 import type { Chef, Language } from '@/types'
 import { Route } from '@/types/navigation'
@@ -40,30 +40,41 @@ export async function ChefHeader({ chef, lang }: Props) {
       <Link href={getLocalizedPath(Route.CHEFS, lang)} className={styles.backLink}>
         {dict.chef.backLink}
       </Link>
-      <div className={styles.identity}>
-        <Image
-          src={chef.avatar.src}
-          alt={getImageAltText(chef.avatar.altKey, lang)}
-          width={120}
-          height={120}
-          className={styles.avatar}
-          priority
-        />
+
+      <div className={styles.layout}>
+        <div className={styles.portraitWrap}>
+          <span aria-hidden="true" className={styles.portraitTag}>
+            <span className={styles.portraitTagDot} /> Retreat chef
+          </span>
+          <div className={styles.portrait}>
+            <Image
+              src={chef.avatar.src}
+              alt={getImageAltText(chef.avatar.altKey, lang)}
+              fill
+              sizes="(max-width: 1023px) 80vw, 440px"
+              className={styles.portraitImage}
+              priority
+            />
+          </div>
+        </div>
+
         <div className={styles.text}>
           <h1 className={styles.name}>{chef.name}</h1>
+          <div className={styles.rule} aria-hidden="true" />
           <p className={styles.tagline}>{localize(chef.tagline, lang)}</p>
-          <ul className={cn(styles.metaLine)} aria-label={dict.chef.headerMeta.summaryAriaLabel}>
+          <ul className={styles.metaLine} aria-label={dict.chef.headerMeta.summaryAriaLabel}>
             <li>{locationLine}</li>
             <li>{guestsLabel}</li>
             <li>{languagesLabel}</li>
             <li>{yearsLabel}</li>
           </ul>
+          <div className={styles.ctaRow}>
+            <a href="#chef-inquiry" className={styles.primaryCta}>
+              {ctaLabel}
+              <span aria-hidden="true" className={styles.ctaArrow}>→</span>
+            </a>
+          </div>
         </div>
-      </div>
-      <div className={styles.ctaGroup}>
-        <a href="#chef-inquiry" className={styles.primaryCta}>
-          {ctaLabel}
-        </a>
       </div>
     </header>
   )

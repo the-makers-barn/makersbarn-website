@@ -962,6 +962,7 @@ export const en: Dictionary = {
       yearsCooking: '{years} years cooking',
       summaryAriaLabel: 'Chef summary',
     },
+    galleryLabel: 'From the kitchen',
     about: 'ABOUT',
     signatureDishes: 'SIGNATURE DISHES',
     signatureDishItemPrefix: 'NO. {n}',

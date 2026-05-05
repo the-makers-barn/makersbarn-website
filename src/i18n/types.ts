@@ -952,6 +952,7 @@ export interface ChefDictionary {
     tierAriaLabel: string
   }
   headerMeta: { guests: string; yearsCooking: string; summaryAriaLabel: string }
+  galleryLabel: string
   about: string
   signatureDishes: string
   signatureDishItemPrefix: string

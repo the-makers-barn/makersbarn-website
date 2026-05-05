@@ -1,35 +1,90 @@
-.card { background: var(--color-surface-warm); padding: 1.25rem; border-radius: 0.25rem; }
-.label {
-  font-family: var(--font-quicksand);
-  font-size: var(--font-size-xs);
-  letter-spacing: var(--letter-spacing-wide);
-  color: var(--color-text-tertiary);
-  margin: 0 0 0.5rem;
-}
-.travels {
-  font-family: var(--font-playfair);
-  font-size: var(--font-size-lg);
-  color: var(--color-text);
+.card {
+  padding: 0;
   margin: 0;
 }
+
+.label {
+  font-family: var(--font-quicksand);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--color-secondary);
+  opacity: 0.7;
+}
+
+.travels {
+  font-family: var(--font-playfair);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.005em;
+}
+
 .strongest {
   font-family: var(--font-quicksand);
-  font-size: var(--font-size-sm);
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--color-text-muted);
-  margin: 0.25rem 0 1rem;
+  margin: 0 0 1.25rem;
 }
-.mapWrapper { position: relative; display: flex; justify-content: center; }
-.map { width: 100px; height: 120px; color: var(--color-text-tertiary); }
-.dot { fill: var(--color-secondary); }
+
+.mapWrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(184, 137, 74, 0.06), transparent 60%),
+    rgba(31, 19, 12, 0.02);
+  border: 1px solid rgba(31, 19, 12, 0.06);
+  border-radius: 4px;
+}
+
+.map {
+  width: 90px;
+  height: 108px;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.dot {
+  fill: var(--color-secondary);
+  filter: drop-shadow(0 0 4px rgba(184, 137, 74, 0.5));
+}
+
 .cityLabel {
   position: absolute;
-  bottom: 0;
-  right: 0.5rem;
+  bottom: 1rem;
+  right: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   font-family: var(--font-quicksand);
-  font-size: var(--font-size-xs);
+  font-size: 0.72rem;
   color: var(--color-text-tertiary);
   text-align: right;
+  line-height: 1.35;
 }
-.cityLabel strong { color: var(--color-text); font-weight: 600; }
+
+.cityLabel strong {
+  font-family: var(--font-playfair);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}

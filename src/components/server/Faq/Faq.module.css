@@ -1,0 +1,35 @@
+.section {
+  display: grid;
+  gap: 1rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+}
+
+.list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.item {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+}
+
+.question {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.answer {
+  margin: 0.75rem 0 0;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
