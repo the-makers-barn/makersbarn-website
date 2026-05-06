@@ -19,7 +19,7 @@ export function BookingFormProgress({ currentStep, stepLabels, progressLabel }: 
       <nav aria-label={progressLabel}>
         <ol className={styles.progressSteps}>
           {Array.from({ length: TOTAL_STEPS }, (_, i) => {
-            const step = (i + 1) as WizardStep
+            const step: WizardStep = i + 1
             const isActive = step === currentStep
             const isCompleted = step < currentStep
             const stepLabel = getStepLabel(step, stepLabels)

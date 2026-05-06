@@ -31,7 +31,7 @@ export function BookingFormSkeleton() {
               <nav aria-label={booking.progressLabel}>
                 <ol className={styles.progressSteps}>
                   {Array.from({ length: TOTAL_STEPS }, (_, i) => {
-                    const step = (i + 1) as WizardStep
+                    const step: WizardStep = i + 1
                     const isActive = step === WizardStep.CONTACT
                     const stepLabel = getStepLabel(step, booking.steps)
                     return (

@@ -80,7 +80,7 @@ export async function sendChefInquiry(
   const visitorLocaleRaw = formData.get('locale')
   const visitorLocale: Language =
     visitorLocaleRaw === Language.NL || visitorLocaleRaw === Language.DE
-      ? (visitorLocaleRaw as Language)
+      ? visitorLocaleRaw
       : Language.EN
 
   const safe = {
