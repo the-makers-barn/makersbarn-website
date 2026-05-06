@@ -15,22 +15,22 @@ A modern, SEO-optimized website built with Next.js 15, React 19, TypeScript, and
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
+- Node.js 20+
+- [pnpm](https://pnpm.io/) 10+ (`npm install -g pnpm`)
 
 ### Installation
 
 1. Clone the repository
 2. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Create a `.env.local` file in the root directory (see Environment Variables section below)
 
 4. Run the development server:
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
@@ -38,16 +38,17 @@ A modern, SEO-optimized website built with Next.js 15, React 19, TypeScript, and
 ### Build for Production
 
 ```bash
-npm run build
-npm start
+pnpm build
+pnpm start
 ```
 
 ## Available Scripts
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build the application for production
-- `npm start` - Start the production server
-- `npm run lint` - Run ESLint to check for code issues
+- `pnpm dev` - Start the development server
+- `pnpm build` - Build the application for production
+- `pnpm start` - Start the production server
+- `pnpm lint` - Run ESLint to check for code issues
+- `pnpm test` - Run the vitest suite
 
 ## Project Structure
 

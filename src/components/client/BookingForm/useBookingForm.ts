@@ -108,14 +108,14 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
       })
     }
 
-    if ((currentStep as number) < 4) {
-      setCurrentStep((prev) => (prev + 1) as WizardStep)
+    if (currentStep < WizardStep.REVIEW) {
+      setCurrentStep((prev) => prev + 1)
     }
   }, [currentStep, validateCurrentStep, formData, hasNotifiedStart])
 
   const handlePrevStep = useCallback(() => {
     if (currentStep > WizardStep.CONTACT) {
-      setCurrentStep((prev) => (prev - 1) as WizardStep)
+      setCurrentStep((prev) => prev - 1)
     }
   }, [currentStep])
 

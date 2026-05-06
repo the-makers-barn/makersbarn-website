@@ -4,11 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
+This project uses **pnpm** as the package manager (see `packageManager` field in `package.json`).
+
 ```bash
-npm run dev      # Start development server (Next.js)
-npm run build    # Production build
-npm run start    # Start production server
-npm run lint     # Run ESLint
+pnpm install     # Install dependencies
+pnpm dev         # Start development server (Next.js)
+pnpm build       # Production build
+pnpm start       # Start production server
+pnpm lint        # Run ESLint
+pnpm test        # Run vitest once
+pnpm test:watch  # Run vitest in watch mode
 ```
 
 ## Deployment

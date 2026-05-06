@@ -12,12 +12,11 @@ export function getImageAltText(
   key: string,
   language: Language = Language.EN
 ): string {
-  const imageData: Record<Language, string> | undefined = IMAGE_ALT_TEXT[key] as Record<Language, string> | undefined
-
-  if (!imageData) {
+  if (!Object.prototype.hasOwnProperty.call(IMAGE_ALT_TEXT, key)) {
     return ''
   }
 
+  const imageData = IMAGE_ALT_TEXT[key]
   return imageData[language] || imageData[Language.EN] || ''
 }
 
