@@ -37,6 +37,26 @@ function MapPinIcon() {
   )
 }
 
+function HouseIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M3 10.5 12 3l9 7.5" />
+      <path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5" />
+      <path d="M10 21v-6h4v6" />
+    </svg>
+  )
+}
+
 function ToolsIcon() {
   return (
     <svg
@@ -91,6 +111,13 @@ export async function Footer({ locale }: FooterProps = {}) {
               >
                 <MapPinIcon />
                 {t.footer.viewLocation}
+              </Link>
+              <Link
+                href={getLocalizedPath(Route.HOST_A_RETREAT, language)}
+                className={styles.locationLink}
+              >
+                <HouseIcon />
+                {t.footer.hostRetreat}
               </Link>
               <Link
                 href={getLocalizedPath(Route.TOOLS, language)}
