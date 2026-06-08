@@ -232,6 +232,7 @@ export const de: Dictionary = {
     tagline: 'Where creativity meets tranquility',
     copyright: "The MakersBarn.",
     viewLocation: 'Standort ansehen',
+    explore: 'Entdecken',
     hostRetreat: 'Retreat veranstalten',
     exploreTools: 'Gratis-Tools für Gastgeber',
   },
