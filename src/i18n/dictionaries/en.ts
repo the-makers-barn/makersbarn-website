@@ -229,6 +229,7 @@ export const en: Dictionary = {
     tagline: 'Where creativity meets tranquility',
     copyright: "The MakersBarn.",
     viewLocation: 'View location',
+    exploreTools: 'Free tools for hosts',
   },
 
   about: {

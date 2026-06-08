@@ -232,6 +232,7 @@ export const de: Dictionary = {
     tagline: 'Where creativity meets tranquility',
     copyright: "The MakersBarn.",
     viewLocation: 'Standort ansehen',
+    exploreTools: 'Gratis-Tools für Gastgeber',
   },
 
   about: {
@@ -843,15 +844,15 @@ export const de: Dictionary = {
         vatNoticeGross: 'gezeigt wie eingegeben',
         vatGrossHint: 'Gäste zahlen {gross} pro Platz. Nach {percent}% MwSt. bleiben dir {net} pro Platz — damit rechnet der Rechner.',
         breakdownLabels: {
-          venue: 'Venue',
-          food: 'Food',
-          facilitator: 'Facilitator',
-          marketing: 'Marketing & other',
-          travel: 'Travel',
-          insurance: 'Insurance',
-          fees: 'Payment fees',
-          profit: 'Profit',
-          barAriaLabel: 'Cost and profit breakdown',
+          venue: 'Location',
+          food: 'Verpflegung',
+          facilitator: 'Honorar',
+          marketing: 'Marketing & Sonstiges',
+          travel: 'Reise',
+          insurance: 'Versicherung',
+          fees: 'Zahlungsgebühren',
+          profit: 'Gewinn',
+          barAriaLabel: 'Kosten- und Gewinnaufstellung',
         },
       },
       email: {

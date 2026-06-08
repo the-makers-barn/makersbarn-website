@@ -37,6 +37,24 @@ function MapPinIcon() {
   )
 }
 
+function ToolsIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1z" />
+    </svg>
+  )
+}
+
 interface FooterProps {
   locale?: Language
 }
@@ -73,6 +91,13 @@ export async function Footer({ locale }: FooterProps = {}) {
               >
                 <MapPinIcon />
                 {t.footer.viewLocation}
+              </Link>
+              <Link
+                href={getLocalizedPath(Route.TOOLS, language)}
+                className={styles.locationLink}
+              >
+                <ToolsIcon />
+                {t.footer.exploreTools}
               </Link>
             </div>
           </div>

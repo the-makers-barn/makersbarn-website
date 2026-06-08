@@ -1,6 +1,10 @@
 import { LanguageWrapper, Navbar, FloatingWhatsApp } from '@/components/client'
-import { Footer } from '@/components/server'
+import { Footer, StructuredData } from '@/components/server'
 import { getValidLocale } from '@/lib/locale'
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+} from '@/lib/structuredData'
 
 interface LocaleLayoutProps {
   children: React.ReactNode
@@ -25,6 +29,9 @@ export default async function LocaleLayout({
 
   return (
     <LanguageWrapper initialLanguage={validLocale}>
+      <StructuredData
+        data={[generateOrganizationSchema(), generateWebSiteSchema()]}
+      />
       <Navbar />
       {children}
       <Footer locale={validLocale} />
