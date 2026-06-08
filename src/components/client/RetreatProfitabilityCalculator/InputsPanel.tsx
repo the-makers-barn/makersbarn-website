@@ -27,6 +27,7 @@ export function InputsPanel({ inputs, variant, locale, t, onChange, onReset }: I
 
   return (
     <div className={styles.inputsPanel}>
+      <p className={styles.defaultsDisclaimer}>{labels.defaultsDisclaimer}</p>
       <RevenueSection inputs={inputs} variant={variant} locale={locale} labels={labels} onChange={onChange} />
       <CostsSection inputs={inputs} variant={variant} locale={locale} labels={labels} onChange={onChange} />
       <button type="button" className={styles.resetButton} onClick={onReset}>

@@ -789,6 +789,7 @@ export const en: Dictionary = {
     },
     calculator: {
       inputs: {
+        defaultsDisclaimer: 'These starting numbers are typical industry estimates for you to play with — not The MakersBarn\'s prices.',
         hiresFacilitatorsQuestion: 'Are you paying any of them?',
         hiresFacilitatorsYes: 'Yes',
         hiresFacilitatorsNo: 'No',
