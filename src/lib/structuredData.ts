@@ -478,6 +478,8 @@ export function getSiloCardLabel(
       return cards.circleRetreats
     case SiloSlug.PHOTOGRAPHY_WORKSHOPS:
       return cards.photographyWorkshops
+    case SiloSlug.ART_RETREATS:
+      return cards.artRetreats
   }
 }
 

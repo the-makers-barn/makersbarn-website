@@ -12,6 +12,7 @@ export enum SiloSlug {
   WELLNESS_DETOX_RETREATS = 'wellness-detox-retreats',
   CIRCLE_RETREATS = 'circle-retreats',
   PHOTOGRAPHY_WORKSHOPS = 'photography-workshops',
+  ART_RETREATS = 'art-retreats',
 }
 
 export type SiloLocalizedString = Record<Language, string>

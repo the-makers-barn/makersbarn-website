@@ -709,6 +709,11 @@ export const en: Dictionary = {
         pitch:
           'For pro photographers running multi-day workshops. Big skies, 1.3 hectares of shifting light, and a base camp that handles the rest.',
       },
+      artRetreats: {
+        title: 'Art & creative retreats',
+        pitch:
+          'For painters, makers, and creative facilitators. A 65 m² barn studio, 1.3 hectares of subjects to work from, and a base camp that handles the rest.',
+      },
     },
     comparisonCard: {
       eyebrow: 'Still deciding?',

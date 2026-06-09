@@ -108,6 +108,7 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
     '/wellness-detox-retreats',
     '/circle-retreats',
     '/photography-workshops',
+    '/art-retreats',
     '/tools',
     '/tools/retreat-profitability-calculator',
     '/tools/yoga-retreat-pricing-calculator',

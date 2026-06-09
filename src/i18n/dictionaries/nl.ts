@@ -717,6 +717,11 @@ export const nl: Dictionary = {
         pitch:
           'Voor professionele fotografen die meerdaagse workshops leiden. Grote luchten, 1,3 hectare verschuivend licht, en een basis die de rest regelt.',
       },
+      artRetreats: {
+        title: 'Kunst- & creatieve retraites',
+        pitch:
+          'Voor schilders, makers en creatieve begeleiders. Een atelier van 65 m² in de schuur, 1,3 hectare aan onderwerpen om naar te werken, en een basis die de rest regelt.',
+      },
     },
     comparisonCard: {
       eyebrow: 'Nog aan het twijfelen?',

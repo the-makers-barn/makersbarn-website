@@ -1,6 +1,7 @@
 import { IMAGES } from '@/data/images'
 import { Language, Route, SiloHubCardSummary, SiloSlug } from '@/types'
 
+export { ART_RETREATS_SILO } from './art-retreats'
 export { BREATHWORK_SOUND_HEALING_SILO } from './breathwork-sound-healing'
 export { CIRCLE_RETREATS_SILO } from './circle-retreats'
 export { COACHING_INTENSIVES_SILO } from './coaching-intensives'
@@ -111,6 +112,16 @@ export const SILO_HUB_CARDS: readonly SiloHubCardSummary[] = [
       [Language.EN]: 'Wide garden view with hammocks at The Makers Barn',
       [Language.NL]: 'Wijds tuinzicht met hangmatten bij The Makers Barn',
       [Language.DE]: 'Weite Gartenansicht mit Hängematten bei The Makers Barn',
+    },
+  },
+  {
+    slug: SiloSlug.ART_RETREATS,
+    route: Route.ART_RETREATS,
+    imageSrc: IMAGES.accommodation.hayHouseSun,
+    imageAlt: {
+      [Language.EN]: 'The Hay House barn studio glowing in the evening sun',
+      [Language.NL]: 'De Hay House-schuur als atelier, oplichtend in de avondzon',
+      [Language.DE]: 'Die Hay-House-Scheune als Atelier im Licht der Abendsonne',
     },
   },
 ] as const

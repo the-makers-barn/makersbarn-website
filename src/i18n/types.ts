@@ -694,6 +694,7 @@ export interface RetreatsHubTranslations {
     wellnessDetoxRetreats: { title: string; pitch: string }
     circleRetreats: { title: string; pitch: string }
     photographyWorkshops: { title: string; pitch: string }
+    artRetreats: { title: string; pitch: string }
   }
   comparisonCard: {
     eyebrow: string
