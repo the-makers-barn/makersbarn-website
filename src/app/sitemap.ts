@@ -55,6 +55,7 @@ const PAGE_ROUTES: readonly PageRoute[] = [
   { path: Route.WELLNESS_DETOX_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.CIRCLE_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.PHOTOGRAPHY_WORKSHOPS, changeFrequency: 'monthly', priority: 0.85 },
+  { path: Route.ART_RETREATS, changeFrequency: 'monthly', priority: 0.85 },
   { path: Route.TOOLS, changeFrequency: 'weekly', priority: 0.85 },
   { path: Route.RETREAT_PROFITABILITY_CALCULATOR, changeFrequency: 'monthly', priority: 0.7 },
   { path: Route.YOGA_RETREAT_PRICING_CALCULATOR, changeFrequency: 'monthly', priority: 0.7 },

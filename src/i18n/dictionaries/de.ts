@@ -715,6 +715,11 @@ export const de: Dictionary = {
         pitch:
           'Für professionelle Fotografen, die mehrtägige Workshops leiten. Weiter Himmel, 1,3 Hektar mit wechselndem Licht und ein Basislager, das sich um den Rest kümmert.',
       },
+      artRetreats: {
+        title: 'Kunst- & Kreativ-Retreats',
+        pitch:
+          'Für Maler:innen, Maker und kreative Leiter:innen. Ein 65 m² großes Atelier in der Scheune, 1,3 Hektar Motive zum Arbeiten und ein Basislager, das sich um den Rest kümmert.',
+      },
     },
     comparisonCard: {
       eyebrow: 'Noch am Überlegen?',

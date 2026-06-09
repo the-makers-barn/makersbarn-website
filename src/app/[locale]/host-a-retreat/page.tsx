@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { StructuredData } from '@/components/server'
 import {
+  ART_RETREATS_SILO,
   BREATHWORK_SOUND_HEALING_SILO,
   CIRCLE_RETREATS_SILO,
   COACHING_INTENSIVES_SILO,
@@ -41,6 +42,7 @@ const SILO_BY_SLUG: Record<SiloSlug, SiloContent> = {
   [SiloSlug.WELLNESS_DETOX_RETREATS]: WELLNESS_DETOX_RETREATS_SILO,
   [SiloSlug.CIRCLE_RETREATS]: CIRCLE_RETREATS_SILO,
   [SiloSlug.PHOTOGRAPHY_WORKSHOPS]: PHOTOGRAPHY_WORKSHOPS_SILO,
+  [SiloSlug.ART_RETREATS]: ART_RETREATS_SILO,
 }
 
 const CARD_IMAGE_SIZES = '(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw' as const
