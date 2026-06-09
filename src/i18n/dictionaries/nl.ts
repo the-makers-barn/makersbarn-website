@@ -232,6 +232,9 @@ export const nl: Dictionary = {
     tagline: 'Where creativity meets tranquility',
     copyright: "The MakersBarn.",
     viewLocation: 'Bekijk locatie',
+    explore: 'Ontdek',
+    hostRetreat: 'Organiseer een retraite',
+    exploreTools: 'Gratis tools voor hosts',
   },
 
   about: {
@@ -658,7 +661,7 @@ export const nl: Dictionary = {
     metaDescription:
       'Organiseer je retraite bij The Makers Barn. Een boerderij uit 1920 in Overijssel voor yoga, meditatie, schrijvers, teams, ademwerk en meer.',
     eyebrow: 'Organiseer een retraite',
-    title: 'Rustige manieren om een boerderij uit 1920 te gebruiken',
+    title: 'Een thuis voor je retraite',
     intro:
       'The Makers Barn leent zich voor verschillende soorten werk. Kies het retraite-type dat past — elke pagina gaat dieper in op wat we voor zo’n groep bieden.',
     cardCta: 'Bekijk dit retraite-type',
@@ -733,7 +736,7 @@ export const nl: Dictionary = {
     toolsBlock: {
       eyebrow: 'Gratis planningstools',
       title: 'Tools voor retraitebegeleiders',
-      intro: 'Gratis tools om je te helpen een retraite te plannen die echt werkt — bij MakersBarn of elders.',
+      intro: 'Gratis, vrij toegankelijke tools om je te helpen een retraite te plannen die echt werkt — bij MakersBarn of elders.',
       calendarTitle: 'De 12-maanden launch-kalender',
       calendarBody: 'Fasen, mijlpalen en de realistische planning. Kies je aanloopduur (3, 6, 9 of 12 maanden) en streep af wat je hebt afgerond.',
       calendarCtaLabel: 'Open de launch-kalender',

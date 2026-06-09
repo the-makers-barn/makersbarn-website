@@ -3,6 +3,7 @@ import { Playfair_Display, Quicksand } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 
 import { baseMetadata } from '@/lib/metadata'
+import { getServerLanguage } from '@/i18n'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -23,16 +24,18 @@ export const metadata: Metadata = baseMetadata
  * Root layout - minimal wrapper for the entire application
  * 
  * This layout handles the basic HTML structure only.
- * Locale-specific logic (language detection, lang attribute, etc.) 
- * is handled in [locale]/layout.tsx
+ * The lang attribute is resolved from the request (cookie/domain detection)
+ * so non-English locales are declared correctly to crawlers and assistive tech.
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const language = await getServerLanguage()
+
   return (
-    <html lang="en" className={`${playfair.variable} ${quicksand.variable}`}>
+    <html lang={language} className={`${playfair.variable} ${quicksand.variable}`}>
       <body>
         {children}
         <Analytics />

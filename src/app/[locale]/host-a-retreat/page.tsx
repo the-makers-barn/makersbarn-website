@@ -208,8 +208,8 @@ export default async function HostARetreatPage({ params }: PageProps) {
           </div>
         </section>
 
-        <section className={styles.help}>
-          <h2 className={styles.helpTitle}>{t.retreats.helpTitle}</h2>
+        <section className={styles.help} aria-labelledby="help-title">
+          <h2 className={styles.helpTitle} id="help-title">{t.retreats.helpTitle}</h2>
           <p className={styles.helpBody}>{t.retreats.helpBody}</p>
           <Link href={getLocalizedPath(Route.CONTACT, validLocale)} className={styles.helpCta}>
             {t.retreats.helpCta}
@@ -217,8 +217,11 @@ export default async function HostARetreatPage({ params }: PageProps) {
           </Link>
         </section>
 
-        <p style={{ textAlign: 'center', margin: '2rem 0' }}>
-          <Link href={getLocalizedPath(Route.CHEFS, validLocale)}>
+        <p className={styles.chefsCrossLink}>
+          <Link
+            href={getLocalizedPath(Route.CHEFS, validLocale)}
+            className={styles.chefsCrossLinkAnchor}
+          >
             {t.chefsListing.crossLink.label}
           </Link>
         </p>

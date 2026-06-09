@@ -229,6 +229,9 @@ export const en: Dictionary = {
     tagline: 'Where creativity meets tranquility',
     copyright: "The MakersBarn.",
     viewLocation: 'View location',
+    explore: 'Explore',
+    hostRetreat: 'Host a retreat',
+    exploreTools: 'Free tools for hosts',
   },
 
   about: {
@@ -650,7 +653,7 @@ export const en: Dictionary = {
     metaDescription:
       'Host your retreat at The Makers Barn. A 1920s farm in Overijssel for yoga, meditation, writers, teams, breathwork, and more.',
     eyebrow: 'Host a retreat',
-    title: 'Quiet ways to use a 1920s farm',
+    title: 'A home for your retreat',
     intro:
       'The Makers Barn holds different kinds of work well. Pick the retreat type that fits — each page goes deeper into what we offer for that specific kind of group.',
     cardCta: 'See this retreat type',

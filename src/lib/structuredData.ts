@@ -16,6 +16,7 @@ const SHANTI_DEVA_EVENT_ID = `${SITE_URL}/experiences/shanti-deva-retreat#event`
 export interface OrganizationSchema {
   '@context': string
   '@type': 'Organization'
+  '@id': string
   name: string
   url: string
   logo: string
@@ -136,6 +137,7 @@ export interface CollectionPageSchema {
 export interface WebSiteSchema {
   '@context': string
   '@type': 'WebSite'
+  '@id': string
   name: string
   url: string
   description: string
@@ -194,6 +196,7 @@ export function generateOrganizationSchema(): OrganizationSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${SITE_URL}#organization`,
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/tmb-logo.webp`,
@@ -495,6 +498,7 @@ export function generateWebSiteSchema(options?: {
   const schema: WebSiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${SITE_URL}#website`,
     name: SITE_NAME,
     url: SITE_URL,
     description:
