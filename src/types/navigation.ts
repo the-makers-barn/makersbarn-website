@@ -42,6 +42,7 @@ export enum Route {
   WELLNESS_RETREAT_AGENDA_BUILDER = '/tools/wellness-retreat-agenda-builder',
   MEDITATION_RETREAT_AGENDA_BUILDER = '/tools/meditation-retreat-agenda-builder',
   COACHING_RETREAT_AGENDA_BUILDER = '/tools/coaching-retreat-agenda-builder',
+  TERMS_AND_CONDITIONS = '/terms-and-conditions',
 }
 
 export interface NavLink {

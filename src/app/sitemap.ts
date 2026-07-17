@@ -77,6 +77,7 @@ const PAGE_ROUTES: readonly PageRoute[] = [
   { path: Route.WELLNESS_RETREAT_AGENDA_BUILDER, changeFrequency: 'monthly', priority: 0.7 },
   { path: Route.MEDITATION_RETREAT_AGENDA_BUILDER, changeFrequency: 'monthly', priority: 0.7 },
   { path: Route.COACHING_RETREAT_AGENDA_BUILDER, changeFrequency: 'monthly', priority: 0.7 },
+  { path: Route.TERMS_AND_CONDITIONS, changeFrequency: 'monthly', priority: 0.3 },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
