@@ -174,7 +174,7 @@ export const TERMS_NL: TermsVariant = {
       title: 'Artikel 7: Risicovolle Activiteiten en Verantwoordelijkheid Organisator',
       clauses: [
         {
-          text: 'Verhoogd risico: Voor activiteiten met een verhoogd risico die op het terrein of in de faciliteiten van The Makers Barn plaatsvinden – waaronder uitdrukkelijk begrepen, maar niet beperkt tot, het organiseren van een zweethutsessie, intensief ademwerk, ijsbaden of andere ingrijpende fysieke, mentale of spirituele ritualen – is de Contractant verplicht The Makers Barn vooraf volledig in te lichten en hiervoor expliciete goedkeuring te verkrijgen.',
+          text: 'Verhoogd risico: Voor activiteiten met een verhoogd risico die op het terrein of in de faciliteiten van The Makers Barn plaatsvinden – waaronder uitdrukkelijk begrepen, maar niet beperkt tot, het organiseren van een zweethutsessie, intensief ademwerk, ijsbaden of andere ingrijpende fysieke, mentale of spirituele rituelen – is de Contractant verplicht The Makers Barn vooraf volledig in te lichten en hiervoor expliciete goedkeuring te verkrijgen.',
         },
         {
           text: 'Verantwoordelijkheid organisator: De Contractant (in de hoedanigheid van organisator en facilitator) alsmede de specifieke persoon die de activiteit feitelijk leidt of organiseert, draagt de volledige, exclusieve en hoofdelijke verantwoordelijkheid voor een veilige, deskundige en verantwoorde uitvoering hiervan.',
