@@ -92,6 +92,7 @@ export interface FooterTranslations {
   explore: string
   hostRetreat: string
   exploreTools: string
+  termsAndConditions: string
 }
 
 /**

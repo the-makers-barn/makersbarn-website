@@ -232,6 +232,7 @@ export const en: Dictionary = {
     explore: 'Explore',
     hostRetreat: 'Host a retreat',
     exploreTools: 'Free tools for hosts',
+    termsAndConditions: 'Terms & Conditions',
   },
 
   about: {

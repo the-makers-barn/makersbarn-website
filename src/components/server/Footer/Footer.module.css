@@ -197,11 +197,35 @@
 .bottom {
   border-top: 1px solid rgba(247, 243, 238, 0.18);
   padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .bottom {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
 }
 
 .copyright {
   margin: 0;
   font-size: var(--font-size-sm);
   color: var(--color-text-inverse-muted);
+}
+
+.legalLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-inverse-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.legalLink:hover {
+  color: var(--color-text-inverse);
 }

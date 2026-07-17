@@ -165,6 +165,12 @@ export async function Footer({ locale }: FooterProps = {}) {
           <p className={styles.copyright}>
             &copy; {currentYear} {t.footer.copyright}
           </p>
+          <Link
+            href={getLocalizedPath(Route.TERMS_AND_CONDITIONS, language)}
+            className={styles.legalLink}
+          >
+            {t.footer.termsAndConditions}
+          </Link>
         </div>
       </div>
     </footer>

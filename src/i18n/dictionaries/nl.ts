@@ -235,6 +235,7 @@ export const nl: Dictionary = {
     explore: 'Ontdek',
     hostRetreat: 'Organiseer een retraite',
     exploreTools: 'Gratis tools voor hosts',
+    termsAndConditions: 'Algemene voorwaarden',
   },
 
   about: {

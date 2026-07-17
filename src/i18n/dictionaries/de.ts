@@ -235,6 +235,7 @@ export const de: Dictionary = {
     explore: 'Entdecken',
     hostRetreat: 'Retreat veranstalten',
     exploreTools: 'Gratis-Tools für Gastgeber',
+    termsAndConditions: 'AGB',
   },
 
   about: {
