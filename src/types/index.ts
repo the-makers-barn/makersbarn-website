@@ -9,6 +9,7 @@ export * from './retreats'
 export * from './booking'
 export * from './silo'
 export * from './comparison'
+export * from './terms'
 export * from './tools'
 export type {
   Chef,
