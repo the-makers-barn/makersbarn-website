@@ -35,6 +35,7 @@ export interface TermsArticle {
 }
 
 export interface TermsVariant {
+  lang: Language
   documentTitle: string
   subtitle: string
   identity: readonly TermsIdentityEntry[]

@@ -103,7 +103,7 @@ export default async function TermsAndConditionsPage({ params }: PageProps) {
   })
 
   return (
-    <main className={styles.page}>
+    <main className={styles.page} lang={terms.lang}>
       <StructuredData data={[breadcrumb]} />
       <header className={styles.hero}>
         <div className={styles.heroInner}>

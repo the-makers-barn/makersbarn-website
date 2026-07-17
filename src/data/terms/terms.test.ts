@@ -26,6 +26,8 @@ describe('terms content', () => {
       'General Terms and Conditions of Rental'
     )
     expect(getTermsVariant(Language.DE)).toBe(getTermsVariant(Language.EN))
+    expect(getTermsVariant(Language.NL).lang).toBe(Language.NL)
+    expect(getTermsVariant(Language.EN).lang).toBe(Language.EN)
   })
 
   it('includes the cancellation table and swimming pond callout in both variants', () => {

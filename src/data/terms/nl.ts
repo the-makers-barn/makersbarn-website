@@ -1,6 +1,8 @@
 import type { TermsVariant } from '@/types'
+import { Language } from '@/types'
 
 export const TERMS_NL: TermsVariant = {
+  lang: Language.NL,
   documentTitle: 'Algemene Voorwaarden Verhuur',
   subtitle:
     'The Makers Barn — Algemene voorwaarden voor organisatoren en facilitators',

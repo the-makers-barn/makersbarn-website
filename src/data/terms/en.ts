@@ -1,4 +1,5 @@
 import type { TermsDisclaimer, TermsVariant } from '@/types'
+import { Language } from '@/types'
 
 export const TERMS_DISCLAIMER_EN: TermsDisclaimer = {
   title: 'Courtesy translation',
@@ -6,6 +7,7 @@ export const TERMS_DISCLAIMER_EN: TermsDisclaimer = {
 }
 
 export const TERMS_EN: TermsVariant = {
+  lang: Language.EN,
   documentTitle: 'General Terms and Conditions of Rental',
   subtitle:
     'The Makers Barn — General terms and conditions for organisers and facilitators',
