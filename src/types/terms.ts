@@ -50,8 +50,3 @@ export interface TermsMeta {
   title: TermsLocalizedString
   description: TermsLocalizedString
 }
-
-export interface TermsDisclaimer {
-  title: string
-  body: string
-}

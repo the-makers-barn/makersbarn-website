@@ -1,5 +1,4 @@
-import type { TermsVariant } from '@/types'
-import { Language } from '@/types'
+import { Language, type TermsVariant } from '@/types'
 
 export const TERMS_NL: TermsVariant = {
   lang: Language.NL,

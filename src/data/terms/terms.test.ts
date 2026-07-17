@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { Language } from '@/types'
 
-import { TERMS_META, getTermsVariant, getTermsDisclaimer } from './index'
+import { TERMS_META, getTermsVariant } from './index'
 
 const ARTICLE_COUNT = 11
 const KVK_NUMBER = '42017220'
@@ -39,14 +39,6 @@ describe('terms content', () => {
       expect(withTable[0].table?.rows).toHaveLength(3)
       expect(withCallout).toHaveLength(1)
     }
-  })
-
-  it('provides a binding-version disclaimer for non-NL locales only', () => {
-    expect(getTermsDisclaimer(Language.NL)).toBeNull()
-    expect(getTermsDisclaimer(Language.EN)?.body).toContain('Dutch')
-    expect(getTermsDisclaimer(Language.DE)).toEqual(
-      getTermsDisclaimer(Language.EN)
-    )
   })
 
   it('has meta title and description for every locale', () => {

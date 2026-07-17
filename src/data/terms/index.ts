@@ -1,7 +1,7 @@
 import { Language } from '@/types'
-import type { TermsDisclaimer, TermsMeta, TermsVariant } from '@/types'
+import type { TermsMeta, TermsVariant } from '@/types'
 
-import { TERMS_EN, TERMS_DISCLAIMER_EN } from './en'
+import { TERMS_EN } from './en'
 import { TERMS_NL } from './nl'
 
 export const TERMS_META: TermsMeta = {
@@ -22,8 +22,4 @@ export const TERMS_META: TermsMeta = {
 
 export function getTermsVariant(locale: Language): TermsVariant {
   return locale === Language.NL ? TERMS_NL : TERMS_EN
-}
-
-export function getTermsDisclaimer(locale: Language): TermsDisclaimer | null {
-  return locale === Language.NL ? null : TERMS_DISCLAIMER_EN
 }

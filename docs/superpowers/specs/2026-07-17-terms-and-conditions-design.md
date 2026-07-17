@@ -10,7 +10,7 @@ Publish The Makers Barn's rental terms (Algemene Voorwaarden, source: `Algemene_
 ## Decisions
 
 - **Format:** HTML page rendering the full legal text. No PDF hosting.
-- **Languages:** NL locale shows the original Dutch text; EN and DE locales show a courtesy English translation. The Dutch text remains the legally binding version, and the English page states this in a disclaimer. No German translation.
+- **Languages:** NL locale shows the original Dutch text; EN and DE locales show a courtesy English translation. The Dutch text remains the legally binding version. No German translation. (A visible courtesy-translation disclaimer was initially included and later removed at the owner's request.)
 - **URL:** `/terms-and-conditions` (consistent with existing English route slugs), served under all three locales via `[locale]`.
 - **Footer placement:** bottom bar, next to the copyright line.
 
@@ -33,7 +33,6 @@ Publish The Makers Barn's rental terms (Algemene Voorwaarden, source: `Algemene_
   - Article 5 cancellation table (3 rows: timing → consequence).
   - Highlighted warning callout about the swimming pond (zwemvijver) from Article 6.
 - Language selection: NL locale renders the Dutch variant; EN and DE locales render the English variant.
-- Binding-version disclaimer: the English variant opens with a short note stating it is a courtesy translation and that the Dutch version ("Algemene Voorwaarden") is the legally binding text. Shown on EN and DE locales only.
 
 ## Footer
 
@@ -53,4 +52,4 @@ Publish The Makers Barn's rental terms (Algemene Voorwaarden, source: `Algemene_
 ## Validation
 
 - `pnpm lint`, `pnpm test`, `pnpm build` all pass.
-- Manual check: `/nl/terms-and-conditions` renders the Dutch text; `/en/...` and `/de/...` render the English translation with the binding-version disclaimer; footer link appears with the correct label per locale.
+- Manual check: `/nl/terms-and-conditions` renders the Dutch text; `/en/...` and `/de/...` render the English translation; footer link appears with the correct label per locale.

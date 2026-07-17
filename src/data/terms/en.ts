@@ -1,10 +1,4 @@
-import type { TermsDisclaimer, TermsVariant } from '@/types'
-import { Language } from '@/types'
-
-export const TERMS_DISCLAIMER_EN: TermsDisclaimer = {
-  title: 'Courtesy translation',
-  body: 'This English text is a courtesy translation of the original Dutch "Algemene Voorwaarden" of The Makers Barn. In the event of any discrepancy or dispute, the Dutch version is the legally binding text.',
-}
+import { Language, type TermsVariant } from '@/types'
 
 export const TERMS_EN: TermsVariant = {
   lang: Language.EN,

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import { StructuredData } from '@/components/server'
-import { TERMS_META, getTermsVariant, getTermsDisclaimer } from '@/data/terms'
+import { TERMS_META, getTermsVariant } from '@/data/terms'
 import { generatePageMetadata } from '@/lib/metadata'
 import { getValidLocale } from '@/lib/locale'
 import { getLocalizedPath } from '@/lib/routing'
@@ -96,7 +96,6 @@ export default async function TermsAndConditionsPage({ params }: PageProps) {
   const { locale } = await params
   const validLocale = getValidLocale(locale)
   const terms = getTermsVariant(validLocale)
-  const disclaimer = getTermsDisclaimer(validLocale)
   const breadcrumb = generatePageBreadcrumbs({
     name: TERMS_META.title[validLocale],
     path: getLocalizedPath(Route.TERMS_AND_CONDITIONS, validLocale),
@@ -112,12 +111,6 @@ export default async function TermsAndConditionsPage({ params }: PageProps) {
         </div>
       </header>
       <div className={styles.body}>
-        {disclaimer && (
-          <aside className={styles.disclaimer}>
-            <h2 className={styles.disclaimerTitle}>{disclaimer.title}</h2>
-            <p className={styles.disclaimerBody}>{disclaimer.body}</p>
-          </aside>
-        )}
         <dl className={styles.identity}>
           {terms.identity.map((entry) => (
             <div key={entry.label} className={styles.identityRow}>
