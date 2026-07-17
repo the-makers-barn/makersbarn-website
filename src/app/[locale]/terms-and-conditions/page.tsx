@@ -6,8 +6,14 @@ import { generatePageMetadata } from '@/lib/metadata'
 import { getValidLocale } from '@/lib/locale'
 import { getLocalizedPath } from '@/lib/routing'
 import { generatePageBreadcrumbs } from '@/lib/structuredData'
-import { Route } from '@/types'
-import type { TermsArticle } from '@/types'
+import {
+  Route,
+  type TermsArticle,
+  type TermsCallout,
+  type TermsClause,
+  type TermsDefinition,
+  type TermsTable,
+} from '@/types'
 
 import styles from './page.module.css'
 
@@ -26,68 +32,86 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   })
 }
 
+function ArticleDefinitions({ definitions }: { definitions: readonly TermsDefinition[] }) {
+  return (
+    <dl className={styles.definitions}>
+      {definitions.map((definition) => (
+        <div key={definition.term} className={styles.definition}>
+          <dt className={styles.definitionTerm}>{definition.term}</dt>
+          <dd className={styles.definitionDescription}>
+            {definition.description}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
+
+function ArticleClauses({ clauses }: { clauses: readonly TermsClause[] }) {
+  return (
+    <ol className={styles.clauses}>
+      {clauses.map((clause) => (
+        <li key={clause.text} className={styles.clause}>
+          {clause.text}
+          {clause.items && (
+            <ul className={styles.clauseItems}>
+              {clause.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+function ArticleTable({ table }: { table: TermsTable }) {
+  return (
+    <div className={styles.tableWrapper}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            {table.columns.map((column) => (
+              <th key={column} scope="col">
+                {column}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map(([timing, consequence]) => (
+            <tr key={timing}>
+              <td>{timing}</td>
+              <td>{consequence}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+function ArticleCalloutAside({ callout }: { callout: TermsCallout }) {
+  return (
+    <aside className={styles.callout}>
+      <h3 className={styles.calloutTitle}>{callout.title}</h3>
+      <p className={styles.calloutBody}>{callout.body}</p>
+    </aside>
+  )
+}
+
 function ArticleSection({ article }: { article: TermsArticle }) {
   return (
     <section className={styles.article}>
       <h2 className={styles.articleTitle}>{article.title}</h2>
       {article.intro && <p className={styles.articleIntro}>{article.intro}</p>}
       {article.definitions && (
-        <dl className={styles.definitions}>
-          {article.definitions.map((definition) => (
-            <div key={definition.term} className={styles.definition}>
-              <dt className={styles.definitionTerm}>{definition.term}</dt>
-              <dd className={styles.definitionDescription}>
-                {definition.description}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <ArticleDefinitions definitions={article.definitions} />
       )}
-      {article.clauses && (
-        <ol className={styles.clauses}>
-          {article.clauses.map((clause) => (
-            <li key={clause.text} className={styles.clause}>
-              {clause.text}
-              {clause.items && (
-                <ul className={styles.clauseItems}>
-                  {clause.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ol>
-      )}
-      {article.table && (
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                {article.table.columns.map((column) => (
-                  <th key={column} scope="col">
-                    {column}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {article.table.rows.map(([timing, consequence]) => (
-                <tr key={timing}>
-                  <td>{timing}</td>
-                  <td>{consequence}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-      {article.callout && (
-        <aside className={styles.callout}>
-          <h3 className={styles.calloutTitle}>{article.callout.title}</h3>
-          <p className={styles.calloutBody}>{article.callout.body}</p>
-        </aside>
-      )}
+      {article.clauses && <ArticleClauses clauses={article.clauses} />}
+      {article.table && <ArticleTable table={article.table} />}
+      {article.callout && <ArticleCalloutAside callout={article.callout} />}
     </section>
   )
 }

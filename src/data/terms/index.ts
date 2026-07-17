@@ -1,5 +1,4 @@
-import { Language } from '@/types'
-import type { TermsMeta, TermsVariant } from '@/types'
+import { Language, type TermsMeta, type TermsVariant } from '@/types'
 
 import { TERMS_EN } from './en'
 import { TERMS_NL } from './nl'
@@ -20,6 +19,12 @@ export const TERMS_META: TermsMeta = {
   },
 }
 
+const TERMS_BY_LOCALE: Record<Language, TermsVariant> = {
+  [Language.EN]: TERMS_EN,
+  [Language.NL]: TERMS_NL,
+  [Language.DE]: TERMS_EN,
+}
+
 export function getTermsVariant(locale: Language): TermsVariant {
-  return locale === Language.NL ? TERMS_NL : TERMS_EN
+  return TERMS_BY_LOCALE[locale]
 }
