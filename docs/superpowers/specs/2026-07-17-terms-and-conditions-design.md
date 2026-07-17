@@ -9,7 +9,8 @@ Publish The Makers Barn's rental terms (Algemene Voorwaarden, source: `Algemene_
 
 ## Decisions
 
-- **Format:** HTML page rendering the full Dutch legal text. No PDF hosting, no translation of the legal content (translation carries legal risk; the Dutch text is authoritative).
+- **Format:** HTML page rendering the full legal text. No PDF hosting.
+- **Languages:** NL locale shows the original Dutch text; EN and DE locales show a courtesy English translation. The Dutch text remains the legally binding version, and the English page states this in a disclaimer. No German translation.
 - **URL:** `/terms-and-conditions` (consistent with existing English route slugs), served under all three locales via `[locale]`.
 - **Footer placement:** bottom bar, next to the copyright line.
 
@@ -25,14 +26,14 @@ Publish The Makers Barn's rental terms (Algemene Voorwaarden, source: `Algemene_
 
 ## Content
 
-- Full Dutch text transcribed faithfully from the PDF into a structured data file `src/data/terms.ts`:
-  - Identity block: location name (The Makers Barn), beheer (The Makers Barn B.V.), exploitant (JambalayaTMB), KvK-nummer (42017220), address (Duisterendijk 2, 8131RA Wijhe).
-  - Introduction ("Inleiding & Identiteit").
+- Full text transcribed faithfully from the PDF into a structured data file `src/data/terms.ts`, in two language variants (Dutch original + English courtesy translation), each containing:
+  - Identity block: location name (The Makers Barn), management (The Makers Barn B.V.), operator (JambalayaTMB), Chamber of Commerce number (42017220), address (Duisterendijk 2, 8131RA Wijhe).
+  - Introduction ("Inleiding & Identiteit" / "Introduction & Identity").
   - 11 articles as `{ title, clauses[] }`, preserving numbered clauses and nested lists.
   - Article 5 cancellation table (3 rows: timing → consequence).
-  - Highlighted warning callout about the zwemvijver (swimming pond) from Article 6.
-- Page body is Dutch for all locales.
-- Language notice for non-NL locales: a short translated note at the top of the page — EN/DE only — stating the terms are provided in Dutch and the Dutch version is legally binding. Stored in `src/data/terms.ts` as a per-locale record with proper EN and DE translations.
+  - Highlighted warning callout about the swimming pond (zwemvijver) from Article 6.
+- Language selection: NL locale renders the Dutch variant; EN and DE locales render the English variant.
+- Binding-version disclaimer: the English variant opens with a short note stating it is a courtesy translation and that the Dutch version ("Algemene Voorwaarden") is the legally binding text. Shown on EN and DE locales only.
 
 ## Footer
 
@@ -47,9 +48,9 @@ Publish The Makers Barn's rental terms (Algemene Voorwaarden, source: `Algemene_
 
 - Hosting the PDF file itself.
 - Privacy policy, cookie banner, or other legal pages.
-- Translating the legal text.
+- A German translation of the legal text.
 
 ## Validation
 
 - `pnpm lint`, `pnpm test`, `pnpm build` all pass.
-- Manual check: page renders at `/en/terms-and-conditions`, `/nl/terms-and-conditions`, `/de/terms-and-conditions`; footer link appears with correct label per locale; language notice shows on EN/DE only.
+- Manual check: `/nl/terms-and-conditions` renders the Dutch text; `/en/...` and `/de/...` render the English translation with the binding-version disclaimer; footer link appears with the correct label per locale.
