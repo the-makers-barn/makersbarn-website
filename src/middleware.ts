@@ -9,6 +9,7 @@ import {
   createLanguageCookieValue,
 } from '@/lib'
 import { getLocaleFromPath, getLocalizedPath, getPathWithoutLocale } from '@/lib/routing'
+import { Route } from '@/types'
 
 const logger = createLogger('middleware')
 
@@ -115,6 +116,7 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
     '/tools/wellness-retreat-pricing-calculator',
     '/tools/meditation-retreat-pricing-calculator',
     '/tools/coaching-retreat-pricing-calculator',
+    Route.TERMS_AND_CONDITIONS,
   ]
   
   if (knownRoutes.includes(pathWithoutLocale)) {
