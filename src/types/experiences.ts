@@ -1,7 +1,10 @@
+import { Route } from './navigation'
+
 export enum ExperienceType {
   SOLO_RETREAT = 'solo_retreat',
   ACCOMMODATION = 'accommodation',
   TOGETHER_RETREAT = 'together_retreat',
+  FOCUSED_WORKATION = 'focused_workation',
 }
 
 export enum AccommodationCabin {
@@ -41,7 +44,18 @@ export interface AccommodationOffer {
   bookingLinks: ExternalLink[]
 }
 
-export type ExperienceOffer = SoloRetreatOffer | TogetherRetreatOffer | AccommodationOffer
+export interface FocusedWorkationOffer {
+  id: string
+  type: ExperienceType.FOCUSED_WORKATION
+  image: string
+  internalUrl: Route
+}
+
+export type ExperienceOffer =
+  | SoloRetreatOffer
+  | TogetherRetreatOffer
+  | AccommodationOffer
+  | FocusedWorkationOffer
 
 export interface FeaturedRetreat {
   id: string

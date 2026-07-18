@@ -4,6 +4,7 @@ export enum Route {
   FACILITIES = '/facilities',
   EXPERIENCES = '/experiences',
   SHANTI_DEVA_RETREAT = '/experiences/shanti-deva-retreat',
+  FOCUSED_WORKATION = '/experiences/focused-workation',
   SURROUNDINGS = '/surroundings',
   CONTACT = '/contact',
   BOOK = '/book',

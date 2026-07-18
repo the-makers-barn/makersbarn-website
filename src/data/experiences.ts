@@ -4,17 +4,12 @@ import {
   BookingPlatform,
   ExperienceOffer,
   FeaturedRetreat,
+  Route,
 } from '@/types'
 
 import { IMAGES } from './images'
 
 export const EXPERIENCE_OFFERS: ExperienceOffer[] = [
-  {
-    id: 'solo-retreat',
-    type: ExperienceType.SOLO_RETREAT,
-    image: IMAGES.accommodation.cosmosView,
-    externalUrl: 'https://thanksforthetrip.com/cosmos-solo-yoga-retreat/',
-  },
   {
     id: 'accommodation-cosmos',
     type: ExperienceType.ACCOMMODATION,
@@ -42,6 +37,18 @@ export const EXPERIENCE_OFFERS: ExperienceOffer[] = [
         url: 'https://www.natuurhuisje.nl/vakantiehuisje/91228',
       },
     ],
+  },
+  {
+    id: 'focused-workation',
+    type: ExperienceType.FOCUSED_WORKATION,
+    image: IMAGES.accommodation.horizonKitchen,
+    internalUrl: Route.FOCUSED_WORKATION,
+  },
+  {
+    id: 'solo-retreat',
+    type: ExperienceType.SOLO_RETREAT,
+    image: IMAGES.accommodation.cosmosView,
+    externalUrl: 'https://thanksforthetrip.com/cosmos-solo-yoga-retreat/',
   },
   {
     id: 'together-retreat',
