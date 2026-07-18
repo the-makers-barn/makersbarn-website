@@ -262,7 +262,7 @@
 
 /* Footer CTA */
 .ctaSection {
-  background: linear-gradient(135deg, #294b3a 0%, #1e3a2c 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1e3a2c 100%);
   padding: 4rem 1rem;
   text-align: center;
 }

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { StructuredData } from '@/components/server'
-import { WhatsAppCtaLink, WhatsAppIcon } from '@/components/client'
+import { WhatsAppCtaLink, WhatsAppIcon, CheckIcon, ArrowLeftIcon } from '@/components/client'
 import { WhatsAppCtaLocation } from '@/constants/analytics'
 import { SITE_CONFIG } from '@/constants/site'
 import { generatePageMetadata } from '@/lib/metadata'
@@ -36,42 +36,16 @@ export async function generateMetadata({ params }: FocusedWorkationPageProps): P
   })
 }
 
-const ArrowLeftIcon = () => (
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M19 12H5M12 19l-7-7 7-7" />
-  </svg>
-)
-
-const CheckIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-)
-
 interface SectionProps {
   t: Translations
 }
 
-function WorkationHero({ t }: SectionProps) {
+interface WorkationHeroProps {
+  t: Translations
+  whatsappUrl: string
+}
+
+function WorkationHero({ t, whatsappUrl }: WorkationHeroProps) {
   return (
     <section className={styles.hero}>
       <div className={styles.heroInner}>
@@ -79,7 +53,7 @@ function WorkationHero({ t }: SectionProps) {
         <h1 className={styles.heroTitle}>{t.focusedWorkation.hero.title}</h1>
         <p className={styles.heroSubtitle}>{t.focusedWorkation.hero.subtitle}</p>
         <WhatsAppCtaLink
-          href={getWhatsAppUrl(t.focusedWorkation.bookingMessage)}
+          href={whatsappUrl}
           location={WhatsAppCtaLocation.WORKATION_HERO}
           className={styles.primaryCta}
         >
@@ -189,9 +163,10 @@ function WorkationPractical({ t }: SectionProps) {
 interface WorkationCtaProps {
   t: Translations
   validLocale: Language
+  whatsappUrl: string
 }
 
-function WorkationCta({ t, validLocale }: WorkationCtaProps) {
+function WorkationCta({ t, validLocale, whatsappUrl }: WorkationCtaProps) {
   const cta = t.focusedWorkation.cta
   return (
     <section className={styles.ctaSection}>
@@ -199,7 +174,7 @@ function WorkationCta({ t, validLocale }: WorkationCtaProps) {
         <h2 className={styles.ctaTitle}>{cta.title}</h2>
         <p className={styles.ctaSubtitle}>{cta.subtitle}</p>
         <WhatsAppCtaLink
-          href={getWhatsAppUrl(t.focusedWorkation.bookingMessage)}
+          href={whatsappUrl}
           location={WhatsAppCtaLocation.WORKATION_FOOTER}
           className={styles.primaryCta}
         >
@@ -221,6 +196,7 @@ export default async function FocusedWorkationPage({ params }: FocusedWorkationP
   const { locale } = await params
   const validLocale = getValidLocale(locale)
   const t = await getServerTranslations(validLocale)
+  const whatsappUrl = getWhatsAppUrl(t.focusedWorkation.bookingMessage)
 
   return (
     <>
@@ -243,7 +219,7 @@ export default async function FocusedWorkationPage({ params }: FocusedWorkationP
           {t.focusedWorkation.backToExperiences}
         </Link>
 
-        <WorkationHero t={t} />
+        <WorkationHero t={t} whatsappUrl={whatsappUrl} />
 
         <ChecklistSection
           title={t.focusedWorkation.whoItsFor.title}
@@ -263,7 +239,7 @@ export default async function FocusedWorkationPage({ params }: FocusedWorkationP
 
         <WorkationPractical t={t} />
 
-        <WorkationCta t={t} validLocale={validLocale} />
+        <WorkationCta t={t} validLocale={validLocale} whatsappUrl={whatsappUrl} />
       </div>
     </>
   )

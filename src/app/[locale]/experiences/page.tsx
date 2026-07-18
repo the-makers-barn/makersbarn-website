@@ -2,20 +2,11 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { WhatsAppCtaLink, WhatsAppIcon } from '@/components/client'
-import { StructuredData } from '@/components/server'
+import { ArrowRightIcon, ExternalLinkIcon } from '@/components/client'
+import { StructuredData, ExperienceOfferCard } from '@/components/server'
 import { generatePageMetadata } from '@/lib/metadata'
 import { generateLocalBusinessSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
-import { getWhatsAppUrl } from '@/lib/whatsapp'
-import {
-  Route,
-  ExperienceType,
-  AccommodationCabin,
-  BookingPlatform,
-  Language,
-  ExperienceOffer,
-} from '@/types'
-import { WhatsAppCtaLocation } from '@/constants/analytics'
+import { Route, Language } from '@/types'
 import { SITE_CONFIG } from '@/constants/site'
 import { getServerTranslations } from '@/i18n'
 import { getValidLocale } from '@/lib/locale'
@@ -41,224 +32,7 @@ export async function generateMetadata({ params }: ExperiencesPageProps): Promis
   })
 }
 
-const CheckIcon = () => (
-  <svg
-    className={styles.featureIcon}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-)
-
-const ArrowIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M5 12h14M12 5l7 7-7 7" />
-  </svg>
-)
-
-const ExternalLinkIcon = () => (
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    <polyline points="15 3 21 3 21 9" />
-    <line x1="10" y1="14" x2="21" y2="3" />
-  </svg>
-)
-
 type Translations = Awaited<ReturnType<typeof getServerTranslations>>
-
-type OfferContent =
-  | {
-      kind: 'cta'
-      title: string
-      description: string
-      features: readonly string[]
-      ctaLabel: string
-    }
-  | {
-      kind: 'booking'
-      title: string
-      description: string
-      features: readonly string[]
-      platforms: Translations['experiences']['bookingPlatforms']
-      directBooking: Translations['experiences']['directBooking']
-      bookingMessage: string
-    }
-  | {
-      kind: 'workation'
-      badge: string
-      title: string
-      description: string
-      features: readonly string[]
-      ctaLabel: string
-    }
-
-const CABIN_CTA_LOCATION: Record<AccommodationCabin, WhatsAppCtaLocation> = {
-  [AccommodationCabin.COSMOS]: WhatsAppCtaLocation.CABIN_COSMOS,
-  [AccommodationCabin.HORIZON]: WhatsAppCtaLocation.CABIN_HORIZON,
-}
-
-function getOfferContent(offer: ExperienceOffer, t: Translations): OfferContent {
-  switch (offer.type) {
-    case ExperienceType.SOLO_RETREAT:
-      return {
-        kind: 'cta',
-        title: t.experiences.soloRetreat.title,
-        description: t.experiences.soloRetreat.description,
-        features: t.experiences.soloRetreat.features,
-        ctaLabel: t.experiences.soloRetreat.ctaLabel,
-      }
-    case ExperienceType.ACCOMMODATION: {
-      const cabinCopy = t.experiences.cabins[offer.cabin]
-      return {
-        kind: 'booking',
-        title: cabinCopy.title,
-        description: cabinCopy.description,
-        features: cabinCopy.features,
-        platforms: t.experiences.bookingPlatforms,
-        directBooking: t.experiences.directBooking,
-        bookingMessage: cabinCopy.bookingMessage,
-      }
-    }
-    case ExperienceType.FOCUSED_WORKATION:
-      return {
-        kind: 'workation',
-        badge: t.experiences.focusedWorkation.badge,
-        title: t.experiences.focusedWorkation.title,
-        description: t.experiences.focusedWorkation.description,
-        features: t.experiences.focusedWorkation.features,
-        ctaLabel: t.experiences.focusedWorkation.ctaLabel,
-      }
-    case ExperienceType.TOGETHER_RETREAT:
-      return {
-        kind: 'cta',
-        title: t.experiences.togetherRetreat.title,
-        description: t.experiences.togetherRetreat.description,
-        features: t.experiences.togetherRetreat.features,
-        ctaLabel: t.experiences.togetherRetreat.ctaLabel,
-      }
-  }
-}
-
-interface OfferCardProps {
-  offer: ExperienceOffer
-  validLocale: Language
-  t: Translations
-}
-
-function OfferCard({ offer, validLocale, t }: OfferCardProps) {
-  const content = getOfferContent(offer, t)
-
-  return (
-    <article className={styles.offerCard}>
-      <div className={styles.offerImageWrapper}>
-        {content.kind === 'workation' && (
-          <span className={styles.offerBadge}>{content.badge}</span>
-        )}
-        <Image
-          src={offer.image}
-          alt={content.title}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 25vw"
-          className={styles.offerImage}
-        />
-      </div>
-
-      <div className={styles.offerContent}>
-        <h3 className={styles.offerTitle}>{content.title}</h3>
-        <p className={styles.offerDescription}>{content.description}</p>
-
-        <ul className={styles.featuresList}>
-          {content.features.map((feature) => (
-            <li key={feature} className={styles.featureItem}>
-              <CheckIcon />
-              {feature}
-            </li>
-          ))}
-        </ul>
-
-        {content.kind === 'cta' &&
-          (offer.type === ExperienceType.SOLO_RETREAT ||
-            offer.type === ExperienceType.TOGETHER_RETREAT) && (
-          <a
-            href={offer.externalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.offerCta}
-          >
-            {content.ctaLabel}
-            <ArrowIcon className={styles.offerCtaIcon} />
-          </a>
-        )}
-
-        {content.kind === 'booking' && offer.type === ExperienceType.ACCOMMODATION && (
-          <div className={styles.bookingActions}>
-            <WhatsAppCtaLink
-              href={getWhatsAppUrl(content.bookingMessage)}
-              location={CABIN_CTA_LOCATION[offer.cabin]}
-              className={styles.directBookingCta}
-            >
-              <WhatsAppIcon size={18} />
-              {content.directBooking.ctaLabel}
-            </WhatsAppCtaLink>
-            <p className={styles.directBookingBenefit}>{content.directBooking.benefitLine}</p>
-            <p className={styles.directBookingNote}>{content.directBooking.responseNote}</p>
-            <div className={styles.platformLinks}>
-              <span className={styles.platformLabel}>{content.directBooking.alsoBookableVia}</span>
-              {offer.bookingLinks.map((link) => (
-                <a
-                  key={link.platform}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.platformLink}
-                >
-                  {link.platform === BookingPlatform.AIRBNB
-                    ? content.platforms.airbnb
-                    : content.platforms.natuurhuisje}
-                  <ExternalLinkIcon />
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {content.kind === 'workation' && offer.type === ExperienceType.FOCUSED_WORKATION && (
-          <Link
-            href={getLocalizedPath(offer.internalUrl, validLocale)}
-            className={styles.offerCta}
-          >
-            {content.ctaLabel}
-            <ArrowIcon className={styles.offerCtaIcon} />
-          </Link>
-        )}
-      </div>
-    </article>
-  )
-}
 
 interface FeaturedRetreatCardProps {
   retreat: typeof FEATURED_RETREATS[number]
@@ -291,7 +65,7 @@ function FeaturedRetreatCard({ retreat, validLocale, t }: FeaturedRetreatCardPro
                 className={styles.featuredCta}
               >
                 {t.experiences.featuredRetreats.bookNow}
-                <ArrowIcon className={styles.featuredCtaIcon} />
+                <ArrowRightIcon className={styles.featuredCtaIcon} />
               </Link>
             )
           }
@@ -345,7 +119,7 @@ export default async function ExperiencesPage({ params }: ExperiencesPageProps) 
 
           <div className={styles.offersGrid}>
             {EXPERIENCE_OFFERS.map((offer) => (
-              <OfferCard key={offer.id} offer={offer} validLocale={validLocale} t={t} />
+              <ExperienceOfferCard key={offer.id} offer={offer} validLocale={validLocale} t={t} />
             ))}
           </div>
 
@@ -353,7 +127,7 @@ export default async function ExperiencesPage({ params }: ExperiencesPageProps) 
             <span className={styles.alternativeText}>{t.experiences.createExperience.alternativeText}</span>
             <Link href={getLocalizedPath(Route.CONTACT, validLocale)} className={styles.alternativeLink}>
               {t.experiences.createExperience.alternativeCta}
-              <ArrowIcon className={styles.alternativeLinkIcon} />
+              <ArrowRightIcon className={styles.alternativeLinkIcon} />
             </Link>
           </div>
         </section>
@@ -388,7 +162,7 @@ export default async function ExperiencesPage({ params }: ExperiencesPageProps) 
           <p className={styles.ctaSubtitle}>{t.experiences.ctaSubtitle}</p>
           <Link href={getLocalizedPath(Route.CONTACT, validLocale)} className={styles.ctaButton}>
             {t.experiences.ctaButton}
-            <ArrowIcon />
+            <ArrowRightIcon />
           </Link>
         </footer>
       </div>
