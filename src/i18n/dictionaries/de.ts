@@ -348,6 +348,12 @@ export const de: Dictionary = {
       airbnb: 'Auf Airbnb buchen',
       natuurhuisje: 'Auf Natuurhuisje buchen',
     },
+    directBooking: {
+      ctaLabel: 'Buche deinen Aufenthalt bei uns',
+      benefitLine: 'Direkt buchen zum besten Preis — ohne Plattformgebühren',
+      responseNote: 'Meist antworten wir innerhalb weniger Stunden',
+      alsoBookableVia: 'Auch buchbar über',
+    },
     cabins: {
       cosmos: {
         title: 'Cosmos-Hütte buchen',
@@ -359,6 +365,7 @@ export const de: Dictionary = {
           'Massage auf Anfrage',
           'Verpflegung auf Anfrage',
         ],
+        bookingMessage: 'Hallo! Ich würde gern einen Aufenthalt in der Cosmos-Hütte bei The Makers Barn buchen.',
       },
       horizon: {
         title: 'Horizon-Loft buchen',
@@ -370,7 +377,20 @@ export const de: Dictionary = {
           'Schwimmteich und Feuerstelle',
           'Verpflegung auf Anfrage',
         ],
+        bookingMessage: 'Hallo! Ich würde gern einen Aufenthalt im Horizon-Loft bei The Makers Barn buchen.',
       },
+    },
+    focusedWorkation: {
+      badge: 'Neu',
+      title: 'Focused Workation',
+      description: 'Nimm deinen Laptop mit auf den Hof. Tagsüber konzentriertes Arbeiten mit Glasfaser-WLAN, und wenn der Laptop zuklappt: Sauna, Schwimmteich und ruhige Abende.',
+      features: [
+        'Glasfaser-WLAN auf dem ganzen Hof',
+        'Ruhige Arbeitsplätze mit Blick ins Grüne',
+        'Sauna, Hot Tub & Schwimmteich',
+        'Kostenlose Fahrräder für die Umgebung',
+      ],
+      ctaLabel: 'Focused Workation entdecken',
     },
     togetherRetreat: {
       title: 'Retreat mit Freunden',
@@ -520,6 +540,76 @@ export const de: Dictionary = {
       whatsapp: 'WhatsApp',
       email: 'E-Mail',
       registerButton: 'Jetzt anmelden',
+    },
+  },
+
+  focusedWorkation: {
+    metaTitle: 'Focused Workation',
+    metaDescription: 'Arbeite remote von einem Hof in Overijssel. Glasfaser-WLAN auf dem ganzen Hof, ruhige Hütten, Sauna und Schwimmteich — buche deine Focused Workation direkt bei uns.',
+    backToExperiences: 'Zurück zu den Erlebnissen',
+    bookingMessage: 'Hallo! Ich würde gern eine Focused Workation bei The Makers Barn buchen.',
+    hero: {
+      kicker: 'Focused Workation',
+      title: 'Konzentriert arbeiten, ruhige Umgebung',
+      subtitle: 'Tausch das Homeoffice gegen die Landschaft. Tagsüber arbeitest du mit voller Konzentration — das Glasfaser-WLAN reicht bis in jede Ecke des Hofs — und die Abende dürfen langsam sein: die Sauna, der Schwimmteich, ein Spaziergang zwischen mehr als tausend Bäumen.',
+      bookNow: 'Workation buchen',
+    },
+    whoItsFor: {
+      title: 'Gemacht für Macher',
+      intro: 'Die beste Arbeit braucht Ruhe. Wenn dein Kalender es zulässt, von überall zu arbeiten, dann ist dies ein Ort, der sich lohnt.',
+      items: [
+        'Remote-Arbeitende, die eine Woche echte Konzentration suchen',
+        'Gründer und Selbstständige, die schreiben, planen oder bauen',
+        'Autoren, Designer und Kreative, die ein Projekt abschließen',
+        'Zu zweit oder kleine Teams, die außerhalb des Büros besser denken',
+      ],
+    },
+    included: {
+      title: 'Alles, was ein Arbeitsaufenthalt braucht',
+      intro: 'Kein Coworking-Trubel, keine Meetingräume — nur ehrliche Orte zum Arbeiten und ehrliche Wege, damit aufzuhören.',
+      items: [
+        'Glasfaser-WLAN auf dem ganzen Hof',
+        'In Cosmos: ein Schreibtisch am Fenster',
+        'In Horizon: ein langer Tisch mit reichlich Steckdosen',
+        'Sauna und Hot Tub für den Abend',
+        'Natürlicher Schwimmteich und Wanderwege',
+        'Kostenlose Fahrräder für eine Runde in der Mittagspause',
+      ],
+    },
+    cabins: {
+      title: 'Zwei Orte zum Wohnen',
+      cosmos: {
+        title: 'Cosmos-Hütte',
+        description: 'Eine Holzhütte für eine oder zwei Personen, mit Holzofen, eigener Terrasse und einem Schreibtisch mit Blick auf einen der schönsten Ausblicke der Niederlande.',
+      },
+      horizon: {
+        title: 'Horizon-Loft',
+        description: 'Ein neu gebautes Loft mit hochwertiger Ausstattung, offener Küche und einem langen Tisch, an dem ein kleines Team bequem Platz findet — mit Blick in die Landschaft aus jedem Fenster.',
+      },
+    },
+    howItWorks: {
+      title: 'So funktioniert die Buchung',
+      steps: [
+        'Schreib uns auf WhatsApp',
+        'Wir stimmen Termine und Preis gemeinsam ab',
+        'Du packst deinen Laptop ein — du bist gebucht',
+      ],
+    },
+    practical: {
+      title: 'Praktische Infos',
+      items: [
+        'In Wijhe, Overijssel — zwischen Zwolle und Deventer',
+        'Der Bahnhof Wijhe ist zehn Minuten mit dem Rad entfernt',
+        'Einkaufsmöglichkeiten und Restaurants im Dorf nebenan',
+        'Hansestädte und die IJssel in Radentfernung',
+      ],
+    },
+    cta: {
+      title: 'Bereit für eine Woche echte Konzentration?',
+      subtitle: 'Schreib uns eine Nachricht und wir richten deine Workation gemeinsam ein.',
+      bookNow: 'Über WhatsApp buchen',
+      alternativeText: 'Lieber per E-Mail?',
+      alternativeCta: 'Nutze das Kontaktformular',
     },
   },
 
