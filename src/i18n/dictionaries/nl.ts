@@ -673,7 +673,7 @@ export const nl: Dictionary = {
     },
     included: {
       title: 'Alles wat een werkverblijf nodig heeft',
-      intro: 'Geen coworking-drukte, geen vergaderzalen — gewoon eerlijke plekken om te werken en eerlijke manieren om te stoppen.',
+      intro: 'Geen coworking-drukte, geen vergaderzalen — gewoon rustige plekken om te werken en goede redenen om de laptop dicht te klappen.',
       items: [
         'Glasvezel-wifi over de hele boerderij',
         'In Cosmos: een schrijftafel bij het raam',

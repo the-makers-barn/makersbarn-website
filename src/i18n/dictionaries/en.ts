@@ -563,7 +563,7 @@ export const en: Dictionary = {
     },
     included: {
       title: 'Everything a working stay needs',
-      intro: 'No coworking hum, no meeting rooms — just honest places to work and honest ways to stop working.',
+      intro: 'No coworking hum, no meeting rooms — just quiet places to work and good reasons to close the laptop.',
       items: [
         'Fibre Wi-Fi across the whole farm',
         'In Cosmos: a writing desk by the window',

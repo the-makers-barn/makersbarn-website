@@ -566,7 +566,7 @@ export const de: Dictionary = {
     },
     included: {
       title: 'Alles, was ein Arbeitsaufenthalt braucht',
-      intro: 'Kein Coworking-Trubel, keine Meetingräume — nur ehrliche Orte zum Arbeiten und ehrliche Wege, damit aufzuhören.',
+      intro: 'Kein Coworking-Trubel, keine Meetingräume — nur ruhige Orte zum Arbeiten und gute Gründe, den Laptop zuzuklappen.',
       items: [
         'Glasfaser-WLAN auf dem ganzen Hof',
         'In Cosmos: ein Schreibtisch am Fenster',
