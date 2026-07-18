@@ -117,6 +117,9 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
     '/tools/meditation-retreat-pricing-calculator',
     '/tools/coaching-retreat-pricing-calculator',
     Route.TERMS_AND_CONDITIONS,
+    Route.EXPERIENCES,
+    Route.SHANTI_DEVA_RETREAT,
+    Route.FOCUSED_WORKATION,
   ]
   
   if (knownRoutes.includes(pathWithoutLocale)) {
