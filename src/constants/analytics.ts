@@ -6,4 +6,12 @@ export enum AnalyticsEvent {
   CALCULATOR_SHARED = 'calculator_shared',
   CALCULATOR_EMAIL_CAPTURED = 'email_captured',
   CALCULATOR_MAKERSBARN_CTA_CLICKED = 'makersbarn_cta_clicked',
+  WHATSAPP_BOOKING_CLICKED = 'whatsapp_booking_clicked',
+}
+
+export enum WhatsAppCtaLocation {
+  CABIN_COSMOS = 'cabin-cosmos',
+  CABIN_HORIZON = 'cabin-horizon',
+  WORKATION_HERO = 'workation-hero',
+  WORKATION_FOOTER = 'workation-footer',
 }
