@@ -2,10 +2,20 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { WhatsAppCtaLink, WhatsAppIcon } from '@/components/client'
 import { StructuredData } from '@/components/server'
 import { generatePageMetadata } from '@/lib/metadata'
 import { generateLocalBusinessSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
-import { Route, ExperienceType, BookingPlatform, Language, ExperienceOffer } from '@/types'
+import { getWhatsAppUrl } from '@/lib/whatsapp'
+import {
+  Route,
+  ExperienceType,
+  AccommodationCabin,
+  BookingPlatform,
+  Language,
+  ExperienceOffer,
+} from '@/types'
+import { WhatsAppCtaLocation } from '@/constants/analytics'
 import { SITE_CONFIG } from '@/constants/site'
 import { getServerTranslations } from '@/i18n'
 import { getValidLocale } from '@/lib/locale'
@@ -94,7 +104,22 @@ type OfferContent =
       description: string
       features: readonly string[]
       platforms: Translations['experiences']['bookingPlatforms']
+      directBooking: Translations['experiences']['directBooking']
+      bookingMessage: string
     }
+  | {
+      kind: 'workation'
+      badge: string
+      title: string
+      description: string
+      features: readonly string[]
+      ctaLabel: string
+    }
+
+const CABIN_CTA_LOCATION: Record<AccommodationCabin, WhatsAppCtaLocation> = {
+  [AccommodationCabin.COSMOS]: WhatsAppCtaLocation.CABIN_COSMOS,
+  [AccommodationCabin.HORIZON]: WhatsAppCtaLocation.CABIN_HORIZON,
+}
 
 function getOfferContent(offer: ExperienceOffer, t: Translations): OfferContent {
   switch (offer.type) {
@@ -114,8 +139,19 @@ function getOfferContent(offer: ExperienceOffer, t: Translations): OfferContent 
         description: cabinCopy.description,
         features: cabinCopy.features,
         platforms: t.experiences.bookingPlatforms,
+        directBooking: t.experiences.directBooking,
+        bookingMessage: cabinCopy.bookingMessage,
       }
     }
+    case ExperienceType.FOCUSED_WORKATION:
+      return {
+        kind: 'workation',
+        badge: t.experiences.focusedWorkation.badge,
+        title: t.experiences.focusedWorkation.title,
+        description: t.experiences.focusedWorkation.description,
+        features: t.experiences.focusedWorkation.features,
+        ctaLabel: t.experiences.focusedWorkation.ctaLabel,
+      }
     case ExperienceType.TOGETHER_RETREAT:
       return {
         kind: 'cta',
@@ -129,15 +165,19 @@ function getOfferContent(offer: ExperienceOffer, t: Translations): OfferContent 
 
 interface OfferCardProps {
   offer: ExperienceOffer
+  validLocale: Language
   t: Translations
 }
 
-function OfferCard({ offer, t }: OfferCardProps) {
+function OfferCard({ offer, validLocale, t }: OfferCardProps) {
   const content = getOfferContent(offer, t)
 
   return (
     <article className={styles.offerCard}>
       <div className={styles.offerImageWrapper}>
+        {content.kind === 'workation' && (
+          <span className={styles.offerBadge}>{content.badge}</span>
+        )}
         <Image
           src={offer.image}
           alt={content.title}
@@ -160,7 +200,9 @@ function OfferCard({ offer, t }: OfferCardProps) {
           ))}
         </ul>
 
-        {content.kind === 'cta' && offer.type !== ExperienceType.ACCOMMODATION && (
+        {content.kind === 'cta' &&
+          (offer.type === ExperienceType.SOLO_RETREAT ||
+            offer.type === ExperienceType.TOGETHER_RETREAT) && (
           <a
             href={offer.externalUrl}
             target="_blank"
@@ -173,26 +215,45 @@ function OfferCard({ offer, t }: OfferCardProps) {
         )}
 
         {content.kind === 'booking' && offer.type === ExperienceType.ACCOMMODATION && (
-          <div className={styles.bookingLinks}>
-            {offer.bookingLinks.map((link) => (
-              <a
-                key={link.platform}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.bookingLink} ${
-                  link.platform === BookingPlatform.AIRBNB
-                    ? styles.bookingLinkAirbnb
-                    : styles.bookingLinkNatuurhuisje
-                }`}
-              >
-                {link.platform === BookingPlatform.AIRBNB
-                  ? content.platforms.airbnb
-                  : content.platforms.natuurhuisje}
-                <ExternalLinkIcon />
-              </a>
-            ))}
+          <div className={styles.bookingActions}>
+            <WhatsAppCtaLink
+              href={getWhatsAppUrl(content.bookingMessage)}
+              location={CABIN_CTA_LOCATION[offer.cabin]}
+              className={styles.directBookingCta}
+            >
+              <WhatsAppIcon size={18} />
+              {content.directBooking.ctaLabel}
+            </WhatsAppCtaLink>
+            <p className={styles.directBookingBenefit}>{content.directBooking.benefitLine}</p>
+            <p className={styles.directBookingNote}>{content.directBooking.responseNote}</p>
+            <div className={styles.platformLinks}>
+              <span className={styles.platformLabel}>{content.directBooking.alsoBookableVia}</span>
+              {offer.bookingLinks.map((link) => (
+                <a
+                  key={link.platform}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.platformLink}
+                >
+                  {link.platform === BookingPlatform.AIRBNB
+                    ? content.platforms.airbnb
+                    : content.platforms.natuurhuisje}
+                  <ExternalLinkIcon />
+                </a>
+              ))}
+            </div>
           </div>
+        )}
+
+        {content.kind === 'workation' && offer.type === ExperienceType.FOCUSED_WORKATION && (
+          <Link
+            href={getLocalizedPath(offer.internalUrl, validLocale)}
+            className={styles.offerCta}
+          >
+            {content.ctaLabel}
+            <ArrowIcon className={styles.offerCtaIcon} />
+          </Link>
         )}
       </div>
     </article>
@@ -284,7 +345,7 @@ export default async function ExperiencesPage({ params }: ExperiencesPageProps) 
 
           <div className={styles.offersGrid}>
             {EXPERIENCE_OFFERS.map((offer) => (
-              <OfferCard key={offer.id} offer={offer} t={t} />
+              <OfferCard key={offer.id} offer={offer} validLocale={validLocale} t={t} />
             ))}
           </div>
 
