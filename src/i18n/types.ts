@@ -284,11 +284,25 @@ export interface ExperiencesTranslations {
     airbnb: string
     natuurhuisje: string
   }
+  directBooking: {
+    ctaLabel: string
+    benefitLine: string
+    responseNote: string
+    alsoBookableVia: string
+  }
   cabins: Record<AccommodationCabin, {
     title: string
     description: string
     features: readonly string[]
+    bookingMessage: string
   }>
+  focusedWorkation: {
+    badge: string
+    title: string
+    description: string
+    features: readonly string[]
+    ctaLabel: string
+  }
   togetherRetreat: {
     title: string
     description: string
@@ -438,6 +452,52 @@ export interface ShantiDevaRetreatTranslations {
     whatsapp: string
     email: string
     registerButton: string
+  }
+}
+
+/**
+ * Focused Workation page translations
+ */
+export interface FocusedWorkationTranslations {
+  metaTitle: string
+  metaDescription: string
+  backToExperiences: string
+  bookingMessage: string
+  hero: {
+    kicker: string
+    title: string
+    subtitle: string
+    bookNow: string
+  }
+  whoItsFor: {
+    title: string
+    intro: string
+    items: readonly string[]
+  }
+  included: {
+    title: string
+    intro: string
+    items: readonly string[]
+  }
+  cabins: {
+    title: string
+    cosmos: { title: string; description: string }
+    horizon: { title: string; description: string }
+  }
+  howItWorks: {
+    title: string
+    steps: readonly string[]
+  }
+  practical: {
+    title: string
+    items: readonly string[]
+  }
+  cta: {
+    title: string
+    subtitle: string
+    bookNow: string
+    alternativeText: string
+    alternativeCta: string
   }
 }
 
@@ -1186,6 +1246,7 @@ export interface Dictionary {
   experiences: ExperiencesTranslations
   location: LocationTranslations
   shantiDevaRetreat: ShantiDevaRetreatTranslations
+  focusedWorkation: FocusedWorkationTranslations
   impressionCarousel: ImpressionCarouselTranslations
   impressionPolaroids: ImpressionPolaroidsTranslations
   testimonials: TestimonialsTranslations

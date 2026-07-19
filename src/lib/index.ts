@@ -22,6 +22,7 @@ export {
   type ValidationResult,
 } from './validation'
 export { getImageAltText } from './imageAltText'
+export { getWhatsAppUrl } from './whatsapp'
 export {
   LANGUAGE_COOKIE_NAME,
   LANGUAGE_STORAGE_KEY,

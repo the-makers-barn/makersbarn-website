@@ -1,1 +1,5 @@
 export { WhatsAppIcon } from './WhatsAppIcon'
+export { CheckIcon } from './CheckIcon'
+export { ArrowLeftIcon } from './ArrowLeftIcon'
+export { ArrowRightIcon } from './ArrowRightIcon'
+export { ExternalLinkIcon } from './ExternalLinkIcon'

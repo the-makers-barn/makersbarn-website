@@ -345,6 +345,12 @@ export const en: Dictionary = {
       airbnb: 'Book on Airbnb',
       natuurhuisje: 'Book on Natuurhuisje',
     },
+    directBooking: {
+      ctaLabel: 'Book your stay with us',
+      benefitLine: 'Book direct for the best rate — no platform fees',
+      responseNote: 'We typically reply within a few hours',
+      alsoBookableVia: 'Also bookable via',
+    },
     cabins: {
       cosmos: {
         title: 'Book Cosmos Cabin',
@@ -356,6 +362,7 @@ export const en: Dictionary = {
           'Massage available',
           'Catering on request',
         ],
+        bookingMessage: 'Hi! I would like to book a stay in the Cosmos cabin at The Makers Barn.',
       },
       horizon: {
         title: 'Book Horizon Loft',
@@ -367,7 +374,20 @@ export const en: Dictionary = {
           'Swimming pond & fire pit',
           'Catering on request',
         ],
+        bookingMessage: 'Hi! I would like to book a stay in the Horizon loft at The Makers Barn.',
       },
+    },
+    focusedWorkation: {
+      badge: 'New',
+      title: 'Focused Workation',
+      description: 'Bring your laptop to the farm. Deep work on fibre Wi-Fi during the day, and a sauna, swimming pond and quiet evenings when it closes.',
+      features: [
+        'Fibre Wi-Fi across the whole farm',
+        'Quiet work spots with countryside views',
+        'Sauna, hot tub & swimming pond',
+        'Free bikes to explore the area',
+      ],
+      ctaLabel: 'Discover the Focused Workation',
     },
     togetherRetreat: {
       title: 'Friends Retreat',
@@ -517,6 +537,76 @@ export const en: Dictionary = {
       whatsapp: 'WhatsApp',
       email: 'Email',
       registerButton: 'Register Now',
+    },
+  },
+
+  focusedWorkation: {
+    metaTitle: 'Focused Workation',
+    metaDescription: 'Work remotely from a farm in Overijssel. Fibre Wi-Fi across the whole farm, quiet cabins, sauna and swimming pond — book your focused workation directly with us.',
+    backToExperiences: 'Back to Experiences',
+    bookingMessage: 'Hi! I would like to book a Focused Workation at The Makers Barn.',
+    hero: {
+      kicker: 'Focused Workation',
+      title: 'Deep work, slow surroundings',
+      subtitle: 'Swap the home office for the countryside. Work with full focus during the day — fibre Wi-Fi reaches every corner of the farm — and let the evenings be slow: the sauna, the swimming pond, a walk between more than a thousand trees.',
+      bookNow: 'Book your workation',
+    },
+    whoItsFor: {
+      title: 'Made for makers',
+      intro: 'The best work needs quiet. If your calendar allows you to work from anywhere, this is somewhere worth working from.',
+      items: [
+        'Remote workers who want a week of real focus',
+        'Founders and independents writing, planning or building',
+        'Writers, designers and creatives finishing a project',
+        'Duos or small teams who think better outside the office',
+      ],
+    },
+    included: {
+      title: 'Everything a working stay needs',
+      intro: 'No coworking hum, no meeting rooms — just quiet places to work and good reasons to close the laptop.',
+      items: [
+        'Fibre Wi-Fi across the whole farm',
+        'In Cosmos: a writing desk by the window',
+        'In Horizon: a long table with plenty of outlets',
+        'Sauna and hot tub to close the day',
+        'Natural swimming pond and walking trails',
+        'Free bikes for a lunch-break ride',
+      ],
+    },
+    cabins: {
+      title: 'Two places to stay',
+      cosmos: {
+        title: 'Cosmos Cabin',
+        description: 'A wooden cabin for one or two, with a wood stove, a private terrace and a writing desk facing some of the best views the Netherlands has to offer.',
+      },
+      horizon: {
+        title: 'Horizon Loft',
+        description: 'A newly built loft with premium finishes, an open kitchen and a long table that comfortably seats a small team — plus countryside views from every window.',
+      },
+    },
+    howItWorks: {
+      title: 'How booking works',
+      steps: [
+        'Message us on WhatsApp',
+        'We confirm dates and rate together',
+        'You pack your laptop — you are booked',
+      ],
+    },
+    practical: {
+      title: 'Practical details',
+      items: [
+        'Located in Wijhe, Overijssel — between Zwolle and Deventer',
+        'Wijhe train station is ten minutes away by bike',
+        'Groceries and restaurants in the village nearby',
+        'Hanseatic towns and the IJssel river within cycling distance',
+      ],
+    },
+    cta: {
+      title: 'Ready for a week of real focus?',
+      subtitle: 'Send us a message and we will set up your workation together.',
+      bookNow: 'Book via WhatsApp',
+      alternativeText: 'Prefer email?',
+      alternativeCta: 'Use the contact form',
     },
   },
 
