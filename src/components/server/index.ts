@@ -1,4 +1,6 @@
 export { Footer } from './Footer'
+export { FeaturedRetreatCard, FeaturedRetreatsGrid } from './FeaturedRetreats'
+export { RetreatHighlight } from './RetreatHighlight'
 export { FacilitiesStats } from './FacilitiesStats'
 export { HeroDetails } from './HeroDetails'
 export { TeamGrid } from './TeamGrid'

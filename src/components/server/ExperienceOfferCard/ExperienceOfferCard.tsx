@@ -80,14 +80,6 @@ function getOfferContent(offer: ExperienceOffer, t: Dictionary): OfferContent {
         features: t.experiences.focusedWorkation.features,
         ctaLabel: t.experiences.focusedWorkation.ctaLabel,
       }
-    case ExperienceType.TOGETHER_RETREAT:
-      return {
-        kind: 'cta',
-        title: t.experiences.togetherRetreat.title,
-        description: t.experiences.togetherRetreat.description,
-        features: t.experiences.togetherRetreat.features,
-        ctaLabel: t.experiences.togetherRetreat.ctaLabel,
-      }
   }
 }
 
@@ -130,9 +122,7 @@ export function ExperienceOfferCard({ offer, validLocale, t }: ExperienceOfferCa
           ))}
         </ul>
 
-        {content.kind === 'cta' &&
-          (offer.type === ExperienceType.SOLO_RETREAT ||
-            offer.type === ExperienceType.TOGETHER_RETREAT) && (
+        {content.kind === 'cta' && offer.type === ExperienceType.SOLO_RETREAT && (
           <a
             href={offer.externalUrl}
             target="_blank"

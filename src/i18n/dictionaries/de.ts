@@ -36,6 +36,20 @@ export const de: Dictionary = {
     ],
   },
 
+  retreatHighlight: {
+    kicker: 'Nur ein Wochenende · 17.–18. Oktober 2026',
+    title: 'The Autumn Grounding',
+    subtitle: 'Ayurvedische Fürsorge für Frauen',
+    body: 'Zwei Tage raus aus dem Alltagsmodus: Abhyanga-Selbstmassage, erholsames Yin Yoga, ein Feuerkreis unter dem Herbsthimmel, Sauna und warme pflanzliche Mahlzeiten — in einem kleinen Kreis von Frauen, hier im The Makers Barn.',
+    metaItems: [
+      'Übernachtung & alle Mahlzeiten inklusive',
+      'Begleitet von Nana & Elaine von Almsens Wellness',
+      'Auf Englisch',
+    ],
+    ctaLabel: 'Platz reservieren',
+    scarcityNote: 'Ein kleiner Kreis — ausgebucht ist ausgebucht.',
+  },
+
   contact: {
     pageTitle: 'Plane dein Retreat',
     metaTitle: 'Kontakt',
@@ -391,17 +405,6 @@ export const de: Dictionary = {
         'Kostenlose Fahrräder für die Umgebung',
       ],
       ctaLabel: 'Focused Workation entdecken',
-    },
-    togetherRetreat: {
-      title: 'Retreat mit Freunden',
-      description: 'Eine All-inclusive-Auszeit mit Freunden. Yoga, kreative Workshops, gutes Essen und echte Verbindung in einer schönen Umgebung.',
-      features: [
-        'All-inclusive-Erlebnis',
-        'Yoga und kreative Workshops',
-        'Ayurvedisch inspirierte Mahlzeiten',
-        'Exklusiv für eure Gruppe',
-      ],
-      ctaLabel: 'Gruppen-Retreats entdecken',
     },
     featuredRetreats: {
       title: 'Ausgewählte Retreats',

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 
 import { Hero } from '@/components/client'
-import { HeroDetails, FacilitiesStats, StructuredData } from '@/components/server'
+import { HeroDetails, FacilitiesStats, StructuredData, RetreatHighlight } from '@/components/server'
 import { generatePageMetadata } from '@/lib/metadata'
 import { generateLocalBusinessSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
 import { getValidLocale } from '@/lib/locale'
@@ -45,6 +45,7 @@ export default async function HomePage({ params }: HomePageProps) {
       />
       <Hero />
       <HeroDetails locale={validLocale} />
+      <RetreatHighlight locale={validLocale} />
       <FacilitiesStats locale={validLocale} />
       <ImpressionCarousel />
     </>

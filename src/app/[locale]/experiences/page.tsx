@@ -1,17 +1,16 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 
-import { ArrowRightIcon, ExternalLinkIcon } from '@/components/client'
-import { StructuredData, ExperienceOfferCard } from '@/components/server'
+import { ArrowRightIcon } from '@/components/client'
+import { StructuredData, ExperienceOfferCard, FeaturedRetreatsGrid } from '@/components/server'
 import { generatePageMetadata } from '@/lib/metadata'
 import { generateLocalBusinessSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
-import { Route, Language } from '@/types'
+import { Route } from '@/types'
 import { SITE_CONFIG } from '@/constants/site'
 import { getServerTranslations } from '@/i18n'
 import { getValidLocale } from '@/lib/locale'
 import { getLocalizedPath } from '@/lib/routing'
-import { EXPERIENCE_OFFERS, FEATURED_RETREATS } from '@/data'
+import { EXPERIENCE_OFFERS } from '@/data'
 
 import styles from '../../experiences/page.module.css'
 
@@ -30,63 +29,6 @@ export async function generateMetadata({ params }: ExperiencesPageProps): Promis
     path: '/experiences',
     locale: validLocale,
   })
-}
-
-type Translations = Awaited<ReturnType<typeof getServerTranslations>>
-
-interface FeaturedRetreatCardProps {
-  retreat: typeof FEATURED_RETREATS[number]
-  validLocale: Language
-  t: Translations
-}
-
-function FeaturedRetreatCard({ retreat, validLocale, t }: FeaturedRetreatCardProps) {
-  return (
-    <article className={styles.featuredCard}>
-      <div className={styles.featuredImageWrapper}>
-        <Image
-          src={retreat.image}
-          alt={retreat.title}
-          fill
-          sizes="(max-width: 640px) 100vw, 50vw"
-          className={styles.featuredImage}
-        />
-      </div>
-
-      <div className={styles.featuredContent}>
-        <h3 className={styles.featuredTitle}>{retreat.title}</h3>
-        <p className={styles.featuredDate}>{retreat.dateRange}</p>
-
-        {(() => {
-          if (retreat.internalUrl) {
-            return (
-              <Link
-                href={getLocalizedPath(retreat.internalUrl, validLocale)}
-                className={styles.featuredCta}
-              >
-                {t.experiences.featuredRetreats.bookNow}
-                <ArrowRightIcon className={styles.featuredCtaIcon} />
-              </Link>
-            )
-          }
-          if (retreat.externalUrl) {
-            return (
-              <a
-                href={retreat.externalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.featuredCta}
-              >
-                {t.experiences.featuredRetreats.bookNow}
-                <ExternalLinkIcon />
-              </a>
-            )
-          }
-          return null
-        })()}
-      </div>
-    </article>
-  )
 }
 
 export default async function ExperiencesPage({ params }: ExperiencesPageProps) {
@@ -141,11 +83,7 @@ export default async function ExperiencesPage({ params }: ExperiencesPageProps) 
             <p className={styles.sectionSubtitle}>{t.experiences.featuredRetreats.subtitle}</p>
           </div>
 
-          <div className={styles.featuredGrid}>
-            {FEATURED_RETREATS.map((retreat) => (
-              <FeaturedRetreatCard key={retreat.id} retreat={retreat} validLocale={validLocale} t={t} />
-            ))}
-          </div>
+          <FeaturedRetreatsGrid locale={validLocale} />
         </section>
 
         <hr className={styles.divider} />

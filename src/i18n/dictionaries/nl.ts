@@ -36,6 +36,20 @@ export const nl: Dictionary = {
     ],
   },
 
+  retreatHighlight: {
+    kicker: 'Eén weekend · 17–18 oktober 2026',
+    title: 'The Autumn Grounding',
+    subtitle: 'Ayurvedische zorg voor vrouwen',
+    body: 'Stap twee dagen uit de doe-modus: Abhyanga-zelfmassage, herstellende yin yoga, een vuurcirkel onder de herfsthemel, sauna en warme plantaardige maaltijden — in een kleine kring van vrouwen, hier bij The Makers Barn.',
+    metaItems: [
+      'Overnachting & alle maaltijden inbegrepen',
+      'Begeleid door Nana & Elaine van Almsens Wellness',
+      'Voertaal Engels',
+    ],
+    ctaLabel: 'Reserveer je plek',
+    scarcityNote: 'Een kleine kring — vol is vol.',
+  },
+
   contact: {
     pageTitle: 'Plan je retraite',
     metaTitle: 'Contact',
@@ -391,17 +405,6 @@ export const nl: Dictionary = {
         'Gratis fietsen om de omgeving te verkennen',
       ],
       ctaLabel: 'Ontdek de Focused Workation',
-    },
-    togetherRetreat: {
-      title: 'Vrienden Retraite',
-      description: 'Een all-inclusive escape met vrienden. Yoga, creatieve workshops, heerlijke maaltijden en betekenisvolle connecties in een prachtige omgeving.',
-      features: [
-        'All-inclusive ervaring',
-        'Yoga & creatieve workshops',
-        'Ayurvedisch geïnspireerde maaltijden',
-        'Exclusieve groepstoegang',
-      ],
-      ctaLabel: 'Ontdek Groepsretraites',
     },
     featuredRetreats: {
       title: 'Uitgelichte Retraites',

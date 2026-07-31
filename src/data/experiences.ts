@@ -50,12 +50,6 @@ export const EXPERIENCE_OFFERS: ExperienceOffer[] = [
     image: IMAGES.accommodation.cosmosView,
     externalUrl: 'https://thanksforthetrip.com/cosmos-solo-yoga-retreat/',
   },
-  {
-    id: 'together-retreat',
-    type: ExperienceType.TOGETHER_RETREAT,
-    image: IMAGES.accommodation.outsideGuitarCircle,
-    externalUrl: 'https://soulrevivetogetherretreat.umso.co/',
-  },
 ]
 
 export const FEATURED_RETREATS: FeaturedRetreat[] = [
@@ -65,5 +59,12 @@ export const FEATURED_RETREATS: FeaturedRetreat[] = [
     image: '/images/buddhist-retreat.png',
     dateRange: 'June & August 2026',
     internalUrl: '/experiences/shanti-deva-retreat',
+  },
+  {
+    id: 'autumn-grounding-2026',
+    title: 'The Autumn Grounding: Ayurvedic Care for Women',
+    image: '/images/autumn-grounding-retreat.png',
+    dateRange: 'October 17–18, 2026',
+    externalUrl: 'https://hipsy.nl/event/235781-the-autumn-grounding-ayurvedic-care-for-women',
   },
 ]
