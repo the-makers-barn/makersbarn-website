@@ -18,6 +18,8 @@ export {
   ArrowLeftIcon,
   ArrowRightIcon,
   ExternalLinkIcon,
+  LocationIcon,
+  ClockIcon,
 } from './icons'
 export { RetreatProfitabilityCalculator } from './RetreatProfitabilityCalculator'
 export { RetreatLaunchCalendar } from './RetreatLaunchCalendar'

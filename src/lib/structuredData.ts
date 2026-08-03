@@ -12,6 +12,7 @@ const VENUE_GEO = { latitude: 52.3833, longitude: 6.1833 } as const
 const VENUE_OVERNIGHT_CAPACITY = 14
 const VENUE_DAY_PROGRAM_CAPACITY = 20
 const SHANTI_DEVA_EVENT_ID = `${SITE_URL}/experiences/shanti-deva-retreat#event`
+const AUTUMN_GROUNDING_EVENT_ID_VALUE = `${SITE_URL}/experiences/autumn-grounding-retreat#event`
 
 export interface OrganizationSchema {
   '@context': string
@@ -409,6 +410,12 @@ export function generateEventVenueSchema(
  * reference it as proof-of-fit (i.e. "this venue actually hosts Buddhist retreats").
  */
 export const SHANTI_DEVA_RETREAT_EVENT_ID = SHANTI_DEVA_EVENT_ID
+
+/**
+ * Stable @id for the Autumn Grounding Event, mirroring SHANTI_DEVA_RETREAT_EVENT_ID
+ * so silo schemas can reference it as proof-of-fit for women's wellness retreats.
+ */
+export const AUTUMN_GROUNDING_RETREAT_EVENT_ID = AUTUMN_GROUNDING_EVENT_ID_VALUE
 
 interface RetreatsCollectionItem {
   card: SiloHubCardSummary
