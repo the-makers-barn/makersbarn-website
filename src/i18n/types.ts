@@ -509,6 +509,82 @@ export interface FocusedWorkationTranslations {
 }
 
 /**
+ * Autumn Grounding retreat page translations.
+ *
+ * The retreat itself is held in English; the NL and DE pages say so explicitly
+ * in `practical` rather than implying a translated retreat.
+ */
+export interface AutumnGroundingTranslations {
+  metaTitle: string
+  metaDescription: string
+  backToExperiences: string
+
+  hero: {
+    kicker: string
+    title: string
+    subtitle: string
+    dates: string
+    bookNow: string
+  }
+
+  intro: {
+    title: string
+    body: readonly string[]
+    pullQuote: string
+  }
+
+  schedule: {
+    title: string
+    intro: string
+    days: Record<'saturday' | 'sunday', string>
+    activities: Record<string, string>
+  }
+
+  included: {
+    title: string
+    intro: string
+    items: readonly string[]
+  }
+
+  hosts: {
+    title: string
+    intro: string
+    people: Record<'nana' | 'elaine', { role: string; bio: string }>
+  }
+
+  practical: {
+    title: string
+    womenOnlyLabel: string
+    womenOnlyValue: string
+    languageLabel: string
+    languageValue: string
+    addressLabel: string
+    gettingThereLabel: string
+    gettingThereItems: readonly string[]
+  }
+
+  tickets: {
+    title: string
+    intro: string
+    tiers: Record<'weekend' | 'headMassage' | 'extraFriday', {
+      name: string
+      description: string
+    }>
+    addOnNote: string
+    frameTitle: string
+    fallbackText: string
+    fallbackCta: string
+    fromLabel: string
+    stickyCta: string
+  }
+
+  gallery: {
+    title: string
+    alt: Record<'practiceRoom' | 'garden' | 'pond', string>
+  }
+}
+
+/**
  * Unified Contact page translations
  */
 export interface UnifiedContactTranslations {
@@ -1254,6 +1330,7 @@ export interface Dictionary {
   experiences: ExperiencesTranslations
   location: LocationTranslations
   shantiDevaRetreat: ShantiDevaRetreatTranslations
+  autumnGrounding: AutumnGroundingTranslations
   focusedWorkation: FocusedWorkationTranslations
   impressionCarousel: ImpressionCarouselTranslations
   impressionPolaroids: ImpressionPolaroidsTranslations
