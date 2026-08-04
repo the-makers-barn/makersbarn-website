@@ -58,3 +58,28 @@ export function buildTicketShopUrl(
 
   return url.toString()
 }
+
+/**
+ * Converts the `searchParams` object a Next.js page receives into
+ * `URLSearchParams`. Repeated keys arrive as arrays; the first value wins,
+ * since a duplicated `utm_source` has no meaningful merge.
+ */
+export function toSearchParams(
+  input: Record<string, string | string[] | undefined> | undefined
+): URLSearchParams {
+  const params = new URLSearchParams()
+
+  if (!input) {
+    return params
+  }
+
+  for (const [key, value] of Object.entries(input)) {
+    if (typeof value === 'string') {
+      params.set(key, value)
+    } else if (Array.isArray(value) && typeof value[0] === 'string') {
+      params.set(key, value[0])
+    }
+  }
+
+  return params
+}

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { buildTicketShopUrl } from './ticketShopUrl'
+import { buildTicketShopUrl, toSearchParams } from './ticketShopUrl'
 
 const SHOP_URL = 'https://hipsy.nl/shop/235781-the-autumn-grounding-ayurvedic-care-for-women'
 
@@ -71,5 +71,41 @@ describe('buildTicketShopUrl', () => {
     const params = paramsOf(buildTicketShopUrl(SHOP_URL, new URLSearchParams('utm_source=')))
 
     expect(params.get('utm_source')).toBe('themakersbarn')
+  })
+})
+
+describe('toSearchParams', () => {
+  it('converts a page searchParams object', () => {
+    const params = toSearchParams({ utm_source: 'instagram', utm_campaign: 'autumn26' })
+
+    expect(params.get('utm_source')).toBe('instagram')
+    expect(params.get('utm_campaign')).toBe('autumn26')
+  })
+
+  it('takes the first value when a key is repeated', () => {
+    const params = toSearchParams({ utm_source: ['instagram', 'facebook'] })
+
+    expect(params.get('utm_source')).toBe('instagram')
+  })
+
+  it('skips undefined and empty array values', () => {
+    const params = toSearchParams({ utm_source: undefined, utm_campaign: [] })
+
+    expect(params.get('utm_source')).toBeNull()
+    expect(params.get('utm_campaign')).toBeNull()
+  })
+
+  it('returns empty params when the page had no query string', () => {
+    expect([...toSearchParams(undefined)]).toHaveLength(0)
+  })
+
+  it('round-trips into a shop url with utm_medium still pinned', () => {
+    const url = buildTicketShopUrl(
+      SHOP_URL,
+      toSearchParams({ utm_source: 'instagram', utm_medium: 'paid_social' })
+    )
+
+    expect(paramsOf(url).get('utm_source')).toBe('instagram')
+    expect(paramsOf(url).get('utm_medium')).toBe('iframe')
   })
 })

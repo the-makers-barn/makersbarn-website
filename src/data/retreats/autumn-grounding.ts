@@ -17,8 +17,10 @@ export const AUTUMN_GROUNDING_RETREAT: AutumnGroundingRetreat = {
   heroImage: '/images/autumn-grounding-retreat.png',
   heroBackground: '/images/field-walking-women.jpg',
 
-  startDate: '2026-10-17T09:30',
-  endDate: '2026-10-18T17:00',
+  // Offsets are explicit so schema.org consumers do not read these as UTC.
+  // 17-18 October 2026 falls before EU summer time ends (25 October), so CEST.
+  startDate: '2026-10-17T09:30:00+02:00',
+  endDate: '2026-10-18T17:00:00+02:00',
   currency: 'EUR',
 
   location: {

@@ -6,17 +6,17 @@ import {
   ArrowLeftIcon,
   CheckIcon,
   ClockIcon,
-  HipsyTicketShop,
   LocationIcon,
   StickyBookingBar,
 } from '@/components/client'
-import { StructuredData } from '@/components/server'
+import { HipsyTicketShop, StructuredData } from '@/components/server'
 import { AUTUMN_GROUNDING_RETREAT } from '@/data'
 import { getServerTranslations } from '@/i18n'
 import { getValidLocale } from '@/lib/locale'
 import { generatePageMetadata } from '@/lib/metadata'
 import { getLocalizedPath } from '@/lib/routing'
 import { AUTUMN_GROUNDING_RETREAT_EVENT_ID, generatePageBreadcrumbs } from '@/lib/structuredData'
+import { buildTicketShopUrl, toSearchParams } from '@/lib/ticketShopUrl'
 import { Language, Route, ScheduleDayType } from '@/types'
 
 import styles from './page.module.css'
@@ -26,8 +26,23 @@ type Translations = Awaited<ReturnType<typeof getServerTranslations>>
 /** Anchor the mobile sticky bar and the hero CTA scroll to. */
 const TICKETS_ANCHOR_ID = 'tickets'
 
-function formatPrice(amount: string): string {
-  return `€${amount}`
+const PRICE_LOCALES: Record<Language, string> = {
+  [Language.EN]: 'en-IE',
+  [Language.NL]: 'nl-NL',
+  [Language.DE]: 'de-DE',
+}
+
+/**
+ * Formats to the reader's own convention, so our copy agrees with the embedded
+ * widget sitting next to it: Hipsy renders "€ 295,80", and printing "€295.80"
+ * beside it on the Dutch and German pages reads as two different numbers.
+ * en-IE rather than en-GB so English keeps the euro sign.
+ */
+function formatPrice(amount: string, locale: Language): string {
+  return new Intl.NumberFormat(PRICE_LOCALES[locale], {
+    style: 'currency',
+    currency: AUTUMN_GROUNDING_RETREAT.currency,
+  }).format(Number(amount))
 }
 
 /**
@@ -37,19 +52,22 @@ function formatPrice(amount: string): string {
  * the add-ons are cheaper but cannot be bought without a weekend ticket, so
  * advertising one of those as the entry price would be a lie.
  */
-function getLeadPrice(): string {
+function getLeadPrice(locale: Language): string {
   const standalone = AUTUMN_GROUNDING_RETREAT.ticketTiers
     .filter((tier) => !tier.requiresWeekendTicket)
     .map((tier) => Number(tier.price))
 
-  return formatPrice(Math.min(...standalone).toFixed(2))
+  return formatPrice(Math.min(...standalone).toFixed(2), locale)
 }
 
 interface AutumnGroundingPageProps {
   params: Promise<{ locale: string }>
+  searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
-export async function generateMetadata({ params }: AutumnGroundingPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: Pick<AutumnGroundingPageProps, 'params'>): Promise<Metadata> {
   const { locale } = await params
   const validLocale = getValidLocale(locale)
   const t = await getServerTranslations(validLocale)
@@ -261,7 +279,7 @@ function RetreatGallery({ t }: { t: Translations }) {
   )
 }
 
-function TicketTierList({ t }: { t: Translations }) {
+function TicketTierList({ t, locale }: { t: Translations; locale: Language }) {
   const { tickets } = t.autumnGrounding
 
   return (
@@ -272,7 +290,7 @@ function TicketTierList({ t }: { t: Translations }) {
           <li key={tier.id} className={styles.tier}>
             <div className={styles.tierHeader}>
               <span className={styles.tierName}>{copy.name}</span>
-              <span className={styles.tierPrice}>{formatPrice(tier.price)}</span>
+              <span className={styles.tierPrice}>{formatPrice(tier.price, locale)}</span>
             </div>
             <p className={styles.tierDescription}>{copy.description}</p>
           </li>
@@ -282,7 +300,7 @@ function TicketTierList({ t }: { t: Translations }) {
   )
 }
 
-function RetreatTickets({ t }: { t: Translations }) {
+function RetreatTickets({ t, locale }: { t: Translations; locale: Language }) {
   const { tickets } = t.autumnGrounding
 
   return (
@@ -290,7 +308,7 @@ function RetreatTickets({ t }: { t: Translations }) {
       <h2 className={styles.sectionTitle}>{tickets.title}</h2>
       <p className={styles.sectionIntro}>{tickets.intro}</p>
 
-      <TicketTierList t={t} />
+      <TicketTierList t={t} locale={locale} />
       <p className={styles.addOnNote}>{tickets.addOnNote}</p>
     </section>
   )
@@ -304,15 +322,14 @@ function RetreatTickets({ t }: { t: Translations }) {
  * twice. In source order it sits where mobile wants it (straight after the
  * ticket tiers); above 1000px it is placed into the sticky rail column.
  */
-function TicketShopSlot({ t }: { t: Translations }) {
+function TicketShopSlot({ t, shopSrc }: { t: Translations; shopSrc: string }) {
   const { tickets } = t.autumnGrounding
-  const retreat = AUTUMN_GROUNDING_RETREAT
 
   return (
     <aside id={TICKETS_ANCHOR_ID} className={styles.ticketSlot} aria-label={tickets.title}>
       <HipsyTicketShop
-        shopUrl={retreat.ticketShopUrl}
-        fallbackUrl={retreat.eventUrl}
+        src={shopSrc}
+        fallbackUrl={AUTUMN_GROUNDING_RETREAT.eventUrl}
         frameTitle={tickets.frameTitle}
         fallbackText={tickets.fallbackText}
         fallbackCta={tickets.fallbackCta}
@@ -363,10 +380,18 @@ function createEventSchema(t: Translations) {
   }
 }
 
-export default async function AutumnGroundingPage({ params }: AutumnGroundingPageProps) {
+export default async function AutumnGroundingPage({
+  params,
+  searchParams,
+}: AutumnGroundingPageProps) {
   const { locale } = await params
   const validLocale = getValidLocale(locale)
   const t = await getServerTranslations(validLocale)
+
+  const shopSrc = buildTicketShopUrl(
+    AUTUMN_GROUNDING_RETREAT.ticketShopUrl,
+    toSearchParams(await searchParams)
+  )
 
   return (
     <>
@@ -387,8 +412,8 @@ export default async function AutumnGroundingPage({ params }: AutumnGroundingPag
           <RetreatIntro t={t} />
           <RetreatSchedule t={t} />
           <RetreatIncluded t={t} />
-          <RetreatTickets t={t} />
-          <TicketShopSlot t={t} />
+          <RetreatTickets t={t} locale={validLocale} />
+          <TicketShopSlot t={t} shopSrc={shopSrc} />
           <RetreatHosts t={t} />
           <RetreatPractical t={t} />
           <RetreatGallery t={t} />
@@ -397,7 +422,7 @@ export default async function AutumnGroundingPage({ params }: AutumnGroundingPag
         <StickyBookingBar
           targetId={TICKETS_ANCHOR_ID}
           fromLabel={t.autumnGrounding.tickets.fromLabel}
-          price={getLeadPrice()}
+          price={getLeadPrice(validLocale)}
           ctaLabel={t.autumnGrounding.tickets.stickyCta}
         />
       </div>

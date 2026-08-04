@@ -30,27 +30,3 @@
     height: min(720px, calc(100vh - 8rem));
   }
 }
-
-.fallback {
-  margin: 0;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-tertiary);
-  text-align: center;
-}
-
-.fallbackLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: var(--color-primary);
-  font-weight: 500;
-  text-decoration: underline;
-}
-
-.fallbackLink:hover {
-  color: #1e3a2c;
-}
-
-.fallbackIcon {
-  flex-shrink: 0;
-}
