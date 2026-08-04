@@ -12,6 +12,8 @@ export { ImageGallery } from './ImageGallery'
 export { Lightbox, type LightboxImage, type LightboxProps } from './Lightbox'
 export { FloatingWhatsApp } from './FloatingWhatsApp'
 export { WhatsAppCtaLink } from './WhatsAppCtaLink'
+export { HipsyTicketShop } from './HipsyTicketShop'
+export { StickyBookingBar } from './StickyBookingBar'
 export {
   WhatsAppIcon,
   CheckIcon,

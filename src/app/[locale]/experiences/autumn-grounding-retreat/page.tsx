@@ -2,7 +2,14 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { ArrowLeftIcon, CheckIcon, ClockIcon, LocationIcon } from '@/components/client'
+import {
+  ArrowLeftIcon,
+  CheckIcon,
+  ClockIcon,
+  HipsyTicketShop,
+  LocationIcon,
+  StickyBookingBar,
+} from '@/components/client'
 import { StructuredData } from '@/components/server'
 import { AUTUMN_GROUNDING_RETREAT } from '@/data'
 import { getServerTranslations } from '@/i18n'
@@ -15,6 +22,28 @@ import { Language, Route, ScheduleDayType } from '@/types'
 import styles from './page.module.css'
 
 type Translations = Awaited<ReturnType<typeof getServerTranslations>>
+
+/** Anchor the mobile sticky bar and the hero CTA scroll to. */
+const TICKETS_ANCHOR_ID = 'tickets'
+
+function formatPrice(amount: string): string {
+  return `€${amount}`
+}
+
+/**
+ * Price shown in the sticky bar.
+ *
+ * Deliberately the cheapest *standalone* tier, not the cheapest tier outright:
+ * the add-ons are cheaper but cannot be bought without a weekend ticket, so
+ * advertising one of those as the entry price would be a lie.
+ */
+function getLeadPrice(): string {
+  const standalone = AUTUMN_GROUNDING_RETREAT.ticketTiers
+    .filter((tier) => !tier.requiresWeekendTicket)
+    .map((tier) => Number(tier.price))
+
+  return formatPrice(Math.min(...standalone).toFixed(2))
+}
 
 interface AutumnGroundingPageProps {
   params: Promise<{ locale: string }>
@@ -51,11 +80,11 @@ function RetreatHero({ t, validLocale }: { t: Translations; validLocale: Languag
       <section className={styles.hero}>
         <div className={styles.heroMedia}>
           <Image
-            src={retreat.heroImage}
+            src={retreat.heroBackground}
             alt=""
             fill
             priority
-            sizes="(max-width: 900px) 100vw, 60vw"
+            sizes="100vw"
             className={styles.heroImage}
           />
           <div className={styles.heroScrim} />
@@ -232,6 +261,66 @@ function RetreatGallery({ t }: { t: Translations }) {
   )
 }
 
+function TicketTierList({ t }: { t: Translations }) {
+  const { tickets } = t.autumnGrounding
+
+  return (
+    <ul className={styles.tierList}>
+      {AUTUMN_GROUNDING_RETREAT.ticketTiers.map((tier) => {
+        const copy = tickets.tiers[tier.id as keyof typeof tickets.tiers]
+        return (
+          <li key={tier.id} className={styles.tier}>
+            <div className={styles.tierHeader}>
+              <span className={styles.tierName}>{copy.name}</span>
+              <span className={styles.tierPrice}>{formatPrice(tier.price)}</span>
+            </div>
+            <p className={styles.tierDescription}>{copy.description}</p>
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
+function RetreatTickets({ t }: { t: Translations }) {
+  const { tickets } = t.autumnGrounding
+
+  return (
+    <section className={styles.section}>
+      <h2 className={styles.sectionTitle}>{tickets.title}</h2>
+      <p className={styles.sectionIntro}>{tickets.intro}</p>
+
+      <TicketTierList t={t} />
+      <p className={styles.addOnNote}>{tickets.addOnNote}</p>
+    </section>
+  )
+}
+
+/**
+ * The one and only ticketshop instance.
+ *
+ * Rendered once and moved by grid placement rather than duplicated per
+ * breakpoint: two instances would mean every visitor loading the Hipsy frame
+ * twice. In source order it sits where mobile wants it (straight after the
+ * ticket tiers); above 1000px it is placed into the sticky rail column.
+ */
+function TicketShopSlot({ t }: { t: Translations }) {
+  const { tickets } = t.autumnGrounding
+  const retreat = AUTUMN_GROUNDING_RETREAT
+
+  return (
+    <aside id={TICKETS_ANCHOR_ID} className={styles.ticketSlot} aria-label={tickets.title}>
+      <HipsyTicketShop
+        shopUrl={retreat.ticketShopUrl}
+        fallbackUrl={retreat.eventUrl}
+        frameTitle={tickets.frameTitle}
+        fallbackText={tickets.fallbackText}
+        fallbackCta={tickets.fallbackCta}
+      />
+    </aside>
+  )
+}
+
 function createEventSchema(t: Translations) {
   const retreat = AUTUMN_GROUNDING_RETREAT
 
@@ -294,14 +383,23 @@ export default async function AutumnGroundingPage({ params }: AutumnGroundingPag
       <div className={styles.retreatPage}>
         <RetreatHero t={t} validLocale={validLocale} />
 
-        <div className={styles.content}>
+        <div className={styles.layout}>
           <RetreatIntro t={t} />
           <RetreatSchedule t={t} />
           <RetreatIncluded t={t} />
+          <RetreatTickets t={t} />
+          <TicketShopSlot t={t} />
           <RetreatHosts t={t} />
           <RetreatPractical t={t} />
           <RetreatGallery t={t} />
         </div>
+
+        <StickyBookingBar
+          targetId={TICKETS_ANCHOR_ID}
+          fromLabel={t.autumnGrounding.tickets.fromLabel}
+          price={getLeadPrice()}
+          ctaLabel={t.autumnGrounding.tickets.stickyCta}
+        />
       </div>
     </>
   )

@@ -119,7 +119,14 @@ export interface RetreatGalleryImage {
 export interface AutumnGroundingRetreat {
   id: RetreatId.AUTUMN_GROUNDING
   slug: string
+  /**
+   * Promotional graphic with the retreat name set into the artwork. Used for
+   * Open Graph and the experiences card, never as a full-bleed background:
+   * its baked-in text collides with any overlaid heading.
+   */
   heroImage: string
+  /** Plain photograph, safe to overlay the hero heading on. */
+  heroBackground: string
   startDate: string
   endDate: string
   currency: string

@@ -1,0 +1,81 @@
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  /*
+   * Extra right padding keeps the CTA clear of the floating WhatsApp button,
+   * which is fixed bottom-right at a higher z-index and would otherwise sit on
+   * top of it.
+   */
+  padding: 0.85rem 5rem calc(0.85rem + env(safe-area-inset-bottom)) 1rem;
+  background: rgba(244, 239, 230, 0.97);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(41, 75, 58, 0.14);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.barHidden {
+  transform: translateY(110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.priceGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.fromLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.price {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 1.75rem;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.cta:hover {
+  background: #1e3a2c;
+}
+
+/* The rail takes over above this width. */
+@media (min-width: 1000px) {
+  .bar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+  }
+}

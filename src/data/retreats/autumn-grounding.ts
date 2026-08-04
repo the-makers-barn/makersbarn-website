@@ -15,6 +15,7 @@ export const AUTUMN_GROUNDING_RETREAT: AutumnGroundingRetreat = {
   id: RetreatId.AUTUMN_GROUNDING,
   slug: 'autumn-grounding-retreat',
   heroImage: '/images/autumn-grounding-retreat.png',
+  heroBackground: '/images/field-walking-women.jpg',
 
   startDate: '2026-10-17T09:30',
   endDate: '2026-10-18T17:00',
