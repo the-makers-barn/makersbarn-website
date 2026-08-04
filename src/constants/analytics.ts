@@ -7,6 +7,12 @@ export enum AnalyticsEvent {
   CALCULATOR_EMAIL_CAPTURED = 'email_captured',
   CALCULATOR_MAKERSBARN_CTA_CLICKED = 'makersbarn_cta_clicked',
   WHATSAPP_BOOKING_CLICKED = 'whatsapp_booking_clicked',
+  TICKETSHOP_CTA_CLICKED = 'ticketshop_cta_clicked',
+}
+
+export enum TicketShopCtaLocation {
+  STICKY_BAR = 'sticky-bar',
+  TICKETSHOP_FALLBACK = 'ticketshop-fallback',
 }
 
 export enum WhatsAppCtaLocation {

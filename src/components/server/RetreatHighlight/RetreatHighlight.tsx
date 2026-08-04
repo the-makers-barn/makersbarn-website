@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { ExternalLinkIcon } from '@/components/client'
+import { ArrowRightIcon } from '@/components/client'
 import { Language } from '@/types'
 import { FEATURED_RETREATS, IMAGES } from '@/data'
 import { getServerTranslations } from '@/i18n'
+import { getLocalizedPath } from '@/lib/routing'
 
 import styles from './RetreatHighlight.module.css'
 
@@ -16,7 +18,7 @@ interface RetreatHighlightProps {
 export async function RetreatHighlight({ locale }: RetreatHighlightProps) {
   const retreat = FEATURED_RETREATS.find((r) => r.id === HIGHLIGHTED_RETREAT_ID)
 
-  if (!retreat?.externalUrl) {
+  if (!retreat?.internalUrl) {
     return null
   }
 
@@ -49,15 +51,13 @@ export async function RetreatHighlight({ locale }: RetreatHighlightProps) {
           </ul>
 
           <div className={styles.actions}>
-            <a
-              href={retreat.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={getLocalizedPath(retreat.internalUrl, locale)}
               className={styles.cta}
             >
               {t.retreatHighlight.ctaLabel}
-              <ExternalLinkIcon />
-            </a>
+              <ArrowRightIcon />
+            </Link>
             <p className={styles.scarcity}>{t.retreatHighlight.scarcityNote}</p>
           </div>
         </div>

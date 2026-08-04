@@ -23,6 +23,7 @@ export {
 } from './validation'
 export { getImageAltText } from './imageAltText'
 export { getWhatsAppUrl } from './whatsapp'
+export { buildTicketShopUrl } from './ticketShopUrl'
 export {
   LANGUAGE_COOKIE_NAME,
   LANGUAGE_STORAGE_KEY,

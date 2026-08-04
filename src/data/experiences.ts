@@ -65,6 +65,6 @@ export const FEATURED_RETREATS: FeaturedRetreat[] = [
     title: 'The Autumn Grounding: Ayurvedic Care for Women',
     image: '/images/autumn-grounding-retreat.png',
     dateRange: 'October 17–18, 2026',
-    externalUrl: 'https://hipsy.nl/event/235781-the-autumn-grounding-ayurvedic-care-for-women',
+    internalUrl: Route.AUTUMN_GROUNDING_RETREAT,
   },
 ]

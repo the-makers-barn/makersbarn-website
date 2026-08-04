@@ -1,0 +1,23 @@
+.fallback {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #1e3a2c;
+}
+
+.icon {
+  flex-shrink: 0;
+}

@@ -543,6 +543,133 @@ export const en: Dictionary = {
     },
   },
 
+  autumnGrounding: {
+    metaTitle: 'The Autumn Grounding — Ayurvedic Care for Women',
+    metaDescription:
+      'A two-day Ayurvedic retreat for women at The Makers Barn, 17–18 October 2026. Abhyanga self-massage, yin yoga, a fire circle, sauna and plant-based meals in a small circle.',
+    backToExperiences: 'Back to Experiences',
+
+    hero: {
+      kicker: 'One weekend only · 17–18 October 2026',
+      title: 'The Autumn Grounding',
+      subtitle: 'Ayurvedic care for women',
+      dates: 'Saturday 17 October, 09:30 — Sunday 18 October, 17:00',
+      bookNow: 'Reserve your spot',
+    },
+
+    intro: {
+      title: 'Two days of gentle self-care',
+      body: [
+        'Autumn asks us to slow down, and this weekend is built around that invitation. You will learn Ayurvedic self-massage and blend an essential oil that is yours to keep, move through a long restorative yin practice, walk the fields as the light turns, and end the day around a fire under an open sky.',
+        'The circle stays small on purpose. Between sessions there is sauna, there is space, and there is nothing at all you are required to do with it.',
+      ],
+      pullQuote: 'There are no expectations here, nothing you need to accomplish, and no performance needed.',
+    },
+
+    schedule: {
+      title: 'The weekend',
+      intro: 'A rhythm rather than a timetable — everything on it is an invitation, not an obligation.',
+      days: {
+        saturday: 'Saturday 17 October',
+        sunday: 'Sunday 18 October',
+      },
+      activities: {
+        arrivalCheckin: 'Arrival & check-in',
+        welcomeCircle: 'Welcome with herbal tea & opening circle',
+        ayurvedicWorkshop: 'Ayurvedic self-massage & custom essential oil workshop',
+        autumnWalk: 'Mindful autumn walk',
+        lunchAndRest: 'Plant-based lunch & rest',
+        yinYoga: 'Deep yin yoga',
+        freeTimeSauna: 'Free time & sauna',
+        dinner: 'Dinner',
+        fireCircle: 'Fire circle, sound meditation & stargazing',
+        morningFlow: 'Gentle morning stretch flow',
+        breakfast: 'Relaxed breakfast',
+        freeTimeMassages: 'Free time, sauna & optional 1:1 massages',
+        lunch: 'Plant-based lunch',
+        closingCircle: 'Closing circle',
+        slowCheckout: 'Free time, sauna & slow checkout',
+      },
+    },
+
+    included: {
+      title: "What's included",
+      intro: 'One price, and almost nothing to arrange once you arrive.',
+      items: [
+        'The full programme — Ayurvedic oil workshop, yin yoga, sound meditation, fire circle and morning flow',
+        'All meals from Saturday lunch through Sunday lunch, plant-based with vegan options',
+        'Unlimited herbal teas and snacks throughout the weekend',
+        'Sauna and access to the farm grounds',
+        'A self-care package to take home: your custom-blended essential oil, an Ayurvedic massage booklet and a yin yoga practice guide',
+        'Shared accommodation with cotton linens and towels',
+      ],
+    },
+
+    hosts: {
+      title: 'Your hosts',
+      intro: 'Two people, one small circle — you will not be handed between facilitators.',
+      people: {
+        nana: {
+          role: 'Founder, The Makers Barn',
+          bio: 'Nana is the mastermind and the heart behind The Makers Barn. Having found her own way back from burnout and endometriosis, she brings a calm, grounded presence shaped by her love of nature, yoga and mindful living.',
+        },
+        elaine: {
+          role: 'Integrative physiotherapist, AlmSens Wellness',
+          bio: 'Elaine is an integrative physiotherapist specialising in gerontology and holistic wellness. Her practice centres on helping people reconnect with themselves and care for their health and inner balance.',
+        },
+      },
+    },
+
+    practical: {
+      title: 'Practical details',
+      womenOnlyLabel: 'Who it is for',
+      womenOnlyValue: 'Women only — a deliberately small circle.',
+      languageLabel: 'Language',
+      languageValue: 'The retreat is held in English.',
+      addressLabel: 'Where',
+      gettingThereLabel: 'Getting here',
+      gettingThereItems: [
+        'About 20 minutes by car from Zwolle',
+        'Free pickup from the nearest station can be arranged',
+        'We are happy to connect you with others travelling from the same direction',
+      ],
+    },
+
+    tickets: {
+      title: 'Reserve your spot',
+      intro: 'Booking happens right here — you will not be sent anywhere else.',
+      tiers: {
+        weekend: {
+          name: 'Autumn Grounding weekend',
+          description: 'The full programme, one night of shared accommodation, four meals and your self-care package.',
+        },
+        headMassage: {
+          name: '1:1 Ayurvedic head massage',
+          description: 'A 30-minute private treatment on Sunday morning.',
+        },
+        extraFriday: {
+          name: 'Extra Friday night',
+          description: 'Arrive a night early with sauna access. Friday dinner and Saturday breakfast are self-catered, with the kitchen at your disposal.',
+        },
+      },
+      addOnNote: 'Both add-ons can only be booked together with a weekend ticket.',
+      frameTitle: 'Ticketshop — The Autumn Grounding',
+      fallbackText: 'Ticketshop not loading?',
+      fallbackCta: 'Open it in a new tab',
+      fromLabel: 'from',
+      stickyCta: 'Book',
+    },
+
+    gallery: {
+      title: 'Where it happens',
+      alt: {
+        practiceRoom: 'The practice room laid out with yoga mats',
+        garden: 'Hammocks strung between trees in the garden',
+        pond: 'The natural swimming pond and the fields beyond',
+      },
+    },
+  },
+
   focusedWorkation: {
     metaTitle: 'Focused Workation',
     metaDescription: 'Work remotely from a farm in Overijssel. Fibre Wi-Fi across the whole farm, quiet cabins, sauna and swimming pond — book your focused workation directly with us.',

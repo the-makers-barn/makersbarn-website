@@ -1,5 +1,6 @@
 export enum RetreatId {
   SHANTI_DEVA = 'shanti-deva',
+  AUTUMN_GROUNDING = 'autumn-grounding',
 }
 
 export enum RetreatDateId {
@@ -11,6 +12,8 @@ export enum ScheduleDayType {
   ARRIVAL = 'arrival',
   STUDY = 'study',
   FINAL = 'final',
+  SATURDAY = 'saturday',
+  SUNDAY = 'sunday',
 }
 
 export interface RetreatDate {
@@ -81,4 +84,60 @@ export interface RetreatData {
   participantRange: ParticipantRange
   contact: RetreatContact
   bookingUrl: string
+}
+
+/**
+ * A separately purchasable ticket on the retreat's ticketshop.
+ * `id` keys into the `autumnGrounding.tickets.tiers` dictionary block.
+ */
+export interface TicketTier {
+  id: string
+  price: string
+  requiresWeekendTicket: boolean
+}
+
+export interface RetreatHost {
+  id: string
+  name: string
+  organisation: string
+}
+
+export interface RetreatGalleryImage {
+  src: string
+  altKey: string
+}
+
+/**
+ * The Autumn Grounding weekend.
+ *
+ * Deliberately not `RetreatData`: that shape assumes a single total price with a
+ * cost breakdown and arrival/study/final days, whereas this retreat sells three
+ * independent ticket tiers across a two-day arc. Shared primitives
+ * (`DaySchedule`, `RetreatLocation`) are reused; the differing parts are not
+ * forced into a common shape while only two retreats exist.
+ */
+export interface AutumnGroundingRetreat {
+  id: RetreatId.AUTUMN_GROUNDING
+  slug: string
+  /**
+   * Promotional graphic with the retreat name set into the artwork. Used for
+   * Open Graph and the experiences card, never as a full-bleed background:
+   * its baked-in text collides with any overlaid heading.
+   */
+  heroImage: string
+  /** Plain photograph, safe to overlay the hero heading on. */
+  heroBackground: string
+  startDate: string
+  endDate: string
+  currency: string
+  location: RetreatLocation
+  hosts: RetreatHost[]
+  schedule: DaySchedule[]
+  includedKeys: string[]
+  ticketTiers: TicketTier[]
+  /** Hipsy ticketshop, embedded in an iframe. */
+  ticketShopUrl: string
+  /** Public Hipsy event page, used as the fallback link when the frame is blocked. */
+  eventUrl: string
+  gallery: RetreatGalleryImage[]
 }

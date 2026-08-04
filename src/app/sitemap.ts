@@ -43,6 +43,7 @@ const PAGE_ROUTES: readonly PageRoute[] = [
   { path: Route.FACILITIES, changeFrequency: 'weekly', priority: 0.9 },
   { path: Route.EXPERIENCES, changeFrequency: 'weekly', priority: 0.9 },
   { path: Route.SHANTI_DEVA_RETREAT, changeFrequency: 'monthly', priority: 0.7 },
+  { path: Route.AUTUMN_GROUNDING_RETREAT, changeFrequency: 'weekly', priority: 0.8 },
   { path: Route.FOCUSED_WORKATION, changeFrequency: 'monthly', priority: 0.8 },
   { path: Route.CONTACT, changeFrequency: 'monthly', priority: 0.7 },
   { path: Route.HOST_A_RETREAT, changeFrequency: 'weekly', priority: 0.9 },

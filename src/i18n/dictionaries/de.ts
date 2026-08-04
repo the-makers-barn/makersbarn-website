@@ -546,6 +546,133 @@ export const de: Dictionary = {
     },
   },
 
+  autumnGrounding: {
+    metaTitle: 'The Autumn Grounding — Ayurvedische Fürsorge für Frauen',
+    metaDescription:
+      'Ein zweitägiges ayurvedisches Retreat für Frauen im The Makers Barn, 17.–18. Oktober 2026. Abhyanga-Selbstmassage, Yin Yoga, ein Feuerkreis, Sauna und pflanzliche Mahlzeiten in kleinem Kreis.',
+    backToExperiences: 'Zurück zu den Erlebnissen',
+
+    hero: {
+      kicker: 'Nur ein Wochenende · 17.–18. Oktober 2026',
+      title: 'The Autumn Grounding',
+      subtitle: 'Ayurvedische Fürsorge für Frauen',
+      dates: 'Samstag, 17. Oktober, 09:30 — Sonntag, 18. Oktober, 17:00',
+      bookNow: 'Platz reservieren',
+    },
+
+    intro: {
+      title: 'Zwei Tage sanfte Selbstfürsorge',
+      body: [
+        'Der Herbst bittet uns, langsamer zu werden, und dieses Wochenende ist um diese Einladung herum gebaut. Du lernst ayurvedische Selbstmassage und mischst dir ein ätherisches Öl, das du behalten darfst, bewegst dich durch eine lange, erholsame Yin-Praxis, gehst über die Felder, während das Licht kippt, und lässt den Tag am Feuer unter offenem Himmel ausklingen.',
+        'Der Kreis bleibt bewusst klein. Zwischen den Einheiten gibt es Sauna, es gibt Raum — und es gibt nichts, was du damit anfangen musst.',
+      ],
+      pullQuote: 'Hier gibt es keine Erwartungen, nichts, was du erreichen musst, und nichts vorzuführen.',
+    },
+
+    schedule: {
+      title: 'Das Wochenende',
+      intro: 'Eher ein Rhythmus als ein Zeitplan — alles darauf ist eine Einladung, keine Pflicht.',
+      days: {
+        saturday: 'Samstag, 17. Oktober',
+        sunday: 'Sonntag, 18. Oktober',
+      },
+      activities: {
+        arrivalCheckin: 'Ankunft & Check-in',
+        welcomeCircle: 'Willkommen mit Kräutertee & Eröffnungskreis',
+        ayurvedicWorkshop: 'Ayurvedische Selbstmassage & Workshop für dein eigenes ätherisches Öl',
+        autumnWalk: 'Achtsamer Herbstspaziergang',
+        lunchAndRest: 'Pflanzliches Mittagessen & Ruhe',
+        yinYoga: 'Tiefes Yin Yoga',
+        freeTimeSauna: 'Freie Zeit & Sauna',
+        dinner: 'Abendessen',
+        fireCircle: 'Feuerkreis, Klangmeditation & Sterne schauen',
+        morningFlow: 'Sanfter Morgen-Flow',
+        breakfast: 'Entspanntes Frühstück',
+        freeTimeMassages: 'Freie Zeit, Sauna & optionale 1:1-Massagen',
+        lunch: 'Pflanzliches Mittagessen',
+        closingCircle: 'Abschlusskreis',
+        slowCheckout: 'Freie Zeit, Sauna & langsames Auschecken',
+      },
+    },
+
+    included: {
+      title: 'Was enthalten ist',
+      intro: 'Ein Preis — und fast nichts mehr zu organisieren, sobald du da bist.',
+      items: [
+        'Das gesamte Programm — Ayurveda-Öl-Workshop, Yin Yoga, Klangmeditation, Feuerkreis und Morgen-Flow',
+        'Alle Mahlzeiten von Samstagmittag bis Sonntagmittag, pflanzlich mit veganen Optionen',
+        'Unbegrenzt Kräutertee und Snacks das ganze Wochenende',
+        'Sauna und Zugang zum Hofgelände',
+        'Ein Selbstfürsorge-Paket für zu Hause: dein selbst gemischtes ätherisches Öl, ein Heft zur ayurvedischen Massage und ein Yin-Yoga-Übungsleitfaden',
+        'Gemeinschaftsunterkunft mit Baumwollbettwäsche und Handtüchern',
+      ],
+    },
+
+    hosts: {
+      title: 'Deine Gastgeberinnen',
+      intro: 'Zwei Menschen, ein kleiner Kreis — du wirst nicht von Betreuerin zu Betreuerin weitergereicht.',
+      people: {
+        nana: {
+          role: 'Gründerin, The Makers Barn',
+          bio: 'Nana ist Kopf und Herz hinter The Makers Barn. Nachdem sie ihren eigenen Weg aus Burnout und Endometriose zurückgefunden hat, bringt sie eine ruhige, geerdete Präsenz mit, geprägt von ihrer Liebe zur Natur, zu Yoga und zu einem achtsamen Leben.',
+        },
+        elaine: {
+          role: 'Integrative Physiotherapeutin, AlmSens Wellness',
+          bio: 'Elaine ist integrative Physiotherapeutin mit Schwerpunkt Gerontologie und ganzheitlicher Gesundheit. In ihrer Arbeit geht es darum, Menschen wieder mit sich selbst in Verbindung zu bringen und ihre Gesundheit und innere Balance zu pflegen.',
+        },
+      },
+    },
+
+    practical: {
+      title: 'Praktische Infos',
+      womenOnlyLabel: 'Für wen',
+      womenOnlyValue: 'Nur für Frauen — ein bewusst kleiner Kreis.',
+      languageLabel: 'Sprache',
+      languageValue: 'Das Retreat findet auf Englisch statt.',
+      addressLabel: 'Wo',
+      gettingThereLabel: 'Anreise',
+      gettingThereItems: [
+        'Etwa 20 Autominuten von Zwolle',
+        'Kostenlose Abholung vom nächsten Bahnhof ist nach Absprache möglich',
+        'Wir bringen dich gern mit anderen zusammen, die aus derselben Richtung anreisen',
+      ],
+    },
+
+    tickets: {
+      title: 'Platz reservieren',
+      intro: 'Gebucht wird direkt hier — du wirst nirgendwo anders hingeschickt.',
+      tiers: {
+        weekend: {
+          name: 'Autumn-Grounding-Wochenende',
+          description: 'Das gesamte Programm, eine Nacht in der Gemeinschaftsunterkunft, vier Mahlzeiten und dein Selbstfürsorge-Paket.',
+        },
+        headMassage: {
+          name: '1:1 ayurvedische Kopfmassage',
+          description: 'Eine 30-minütige Einzelbehandlung am Sonntagvormittag.',
+        },
+        extraFriday: {
+          name: 'Zusätzliche Freitagnacht',
+          description: 'Reise eine Nacht früher an, inklusive Sauna. Freitagabendessen und Samstagsfrühstück versorgst du selbst; die Küche steht dir zur Verfügung.',
+        },
+      },
+      addOnNote: 'Beide Zusatzoptionen sind nur zusammen mit einem Wochenendticket buchbar.',
+      frameTitle: 'Ticketshop — The Autumn Grounding',
+      fallbackText: 'Ticketshop lädt nicht?',
+      fallbackCta: 'In neuem Tab öffnen',
+      fromLabel: 'ab',
+      stickyCta: 'Buchen',
+    },
+
+    gallery: {
+      title: 'Wo es stattfindet',
+      alt: {
+        practiceRoom: 'Der Praxisraum mit ausgelegten Yogamatten',
+        garden: 'Hängematten zwischen den Bäumen im Garten',
+        pond: 'Der natürliche Schwimmteich und die Felder dahinter',
+      },
+    },
+  },
+
   focusedWorkation: {
     metaTitle: 'Focused Workation',
     metaDescription: 'Arbeite remote von einem Hof in Overijssel. Glasfaser-WLAN auf dem ganzen Hof, ruhige Hütten, Sauna und Schwimmteich — buche deine Focused Workation direkt bei uns.',

@@ -119,6 +119,7 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
     Route.TERMS_AND_CONDITIONS,
     Route.EXPERIENCES,
     Route.SHANTI_DEVA_RETREAT,
+    Route.AUTUMN_GROUNDING_RETREAT,
     Route.FOCUSED_WORKATION,
   ]
   

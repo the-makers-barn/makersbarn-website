@@ -12,12 +12,16 @@ export { ImageGallery } from './ImageGallery'
 export { Lightbox, type LightboxImage, type LightboxProps } from './Lightbox'
 export { FloatingWhatsApp } from './FloatingWhatsApp'
 export { WhatsAppCtaLink } from './WhatsAppCtaLink'
+export { TicketShopFallbackLink } from './TicketShopFallbackLink'
+export { StickyBookingBar } from './StickyBookingBar'
 export {
   WhatsAppIcon,
   CheckIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   ExternalLinkIcon,
+  LocationIcon,
+  ClockIcon,
 } from './icons'
 export { RetreatProfitabilityCalculator } from './RetreatProfitabilityCalculator'
 export { RetreatLaunchCalendar } from './RetreatLaunchCalendar'

@@ -653,6 +653,133 @@ export const nl: Dictionary = {
     },
   },
 
+  autumnGrounding: {
+    metaTitle: 'The Autumn Grounding — Ayurvedische zorg voor vrouwen',
+    metaDescription:
+      'Een tweedaagse ayurvedische retreat voor vrouwen bij The Makers Barn, 17–18 oktober 2026. Abhyanga-zelfmassage, yin yoga, een vuurcirkel, sauna en plantaardige maaltijden in een kleine kring.',
+    backToExperiences: 'Terug naar Ervaringen',
+
+    hero: {
+      kicker: 'Eén weekend · 17–18 oktober 2026',
+      title: 'The Autumn Grounding',
+      subtitle: 'Ayurvedische zorg voor vrouwen',
+      dates: 'Zaterdag 17 oktober, 09:30 — zondag 18 oktober, 17:00',
+      bookNow: 'Reserveer je plek',
+    },
+
+    intro: {
+      title: 'Twee dagen zachte zelfzorg',
+      body: [
+        'De herfst vraagt ons om te vertragen, en dit weekend is rond die uitnodiging gebouwd. Je leert ayurvedische zelfmassage en mengt een etherische olie die je mee naar huis neemt, je beweegt door een lange herstellende yin-praktijk, wandelt door de velden terwijl het licht kantelt, en sluit de dag af rond het vuur onder een open hemel.',
+        'De kring blijft bewust klein. Tussen de sessies door is er sauna, is er ruimte, en is er niets wat je ermee moet doen.',
+      ],
+      pullQuote: 'Er zijn hier geen verwachtingen, niets wat je moet bereiken en niets om je voor te bewijzen.',
+    },
+
+    schedule: {
+      title: 'Het weekend',
+      intro: 'Meer een ritme dan een schema — alles erop is een uitnodiging, geen verplichting.',
+      days: {
+        saturday: 'Zaterdag 17 oktober',
+        sunday: 'Zondag 18 oktober',
+      },
+      activities: {
+        arrivalCheckin: 'Aankomst & check-in',
+        welcomeCircle: 'Welkom met kruidenthee & openingscirkel',
+        ayurvedicWorkshop: 'Ayurvedische zelfmassage & workshop eigen etherische olie',
+        autumnWalk: 'Aandachtige herfstwandeling',
+        lunchAndRest: 'Plantaardige lunch & rust',
+        yinYoga: 'Diepe yin yoga',
+        freeTimeSauna: 'Vrije tijd & sauna',
+        dinner: 'Diner',
+        fireCircle: 'Vuurcirkel, klankmeditatie & sterrenkijken',
+        morningFlow: 'Zachte ochtendflow',
+        breakfast: 'Rustig ontbijt',
+        freeTimeMassages: 'Vrije tijd, sauna & optionele 1-op-1 massages',
+        lunch: 'Plantaardige lunch',
+        closingCircle: 'Afsluitende cirkel',
+        slowCheckout: 'Vrije tijd, sauna & rustig uitchecken',
+      },
+    },
+
+    included: {
+      title: 'Wat is inbegrepen',
+      intro: 'Eén prijs, en bijna niets meer te regelen zodra je er bent.',
+      items: [
+        'Het volledige programma — workshop ayurvedische olie, yin yoga, klankmeditatie, vuurcirkel en ochtendflow',
+        'Alle maaltijden van zaterdaglunch tot en met zondaglunch, plantaardig met veganistische opties',
+        'Onbeperkt kruidenthee en snacks het hele weekend',
+        'Sauna en toegang tot het boerderijterrein',
+        'Een zelfzorgpakket voor thuis: je eigen gemengde etherische olie, een boekje over ayurvedische massage en een yin yoga-gids',
+        'Gedeelde accommodatie met katoenen beddengoed en handdoeken',
+      ],
+    },
+
+    hosts: {
+      title: 'Je begeleiders',
+      intro: 'Twee mensen, één kleine kring — je wordt niet doorgegeven van begeleider naar begeleider.',
+      people: {
+        nana: {
+          role: 'Oprichter, The Makers Barn',
+          bio: 'Nana is het brein en het hart achter The Makers Barn. Nadat ze haar eigen weg terugvond uit burn-out en endometriose, brengt ze een kalme, geaarde aanwezigheid mee, gevormd door haar liefde voor de natuur, yoga en bewust leven.',
+        },
+        elaine: {
+          role: 'Integratief fysiotherapeut, AlmSens Wellness',
+          bio: 'Elaine is integratief fysiotherapeut, gespecialiseerd in gerontologie en holistische wellness. In haar praktijk staat centraal dat mensen weer contact maken met zichzelf en zorgen voor hun gezondheid en innerlijke balans.',
+        },
+      },
+    },
+
+    practical: {
+      title: 'Praktische informatie',
+      womenOnlyLabel: 'Voor wie',
+      womenOnlyValue: 'Alleen voor vrouwen — een bewust kleine kring.',
+      languageLabel: 'Taal',
+      languageValue: 'De retreat wordt in het Engels gegeven.',
+      addressLabel: 'Waar',
+      gettingThereLabel: 'Hoe je hier komt',
+      gettingThereItems: [
+        'Ongeveer 20 minuten met de auto vanaf Zwolle',
+        'Gratis ophalen vanaf het dichtstbijzijnde station is mogelijk in overleg',
+        'We brengen je graag in contact met anderen die uit dezelfde richting komen',
+      ],
+    },
+
+    tickets: {
+      title: 'Reserveer je plek',
+      intro: 'Boeken doe je hier — je wordt nergens anders heen gestuurd.',
+      tiers: {
+        weekend: {
+          name: 'Autumn Grounding-weekend',
+          description: 'Het volledige programma, één overnachting in gedeelde accommodatie, vier maaltijden en je zelfzorgpakket.',
+        },
+        headMassage: {
+          name: '1-op-1 ayurvedische hoofdmassage',
+          description: 'Een privébehandeling van 30 minuten op zondagochtend.',
+        },
+        extraFriday: {
+          name: 'Extra vrijdagnacht',
+          description: 'Kom een nacht eerder, inclusief sauna. Het vrijdagdiner en zaterdagontbijt regel je zelf; de keuken staat tot je beschikking.',
+        },
+      },
+      addOnNote: 'Beide extra’s zijn alleen te boeken in combinatie met een weekendticket.',
+      frameTitle: 'Ticketshop — The Autumn Grounding',
+      fallbackText: 'Laadt de ticketshop niet?',
+      fallbackCta: 'Open hem in een nieuw tabblad',
+      fromLabel: 'vanaf',
+      stickyCta: 'Boeken',
+    },
+
+    gallery: {
+      title: 'Waar het plaatsvindt',
+      alt: {
+        practiceRoom: 'De praktijkruimte met yogamatten klaargelegd',
+        garden: 'Hangmatten tussen de bomen in de tuin',
+        pond: 'De natuurlijke zwemvijver met de velden erachter',
+      },
+    },
+  },
+
   focusedWorkation: {
     metaTitle: 'Focused Workation',
     metaDescription: 'Werk op afstand vanaf een boerderij in Overijssel. Glasvezel-wifi over de hele boerderij, rustige cabins, sauna en zwemvijver — boek je focused workation direct bij ons.',
