@@ -11,6 +11,14 @@ describe('chef registry', () => {
     vi.resetModules()
   })
 
+  it('CHEF_SLUGS matches the slugs in ALL_CHEFS', async () => {
+    // Middleware routes on CHEF_SLUGS alone to keep chef content out of the
+    // edge bundle. If the two ever diverge, adding a chef would 404 their page.
+    const { ALL_CHEFS } = await import('./index')
+    const { CHEF_SLUGS } = await import('./slugs')
+    expect([...CHEF_SLUGS].sort()).toEqual(ALL_CHEFS.map((chef) => chef.slug).sort())
+  })
+
   it('CHEFS_BY_SLUG keys all chefs by their slug', async () => {
     const { CHEFS_BY_SLUG, ALL_CHEFS } = await import('./index')
     for (const chef of ALL_CHEFS) {

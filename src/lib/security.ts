@@ -90,8 +90,17 @@ const SECURITY_PATTERNS = {
   ],
 } as const
 
+/**
+ * A malformed escape (`/%`, `/%E0%A4%A`) makes decodeURIComponent throw, which
+ * propagated out of middleware as a 500. A path that cannot be decoded cannot
+ * be reasoned about, so it is left encoded and judged on its raw form.
+ */
 function normalizePathname(pathname: string): string {
-  return decodeURIComponent(pathname).toLowerCase()
+  try {
+    return decodeURIComponent(pathname).toLowerCase()
+  } catch {
+    return pathname.toLowerCase()
+  }
 }
 
 function hasPathTraversal(pathname: string): boolean {

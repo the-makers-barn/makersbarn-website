@@ -15,9 +15,14 @@ interface LocaleLayoutProps {
 }
 
 /**
- * Only the three real locales are valid first segments. Without this, any
- * unknown path (/chefs, /foo, /foo/about) matches [locale] and renders the
- * English page with a 200, giving every bad URL a duplicate of a real page.
+ * Declares the three real locales.
+ *
+ * `dynamicParams = false` does NOT currently reject unknown locales: it only
+ * applies to routes Next prerenders, and the root layout reads cookies and
+ * headers, so everything below it renders dynamically. Middleware is the actual
+ * guard — it 404s unrecognised paths before rendering starts. This stays as the
+ * declaration of what a valid locale is, and would begin enforcing on its own
+ * if the root layout ever became static.
  */
 export const dynamicParams = false
 
@@ -39,9 +44,10 @@ export default async function LocaleLayout({
   params,
 }: LocaleLayoutProps) {
   const { locale } = await params
-  // dynamicParams normally stops unknown locales at the router; this is the
-  // guarantee for the dynamically rendered path, where params are not matched
-  // against generateStaticParams.
+  // Defence in depth only. By the time this runs the head has already streamed,
+  // so notFound() here yields a 200 with the 404 body — middleware is what makes
+  // an unknown locale a real 404. This keeps the type narrow and stops a bad
+  // locale rendering as English if the route is ever reached directly.
   if (!isValidLocale(locale)) {
     notFound()
   }

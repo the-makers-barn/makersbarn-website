@@ -10,8 +10,10 @@ import {
   LANGUAGE_HEADER_NAME,
 } from '@/lib'
 import { DEFAULT_LANGUAGE } from '@/constants'
+import { CHEF_SLUGS as CHEF_SLUG_LIST } from '@/data/chefs/slugs'
 import { isValidLocale } from '@/lib/locale'
 import {
+  CHEF_DETAIL_PREFIX,
   getLocaleFromPath,
   getLocalizedPath,
   getPathWithoutLocale,
@@ -49,6 +51,28 @@ const RETIRED_ROUTES: ReadonlyMap<string, string> = new Map([
  */
 const NOT_FOUND_PATH = `/${DEFAULT_LANGUAGE}/__not-found__`
 
+/**
+ * Valid chef slugs.
+ *
+ * The chef page declares `dynamicParams = false`, but that only rejects unknown
+ * params for routes Next actually prerenders. The root layout reads cookies and
+ * headers, so every route renders dynamically and the check never engages —
+ * /en/chefs/does-not-exist returned 200 with the 404 body and no canonical.
+ * Middleware is the only place that can decide this before rendering starts.
+ */
+const CHEF_SLUGS: ReadonlySet<string> = new Set<string>(CHEF_SLUG_LIST)
+
+function isKnownChefPath(pathWithoutLocale: string): boolean {
+  if (!pathWithoutLocale.startsWith(CHEF_DETAIL_PREFIX)) {
+    return false
+  }
+  return CHEF_SLUGS.has(pathWithoutLocale.slice(CHEF_DETAIL_PREFIX.length))
+}
+
+function isKnownPath(pathWithoutLocale: string): boolean {
+  return isKnownRoute(pathWithoutLocale) || isKnownChefPath(pathWithoutLocale)
+}
+
 const SECURITY_HEADERS = {
   'X-Frame-Options': 'DENY',
   'X-Content-Type-Options': 'nosniff',
@@ -58,7 +82,13 @@ const SECURITY_HEADERS = {
   'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
 } as const
 
-const SKIP_PATHS = ['/_next/', '/api/', '/static/', '/public/'] as const
+/**
+ * Namespaces that must reach their own handler untouched. `/_vercel/` is served
+ * by the platform ahead of this function, and `/.well-known/` is a standardised
+ * namespace (domain verification, app association) that would otherwise fall
+ * into the unknown-path 404.
+ */
+const SKIP_PATHS = ['/_next/', '/_vercel/', '/.well-known/', '/api/', '/static/', '/public/'] as const
 
 function shouldSkipMiddleware(pathname: string): boolean {
   return SKIP_PATHS.some((path) => pathname.startsWith(path)) || hasStaticAssetExtension(pathname)
@@ -105,6 +135,19 @@ function redirectTo(request: NextRequest, target: string, status: number): NextR
   return NextResponse.redirect(url, status)
 }
 
+/**
+ * Render Next's own 404 for a path that matches no route.
+ *
+ * The status has to be set explicitly: a rewrite alone serves the 404 page with
+ * a 200, which crawlers read as real content. The sentinel target 404s on its
+ * own too, so the response stays a 404 even if the status is ever dropped.
+ */
+function notFoundRewrite(request: NextRequest): NextResponse {
+  const url = request.nextUrl.clone()
+  url.pathname = NOT_FOUND_PATH
+  return NextResponse.rewrite(url, { status: 404 })
+}
+
 /** Redirect to the visitor's language. Must stay temporary — the target varies per visitor. */
 function redirectToPreferredLanguage(
   request: NextRequest,
@@ -141,16 +184,29 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
   // than letting them 404 against the lowercase-only [locale] segment.
   const [firstSegment = ''] = pathname.split('/').filter(Boolean)
   if (!isValidLocale(firstSegment) && isValidLocale(firstSegment.toLowerCase())) {
-    const target = `/${firstSegment.toLowerCase()}${pathname.slice(firstSegment.length + 1)}`
+    // Slice from where the segment actually starts: filter(Boolean) drops empty
+    // segments, so a leading `//` would otherwise shift the offset and mangle
+    // the rest of the path.
+    const segmentStart = pathname.indexOf(firstSegment)
+    const target = `/${firstSegment.toLowerCase()}${pathname.slice(segmentStart + firstSegment.length)}`
     return redirectTo(request, target, PERMANENT_REDIRECT)
   }
 
   const pathLocale = getLocaleFromPath(pathname)
   const pathWithoutLocale = getPathWithoutLocale(pathname)
 
+  // Only the locale-prefixed form can be permanent. The bare form takes the
+  // negotiated redirect below first, because its target language still depends
+  // on the visitor — a 308 there would pin the browser to one language forever.
   const replacementRoute = RETIRED_ROUTES.get(pathWithoutLocale)
   if (replacementRoute && pathLocale) {
     return redirectTo(request, `/${pathLocale}${replacementRoute}`, PERMANENT_REDIRECT)
+  }
+
+  // An unknown chef slug reaches the page and renders a 200, so it has to be
+  // rejected here rather than by the route's own inert dynamicParams check.
+  if (pathWithoutLocale.startsWith(CHEF_DETAIL_PREFIX) && !isKnownChefPath(pathWithoutLocale)) {
+    return notFoundRewrite(request)
   }
 
   // If path has a locale, keep it as-is and align the cookie with the URL
@@ -168,7 +224,7 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
   }
 
   // No locale in path - send known routes to their localized version
-  if (isKnownRoute(pathWithoutLocale)) {
+  if (isKnownPath(pathWithoutLocale)) {
     return redirectToPreferredLanguage(request, cookieString, pathWithoutLocale)
   }
 
@@ -179,11 +235,7 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
   // Unrecognised path. Without this it would match the [locale] segment, and
   // an unknown locale renders the English page with a 200 — handing every bad
   // URL a duplicate of a real page.
-  const url = request.nextUrl.clone()
-  url.pathname = NOT_FOUND_PATH
-  // A rewrite alone would serve the 404 page with a 200; the status has to be
-  // set explicitly or crawlers treat the page as real content.
-  return NextResponse.rewrite(url, { status: 404 })
+  return notFoundRewrite(request)
 }
 
 function logSecurityEvent(request: NextRequest, pathname: string, reason: string): void {
@@ -207,12 +259,12 @@ export function middleware(request: NextRequest) {
   if (isMaliciousPath(pathname) || isMaliciousPath(pathWithoutLocale)) {
     const reason = getBlockReason(pathname)
     logSecurityEvent(request, pathname, reason)
-    return new NextResponse('Not Found', { status: 404 })
+    return addSecurityHeaders(new NextResponse('Not Found', { status: 404 }))
   }
 
   // Skip middleware for static assets and API routes
   if (shouldSkipMiddleware(pathname)) {
-    return NextResponse.next()
+    return addSecurityHeaders(NextResponse.next())
   }
 
   // Handle locale routing (redirects, etc.)
