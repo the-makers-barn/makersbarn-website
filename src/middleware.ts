@@ -8,10 +8,54 @@ import {
   getLanguageFromCookieString,
   createLanguageCookieValue,
 } from '@/lib'
+import { DEFAULT_LANGUAGE, REDIRECT_BASE_PATH } from '@/constants'
+import { isValidLocale } from '@/lib/locale'
 import { getLocaleFromPath, getLocalizedPath, getPathWithoutLocale } from '@/lib/routing'
-import { Route } from '@/types'
+import { ContactIntent, Language, Route } from '@/types'
 
 const logger = createLogger('middleware')
+
+/** Redirect whose target is the same for every visitor, so caches may keep it. */
+const PERMANENT_REDIRECT = 308
+/** Redirect whose target depends on the visitor's language, so it must not be cached as final. */
+const NEGOTIATED_REDIRECT = 307
+
+/**
+ * Routes retired in favour of another route within the same locale.
+ *
+ * These live here rather than in the page because a page-level redirect() runs
+ * after the layout has already streamed, which makes Next.js fall back to a
+ * `200 + <meta http-equiv="refresh">` soft redirect with no canonical tag —
+ * exactly what Search Console files under "Duplicate without user-selected
+ * canonical".
+ */
+const RETIRED_ROUTES: ReadonlyMap<string, string> = new Map([
+  [Route.BOOK, `${Route.CONTACT}#${ContactIntent.BOOKING}`],
+  [Route.SURROUNDINGS, Route.ABOUT],
+])
+
+/** Every public route, derived from the enum so the list cannot drift out of date. */
+const KNOWN_ROUTES: ReadonlySet<string> = new Set<string>(Object.values(Route))
+
+/** Chef profiles are data-driven; the page itself 404s on an unknown slug. */
+const CHEF_DETAIL_PREFIX = `${Route.CHEFS}/`
+
+/** Routes that deliberately live outside the localized tree and must pass through. */
+const NON_LOCALIZED_PREFIXES = [REDIRECT_BASE_PATH] as const
+
+/**
+ * Path used to force Next.js to render its own 404. Any path under a valid
+ * locale that matches no route produces a real 404 response, which is what an
+ * unrecognised URL must return.
+ */
+const NOT_FOUND_PATH = `/${DEFAULT_LANGUAGE}/__not-found__`
+
+function isKnownRoute(pathWithoutLocale: string): boolean {
+  return (
+    KNOWN_ROUTES.has(pathWithoutLocale) ||
+    pathWithoutLocale.startsWith(CHEF_DETAIL_PREFIX)
+  )
+}
 
 const SECURITY_HEADERS = {
   'X-Frame-Options': 'DENY',
@@ -53,10 +97,43 @@ function handleLanguageDetection(request: NextRequest, response: NextResponse): 
   return response
 }
 
+function getPreferredLanguage(request: NextRequest, cookieString: string): Language {
+  return (
+    getLanguageFromCookieString(cookieString) ||
+    detectLanguageFromDomain(request.headers.get('host') || '')
+  )
+}
+
+/** Builds a redirect to `target`, which may carry a `#fragment`. */
+function redirectTo(request: NextRequest, target: string, status: number): NextResponse {
+  const [pathname, fragment] = target.split('#')
+  const url = request.nextUrl.clone()
+  url.pathname = pathname
+  url.hash = fragment ? `#${fragment}` : ''
+  return NextResponse.redirect(url, status)
+}
+
+/** Redirect to the visitor's language. Must stay temporary — the target varies per visitor. */
+function redirectToPreferredLanguage(
+  request: NextRequest,
+  cookieString: string,
+  pathWithoutLocale: string,
+): NextResponse {
+  const language = getPreferredLanguage(request, cookieString)
+  const response = redirectTo(
+    request,
+    getLocalizedPath(pathWithoutLocale, language),
+    NEGOTIATED_REDIRECT,
+  )
+  // Shared caches must not hand one visitor's language to the next visitor.
+  response.headers.set('Vary', 'Cookie')
+  return response
+}
+
 /**
  * Handles locale routing and redirects
- * - Redirects root (/) to /en/ or preferred language
- * - Validates locale in URL and redirects invalid locales
+ * - Redirects root (/) and bare paths to the visitor's preferred language
+ * - Redirects retired routes to their replacement
  * - Sets language cookie based on URL locale
  */
 function handleLocaleRouting(request: NextRequest): NextResponse | null {
@@ -65,78 +142,51 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
 
   // Handle root redirect
   if (pathname === '/') {
-    // Get preferred language from cookie or domain detection
-    const existingLanguage = getLanguageFromCookieString(cookieString)
-    const preferredLanguage = existingLanguage || detectLanguageFromDomain(request.headers.get('host') || '')
-    
-    // Redirect to localized home
-    const localizedPath = getLocalizedPath('/', preferredLanguage)
-    const url = request.nextUrl.clone()
-    url.pathname = localizedPath
-    return NextResponse.redirect(url)
+    return redirectToPreferredLanguage(request, cookieString, Route.HOME)
   }
 
-  // Extract locale from path
+  // Salvage links that carry the locale in the wrong case (/EN/about) rather
+  // than letting them 404 against the lowercase-only [locale] segment.
+  const [firstSegment = ''] = pathname.split('/').filter(Boolean)
+  if (!isValidLocale(firstSegment) && isValidLocale(firstSegment.toLowerCase())) {
+    const target = `/${firstSegment.toLowerCase()}${pathname.slice(firstSegment.length + 1)}`
+    return redirectTo(request, target, PERMANENT_REDIRECT)
+  }
+
   const pathLocale = getLocaleFromPath(pathname)
-  
-  // If path has a locale, validate it
+  const pathWithoutLocale = getPathWithoutLocale(pathname)
+
+  const replacementRoute = RETIRED_ROUTES.get(pathWithoutLocale)
+  if (replacementRoute && pathLocale) {
+    return redirectTo(request, `/${pathLocale}${replacementRoute}`, PERMANENT_REDIRECT)
+  }
+
+  // If path has a locale, keep it as-is and align the cookie with the URL
   if (pathLocale) {
-    // Valid locale in path - set cookie to match
     const url = request.nextUrl.clone()
-    url.pathname = pathname // Keep the path as-is
+    url.pathname = pathname
     const response = NextResponse.rewrite(url)
     response.headers.set('Set-Cookie', createLanguageCookieValue(pathLocale))
     return response
   }
 
-  // No locale in path - check if it's a valid page path
-  // If it's a known route without locale, redirect to localized version
-  const pathWithoutLocale = getPathWithoutLocale(pathname)
-  const knownRoutes = [
-    '/',
-    '/about',
-    '/facilities',
-    '/contact',
-    '/host-a-retreat',
-    '/slow-living-vs-commercial-hospitality',
-    '/yoga-teachers',
-    '/meditation-retreats',
-    '/writing-retreats',
-    '/team-offsites',
-    '/breathwork-sound-healing',
-    '/coaching-intensives',
-    '/somatic-therapy-retreats',
-    '/wellness-detox-retreats',
-    '/circle-retreats',
-    '/photography-workshops',
-    '/art-retreats',
-    '/tools',
-    '/tools/retreat-profitability-calculator',
-    '/tools/yoga-retreat-pricing-calculator',
-    '/tools/wellness-retreat-pricing-calculator',
-    '/tools/meditation-retreat-pricing-calculator',
-    '/tools/coaching-retreat-pricing-calculator',
-    Route.TERMS_AND_CONDITIONS,
-    Route.EXPERIENCES,
-    Route.SHANTI_DEVA_RETREAT,
-    Route.AUTUMN_GROUNDING_RETREAT,
-    Route.FOCUSED_WORKATION,
-  ]
-  
-  if (knownRoutes.includes(pathWithoutLocale)) {
-    // Get preferred language
-    const existingLanguage = getLanguageFromCookieString(cookieString)
-    const preferredLanguage = existingLanguage || detectLanguageFromDomain(request.headers.get('host') || '')
-    
-    // Redirect to localized version
-    const localizedPath = getLocalizedPath(pathWithoutLocale, preferredLanguage)
-    const url = request.nextUrl.clone()
-    url.pathname = localizedPath
-    return NextResponse.redirect(url)
+  // No locale in path - send known routes to their localized version
+  if (isKnownRoute(pathWithoutLocale)) {
+    return redirectToPreferredLanguage(request, cookieString, pathWithoutLocale)
   }
 
-  // Let Next.js handle the request (might be a 404 or other route)
-  return null
+  if (NON_LOCALIZED_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
+    return null
+  }
+
+  // Unrecognised path. Without this it would match the [locale] segment, and
+  // an unknown locale renders the English page with a 200 — handing every bad
+  // URL a duplicate of a real page.
+  const url = request.nextUrl.clone()
+  url.pathname = NOT_FOUND_PATH
+  // A rewrite alone would serve the 404 page with a 200; the status has to be
+  // set explicitly or crawlers treat the page as real content.
+  return NextResponse.rewrite(url, { status: 404 })
 }
 
 function logSecurityEvent(request: NextRequest, pathname: string, reason: string): void {

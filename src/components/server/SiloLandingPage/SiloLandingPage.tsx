@@ -5,7 +5,7 @@ import { ComparisonTeaser } from '@/components/server/ComparisonTeaser'
 import { StructuredData } from '@/components/server/StructuredData'
 import { generateEventVenueSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
 import { getLocalizedPath } from '@/lib/routing'
-import { Language, Route, SiloContent } from '@/types'
+import { ContactIntent, Language, Route, SiloContent } from '@/types'
 import type { Dictionary } from '@/i18n/types'
 import { SILO_TO_AUDIT_ROUTE, SILO_TO_TOOL_ROUTE } from '@/constants/tools'
 
@@ -145,8 +145,9 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
     linkedEventIds: silo.organizerSeo?.linkedEventIds,
   })
   const retreatsHref = getLocalizedPath(Route.HOST_A_RETREAT, locale)
-  const bookHref = getLocalizedPath(Route.BOOK, locale)
   const contactHref = getLocalizedPath(Route.CONTACT, locale)
+  // Link the booking CTA at its destination directly; /book only exists as a redirect.
+  const bookHref = `${contactHref}#${ContactIntent.BOOKING}`
   const toolRoute = SILO_TO_TOOL_ROUTE[silo.route]
   const toolHref = toolRoute ? getLocalizedPath(toolRoute, locale) : null
   const calendarHref = getLocalizedPath(Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR, locale)
