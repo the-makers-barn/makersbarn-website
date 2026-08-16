@@ -69,8 +69,30 @@ const SECURITY_HEADERS = {
 
 const SKIP_PATHS = ['/_next/', '/api/', '/static/', '/public/'] as const
 
+/**
+ * Extensions served straight from /public.
+ *
+ * Middleware has to let these through, but it must not skip on the mere
+ * presence of a dot: that let probes like /index.php and /foo.bar past the
+ * unknown-path check and into the [locale] segment, where they rendered the
+ * home page with a 200 and a canonical pointing at it.
+ */
+const STATIC_ASSET_EXTENSIONS: ReadonlySet<string> = new Set([
+  'ico', 'png', 'jpg', 'jpeg', 'webp', 'avif', 'gif', 'svg',
+  'webmanifest', 'xml', 'txt', 'pdf',
+  'woff', 'woff2', 'ttf', 'eot', 'css', 'js', 'map',
+])
+
+function hasStaticAssetExtension(pathname: string): boolean {
+  const lastDot = pathname.lastIndexOf('.')
+  if (lastDot === -1) {
+    return false
+  }
+  return STATIC_ASSET_EXTENSIONS.has(pathname.slice(lastDot + 1).toLowerCase())
+}
+
 function shouldSkipMiddleware(pathname: string): boolean {
-  return SKIP_PATHS.some((path) => pathname.startsWith(path)) || pathname.includes('.')
+  return SKIP_PATHS.some((path) => pathname.startsWith(path)) || hasStaticAssetExtension(pathname)
 }
 
 function addSecurityHeaders(response: NextResponse): NextResponse {
@@ -241,13 +263,15 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Match all request paths except:
-     * - _next (Next.js internals)
-     * - api (API routes)
-     * - static (static files)
-     * - public (public files)
-     * - favicon.ico, robots.txt, sitemap.xml (common static files)
+     * Everything except Next.js internals.
+     *
+     * The exclusions used to be bare prefixes (`api`, `static`, `public`,
+     * `sitemap.xml`), which are unanchored: /publications, /apidocs and
+     * /sitemap.xml.gz all matched them, skipped middleware entirely and
+     * rendered the home page with a 200. Only the trailing-slash form is
+     * excluded here; everything else is filtered by shouldSkipMiddleware,
+     * which matches on whole path segments and real asset extensions.
      */
-    '/:path((?!_next|api|static|public|favicon.ico|robots.txt|sitemap.xml).*)',
+    '/((?!_next/).*)',
   ],
 }
