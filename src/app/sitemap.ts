@@ -96,9 +96,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     for (const locale of localesForRoute) {
       const localizedPath = getLocalizedPath(pageRoute.path, locale)
+      // No lastModified: the only date available here is the build time, which
+      // would claim every page changed on every deploy and teach Google to
+      // ignore the field. Omitting it is better than declaring a false one.
       routes.push({
         url: `${baseUrl}${localizedPath}`,
-        lastModified: new Date(),
         changeFrequency: pageRoute.changeFrequency,
         priority: pageRoute.priority,
       })

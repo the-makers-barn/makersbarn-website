@@ -7,6 +7,16 @@ import { DEFAULT_LANGUAGE } from '@/constants'
 export const LANGUAGE_COOKIE_NAME = 'NEXT_LOCALE'
 
 /**
+ * Request header carrying the locale taken from the URL.
+ *
+ * Set by middleware on every localized request so server components resolve the
+ * language the visitor actually asked for. The cookie cannot do this: it is
+ * written on the response, so a first request has none, and a returning visitor
+ * carries a cookie that may disagree with the URL they just opened.
+ */
+export const LANGUAGE_HEADER_NAME = 'x-locale'
+
+/**
  * localStorage key for storing language preference
  */
 export const LANGUAGE_STORAGE_KEY = 'makersbarn_language'

@@ -4,6 +4,7 @@ import { Language } from '@/types'
 import { DEFAULT_LANGUAGE } from '@/constants'
 import {
   LANGUAGE_COOKIE_NAME,
+  LANGUAGE_HEADER_NAME,
   isValidLanguage,
   detectLanguageFromDomain,
 } from '@/lib/language'
@@ -13,13 +14,20 @@ import type { Dictionary } from './types'
 
 /**
  * Gets the current language from server context
- * Priority: Cookie > Domain detection > Default
+ * Priority: URL locale > Cookie > Domain detection > Default
  *
  * Use this in Server Components and Server Actions
  */
 export async function getServerLanguage(): Promise<Language> {
   const cookieStore = await cookies()
   const headerStore = await headers()
+
+  // The locale in the URL is what the visitor asked for, so it outranks a
+  // cookie left over from an earlier visit in a different language.
+  const urlLocale = headerStore.get(LANGUAGE_HEADER_NAME)
+  if (isValidLanguage(urlLocale)) {
+    return urlLocale
+  }
 
   // Try to get language from cookie
   const languageCookie = cookieStore.get(LANGUAGE_COOKIE_NAME)

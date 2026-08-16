@@ -82,7 +82,10 @@ export const UTM_DEFAULTS = {
 
 export const ALLOWED_PASSTHROUGH_PARAMS = ['source', 'room'] as const
 
-export const REDIRECT_BASE_URL = `https://${SITE_CONFIG.domain}/go`
+/** QR short links live outside the localized route tree. */
+export const REDIRECT_BASE_PATH = '/go' as const
+
+export const REDIRECT_BASE_URL = `https://${SITE_CONFIG.domain}${REDIRECT_BASE_PATH}`
 
 export function buildRedirectUrl(slug: RedirectSlug): string {
   return `${REDIRECT_BASE_URL}/${slug}`
