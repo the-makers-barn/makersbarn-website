@@ -9,9 +9,16 @@ import {
   createLanguageCookieValue,
   LANGUAGE_HEADER_NAME,
 } from '@/lib'
-import { DEFAULT_LANGUAGE, REDIRECT_BASE_PATH } from '@/constants'
+import { DEFAULT_LANGUAGE } from '@/constants'
 import { isValidLocale } from '@/lib/locale'
-import { getLocaleFromPath, getLocalizedPath, getPathWithoutLocale } from '@/lib/routing'
+import {
+  getLocaleFromPath,
+  getLocalizedPath,
+  getPathWithoutLocale,
+  hasStaticAssetExtension,
+  isKnownRoute,
+  isNonLocalizedRoute,
+} from '@/lib/routing'
 import { ContactIntent, Language, Route } from '@/types'
 
 const logger = createLogger('middleware')
@@ -35,37 +42,12 @@ const RETIRED_ROUTES: ReadonlyMap<string, string> = new Map([
   [Route.SURROUNDINGS, Route.ABOUT],
 ])
 
-/** Every public route, derived from the enum so the list cannot drift out of date. */
-const KNOWN_ROUTES: ReadonlySet<string> = new Set<string>(Object.values(Route))
-
-/** Chef profiles are data-driven; the page itself 404s on an unknown slug. */
-const CHEF_DETAIL_PREFIX = `${Route.CHEFS}/`
-
-/** Route bases that deliberately live outside the localized tree and must pass through. */
-const NON_LOCALIZED_BASES = [REDIRECT_BASE_PATH] as const
-
-/**
- * Matches whole segments only. A bare startsWith would also let /golf and
- * /google-thing through to the [locale] segment, where they render the home
- * page with a 200. The base itself has no route, so it is not passed through.
- */
-function isNonLocalizedRoute(pathname: string): boolean {
-  return NON_LOCALIZED_BASES.some((base) => pathname.startsWith(`${base}/`))
-}
-
 /**
  * Path used to force Next.js to render its own 404. Any path under a valid
  * locale that matches no route produces a real 404 response, which is what an
  * unrecognised URL must return.
  */
 const NOT_FOUND_PATH = `/${DEFAULT_LANGUAGE}/__not-found__`
-
-function isKnownRoute(pathWithoutLocale: string): boolean {
-  return (
-    KNOWN_ROUTES.has(pathWithoutLocale) ||
-    pathWithoutLocale.startsWith(CHEF_DETAIL_PREFIX)
-  )
-}
 
 const SECURITY_HEADERS = {
   'X-Frame-Options': 'DENY',
@@ -77,28 +59,6 @@ const SECURITY_HEADERS = {
 } as const
 
 const SKIP_PATHS = ['/_next/', '/api/', '/static/', '/public/'] as const
-
-/**
- * Extensions served straight from /public.
- *
- * Middleware has to let these through, but it must not skip on the mere
- * presence of a dot: that let probes like /index.php and /foo.bar past the
- * unknown-path check and into the [locale] segment, where they rendered the
- * home page with a 200 and a canonical pointing at it.
- */
-const STATIC_ASSET_EXTENSIONS: ReadonlySet<string> = new Set([
-  'ico', 'png', 'jpg', 'jpeg', 'webp', 'avif', 'gif', 'svg',
-  'webmanifest', 'xml', 'txt', 'pdf',
-  'woff', 'woff2', 'ttf', 'eot', 'css', 'js', 'map',
-])
-
-function hasStaticAssetExtension(pathname: string): boolean {
-  const lastDot = pathname.lastIndexOf('.')
-  if (lastDot === -1) {
-    return false
-  }
-  return STATIC_ASSET_EXTENSIONS.has(pathname.slice(lastDot + 1).toLowerCase())
-}
 
 function shouldSkipMiddleware(pathname: string): boolean {
   return SKIP_PATHS.some((path) => pathname.startsWith(path)) || hasStaticAssetExtension(pathname)

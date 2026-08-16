@@ -1,3 +1,4 @@
+import { REDIRECT_BASE_PATH } from '@/constants/redirects'
 import { Language } from '@/types'
 import { Route } from '@/types/navigation'
 
@@ -77,5 +78,59 @@ export function getLocaleFromPath(path: string): Language | null {
  */
 export function getChefDetailPath(slug: string, locale: Language): string {
   return `/${locale}${Route.CHEFS}/${slug}`
+}
+
+/** Every public route, derived from the enum so the list cannot drift out of date. */
+const KNOWN_ROUTES: ReadonlySet<string> = new Set<string>(Object.values(Route))
+
+/** Chef profiles are data-driven; the page itself 404s on an unknown slug. */
+const CHEF_DETAIL_PREFIX = `${Route.CHEFS}/`
+
+/**
+ * Extensions served straight from /public.
+ *
+ * The test has to be on the extension, never on "the path contains a dot":
+ * that let probes like /index.php and /foo.bar skip routing entirely and
+ * render the home page with a 200.
+ */
+const STATIC_ASSET_EXTENSIONS: ReadonlySet<string> = new Set([
+  'ico', 'png', 'jpg', 'jpeg', 'webp', 'avif', 'gif', 'svg',
+  'webmanifest', 'xml', 'txt', 'pdf',
+  'woff', 'woff2', 'ttf', 'eot', 'css', 'js', 'map',
+])
+
+/** Route bases that deliberately live outside the localized tree. */
+const NON_LOCALIZED_BASES = [REDIRECT_BASE_PATH] as const
+
+/**
+ * Whether a locale-stripped path is a real page.
+ *
+ * Every one of these predicates must match whole segments. A bare prefix test
+ * is what repeatedly let /publications, /golf and /chefsfoo through to the
+ * [locale] segment, where an unknown locale renders the English page with a
+ * 200 and hands Google a duplicate.
+ */
+export function isKnownRoute(pathWithoutLocale: string): boolean {
+  return (
+    KNOWN_ROUTES.has(pathWithoutLocale) ||
+    pathWithoutLocale.startsWith(CHEF_DETAIL_PREFIX)
+  )
+}
+
+/** Whether the path is a file served from /public rather than a page. */
+export function hasStaticAssetExtension(pathname: string): boolean {
+  const lastDot = pathname.lastIndexOf('.')
+  if (lastDot === -1) {
+    return false
+  }
+  return STATIC_ASSET_EXTENSIONS.has(pathname.slice(lastDot + 1).toLowerCase())
+}
+
+/**
+ * Whether the path belongs to a route tree that is deliberately not localized.
+ * The base itself has no route, so only paths beneath it pass through.
+ */
+export function isNonLocalizedRoute(pathname: string): boolean {
+  return NON_LOCALIZED_BASES.some((base) => pathname.startsWith(`${base}/`))
 }
 
