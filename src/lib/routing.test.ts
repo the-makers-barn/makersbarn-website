@@ -24,8 +24,9 @@ describe('isKnownRoute', () => {
     }
   })
 
-  it('accepts chef detail paths', () => {
-    expect(isKnownRoute('/chefs/eveline-cooks')).toBe(true)
+  it('does not cover data-driven chef paths, which middleware validates by slug', () => {
+    expect(isKnownRoute('/chefs/eveline-cooks')).toBe(false)
+    expect(isKnownRoute(Route.CHEFS)).toBe(true)
   })
 
   it('rejects paths that merely start with a real route', () => {

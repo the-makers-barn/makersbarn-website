@@ -83,8 +83,8 @@ export function getChefDetailPath(slug: string, locale: Language): string {
 /** Every public route, derived from the enum so the list cannot drift out of date. */
 const KNOWN_ROUTES: ReadonlySet<string> = new Set<string>(Object.values(Route))
 
-/** Chef profiles are data-driven; the page itself 404s on an unknown slug. */
-const CHEF_DETAIL_PREFIX = `${Route.CHEFS}/`
+/** Chef profiles are data-driven, so their slugs are validated by the caller. */
+export const CHEF_DETAIL_PREFIX = `${Route.CHEFS}/`
 
 /**
  * Extensions served straight from /public.
@@ -103,7 +103,11 @@ const STATIC_ASSET_EXTENSIONS: ReadonlySet<string> = new Set([
 const NON_LOCALIZED_BASES = [REDIRECT_BASE_PATH] as const
 
 /**
- * Whether a locale-stripped path is a real page.
+ * Whether a locale-stripped path is a static page route.
+ *
+ * Data-driven routes (chef profiles) are not covered here — their slugs live in
+ * the data layer, which must not be pulled into client bundles through this
+ * module. Middleware validates those separately.
  *
  * Every one of these predicates must match whole segments. A bare prefix test
  * is what repeatedly let /publications, /golf and /chefsfoo through to the
@@ -111,10 +115,7 @@ const NON_LOCALIZED_BASES = [REDIRECT_BASE_PATH] as const
  * 200 and hands Google a duplicate.
  */
 export function isKnownRoute(pathWithoutLocale: string): boolean {
-  return (
-    KNOWN_ROUTES.has(pathWithoutLocale) ||
-    pathWithoutLocale.startsWith(CHEF_DETAIL_PREFIX)
-  )
+  return KNOWN_ROUTES.has(pathWithoutLocale)
 }
 
 /** Whether the path is a file served from /public rather than a page. */
