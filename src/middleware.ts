@@ -7,6 +7,7 @@ import {
   detectLanguageFromDomain,
   getLanguageFromCookieString,
   createLanguageCookieValue,
+  LANGUAGE_HEADER_NAME,
 } from '@/lib'
 import { DEFAULT_LANGUAGE, REDIRECT_BASE_PATH } from '@/constants'
 import { isValidLocale } from '@/lib/locale'
@@ -165,7 +166,12 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
   if (pathLocale) {
     const url = request.nextUrl.clone()
     url.pathname = pathname
-    const response = NextResponse.rewrite(url)
+    // Forward the locale on the request itself. The cookie is only set on the
+    // response, so without this a first-time visitor renders in the default
+    // language — which is why every page declared <html lang="en">.
+    const requestHeaders = new Headers(request.headers)
+    requestHeaders.set(LANGUAGE_HEADER_NAME, pathLocale)
+    const response = NextResponse.rewrite(url, { request: { headers: requestHeaders } })
     response.headers.set('Set-Cookie', createLanguageCookieValue(pathLocale))
     return response
   }

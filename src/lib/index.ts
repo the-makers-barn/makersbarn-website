@@ -26,6 +26,7 @@ export { getWhatsAppUrl } from './whatsapp'
 export { buildTicketShopUrl } from './ticketShopUrl'
 export {
   LANGUAGE_COOKIE_NAME,
+  LANGUAGE_HEADER_NAME,
   LANGUAGE_STORAGE_KEY,
   isValidLanguage,
   detectLanguageFromDomain,
