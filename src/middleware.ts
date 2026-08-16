@@ -4,7 +4,8 @@ import {
   isMaliciousPath,
   getBlockReason,
   createLogger,
-  detectLanguageFromDomain,
+  detectLanguageFromAcceptLanguage,
+  ACCEPT_LANGUAGE_HEADER,
   getLanguageFromCookieString,
   createLanguageCookieValue,
   LANGUAGE_HEADER_NAME,
@@ -103,16 +104,15 @@ function addSecurityHeaders(response: NextResponse): NextResponse {
 
 /**
  * Handles language detection and cookie setting
- * Priority: Existing cookie > Domain detection
+ * Priority: Existing cookie > Accept-Language
  */
 function handleLanguageDetection(request: NextRequest, response: NextResponse): NextResponse {
   const cookieString = request.headers.get('cookie') || ''
   const existingLanguage = getLanguageFromCookieString(cookieString)
 
-  // If no language cookie exists, detect from domain and set cookie
+  // If no language cookie exists, negotiate from the request and set the cookie
   if (!existingLanguage) {
-    const hostname = request.headers.get('host') || ''
-    const detectedLanguage = detectLanguageFromDomain(hostname)
+    const detectedLanguage = detectLanguageFromAcceptLanguage(request.headers.get(ACCEPT_LANGUAGE_HEADER))
     response.headers.set('Set-Cookie', createLanguageCookieValue(detectedLanguage))
   }
 
@@ -122,7 +122,7 @@ function handleLanguageDetection(request: NextRequest, response: NextResponse): 
 function getPreferredLanguage(request: NextRequest, cookieString: string): Language {
   return (
     getLanguageFromCookieString(cookieString) ||
-    detectLanguageFromDomain(request.headers.get('host') || '')
+    detectLanguageFromAcceptLanguage(request.headers.get(ACCEPT_LANGUAGE_HEADER))
   )
 }
 
@@ -161,7 +161,8 @@ function redirectToPreferredLanguage(
     NEGOTIATED_REDIRECT,
   )
   // Shared caches must not hand one visitor's language to the next visitor.
-  response.headers.set('Vary', 'Cookie')
+  // Both inputs to getPreferredLanguage have to be named here.
+  response.headers.set('Vary', `Cookie, ${ACCEPT_LANGUAGE_HEADER}`)
   return response
 }
 

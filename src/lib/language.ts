@@ -26,22 +26,14 @@ export const LANGUAGE_STORAGE_KEY = 'makersbarn_language'
  */
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365
 
-/**
- * Domain patterns for language detection (TLD suffixes)
- */
-const DUTCH_DOMAIN_PATTERNS = ['.nl'] as const
+/** Request header the browser uses to state its language preferences. */
+export const ACCEPT_LANGUAGE_HEADER = 'accept-language'
 
-/**
- * Allowed hostnames for domain detection (security whitelist)
- */
-const ALLOWED_HOSTS = [
-  'makersbarn.com',
-  'makersbarn.nl',
-  'www.makersbarn.com',
-  'www.makersbarn.nl',
-  'localhost',
-  '127.0.0.1',
-] as const
+/** A quality value of zero means "not acceptable", per RFC 9110. */
+const UNACCEPTABLE_QUALITY = 0
+
+/** Absent q= means the entry is the most preferred. */
+const DEFAULT_QUALITY = 1
 
 /**
  * Validates if a value is a valid Language enum value
@@ -50,32 +42,56 @@ export function isValidLanguage(value: unknown): value is Language {
   return Object.values(Language).includes(value as Language)
 }
 
-/**
- * Validates hostname against allowed hosts whitelist
- */
-export function isAllowedHost(hostname: string): boolean {
-  const lowerHostname = hostname.toLowerCase().split(':')[0] // Remove port
-  return ALLOWED_HOSTS.some(
-    (allowed) => lowerHostname === allowed || lowerHostname.endsWith(`.${allowed}`)
-  )
+interface LanguageRange {
+  tag: string
+  quality: number
+}
+
+function parseLanguageRanges(header: string): LanguageRange[] {
+  return header
+    .split(',')
+    .map((entry) => {
+      const [tag, ...parameters] = entry.trim().split(';')
+      const qualityParameter = parameters
+        .map((parameter) => parameter.trim())
+        .find((parameter) => parameter.startsWith('q='))
+      const quality = qualityParameter
+        ? Number.parseFloat(qualityParameter.slice('q='.length))
+        : DEFAULT_QUALITY
+
+      return {
+        tag: tag.trim().toLowerCase(),
+        quality: Number.isFinite(quality) ? quality : UNACCEPTABLE_QUALITY,
+      }
+    })
+    .filter((range) => range.tag !== '' && range.quality > UNACCEPTABLE_QUALITY)
+    .sort((a, b) => b.quality - a.quality)
 }
 
 /**
- * Detects language from hostname based on domain TLD
- * .nl domains default to Dutch, all others to English
- * Only processes whitelisted hosts for security
+ * Picks the best supported language from an Accept-Language header.
+ *
+ * This replaced detection from the hostname, which could not work: the .com
+ * domain redirects to the .nl one, so every visitor arrives on the same host and
+ * the hostname says nothing about who they are.
+ *
+ * Matching is on the primary subtag, so nl-BE counts as Dutch. Unsupported
+ * entries are skipped rather than ending the scan, so "fr,nl;q=0.8" resolves to
+ * Dutch. A missing, malformed, or wildcard-only header expresses no preference
+ * and falls back to the default — which is what crawlers get.
  */
-export function detectLanguageFromDomain(hostname: string): Language {
-  const lowerHostname = hostname.toLowerCase().split(':')[0] // Remove port
-
-  // Only detect from whitelisted hosts
-  if (!isAllowedHost(hostname)) {
+export function detectLanguageFromAcceptLanguage(header: string | null): Language {
+  if (!header) {
     return DEFAULT_LANGUAGE
   }
 
-  for (const pattern of DUTCH_DOMAIN_PATTERNS) {
-    if (lowerHostname.endsWith(pattern)) {
-      return Language.NL
+  for (const { tag } of parseLanguageRanges(header)) {
+    if (tag === '*') {
+      break
+    }
+    const [primarySubtag] = tag.split('-')
+    if (isValidLanguage(primarySubtag)) {
+      return primarySubtag
     }
   }
 
@@ -175,31 +191,3 @@ export function getLanguageFromDocumentCookie(): Language | null {
   return getLanguageFromCookieString(document.cookie)
 }
 
-/**
- * Resolves the effective language using priority:
- * 1. localStorage (user preference)
- * 2. Cookie (server-synced preference)
- * 3. Domain detection
- * 4. DEFAULT_LANGUAGE fallback
- */
-export function resolveLanguage(
-  hostname: string,
-  cookieString?: string
-): Language {
-  // Priority 1: Check localStorage (only on client)
-  const localStorageLanguage = getLanguageFromLocalStorage()
-  if (localStorageLanguage) {
-    return localStorageLanguage
-  }
-
-  // Priority 2: Check cookie
-  if (cookieString) {
-    const cookieLanguage = getLanguageFromCookieString(cookieString)
-    if (cookieLanguage) {
-      return cookieLanguage
-    }
-  }
-
-  // Priority 3: Detect from domain
-  return detectLanguageFromDomain(hostname)
-}

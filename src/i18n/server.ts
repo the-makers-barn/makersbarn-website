@@ -6,7 +6,8 @@ import {
   LANGUAGE_COOKIE_NAME,
   LANGUAGE_HEADER_NAME,
   isValidLanguage,
-  detectLanguageFromDomain,
+  detectLanguageFromAcceptLanguage,
+  ACCEPT_LANGUAGE_HEADER,
 } from '@/lib/language'
 
 import { getDictionary } from './dictionaries'
@@ -14,7 +15,7 @@ import type { Dictionary } from './types'
 
 /**
  * Gets the current language from server context
- * Priority: URL locale > Cookie > Domain detection > Default
+ * Priority: URL locale > Cookie > Accept-Language > Default
  *
  * Use this in Server Components and Server Actions
  */
@@ -35,9 +36,9 @@ export async function getServerLanguage(): Promise<Language> {
     return languageCookie.value
   }
 
-  // Fall back to domain detection
-  const host = headerStore.get('host') || ''
-  return detectLanguageFromDomain(host)
+  // Fall back to what the browser asked for. Reached only outside the localized
+  // tree, since middleware sets the URL locale header on every page request.
+  return detectLanguageFromAcceptLanguage(headerStore.get(ACCEPT_LANGUAGE_HEADER))
 }
 
 /**

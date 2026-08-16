@@ -29,14 +29,14 @@ export {
   LANGUAGE_HEADER_NAME,
   LANGUAGE_STORAGE_KEY,
   isValidLanguage,
-  detectLanguageFromDomain,
+  detectLanguageFromAcceptLanguage,
+  ACCEPT_LANGUAGE_HEADER,
   getLanguageFromCookieString,
   createLanguageCookieValue,
   getLanguageFromLocalStorage,
   setLanguageToLocalStorage,
   setLanguageCookie,
   getLanguageFromDocumentCookie,
-  resolveLanguage,
 } from './language'
 export {
   generateShimmerPlaceholder,
