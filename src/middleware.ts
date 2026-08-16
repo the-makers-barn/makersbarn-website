@@ -41,8 +41,17 @@ const KNOWN_ROUTES: ReadonlySet<string> = new Set<string>(Object.values(Route))
 /** Chef profiles are data-driven; the page itself 404s on an unknown slug. */
 const CHEF_DETAIL_PREFIX = `${Route.CHEFS}/`
 
-/** Routes that deliberately live outside the localized tree and must pass through. */
-const NON_LOCALIZED_PREFIXES = [REDIRECT_BASE_PATH] as const
+/** Route bases that deliberately live outside the localized tree and must pass through. */
+const NON_LOCALIZED_BASES = [REDIRECT_BASE_PATH] as const
+
+/**
+ * Matches whole segments only. A bare startsWith would also let /golf and
+ * /google-thing through to the [locale] segment, where they render the home
+ * page with a 200. The base itself has no route, so it is not passed through.
+ */
+function isNonLocalizedRoute(pathname: string): boolean {
+  return NON_LOCALIZED_BASES.some((base) => pathname.startsWith(`${base}/`))
+}
 
 /**
  * Path used to force Next.js to render its own 404. Any path under a valid
@@ -203,7 +212,7 @@ function handleLocaleRouting(request: NextRequest): NextResponse | null {
     return redirectToPreferredLanguage(request, cookieString, pathWithoutLocale)
   }
 
-  if (NON_LOCALIZED_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
+  if (isNonLocalizedRoute(pathname)) {
     return null
   }
 
