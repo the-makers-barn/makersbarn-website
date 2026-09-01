@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
-import { ContactIntent } from '@/types'
+import { ContactIntent, ReferralSource } from '@/types'
 
-import { formatContactFormMessage } from './slack'
+import { formatBookingFormMessage, formatContactFormMessage } from './slack'
 
 describe('formatContactFormMessage', () => {
   const base = { name: 'Ada', email: 'ada@example.com', phone: undefined, message: 'hello' } as const
@@ -20,5 +20,33 @@ describe('formatContactFormMessage', () => {
   it('omits any source line when source is undefined', () => {
     const out = formatContactFormMessage(base)
     expect(out).not.toContain('Chef directory')
+  })
+})
+
+describe('formatBookingFormMessage — how they found us', () => {
+  const base = {
+    name: 'Ada',
+    email: 'ada@example.com',
+    flexibleDates: false,
+    cateringNeeded: false,
+  } as const
+
+  it('includes the referral source label when answered', () => {
+    const out = formatBookingFormMessage({ ...base, referralSource: ReferralSource.SEARCH })
+    expect(out).toContain('*How They Found Us:* Google / online search')
+  })
+
+  it('includes the free-text detail for the "other" option', () => {
+    const out = formatBookingFormMessage({
+      ...base,
+      referralSource: ReferralSource.OTHER,
+      referralSourceOther: 'A podcast',
+    })
+    expect(out).toContain('*How They Found Us:* Other: A podcast')
+  })
+
+  it('omits the line when the question is left unanswered', () => {
+    const out = formatBookingFormMessage(base)
+    expect(out).not.toContain('How They Found Us')
   })
 })

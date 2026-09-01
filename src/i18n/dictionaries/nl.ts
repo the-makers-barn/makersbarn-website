@@ -124,6 +124,7 @@ export const nl: Dictionary = {
       dates: 'Voorkeursdata',
       groupSize: 'Groepsgrootte',
       accommodation: 'Accommodatie & Catering',
+      referralSource: 'Hoe je ons gevonden hebt',
       extraInfo: 'Extra Informatie',
     },
     steps: {
@@ -159,6 +160,8 @@ export const nl: Dictionary = {
       accommodationPreferences: 'Accommodatievoorkeuren',
       cateringNeeded: 'We hebben catering nodig',
       cateringDetails: 'Catering details',
+      referralSource: 'Hoe heb je ons gevonden?',
+      referralSourceOther: 'Vertel ons meer',
       extraInfo: 'Is er nog iets dat je wilt delen?',
     },
     placeholders: {
@@ -172,6 +175,8 @@ export const nl: Dictionary = {
       retreatTypeOther: 'Beschrijf je type retraite...',
       accommodationPreferences: 'bijv. We hebben 3 privékamers nodig en de rest kan gedeeld...',
       cateringDetails: 'bijv. Alleen ontbijt, volpension, vegetarische opties...',
+      referralSourceSelect: 'Kies een optie (optioneel)',
+      referralSourceOther: 'bijv. Een podcast, een artikel in een tijdschrift...',
       extraInfo: 'bijv. Toegankelijkheid, specifieke apparatuur, speciale verzoeken...',
       selectDate: 'Selecteer een datum',
     },
@@ -180,6 +185,14 @@ export const nl: Dictionary = {
       yoga: 'Yoga Retraite',
       workshop: 'Workshop',
       other: 'Anders',
+    },
+    referralSources: {
+      search: 'Google of een andere zoekmachine',
+      socialMedia: 'Social media (Instagram, Facebook, LinkedIn)',
+      wordOfMouth: 'Een vriend of collega raadde jullie aan',
+      previousVisit: 'Ik ben hier eerder geweest of deed mee aan een retraite',
+      partner: 'Een andere retraiteorganisator of partner',
+      other: 'Iets anders',
     },
     cateringOptions: {
       yes: 'Ja',
@@ -199,6 +212,7 @@ export const nl: Dictionary = {
     helpText: {
       startDate: 'Selecteer je voorkeursaankomstdatum',
       duration: 'Hoeveel dagen duurt je retraite?',
+      referralSource: 'Optioneel, maar het helpt ons enorm om te weten wat werkt.',
       accommodationIntro: 'Onze faciliteiten omvatten:',
       accommodationCosmos: 'De Cosmos cabin: 1 privékamer (2-3 personen)',
       accommodationGroup: 'Horizon gebouw: Meerdere kamers (10-12 personen)',

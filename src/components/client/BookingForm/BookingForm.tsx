@@ -24,6 +24,7 @@ export function BookingForm() {
     hasAnimated,
     stepHeadingRef,
     retreatTypeOptions,
+    referralSourceOptions,
     blockedDateRanges,
     handleChange,
     handleNextStep,
@@ -32,10 +33,13 @@ export function BookingForm() {
     handleNewRequest,
     handleAnimationComplete,
     setCateringNeeded,
+    setReferralSource,
   } = useBookingForm({
     bookingMessages: booking.messages,
     bookingValidation: booking.validation,
     retreatTypes: booking.retreatTypes,
+    referralSources: booking.referralSources,
+    referralSourcePlaceholder: booking.placeholders.referralSourceSelect,
   })
 
   const isSubmitting = status === FormStatus.LOADING
@@ -63,10 +67,12 @@ export function BookingForm() {
               stepHeadingRef={stepHeadingRef}
               language={language}
               retreatTypeOptions={retreatTypeOptions}
+              referralSourceOptions={referralSourceOptions}
               blockedDateRanges={blockedDateRanges}
               handleChange={handleChange}
               handleAnimationComplete={handleAnimationComplete}
               setCateringNeeded={setCateringNeeded}
+              setReferralSource={setReferralSource}
               translations={booking}
             />
 

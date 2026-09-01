@@ -121,6 +121,7 @@ export const en: Dictionary = {
       dates: 'Preferred Dates',
       groupSize: 'Group Size',
       accommodation: 'Accommodation & Catering',
+      referralSource: 'How You Found Us',
       extraInfo: 'Extra Information',
     },
     steps: {
@@ -156,6 +157,8 @@ export const en: Dictionary = {
       accommodationPreferences: 'Accommodation preferences',
       cateringNeeded: 'We need catering',
       cateringDetails: 'Catering details',
+      referralSource: 'How did you hear about us?',
+      referralSourceOther: 'Please tell us more',
       extraInfo: 'Anything else you would like to share?',
     },
     placeholders: {
@@ -169,6 +172,8 @@ export const en: Dictionary = {
       retreatTypeOther: 'Describe your retreat type...',
       accommodationPreferences: 'e.g., We need 3 private rooms and the rest can be shared...',
       cateringDetails: 'e.g., Breakfast only, full board, vegetarian options...',
+      referralSourceSelect: 'Select an option (optional)',
+      referralSourceOther: 'e.g., A podcast, a magazine article...',
       extraInfo: 'e.g., Accessibility needs, specific equipment, special requests...',
       selectDate: 'Select a date',
     },
@@ -177,6 +182,14 @@ export const en: Dictionary = {
       yoga: 'Yoga Retreat',
       workshop: 'Workshop',
       other: 'Other',
+    },
+    referralSources: {
+      search: 'Google or another search engine',
+      socialMedia: 'Social media (Instagram, Facebook, LinkedIn)',
+      wordOfMouth: 'A friend or colleague recommended you',
+      previousVisit: 'I have visited or joined a retreat here before',
+      partner: 'Another retreat organizer or partner',
+      other: 'Something else',
     },
     cateringOptions: {
       yes: 'Yes',
@@ -196,6 +209,7 @@ export const en: Dictionary = {
     helpText: {
       startDate: 'Select your preferred arrival date',
       duration: 'How many days will your retreat last?',
+      referralSource: 'Optional, but it really helps us know what works.',
       accommodationIntro: 'Our facilities include:',
       accommodationCosmos: 'The Cosmos cabin: 1 private room (sleeps 2-3)',
       accommodationGroup: 'Horizon building: Multiple rooms (sleeps 10-12)',

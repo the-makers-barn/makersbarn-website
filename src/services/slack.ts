@@ -1,4 +1,4 @@
-import { createLogger, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
+import { createLogger, formatGroupSize, getReferralSourceDisplayLabel, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
 import type { ValidatedBookingFormData, PartialBookingContactData } from '@/types'
 import { CONTACT_SOURCE_SLACK_LABEL } from '@/constants'
 
@@ -130,6 +130,7 @@ export function formatBookingFormMessage(data: ValidatedBookingFormData): string
   const addSection = () => lines.push('')
 
   const retreatTypeLabel = getRetreatTypeDisplayLabel(data.retreatType, data.retreatTypeOther)
+  const referralSourceLabel = getReferralSourceDisplayLabel(data.referralSource, data.referralSourceOther)
   const groupSize = formatGroupSize(data.minGroupSize, data.maxGroupSize)
   const dateInfo = formatBookingDateInfo(data)
 
@@ -165,6 +166,11 @@ export function formatBookingFormMessage(data: ValidatedBookingFormData): string
   if (data.extraInfo) {
     addSection()
     lines.push('*Extra Information:*', escapeSlackMarkdown(data.extraInfo))
+  }
+
+  if (referralSourceLabel) {
+    addSection()
+    addLine(escapeSlackMarkdown(referralSourceLabel), '*How They Found Us:* ')
   }
 
   return lines.join('\n')

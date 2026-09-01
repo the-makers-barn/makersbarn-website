@@ -17,6 +17,7 @@ export {
   BookingFormSchema,
   validateBookingForm,
   getRetreatTypeDisplayLabel,
+  getReferralSourceDisplayLabel,
   type ValidatedContactFormData,
   type ValidatedContactInfo,
   type ValidationResult,

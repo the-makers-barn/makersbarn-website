@@ -124,6 +124,7 @@ export const de: Dictionary = {
       dates: 'Wunschdaten',
       groupSize: 'Gruppengröße',
       accommodation: 'Unterkunft & Verpflegung',
+      referralSource: 'Wie du uns gefunden hast',
       extraInfo: 'Sonstiges',
     },
     steps: {
@@ -159,6 +160,8 @@ export const de: Dictionary = {
       accommodationPreferences: 'Unterkunftswünsche',
       cateringNeeded: 'Wir möchten Verpflegung',
       cateringDetails: 'Was darf es sein?',
+      referralSource: 'Wie hast du von uns erfahren?',
+      referralSourceOther: 'Erzähl uns mehr',
       extraInfo: 'Möchtest du uns sonst noch etwas sagen?',
     },
     placeholders: {
@@ -172,6 +175,8 @@ export const de: Dictionary = {
       retreatTypeOther: 'Beschreibe deine Retreat-Art …',
       accommodationPreferences: 'z. B. wir brauchen 3 Einzelzimmer, der Rest kann geteilt werden …',
       cateringDetails: 'z. B. nur Frühstück, Vollpension, vegetarische Optionen …',
+      referralSourceSelect: 'Bitte wählen (optional)',
+      referralSourceOther: 'z. B. ein Podcast, ein Zeitschriftenartikel …',
       extraInfo: 'z. B. Barrierefreiheit, spezielle Ausstattung, besondere Wünsche …',
       selectDate: 'Datum wählen',
     },
@@ -180,6 +185,14 @@ export const de: Dictionary = {
       yoga: 'Yoga-Retreat',
       workshop: 'Workshop',
       other: 'Sonstiges',
+    },
+    referralSources: {
+      search: 'Google oder eine andere Suchmaschine',
+      socialMedia: 'Social Media (Instagram, Facebook, LinkedIn)',
+      wordOfMouth: 'Empfehlung von Freunden oder Kolleg:innen',
+      previousVisit: 'Ich war schon einmal hier oder bei einem Retreat dabei',
+      partner: 'Andere Retreat-Veranstalter oder Partner',
+      other: 'Etwas anderes',
     },
     cateringOptions: {
       yes: 'Ja',
@@ -199,6 +212,7 @@ export const de: Dictionary = {
     helpText: {
       startDate: 'Wähle dein Wunsch-Anreisedatum',
       duration: 'Wie viele Tage soll dein Retreat dauern?',
+      referralSource: 'Freiwillig – aber es hilft uns sehr zu wissen, was funktioniert.',
       accommodationIntro: 'Unsere Räume umfassen:',
       accommodationCosmos: 'Cosmos-Hütte: 1 Privatzimmer (für 2–3 Personen)',
       accommodationGroup: 'Horizon-Gebäude: mehrere Zimmer (für 10–12 Personen)',

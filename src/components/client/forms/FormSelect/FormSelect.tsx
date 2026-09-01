@@ -16,6 +16,7 @@ interface FormSelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 
   error?: string
   required?: boolean
   placeholder?: string
+  helpText?: string
 }
 
 export const FormSelect = memo(function FormSelect({
@@ -25,6 +26,7 @@ export const FormSelect = memo(function FormSelect({
   error,
   required,
   placeholder,
+  helpText,
   className,
   ...selectProps
 }: FormSelectProps) {
@@ -40,7 +42,15 @@ export const FormSelect = memo(function FormSelect({
         id={id}
         className={`${styles.select} ${hasError ? styles.selectError : ''} ${className || ''}`}
         aria-invalid={hasError}
-        aria-describedby={error ? `${id}-error` : undefined}
+        aria-describedby={(() => {
+          if (error) {
+            return `${id}-error`
+          }
+          if (helpText) {
+            return `${id}-help`
+          }
+          return undefined
+        })()}
         {...selectProps}
       >
         {placeholder && (
@@ -54,6 +64,11 @@ export const FormSelect = memo(function FormSelect({
           </option>
         ))}
       </select>
+      {helpText && !error && (
+        <p id={`${id}-help`} className={styles.helpText}>
+          {helpText}
+        </p>
+      )}
       {error && (
         <p id={`${id}-error`} className={styles.error} role="alert">
           {error}

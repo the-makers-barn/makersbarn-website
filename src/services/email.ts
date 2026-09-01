@@ -3,7 +3,7 @@
 import * as postmark from 'postmark'
 import { revalidatePath } from 'next/cache'
 
-import { createLogger, escapeHtml, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
+import { createLogger, escapeHtml, formatGroupSize, getReferralSourceDisplayLabel, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
 import type { Chef, Language, ValidatedBookingFormData } from '@/types'
 import { CONTACT_SOURCE_EMAIL_SUBJECT_PREFIX } from '@/constants'
 
@@ -180,6 +180,7 @@ The Makers Barn Team
 
 function buildBookingFields(data: ValidatedBookingFormData): EmailField[] {
   const retreatTypeLabel = getRetreatTypeDisplayLabel(data.retreatType, data.retreatTypeOther)
+  const referralSourceLabel = getReferralSourceDisplayLabel(data.referralSource, data.referralSourceOther)
   const groupSize = formatGroupSize(data.minGroupSize, data.maxGroupSize)
 
   let dateInfo: string | undefined
@@ -209,6 +210,7 @@ function buildBookingFields(data: ValidatedBookingFormData): EmailField[] {
     { label: 'Catering', value: data.cateringNeeded ? 'Yes' : undefined },
     { label: 'Catering Details', value: data.cateringDetails },
     { label: 'Extra Information', value: data.extraInfo },
+    { label: 'How They Found Us', value: referralSourceLabel },
   ]
 }
 

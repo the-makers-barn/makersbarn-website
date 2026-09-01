@@ -22,10 +22,12 @@ interface BookingFormStepsProps {
   stepHeadingRef: RefObject<HTMLHeadingElement | null>
   language: Language
   retreatTypeOptions: Array<{ value: RetreatType; label: string }>
+  referralSourceOptions: Array<{ value: string; label: string }>
   blockedDateRanges: DateRange[]
   handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void
   handleAnimationComplete: () => void
   setCateringNeeded: (value: boolean) => void
+  setReferralSource: (value: string) => void
   translations: {
     alert: {
       title: string
@@ -39,6 +41,7 @@ interface BookingFormStepsProps {
       groupSize: string
       accommodation: string
       extraInfo: string
+      referralSource: string
     }
     stepDescriptions: {
       contact: string
@@ -64,6 +67,8 @@ interface BookingFormStepsProps {
       accommodationPreferences: string
       cateringNeeded: string
       cateringDetails: string
+      referralSource: string
+      referralSourceOther: string
       extraInfo: string
     }
     placeholders: {
@@ -78,11 +83,13 @@ interface BookingFormStepsProps {
       maxGroupSize: string
       accommodationPreferences: string
       cateringDetails: string
+      referralSourceOther: string
       extraInfo: string
     }
     helpText: {
       startDate: string
       duration: string
+      referralSource: string
     }
     datePicker: {
       unavailable: string
@@ -96,6 +103,14 @@ interface BookingFormStepsProps {
       privateGroup: string
       yoga: string
       workshop: string
+      other: string
+    }
+    referralSources: {
+      search: string
+      socialMedia: string
+      wordOfMouth: string
+      previousVisit: string
+      partner: string
       other: string
     }
     reviewLabels: {
@@ -116,10 +131,12 @@ export function BookingFormSteps({
   stepHeadingRef,
   language,
   retreatTypeOptions,
+  referralSourceOptions,
   blockedDateRanges,
   handleChange,
   handleAnimationComplete,
   setCateringNeeded,
+  setReferralSource,
   translations,
 }: BookingFormStepsProps) {
   return (
@@ -169,6 +186,8 @@ export function BookingFormSteps({
           handleChange={handleChange}
           handleAnimationComplete={handleAnimationComplete}
           stepHeadingRef={stepHeadingRef}
+          referralSourceOptions={referralSourceOptions}
+          setReferralSource={setReferralSource}
           translations={translations}
         />
       )}

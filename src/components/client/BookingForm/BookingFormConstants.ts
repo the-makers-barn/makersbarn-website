@@ -1,4 +1,4 @@
-import { RetreatType, type BookingFormData } from '@/types'
+import { ReferralSource, RetreatType, type BookingFormData } from '@/types'
 
 export const INITIAL_FORM_DATA: BookingFormData = {
   name: '',
@@ -15,6 +15,8 @@ export const INITIAL_FORM_DATA: BookingFormData = {
   accommodationPreferences: '',
   cateringNeeded: false,
   cateringDetails: '',
+  referralSource: '',
+  referralSourceOther: '',
   extraInfo: '',
 }
 
@@ -33,6 +35,8 @@ export const FORM_FIELD_IDS = {
   ACCOMMODATION: 'booking-accommodation',
   CATERING_NEEDED: 'booking-catering-needed',
   CATERING_DETAILS: 'booking-catering-details',
+  REFERRAL_SOURCE: 'booking-referral-source',
+  REFERRAL_SOURCE_OTHER: 'booking-referral-source-other',
   EXTRA_INFO: 'booking-extra-info',
 } as const
 
@@ -42,6 +46,23 @@ export const RETREAT_TYPE_KEYS = [
   { value: RetreatType.WORKSHOP, labelKey: 'workshop' as const },
   { value: RetreatType.OTHER, labelKey: 'other' as const },
 ]
+
+export const REFERRAL_SOURCE_KEYS = [
+  { value: ReferralSource.SEARCH, labelKey: 'search' as const },
+  { value: ReferralSource.SOCIAL_MEDIA, labelKey: 'socialMedia' as const },
+  { value: ReferralSource.WORD_OF_MOUTH, labelKey: 'wordOfMouth' as const },
+  { value: ReferralSource.PREVIOUS_VISIT, labelKey: 'previousVisit' as const },
+  { value: ReferralSource.PARTNER, labelKey: 'partner' as const },
+  { value: ReferralSource.OTHER, labelKey: 'other' as const },
+]
+
+/**
+ * Narrow a raw select value to a ReferralSource ('' when unanswered)
+ */
+export function parseReferralSource(value: string): ReferralSource | '' {
+  const validValues: readonly string[] = Object.values(ReferralSource)
+  return validValues.includes(value) ? (value as ReferralSource) : ''
+}
 
 export enum WizardStep {
   CONTACT = 1,
@@ -67,6 +88,8 @@ export const FIELD_TO_STEP: Partial<Record<keyof BookingFormData, WizardStep>> =
   accommodationPreferences: WizardStep.DETAILS,
   cateringNeeded: WizardStep.DETAILS,
   cateringDetails: WizardStep.DETAILS,
+  referralSource: WizardStep.REVIEW,
+  referralSourceOther: WizardStep.REVIEW,
   extraInfo: WizardStep.REVIEW,
 }
 

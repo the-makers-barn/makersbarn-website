@@ -66,6 +66,7 @@ export const BOOKING_FIELD_LIMITS = {
   OTHER_TYPE_MAX: 200,
   PREFERENCES_MAX: 1000,
   CATERING_DETAILS_MAX: 500,
+  REFERRAL_OTHER_MAX: 200,
   EXTRA_INFO_MAX: 1000,
 } as const
 
@@ -88,6 +89,19 @@ export const RETREAT_TYPE_LABELS = {
   private_group: 'Private/Group Retreat',
   yoga: 'Yoga Retreat',
   workshop: 'Workshop',
+  other: 'Other',
+} as const
+
+/**
+ * Referral source labels for server-side use (emails, logs)
+ * For client-side display, use i18n translations
+ */
+export const REFERRAL_SOURCE_LABELS = {
+  search: 'Google / online search',
+  social_media: 'Social media',
+  word_of_mouth: 'Word of mouth',
+  previous_visit: 'Visited or attended before',
+  partner: 'Another retreat organizer or partner',
   other: 'Other',
 } as const
 

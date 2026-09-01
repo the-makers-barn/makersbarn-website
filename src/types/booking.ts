@@ -9,6 +9,19 @@ export enum RetreatType {
 }
 
 /**
+ * Referral source options for booking form ("How did you hear about us?")
+ * Optional question - empty string means the visitor did not answer
+ */
+export enum ReferralSource {
+  SEARCH = 'search',
+  SOCIAL_MEDIA = 'social_media',
+  WORD_OF_MOUTH = 'word_of_mouth',
+  PREVIOUS_VISIT = 'previous_visit',
+  PARTNER = 'partner',
+  OTHER = 'other',
+}
+
+/**
  * Date range for blocked dates (runtime - uses Date objects)
  */
 export interface DateRange {
@@ -43,6 +56,8 @@ export interface BookingFormData {
   accommodationPreferences: string
   cateringNeeded: boolean
   cateringDetails: string
+  referralSource: ReferralSource | ''
+  referralSourceOther: string
   extraInfo: string
 }
 
@@ -65,6 +80,8 @@ export interface ValidatedBookingFormData {
   accommodationPreferences?: string
   cateringNeeded: boolean
   cateringDetails?: string
+  referralSource?: ReferralSource
+  referralSourceOther?: string
   extraInfo?: string
 }
 

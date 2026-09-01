@@ -1,14 +1,15 @@
-import { useState, useCallback, useMemo, useRef, useEffect, FormEvent, ChangeEvent } from 'react'
+import { useState, useCallback, useMemo, FormEvent, ChangeEvent } from 'react'
 
-import { getBlockedDateRanges } from '@/constants'
 import { submitBookingForm } from '@/actions'
-import { FormStatus, type BookingFormData } from '@/types'
+import { FormStatus, ReferralSource, type BookingFormData } from '@/types'
 
 import {
   INITIAL_FORM_DATA,
-  RETREAT_TYPE_KEYS,
   WizardStep,
+  parseReferralSource,
 } from './BookingFormConstants'
+import { useBookingFormOptions } from './useBookingFormOptions'
+import { useStepHeadingFocus } from './useStepHeadingFocus'
 import { handleSubmitSuccess, handleSubmitError } from './bookingFormHandlers'
 import { validateStep, notifyContactStep } from './bookingFormValidation'
 
@@ -31,9 +32,24 @@ interface UseBookingFormProps {
     workshop: string
     other: string
   }
+  referralSources: {
+    search: string
+    socialMedia: string
+    wordOfMouth: string
+    previousVisit: string
+    partner: string
+    other: string
+  }
+  referralSourcePlaceholder: string
 }
 
-export function useBookingForm({ bookingMessages, bookingValidation, retreatTypes }: UseBookingFormProps) {
+export function useBookingForm({
+  bookingMessages,
+  bookingValidation,
+  retreatTypes,
+  referralSources,
+  referralSourcePlaceholder,
+}: UseBookingFormProps) {
   const [formData, setFormData] = useState<BookingFormData>(INITIAL_FORM_DATA)
   const [currentStep, setCurrentStep] = useState<WizardStep>(WizardStep.CONTACT)
   const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE)
@@ -42,18 +58,7 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
   const [hasNotifiedStart, setHasNotifiedStart] = useState(false)
   const [hasAnimated, setHasAnimated] = useState(false)
 
-  const stepHeadingRef = useRef<HTMLHeadingElement>(null)
-  const previousStepRef = useRef<WizardStep>(currentStep)
-
-  useEffect(() => {
-    if (previousStepRef.current !== currentStep && hasAnimated) {
-      const timer = setTimeout(() => {
-        stepHeadingRef.current?.focus()
-      }, 50)
-      previousStepRef.current = currentStep
-      return () => clearTimeout(timer)
-    }
-  }, [currentStep, hasAnimated])
+  const stepHeadingRef = useStepHeadingFocus(currentStep, hasAnimated)
 
   const statusMessages = useMemo(
     () => ({
@@ -65,16 +70,11 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
     [bookingMessages]
   )
 
-  const retreatTypeOptions = useMemo(
-    () =>
-      RETREAT_TYPE_KEYS.map((option) => ({
-        value: option.value,
-        label: retreatTypes[option.labelKey],
-      })),
-    [retreatTypes]
-  )
-
-  const blockedDateRanges = useMemo(() => getBlockedDateRanges(), [])
+  const { retreatTypeOptions, referralSourceOptions, blockedDateRanges } = useBookingFormOptions({
+    retreatTypes,
+    referralSources,
+    referralSourcePlaceholder,
+  })
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -175,6 +175,15 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
     if (!hasAnimated) {setHasAnimated(true)}
   }, [hasAnimated])
 
+  const setReferralSource = useCallback((value: string) => {
+    const referralSource = parseReferralSource(value)
+    setFormData((prev) => ({
+      ...prev,
+      referralSource,
+      referralSourceOther: referralSource === ReferralSource.OTHER ? prev.referralSourceOther : '',
+    }))
+  }, [])
+
   const setCateringNeeded = useCallback((value: boolean) => {
     setFormData((prev) => ({ ...prev, cateringNeeded: value, cateringDetails: value ? prev.cateringDetails : '' }))
   }, [])
@@ -188,6 +197,7 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
     hasAnimated,
     stepHeadingRef,
     retreatTypeOptions,
+    referralSourceOptions,
     blockedDateRanges,
     handleChange,
     handleNextStep,
@@ -196,5 +206,6 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
     handleNewRequest,
     handleAnimationComplete,
     setCateringNeeded,
+    setReferralSource,
   }
 }

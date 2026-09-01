@@ -4,8 +4,8 @@
 
 import { z } from 'zod'
 
-import { ContactIntent, RetreatType, type ValidatedBookingFormData } from '@/types'
-import { BOOKING_FIELD_LIMITS, RETREAT_TYPE_LABELS } from '@/constants'
+import { ContactIntent, ReferralSource, RetreatType, type ValidatedBookingFormData } from '@/types'
+import { BOOKING_FIELD_LIMITS, REFERRAL_SOURCE_LABELS, RETREAT_TYPE_LABELS } from '@/constants'
 
 const VALIDATION_LIMITS = {
   NAME_MAX: 100,
@@ -67,6 +67,23 @@ export function getRetreatTypeDisplayLabel(
   }
 
   return RETREAT_TYPE_LABELS[retreatType]
+}
+
+/**
+ * Get display label for referral source (server-side use: emails, logs, Slack)
+ * Handles "Other" source with custom text
+ */
+export function getReferralSourceDisplayLabel(
+  referralSource?: ReferralSource,
+  referralSourceOther?: string
+): string | undefined {
+  if (!referralSource) {return undefined}
+
+  if (referralSource === ReferralSource.OTHER && referralSourceOther) {
+    return `Other: ${referralSourceOther}`
+  }
+
+  return REFERRAL_SOURCE_LABELS[referralSource]
 }
 
 export const ContactFormSchema = z.object({
@@ -209,6 +226,16 @@ export const BookingFormSchema = z.object({
   cateringDetails: z
     .string()
     .max(BOOKING_FIELD_LIMITS.CATERING_DETAILS_MAX)
+    .trim()
+    .optional()
+    .transform((val) => (val && val.length > 0 ? val : undefined)),
+  referralSource: z
+    .union([z.nativeEnum(ReferralSource), z.literal('')])
+    .optional()
+    .transform((val) => (val ? val : undefined)),
+  referralSourceOther: z
+    .string()
+    .max(BOOKING_FIELD_LIMITS.REFERRAL_OTHER_MAX)
     .trim()
     .optional()
     .transform((val) => (val && val.length > 0 ? val : undefined)),

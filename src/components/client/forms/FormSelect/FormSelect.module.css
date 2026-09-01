@@ -71,6 +71,13 @@
   background-color: #ffffff;
 }
 
+.helpText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  line-height: var(--line-height-snug);
+}
+
 .error {
   font-size: var(--font-size-sm);
   color: var(--color-text-error);

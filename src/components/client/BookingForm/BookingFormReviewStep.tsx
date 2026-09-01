@@ -1,8 +1,8 @@
 import { ChangeEvent, RefObject } from 'react'
 import { motion } from 'framer-motion'
 
-import { RetreatType, type BookingFormData } from '@/types'
-import { FormField } from '@/components/client/forms'
+import { ReferralSource, RetreatType, type BookingFormData } from '@/types'
+import { FormField, FormSelect } from '@/components/client/forms'
 
 import { FORM_FIELD_IDS, STEP_VARIANTS, RETREAT_TYPE_KEYS } from './BookingFormConstants'
 import styles from './BookingForm.module.css'
@@ -33,6 +33,8 @@ interface BookingFormReviewStepProps {
   handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void
   handleAnimationComplete: () => void
   stepHeadingRef: RefObject<HTMLHeadingElement | null>
+  referralSourceOptions: Array<{ value: string; label: string }>
+  setReferralSource: (value: string) => void
   translations: {
     steps: {
       review: string
@@ -43,6 +45,7 @@ interface BookingFormReviewStepProps {
     sections: {
       groupSize: string
       extraInfo: string
+      referralSource: string
     }
     reviewLabels: {
       contact: string
@@ -62,10 +65,16 @@ interface BookingFormReviewStepProps {
       accommodationPreferences: string
       cateringNeeded: string
       cateringDetails: string
+      referralSource: string
+      referralSourceOther: string
       extraInfo: string
     }
     placeholders: {
+      referralSourceOther: string
       extraInfo: string
+    }
+    helpText: {
+      referralSource: string
     }
     retreatTypes: {
       privateGroup: string
@@ -86,8 +95,12 @@ export function BookingFormReviewStep({
   handleChange,
   handleAnimationComplete,
   stepHeadingRef,
+  referralSourceOptions,
+  setReferralSource,
   translations,
 }: BookingFormReviewStepProps) {
+  const showReferralSourceOther = formData.referralSource === ReferralSource.OTHER
+
   return (
     <motion.div
       key="review"
@@ -191,6 +204,34 @@ export function BookingFormReviewStep({
           </div>
         </div>
       </div>
+
+      <h4 className={styles.sectionTitle}>{translations.sections.referralSource}</h4>
+
+      <FormSelect
+        label={translations.labels.referralSource}
+        id={FORM_FIELD_IDS.REFERRAL_SOURCE}
+        name="referralSource"
+        value={formData.referralSource}
+        onChange={(e) => setReferralSource(e.target.value)}
+        options={referralSourceOptions}
+        error={errors.referralSource}
+        helpText={translations.helpText.referralSource}
+      />
+
+      {showReferralSourceOther && (
+        <div className={styles.conditionalField}>
+          <FormField
+            label={translations.labels.referralSourceOther}
+            id={FORM_FIELD_IDS.REFERRAL_SOURCE_OTHER}
+            name="referralSourceOther"
+            type="text"
+            value={formData.referralSourceOther}
+            onChange={handleChange}
+            placeholder={translations.placeholders.referralSourceOther}
+            error={errors.referralSourceOther}
+          />
+        </div>
+      )}
 
       <h4 className={styles.sectionTitle}>{translations.sections.extraInfo}</h4>
 

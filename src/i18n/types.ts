@@ -675,6 +675,7 @@ export interface BookingTranslations {
     groupSize: string
     accommodation: string
     extraInfo: string
+    referralSource: string
   }
   steps: {
     contact: string
@@ -709,6 +710,8 @@ export interface BookingTranslations {
     accommodationPreferences: string
     cateringNeeded: string
     cateringDetails: string
+    referralSource: string
+    referralSourceOther: string
     extraInfo: string
   }
   placeholders: {
@@ -722,6 +725,8 @@ export interface BookingTranslations {
     retreatTypeOther: string
     accommodationPreferences: string
     cateringDetails: string
+    referralSourceSelect: string
+    referralSourceOther: string
     extraInfo: string
     selectDate: string
   }
@@ -729,6 +734,14 @@ export interface BookingTranslations {
     privateGroup: string
     yoga: string
     workshop: string
+    other: string
+  }
+  referralSources: {
+    search: string
+    socialMedia: string
+    wordOfMouth: string
+    previousVisit: string
+    partner: string
     other: string
   }
   cateringOptions: {
@@ -749,6 +762,7 @@ export interface BookingTranslations {
   helpText: {
     startDate: string
     duration: string
+    referralSource: string
     accommodationIntro: string
     accommodationCosmos: string
     accommodationGroup: string
