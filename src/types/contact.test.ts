@@ -8,9 +8,10 @@ describe('ContactIntent', () => {
     expect(ContactIntent.BOOKING).toBe('booking')
     expect(ContactIntent.LOOKING_FOR_CHEF).toBe('looking-for-chef')
     expect(ContactIntent.CHEF_JOIN).toBe('chef-join')
+    expect(ContactIntent.COMPANY_DAY).toBe('company-day')
   })
 
   it('has exactly four members', () => {
-    expect(Object.values(ContactIntent)).toHaveLength(4)
+    expect(Object.values(ContactIntent)).toHaveLength(5)
   })
 })

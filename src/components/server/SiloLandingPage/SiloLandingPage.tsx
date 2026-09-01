@@ -5,7 +5,7 @@ import { ComparisonTeaser } from '@/components/server/ComparisonTeaser'
 import { StructuredData } from '@/components/server/StructuredData'
 import { generateEventVenueSchema, generatePageBreadcrumbs } from '@/lib/structuredData'
 import { getLocalizedPath } from '@/lib/routing'
-import { ContactIntent, Language, Route, SiloContent } from '@/types'
+import { ContactIntent, Language, Route, SiloContent, SiloTrack } from '@/types'
 import type { Dictionary } from '@/i18n/types'
 import { SILO_TO_AUDIT_ROUTE, SILO_TO_TOOL_ROUTE } from '@/constants/tools'
 
@@ -119,6 +119,91 @@ function ToolCtaTrio({ toolHref, calendarHref, auditHref, t }: ToolCtaTrioProps)
   )
 }
 
+interface SiloHeroFrameProps {
+  silo: SiloContent
+  locale: Language
+  t: Dictionary
+  heroAlt: string
+  backHref: string
+  backLabel: string
+  bookHref: string
+  contactHref: string
+}
+
+function SiloHeroFrame({
+  silo,
+  locale,
+  t,
+  heroAlt,
+  backHref,
+  backLabel,
+  bookHref,
+  contactHref,
+}: SiloHeroFrameProps) {
+  return (
+    <div className={styles.heroFrame}>
+      <Image
+        src={silo.heroImageSrc}
+        alt={heroAlt}
+        fill
+        priority
+        sizes={HERO_IMAGE_SIZES}
+        className={styles.heroImage}
+      />
+      <div className={styles.heroOverlay} />
+      <div className={styles.heroInner}>
+        <Link href={backHref} className={styles.backLink}>
+          <ArrowLeftIcon />
+          {backLabel}
+        </Link>
+        <p className={styles.eyebrow}>{silo.hero.eyebrow[locale]}</p>
+        <h1 className={styles.title}>{silo.hero.title[locale]}</h1>
+        <p className={styles.subtitle}>{silo.hero.subtitle[locale]}</p>
+        <div className={styles.heroCtas}>
+          <Link href={bookHref} className={styles.primaryCta}>
+            {t.silos.primaryCta}
+            <ArrowRightIcon />
+          </Link>
+          <Link href={contactHref} className={styles.secondaryCta}>
+            {t.silos.secondaryCta}
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+interface RelatedLinksProps {
+  silo: SiloContent
+  locale: Language
+  title: string
+}
+
+function RelatedLinks({ silo, locale, title }: RelatedLinksProps) {
+  if (!silo.relatedLinks?.length) {
+    return null
+  }
+
+  return (
+    <section className={styles.relatedSection} aria-labelledby="silo-related">
+      <h2 className={styles.relatedTitle} id="silo-related">
+        {title}
+      </h2>
+      <ul className={styles.relatedList}>
+        {silo.relatedLinks.map((link) => (
+          <li key={link.route} className={styles.relatedItem}>
+            <Link href={getLocalizedPath(link.route, locale)} className={styles.relatedLink}>
+              {link.label[locale]}
+              <ArrowRightIcon />
+            </Link>
+            <p className={styles.relatedDescription}>{link.description[locale]}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 function buildFaqSchema(silo: SiloContent, locale: Language) {
   return {
     '@context': 'https://schema.org',
@@ -144,10 +229,12 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
   const eventVenueSchema = generateEventVenueSchema(silo, locale, {
     linkedEventIds: silo.organizerSeo?.linkedEventIds,
   })
-  const retreatsHref = getLocalizedPath(Route.HOST_A_RETREAT, locale)
+  const track = silo.track ?? SiloTrack.RETREAT_ORGANIZER
+  const backHref = getLocalizedPath(silo.backLink?.route ?? Route.HOST_A_RETREAT, locale)
+  const backLabel = silo.backLink?.label[locale] ?? t.silos.backToRetreats
   const contactHref = getLocalizedPath(Route.CONTACT, locale)
   // Link the booking CTA at its destination directly; /book only exists as a redirect.
-  const bookHref = `${contactHref}#${ContactIntent.BOOKING}`
+  const bookHref = `${contactHref}#${silo.contactIntent ?? ContactIntent.BOOKING}`
   const toolRoute = SILO_TO_TOOL_ROUTE[silo.route]
   const toolHref = toolRoute ? getLocalizedPath(toolRoute, locale) : null
   const calendarHref = getLocalizedPath(Route.TWELVE_MONTH_RETREAT_LAUNCH_CALENDAR, locale)
@@ -159,35 +246,16 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
       <StructuredData data={[breadcrumb, eventVenueSchema, faqSchema]} />
 
       <article className={styles.silo}>
-        <div className={styles.heroFrame}>
-          <Image
-            src={silo.heroImageSrc}
-            alt={heroAlt}
-            fill
-            priority
-            sizes={HERO_IMAGE_SIZES}
-            className={styles.heroImage}
-          />
-          <div className={styles.heroOverlay} />
-          <div className={styles.heroInner}>
-            <Link href={retreatsHref} className={styles.backLink}>
-              <ArrowLeftIcon />
-              {t.silos.backToRetreats}
-            </Link>
-            <p className={styles.eyebrow}>{silo.hero.eyebrow[locale]}</p>
-            <h1 className={styles.title}>{silo.hero.title[locale]}</h1>
-            <p className={styles.subtitle}>{silo.hero.subtitle[locale]}</p>
-            <div className={styles.heroCtas}>
-              <Link href={bookHref} className={styles.primaryCta}>
-                {t.silos.primaryCta}
-                <ArrowRightIcon />
-              </Link>
-              <Link href={contactHref} className={styles.secondaryCta}>
-                {t.silos.secondaryCta}
-              </Link>
-            </div>
-          </div>
-        </div>
+        <SiloHeroFrame
+          silo={silo}
+          locale={locale}
+          t={t}
+          heroAlt={heroAlt}
+          backHref={backHref}
+          backLabel={backLabel}
+          bookHref={bookHref}
+          contactHref={contactHref}
+        />
 
         <section className={styles.hookSection} aria-labelledby="silo-hook">
           <p className={styles.hookEyebrow} id="silo-hook">
@@ -278,12 +346,16 @@ export function SiloLandingPage({ silo, locale, t }: SiloLandingPageProps) {
           </div>
         </section>
 
-        <ToolCtaTrio
-          toolHref={toolHref}
-          calendarHref={calendarHref}
-          auditHref={auditHref}
-          t={t}
-        />
+        {track === SiloTrack.RETREAT_ORGANIZER && (
+          <ToolCtaTrio
+            toolHref={toolHref}
+            calendarHref={calendarHref}
+            auditHref={auditHref}
+            t={t}
+          />
+        )}
+
+        <RelatedLinks silo={silo} locale={locale} title={t.silos.relatedTitle} />
 
         <ComparisonTeaser locale={locale} t={t} />
 

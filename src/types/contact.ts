@@ -10,6 +10,7 @@ export enum ContactIntent {
   BOOKING = 'booking',
   LOOKING_FOR_CHEF = 'looking-for-chef',
   CHEF_JOIN = 'chef-join',
+  COMPANY_DAY = 'company-day',
 }
 
 export interface ContactFormData {

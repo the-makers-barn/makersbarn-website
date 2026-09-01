@@ -104,6 +104,7 @@ export interface FooterTranslations {
   viewLocation: string
   explore: string
   hostRetreat: string
+  companyDays: string
   exploreTools: string
   termsAndConditions: string
 }
@@ -602,6 +603,7 @@ export interface UnifiedContactTranslations {
   intentLeadIn: {
     looking: string
     join: string
+    companyDay: string
   }
 }
 
@@ -789,6 +791,7 @@ export interface BookingTranslations {
  */
 export interface SilosChromeTranslations {
   backToRetreats: string
+  relatedTitle: string
   hookEyebrow: string
   factsTitle: string
   scheduleTitle: string

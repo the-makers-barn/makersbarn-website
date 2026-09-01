@@ -493,3 +493,58 @@
 .toolCtaInner { display: grid; gap: 1rem; max-width: 36rem; }
 .toolCtaTitle { font-family: var(--font-playfair); margin: 0; font-size: var(--font-size-2xl); }
 .toolCtaBody { color: var(--color-text-muted); margin: 0; line-height: var(--line-height-relaxed); }
+
+.relatedSection {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+.relatedTitle {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+}
+
+.relatedList {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .relatedList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.relatedItem {
+  background: rgba(184, 137, 74, 0.06);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.relatedLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.relatedLink:hover,
+.relatedLink:focus-visible {
+  text-decoration: underline;
+}
+
+.relatedDescription {
+  margin: 0.5rem 0 0;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}

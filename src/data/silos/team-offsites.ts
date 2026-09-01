@@ -146,6 +146,34 @@ export const TEAM_OFFSITES_SILO: SiloContent = {
       },
     },
   ],
+  relatedLinks: [
+    {
+      route: Route.COMPANY_DAY_EVENTS,
+      label: {
+        [Language.EN]: 'Company day events, no overnight stay',
+        [Language.NL]: 'Bedrijfsdagen, zonder overnachting',
+        [Language.DE]: 'Firmentage ohne Übernachtung',
+      },
+      description: {
+        [Language.EN]: 'When the team comes for one day and goes home: 10 to 30 people, hours of your choosing.',
+        [Language.NL]: 'Als het team één dag komt en weer naar huis gaat: 10 tot 30 personen, uren naar keuze.',
+        [Language.DE]: 'Wenn das Team einen Tag kommt und wieder heimfährt: 10 bis 30 Personen, Zeiten nach Wahl.',
+      },
+    },
+    {
+      route: Route.MEETING_VENUE_ZWOLLE_DEVENTER,
+      label: {
+        [Language.EN]: 'Meeting venue between Zwolle and Deventer',
+        [Language.NL]: 'Vergaderlocatie tussen Zwolle en Deventer',
+        [Language.DE]: 'Tagungsort zwischen Zwolle und Deventer',
+      },
+      description: {
+        [Language.EN]: 'Room specifications, equipment and breakout spots for a strategy day.',
+        [Language.NL]: 'Ruimtespecificaties, techniek en breakoutplekken voor een heidag.',
+        [Language.DE]: 'Raumdaten, Technik und Breakout-Orte für einen Strategietag.',
+      },
+    },
+  ],
   facts: [
     {
       number: '1h15',

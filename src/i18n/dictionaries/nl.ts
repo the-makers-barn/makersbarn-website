@@ -106,6 +106,7 @@ export const nl: Dictionary = {
     intentLeadIn: {
       looking: 'Je vraagt naar het vinden van een kok voor je retraite. Vertel ons wat je van plan bent en we koppelen je aan iemand uit onze gids of wijzen je de weg.',
       join: 'Je vraagt naar toelating tot de Makers Barn koksengids. Vertel ons over je keuken en we nemen contact met je op.',
+      companyDay: 'Je vraagt naar een bedrijfsdag op de boerderij. Geef ons de groepsgrootte, de datum die je in gedachten hebt en wat de dag moet opleveren, dan komen we terug met een opzet en een prijs.',
     },
   },
 
@@ -248,6 +249,7 @@ export const nl: Dictionary = {
     viewLocation: 'Bekijk locatie',
     explore: 'Ontdek',
     hostRetreat: 'Organiseer een retraite',
+    companyDays: 'Bedrijfsdagen',
     exploreTools: 'Gratis tools voor hosts',
     termsAndConditions: 'Algemene voorwaarden',
   },
@@ -852,6 +854,7 @@ export const nl: Dictionary = {
 
   silos: {
     backToRetreats: 'Alle retraite-types',
+    relatedTitle: 'Ook de moeite waard',
     hookEyebrow: 'Kort gezegd',
     factsTitle: 'Waarom The Makers Barn',
     scheduleTitle: 'Een dag op de boerderij',

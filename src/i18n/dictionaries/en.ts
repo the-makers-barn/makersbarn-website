@@ -103,6 +103,7 @@ export const en: Dictionary = {
     intentLeadIn: {
       looking: "You're asking about finding a chef for your retreat. Tell us what you're planning and we'll match from our directory or point you elsewhere.",
       join: "You're asking about joining the Makers Barn chef directory. Tell us about your kitchen and we'll be in touch.",
+      companyDay: 'You are asking about a company day at the farm. Tell us the group size, the date you have in mind and what the day is meant to achieve, and we will come back with a plan and a price.',
     },
   },
 
@@ -245,6 +246,7 @@ export const en: Dictionary = {
     viewLocation: 'View location',
     explore: 'Explore',
     hostRetreat: 'Host a retreat',
+    companyDays: 'Company days',
     exploreTools: 'Free tools for hosts',
     termsAndConditions: 'Terms & Conditions',
   },
@@ -844,6 +846,7 @@ export const en: Dictionary = {
 
   silos: {
     backToRetreats: 'All retreat types',
+    relatedTitle: 'Also worth reading',
     hookEyebrow: 'In short',
     factsTitle: 'Why The Makers Barn',
     scheduleTitle: 'A day at the barn',

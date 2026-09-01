@@ -27,11 +27,18 @@ import {
   generateRetreatsCollectionSchema,
   getSiloCardLabel,
 } from '@/lib/structuredData'
-import { Language, Route, SiloContent, SiloHubCardSummary, SiloSlug } from '@/types'
+import {
+  Language,
+  RetreatHubSiloSlug,
+  Route,
+  SiloContent,
+  SiloHubCardSummary,
+  SiloSlug,
+} from '@/types'
 
 import styles from './page.module.css'
 
-const SILO_BY_SLUG: Record<SiloSlug, SiloContent> = {
+const SILO_BY_SLUG: Record<RetreatHubSiloSlug, SiloContent> = {
   [SiloSlug.YOGA_TEACHERS]: YOGA_TEACHERS_SILO,
   [SiloSlug.MEDITATION_RETREATS]: MEDITATION_RETREATS_SILO,
   [SiloSlug.WRITING_RETREATS]: WRITING_RETREATS_SILO,

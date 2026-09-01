@@ -106,6 +106,7 @@ export const de: Dictionary = {
     intentLeadIn: {
       looking: 'Du fragst nach einem Koch für dein Retreat. Erzähl uns, was du planst – wir vermitteln aus unserem Verzeichnis oder helfen dir weiter.',
       join: 'Du möchtest dich im Makers Barn Köche-Verzeichnis eintragen. Erzähl uns von deiner Arbeit – wir melden uns bei dir.',
+      companyDay: 'Du fragst nach einem Firmentag auf dem Hof. Nenn uns die Gruppengröße, das Wunschdatum und das Ziel des Tages – wir melden uns mit einem Ablauf und einem Preis.',
     },
   },
 
@@ -248,6 +249,7 @@ export const de: Dictionary = {
     viewLocation: 'Standort ansehen',
     explore: 'Entdecken',
     hostRetreat: 'Retreat veranstalten',
+    companyDays: 'Firmentage',
     exploreTools: 'Gratis-Tools für Gastgeber',
     termsAndConditions: 'AGB',
   },
@@ -847,6 +849,7 @@ export const de: Dictionary = {
 
   silos: {
     backToRetreats: 'Alle Retreat-Arten',
+    relatedTitle: 'Ebenfalls lesenswert',
     hookEyebrow: 'Kurz gesagt',
     factsTitle: 'Warum The Makers Barn',
     scheduleTitle: 'Ein Tag auf dem Hof',

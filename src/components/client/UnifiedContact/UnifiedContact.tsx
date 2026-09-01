@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import { CONTACT_URLS, CONTACT_EMAIL } from '@/constants'
 import { ContactIntent } from '@/types'
+import type { UnifiedContactTranslations } from '@/i18n/types'
 import { useTranslation } from '@/context'
 
 import { BookingForm } from '../BookingForm'
@@ -12,6 +13,19 @@ import { BookingForm } from '../BookingForm'
 import { IntentSelector } from './IntentSelector'
 import { QuestionForm } from './QuestionForm'
 import styles from './UnifiedContact.module.css'
+
+/**
+ * Intents reached only by URL hash (no tab of their own) get a sentence above
+ * the form confirming what the visitor clicked. Intents absent from this map
+ * render no lead-in.
+ */
+const INTENT_LEAD_IN_KEY: Partial<
+  Record<ContactIntent, keyof UnifiedContactTranslations['intentLeadIn']>
+> = {
+  [ContactIntent.LOOKING_FOR_CHEF]: 'looking',
+  [ContactIntent.CHEF_JOIN]: 'join',
+  [ContactIntent.COMPANY_DAY]: 'companyDay',
+}
 
 const CONTENT_VARIANTS = {
   hidden: { opacity: 0, y: 20 },
@@ -111,6 +125,8 @@ export function UnifiedContact() {
     setIntent(newIntent)
   }, [])
 
+  const leadInKey = INTENT_LEAD_IN_KEY[intent]
+
   return (
     <div className={styles.page}>
       {/* Intro Section */}
@@ -131,14 +147,10 @@ export function UnifiedContact() {
         />
       </section>
 
-      {/* Chef-intent lead-in panel */}
-      {(intent === ContactIntent.LOOKING_FOR_CHEF || intent === ContactIntent.CHEF_JOIN) && (
+      {/* Hash-only intent lead-in panel */}
+      {leadInKey && (
         <section className={styles.leadInSection}>
-          <p className={styles.leadInText}>
-            {intent === ContactIntent.LOOKING_FOR_CHEF
-              ? unifiedContact.intentLeadIn.looking
-              : unifiedContact.intentLeadIn.join}
-          </p>
+          <p className={styles.leadInText}>{unifiedContact.intentLeadIn[leadInKey]}</p>
         </section>
       )}
 
