@@ -120,9 +120,9 @@ export const TEAM_OFFSITES_SILO: SiloContent = {
     },
     {
       h2: {
-        [Language.EN]: 'What 14 people get to themselves for two days',
-        [Language.NL]: 'Wat 14 mensen voor zichzelf krijgen in twee dagen',
-        [Language.DE]: 'Was 14 Personen in zwei Tagen für sich allein bekommen',
+        [Language.EN]: 'What your team gets to itself for the day',
+        [Language.NL]: 'Wat je team voor zichzelf krijgt op de dag',
+        [Language.DE]: 'Was euer Team für einen Tag ganz für sich bekommt',
       },
       body: {
         [Language.EN]: [
@@ -202,61 +202,53 @@ export const TEAM_OFFSITES_SILO: SiloContent = {
   ],
   schedule: {
     title: {
-      [Language.EN]: 'A two-day offsite, sketched',
-      [Language.NL]: 'Een tweedaagse offsite, geschetst',
-      [Language.DE]: 'Ein zweitägiges Offsite, skizziert',
+      [Language.EN]: 'A one-day offsite, sketched',
+      [Language.NL]: 'Een eendaagse offsite, geschetst',
+      [Language.DE]: 'Ein eintägiges Offsite, skizziert',
     },
     intro: {
       [Language.EN]:
-        'A loose template several leadership teams have used here — yours is yours to design.',
+        'A loose template several leadership teams have used here for a single strategy day — yours is yours to design. Want to stay the night? Add beds and an evening at the fire.',
       [Language.NL]:
-        'Een losse template die diverse leiderschapsteams hier gebruikten — die van jou ontwerp je zelf.',
+        'Een losse template die diverse leiderschapsteams hier gebruikten voor één strategiedag — die van jou ontwerp je zelf. Wil je blijven slapen? Voeg bedden en een avond bij het vuur toe.',
       [Language.DE]:
-        'Eine lose Vorlage, die mehrere Führungsteams hier genutzt haben — deine gestaltest du selbst.',
+        'Eine lose Vorlage, die mehrere Führungsteams hier für einen einzelnen Strategietag genutzt haben — deine gestaltest du selbst. Ihr wollt übernachten? Betten und ein Abend am Feuer kommen einfach dazu.',
     },
     items: [
       {
-        time: 'Day 1 · 11:00',
+        time: '09:00',
         activity: {
-          [Language.EN]: 'Arrival, settle into rooms, kettle on',
-          [Language.NL]: 'Aankomst, kamers betrekken, waterkoker aan',
-          [Language.DE]: 'Ankunft, in den Zimmern ankommen, Wasserkocher an',
+          [Language.EN]: 'Arrival, coffee, kettle on',
+          [Language.NL]: 'Aankomst, koffie, waterkoker aan',
+          [Language.DE]: 'Ankunft, Kaffee, Wasserkocher an',
         },
       },
       {
-        time: 'Day 1 · 13:00',
+        time: '09:30',
         activity: {
-          [Language.EN]: 'Long lunch — slow start to the work',
-          [Language.NL]: 'Lange lunch — rustige start van het werk',
-          [Language.DE]: 'Langes Mittagessen — ruhiger Einstieg in die Arbeit',
+          [Language.EN]: 'Strategy session in the Hay House — first block',
+          [Language.NL]: 'Strategiesessie in het Hay House — eerste blok',
+          [Language.DE]: 'Strategie-Session im Hay House — erster Block',
         },
       },
       {
-        time: 'Day 1 · 15:00',
+        time: '12:30',
         activity: {
-          [Language.EN]: 'Strategy session in the Hay House',
-          [Language.NL]: 'Strategiesessie in het Hay House',
-          [Language.DE]: 'Strategie-Session im Hay House',
+          [Language.EN]: 'Long lunch at the long table',
+          [Language.NL]: 'Lange lunch aan de lange tafel',
+          [Language.DE]: 'Langes Mittagessen an der langen Tafel',
         },
       },
       {
-        time: 'Day 1 · 19:30',
+        time: '13:30',
         activity: {
-          [Language.EN]: 'Catered dinner at the long table',
-          [Language.NL]: 'Verzorgd diner aan de lange tafel',
-          [Language.DE]: 'Catered Dinner an der langen Tafel',
+          [Language.EN]: 'Walk through the trees — thinking time',
+          [Language.NL]: 'Wandeling door de bomen — denktijd',
+          [Language.DE]: 'Spaziergang durch die Bäume — Zeit zum Denken',
         },
       },
       {
-        time: 'Day 1 · 21:30',
-        activity: {
-          [Language.EN]: 'Sauna and fire circle',
-          [Language.NL]: 'Sauna en vuurplaats',
-          [Language.DE]: 'Sauna und Feuerstelle',
-        },
-      },
-      {
-        time: 'Day 2 · 09:00',
+        time: '14:15',
         activity: {
           [Language.EN]: 'Working session — second strategic block',
           [Language.NL]: 'Werksessie — tweede strategisch blok',
@@ -264,19 +256,19 @@ export const TEAM_OFFSITES_SILO: SiloContent = {
         },
       },
       {
-        time: 'Day 2 · 13:00',
+        time: '16:30',
         activity: {
-          [Language.EN]: 'Walking lunch through the trees',
-          [Language.NL]: 'Wandellunch door de bomen',
-          [Language.DE]: 'Wander-Lunch durch die Bäume',
+          [Language.EN]: 'Closing circle and write-up',
+          [Language.NL]: 'Slotrondje en vastleggen',
+          [Language.DE]: 'Abschlusskreis und Festhalten',
         },
       },
       {
-        time: 'Day 2 · 15:30',
+        time: '17:30',
         activity: {
-          [Language.EN]: 'Closing circle, write-up, departure',
-          [Language.NL]: 'Slotrondje, vastleggen, vertrek',
-          [Language.DE]: 'Abschlusskreis, Festhalten, Abreise',
+          [Language.EN]: 'Departure — or sauna, dinner and the fire circle if you stay',
+          [Language.NL]: 'Vertrek — of sauna, diner en vuurplaats als je blijft',
+          [Language.DE]: 'Abreise — oder Sauna, Abendessen und Feuerstelle, wenn ihr bleibt',
         },
       },
     ],
