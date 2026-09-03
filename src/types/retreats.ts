@@ -38,10 +38,6 @@ export interface DaySchedule {
   items: ScheduleItem[]
 }
 
-export interface AccessibilityItem {
-  key: string
-}
-
 export interface RetreatLocation {
   nameKey: string
   address: string
@@ -55,11 +51,6 @@ export interface RetreatContact {
   instagram: string
 }
 
-export interface ParticipantRange {
-  min: number
-  max: number
-}
-
 export interface RetreatData {
   id: RetreatId
   slug: string
@@ -68,7 +59,6 @@ export interface RetreatData {
   videoEmbedUrl: string
   teachers: Teacher[]
   dates: RetreatDate[]
-  duration: string
   location: RetreatLocation
   /**
    * The rhythm of a typical retreat day, in order. Each entry keys into the
@@ -76,9 +66,6 @@ export interface RetreatData {
    * untimed — the flow is an indication, not a timetable.
    */
   dayFlowKeys: string[]
-  includedServiceKeys: string[]
-  accommodationOptionKeys: string[]
-  participantRange: ParticipantRange
   contact: RetreatContact
 }
 

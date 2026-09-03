@@ -15,12 +15,6 @@ export const SHANTI_DEVA_RETREAT: RetreatData = {
       title: 'gesheTitle',
       imageUrl: '/images/retreats/shanti-deva/geshe-pema-dorjee.jpg',
     },
-    {
-      id: 'monk-lobsang',
-      name: 'Monk Lobsang',
-      title: 'monkTitle',
-      imageUrl: '/images/retreats/shanti-deva/monk-lobsang.jpg',
-    },
   ],
 
   dates: [
@@ -40,8 +34,6 @@ export const SHANTI_DEVA_RETREAT: RetreatData = {
       endDate: '2027-08-11',
     },
   ],
-
-  duration: '5nights6days',
 
   location: {
     nameKey: 'countrysideFarm',
@@ -64,24 +56,6 @@ export const SHANTI_DEVA_RETREAT: RetreatData = {
     'qaSession',
     'eveningConnect',
   ],
-
-  includedServiceKeys: [
-    'beddingTowels',
-    'vegetarianMeals',
-    'farmFacilities',
-  ],
-
-  accommodationOptionKeys: [
-    'doubleRooms',
-    'sharedRooms',
-    'singleRoom',
-    'tentCaravan',
-  ],
-
-  participantRange: {
-    min: 10,
-    max: 15,
-  },
 
   contact: {
     whatsapp: '+31-6-14941874',
