@@ -357,13 +357,18 @@ export interface ShantiDevaRetreatTranslations {
     subtitle: string
     withTeachers: string
     dailyTime: string
-    bookNow: string
+    getInTouch: string
+  }
+
+  video: {
+    title: string
   }
 
   dates: {
     title: string
     firstRetreat: string
     secondRetreat: string
+    thirdRetreat: string
     duration: string
   }
 
@@ -389,25 +394,19 @@ export interface ShantiDevaRetreatTranslations {
 
   schedule: {
     title: string
-    arrivalDay: string
-    studyDays: string
-    finalDay: string
-    specialActivity: string
+    intro: string
     activities: {
-      arrivalCheckin: string
-      farmTour: string
-      dinner: string
-      introProgram: string
-      guidedMeditation: string
-      breakfast: string
-      morningTeaching: string
+      morningMeditation: string
+      breakfastBuffet: string
+      teachingLectures: string
       lunch: string
-      afternoonTeaching: string
+      restAndDigest: string
+      afternoonWorkshop: string
+      dinnerGathering: string
       qaSession: string
-      closingSession: string
-      freeTime: string
-      checkout: string
+      eveningConnect: string
     }
+    workshopNote: string
   }
 
   included: {
@@ -428,30 +427,6 @@ export interface ShantiDevaRetreatTranslations {
     }
   }
 
-  pricing: {
-    title: string
-    totalPrice: string
-    perParticipant: string
-    breakdown: string
-    breakdownItems: {
-      accommodation: string
-      meals: string
-      venueRental: string
-      teacherSupport: string
-    }
-    paymentTerms: string
-    paymentItems: {
-      depositPayment: string
-      secondPayment: string
-    }
-    cancellation: string
-    cancellationItems: {
-      fourMonthsRefund: string
-      afterFullPayment: string
-      replacementRefund: string
-    }
-  }
-
   registration: {
     title: string
     subtitle: string
@@ -459,7 +434,7 @@ export interface ShantiDevaRetreatTranslations {
     contact: string
     whatsapp: string
     email: string
-    registerButton: string
+    instagram: string
   }
 }
 
@@ -582,6 +557,84 @@ export interface AutumnGroundingTranslations {
   gallery: {
     title: string
     alt: Record<'practiceRoom' | 'garden' | 'pond', string>
+  }
+}
+
+export interface SweatLodgeTranslations {
+  metaTitle: string
+  metaDescription: string
+  backToExperiences: string
+
+  hero: {
+    title: string
+    subtitle: string
+    dates: string
+    bookNow: string
+    /** Screen-reader description of the decorative fire illustration. */
+    fireAlt: string
+  }
+
+  intro: {
+    title: string
+    body: readonly string[]
+    pullQuote: string
+  }
+
+  forWhom: {
+    title: string
+    body: readonly string[]
+    newTitle: string
+    newBody: readonly string[]
+  }
+
+  schedule: {
+    title: string
+    intro: string
+    /** Shown in the time slot of a stop that has no clock time. */
+    laterLabel: string
+    activities: Record<string, string>
+  }
+
+  bring: {
+    title: string
+    intro: string
+    items: Record<string, string>
+    clothingNote: string
+    alcoholNote: string
+  }
+
+  health: {
+    title: string
+    body: string
+    contactLead: string
+  }
+
+  host: {
+    title: string
+    role: string
+    bio: string
+  }
+
+  practical: {
+    title: string
+    menOnlyLabel: string
+    menOnlyValue: string
+    languageLabel: string
+    languageValue: string
+    addressLabel: string
+    gettingThereLabel: string
+    gettingThereItems: readonly string[]
+  }
+
+  tickets: {
+    title: string
+    intro: string
+    tiers: Record<'standard' | 'youth', { name: string; description: string }>
+    frameTitle: string
+    fallbackText: string
+    fallbackCta: string
+    fromLabel: string
+    stickyCta: string
   }
 }
 
@@ -1334,6 +1387,7 @@ export interface Dictionary {
   location: LocationTranslations
   shantiDevaRetreat: ShantiDevaRetreatTranslations
   autumnGrounding: AutumnGroundingTranslations
+  sweatLodge: SweatLodgeTranslations
   focusedWorkation: FocusedWorkationTranslations
   impressionCarousel: ImpressionCarouselTranslations
   impressionPolaroids: ImpressionPolaroidsTranslations

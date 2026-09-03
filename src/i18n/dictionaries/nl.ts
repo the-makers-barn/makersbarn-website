@@ -541,7 +541,7 @@ export const nl: Dictionary = {
 
   shantiDevaRetreat: {
     metaTitle: 'Shanti Deva Boeddhistisch Tibetaans Retraite',
-    metaDescription: 'Doe mee met Gen La Geshe Pema Dorjee voor een 6-daagse Boeddhistische retraite op het Nederlandse platteland. Studeer Tibetaans Boeddhisme met meditatie, onderricht en vegetarische maaltijden inbegrepen.',
+    metaDescription: 'Doe mee met Gen La Geshe Pema Dorjee voor een 6-daagse Boeddhistische retraite op het Nederlandse platteland. Drie retraites in 2027, met meditatie, onderricht en vegetarische maaltijden inbegrepen.',
     backToExperiences: 'Terug naar Ervaringen',
 
     hero: {
@@ -549,13 +549,18 @@ export const nl: Dictionary = {
       subtitle: 'Studie van Tibetaans Boeddhisme',
       withTeachers: 'met Gen La Geshe Pema Dorjee & de Gerespecteerde monnik Lobsang',
       dailyTime: 'Dagelijks van 7:00 tot 20:00 uur',
-      bookNow: 'Reserveer Je Plek',
+      getInTouch: 'Stel je vraag over de retraite',
+    },
+
+    video: {
+      title: 'Impressies van de Shanti Deva retraite',
     },
 
     dates: {
       title: 'Beschikbare Data',
-      firstRetreat: 'Eerste retraite',
-      secondRetreat: 'Tweede retraite',
+      firstRetreat: 'Retraite 1',
+      secondRetreat: 'Retraite 2',
+      thirdRetreat: 'Retraite 3',
       duration: '5 nachten (6 dagen)',
     },
 
@@ -580,26 +585,20 @@ export const nl: Dictionary = {
     },
 
     schedule: {
-      title: 'Dagprogramma',
-      arrivalDay: 'Aankomstdag',
-      studyDays: 'Studiedagen',
-      finalDay: 'Laatste Dag',
-      specialActivity: 'Een Tibetaanse Momo Kookworkshop wordt gehouden op een van de retraitedagen.',
+      title: 'Een Typische Dag',
+      intro: 'Geen dag is hetzelfde, maar elke dag volgt dit rustige ritme.',
       activities: {
-        arrivalCheckin: 'Aankomst & Kamer Inchecken',
-        farmTour: 'Rondleiding Boerderij',
-        dinner: 'Diner',
-        introProgram: 'Introductie & Programma Overzicht',
-        guidedMeditation: 'Geleide Meditatie',
-        breakfast: 'Ontbijt',
-        morningTeaching: 'Ochtend Onderricht (met korte pauze)',
-        lunch: 'Lunch',
-        afternoonTeaching: 'Middag Onderricht (met korte pauze)',
+        morningMeditation: 'Ochtendmeditatie en chanten in de groep',
+        breakfastBuffet: 'Ontbijtbuffet',
+        teachingLectures: 'Boeddhistisch onderricht en lezingen',
+        lunch: 'Samen lunchen',
+        restAndDigest: 'Vrije tijd om te rusten en te laten bezinken',
+        afternoonWorkshop: 'Op sommige dagen een middagworkshop',
+        dinnerGathering: 'Samen dineren',
         qaSession: 'Vraag & Antwoord Sessie',
-        closingSession: 'Afsluitende Sessie & V&A',
-        freeTime: 'Vrije Tijd',
-        checkout: 'Uitchecken',
+        eveningConnect: 'Tijd om te verbinden, van de sauna te genieten en de dag te overdenken - alleen of samen',
       },
+      workshopNote: 'De middagworkshops wisselen tussen Tibetaanse momo\'s koken, slow flow yoga en het schilderen van Boeddhistische motieven.',
     },
 
     included: {
@@ -616,45 +615,20 @@ export const nl: Dictionary = {
       services: {
         beddingTowels: 'Beddengoed & handdoeken (zwembad/sauna handdoek niet inbegrepen)',
         vegetarianMeals: '3 vegetarische maaltijden per dag + drankjes & snacks',
-        farmFacilities: 'Gebruik van alle boerderijfaciliteiten - Buiten hot tub, Sauna, Ecologisch zwembad en meer',
-      },
-    },
-
-    pricing: {
-      title: 'Prijzen',
-      totalPrice: '€640',
-      perParticipant: 'per deelnemer (inclusief btw)',
-      breakdown: 'Prijsoverzicht',
-      breakdownItems: {
-        accommodation: 'Accommodatie',
-        meals: 'Maaltijden',
-        venueRental: 'Locatie huur bijdrage',
-        teacherSupport: 'Ondersteuning reis & verblijf Geshe Pema Dorjee & monnik Lobsang',
-      },
-      paymentTerms: 'Betalingsvoorwaarden',
-      paymentItems: {
-        depositPayment: 'Eerste betaling (aanbetaling): €140 bij inschrijving',
-        secondPayment: 'Tweede betaling: €500, vier maanden voor de retraite',
-      },
-      cancellation: 'Annuleringsbeleid',
-      cancellationItems: {
-        fourMonthsRefund: 'Tot 4 maanden voor aanvang: volledige terugbetaling aanbetaling',
-        afterFullPayment: 'Na tweede betaling (volledige betaling): 25% terugbetaling',
-        replacementRefund: 'Als een vervangende deelnemer wordt gevonden: volledige terugbetaling',
+        farmFacilities: 'Gebruik van alle boerderijfaciliteiten - Sauna, Ecologisch zwembad en meer',
       },
     },
 
     registration: {
-      title: 'Klaar om Mee te Doen?',
-      subtitle: 'Plaatsen zijn beperkt. Reserveer vandaag nog je plek.',
+      title: 'Meer weten of je aanmelden?',
+      subtitle: 'De groep blijft bewust klein. Stuur een bericht en je krijgt alles te horen wat je wilt weten.',
       participantRange: '10-15 deelnemers',
-      contact: 'Vragen? Neem direct contact op met de retreat organisatoren',
+      contact: 'Neem contact op met Tete, de organisator van de retraite',
       whatsapp: 'WhatsApp',
+      instagram: 'Instagram',
       email: 'E-mail',
-      registerButton: 'Inschrijven',
     },
   },
-
   autumnGrounding: {
     metaTitle: 'The Autumn Grounding — Ayurvedische zorg voor vrouwen',
     metaDescription:
@@ -779,6 +753,120 @@ export const nl: Dictionary = {
         garden: 'Hangmatten tussen de bomen in de tuin',
         pond: 'De natuurlijke zwemvijver met de velden erachter',
       },
+    },
+  },
+
+  sweatLodge: {
+    metaTitle: 'Onder mannen — Zweethut bij The Makers Barn',
+    metaDescription:
+      'Een dag zweethutceremonie voor mannen bij The Makers Barn, zondag 4 oktober 2026. Een vuur, een met dekens afgedekte hut, hete stenen en stoom, en daarna samen eten. Begeleid door Edwin Haasjes. Geen ervaring nodig.',
+    backToExperiences: 'Terug naar Ervaringen',
+
+    hero: {
+      title: 'Onder mannen',
+      subtitle: 'Een zweethutdag voor mannen',
+      dates: 'Zondag 4 oktober, inloop 09:30 — afronding rond 17:00',
+      bookNow: 'Reserveer je plek',
+      fireAlt: 'Een zacht gloeiend vuur met opstijgende vonken',
+    },
+
+    intro: {
+      title: 'Een dag om even afstand te nemen',
+      body: [
+        'Om te vertragen. Stil te worden. Op adem te komen.',
+        'We beginnen de dag rond het vuur. Er is ruimte om elkaar te ontmoeten, hout te verzamelen, het vuur voor te bereiden en rustig aan te komen. Daarna gaan we samen de zweethut in.',
+        'De zweethut is een oud ritueel dat uitnodigt om even los te komen van de drukte van alledag. Een plek waar je niets hoeft op te lossen, te bewijzen of uit te leggen. In een ronde, met dekens afgedekte hut zitten we samen rondom hete stenen. Door water over de stenen te gieten ontstaat warmte en stoom. Die warmte nodigt uit om te vertragen, stil te worden en meer aanwezig te zijn bij jezelf en het moment. De zweethut bestaat uit meerdere rondes. Tussen de rondes door gaat de deur open en komt er frisse lucht binnen.',
+      ],
+      pullQuote: 'Je hoeft het niet eerst te begrijpen om mee te kunnen doen.',
+    },
+
+    forWhom: {
+      title: 'Voor wie?',
+      body: [
+        'Voor mannen die behoefte hebben aan rust, ruimte en verbinding.',
+        'Of je nu komt om even op adem te komen, stil te worden, inspiratie op te doen of simpelweg een dag rond het vuur door te brengen: je bent welkom.',
+      ],
+      newTitle: 'Nieuw voor jou?',
+      newBody: [
+        'Niet iedereen heeft een zweethut meegemaakt. Dat hoeft ook niet.',
+        'Je hoeft niets te weten, niets voor te bereiden en geen ervaring te hebben met zweethutten, ceremonies of spiritualiteit. We nemen de tijd om rustig uit te leggen wat we gaan doen en wat je kunt verwachten.',
+        'Je bent welkom zoals je bent.',
+      ],
+    },
+
+    schedule: {
+      title: 'De dag',
+      intro: 'Meer een ritme dan een schema — het vuur bepaalt het tempo.',
+      laterLabel: 'daarna',
+      activities: {
+        arrival: 'Inloop, kom rustig aan',
+        start: 'We beginnen rond het vuur — ontmoeten, hout verzamelen, voorbereiden',
+        lodge: 'De zweethut in, in meerdere rondes',
+        sharedMeal: 'Na de hut eten we samen',
+        closing: 'Afronding',
+      },
+    },
+
+    bring: {
+      title: 'Wat neem je mee',
+      intro: 'Houd het eenvoudig. Meer heb je niet nodig.',
+      items: {
+        towels: 'Een grote handdoek of omslagdoek, plus een extra handdoek',
+        clothing: 'Comfortabele kleding',
+        water: 'Voldoende water',
+        lunch: 'Eventueel een eenvoudige lunch voor jezelf — we raden aan om vooraf niet of licht te eten. Voor fruit en snacks wordt gezorgd.',
+        dishToShare: 'Iets om te delen voor de maaltijd na de hut',
+      },
+      clothingNote:
+        'Traditioneel wordt een zweethut in Adamskostuum gedaan. Dat draagt bij aan een gevoel van gelijkwaardigheid en vrijheid. Tegelijkertijd vinden we het belangrijk dat iedereen zich op zijn gemak voelt. Draag dus vooral wat voor jou prettig voelt — een omslagdoek, korte broek of andere lichte kleding is helemaal prima in de hut.',
+      alcoholNote: 'We vragen je om de 24 uur voorafgaand aan de ceremonie geen alcohol of andere verdovende middelen te gebruiken.',
+    },
+
+    health: {
+      title: 'Gezondheid',
+      body: 'Een zweethut kan lichamelijk intens zijn. Heb je een medische aandoening, gebruik je medicijnen of twijfel je of deelname voor jou verstandig is? Neem dan vooraf even contact op. Samen kijken we wat passend is.',
+      contactLead: 'Vragen, of twijfel je of dit iets voor je is? Mail naar',
+    },
+
+    host: {
+      title: 'Je begeleider',
+      role: 'Rites of Passage & Zweethut',
+      bio: 'Edwin begeleidt mensen bij betekenisvolle gebeurtenissen in het leven en leidt zweethutceremonies. Hij verzorgt deze dag bij The Makers Barn als gastbegeleider.',
+    },
+
+    practical: {
+      title: 'Praktische informatie',
+      menOnlyLabel: 'Voor wie',
+      menOnlyValue: 'Alleen voor mannen.',
+      languageLabel: 'Taal',
+      languageValue: 'De dag is in het Nederlands.',
+      addressLabel: 'Waar',
+      gettingThereLabel: 'Hoe je hier komt',
+      gettingThereItems: [
+        'Ongeveer 20 minuten met de auto vanaf Zwolle',
+        'Gratis ophalen vanaf het dichtstbijzijnde station is mogelijk in overleg',
+        'We brengen je graag in contact met anderen die uit dezelfde richting komen',
+      ],
+    },
+
+    tickets: {
+      title: 'Reserveer je plek',
+      intro: 'Boeken doe je hier — je wordt nergens anders heen gestuurd.',
+      tiers: {
+        standard: {
+          name: 'Sweat 4 oktober',
+          description: 'De hele dag: vuur, ceremonie, fruit en snacks, en daarna samen eten.',
+        },
+        youth: {
+          name: 'Sweat 4 oktober voor jongeren',
+          description: 'Dezelfde dag voor een lagere prijs, voor wie een kleiner budget heeft.',
+        },
+      },
+      frameTitle: 'Ticketshop — Onder mannen',
+      fallbackText: 'Laadt de ticketshop niet?',
+      fallbackCta: 'Open hem in een nieuw tabblad',
+      fromLabel: 'vanaf',
+      stickyCta: 'Boeken',
     },
   },
 

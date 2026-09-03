@@ -1,17 +1,16 @@
 export enum RetreatId {
   SHANTI_DEVA = 'shanti-deva',
   AUTUMN_GROUNDING = 'autumn-grounding',
+  SWEAT_LODGE = 'sweat-lodge',
 }
 
 export enum RetreatDateId {
-  JUNE_2026 = 'june-2026',
-  AUGUST_2026 = 'august-2026',
+  JUNE_2027 = 'june-2027',
+  JULY_AUGUST_2027 = 'july-august-2027',
+  AUGUST_2027 = 'august-2027',
 }
 
 export enum ScheduleDayType {
-  ARRIVAL = 'arrival',
-  STUDY = 'study',
-  FINAL = 'final',
   SATURDAY = 'saturday',
   SUNDAY = 'sunday',
 }
@@ -39,11 +38,6 @@ export interface DaySchedule {
   items: ScheduleItem[]
 }
 
-export interface PriceBreakdownItem {
-  labelKey: string
-  amount: string
-}
-
 export interface AccessibilityItem {
   key: string
 }
@@ -57,6 +51,8 @@ export interface RetreatLocation {
 export interface RetreatContact {
   whatsapp: string
   email: string
+  /** Public profile URL for the retreat's own Instagram account. */
+  instagram: string
 }
 
 export interface ParticipantRange {
@@ -68,22 +64,22 @@ export interface RetreatData {
   id: RetreatId
   slug: string
   heroImage: string
+  /** Embed URL of the promo video shown below the hero. */
+  videoEmbedUrl: string
   teachers: Teacher[]
   dates: RetreatDate[]
   duration: string
-  dailyTime: string
   location: RetreatLocation
-  schedule: DaySchedule[]
-  specialActivityKeys: string[]
+  /**
+   * The rhythm of a typical retreat day, in order. Each entry keys into the
+   * `shantiDevaRetreat.schedule.activities` dictionary block. Deliberately
+   * untimed — the flow is an indication, not a timetable.
+   */
+  dayFlowKeys: string[]
   includedServiceKeys: string[]
   accommodationOptionKeys: string[]
-  priceBreakdown: PriceBreakdownItem[]
-  totalPrice: string
-  paymentTermKeys: string[]
-  cancellationPolicyKeys: string[]
   participantRange: ParticipantRange
   contact: RetreatContact
-  bookingUrl: string
 }
 
 /**
@@ -140,4 +136,44 @@ export interface AutumnGroundingRetreat {
   /** Public Hipsy event page, used as the fallback link when the frame is blocked. */
   eventUrl: string
   gallery: RetreatGalleryImage[]
+}
+
+export interface EventTicketTier {
+  id: string
+  price: string
+}
+
+/**
+ * Onder mannen — a single-day men's sweat lodge ceremony hosted by an outside
+ * facilitator and sold through Hipsy.
+ *
+ * Kept apart from `AutumnGroundingRetreat`: one day rather than a weekend, so
+ * the schedule is a flat list instead of per-day blocks, and the ticket tiers
+ * are independent (no add-on that requires another ticket).
+ */
+export interface SweatLodgeEvent {
+  id: RetreatId.SWEAT_LODGE
+  slug: string
+  /** Plain photograph; used for Open Graph, the experiences card and the hero. */
+  heroImage: string
+  startDate: string
+  endDate: string
+  currency: string
+  location: RetreatLocation
+  host: RetreatHost & {
+    /** Where questions about health or suitability should go. */
+    email: string
+  }
+  schedule: ScheduleItem[]
+  bringKeys: string[]
+  /**
+   * First entry is the lead tier: the price the sticky bar advertises. The
+   * cheaper youth ticket is deliberately not the headline number, because most
+   * visitors cannot buy it.
+   */
+  ticketTiers: EventTicketTier[]
+  /** Hipsy ticketshop, embedded in an iframe. */
+  ticketShopUrl: string
+  /** Public Hipsy event page, used as the fallback link when the frame is blocked. */
+  eventUrl: string
 }

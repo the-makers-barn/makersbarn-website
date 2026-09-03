@@ -5,13 +5,19 @@ import Link from 'next/link'
 import { StructuredData } from '@/components/server'
 import { generatePageMetadata } from '@/lib/metadata'
 import { generatePageBreadcrumbs, SHANTI_DEVA_RETREAT_EVENT_ID } from '@/lib/structuredData'
-import { Route, ScheduleDayType, Language } from '@/types'
+import { Route, Language } from '@/types'
 import { SHANTI_DEVA_RETREAT } from '@/data'
 import { getServerTranslations } from '@/i18n'
 import { getValidLocale } from '@/lib/locale'
 import { getLocalizedPath } from '@/lib/routing'
 
 import styles from './page.module.css'
+
+/** Target of the hero CTA — the page has no booking form, only the organiser's details. */
+const REGISTRATION_ANCHOR = 'register'
+
+/** Display handle for the contact link; the URL it points at lives in the retreat data. */
+const INSTAGRAM_HANDLE = 'shanti_deva_buddhist_retreat'
 
 interface ShantiDevaRetreatPageProps {
   params: Promise<{ locale: string }>
@@ -61,24 +67,6 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-const ExternalLinkIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    <polyline points="15 3 21 3 21 9" />
-    <line x1="10" y1="14" x2="21" y2="3" />
-  </svg>
-)
-
 const LocationIcon = ({ className }: { className?: string }) => (
   <svg
     className={className}
@@ -93,23 +81,6 @@ const LocationIcon = ({ className }: { className?: string }) => (
   >
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
     <circle cx="12" cy="10" r="3" />
-  </svg>
-)
-
-const ClockIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <polyline points="12 6 12 12 16 14" />
   </svg>
 )
 
@@ -180,17 +151,43 @@ const MailIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-function formatDateRange(startDate: string, endDate: string): string {
-  const start = new Date(startDate)
-  const end = new Date(endDate)
-  const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric' }
-  const yearOptions: Intl.DateTimeFormatOptions = { year: 'numeric' }
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+)
 
-  const startFormatted = start.toLocaleDateString('en-US', options)
-  const endFormatted = end.toLocaleDateString('en-US', { day: 'numeric' })
-  const year = start.toLocaleDateString('en-US', yearOptions)
+const DATE_LOCALE_TAGS: Record<Language, string> = {
+  [Language.EN]: 'en-GB',
+  [Language.NL]: 'nl-NL',
+  [Language.DE]: 'de-DE',
+}
 
-  return `${startFormatted}-${endFormatted}, ${year}`
+/**
+ * Renders a retreat's span the way the reader's language writes it, collapsing
+ * the month when the retreat stays inside one — "22-27 June 2027" but
+ * "30 July - 4 August 2027". Dates are plain calendar days, so they are
+ * formatted in UTC to keep them from sliding a day either way.
+ */
+function formatDateRange(startDate: string, endDate: string, locale: Language): string {
+  return new Intl.DateTimeFormat(DATE_LOCALE_TAGS[locale], {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).formatRange(new Date(startDate), new Date(endDate))
 }
 
 interface RetreatHeroProps {
@@ -208,31 +205,57 @@ function RetreatHero({ t, retreat, validLocale }: RetreatHeroProps) {
       </Link>
 
       <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <p className={styles.heroSubtitle}>{t.shantiDevaRetreat.hero.subtitle}</p>
-          <h1 className={styles.heroTitle}>{t.shantiDevaRetreat.hero.title}</h1>
-          <p className={styles.heroTeachers}>{t.shantiDevaRetreat.hero.withTeachers}</p>
-
-          <div className={styles.heroMeta}>
-            <span className={styles.heroMetaItem}>
-              <LocationIcon className={styles.heroMetaIcon} />
-              {retreat.location.address}
-            </span>
-            <span className={styles.heroMetaItem}>
-              <ClockIcon className={styles.heroMetaIcon} />
-              {t.shantiDevaRetreat.hero.dailyTime}
-            </span>
+        <div className={styles.heroInner}>
+          <div className={styles.heroHeading}>
+            <p className={styles.heroSubtitle}>{t.shantiDevaRetreat.hero.subtitle}</p>
+            <h1 className={styles.heroTitle}>{t.shantiDevaRetreat.hero.title}</h1>
           </div>
 
-          <a
-            href={retreat.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.heroCta}
-          >
-            {t.shantiDevaRetreat.hero.bookNow}
-            <ExternalLinkIcon className={styles.heroCtaIcon} />
-          </a>
+          <div className={styles.heroBody}>
+            <div className={styles.heroFacts}>
+              <p className={styles.heroTeachers}>{t.shantiDevaRetreat.hero.withTeachers}</p>
+
+              <div className={styles.heroMeta}>
+                <span className={styles.heroMetaItem}>
+                  <LocationIcon className={styles.heroMetaIcon} />
+                  {retreat.location.address}
+                </span>
+              </div>
+
+              {/*
+                * The dates are the fact a reader most wants and would otherwise
+                * have to scroll for. Wide screens only — stacked, the dates
+                * section sits directly below and would repeat itself.
+                */}
+              <ul className={styles.heroDates} aria-label={t.shantiDevaRetreat.dates.title}>
+                {retreat.dates.map(date => (
+                  <li key={date.id} className={styles.heroDateItem}>
+                    <span className={styles.heroDateMarker} aria-hidden="true" />
+                    {formatDateRange(date.startDate, date.endDate, validLocale)}
+                  </li>
+                ))}
+              </ul>
+
+              <div className={styles.heroActions}>
+                <a href={`#${REGISTRATION_ANCHOR}`} className={styles.heroCta}>
+                  {t.shantiDevaRetreat.hero.getInTouch}
+                  <ArrowRightIcon className={styles.heroCtaIcon} />
+                </a>
+              </div>
+            </div>
+
+            <div className={styles.heroFilm}>
+              <div className={styles.videoFrame}>
+                <iframe
+                  src={retreat.videoEmbedUrl}
+                  title={t.shantiDevaRetreat.video.title}
+                  loading="lazy"
+                  allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
+                  className={styles.videoIframe}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
@@ -242,27 +265,29 @@ function RetreatHero({ t, retreat, validLocale }: RetreatHeroProps) {
 interface RetreatDatesProps {
   t: Awaited<ReturnType<typeof getServerTranslations>>
   retreat: typeof SHANTI_DEVA_RETREAT
+  validLocale: Language
 }
 
-function RetreatDates({ t, retreat }: RetreatDatesProps) {
+function RetreatDates({ t, retreat, validLocale }: RetreatDatesProps) {
+  const labels = [
+    t.shantiDevaRetreat.dates.firstRetreat,
+    t.shantiDevaRetreat.dates.secondRetreat,
+    t.shantiDevaRetreat.dates.thirdRetreat,
+  ]
+
   return (
     <section className={styles.datesSection}>
       <h2 className={styles.sectionTitle}>{t.shantiDevaRetreat.dates.title}</h2>
       <div className={styles.datesGrid}>
-        <div className={styles.dateCard}>
-          <p className={styles.dateLabel}>{t.shantiDevaRetreat.dates.firstRetreat}</p>
-          <p className={styles.dateRange}>
-            {formatDateRange(retreat.dates[0].startDate, retreat.dates[0].endDate)}
-          </p>
-          <p className={styles.dateDuration}>{t.shantiDevaRetreat.dates.duration}</p>
-        </div>
-        <div className={styles.dateCard}>
-          <p className={styles.dateLabel}>{t.shantiDevaRetreat.dates.secondRetreat}</p>
-          <p className={styles.dateRange}>
-            {formatDateRange(retreat.dates[1].startDate, retreat.dates[1].endDate)}
-          </p>
-          <p className={styles.dateDuration}>{t.shantiDevaRetreat.dates.duration}</p>
-        </div>
+        {retreat.dates.map((date, index) => (
+          <div key={date.id} className={styles.dateCard}>
+            <p className={styles.dateLabel}>{labels[index] ?? ''}</p>
+            <p className={styles.dateRange}>
+              {formatDateRange(date.startDate, date.endDate, validLocale)}
+            </p>
+            <p className={styles.dateDuration}>{t.shantiDevaRetreat.dates.duration}</p>
+          </div>
+        ))}
       </div>
     </section>
   )
@@ -270,65 +295,32 @@ function RetreatDates({ t, retreat }: RetreatDatesProps) {
 
 interface RetreatScheduleProps {
   t: Awaited<ReturnType<typeof getServerTranslations>>
-  arrivalSchedule?: typeof SHANTI_DEVA_RETREAT.schedule[number]
-  studySchedule?: typeof SHANTI_DEVA_RETREAT.schedule[number]
-  finalSchedule?: typeof SHANTI_DEVA_RETREAT.schedule[number]
+  retreat: typeof SHANTI_DEVA_RETREAT
 }
 
-function RetreatSchedule({ t, arrivalSchedule, studySchedule, finalSchedule }: RetreatScheduleProps) {
-  const getActivityLabel = (activityKey: string): string => {
-    const activities = t.shantiDevaRetreat.schedule.activities
-    return activities[activityKey as keyof typeof activities] || activityKey
-  }
+function RetreatSchedule({ t, retreat }: RetreatScheduleProps) {
+  const activities = t.shantiDevaRetreat.schedule.activities
 
   return (
     <section className={styles.scheduleSection}>
       <h2 className={styles.sectionTitle}>{t.shantiDevaRetreat.schedule.title}</h2>
+      <p className={styles.scheduleIntro}>{t.shantiDevaRetreat.schedule.intro}</p>
 
       <div className={styles.scheduleContent}>
-        <h3 className={styles.includedCardTitle}>{t.shantiDevaRetreat.schedule.arrivalDay}</h3>
-        {arrivalSchedule && (
-          <ul className={styles.scheduleList}>
-            {arrivalSchedule.items.map((item, index) => (
-              <li key={index} className={styles.scheduleItem}>
-                <span className={styles.scheduleTime}>{item.time}</span>
-                <span className={styles.scheduleActivity}>{getActivityLabel(item.activityKey)}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      <div className={`${styles.scheduleContent} ${styles.scheduleContentSpaced}`}>
-        <h3 className={styles.includedCardTitle}>{t.shantiDevaRetreat.schedule.studyDays}</h3>
-        {studySchedule && (
-          <ul className={styles.scheduleList}>
-            {studySchedule.items.map((item, index) => (
-              <li key={index} className={styles.scheduleItem}>
-                <span className={styles.scheduleTime}>{item.time}</span>
-                <span className={styles.scheduleActivity}>{getActivityLabel(item.activityKey)}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      <div className={`${styles.scheduleContent} ${styles.scheduleContentSpaced}`}>
-        <h3 className={styles.includedCardTitle}>{t.shantiDevaRetreat.schedule.finalDay}</h3>
-        {finalSchedule && (
-          <ul className={styles.scheduleList}>
-            {finalSchedule.items.map((item, index) => (
-              <li key={index} className={styles.scheduleItem}>
-                <span className={styles.scheduleTime}>{item.time}</span>
-                <span className={styles.scheduleActivity}>{getActivityLabel(item.activityKey)}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ol className={styles.dayFlowList}>
+          {retreat.dayFlowKeys.map(key => (
+            <li key={key} className={styles.dayFlowItem}>
+              <span className={styles.dayFlowMarker} aria-hidden="true" />
+              <span className={styles.dayFlowActivity}>
+                {activities[key as keyof typeof activities] || key}
+              </span>
+            </li>
+          ))}
+        </ol>
       </div>
 
       <div className={styles.specialActivity}>
-        <p className={styles.specialActivityText}>{t.shantiDevaRetreat.schedule.specialActivity}</p>
+        <p className={styles.specialActivityText}>{t.shantiDevaRetreat.schedule.workshopNote}</p>
       </div>
     </section>
   )
@@ -392,73 +384,6 @@ function RetreatIncluded({ t }: RetreatIncludedProps) {
   )
 }
 
-interface RetreatPricingProps {
-  t: Awaited<ReturnType<typeof getServerTranslations>>
-  retreat: typeof SHANTI_DEVA_RETREAT
-}
-
-function RetreatPricing({ t, retreat }: RetreatPricingProps) {
-  return (
-    <section className={styles.pricingSection}>
-      <h2 className={styles.sectionTitle}>{t.shantiDevaRetreat.pricing.title}</h2>
-      <div className={styles.pricingCard}>
-        <div className={styles.priceHeader}>
-          <p className={styles.totalPrice}>{t.shantiDevaRetreat.pricing.totalPrice}</p>
-          <p className={styles.priceSubtext}>{t.shantiDevaRetreat.pricing.perParticipant}</p>
-        </div>
-
-        <div className={styles.priceDetails}>
-          <div className={styles.priceSection}>
-            <h3 className={styles.priceSectionTitle}>{t.shantiDevaRetreat.pricing.breakdown}</h3>
-            <div className={styles.priceBreakdown}>
-              {retreat.priceBreakdown.map((item, index) => (
-                <div key={index} className={styles.priceRow}>
-                  <span className={styles.priceRowLabel}>
-                    {t.shantiDevaRetreat.pricing.breakdownItems[item.labelKey as keyof typeof t.shantiDevaRetreat.pricing.breakdownItems]}
-                  </span>
-                  <span className={styles.priceRowAmount}>{item.amount}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className={styles.priceSection}>
-            <h3 className={styles.priceSectionTitle}>{t.shantiDevaRetreat.pricing.paymentTerms}</h3>
-            <ul className={styles.policyList}>
-              <li className={styles.policyItem}>
-                <CheckIcon className={styles.policyIcon} />
-                {t.shantiDevaRetreat.pricing.paymentItems.depositPayment}
-              </li>
-              <li className={styles.policyItem}>
-                <CheckIcon className={styles.policyIcon} />
-                {t.shantiDevaRetreat.pricing.paymentItems.secondPayment}
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.priceSection}>
-            <h3 className={styles.priceSectionTitle}>{t.shantiDevaRetreat.pricing.cancellation}</h3>
-            <ul className={styles.policyList}>
-              <li className={styles.policyItem}>
-                <CheckIcon className={styles.policyIcon} />
-                {t.shantiDevaRetreat.pricing.cancellationItems.fourMonthsRefund}
-              </li>
-              <li className={styles.policyItem}>
-                <CheckIcon className={styles.policyIcon} />
-                {t.shantiDevaRetreat.pricing.cancellationItems.afterFullPayment}
-              </li>
-              <li className={styles.policyItem}>
-                <CheckIcon className={styles.policyIcon} />
-                {t.shantiDevaRetreat.pricing.cancellationItems.replacementRefund}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 interface RetreatRegistrationProps {
   t: Awaited<ReturnType<typeof getServerTranslations>>
   retreat: typeof SHANTI_DEVA_RETREAT
@@ -466,21 +391,12 @@ interface RetreatRegistrationProps {
 
 function RetreatRegistration({ t, retreat }: RetreatRegistrationProps) {
   return (
-    <section className={styles.registrationSection}>
+    <section id={REGISTRATION_ANCHOR} className={styles.registrationSection}>
       <div className={styles.registrationContent}>
         <h2 className={styles.registrationTitle}>{t.shantiDevaRetreat.registration.title}</h2>
         <p className={styles.registrationSubtitle}>{t.shantiDevaRetreat.registration.subtitle}</p>
 
         <p className={styles.participantInfo}>{t.shantiDevaRetreat.registration.participantRange}</p>
-        <a
-          href={retreat.bookingUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.registerButton}
-        >
-          {t.shantiDevaRetreat.registration.registerButton}
-          <ArrowRightIcon className={styles.registerButtonIcon} />
-        </a>
 
         <p className={styles.contactInfo}>{t.shantiDevaRetreat.registration.contact}</p>
         <div className={styles.contactLinks}>
@@ -499,6 +415,18 @@ function RetreatRegistration({ t, retreat }: RetreatRegistrationProps) {
           >
             <MailIcon className={styles.contactLinkIcon} />
             {t.shantiDevaRetreat.registration.email}: {retreat.contact.email}
+          </a>
+          <a
+            href={retreat.contact.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.contactLink}
+            /* The icon carries the network, so the pill shows only the handle
+               and keeps to one line on a phone. */
+            aria-label={`${t.shantiDevaRetreat.registration.instagram}: @${INSTAGRAM_HANDLE}`}
+          >
+            <InstagramIcon className={styles.contactLinkIcon} />
+            @{INSTAGRAM_HANDLE}
           </a>
         </div>
       </div>
@@ -553,8 +481,8 @@ function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
         <div className={styles.venueGallery}>
           <div className={styles.venueImageLarge}>
             <Image
-              src="/images/practice-rooms-with-mats.jpg"
-              alt="Practice room with yoga mats"
+              src="/images/retreats/shanti-deva/teachers-together.jpg"
+              alt="Gen La Geshe Pema Dorjee and monk Lobsang greeting the room"
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
               className={styles.venueImage}
@@ -562,8 +490,8 @@ function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
           </div>
           <div className={styles.venueImageSmall}>
             <Image
-              src="/images/graden_view_with_hammocks.JPG"
-              alt="Garden view with hammocks"
+              src="/images/retreats/shanti-deva/farm-aerial.jpg"
+              alt="Aerial view of the farm with the retreat tent in the orchard"
               fill
               sizes="(max-width: 768px) 50vw, 20vw"
               className={styles.venueImage}
@@ -571,8 +499,8 @@ function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
           </div>
           <div className={styles.venueImageSmall}>
             <Image
-              src="/images/pond-complete.jpg"
-              alt="Natural pond surroundings"
+              src="/images/retreats/shanti-deva/momo-demonstration.jpg"
+              alt="Geshe Pema Dorjee showing the group how to fold Tibetan momos"
               fill
               sizes="(max-width: 768px) 50vw, 20vw"
               className={styles.venueImage}
@@ -603,13 +531,6 @@ function createEventSchema(t: Awaited<ReturnType<typeof getServerTranslations>>,
         addressCountry: 'NL',
       },
     },
-    offers: {
-      '@type': 'Offer',
-      price: '640',
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-      url: retreat.bookingUrl,
-    },
     organizer: {
       '@type': 'Organization',
       name: 'Shanti Deva Buddhist Tibetan Retreat Project',
@@ -623,10 +544,6 @@ export default async function ShantiDevaRetreatPage({ params }: ShantiDevaRetrea
   const t = await getServerTranslations(validLocale)
 
   const retreat = SHANTI_DEVA_RETREAT
-
-  const arrivalSchedule = retreat.schedule.find(s => s.dayType === ScheduleDayType.ARRIVAL)
-  const studySchedule = retreat.schedule.find(s => s.dayType === ScheduleDayType.STUDY)
-  const finalSchedule = retreat.schedule.find(s => s.dayType === ScheduleDayType.FINAL)
 
   return (
     <>
@@ -643,7 +560,7 @@ export default async function ShantiDevaRetreatPage({ params }: ShantiDevaRetrea
       <div className={styles.retreatPage}>
         <RetreatHero t={t} retreat={retreat} validLocale={validLocale} />
 
-        <RetreatDates t={t} retreat={retreat} />
+        <RetreatDates t={t} retreat={retreat} validLocale={validLocale} />
 
         <div className={styles.divider} />
 
@@ -669,18 +586,11 @@ export default async function ShantiDevaRetreatPage({ params }: ShantiDevaRetrea
 
         <RetreatDetails t={t} retreat={retreat} />
 
-        <RetreatSchedule
-          t={t}
-          arrivalSchedule={arrivalSchedule}
-          studySchedule={studySchedule}
-          finalSchedule={finalSchedule}
-        />
+        <RetreatSchedule t={t} retreat={retreat} />
 
         <div className={styles.divider} />
 
         <RetreatIncluded t={t} />
-
-        <RetreatPricing t={t} retreat={retreat} />
 
         <RetreatRegistration t={t} retreat={retreat} />
       </div>

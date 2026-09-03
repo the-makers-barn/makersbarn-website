@@ -54,10 +54,10 @@ export const EXPERIENCE_OFFERS: ExperienceOffer[] = [
 
 export const FEATURED_RETREATS: FeaturedRetreat[] = [
   {
-    id: 'shanti-deva-2026',
+    id: 'shanti-deva-2027',
     title: 'Shanti Deva Buddhist Tibetan Retreat',
-    image: '/images/buddhist-retreat.png',
-    dateRange: 'June & August 2026',
+    image: '/images/retreats/shanti-deva/teaching-room.jpg',
+    dateRange: 'June, July & August 2027',
     internalUrl: '/experiences/shanti-deva-retreat',
   },
   {
@@ -66,5 +66,12 @@ export const FEATURED_RETREATS: FeaturedRetreat[] = [
     image: '/images/autumn-grounding-retreat.png',
     dateRange: 'October 17–18, 2026',
     internalUrl: Route.AUTUMN_GROUNDING_RETREAT,
+  },
+  {
+    id: 'sweat-lodge-2026',
+    title: 'Onder mannen: a men\'s sweat lodge day',
+    image: '/images/retreats/sweat-lodge/sweat-lodge-frame-sunset.jpg',
+    dateRange: 'Sunday 4 October 2026',
+    internalUrl: Route.MENS_SWEAT_LODGE,
   },
 ]

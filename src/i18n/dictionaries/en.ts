@@ -431,7 +431,7 @@ export const en: Dictionary = {
 
   shantiDevaRetreat: {
     metaTitle: 'Shanti Deva Buddhist Tibetan Retreat',
-    metaDescription: 'Join Gen La Geshe Pema Dorjee for a 6-day Buddhist retreat in the Dutch countryside. Study Tibetan Buddhism with meditation, teachings, and vegetarian meals included.',
+    metaDescription: 'Join Gen La Geshe Pema Dorjee for a 6-day Buddhist retreat in the Dutch countryside. Three retreats in 2027, with meditation, teachings and vegetarian meals included.',
     backToExperiences: 'Back to Experiences',
 
     hero: {
@@ -439,13 +439,18 @@ export const en: Dictionary = {
       subtitle: 'Study of Tibetan Buddhism',
       withTeachers: 'with Gen La Geshe Pema Dorjee & the Respected monk Lobsang',
       dailyTime: 'From 7 AM to 8 PM daily',
-      bookNow: 'Book Your Spot',
+      getInTouch: 'Ask about the retreat',
+    },
+
+    video: {
+      title: 'Impressions of the Shanti Deva retreat',
     },
 
     dates: {
       title: 'Available Dates',
-      firstRetreat: 'First retreat',
-      secondRetreat: 'Second retreat',
+      firstRetreat: 'Retreat 1',
+      secondRetreat: 'Retreat 2',
+      thirdRetreat: 'Retreat 3',
       duration: '5 nights (6 days)',
     },
 
@@ -470,26 +475,20 @@ export const en: Dictionary = {
     },
 
     schedule: {
-      title: 'Daily Schedule',
-      arrivalDay: 'Arrival Day',
-      studyDays: 'Study Days',
-      finalDay: 'Final Day',
-      specialActivity: 'A Tibetan Momo Cooking Workshop will be held on one of the retreat days.',
+      title: 'A Typical Day',
+      intro: 'No two days are the same, but every day follows this gentle rhythm.',
       activities: {
-        arrivalCheckin: 'Arrival & Room Check-in',
-        farmTour: 'Farm Tour',
-        dinner: 'Dinner',
-        introProgram: 'Introduction & Program Overview',
-        guidedMeditation: 'Guided Meditation',
-        breakfast: 'Breakfast',
-        morningTeaching: 'Morning Teaching (with short break)',
-        lunch: 'Lunch',
-        afternoonTeaching: 'Afternoon Teaching (with short break)',
-        qaSession: 'Q&A Session',
-        closingSession: 'Closing Session & Q&A',
-        freeTime: 'Free Time',
-        checkout: 'Check-out',
+        morningMeditation: 'Morning group meditation and chanting',
+        breakfastBuffet: 'Breakfast buffet',
+        teachingLectures: 'Buddhist teachings and lectures',
+        lunch: 'Lunch together',
+        restAndDigest: 'Free time to rest and digest',
+        afternoonWorkshop: 'On some days, an afternoon workshop',
+        dinnerGathering: 'Dinner gathering',
+        qaSession: 'Q&A session',
+        eveningConnect: 'Time to connect, enjoy the sauna and reflect on the day - alone or with others',
       },
+      workshopNote: 'Afternoon workshops rotate between Tibetan momo cooking, slow flow yoga and painting Buddhist motifs.',
     },
 
     included: {
@@ -506,45 +505,20 @@ export const en: Dictionary = {
       services: {
         beddingTowels: 'Bedding & towels (pool/sauna towel not included)',
         vegetarianMeals: '3 vegetarian meals daily + drinks & snacks',
-        farmFacilities: 'Use of all farm facilities - Outdoor hot tub, Sauna, Ecological pool and more',
-      },
-    },
-
-    pricing: {
-      title: 'Pricing',
-      totalPrice: '€640',
-      perParticipant: 'per participant (tax included)',
-      breakdown: 'Price Breakdown',
-      breakdownItems: {
-        accommodation: 'Accommodation',
-        meals: 'Meals',
-        venueRental: 'Venue rental share',
-        teacherSupport: 'Support for travel & stay of Geshe Pema Dorjee & monk Lobsang',
-      },
-      paymentTerms: 'Payment Terms',
-      paymentItems: {
-        depositPayment: 'First payment (deposit): €140 upon registration',
-        secondPayment: 'Second payment: €500, four months before retreat',
-      },
-      cancellation: 'Cancellation Policy',
-      cancellationItems: {
-        fourMonthsRefund: 'Up to 4 months before start: full refund of deposit',
-        afterFullPayment: 'After second payment (full payment): 25% refund',
-        replacementRefund: 'If a replacement participant is found: full refund',
+        farmFacilities: 'Use of all farm facilities - Sauna, Ecological pool and more',
       },
     },
 
     registration: {
-      title: 'Ready to Join?',
-      subtitle: 'Spaces are limited. Reserve your spot today.',
+      title: 'Interested in more details or registering?',
+      subtitle: 'The circle stays small on purpose. Send a message and you will get everything you need to know.',
       participantRange: '10-15 participants',
-      contact: 'Questions? Contact retreat organisers directly',
+      contact: 'Contact Tete, the retreat organiser',
       whatsapp: 'WhatsApp',
+      instagram: 'Instagram',
       email: 'Email',
-      registerButton: 'Register Now',
     },
   },
-
   autumnGrounding: {
     metaTitle: 'The Autumn Grounding — Ayurvedic Care for Women',
     metaDescription:
@@ -669,6 +643,120 @@ export const en: Dictionary = {
         garden: 'Hammocks strung between trees in the garden',
         pond: 'The natural swimming pond and the fields beyond',
       },
+    },
+  },
+
+  sweatLodge: {
+    metaTitle: 'Onder mannen — a men\'s sweat lodge day at The Makers Barn',
+    metaDescription:
+      'A one-day sweat lodge ceremony for men at The Makers Barn, Sunday 4 October 2026. A fire, a blanket-covered lodge, hot stones and steam, and a shared meal afterwards. Led by Edwin Haasjes. No experience needed.',
+    backToExperiences: 'Back to Experiences',
+
+    hero: {
+      title: 'Onder mannen',
+      subtitle: 'A men\'s sweat lodge day',
+      dates: 'Sunday 4 October, doors 09:30 — closing around 17:00',
+      bookNow: 'Reserve your spot',
+      fireAlt: 'A slowly glowing fire with embers drifting upward',
+    },
+
+    intro: {
+      title: 'A day to step out of the noise',
+      body: [
+        'To slow down. To go quiet. To catch your breath.',
+        'We start the day around the fire. There is time to meet each other, gather wood, prepare the fire and arrive at your own pace. Then we enter the sweat lodge together.',
+        'The sweat lodge is an old ritual that invites you to let go of everyday busyness for a while. A place where there is nothing to solve, nothing to prove, nothing to explain. In a round, blanket-covered lodge we sit together around hot stones. Water poured over the stones brings heat and steam. That warmth invites you to slow down, to become still, and to be more present with yourself and the moment. The lodge is done in several rounds. Between rounds the door opens and fresh air comes in.',
+      ],
+      pullQuote: 'You do not need to understand it first to take part.',
+    },
+
+    forWhom: {
+      title: 'Who it is for',
+      body: [
+        'For men who need rest, space and connection.',
+        'Whether you come to catch your breath, to become quiet, to find inspiration or simply to spend a day around the fire: you are welcome.',
+      ],
+      newTitle: 'New to this?',
+      newBody: [
+        'Not everyone has been in a sweat lodge before. That is fine.',
+        'You do not need to know anything, prepare anything, or have any experience with sweat lodges, ceremonies or spirituality. We take the time to explain calmly what we are going to do and what you can expect.',
+        'You are welcome as you are.',
+      ],
+    },
+
+    schedule: {
+      title: 'The day',
+      intro: 'A rhythm rather than a timetable — the fire sets the pace.',
+      laterLabel: 'then',
+      activities: {
+        arrival: 'Doors open, arrive at your own pace',
+        start: 'We begin around the fire — meeting, gathering wood, preparing',
+        lodge: 'Into the sweat lodge, in several rounds',
+        sharedMeal: 'After the lodge we eat together',
+        closing: 'Closing',
+      },
+    },
+
+    bring: {
+      title: 'What to bring',
+      intro: 'Keep it simple. This is all you need.',
+      items: {
+        towels: 'A large towel or wrap, plus an extra towel',
+        clothing: 'Comfortable clothing',
+        water: 'Plenty of water',
+        lunch: 'A simple lunch for yourself, if you like — we recommend eating little or nothing beforehand. Fruit and snacks are provided.',
+        dishToShare: 'Something to share for the meal after the lodge',
+      },
+      clothingNote:
+        'Traditionally a sweat lodge is done without clothing, which adds to a sense of equality and freedom. At the same time we want everyone to feel at ease. So wear whatever feels right for you — a wrap, shorts or other light clothing is completely fine in the lodge.',
+      alcoholNote: 'We ask you not to use alcohol or other intoxicants in the 24 hours before the ceremony.',
+    },
+
+    health: {
+      title: 'Health',
+      body: 'A sweat lodge can be physically intense. If you have a medical condition, take medication, or are unsure whether taking part is wise for you, please get in touch beforehand. Together we will look at what fits.',
+      contactLead: 'Questions, or not sure if this is for you? Email',
+    },
+
+    host: {
+      title: 'Your guide',
+      role: 'Rites of Passage & Zweethut',
+      bio: 'Edwin guides people through meaningful moments in life and leads sweat lodge ceremonies. He hosts this day at The Makers Barn as a guest facilitator.',
+    },
+
+    practical: {
+      title: 'Practical details',
+      menOnlyLabel: 'Who it is for',
+      menOnlyValue: 'Men only.',
+      languageLabel: 'Language',
+      languageValue: 'The day is held in Dutch.',
+      addressLabel: 'Where',
+      gettingThereLabel: 'Getting here',
+      gettingThereItems: [
+        'About 20 minutes by car from Zwolle',
+        'Free pickup from the nearest station can be arranged',
+        'We are happy to connect you with others travelling from the same direction',
+      ],
+    },
+
+    tickets: {
+      title: 'Reserve your spot',
+      intro: 'Booking happens right here — you will not be sent anywhere else.',
+      tiers: {
+        standard: {
+          name: 'Sweat lodge day, 4 October',
+          description: 'The full day: fire, ceremony, fruit and snacks, and the shared meal afterwards.',
+        },
+        youth: {
+          name: 'Sweat lodge day, 4 October — young men',
+          description: 'The same day at a lower price for those on a smaller budget.',
+        },
+      },
+      frameTitle: 'Ticketshop — Onder mannen',
+      fallbackText: 'Ticketshop not loading?',
+      fallbackCta: 'Open it in a new tab',
+      fromLabel: 'from',
+      stickyCta: 'Book',
     },
   },
 

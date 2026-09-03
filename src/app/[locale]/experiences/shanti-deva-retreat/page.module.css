@@ -55,11 +55,20 @@
   }
 }
 
-.heroContent {
+.heroInner {
   max-width: 800px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+}
+
+.heroFacts,
+.heroBody {
+  min-width: 0;
+}
+
+.heroActions {
+  margin-top: 2rem;
 }
 
 .heroSubtitle {
@@ -90,7 +99,6 @@
   flex-direction: column;
   gap: 0.75rem;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 @media (min-width: 640px) {
@@ -99,6 +107,11 @@
     justify-content: center;
     gap: 1.5rem;
   }
+}
+
+/* Only shown once the hero splits into columns — see the 1280px block. */
+.heroDates {
+  display: none;
 }
 
 .heroMetaItem {
@@ -141,6 +154,151 @@
   height: 18px;
 }
 
+/* Hero film — shares the hero row on desktop, sits under the copy on narrow screens */
+.heroFilm {
+  margin-top: 2.5rem;
+  min-width: 0;
+}
+
+@media (min-width: 1280px) {
+  .heroFilm {
+    margin-top: 0;
+  }
+}
+
+/*
+ * The film is a 2.35:1 picture letterboxed inside a 16:9 file, so the box is
+ * cut to 2.35:1 and the 16:9 player is centred in it — that pushes the video's
+ * own black bars out of view instead of painting them onto a cream page.
+ */
+.videoFrame {
+  position: relative;
+  width: 100%;
+  padding-top: 42%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1b1b1b;
+  box-shadow: 0 18px 44px rgba(39, 32, 22, 0.22);
+}
+
+.videoIframe {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+/*
+ * Wide screens read as two bands: the title across the full measure, then the
+ * facts beside the film. Giving the title its own row lets it run as a single
+ * line and leaves the film a far wider column than an even split would, which
+ * is what keeps its burnt-in subtitles readable. The facts column stretches to
+ * the film's height so the facts sit on its top edge and the call to action on
+ * its bottom edge — both columns share the same two horizontals. Below 1280px
+ * the split leaves the film narrower than stacking would, so that is where the
+ * bands collapse.
+ */
+@media (min-width: 1280px) {
+  .hero {
+    padding: 2.75rem 3rem 3.25rem;
+    text-align: left;
+  }
+
+  .backLink {
+    max-width: 1440px;
+    padding: 1.75rem 3rem;
+  }
+
+  .heroInner {
+    max-width: 1440px;
+  }
+
+  .heroTitle {
+    /* Sized to run the full measure on one line rather than sit short in it. */
+    font-size: clamp(3rem, 5.2vw, 4.9rem);
+    margin-bottom: 2rem;
+  }
+
+  .heroBody {
+    display: grid;
+    grid-template-columns: minmax(320px, 400px) 1fr;
+    align-items: stretch;
+    gap: 3.5rem;
+  }
+
+  /* If the facts ever run taller than the film, centre it rather than let it
+     hang from the top with a gap underneath. */
+  .heroFilm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .heroFacts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heroTeachers {
+    margin-bottom: 1.25rem;
+  }
+
+  .heroMeta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /*
+   * `margin: auto 0` hands the column's leftover height to the dates, split
+   * evenly above and below, so they sit centred between the address and the
+   * call to action instead of hugging the address.
+   */
+  .heroDates {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    list-style: none;
+    padding: 0;
+    margin: auto 0;
+  }
+
+  .heroDateItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-family: var(--font-playfair);
+    font-size: var(--font-size-base);
+    color: var(--color-primary);
+    line-height: var(--line-height-snug);
+  }
+
+  /* The same gold dot as the day-flow list, so hero and schedule rhyme. */
+  .heroDateMarker {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    margin-top: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+  }
+
+  .heroActions {
+    margin-top: 0;
+    padding-top: 0.75rem;
+  }
+
+  .heroCta {
+    padding: 1.15rem 2.5rem;
+    font-size: var(--font-size-md);
+  }
+
+}
+
 /* Dates Section */
 .datesSection {
   max-width: 1180px;
@@ -166,13 +324,14 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  max-width: 700px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
+/* Fits however many retreats are on offer — two rows of dates read fine too. */
 @media (min-width: 640px) {
   .datesGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   }
 }
 
@@ -411,77 +570,64 @@
   }
 }
 
-.scheduleTabs {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.scheduleTab {
-  padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(41, 75, 58, 0.15);
-  border-radius: 999px;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-tertiary);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.scheduleTab:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(41, 75, 58, 0.3);
-}
-
-.scheduleTabActive {
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-  border-color: var(--color-primary);
-}
-
-.scheduleTabActive:hover {
-  background: #1e3a2c;
-}
-
-.scheduleContent {
+.scheduleIntro {
   max-width: 600px;
-  margin: 0 auto;
+  margin: -1rem auto 2rem;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
 }
 
-.scheduleContentSpaced {
-  margin-top: 2rem;
-}
-
-.scheduleList {
+.dayFlowList {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.scheduleItem {
+.dayFlowItem {
   display: flex;
+  align-items: flex-start;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 0.85rem 0;
   border-bottom: 1px solid rgba(41, 75, 58, 0.1);
 }
 
-.scheduleItem:last-child {
+.dayFlowItem:last-child {
   border-bottom: none;
 }
 
-.scheduleTime {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--color-primary);
-  min-width: 100px;
+/* Dot on a thin stem, so the list reads as one continuous rhythm. */
+.dayFlowMarker {
+  position: relative;
   flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-secondary);
 }
 
-.scheduleActivity {
-  font-size: var(--font-size-sm);
+.dayFlowItem:not(:last-child) .dayFlowMarker::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: 1px;
+  height: calc(1.7rem + 100%);
+  background: rgba(184, 137, 74, 0.35);
+}
+
+.dayFlowActivity {
+  font-size: var(--font-size-base);
   color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}
+
+.scheduleContent {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .specialActivity {
@@ -558,116 +704,6 @@
   line-height: var(--line-height-snug);
 }
 
-/* Pricing Section */
-.pricingSection {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
-}
-
-@media (min-width: 768px) {
-  .pricingSection {
-    padding: 4rem 4rem;
-  }
-}
-
-.pricingCard {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 2rem;
-  max-width: 700px;
-  margin: 0 auto;
-  box-shadow: 0 8px 30px rgba(39, 32, 22, 0.12);
-}
-
-.priceHeader {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(41, 75, 58, 0.15);
-}
-
-.totalPrice {
-  font-family: var(--font-playfair);
-  font-size: var(--font-size-5xl);
-  color: var(--color-primary);
-  margin: 0;
-}
-
-.priceSubtext {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-tertiary);
-  margin: 0.5rem 0 0;
-}
-
-.priceDetails {
-  display: grid;
-  gap: 2rem;
-}
-
-.priceSection {
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(41, 75, 58, 0.1);
-}
-
-.priceSection:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.priceSectionTitle {
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin: 0 0 1rem;
-}
-
-.priceBreakdown {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.priceRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-}
-
-.priceRowLabel {
-  flex: 1;
-}
-
-.priceRowAmount {
-  font-weight: 500;
-  color: var(--color-primary);
-}
-
-.policyList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.policyItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.4rem 0;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  line-height: var(--line-height-snug);
-}
-
-.policyIcon {
-  width: 16px;
-  height: 16px;
-  color: var(--color-primary);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
 /* Registration Section */
 .registrationSection {
   background: linear-gradient(135deg, #294b3a 0%, #1e3a2c 100%);
@@ -706,32 +742,6 @@
   font-style: italic;
 }
 
-.registerButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 1rem 2.5rem;
-  background: var(--color-background);
-  color: var(--color-primary);
-  border-radius: 999px;
-  font-size: var(--font-size-md);
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-  margin-bottom: 2rem;
-}
-
-.registerButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.registerButtonIcon {
-  width: 20px;
-  height: 20px;
-}
-
 .contactInfo {
   color: var(--color-text-inverse-muted);
   font-size: var(--font-size-sm);
@@ -741,22 +751,29 @@
 .contactLinks {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
+/* With no booking form on the page, these two links are the only call to action. */
 .contactLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  color: var(--color-text-inverse-muted);
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: var(--color-text-inverse);
   font-size: var(--font-size-sm);
+  font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .contactLink:hover {
-  color: var(--color-text-inverse);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
 }
 
 .contactLinkIcon {

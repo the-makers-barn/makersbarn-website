@@ -13,6 +13,7 @@ const VENUE_OVERNIGHT_CAPACITY = 14
 const VENUE_DAY_PROGRAM_CAPACITY = 20
 const SHANTI_DEVA_EVENT_ID = `${SITE_URL}/experiences/shanti-deva-retreat#event`
 const AUTUMN_GROUNDING_EVENT_ID_VALUE = `${SITE_URL}/experiences/autumn-grounding-retreat#event`
+const SWEAT_LODGE_EVENT_ID_VALUE = `${SITE_URL}/experiences/mens-sweat-lodge#event`
 
 export interface OrganizationSchema {
   '@context': string
@@ -416,6 +417,9 @@ export const SHANTI_DEVA_RETREAT_EVENT_ID = SHANTI_DEVA_EVENT_ID
  * so silo schemas can reference it as proof-of-fit for women's wellness retreats.
  */
 export const AUTUMN_GROUNDING_RETREAT_EVENT_ID = AUTUMN_GROUNDING_EVENT_ID_VALUE
+
+/** Stable @id for the Onder mannen sweat lodge Event. */
+export const SWEAT_LODGE_EVENT_ID = SWEAT_LODGE_EVENT_ID_VALUE
 
 interface RetreatsCollectionItem {
   card: SiloHubCardSummary

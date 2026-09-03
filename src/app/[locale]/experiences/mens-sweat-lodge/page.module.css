@@ -1,0 +1,601 @@
+/*
+ * Onder mannen — a single day, from arrival to dusk.
+ *
+ * Page-local palette. The site's cream and green stay for body and links; the
+ * dusk band and the ember accent belong to this page only and are tied to the
+ * fire illustration, so they are scoped here rather than added to globals.
+ */
+.page {
+  --dusk: #1c1410;
+  --dusk-soft: #2a1f18;
+  --ember: #d9873a;
+  --ember-bright: #f2b05c;
+  --ash: #efe6d8;
+  --ash-muted: rgba(239, 230, 216, 0.72);
+  --smoke: #8b7f72;
+  --rule: rgba(31, 19, 12, 0.14);
+
+  background: var(--color-background);
+  min-height: 100vh;
+}
+
+/* ---------- Back link ---------- */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1.25rem;
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.backLink:hover .backIcon,
+.backLink:focus-visible .backIcon {
+  transform: translateX(-3px);
+}
+
+.backIcon {
+  transition: transform 0.2s ease;
+}
+
+.backLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: clamp(520px, 78vh, 680px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--ash);
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(28, 20, 16, 0.1) 0%, rgba(28, 20, 16, 0) 28%, rgba(28, 20, 16, 0.7) 68%, var(--dusk) 100%),
+    linear-gradient(90deg, rgba(28, 20, 16, 0.6) 0%, rgba(28, 20, 16, 0) 62%);
+}
+
+.heroInner {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 6rem 1.25rem 3rem;
+}
+
+.heroTitle {
+  font-family: var(--font-playfair);
+  font-weight: 400;
+  font-size: clamp(3rem, 2rem + 6vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  max-width: 12ch;
+}
+
+.heroSubtitle {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-xl);
+  font-style: italic;
+  color: var(--ash);
+  margin: 0 0 1.75rem;
+  max-width: 28ch;
+  text-shadow: 0 1px 12px rgba(28, 20, 16, 0.6);
+}
+
+.heroMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  font-size: var(--font-size-base);
+  color: #ffffff;
+  text-shadow: 0 1px 12px rgba(28, 20, 16, 0.8);
+}
+
+.heroMetaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.heroMetaIcon {
+  flex-shrink: 0;
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  background: var(--ember);
+  color: var(--dusk);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.heroCta:hover {
+  background: var(--ember-bright);
+}
+
+.heroCta:focus-visible {
+  outline: 2px solid var(--ash);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: clamp(600px, 84vh, 780px);
+  }
+
+  .heroInner {
+    padding: 8rem 2.5rem 4rem;
+  }
+
+  .heroMeta {
+    flex-direction: row;
+    gap: 1.75rem;
+  }
+}
+
+/* ---------- Fire band ---------- */
+.fireBand {
+  /*
+   * Not flat black: an evening sky darkening towards the ground, with the
+   * fire's own light warming the lower left. Flat black behind one flame
+   * reads as a vigil; this should read as people around a fire.
+   */
+  background:
+    radial-gradient(ellipse 60% 70% at 24% 62%, rgba(217, 135, 58, 0.36) 0%, rgba(217, 135, 58, 0.12) 45%, rgba(217, 135, 58, 0) 72%),
+    linear-gradient(180deg, #1f1610 0%, #2c1c12 55%, #3a2415 100%);
+  color: var(--ash);
+  /* Clips the glow at the band's floor instead of letting it spill below. */
+  overflow: hidden;
+}
+
+.fireInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Quote on top, fire below, stretched to the height of the text column. */
+.fireSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  align-self: stretch;
+}
+
+.fireFigure {
+  width: min(440px, 92vw);
+  margin: 0 auto;
+  line-height: 0;
+  overflow: visible;
+}
+
+.fireFigure svg {
+  overflow: visible;
+}
+
+.fireCopy {
+  max-width: 60ch;
+}
+
+.fireTitle {
+  font-family: var(--font-playfair);
+  font-weight: 400;
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-tight);
+  color: var(--ash);
+  margin: 0 0 1.25rem;
+}
+
+.fireText {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--ash-muted);
+  margin: 0 0 1.1rem;
+}
+
+.fireQuote {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-snug);
+  color: var(--ember-bright);
+  margin: 0 0 -10.5rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--ember);
+  max-width: 24ch;
+  /* Sits low, just above the flames; the embers rise past it. */
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .fireInner {
+    grid-template-columns: 560px minmax(0, 1fr);
+    gap: 3rem;
+    padding: 4rem 2.5rem 4rem;
+    align-items: stretch;
+  }
+
+  .fireFigure {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* ---------- The day (timeline) ---------- */
+.day {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 1rem;
+}
+
+.dayHeader {
+  max-width: 68ch;
+  margin-bottom: 2.5rem;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  position: relative;
+}
+
+/* Vertical on narrow screens: a rule down the left, stops hanging off it. */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.45rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-secondary), var(--ember));
+}
+
+.stop {
+  position: relative;
+  padding: 0 0 1.75rem 2rem;
+}
+
+.stop::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 2px solid var(--ember);
+}
+
+.stopTime {
+  display: block;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.stopText {
+  display: block;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+  max-width: 34ch;
+}
+
+@media (min-width: 900px) {
+  .timeline {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    padding-top: 1.25rem;
+  }
+
+  /* Horizontal: a rule across the top, morning gold to dusk amber. */
+  .timeline::before {
+    left: 0.5rem;
+    right: 0.5rem;
+    top: 1.75rem;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-secondary), var(--ember));
+  }
+
+  .stop {
+    padding: 1.25rem 1.25rem 0 0;
+  }
+
+  .stop::before {
+    left: 0;
+    top: 0;
+  }
+}
+
+/* ---------- Two-column body ---------- */
+.body {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 6rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 3rem;
+}
+
+.content {
+  min-width: 0;
+}
+
+.section {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 5rem;
+}
+
+.section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.sectionTitle {
+  font-family: var(--font-playfair);
+  font-weight: 400;
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+  margin: 0 0 1rem;
+}
+
+.subTitle {
+  font-family: var(--font-playfair);
+  font-weight: 400;
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  margin: 2rem 0 0.6rem;
+}
+
+.text {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 1.1rem;
+  max-width: 62ch;
+}
+
+.textQuiet {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-relaxed);
+  margin: 1.5rem 0 0;
+  max-width: 62ch;
+}
+
+.textQuiet + .textQuiet {
+  margin-top: 0.75rem;
+}
+
+/* Bring list: ember dots instead of check marks */
+.bringList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 62ch;
+}
+
+.bringItem {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.bringItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--ember);
+}
+
+.contactLink {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.contactLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Host */
+.hostName {
+  font-family: var(--font-playfair);
+  font-weight: 400;
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  margin: 0 0 0.15rem;
+}
+
+.hostRole {
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary);
+  margin: 0 0 0.75rem;
+}
+
+/* Practical */
+.practical {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.practicalRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.25rem;
+}
+
+.practicalLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary);
+}
+
+.practicalValue {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.practicalList {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+@media (min-width: 700px) {
+  .practicalRow {
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+}
+
+/* ---------- Ticket rail ---------- */
+.rail {
+  scroll-margin-top: 5rem;
+}
+
+.railCard {
+  background: var(--dusk);
+  color: var(--ash);
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.railTitle {
+  font-family: var(--font-playfair);
+  font-weight: 400;
+  font-size: var(--font-size-xl);
+  margin: 0 0 0.35rem;
+  color: var(--ash);
+}
+
+.railIntro {
+  font-size: var(--font-size-sm);
+  color: var(--ash-muted);
+  margin: 0 0 1.25rem;
+}
+
+.shop {
+  display: block;
+}
+
+.shop iframe {
+  height: 500px;
+  border: none;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+/* The always-on fallback link, styled to sit quietly under the frame. */
+.shop p {
+  margin: 0.75rem 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--ash-muted);
+  text-align: center;
+}
+
+.shop a {
+  color: var(--ember-bright);
+}
+
+@media (min-width: 1000px) {
+  .shop iframe {
+    height: min(500px, calc(100vh - 14rem));
+    min-height: 420px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    column-gap: 4rem;
+    align-items: start;
+  }
+
+  .rail {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+/*
+ * The site-wide floating WhatsApp button is rendered by the layout after this
+ * page, in the same bottom-right corner as the sticky booking bar. While the
+ * bar is visible (below 1000px) lift the button above it so they never share
+ * a row.
+ */
+@media (max-width: 999px) {
+  .page ~ a[href*="wa.me"] {
+    bottom: 5.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backIcon,
+  .heroCta {
+    transition: none;
+  }
+}

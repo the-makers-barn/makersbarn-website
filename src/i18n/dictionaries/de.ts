@@ -434,7 +434,7 @@ export const de: Dictionary = {
 
   shantiDevaRetreat: {
     metaTitle: 'Shanti Deva – Tibetisch-Buddhistisches Retreat',
-    metaDescription: 'Komm mit Gen La Geshe Pema Dorjee zu einem 6-tägigen buddhistischen Retreat in der niederländischen Landschaft. Tibetischer Buddhismus mit Meditation, Lehrgesprächen und vegetarischer Verpflegung.',
+    metaDescription: 'Komm mit Gen La Geshe Pema Dorjee zu einem 6-tägigen buddhistischen Retreat in der niederländischen Landschaft. Drei Retreats in 2027, mit Meditation, Lehrgesprächen und vegetarischer Verpflegung.',
     backToExperiences: 'Zurück zu den Erlebnissen',
 
     hero: {
@@ -442,13 +442,18 @@ export const de: Dictionary = {
       subtitle: 'Tibetischen Buddhismus studieren',
       withTeachers: 'mit Gen La Geshe Pema Dorjee und dem ehrwürdigen Mönch Lobsang',
       dailyTime: 'Täglich von 7 bis 20 Uhr',
-      bookNow: 'Platz reservieren',
+      getInTouch: 'Frage zum Retreat stellen',
+    },
+
+    video: {
+      title: 'Impressionen vom Shanti Deva Retreat',
     },
 
     dates: {
       title: 'Verfügbare Termine',
-      firstRetreat: 'Erstes Retreat',
-      secondRetreat: 'Zweites Retreat',
+      firstRetreat: 'Retreat 1',
+      secondRetreat: 'Retreat 2',
+      thirdRetreat: 'Retreat 3',
       duration: '5 Nächte (6 Tage)',
     },
 
@@ -473,26 +478,20 @@ export const de: Dictionary = {
     },
 
     schedule: {
-      title: 'Tagesablauf',
-      arrivalDay: 'Anreisetag',
-      studyDays: 'Studientage',
-      finalDay: 'Letzter Tag',
-      specialActivity: 'An einem der Retreat-Tage gibt es einen tibetischen Momo-Kochworkshop.',
+      title: 'Ein typischer Tag',
+      intro: 'Kein Tag ist wie der andere, doch jeder Tag folgt diesem ruhigen Rhythmus.',
       activities: {
-        arrivalCheckin: 'Ankunft und Zimmer-Check-in',
-        farmTour: 'Hofführung',
-        dinner: 'Abendessen',
-        introProgram: 'Einführung und Programmübersicht',
-        guidedMeditation: 'Geführte Meditation',
-        breakfast: 'Frühstück',
-        morningTeaching: 'Vormittagslehre (mit kurzer Pause)',
-        lunch: 'Mittagessen',
-        afternoonTeaching: 'Nachmittagslehre (mit kurzer Pause)',
+        morningMeditation: 'Morgendliche Gruppenmeditation und Chanten',
+        breakfastBuffet: 'Frühstücksbuffet',
+        teachingLectures: 'Buddhistische Lehren und Vorträge',
+        lunch: 'Gemeinsames Mittagessen',
+        restAndDigest: 'Freie Zeit zum Ausruhen und Nachwirken',
+        afternoonWorkshop: 'An einigen Tagen ein Workshop am Nachmittag',
+        dinnerGathering: 'Gemeinsames Abendessen',
         qaSession: 'Fragen und Antworten',
-        closingSession: 'Abschlusssitzung mit Fragen und Antworten',
-        freeTime: 'Freizeit',
-        checkout: 'Check-out',
+        eveningConnect: 'Zeit für Begegnung, Sauna und Rückblick auf den Tag – allein oder gemeinsam',
       },
+      workshopNote: 'Die Nachmittagsworkshops wechseln zwischen tibetischem Momo-Kochen, Slow Flow Yoga und dem Malen buddhistischer Motive.',
     },
 
     included: {
@@ -509,45 +508,20 @@ export const de: Dictionary = {
       services: {
         beddingTowels: 'Bettwäsche und Handtücher (Bade- und Saunatuch nicht inbegriffen)',
         vegetarianMeals: '3 vegetarische Mahlzeiten am Tag, dazu Getränke und Snacks',
-        farmFacilities: 'Nutzung aller Hofeinrichtungen: Outdoor-Hot-Tub, Sauna, ökologischer Pool und mehr',
-      },
-    },
-
-    pricing: {
-      title: 'Preise',
-      totalPrice: '€640',
-      perParticipant: 'pro Teilnehmer (inkl. MwSt.)',
-      breakdown: 'Preisaufschlüsselung',
-      breakdownItems: {
-        accommodation: 'Unterkunft',
-        meals: 'Mahlzeiten',
-        venueRental: 'Anteil Standortmiete',
-        teacherSupport: 'Unterstützung für Anreise und Aufenthalt von Geshe Pema Dorjee und Mönch Lobsang',
-      },
-      paymentTerms: 'Zahlungsbedingungen',
-      paymentItems: {
-        depositPayment: 'Erste Zahlung (Anzahlung): 140 € bei Anmeldung',
-        secondPayment: 'Zweite Zahlung: 500 €, vier Monate vor dem Retreat',
-      },
-      cancellation: 'Stornierungsbedingungen',
-      cancellationItems: {
-        fourMonthsRefund: 'Bis 4 Monate vor Beginn: volle Rückerstattung der Anzahlung',
-        afterFullPayment: 'Nach der zweiten Zahlung (Vollzahlung): 25 % Rückerstattung',
-        replacementRefund: 'Wenn sich ein Ersatzteilnehmer findet: volle Rückerstattung',
+        farmFacilities: 'Nutzung aller Hofeinrichtungen: Sauna, ökologischer Pool und mehr',
       },
     },
 
     registration: {
-      title: 'Bist du dabei?',
-      subtitle: 'Die Plätze sind begrenzt. Sichere dir heute deinen Platz.',
+      title: 'Mehr erfahren oder anmelden?',
+      subtitle: 'Die Gruppe bleibt bewusst klein. Schreib eine Nachricht und du erfährst alles, was du wissen möchtest.',
       participantRange: '10–15 Teilnehmer',
-      contact: 'Fragen? Melde dich direkt beim Retreat-Team',
+      contact: 'Wende dich an Tete, die Organisation des Retreats',
       whatsapp: 'WhatsApp',
+      instagram: 'Instagram',
       email: 'E-Mail',
-      registerButton: 'Jetzt anmelden',
     },
   },
-
   autumnGrounding: {
     metaTitle: 'The Autumn Grounding — Ayurvedische Fürsorge für Frauen',
     metaDescription:
@@ -672,6 +646,120 @@ export const de: Dictionary = {
         garden: 'Hängematten zwischen den Bäumen im Garten',
         pond: 'Der natürliche Schwimmteich und die Felder dahinter',
       },
+    },
+  },
+
+  sweatLodge: {
+    metaTitle: 'Onder mannen — ein Schwitzhütten-Tag für Männer im The Makers Barn',
+    metaDescription:
+      'Eine eintägige Schwitzhütten-Zeremonie für Männer im The Makers Barn, Sonntag, 4. Oktober 2026. Ein Feuer, eine mit Decken bedeckte Hütte, heiße Steine und Dampf, danach ein gemeinsames Essen. Geleitet von Edwin Haasjes. Keine Erfahrung nötig.',
+    backToExperiences: 'Zurück zu den Erlebnissen',
+
+    hero: {
+      title: 'Onder mannen',
+      subtitle: 'Ein Schwitzhütten-Tag für Männer',
+      dates: 'Sonntag, 4. Oktober, Einlass 09:30 — Abschluss gegen 17:00',
+      bookNow: 'Platz reservieren',
+      fireAlt: 'Ein sanft glühendes Feuer mit aufsteigenden Funken',
+    },
+
+    intro: {
+      title: 'Ein Tag, um Abstand zu nehmen',
+      body: [
+        'Um langsamer zu werden. Still zu werden. Zu Atem zu kommen.',
+        'Wir beginnen den Tag am Feuer. Es gibt Raum, einander zu begegnen, Holz zu sammeln, das Feuer vorzubereiten und in Ruhe anzukommen. Danach gehen wir gemeinsam in die Schwitzhütte.',
+        'Die Schwitzhütte ist ein altes Ritual, das einlädt, sich für eine Weile vom Alltagstrubel zu lösen. Ein Ort, an dem du nichts lösen, nichts beweisen und nichts erklären musst. In einer runden, mit Decken bedeckten Hütte sitzen wir gemeinsam um heiße Steine. Wasser, das über die Steine gegossen wird, bringt Wärme und Dampf. Diese Wärme lädt ein, langsamer zu werden, still zu werden und mehr bei dir selbst und im Moment zu sein. Die Schwitzhütte besteht aus mehreren Runden. Zwischen den Runden öffnet sich die Tür und frische Luft kommt herein.',
+      ],
+      pullQuote: 'Du musst es nicht erst verstehen, um mitzumachen.',
+    },
+
+    forWhom: {
+      title: 'Für wen?',
+      body: [
+        'Für Männer, die Ruhe, Raum und Verbindung brauchen.',
+        'Ob du kommst, um zu Atem zu kommen, still zu werden, Inspiration zu finden oder einfach einen Tag am Feuer zu verbringen: Du bist willkommen.',
+      ],
+      newTitle: 'Neu für dich?',
+      newBody: [
+        'Nicht jeder hat schon eine Schwitzhütte erlebt. Das muss auch nicht sein.',
+        'Du musst nichts wissen, nichts vorbereiten und keine Erfahrung mit Schwitzhütten, Zeremonien oder Spiritualität haben. Wir nehmen uns die Zeit, in Ruhe zu erklären, was wir tun werden und was dich erwartet.',
+        'Du bist willkommen, so wie du bist.',
+      ],
+    },
+
+    schedule: {
+      title: 'Der Tag',
+      intro: 'Eher ein Rhythmus als ein Zeitplan — das Feuer gibt das Tempo vor.',
+      laterLabel: 'danach',
+      activities: {
+        arrival: 'Einlass, komm in Ruhe an',
+        start: 'Wir beginnen am Feuer — begegnen, Holz sammeln, vorbereiten',
+        lodge: 'In die Schwitzhütte, in mehreren Runden',
+        sharedMeal: 'Nach der Hütte essen wir gemeinsam',
+        closing: 'Abschluss',
+      },
+    },
+
+    bring: {
+      title: 'Was du mitbringst',
+      intro: 'Halte es einfach. Mehr brauchst du nicht.',
+      items: {
+        towels: 'Ein großes Handtuch oder Wickeltuch, plus ein zusätzliches Handtuch',
+        clothing: 'Bequeme Kleidung',
+        water: 'Ausreichend Wasser',
+        lunch: 'Bei Bedarf ein einfaches Mittagessen für dich — wir empfehlen, vorher wenig oder nichts zu essen. Für Obst und Snacks ist gesorgt.',
+        dishToShare: 'Etwas zum Teilen für das gemeinsame Essen nach der Hütte',
+      },
+      clothingNote:
+        'Traditionell wird eine Schwitzhütte unbekleidet erlebt. Das trägt zu einem Gefühl von Gleichwertigkeit und Freiheit bei. Zugleich ist uns wichtig, dass sich jeder wohlfühlt. Trag also, was sich für dich richtig anfühlt — ein Wickeltuch, kurze Hose oder andere leichte Kleidung ist in der Hütte völlig in Ordnung.',
+      alcoholNote: 'Wir bitten dich, in den 24 Stunden vor der Zeremonie keinen Alkohol oder andere berauschende Mittel zu konsumieren.',
+    },
+
+    health: {
+      title: 'Gesundheit',
+      body: 'Eine Schwitzhütte kann körperlich intensiv sein. Hast du eine Erkrankung, nimmst du Medikamente oder bist du unsicher, ob eine Teilnahme für dich sinnvoll ist? Dann melde dich bitte vorab. Gemeinsam schauen wir, was passt.',
+      contactLead: 'Fragen, oder unsicher, ob das etwas für dich ist? Schreib an',
+    },
+
+    host: {
+      title: 'Dein Begleiter',
+      role: 'Rites of Passage & Zweethut',
+      bio: 'Edwin begleitet Menschen bei bedeutsamen Ereignissen im Leben und leitet Schwitzhütten-Zeremonien. Er gestaltet diesen Tag im The Makers Barn als Gastleiter.',
+    },
+
+    practical: {
+      title: 'Praktische Infos',
+      menOnlyLabel: 'Für wen',
+      menOnlyValue: 'Nur für Männer.',
+      languageLabel: 'Sprache',
+      languageValue: 'Der Tag findet auf Niederländisch statt.',
+      addressLabel: 'Wo',
+      gettingThereLabel: 'Anreise',
+      gettingThereItems: [
+        'Etwa 20 Autominuten von Zwolle',
+        'Kostenlose Abholung vom nächsten Bahnhof ist nach Absprache möglich',
+        'Wir bringen dich gern mit anderen zusammen, die aus derselben Richtung anreisen',
+      ],
+    },
+
+    tickets: {
+      title: 'Platz reservieren',
+      intro: 'Gebucht wird direkt hier — du wirst nirgendwo anders hingeschickt.',
+      tiers: {
+        standard: {
+          name: 'Schwitzhütten-Tag, 4. Oktober',
+          description: 'Der ganze Tag: Feuer, Zeremonie, Obst und Snacks, danach das gemeinsame Essen.',
+        },
+        youth: {
+          name: 'Schwitzhütten-Tag, 4. Oktober — junge Männer',
+          description: 'Derselbe Tag zu einem niedrigeren Preis für alle mit kleinerem Budget.',
+        },
+      },
+      frameTitle: 'Ticketshop — Onder mannen',
+      fallbackText: 'Ticketshop lädt nicht?',
+      fallbackCta: 'In neuem Tab öffnen',
+      fromLabel: 'ab',
+      stickyCta: 'Buchen',
     },
   },
 
