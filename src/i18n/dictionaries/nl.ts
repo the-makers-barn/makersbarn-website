@@ -1117,6 +1117,7 @@ export const nl: Dictionary = {
     },
     calculator: {
       inputs: {
+        defaultsDisclaimer: 'Deze startwaarden zijn gangbare schattingen uit de branche om mee te spelen — niet de prijzen van The MakersBarn.',
         hiresFacilitatorsQuestion: 'Betaal je iemand van hen?',
         hiresFacilitatorsYes: 'Ja',
         hiresFacilitatorsNo: 'Nee',

@@ -922,6 +922,7 @@ export interface RetreatsHubTranslations {
  * Tools section — calculator chrome translations
  */
 export interface ToolsCalculatorInputsTranslations {
+  defaultsDisclaimer: string
   hiresFacilitatorsQuestion: string
   hiresFacilitatorsYes: string
   hiresFacilitatorsNo: string

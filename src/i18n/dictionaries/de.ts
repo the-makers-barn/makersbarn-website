@@ -1112,6 +1112,7 @@ export const de: Dictionary = {
     },
     calculator: {
       inputs: {
+        defaultsDisclaimer: 'Diese Startwerte sind übliche Branchenschätzungen zum Ausprobieren — nicht die Preise von The MakersBarn.',
         hiresFacilitatorsQuestion: 'Bezahlst du jemanden von ihnen?',
         hiresFacilitatorsYes: 'Ja',
         hiresFacilitatorsNo: 'Nein',
