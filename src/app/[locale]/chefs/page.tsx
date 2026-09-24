@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { ChefsListingPage } from '@/components/server'
 import { PUBLISHED_CHEFS, getChefsForListing } from '@/data/chefs'
 import { getServerTranslations } from '@/i18n'
+import { isProductionDeployment } from '@/lib/deployment'
 import { generatePageMetadata } from '@/lib/metadata'
 import { getValidLocale } from '@/lib/locale'
 import { Route } from '@/types'
@@ -11,7 +12,7 @@ interface PageProps {
   params: Promise<{ locale: string }>
 }
 
-const IS_PROD = process.env.VERCEL_ENV === 'production'
+const IS_PROD = isProductionDeployment()
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params

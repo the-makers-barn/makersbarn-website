@@ -1,4 +1,5 @@
 import { ChefStatus } from '@/constants/chef'
+import { isProductionDeployment } from '@/lib/deployment'
 import type { Chef } from '@/types'
 
 import { BRENDA_ANNA_CHEF } from './brenda-anna'
@@ -62,7 +63,7 @@ export const PUBLISHED_CHEFS: readonly Chef[] = ALL_CHEFS.filter(
  * getChefBySlug; drafts remain reachable by direct link in every env.
  */
 export function getChefsForListing(): readonly Chef[] {
-  return process.env.VERCEL_ENV === 'production' ? PUBLISHED_CHEFS : ALL_CHEFS
+  return isProductionDeployment() ? PUBLISHED_CHEFS : ALL_CHEFS
 }
 
 /**

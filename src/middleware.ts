@@ -9,6 +9,7 @@ import {
   getLanguageFromCookieString,
   createLanguageCookieValue,
   LANGUAGE_HEADER_NAME,
+  getCanonicalHostRedirect,
 } from '@/lib'
 import { DEFAULT_LANGUAGE } from '@/constants'
 import { CHEF_SLUGS as CHEF_SLUG_LIST } from '@/data/chefs/slugs'
@@ -261,6 +262,14 @@ export function middleware(request: NextRequest) {
     const reason = getBlockReason(pathname)
     logSecurityEvent(request, pathname, reason)
     return addSecurityHeaders(new NextResponse('Not Found', { status: 404 }))
+  }
+
+  // The .com domain and the www forms exist only to send visitors to the
+  // canonical domain. Assets included: a crawler must never find a duplicate.
+  const { search } = request.nextUrl
+  const canonicalUrl = getCanonicalHostRedirect(request.headers.get('host'), pathname, search)
+  if (canonicalUrl) {
+    return addSecurityHeaders(NextResponse.redirect(canonicalUrl, PERMANENT_REDIRECT))
   }
 
   // Skip middleware for static assets and API routes

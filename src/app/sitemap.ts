@@ -111,7 +111,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Chef detail pages — always published-only, regardless of VERCEL_ENV.
+  // Chef detail pages — always published-only, regardless of the deployment environment.
   // Drafts must never appear in the sitemap (per design spec §6.4).
   for (const chef of PUBLISHED_CHEFS) {
     for (const locale of allLocales) {

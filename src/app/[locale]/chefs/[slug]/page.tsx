@@ -6,6 +6,7 @@ import { ChefStatus } from '@/constants/chef'
 import { SITE_CONFIG } from '@/constants/site'
 import { ALL_CHEFS, getChefBySlug } from '@/data/chefs'
 import { localize } from '@/lib'
+import { isProductionDeployment } from '@/lib/deployment'
 import { getChefDetailPath } from '@/lib/routing'
 import { getServerTranslations } from '@/i18n'
 import { Language } from '@/types'
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const title = dict.chef.metaTitle.replace('{name}', chef.name).replace('{region}', regionLabel)
   const description = localize(chef.tagline, locale)
   const canonical = `${SITE_CONFIG.url}${getChefDetailPath(chef.slug, locale)}`
-  const isProd = process.env.VERCEL_ENV === 'production'
+  const isProd = isProductionDeployment()
   const isDraft = chef.status === ChefStatus.DRAFT
   const shouldNoIndex = !isProd || isDraft
 
