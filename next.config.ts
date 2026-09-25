@@ -23,24 +23,28 @@ const securityHeaders = [
   },
 ]
 
+/** Optimised images are immutable per URL (the hash of size and quality), so caches may keep them for a month. */
+const OPTIMIZED_IMAGE_CACHE_SECONDS = 60 * 60 * 24 * 30
+
 const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 768, 1024, 1280, 1536],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: OPTIMIZED_IMAGE_CACHE_SECONDS,
   },
   experimental: {
     optimizePackageImports: ['framer-motion', 'country-flag-icons'],
   },
   // Ensure trailing slashes are consistent to prevent duplicate URLs
   trailingSlash: false,
-  async headers() {
-    return [
+  headers() {
+    return Promise.resolve([
       {
         source: '/(.*)',
         headers: securityHeaders,
       },
-    ]
+    ])
   },
 }
 

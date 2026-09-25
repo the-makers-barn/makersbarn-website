@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import { useEffect } from 'react'
-import { track } from '@vercel/analytics'
 
+import { track } from '@/lib/analytics'
 import { AnalyticsEvent } from '@/constants/analytics'
 import {
   MAKERSBARN_CTA_QUERY_PARAM,

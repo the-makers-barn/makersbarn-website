@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Quicksand } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react'
 
 import { baseMetadata } from '@/lib/metadata'
 import { getServerLanguage } from '@/i18n'
@@ -38,7 +37,6 @@ export default async function RootLayout({
     <html lang={language} className={`${playfair.variable} ${quicksand.variable}`}>
       <body>
         {children}
-        <Analytics />
       </body>
     </html>
   )

@@ -1,8 +1,8 @@
 'use client'
 
 import { useId, useState, useTransition } from 'react'
-import { track } from '@vercel/analytics'
 
+import { track } from '@/lib/analytics'
 import { emailCalculatorSummary } from '@/actions/tools'
 import { AnalyticsEvent } from '@/constants/analytics'
 import { ToolVariant } from '@/constants/tools'

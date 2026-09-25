@@ -1,8 +1,8 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { track } from '@vercel/analytics'
 
+import { track } from '@/lib/analytics'
 import { AnalyticsEvent, WhatsAppCtaLocation } from '@/constants/analytics'
 
 interface WhatsAppCtaLinkProps {

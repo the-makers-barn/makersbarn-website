@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { track } from '@vercel/analytics'
 
+import { track } from '@/lib/analytics'
 import { AnalyticsEvent, TicketShopCtaLocation } from '@/constants/analytics'
 
 import styles from './StickyBookingBar.module.css'

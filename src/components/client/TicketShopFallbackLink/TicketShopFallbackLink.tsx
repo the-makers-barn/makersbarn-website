@@ -1,7 +1,7 @@
 'use client'
 
-import { track } from '@vercel/analytics'
 
+import { track } from '@/lib/analytics'
 import { AnalyticsEvent, TicketShopCtaLocation } from '@/constants/analytics'
 
 import { ExternalLinkIcon } from '../icons'

@@ -1,5 +1,5 @@
-import { track } from '@vercel/analytics'
 
+import { track } from '@/lib/analytics'
 import { AnalyticsEvent } from '@/constants'
 import { FormStatus, type BookingFormData } from '@/types'
 

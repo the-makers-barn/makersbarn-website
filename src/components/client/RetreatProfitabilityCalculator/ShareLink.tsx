@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { track } from '@vercel/analytics'
 
+import { track } from '@/lib/analytics'
 import { AnalyticsEvent } from '@/constants/analytics'
 import { ToolVariant } from '@/constants/tools'
 import type { Dictionary } from '@/i18n/types'

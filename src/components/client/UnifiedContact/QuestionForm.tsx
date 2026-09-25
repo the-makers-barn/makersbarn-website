@@ -3,8 +3,8 @@
 import { useState, useCallback, useMemo, FormEvent, ChangeEvent } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { track } from '@vercel/analytics'
 
+import { track } from '@/lib/analytics'
 import { IMAGES } from '@/data'
 import { submitContactForm } from '@/actions'
 import { AnalyticsEvent } from '@/constants'
