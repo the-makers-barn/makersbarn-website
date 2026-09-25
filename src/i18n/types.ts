@@ -293,6 +293,11 @@ export interface ExperiencesTranslations {
     description: string
     features: readonly string[]
     ctaLabel: string
+    bookingMessage: string
+    alternativeLabel: string
+    contactFormLabel: string
+    emailLabel: string
+    emailSubject: string
   }
   bookingPlatforms: {
     airbnb: string

@@ -18,6 +18,7 @@ export enum TicketShopCtaLocation {
 export enum WhatsAppCtaLocation {
   CABIN_COSMOS = 'cabin-cosmos',
   CABIN_HORIZON = 'cabin-horizon',
+  SOLO_RETREAT = 'solo-retreat',
   WORKATION_HERO = 'workation-hero',
   WORKATION_FOOTER = 'workation-footer',
 }
