@@ -549,7 +549,7 @@ export const nl: Dictionary = {
       subtitle: 'Studie van Tibetaans Boeddhisme',
       withTeachers: 'met Gen La Geshe Pema Dorjee & de Gerespecteerde monnik Lobsang',
       dailyTime: 'Dagelijks van 7:00 tot 20:00 uur',
-      getInTouch: 'Stel je vraag over de retraite',
+      bookPlace: 'Reserveer je plek',
     },
 
     video: {
@@ -621,8 +621,10 @@ export const nl: Dictionary = {
 
     registration: {
       title: 'Meer weten of je aanmelden?',
-      subtitle: 'De groep blijft bewust klein. Stuur een bericht en je krijgt alles te horen wat je wilt weten.',
+      subtitle: 'De groep blijft bewust klein. Reserveer je plek via het aanmeldformulier, of stuur eerst een bericht als je een vraag hebt.',
       participantRange: '10-15 deelnemers',
+      bookNow: 'Reserveer je plek',
+      bookingNote: 'Aanmelden gaat via het formulier van de organisator en opent in een nieuw tabblad.',
       contact: 'Neem contact op met Tete, de organisator van de retraite',
       whatsapp: 'WhatsApp',
       instagram: 'Instagram',

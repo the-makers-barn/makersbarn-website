@@ -167,28 +167,26 @@
 }
 
 /*
- * The film is a 2.35:1 picture letterboxed inside a 16:9 file, so the box is
- * cut to 2.35:1 and the 16:9 player is centred in it — that pushes the video's
- * own black bars out of view instead of painting them onto a cream page.
+ * The film is a 2.35:1 picture letterboxed inside a 16:9 file. The box keeps the
+ * file's full 16:9 shape rather than cropping to the picture: the player draws
+ * its play, volume and fullscreen controls along the bottom of the frame, and
+ * cutting the black bars away cut the controls away with them.
  */
 .videoFrame {
   position: relative;
   width: 100%;
-  padding-top: 42%;
+  aspect-ratio: 16 / 9;
   border-radius: 20px;
   overflow: hidden;
-  background: #1b1b1b;
+  background: #000;
   box-shadow: 0 18px 44px rgba(39, 32, 22, 0.22);
 }
 
 .videoIframe {
   position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  inset: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   border: 0;
 }
 
@@ -742,6 +740,33 @@
   font-style: italic;
 }
 
+.bookingCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2.25rem;
+  margin: 0 0 1rem;
+  background: var(--color-background);
+  color: var(--color-primary);
+  border-radius: 999px;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bookingCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
+.bookingNote {
+  color: var(--color-text-inverse-muted);
+  font-size: var(--font-size-sm);
+  margin: 0 0 2.5rem;
+}
+
 .contactInfo {
   color: var(--color-text-inverse-muted);
   font-size: var(--font-size-sm);
@@ -755,7 +780,6 @@
   flex-wrap: wrap;
 }
 
-/* With no booking form on the page, these two links are the only call to action. */
 .contactLink {
   display: inline-flex;
   align-items: center;

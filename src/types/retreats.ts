@@ -49,6 +49,8 @@ export interface RetreatContact {
   email: string
   /** Public profile URL for the retreat's own Instagram account. */
   instagram: string
+  /** The organiser's registration form, hosted on Google Forms. */
+  bookingFormUrl: string
 }
 
 export interface RetreatData {

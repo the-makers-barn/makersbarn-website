@@ -439,7 +439,7 @@ export const en: Dictionary = {
       subtitle: 'Study of Tibetan Buddhism',
       withTeachers: 'with Gen La Geshe Pema Dorjee & the Respected monk Lobsang',
       dailyTime: 'From 7 AM to 8 PM daily',
-      getInTouch: 'Ask about the retreat',
+      bookPlace: 'Book your place',
     },
 
     video: {
@@ -511,8 +511,10 @@ export const en: Dictionary = {
 
     registration: {
       title: 'Interested in more details or registering?',
-      subtitle: 'The circle stays small on purpose. Send a message and you will get everything you need to know.',
+      subtitle: 'The circle stays small on purpose. Book your place through the registration form, or send a message if you have a question first.',
       participantRange: '10-15 participants',
+      bookNow: 'Book your place',
+      bookingNote: "Registration runs through the organiser's form and opens in a new tab.",
       contact: 'Contact Tete, the retreat organiser',
       whatsapp: 'WhatsApp',
       instagram: 'Instagram',

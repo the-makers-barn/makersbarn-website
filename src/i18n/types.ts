@@ -357,7 +357,7 @@ export interface ShantiDevaRetreatTranslations {
     subtitle: string
     withTeachers: string
     dailyTime: string
-    getInTouch: string
+    bookPlace: string
   }
 
   video: {
@@ -431,6 +431,8 @@ export interface ShantiDevaRetreatTranslations {
     title: string
     subtitle: string
     participantRange: string
+    bookNow: string
+    bookingNote: string
     contact: string
     whatsapp: string
     email: string

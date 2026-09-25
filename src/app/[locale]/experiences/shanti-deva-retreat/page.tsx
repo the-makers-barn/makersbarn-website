@@ -13,7 +13,7 @@ import { getLocalizedPath } from '@/lib/routing'
 
 import styles from './page.module.css'
 
-/** Target of the hero CTA — the page has no booking form, only the organiser's details. */
+/** Target of the hero CTA — the section holding the booking form link and the organiser's details. */
 const REGISTRATION_ANCHOR = 'register'
 
 /** Display handle for the contact link; the URL it points at lives in the retreat data. */
@@ -238,7 +238,7 @@ function RetreatHero({ t, retreat, validLocale }: RetreatHeroProps) {
 
               <div className={styles.heroActions}>
                 <a href={`#${REGISTRATION_ANCHOR}`} className={styles.heroCta}>
-                  {t.shantiDevaRetreat.hero.getInTouch}
+                  {t.shantiDevaRetreat.hero.bookPlace}
                   <ArrowRightIcon className={styles.heroCtaIcon} />
                 </a>
               </div>
@@ -397,6 +397,17 @@ function RetreatRegistration({ t, retreat }: RetreatRegistrationProps) {
         <p className={styles.registrationSubtitle}>{t.shantiDevaRetreat.registration.subtitle}</p>
 
         <p className={styles.participantInfo}>{t.shantiDevaRetreat.registration.participantRange}</p>
+
+        <a
+          href={retreat.contact.bookingFormUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.bookingCta}
+        >
+          {t.shantiDevaRetreat.registration.bookNow}
+          <ArrowRightIcon className={styles.heroCtaIcon} />
+        </a>
+        <p className={styles.bookingNote}>{t.shantiDevaRetreat.registration.bookingNote}</p>
 
         <p className={styles.contactInfo}>{t.shantiDevaRetreat.registration.contact}</p>
         <div className={styles.contactLinks}>

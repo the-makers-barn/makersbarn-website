@@ -61,5 +61,7 @@ export const SHANTI_DEVA_RETREAT: RetreatData = {
     whatsapp: '+31-6-14941874',
     email: 'tete17@gmail.com',
     instagram: 'https://www.instagram.com/shanti_deva_buddhist_retreat',
+    bookingFormUrl:
+      'https://docs.google.com/forms/d/e/1FAIpQLScUGaQJwZ9zka5MDRbWlc1qt2Uj2UcpkBEflw1W3KOhi-xYKg/viewform',
   },
 }

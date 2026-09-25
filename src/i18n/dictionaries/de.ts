@@ -442,7 +442,7 @@ export const de: Dictionary = {
       subtitle: 'Tibetischen Buddhismus studieren',
       withTeachers: 'mit Gen La Geshe Pema Dorjee und dem ehrwürdigen Mönch Lobsang',
       dailyTime: 'Täglich von 7 bis 20 Uhr',
-      getInTouch: 'Frage zum Retreat stellen',
+      bookPlace: 'Platz buchen',
     },
 
     video: {
@@ -514,8 +514,10 @@ export const de: Dictionary = {
 
     registration: {
       title: 'Mehr erfahren oder anmelden?',
-      subtitle: 'Die Gruppe bleibt bewusst klein. Schreib eine Nachricht und du erfährst alles, was du wissen möchtest.',
+      subtitle: 'Die Gruppe bleibt bewusst klein. Buche deinen Platz über das Anmeldeformular oder schreib zuerst eine Nachricht, wenn du eine Frage hast.',
       participantRange: '10–15 Teilnehmer',
+      bookNow: 'Platz buchen',
+      bookingNote: 'Die Anmeldung läuft über das Formular der Organisation und öffnet sich in einem neuen Tab.',
       contact: 'Wende dich an Tete, die Organisation des Retreats',
       whatsapp: 'WhatsApp',
       instagram: 'Instagram',
