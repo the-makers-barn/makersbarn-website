@@ -25,7 +25,6 @@ export interface SoloRetreatOffer {
   id: string
   type: ExperienceType.SOLO_RETREAT
   image: string
-  externalUrl: string
 }
 
 export interface AccommodationOffer {
