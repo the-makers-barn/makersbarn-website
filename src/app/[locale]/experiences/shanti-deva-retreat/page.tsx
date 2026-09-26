@@ -492,8 +492,8 @@ function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
         <div className={styles.venueGallery}>
           <div className={styles.venueImageLarge}>
             <Image
-              src="/images/retreats/shanti-deva/teachers-together.jpg"
-              alt="Gen La Geshe Pema Dorjee and monk Lobsang greeting the room"
+              src="/images/retreats/shanti-deva/geshe-with-dalai-lama.jpg"
+              alt="His Holiness the Dalai Lama greeting Gen La Geshe Pema Dorjee"
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
               className={styles.venueImage}
