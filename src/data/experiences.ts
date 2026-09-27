@@ -48,7 +48,6 @@ export const EXPERIENCE_OFFERS: ExperienceOffer[] = [
     id: 'solo-retreat',
     type: ExperienceType.SOLO_RETREAT,
     image: IMAGES.accommodation.cosmosView,
-    externalUrl: 'https://thanksforthetrip.com/cosmos-solo-yoga-retreat/',
   },
 ]
 

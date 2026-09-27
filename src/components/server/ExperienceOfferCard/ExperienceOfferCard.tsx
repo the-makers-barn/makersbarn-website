@@ -9,6 +9,7 @@ import {
   ExternalLinkIcon,
 } from '@/components/client'
 import { WhatsAppCtaLocation } from '@/constants/analytics'
+import { CONTACT_EMAIL } from '@/constants/contact'
 import type { Dictionary } from '@/i18n/types'
 import { getWhatsAppUrl } from '@/lib/whatsapp'
 import { getLocalizedPath } from '@/lib/routing'
@@ -18,17 +19,23 @@ import {
   BookingPlatform,
   Language,
   ExperienceOffer,
+  Route,
 } from '@/types'
 
 import styles from './ExperienceOfferCard.module.css'
 
 type OfferContent =
   | {
-      kind: 'cta'
+      kind: 'contact'
       title: string
       description: string
       features: readonly string[]
       ctaLabel: string
+      bookingMessage: string
+      alternativeLabel: string
+      contactFormLabel: string
+      emailLabel: string
+      emailSubject: string
     }
   | {
       kind: 'booking'
@@ -54,13 +61,7 @@ const CABIN_CTA_LOCATION: Record<AccommodationCabin, WhatsAppCtaLocation> = {
 function getOfferContent(offer: ExperienceOffer, t: Dictionary): OfferContent {
   switch (offer.type) {
     case ExperienceType.SOLO_RETREAT:
-      return {
-        kind: 'cta',
-        title: t.experiences.soloRetreat.title,
-        description: t.experiences.soloRetreat.description,
-        features: t.experiences.soloRetreat.features,
-        ctaLabel: t.experiences.soloRetreat.ctaLabel,
-      }
+      return { kind: 'contact', ...t.experiences.soloRetreat }
     case ExperienceType.ACCOMMODATION: {
       const cabinCopy = t.experiences.cabins[offer.cabin]
       return {
@@ -122,16 +123,33 @@ export function ExperienceOfferCard({ offer, validLocale, t }: ExperienceOfferCa
           ))}
         </ul>
 
-        {content.kind === 'cta' && offer.type === ExperienceType.SOLO_RETREAT && (
-          <a
-            href={offer.externalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.offerCta}
-          >
-            {content.ctaLabel}
-            <ArrowRightIcon className={styles.offerCtaIcon} />
-          </a>
+        {content.kind === 'contact' && (
+          <div className={styles.bookingActions}>
+            <WhatsAppCtaLink
+              href={getWhatsAppUrl(content.bookingMessage)}
+              location={WhatsAppCtaLocation.SOLO_RETREAT}
+              className={styles.directBookingCta}
+            >
+              <WhatsAppIcon size={18} />
+              {content.ctaLabel}
+            </WhatsAppCtaLink>
+            <p className={styles.directBookingNote}>{directBooking.responseNote}</p>
+            <div className={styles.platformLinks}>
+              <span className={styles.platformLabel}>{content.alternativeLabel}</span>
+              <Link
+                href={getLocalizedPath(Route.CONTACT, validLocale)}
+                className={styles.platformLink}
+              >
+                {content.contactFormLabel}
+              </Link>
+              <a
+                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(content.emailSubject)}`}
+                className={styles.platformLink}
+              >
+                {content.emailLabel}
+              </a>
+            </div>
+          </div>
         )}
 
         {content.kind === 'booking' && offer.type === ExperienceType.ACCOMMODATION && (
