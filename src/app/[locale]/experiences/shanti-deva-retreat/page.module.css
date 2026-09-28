@@ -318,6 +318,24 @@
   text-align: center;
 }
 
+.sectionIntro {
+  max-width: 640px;
+  margin: -1rem auto 2rem;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.datesNote {
+  max-width: 640px;
+  margin: 1.75rem auto 0;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-relaxed);
+}
+
 .datesGrid {
   display: grid;
   grid-template-columns: 1fr;
@@ -379,7 +397,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 768px) {
@@ -404,11 +422,22 @@
   object-fit: cover;
 }
 
-.teacherText h2 {
+.teacherName {
   font-family: var(--font-playfair);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
   color: var(--color-primary);
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.35rem;
+}
+
+.teacherBio + .teacherName {
+  margin-top: 2rem;
+}
+
+.teacherTagline {
+  font-family: var(--font-playfair);
+  font-style: italic;
+  color: var(--color-secondary);
+  margin: 0 0 1rem;
 }
 
 .teacherBio {
@@ -568,64 +597,60 @@
   }
 }
 
-.scheduleIntro {
-  max-width: 600px;
-  margin: -1rem auto 2rem;
-  text-align: center;
-  font-size: var(--font-size-base);
-  color: var(--color-text-muted);
-  line-height: var(--line-height-relaxed);
+.scheduleGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 
-.dayFlowList {
-  list-style: none;
-  padding: 0;
+@media (min-width: 900px) {
+  .scheduleGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.scheduleCard {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(39, 32, 22, 0.08);
+}
+
+.scheduleDayTitle {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+}
+
+.timetable {
   margin: 0;
 }
 
-.dayFlowItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 0.85rem 0;
+.timetableRow {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
   border-bottom: 1px solid rgba(41, 75, 58, 0.1);
 }
 
-.dayFlowItem:last-child {
+.timetableRow:last-child {
   border-bottom: none;
 }
 
-/* Dot on a thin stem, so the list reads as one continuous rhythm. */
-.dayFlowMarker {
-  position: relative;
-  flex-shrink: 0;
-  width: 10px;
-  height: 10px;
-  margin-top: 0.45rem;
-  border-radius: 50%;
-  background: var(--color-secondary);
+.timetableTime {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-secondary);
+  font-variant-numeric: tabular-nums;
 }
 
-.dayFlowItem:not(:last-child) .dayFlowMarker::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 10px;
-  transform: translateX(-50%);
-  width: 1px;
-  height: calc(1.7rem + 100%);
-  background: rgba(184, 137, 74, 0.35);
-}
-
-.dayFlowActivity {
-  font-size: var(--font-size-base);
+.timetableActivity {
+  margin: 0;
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   line-height: var(--line-height-snug);
-}
-
-.scheduleContent {
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 .specialActivity {
@@ -702,6 +727,147 @@
   line-height: var(--line-height-snug);
 }
 
+/* Programme Section */
+.programmeSection {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .programmeSection {
+    padding: 4rem 4rem;
+  }
+}
+
+.programmeGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .programmeGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.programmeCard {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(39, 32, 22, 0.08);
+}
+
+.programmeNumber {
+  display: block;
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-2xl);
+  color: var(--color-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.programmeTitle {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+
+.programmeText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Pricing Section — also the hero CTA's anchor, so it clears the fixed navbar. */
+.pricingSection {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  scroll-margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  .pricingSection {
+    padding: 4rem 4rem;
+  }
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .pricingGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.priceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(39, 32, 22, 0.08);
+}
+
+.priceLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin: 0 0 0.5rem;
+}
+
+.priceAmount {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-5xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+
+.priceBreakdown {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: 0 0 1.25rem;
+}
+
+.priceIncludes {
+  max-width: 360px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 1.75rem;
+}
+
+.bookingNote {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: 0.85rem 0 1.25rem;
+}
+
+.brochureLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cardSubheading {
+  margin-top: 1.5rem;
+}
+
 /* Registration Section */
 .registrationSection {
   background: linear-gradient(135deg, #294b3a 0%, #1e3a2c 100%);
@@ -731,40 +897,6 @@
   font-size: var(--font-size-base);
   color: var(--color-text-inverse-muted);
   margin: 0 0 1.5rem;
-}
-
-.participantInfo {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-inverse-muted);
-  margin: 0 0 1.5rem;
-  font-style: italic;
-}
-
-.bookingCta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 1rem 2.25rem;
-  margin: 0 0 1rem;
-  background: var(--color-background);
-  color: var(--color-primary);
-  border-radius: 999px;
-  font-size: var(--font-size-md);
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.bookingCta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
-}
-
-.bookingNote {
-  color: var(--color-text-inverse-muted);
-  font-size: var(--font-size-sm);
-  margin: 0 0 2.5rem;
 }
 
 .contactInfo {

@@ -1,4 +1,4 @@
-import { RetreatData, RetreatId, RetreatDateId } from '@/types'
+import { RetreatData, RetreatId, RetreatDateId, RetreatDayKind } from '@/types'
 
 export const SHANTI_DEVA_RETREAT: RetreatData = {
   id: RetreatId.SHANTI_DEVA,
@@ -38,24 +38,55 @@ export const SHANTI_DEVA_RETREAT: RetreatData = {
   location: {
     nameKey: 'countrysideFarm',
     address: 'Duisterendijk 2, Wijhe, Netherlands',
-    accessibilityKeys: [
-      'carFromZwolle',
-      'freePickup',
-      'sharedTransport',
-    ],
+    accessibilityKeys: ['carFromZwolle', 'freePickup', 'returnTransport'],
   },
 
-  dayFlowKeys: [
-    'morningMeditation',
-    'breakfastBuffet',
-    'teachingLectures',
-    'lunch',
-    'restAndDigest',
-    'afternoonWorkshop',
-    'dinnerGathering',
-    'qaSession',
-    'eveningConnect',
+  programmeKeys: ['joyfulEffort', 'mahayana', 'meditation'],
+
+  schedule: [
+    {
+      kind: RetreatDayKind.ARRIVAL,
+      items: [
+        { time: '14:00–17:00', activityKey: 'checkIn' },
+        { time: '17:00–17:45', activityKey: 'farmTour' },
+        { time: '17:45', activityKey: 'welcomeReception' },
+        { time: '18:00', activityKey: 'dinner' },
+        { time: '19:00', activityKey: 'introduction' },
+      ],
+    },
+    {
+      kind: RetreatDayKind.STUDY,
+      items: [
+        { time: '07:00', activityKey: 'meditation' },
+        { time: '08:00', activityKey: 'breakfast' },
+        { time: '09:00–12:00', activityKey: 'teaching' },
+        { time: '12:00', activityKey: 'lunch' },
+        { time: '14:00–17:00', activityKey: 'teachingsAndWorkshops' },
+        { time: '18:00', activityKey: 'dinner' },
+        { time: '19:00', activityKey: 'questionsAndAnswers' },
+      ],
+    },
+    {
+      kind: RetreatDayKind.FINAL,
+      items: [
+        { time: '07:30', activityKey: 'breakfast' },
+        { time: '08:30', activityKey: 'closing' },
+        { time: '12:00', activityKey: 'checkOut' },
+      ],
+    },
   ],
+
+  accommodationKeys: ['duration', 'sharedRooms', 'coupleRoom', 'bedding'],
+
+  serviceKeys: ['vegetarianMeals', 'drinks', 'farmFacilities', 'workshops'],
+
+  pricing: {
+    currency: 'EUR',
+    total: '795',
+    base: '657',
+    vatPercent: 21,
+    deposit: '200',
+  },
 
   contact: {
     whatsapp: '+31-6-14941874',
@@ -63,5 +94,6 @@ export const SHANTI_DEVA_RETREAT: RetreatData = {
     instagram: 'https://www.instagram.com/shanti_deva_buddhist_retreat',
     bookingFormUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLScUGaQJwZ9zka5MDRbWlc1qt2Uj2UcpkBEflw1W3KOhi-xYKg/viewform',
+    brochureUrl: 'https://habait-nl.com/wp-content/uploads/2026/09/5-shanti-deva-retreats-2027-brochure.pdf',
   },
 }

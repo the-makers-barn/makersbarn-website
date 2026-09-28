@@ -431,14 +431,13 @@ export const en: Dictionary = {
 
   shantiDevaRetreat: {
     metaTitle: 'Shanti Deva Buddhist Tibetan Retreat',
-    metaDescription: 'Join Gen La Geshe Pema Dorjee for a 6-day Buddhist retreat in the Dutch countryside. Three retreats in 2027, with meditation, teachings and vegetarian meals included.',
+    metaDescription: 'Join Gen La Geshe Pema Dorjee and the Venerable Lobsang Tsering for a 6-day Buddhist retreat in the Dutch countryside. Three retreats in 2027, €795 including accommodation, vegetarian meals and workshops.',
     backToExperiences: 'Back to Experiences',
 
     hero: {
       title: 'Shanti Deva Buddhist Tibetan Retreat',
       subtitle: 'Study of Tibetan Buddhism',
-      withTeachers: 'with Gen La Geshe Pema Dorjee & the Respected monk Lobsang',
-      dailyTime: 'From 7 AM to 8 PM daily',
+      withTeachers: 'with Gen La Geshe Pema Dorjee & the Venerable monk Lobsang Tsering',
       bookPlace: 'Book your place',
     },
 
@@ -452,13 +451,39 @@ export const en: Dictionary = {
       secondRetreat: 'Retreat 2',
       thirdRetreat: 'Retreat 3',
       duration: '5 nights (6 days)',
+      oneRetreatNote: 'All three retreats follow the same programme, so please choose and register for one retreat only.',
     },
 
     teacher: {
-      sectionTitle: 'Who is Geshe Pema Dorjee?',
-      biography: 'Geshe Pema Dorjee was born in Tibet and fled with his family in 1959, growing up in Dharamsala, India. He studied Buddhist philosophy and in 1995 was awarded the Geshe degree - the highest academic title in Tibetan Buddhism. For over 20 years he taught and served as principal at the Tibetan Children\'s Village. At the request of His Holiness the Dalai Lama, he founded the Bodong Research Center and a monastery in Kathmandu. He has also led extensive humanitarian projects, including schools, orphanages, water systems, and earthquake relief in Nepal. Since 1997 he has been teaching worldwide, known for his clarity, warmth, and compassion.',
-      gesheTitle: 'Geshe',
-      monkTitle: 'Respected Monk',
+      sectionTitle: 'Meet the teachers',
+      geshe: {
+        name: 'Gen La Geshe Pema Dorjee',
+        tagline: 'A life devoted to learning, service and the Dharma.',
+        biography: 'Geshe Pema Dorjee was born in Tibet and fled with his family in 1959, growing up in Dharamsala, India. He studied Buddhist philosophy and in 1995 was awarded the Geshe degree - the highest academic title in Tibetan Buddhism. For over 20 years he taught and served as principal at the Tibetan Children\'s Village. At the request of His Holiness the Dalai Lama, he founded the Bodong Research Center and a monastery in Kathmandu. He has also led extensive humanitarian projects, including schools, orphanages, water systems, and earthquake relief in Nepal. Since 1997 he has been teaching worldwide, known for his clarity, warmth, and compassion.',
+      },
+      lobsang: {
+        name: 'Venerable Lobsang Tsering',
+        biography: 'Buddhist monk Lobsang Tsering co-leads the retreat with Gen La Geshe Pema Dorjee and supports the programme of Buddhist study, meditation and discussion.',
+      },
+    },
+
+    programme: {
+      title: 'The Programme',
+      intro: 'Study, practise and live together - the same programme on all three retreats.',
+      topics: {
+        joyfulEffort: {
+          title: 'Joyful Effort',
+          description: 'The seventh chapter of Shantideva\'s The Bodhisattva\'s Way of Life.',
+        },
+        mahayana: {
+          title: 'Mahayana Buddhism',
+          description: 'Introduction to and study of the Mahayana path.',
+        },
+        meditation: {
+          title: 'Meditation',
+          description: 'What is meditation and how do we meditate?',
+        },
+      },
     },
 
     details: {
@@ -466,29 +491,43 @@ export const en: Dictionary = {
       location: 'Location',
       locationDescription: 'A countryside farm in the Netherlands',
       address: 'Farm address',
-      accessibility: 'Accessibility',
+      accessibility: 'Getting there',
       accessibilityItems: {
-        carFromZwolle: '15 minutes by car from Zwolle (1h15 by train from Schiphol Airport, Amsterdam)',
-        freePickup: 'Free pickup from Zwolle train station (14:00-16:00)',
-        sharedTransport: 'Shared transport back to the station at the end: ~€10 per person',
+        carFromZwolle: '15 minutes by car from Zwolle; by train, change at Zwolle for Wijhe (Schiphol Airport to Zwolle takes 1h15)',
+        freePickup: 'Free pickup from Wijhe train station between 14:00 and 16:00 on arrival day',
+        returnTransport: 'Return transport to Wijhe train station is arranged by the organisers',
+      },
+      galleryAlt: {
+        dalaiLama: 'His Holiness the Dalai Lama greeting Gen La Geshe Pema Dorjee',
+        farmAerial: 'Aerial view of the farm with the retreat tent in the orchard',
+        momoDemonstration: 'Geshe Pema Dorjee showing the group how to fold Tibetan momos',
       },
     },
 
     schedule: {
-      title: 'A Typical Day',
-      intro: 'No two days are the same, but every day follows this gentle rhythm.',
-      activities: {
-        morningMeditation: 'Morning group meditation and chanting',
-        breakfastBuffet: 'Breakfast buffet',
-        teachingLectures: 'Buddhist teachings and lectures',
-        lunch: 'Lunch together',
-        restAndDigest: 'Free time to rest and digest',
-        afternoonWorkshop: 'On some days, an afternoon workshop',
-        dinnerGathering: 'Dinner gathering',
-        qaSession: 'Q&A session',
-        eveningConnect: 'Time to connect, enjoy the sauna and reflect on the day - alone or with others',
+      title: 'Daily Rhythm',
+      intro: 'Every retreat runs from an arrival afternoon, through the study days, to a closing morning.',
+      days: {
+        arrival: 'Arrival day',
+        study: 'Study days',
+        final: 'Final day',
       },
-      workshopNote: 'Afternoon workshops rotate between Tibetan momo cooking, slow flow yoga and painting Buddhist motifs.',
+      activities: {
+        checkIn: 'Check-in',
+        farmTour: 'Farm tour',
+        welcomeReception: 'Welcome reception',
+        dinner: 'Dinner',
+        introduction: 'Introduction',
+        meditation: 'Meditation study and practice',
+        breakfast: 'Breakfast',
+        teaching: 'Teaching',
+        lunch: 'Lunch',
+        teachingsAndWorkshops: 'Teachings and workshops',
+        questionsAndAnswers: 'Q&A',
+        closing: 'Closing',
+        checkOut: 'Check-out',
+      },
+      workshopNote: 'Afternoon workshops include Tibetan momo cooking, painting Tibetan motifs and calm yoga.',
     },
 
     included: {
@@ -496,26 +535,44 @@ export const en: Dictionary = {
       accommodation: 'Accommodation',
       accommodationOptions: {
         duration: '5 nights (6 days)',
-        doubleRooms: 'Double rooms',
-        sharedRooms: 'Rooms for 3-4 people',
-        singleRoom: 'Single room',
-        tentCaravan: 'Option to stay in a tent or caravan at reduced price',
+        sharedRooms: 'Shared rooms of 2-4 participants',
+        coupleRoom: 'One couple room with a double bed, subject to availability',
+        bedding: 'Bedding & towels (pool/sauna towel not included)',
       },
-      servicesTitle: 'Services',
+      servicesTitle: 'Board, farm & workshops',
       services: {
-        beddingTowels: 'Bedding & towels (pool/sauna towel not included)',
-        vegetarianMeals: '3 vegetarian meals daily + drinks & snacks',
-        farmFacilities: 'Use of all farm facilities - Sauna, Ecological pool and more',
+        vegetarianMeals: 'Full vegetarian meals throughout the retreat',
+        drinks: 'Hot drinks & water',
+        farmFacilities: 'Small ecological swimming pond, sauna, hot tub & fire circle',
+        workshops: 'Tibetan momo cooking, Tibetan motif painting and calm yoga workshops',
+      },
+    },
+
+    pricing: {
+      title: 'Price & Registration',
+      subtitle: 'Places are limited to 10-15 participants per retreat.',
+      perParticipant: 'Total per participant',
+      breakdown: 'Base {base} + {vatPercent}% VAT {vat}',
+      includes: 'Includes accommodation, full vegetarian meals, hot drinks & water, and all workshops.',
+      register: 'Register online',
+      bookingNote: "Registration runs through the organiser's form and opens in a new tab.",
+      brochure: 'Download the brochure (PDF)',
+      paymentTitle: 'Payment',
+      deposit: '{deposit} deposit on registration',
+      balance: 'Balance of {balance}, due four months before your retreat',
+      instalments: 'The balance may be split into 2 or 3 instalments on request',
+      cancellationTitle: 'Cancellation',
+      cancellation: {
+        fullRefund: 'Full refund up to 4 months before the retreat starts',
+        halfRefund: '50% refund between 4 and 2 months before the start',
+        noRefund: 'From 2 months before the start: no refund, unless a replacement participant is found (then a full refund)',
       },
     },
 
     registration: {
-      title: 'Interested in more details or registering?',
-      subtitle: 'The circle stays small on purpose. Book your place through the registration form, or send a message if you have a question first.',
-      participantRange: '10-15 participants',
-      bookNow: 'Book your place',
-      bookingNote: "Registration runs through the organiser's form and opens in a new tab.",
-      contact: 'Contact Tete, the retreat organiser',
+      title: 'Questions? Get in touch',
+      subtitle: 'Not sure yet, or want to know more before you register? Send a message and you will get everything you need to know.',
+      contact: 'Contact Tete Dagani, the retreat organiser',
       whatsapp: 'WhatsApp',
       instagram: 'Instagram',
       email: 'Email',
