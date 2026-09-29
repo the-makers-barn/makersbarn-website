@@ -13,6 +13,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@date-fns/tz": "1.4.1",
     "@tailwindcss/postcss": "^4.1.18",
     "country-flag-icons": "^1.6.4",
     "date-fns": "^4.1.0",

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Quicksand } from 'next/font/google'
 
+import { UmamiTracker } from '@/components/client'
 import { baseMetadata } from '@/lib/metadata'
 import { getServerLanguage } from '@/i18n'
 import './globals.css'
@@ -37,6 +38,7 @@ export default async function RootLayout({
     <html lang={language} className={`${playfair.variable} ${quicksand.variable}`}>
       <body>
         {children}
+        <UmamiTracker />
       </body>
     </html>
   )

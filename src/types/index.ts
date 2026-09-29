@@ -29,3 +29,4 @@ export type {
 } from './chef'
 
 export { asIsoDateString } from './chef'
+export * from './insights'

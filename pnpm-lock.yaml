@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@date-fns/tz':
+        specifier: 1.4.1
+        version: 1.4.1
       '@tailwindcss/postcss':
         specifier: ^4.1.18
         version: 4.2.4

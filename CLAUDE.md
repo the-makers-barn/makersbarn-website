@@ -50,6 +50,7 @@ src/
 - **Barrel Exports**: All directories use `index.ts` files for clean imports
 - **Server Actions**: Contact form uses server action in `src/actions/contact.ts` with rate limiting and validation
 - **External Services**: Email via Postmark (`src/services/email.ts`), notifications via Slack webhooks (`src/services/slack.ts`)
+- **Analytics**: Page tracking via Umami using `src/lib/analytics.ts` (client-side event queue) and `src/lib/attribution.ts` (landing channel). The `/stats` path rewrite proxies the Umami tracker, and `/api/insights/web` builds analytics summaries from Umami data.
 
 ### Internationalization (i18n)
 
@@ -112,6 +113,15 @@ Required for contact form functionality (see `.env.example`):
 - `POSTMARK_ADMIN_EMAIL` - Email address(es) to receive admin notifications (comma-separated for multiple recipients)
 - `SLACK_WEBHOOK_USER_CONTACTS` - Slack webhook URL for contact form notifications
 - `SUPPRESS_SLACK_MESSAGES` - set to `true` to disable Slack in development
+
+#### Umami analytics and insights
+
+`NEXT_PUBLIC_UMAMI_WEBSITE_ID` and `UMAMI_URL` are read at build time; changing either needs a rebuild.
+
+- `NEXT_PUBLIC_UMAMI_WEBSITE_ID` - Website ID from the Umami dashboard; the tracker is rendered only when set
+- `UMAMI_URL` - Base URL of the Umami service for the /stats rewrite and the insights API
+- `UMAMI_API_KEY` - API key of the insights-reader user (Umami 3.4+, Settings > API keys)
+- `INSIGHTS_API_SECRET` - Bearer secret the scheduled digest task sends to /api/insights/web
 
 ### ESLint Configuration
 

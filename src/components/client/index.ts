@@ -27,3 +27,4 @@ export { RetreatProfitabilityCalculator } from './RetreatProfitabilityCalculator
 export { RetreatLaunchCalendar } from './RetreatLaunchCalendar'
 export { RetreatMistakesAudit } from './RetreatMistakesAudit'
 export { RetreatAgendaBuilder } from './RetreatAgendaBuilder'
+export { UmamiTracker } from './UmamiTracker'
