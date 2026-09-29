@@ -43,16 +43,6 @@ function isPeriod(value: string | null): value is InsightsPeriod {
   return value !== null && (Object.values(InsightsPeriod) as string[]).includes(value)
 }
 
-/**
- * Duck-types on `Error.name` rather than `instanceof`: in tests, `vi.resetModules()`
- * reloads `@/services/umami` for the dynamically re-imported route, so an `UmamiError`
- * built from the test file's stale top-level import would fail an `instanceof` check
- * against the freshly loaded class even though it is the same error type.
- */
-function isUmamiError(error: unknown): error is UmamiError {
-  return error instanceof Error && error.name === UmamiError.name
-}
-
 class BuildTimeoutError extends Error {}
 
 function withBudget<T>(work: Promise<T>, budgetMs: number): Promise<T> {
@@ -94,10 +84,11 @@ export async function GET(request: Request): Promise<Response> {
       logger.warn('insights build timed out', { period })
       return errorResponse(InsightsErrorCode.TIMEOUT, HttpStatus.GATEWAY_TIMEOUT)
     }
-    if (isUmamiError(error)) {
+    if (error instanceof UmamiError) {
       logger.error('umami request failed', { period, status: error.status }, error)
       return errorResponse(InsightsErrorCode.UPSTREAM, HttpStatus.BAD_GATEWAY)
     }
+    logger.error('insights request failed', { period }, error)
     throw error
   }
 }

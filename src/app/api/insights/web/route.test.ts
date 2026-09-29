@@ -1,7 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { InsightsErrorCode, INSIGHTS_RATE_LIMIT } from '@/constants/insights'
-import { UmamiError } from '@/services/umami'
 
 const buildWebInsights = vi.fn<(...args: unknown[]) => Promise<unknown>>()
 vi.mock('@/lib/insights/buildWebInsights', () => ({ buildWebInsights: (...args: unknown[]) => buildWebInsights(...args) }))
@@ -78,6 +77,7 @@ describe('GET /api/insights/web', () => {
   })
 
   it('answers 502 when Umami fails', async () => {
+    const { UmamiError } = await import('@/services/umami')
     buildWebInsights.mockRejectedValue(new UmamiError('down', 500))
     const { GET } = await loadRoute()
     const response = await GET(request(URL_WEEK, `Bearer ${SECRET}`))
