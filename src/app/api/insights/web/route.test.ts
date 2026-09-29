@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { InsightsErrorCode, INSIGHTS_RATE_LIMIT } from '@/constants/insights'
 
@@ -17,6 +17,12 @@ async function loadRoute() {
 }
 
 describe('GET /api/insights/web', () => {
+  beforeAll(async () => {
+    // Warms the module cache before the first resetModules() so the timed
+    // tests below do not also pay the cost of a cold TS transform.
+    await import('./route')
+  }, 30_000)
+
   beforeEach(() => {
     vi.resetModules()
     vi.stubEnv('INSIGHTS_API_SECRET', SECRET)
@@ -29,6 +35,7 @@ describe('GET /api/insights/web', () => {
 
   afterEach(() => {
     vi.unstubAllEnvs()
+    vi.useRealTimers()
   })
 
   it('answers 503 when the server secret is missing', async () => {
@@ -53,6 +60,18 @@ describe('GET /api/insights/web', () => {
     expect((await GET(request('https://themakersbarn.nl/api/insights/web?period=year', `Bearer ${SECRET}`))).status).toBe(400)
   })
 
+  it.each(['UMAMI_URL', 'UMAMI_API_KEY', 'NEXT_PUBLIC_UMAMI_WEBSITE_ID'])(
+    'answers 503 when %s is unset',
+    async (missingVar) => {
+      vi.stubEnv(missingVar, '')
+      const { GET } = await loadRoute()
+      const response = await GET(request(URL_WEEK, `Bearer ${SECRET}`))
+      expect(response.status).toBe(503)
+      expect(await response.json()).toEqual({ error: InsightsErrorCode.NOT_CONFIGURED })
+      expect(response.headers.get('cache-control')).toBe('private, no-store')
+    },
+  )
+
   it('answers 200 with the built insights and no-store', async () => {
     const { GET } = await loadRoute()
     const response = await GET(request(URL_WEEK, `Bearer ${SECRET}`))
@@ -74,6 +93,7 @@ describe('GET /api/insights/web', () => {
     const limited = await GET(request(URL_WEEK, `Bearer ${SECRET}`))
     expect(limited.status).toBe(429)
     expect(await limited.json()).toEqual({ error: InsightsErrorCode.RATE_LIMITED })
+    expect(limited.headers.get('cache-control')).toBe('private, no-store')
   })
 
   it('answers 502 when Umami fails', async () => {
@@ -83,6 +103,7 @@ describe('GET /api/insights/web', () => {
     const response = await GET(request(URL_WEEK, `Bearer ${SECRET}`))
     expect(response.status).toBe(502)
     expect(await response.json()).toEqual({ error: InsightsErrorCode.UPSTREAM })
+    expect(response.headers.get('cache-control')).toBe('private, no-store')
   })
 
   it('answers 504 when the build exceeds the budget', async () => {
@@ -93,6 +114,5 @@ describe('GET /api/insights/web', () => {
     await vi.advanceTimersByTimeAsync(31_000)
     const response = await pending
     expect(response.status).toBe(504)
-    vi.useRealTimers()
   })
 })

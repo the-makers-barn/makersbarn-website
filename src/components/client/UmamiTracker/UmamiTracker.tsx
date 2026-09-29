@@ -1,12 +1,13 @@
 'use client'
 
+import type React from 'react'
 import Script from 'next/script'
 
+import { UMAMI_SCRIPT_PATH } from '@/constants/analytics'
 import { flushQueuedEvents } from '@/lib/analytics'
 import { rememberAttribution } from '@/lib/attribution'
 
-/** Same-origin path that next.config rewrites to the Umami service. */
-export const UMAMI_SCRIPT_PATH = '/stats/script.js'
+export { UMAMI_SCRIPT_PATH }
 
 /**
  * Loads the Umami tracker through the site's own domain.
@@ -15,7 +16,7 @@ export const UMAMI_SCRIPT_PATH = '/stats/script.js'
  * posts to /stats/api/send, which the same rewrite forwards. Renders nothing
  * without a website id, so local development sends no data.
  */
-export function UmamiTracker() {
+export function UmamiTracker(): React.JSX.Element | null {
   const websiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
   if (!websiteId) {
     return null
