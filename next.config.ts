@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next'
 
+import { UMAMI_COLLECT_PATH, UMAMI_SCRIPT_PATH } from './src/constants/analytics'
+
 const securityHeaders = [
   {
     key: 'X-Content-Type-Options',
@@ -26,11 +28,28 @@ const securityHeaders = [
 /** Optimised images are immutable per URL (the hash of size and quality), so caches may keep them for a month. */
 const OPTIMIZED_IMAGE_CACHE_SECONDS = 60 * 60 * 24 * 30
 
-/** Same-origin prefix the browser uses for the Umami tracker and its collect endpoint. */
-const STATS_PROXY_PREFIX = '/stats'
-/** Local fallback so the config loads without an Umami service (the tracker is not rendered then). */
-const DEFAULT_UMAMI_URL = 'http://localhost:3000'
-const umamiUrl = (process.env.UMAMI_URL ?? DEFAULT_UMAMI_URL).replace(/\/$/, '')
+/** Base URL of the Umami service. Empty when unset, so the rewrites below register nothing. */
+const umamiUrl = (process.env.UMAMI_URL ?? '').replace(/\/$/, '')
+
+interface Rewrite {
+  source: string
+  destination: string
+}
+
+/**
+ * Exactly the two paths the tracker needs, never a wildcard proxy to the whole
+ * Umami service. Registered only when UMAMI_URL is set — an unset variable
+ * used to fall back to Next's own dev port, which proxied the site to itself.
+ */
+function umamiRewrites(): Rewrite[] {
+  if (umamiUrl === '') {
+    return []
+  }
+  return [
+    { source: UMAMI_SCRIPT_PATH, destination: `${umamiUrl}/script.js` },
+    { source: UMAMI_COLLECT_PATH, destination: `${umamiUrl}/api/send` },
+  ]
+}
 
 const nextConfig: NextConfig = {
   images: {
@@ -55,12 +74,7 @@ const nextConfig: NextConfig = {
   rewrites() {
     return Promise.resolve({
       beforeFiles: [],
-      afterFiles: [
-        {
-          source: `${STATS_PROXY_PREFIX}/:path*`,
-          destination: `${umamiUrl}/:path*`,
-        },
-      ],
+      afterFiles: umamiRewrites(),
       fallback: [],
     })
   },

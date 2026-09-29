@@ -45,6 +45,10 @@ export const INSIGHTS_TIMEOUT_MS = 30_000
 export const UMAMI_REQUEST_TIMEOUT_MS = 10_000
 export const TOP_ROWS = 10
 export const MAX_UTM_VALUE_LENGTH = 100
+/** Cap for other visitor-controlled strings (paths, referrer hosts, Umami channel names). */
+export const MAX_TEXT_LENGTH = 200
+/** Requested row count for the event metric: larger than AnalyticsEvent's member count so no known event is cut before the unknown-name filter runs. */
+export const EVENT_ROWS = 50
 
 /** Events that mean a visitor tried to reach the barn. Summed per channel in the digest. */
 export const CONTACT_EVENTS: readonly AnalyticsEvent[] = [

@@ -72,3 +72,10 @@ export const META_CLICK_ID_PARAM = 'fbclid'
 
 /** Events queued in the browser until the tracker script has loaded. */
 export const MAX_QUEUED_EVENTS = 20
+
+/** Same-origin prefix the browser uses for the Umami tracker and its collect endpoint. */
+export const STATS_PROXY_PREFIX = '/stats'
+/** Same-origin path next.config rewrites to the Umami tracker script. */
+export const UMAMI_SCRIPT_PATH = `${STATS_PROXY_PREFIX}/script.js`
+/** Same-origin path next.config rewrites to Umami's collect endpoint. */
+export const UMAMI_COLLECT_PATH = `${STATS_PROXY_PREFIX}/api/send`

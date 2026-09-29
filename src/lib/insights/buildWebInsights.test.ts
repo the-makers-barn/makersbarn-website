@@ -1,7 +1,16 @@
 import { describe, expect, it } from 'vitest'
 
 import { AnalyticsEvent, Channel } from '@/constants/analytics'
-import { InsightsDomain, InsightsPeriod, InsightsSource, MAX_UTM_VALUE_LENGTH, TOP_ROWS, UmamiMetricType, UmamiUtmType } from '@/constants/insights'
+import {
+  InsightsDomain,
+  InsightsPeriod,
+  InsightsSource,
+  MAX_TEXT_LENGTH,
+  MAX_UTM_VALUE_LENGTH,
+  TOP_ROWS,
+  UmamiMetricType,
+  UmamiUtmType,
+} from '@/constants/insights'
 import type { UmamiEventValue, UmamiMetric, UmamiReader, UmamiStats, UmamiUtmMetric } from '@/services/umami'
 
 import { buildWebInsights } from './buildWebInsights'
@@ -117,5 +126,45 @@ describe('buildWebInsights', () => {
     expect(insights.period).toEqual({ kind: InsightsPeriod.WEEK, from: '2026-09-21', to: '2026-09-27', timezone: 'Europe/Amsterdam' })
     expect(insights.previousPeriod).toEqual({ from: '2026-09-14', to: '2026-09-20' })
     expect(insights.generatedAt).toBe('2026-09-28T06:00:12.000Z')
+  })
+
+  it('drops event metric rows whose name is not an AnalyticsEvent member', async () => {
+    const withUnknownEvent: FakeData = {
+      ...BASE,
+      metrics: {
+        ...BASE.metrics,
+        [UmamiMetricType.EVENT]: {
+          [CURRENT.startAt]: [
+            ...(BASE.metrics[UmamiMetricType.EVENT]?.[CURRENT.startAt] ?? []),
+            { x: 'some_unknown_event', y: 12 },
+          ],
+          [PREVIOUS.startAt]: BASE.metrics[UmamiMetricType.EVENT]?.[PREVIOUS.startAt] ?? [],
+        },
+      },
+    }
+    const insights = await buildWebInsights(fakeReader(withUnknownEvent), PERIODS, NOW)
+    expect(insights.events.some((row) => row.name === 'some_unknown_event')).toBe(false)
+    expect(insights.events).toEqual([
+      { name: AnalyticsEvent.CONTACT_FORM_SUBMITTED, current: 7, previous: 4 },
+      { name: AnalyticsEvent.CALCULATOR_LOADED, current: 40, previous: 0 },
+      { name: AnalyticsEvent.BOOKING_FORM_SUBMITTED, current: 0, previous: 2 },
+    ])
+  })
+
+  it('sanitizes and caps visitor-controlled strings from Umami', async () => {
+    const dirtyPath = `/<script>alert(1)</script>\x00\r\n${'a'.repeat(MAX_TEXT_LENGTH)}`
+    const dirty: FakeData = {
+      ...BASE,
+      metrics: {
+        ...BASE.metrics,
+        [UmamiMetricType.PATH]: { [CURRENT.startAt]: [{ x: dirtyPath, y: 5 }] },
+      },
+    }
+    const insights = await buildWebInsights(fakeReader(dirty), PERIODS, NOW)
+    const [topPage] = insights.topPages
+    expect(topPage.path).not.toContain('<')
+    expect(topPage.path).not.toContain('>')
+    expect(topPage.path).not.toContain('\x00')
+    expect(topPage.path.length).toBeLessThanOrEqual(MAX_TEXT_LENGTH)
   })
 })

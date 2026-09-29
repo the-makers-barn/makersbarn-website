@@ -54,8 +54,8 @@ Cost estimate: 3 to 5 euro per month, nearly all of it Postgres.
 
 - A client component `src/components/client/UmamiTracker/UmamiTracker.tsx`, rendered once in `src/app/layout.tsx`, renders Umami's tracker with `next/script`, strategy `afterInteractive`. It renders nothing when `NEXT_PUBLIC_UMAMI_WEBSITE_ID` is unset, so local development sends nothing.
 - Script attributes: `src="/stats/script.js"`, `data-website-id`, `data-exclude-hash="true"` (the site navigates to `#booking` fragments, which must not split path metrics). No `data-host-url`: the tracker derives its host from the script's own directory, so it posts to `/stats/api/send`.
-- One rewrite in `next.config.ts`, phase `afterFiles`: `{ source: '/stats/:path*', destination: `${UMAMI_URL}/:path*` }`. It covers `script.js` and `api/send`. Next.js proxies external rewrites with the request body, method and headers intact and adds `x-forwarded-host`; through Cloudflare the `cf-connecting-ip`, `cf-ipcountry` and `user-agent` headers reach Umami, which reads them for IP and country.
-- `UMAMI_URL` is read at build time. Unset → `http://localhost:3000` and no script tag, so local dev works without Umami. Changing it needs a rebuild.
+- Two exact rewrites in `next.config.ts`, phase `afterFiles`: `{ source: '/stats/script.js', destination: `${UMAMI_URL}/script.js` }` and `{ source: '/stats/api/send', destination: `${UMAMI_URL}/api/send` }` — never a `/:path*` wildcard, so nothing else under `/stats` reaches Umami. Both sources derive from one exported `STATS_PROXY_PREFIX` constant (`src/constants/analytics.ts`). Next.js proxies external rewrites with the request body, method and headers intact and adds `x-forwarded-host`; through Cloudflare the `cf-connecting-ip`, `cf-ipcountry` and `user-agent` headers reach Umami, which reads them for IP and country.
+- `UMAMI_URL` is read at build time. Unset → no rewrites are registered (`afterFiles` is empty) and no script tag, so local dev works without Umami and never proxies to Next's own dev port. Changing it needs a rebuild.
 - Middleware: `/stats/` is added to `SKIP_PATHS`. `/stats/script.js` already skips via its extension; `/stats/api/send` has no extension and would otherwise hit the unknown-path 404.
 - The `UmamiTracker` component's `onLoad` calls `flushQueuedEvents()` (below) and `rememberAttribution()`.
 
@@ -185,7 +185,7 @@ Added to `.env.example` and set on Railway:
 - The site never stores the Umami admin password. The reader's API key can only view one website.
 - The endpoint returns aggregates only. No IPs, no session ids.
 - The secret is compared with `crypto.timingSafeEqual` after a length check; a missing server secret is a 503, never a comparison against an empty string.
-- The `/stats/api/send` rewrite exposes Umami's collect endpoint on the site's domain. That is by design and is what Umami's own proxy guide recommends. Umami validates the website id on every hit. Event property values are therefore untrusted and are normalised in the builder.
+- The `/stats/api/send` rewrite exposes Umami's collect endpoint on the site's domain; `/stats/script.js` is the only other path proxied, and both are exact matches, never a wildcard. That is by design and is what Umami's own proxy guide recommends. Umami validates the website id on every hit. Event property values, top pages, referrer hosts, Umami channel names and UTM values are therefore untrusted and are sanitised (`sanitizePlainText`, capped length) in the builder.
 
 ## Testing
 

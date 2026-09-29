@@ -1,13 +1,16 @@
-import { ATTRIBUTION_CHANNEL_KEY, Channel } from '@/constants/analytics'
+import { AnalyticsEvent, ATTRIBUTION_CHANNEL_KEY, Channel } from '@/constants/analytics'
 import {
   CONTACT_EVENTS,
+  EVENT_ROWS,
   InsightsDomain,
   InsightsSource,
+  MAX_TEXT_LENGTH,
   MAX_UTM_VALUE_LENGTH,
   TOP_ROWS,
   UmamiMetricType,
   UmamiUtmType,
 } from '@/constants/insights'
+import { sanitizePlainText } from '@/lib/security'
 import type { UmamiEventValue, UmamiMetric, UmamiReader, UmamiStats, UmamiUtmMetric } from '@/services/umami'
 import type { ContactsByChannelRow, EventRow, MetricComparison, UtmRow, WebInsights } from '@/types/insights'
 
@@ -37,7 +40,16 @@ function bounceRatePct(stats: UmamiStats): number {
 }
 
 function toUtmRows(rows: UmamiUtmMetric[]): UtmRow[] {
-  return rows.slice(0, TOP_ROWS).map((row) => ({ value: row.utm.slice(0, MAX_UTM_VALUE_LENGTH), views: row.views }))
+  return rows.slice(0, TOP_ROWS).map((row) => ({ value: sanitizePlainText(row.utm, MAX_UTM_VALUE_LENGTH), views: row.views }))
+}
+
+function isAnalyticsEvent(value: string): value is AnalyticsEvent {
+  return (Object.values(AnalyticsEvent) as string[]).includes(value)
+}
+
+/** Drops event names Umami returned that are not in the AnalyticsEvent enum, so nothing outside the digest's known vocabulary reaches its consumers. */
+function toKnownEventRows(rows: UmamiMetric[]): UmamiMetric[] {
+  return rows.filter((row) => isAnalyticsEvent(row.x))
 }
 
 function pairEvents(current: UmamiMetric[], previous: UmamiMetric[]): EventRow[] {
@@ -89,8 +101,8 @@ export async function buildWebInsights(reader: UmamiReader, periods: ReportingPe
     reader.getMetrics(current, UmamiMetricType.PATH, TOP_ROWS),
     reader.getMetrics(current, UmamiMetricType.REFERRER, TOP_ROWS),
     reader.getMetrics(current, UmamiMetricType.CHANNEL, TOP_ROWS),
-    reader.getMetrics(current, UmamiMetricType.EVENT, TOP_ROWS),
-    reader.getMetrics(previous, UmamiMetricType.EVENT, TOP_ROWS),
+    reader.getMetrics(current, UmamiMetricType.EVENT, EVENT_ROWS),
+    reader.getMetrics(previous, UmamiMetricType.EVENT, EVENT_ROWS),
     reader.getUtmMetrics(current, UmamiUtmType.CAMPAIGN),
     reader.getUtmMetrics(current, UmamiUtmType.SOURCE),
     reader.getUtmMetrics(current, UmamiUtmType.MEDIUM),
@@ -108,15 +120,17 @@ export async function buildWebInsights(reader: UmamiReader, periods: ReportingPe
       avgVisitSeconds: compare(avgVisitSeconds(currentStats), avgVisitSeconds(previousStats)),
       bounceRatePct: compare(bounceRatePct(currentStats), bounceRatePct(previousStats)),
     },
-    topPages: paths.slice(0, TOP_ROWS).map((row) => ({ path: row.x, visitors: row.y })),
-    topReferrers: referrers.slice(0, TOP_ROWS).map((row) => ({ host: row.x, visitors: row.y })),
-    umamiChannels: channels.map((row) => ({ channel: row.x, visitors: row.y })),
+    topPages: paths.slice(0, TOP_ROWS).map((row) => ({ path: sanitizePlainText(row.x, MAX_TEXT_LENGTH), visitors: row.y })),
+    topReferrers: referrers
+      .slice(0, TOP_ROWS)
+      .map((row) => ({ host: sanitizePlainText(row.x, MAX_TEXT_LENGTH), visitors: row.y })),
+    umamiChannels: channels.map((row) => ({ channel: sanitizePlainText(row.x, MAX_TEXT_LENGTH), visitors: row.y })),
     campaigns: {
       [UmamiUtmType.CAMPAIGN]: toUtmRows(utmCampaign),
       [UmamiUtmType.SOURCE]: toUtmRows(utmSource),
       [UmamiUtmType.MEDIUM]: toUtmRows(utmMedium),
     },
-    events: pairEvents(currentEvents, previousEvents),
+    events: pairEvents(toKnownEventRows(currentEvents), toKnownEventRows(previousEvents)),
     contactsByChannel: sumContactsByChannel(contactValues),
     generatedAt: now.toISOString(),
     source: InsightsSource.UMAMI,

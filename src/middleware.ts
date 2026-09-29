@@ -11,7 +11,7 @@ import {
   LANGUAGE_HEADER_NAME,
   getCanonicalHostRedirect,
 } from '@/lib'
-import { DEFAULT_LANGUAGE } from '@/constants'
+import { DEFAULT_LANGUAGE, STATS_PROXY_PREFIX } from '@/constants'
 import { CHEF_SLUGS as CHEF_SLUG_LIST } from '@/data/chefs/slugs'
 import { isValidLocale } from '@/lib/locale'
 import {
@@ -91,7 +91,7 @@ const SECURITY_HEADERS = {
  * into the unknown-path 404. `/stats/` is the same-origin proxy for the Umami
  * tracker; its collect call has no extension.
  */
-const SKIP_PATHS = ['/_next/', '/_vercel/', '/.well-known/', '/api/', '/static/', '/public/', '/stats/'] as const
+const SKIP_PATHS = ['/_next/', '/_vercel/', '/.well-known/', '/api/', '/static/', '/public/', `${STATS_PROXY_PREFIX}/`] as const
 
 function shouldSkipMiddleware(pathname: string): boolean {
   return SKIP_PATHS.some((path) => pathname.startsWith(path)) || hasStaticAssetExtension(pathname)
