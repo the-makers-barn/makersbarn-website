@@ -88,9 +88,10 @@ const SECURITY_HEADERS = {
  * Namespaces that must reach their own handler untouched. `/_vercel/` is served
  * by the platform ahead of this function, and `/.well-known/` is a standardised
  * namespace (domain verification, app association) that would otherwise fall
- * into the unknown-path 404.
+ * into the unknown-path 404. `/stats/` is the same-origin proxy for the Umami
+ * tracker; its collect call has no extension.
  */
-const SKIP_PATHS = ['/_next/', '/_vercel/', '/.well-known/', '/api/', '/static/', '/public/'] as const
+const SKIP_PATHS = ['/_next/', '/_vercel/', '/.well-known/', '/api/', '/static/', '/public/', '/stats/'] as const
 
 function shouldSkipMiddleware(pathname: string): boolean {
   return SKIP_PATHS.some((path) => pathname.startsWith(path)) || hasStaticAssetExtension(pathname)
