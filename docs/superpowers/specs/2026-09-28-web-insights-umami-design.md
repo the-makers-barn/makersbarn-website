@@ -1,7 +1,7 @@
 # Web insights: Umami analytics and the `/api/insights/web` endpoint
 
-Date: 2026-09-28
-Status: approved in conversation, awaiting written review
+Date: 2026-09-28, revised 2026-09-29 after three reviews (backend/security, frontend tracking, Umami API verification against v3.4.0 source and docs)
+Status: approved in conversation; revised per review; being implemented
 
 ## Purpose
 
@@ -23,14 +23,14 @@ Decisions already taken:
 ## Architecture
 
 ```
-visitor browser ── /stats/script.js, /stats/send ──▶ Next.js site (Railway)
-                                                        │ rewrites
-                                                        ▼
-                                              Umami service (Railway)
-                                                        │
-                                              Postgres service (Railway)
+visitor browser ── /stats/script.js, /stats/api/send ──▶ Next.js site (Railway)
+                                                            │ rewrite /stats/:path* → UMAMI_URL/:path*
+                                                            ▼
+                                                  Umami service (Railway)
+                                                            │
+                                                  Postgres service (Railway)
 
-scheduled Claude task ── GET /api/insights/web?period=week ──▶ Next.js site ── Umami API ──▶ Umami
+scheduled Claude task ── GET /api/insights/web?period=week ──▶ Next.js site ── Umami API (Bearer API key) ──▶ Umami
                          Authorization: Bearer <INSIGHTS_API_SECRET>
 ```
 
@@ -39,11 +39,11 @@ Three components: Umami on Railway, tracking in the site, and the insights endpo
 ## 1. Umami on Railway
 
 - Project: the existing `makersbarn-website` Railway project (SIP workspace), same environment as the site.
-- New service `postgres`: Railway managed Postgres. Umami uses its own database in it; a future backend can use the same instance with a separate database.
-- New service `umami`: Docker image `ghcr.io/umami-software/umami:postgresql-latest`. Variables: `DATABASE_URL` (reference to the Postgres service), `APP_SECRET` (random 32 bytes). Port 3000. Health check `/api/heartbeat`.
-- Domain: `analytics.themakersbarn.nl`, Cloudflare CNAME to the Railway target, DNS-only. The dashboard is for Benny, not for visitors, so no proxy or cache is needed there.
-- First login is `admin` / `umami`. Benny changes the password in the dashboard. Then a website entry `themakersbarn.nl` is created; its id becomes `NEXT_PUBLIC_UMAMI_WEBSITE_ID`.
-- A second, non-admin Umami user `insights-reader` with view access to that website is created for the endpoint, so the site never holds the admin password.
+- Service `Postgres`: Railway managed Postgres. Umami uses its own database in it; a future backend can use the same instance with a separate database.
+- Service `umami`: Docker image pinned to `ghcr.io/umami-software/umami:postgresql-v3.4.0`. A floating `latest` tag would let a redeploy change API response shapes under the endpoint. Variables: `DATABASE_URL` (reference `${{Postgres.DATABASE_URL}}`), `APP_SECRET` (random 32 bytes), `DISABLE_TELEMETRY=1`. The image already binds `0.0.0.0:3000`. Health check `GET /api/heartbeat` returns `{ "ok": true }`; the first boot runs database migrations, so the health check timeout is set to 300 seconds.
+- Domain: `analytics.themakersbarn.nl`, Cloudflare CNAME to the Railway target, DNS-only. Railway issues the certificate. The dashboard is for Benny only.
+- First login is `admin` / `umami`. Benny changes the password in the dashboard.
+- Setup done by the build, using the admin login once through the API: create website `themakersbarn.nl` (its id becomes `NEXT_PUBLIC_UMAMI_WEBSITE_ID`), create team `insights` with the website in it, create user `insights-reader` as a view-only team member, log in as that user and create an API key. The key is `umami_` plus 32 characters and never expires. If team permissions block the reader's key from `event-data`, the fallback is an API key created by admin, recorded on the run ledger as a decision.
 - Backups: Railway Postgres daily backups are enabled on the service. Nothing else.
 
 Cost estimate: 3 to 5 euro per month, nearly all of it Postgres.
@@ -52,76 +52,89 @@ Cost estimate: 3 to 5 euro per month, nearly all of it Postgres.
 
 ### Script loading
 
-- `src/app/layout.tsx` renders Umami's tracker with `next/script`, strategy `afterInteractive`, only when `NEXT_PUBLIC_UMAMI_WEBSITE_ID` is set. Local development without that variable sends nothing.
-- The script is loaded from the site's own origin: `src="/stats/script.js"` with `data-host-url="/stats"` and `data-website-id`. Two `rewrites()` entries in `next.config.ts` forward `/stats/script.js` to `${UMAMI_URL}/script.js` and `/stats/send` to `${UMAMI_URL}/api/send`. Ad blockers match on hostnames and the word "umami"; neither appears.
-- `data-exclude-search="true"` is not set: UTM and click ids in the query string are what the attribution needs. Umami stores them per session, not as page paths.
-- Middleware: `/stats/` is added to `SKIP_PATHS` so the rewrite is not treated as an unknown route.
+- A client component `src/components/client/UmamiTracker/UmamiTracker.tsx`, rendered once in `src/app/layout.tsx`, renders Umami's tracker with `next/script`, strategy `afterInteractive`. It renders nothing when `NEXT_PUBLIC_UMAMI_WEBSITE_ID` is unset, so local development sends nothing.
+- Script attributes: `src="/stats/script.js"`, `data-website-id`, `data-exclude-hash="true"` (the site navigates to `#booking` fragments, which must not split path metrics). No `data-host-url`: the tracker derives its host from the script's own directory, so it posts to `/stats/api/send`.
+- One rewrite in `next.config.ts`, phase `afterFiles`: `{ source: '/stats/:path*', destination: `${UMAMI_URL}/:path*` }`. It covers `script.js` and `api/send`. Next.js proxies external rewrites with the request body, method and headers intact and adds `x-forwarded-host`; through Cloudflare the `cf-connecting-ip`, `cf-ipcountry` and `user-agent` headers reach Umami, which reads them for IP and country.
+- `UMAMI_URL` is read at build time. Unset → `http://localhost:3000` and no script tag, so local dev works without Umami. Changing it needs a rebuild.
+- Middleware: `/stats/` is added to `SKIP_PATHS`. `/stats/script.js` already skips via its extension; `/stats/api/send` has no extension and would otherwise hit the unknown-path 404.
+- The `UmamiTracker` component's `onLoad` calls `flushQueuedEvents()` (below) and `rememberAttribution()`.
 
 ### Channel attribution on the client
 
 Umami records referrers and UTM tags per session, but its events API cannot join an event to the session's referrer. Contacts per channel therefore come from a property the site attaches to every event.
 
 - New module `src/lib/attribution.ts` (client-safe, pure functions plus a thin storage wrapper):
-  - `classifyChannel(referrer: string, params: URLSearchParams): Channel` returns one of the `Channel` enum values below.
-  - `rememberAttribution()` runs once per visit on first page load: it classifies, stores `{ channel, campaign }` in `sessionStorage`, and never overwrites an existing value, so the landing page wins.
-  - `getAttribution(): Attribution` reads it back, with `Channel.UNKNOWN` when storage is unavailable.
-- `Channel` enum in `src/constants/analytics.ts`: `INSTAGRAM_PAID`, `INSTAGRAM_ORGANIC`, `FACEBOOK`, `GOOGLE`, `AI_ASSISTANT`, `DIRECT`, `OTHER`, `UNKNOWN`.
-- Rules, evaluated in this order:
-  1. `utm_source` in {instagram, ig, facebook, fb, meta} and `utm_medium` in {paid, paid-social, paidsocial, cpc, ppc} → `INSTAGRAM_PAID` (Facebook sources also count as paid Meta traffic; the label stays "Instagram paid" because that is where the ads run).
-  2. `fbclid` present → `INSTAGRAM_PAID`. Meta adds this to ad clicks even when the ad has no UTM tags.
-  3. referrer host is `instagram.com` or `l.instagram.com` → `INSTAGRAM_ORGANIC`; `facebook.com`, `l.facebook.com`, `lm.facebook.com` → `FACEBOOK`.
-  4. `utm_source` is `chatgpt.com`, or referrer host is one of `chatgpt.com`, `chat.openai.com`, `perplexity.ai`, `claude.ai`, `gemini.google.com`, `copilot.microsoft.com`, `you.com` → `AI_ASSISTANT`.
-  5. referrer host matches `google.` → `GOOGLE`.
-  6. no referrer and no UTM → `DIRECT`.
-  7. anything else → `OTHER`.
-  The host lists are named constants in `src/constants/analytics.ts`.
-- `campaign` is `utm_campaign` when present, else empty.
+  - `classifyChannel(input: { referrer: string; currentHost: string; params: URLSearchParams }): Channel`.
+  - `rememberAttribution()` classifies from `document.referrer`, `window.location`, and stores `{ attribution_channel, attribution_campaign? }` in `sessionStorage` under one key. It never overwrites an existing value, so the landing page wins.
+  - `getAttribution(): Attribution` reads it back; when nothing is stored it classifies and stores lazily (so an event fired before the tracker's `onLoad` still gets the landing attribution). When storage is unavailable it returns `{ attribution_channel: Channel.UNKNOWN }` without throwing.
+- `Channel` enum in `src/constants/analytics.ts`: `INSTAGRAM_PAID = 'instagram_paid'`, `META_ORGANIC = 'meta_organic'`, `AI_ASSISTANT = 'ai_assistant'`, `GOOGLE = 'google'`, `DIRECT = 'direct'`, `OTHER = 'other'`, `UNKNOWN = 'unknown'`. Instagram and Facebook organic traffic share one bucket: the ads run on Instagram, and organic Meta traffic is one line in the digest.
+- All comparisons are case-insensitive on lower-cased values; referrer host is the hostname with a leading `www.` removed. Rules, evaluated in this order:
+  0. A referrer whose host equals `currentHost` counts as no referrer (internal navigation in a fresh tab or with blocked storage).
+  1. `utm_source` in `META_UTM_SOURCES` = {instagram, ig, facebook, fb, meta} and `utm_medium` in `PAID_UTM_MEDIUMS` = {paid, paid-social, paid_social, paidsocial, cpc, ppc} → `INSTAGRAM_PAID`. Paid is decided by UTM tags only.
+  2. `utm_source` is `chatgpt.com`, or referrer host is in `AI_ASSISTANT_HOSTS` = {chatgpt.com, chat.openai.com, perplexity.ai, claude.ai, gemini.google.com, copilot.microsoft.com, meta.ai, you.com} → `AI_ASSISTANT`. Checked before Google so `gemini.google.com` is not swallowed.
+  3. `utm_source` in `META_UTM_SOURCES` without a paid medium, or `fbclid` present, or referrer host in `META_HOSTS` = {instagram.com, l.instagram.com, facebook.com, l.facebook.com, lm.facebook.com, m.facebook.com} → `META_ORGANIC`. Meta appends `fbclid` to organic outbound clicks too, so it never means paid.
+  4. referrer host matches `^google\.[a-z.]+$` → `GOOGLE`.
+  5. no referrer and no `utm_source` → `DIRECT`.
+  6. anything else → `OTHER`.
+  The lists are named constants in `src/constants/analytics.ts`.
+- `attribution_campaign` is `utm_campaign` when present and non-empty; otherwise the property is omitted (Umami stores an empty string as a value).
+- Until the person running the ads adds UTM tags, Instagram ad clicks land in `META_ORGANIC` or, when the in-app browser strips the referrer, in `DIRECT`. The rollout hands them the template.
 
 ### `track()`
 
 - `src/lib/analytics.ts` keeps its signature `track(event: AnalyticsEvent, properties?: AnalyticsProperties)`.
-- It merges `{ channel, campaign }` from `getAttribution()` into the properties and calls `window.umami.track(event, merged)` when `window.umami` exists. When it does not (local dev, blocked script), it logs at debug level as today.
-- The 10 existing call sites do not change.
-- A `window.umami` type declaration lives in `src/types/umami.d.ts`.
+- It builds `{ ...getAttribution(), ...properties }` (call-site properties win; the attribution keys are prefixed so nothing collides with the existing `channel` property that the share buttons send) and calls `window.umami.track(event, merged)` when `window.umami` exists.
+- When `window.umami` is absent it queues the call in a module-scope array capped at `MAX_QUEUED_EVENTS = 20` and logs at debug level. `flushQueuedEvents()` drains the queue into `window.umami.track` once the tracker has loaded. In local dev without a website id the queue simply fills to the cap and stops; nothing throws.
+- The 11 existing call sites in 9 files do not change.
+- `src/types/umami.d.ts`: `interface UmamiTracker { track(event: string, data?: AnalyticsProperties): void }` and `declare global { interface Window { umami?: UmamiTracker } }` with `export {}`. Optional so tests can assign and delete it.
 
 ## 3. The insights endpoint
 
 ### Route
 
 - `GET /api/insights/web?period=week|month` in `src/app/api/insights/web/route.ts`, Node runtime, `dynamic = 'force-dynamic'`.
-- Auth: header `Authorization: Bearer <INSIGHTS_API_SECRET>`, compared in constant time. Missing or wrong → 401 with `{ error: 'unauthorized' }`. Missing `period` or unknown value → 400.
-- The route is excluded from the marketing middleware's locale handling: `/api/` is already in `SKIP_PATHS`.
-- Rate limit: the existing `RateLimiter` from `src/lib/security.ts`, 30 requests per 15 minutes per client, so a leaked secret cannot hammer Umami.
+- Every response carries `Cache-Control: private, no-store`. The `.nl` domain is proxied by Cloudflare and must never cache a 200.
+- Order of checks:
+  1. `INSIGHTS_API_SECRET` unset → 503 `{ error: 'not_configured' }`, logged once.
+  2. `Authorization: Bearer <secret>` compared with `crypto.timingSafeEqual` after a length check. Missing or wrong → 401 `{ error: 'unauthorized' }`.
+  3. Rate limit after auth, keyed by the constant `INSIGHTS_RATE_LIMIT_KEY` (there is one legitimate caller), using the existing `RateLimiter` with `INSIGHTS_RATE_LIMIT = { windowMs: 15 min, maxRequests: 30 }` from `src/constants/insights.ts`. Exceeded → 429. The limiter is in-memory per process, which is fine on Railway's single instance. Limiting after auth means an anonymous prober cannot lock the real caller out.
+  4. `period` missing or not an `InsightsPeriod` enum value → 400 `{ error: 'bad_period' }`.
+- Umami failures surface as `UmamiError` → 502 `{ error: 'upstream' }`; the whole build has one budget `INSIGHTS_TIMEOUT_MS = 30_000` → 504 `{ error: 'timeout' }`.
+- Callers must use `https://themakersbarn.nl`; the `.com` and `www` hosts answer with a 308 redirect first.
 
 ### Periods
 
-`src/lib/insights/periods.ts`, pure and tested:
+`src/lib/insights/periods.ts`, pure, takes `now: Date` and uses `@date-fns/tz` (added as a direct dependency; it is already in the lockfile as a transitive dependency) with `Europe/Amsterdam`:
 
-- `week`: the last complete Monday-to-Sunday week in `Europe/Amsterdam`, and the week before it as the comparison. Run on Monday morning it reports the week that just ended.
-- `month`: the last complete calendar month, and the month before it.
-- Both return `{ current: { from, to }, previous: { from, to }, label }` as Unix milliseconds plus ISO date strings for the JSON.
+- `week`: the last complete Monday-to-Sunday week (`startOfWeek` with `weekStartsOn: 1` in the zone, minus one week) and the week before it.
+- `month`: the last complete calendar month and the month before it.
+- Each range is `{ startAt, endAt }` in Unix milliseconds, `startAt` inclusive and `endAt` exclusive at Amsterdam midnight, plus `from` and `to` as inclusive `YYYY-MM-DD` strings for the JSON. Never subtract `7 * 86400000`: DST weeks are 167 or 169 hours.
 
 ### Umami client
 
-`src/services/umami.ts`:
+`src/services/umami.ts`, one `UMAMI_URL`, no runtime fallback:
 
-- Logs in with `POST /api/auth/login` using `UMAMI_API_USERNAME` and `UMAMI_API_PASSWORD`, keeps the token in module scope, and logs in again on a 401.
-- `getStats(range)` → `GET /api/websites/{id}/stats?startAt&endAt` (pageviews, visitors, visits, bounces, totaltime).
-- `getMetrics(range, type, limit)` → `GET /api/websites/{id}/metrics?type=…` for `path`, `referrer`, `channel`, `event`, `query`.
-- `getEventPropertyValues(range, event, property)` → `GET /api/websites/{id}/event-data/values?event&propertyName`.
-- All calls go to `UMAMI_URL` over the private Railway network when available (`http://umami.railway.internal:3000`), falling back to the public URL. Timeout 10 seconds per call. Errors surface as a typed `UmamiError`; the route answers 502 with a short message.
+- Every call sends `Authorization: Bearer ${UMAMI_API_KEY}`. Umami 3.4 self-hosted accepts API keys in that header. No login, no token cache.
+- `getStats(range)` → `GET /api/websites/{id}/stats?startAt&endAt`; the response is `{ pageviews, visitors, visits, bounces, totaltime, comparison }` with plain numbers. The client ignores `comparison`; the builder asks for the previous period explicitly so `month` compares calendar months.
+- `getMetrics(range, type: UmamiMetricType, limit)` → `GET /api/websites/{id}/metrics?type=…&limit=…`, response `[{ x, y }]`. Types used: `path`, `referrer`, `channel`, `event`.
+- `getUtmMetrics(range, type: UmamiUtmType)` → `GET /api/websites/{id}/utm/metrics?type=utm_campaign|utm_source|utm_medium`, response `[{ utm, views }]`. Verified against the live instance at build time; if the endpoint differs on v3.4.0, the fallback is the `utmCampaign` / `utmSource` / `utmMedium` metric types on `/metrics`.
+- `getEventPropertyValues(range, eventName, propertyName)` → `GET /api/websites/{id}/event-data/values?eventName&propertyName`, response `[{ value, total }]`.
+- Each fetch has `UMAMI_REQUEST_TIMEOUT_MS = 10_000` via `AbortSignal.timeout`. Non-2xx or non-JSON → `UmamiError` with the status.
+- In production `UMAMI_URL` is the private Railway URL `http://umami.railway.internal:3000` (IPv6 private network; Node's fetch handles it). The rollout verifies it from the site container and falls back to the public URL if it does not resolve.
 
 ### Builder
 
-`src/lib/insights/buildWebInsights.ts`, pure, takes a `UmamiReader` interface so tests use a fake:
+`src/lib/insights/buildWebInsights.ts`, pure, takes a `UmamiReader` interface so tests use a fake. All Umami calls run with `Promise.all`.
 
-1. Stats for current and previous period → totals and percentage changes.
-2. `path` metrics, top 10 → `topPages`.
-3. `channel` metrics from Umami (its own grouping, for example `organicSearch`, `organicSocial`, `paidSocial`, `referral`) → `umamiChannels`, passed through exactly as Umami names them.
-4. `referrer` metrics → `topReferrers`, top 10.
-5. `query` metrics filtered to `utm_` keys → `campaigns`.
-6. `event` metrics → `events` with current and previous counts.
-7. For each contact event (`contact_form_submitted`, `booking_form_submitted`, `question_form_submitted`, `whatsapp_booking_clicked`, `ticketshop_cta_clicked`), `event-data/values` on property `channel` → `contactsByChannel` summed over those events, keyed by our `Channel` enum.
+1. Stats for current and previous period → totals and changes.
+2. `path` metrics, capped at `TOP_ROWS = 10` → `topPages`.
+3. `channel` metrics → `umamiChannels`, passed through exactly as Umami names them (`direct`, `paidAds`, `referral`, `llm`, `organicSearch`, `organicSocial`, `paidSocial`, …). Note: with the recommended UTM template Umami classifies Instagram ads as `paidAds`, because `utm_medium=paid-social` matches its `paid` rule.
+4. `referrer` metrics, top 10 → `topReferrers`.
+5. UTM metrics for campaign, source and medium, top 10 each, values truncated to `MAX_UTM_VALUE_LENGTH = 100` → `campaigns`.
+6. `event` metrics for both periods → `events` with current and previous counts.
+7. For each contact event in `CONTACT_EVENTS = [CONTACT_FORM_SUBMITTED, BOOKING_FORM_SUBMITTED, QUESTION_FORM_SUBMITTED, WHATSAPP_BOOKING_CLICKED, TICKETSHOP_CTA_CLICKED]` (members of `AnalyticsEvent`), `event-data/values` on property `attribution_channel` → `contactsByChannel`, summed over those events and keyed by the `Channel` enum. Any value that is not a `Channel` member (the collect endpoint is public, so properties are untrusted) is folded into `Channel.UNKNOWN`.
+
+Formulas: `avgVisitSeconds = round(totaltime / visits)`, `bounceRatePct = round1(bounces / visits * 100)`, `changePct = round1((current - previous) / previous * 100)`, `null` when `previous === 0`; `round1` is one decimal.
 
 ### Response
 
@@ -137,10 +150,14 @@ Umami records referrers and UTM tags per session, but its events API cannot join
     "avgVisitSeconds": { "current": 96, "previous": 88, "changePct": 9.1 },
     "bounceRatePct": { "current": 41.2, "previous": 44.0, "changePct": -6.4 }
   },
-  "topPages": [ { "path": "/nl", "views": 640 } ],
+  "topPages": [ { "path": "/nl", "visitors": 640 } ],
   "topReferrers": [ { "host": "instagram.com", "visitors": 120 } ],
   "umamiChannels": [ { "channel": "organicSocial", "visitors": 130 } ],
-  "campaigns": [ { "key": "utm_campaign", "value": "autumn-retreat", "visitors": 44 } ],
+  "campaigns": {
+    "utm_campaign": [ { "value": "autumn-retreat", "views": 44 } ],
+    "utm_source": [ { "value": "instagram", "views": 60 } ],
+    "utm_medium": [ { "value": "paid-social", "views": 44 } ]
+  },
   "events": [ { "name": "contact_form_submitted", "current": 7, "previous": 4 } ],
   "contactsByChannel": [ { "channel": "instagram_paid", "contacts": 3 } ],
   "generatedAt": "2026-09-28T06:00:12Z",
@@ -148,7 +165,7 @@ Umami records referrers and UTM tags per session, but its events API cannot join
 }
 ```
 
-`changePct` is `null` when the previous value is 0.
+`domain` and `source` are enum values (`InsightsDomain.WEB`, `InsightsSource.UMAMI`). Umami metric `y` values are visitors for `path`, `referrer` and `channel`.
 
 ### Environment variables
 
@@ -156,41 +173,39 @@ Added to `.env.example` and set on Railway:
 
 | Variable | Where | Meaning |
 |---|---|---|
-| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | site | Umami website id; script loads only when set |
-| `UMAMI_URL` | site | Umami base URL for rewrites and API, private Railway URL in production |
-| `UMAMI_API_USERNAME` | site | the `insights-reader` user |
-| `UMAMI_API_PASSWORD` | site | its password |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | site | Umami website id; tracker renders only when set |
+| `UMAMI_URL` | site | Umami base URL for the rewrite and the API; private Railway URL in production; build-time |
+| `UMAMI_API_KEY` | site | API key of the `insights-reader` user |
 | `INSIGHTS_API_SECRET` | site | bearer secret the scheduled task sends |
-| `DATABASE_URL`, `APP_SECRET` | umami | Umami's own configuration |
-
-`next.config.ts` reads `UMAMI_URL` at build time for the rewrites. When it is unset, the rewrites point at `http://localhost:3000` and the script tag is not rendered, so local dev works without Umami.
+| `DATABASE_URL`, `APP_SECRET`, `DISABLE_TELEMETRY` | umami | Umami's own configuration |
 
 ## Security
 
 - Umami holds no personal data: no cookies, hashed and daily-salted visitor ids.
-- The site never stores the Umami admin password. The reader user can only view one website.
+- The site never stores the Umami admin password. The reader's API key can only view one website.
 - The endpoint returns aggregates only. No IPs, no session ids.
-- The secret is compared with `crypto.timingSafeEqual` after length check.
-- The `/stats/send` rewrite exposes Umami's collect endpoint on the site's domain. That is by design and is what Umami's own proxy guide recommends. Umami validates the website id on every hit.
+- The secret is compared with `crypto.timingSafeEqual` after a length check; a missing server secret is a 503, never a comparison against an empty string.
+- The `/stats/api/send` rewrite exposes Umami's collect endpoint on the site's domain. That is by design and is what Umami's own proxy guide recommends. Umami validates the website id on every hit. Event property values are therefore untrusted and are normalised in the builder.
 
 ## Testing
 
-- `src/lib/attribution.test.ts`: every rule above with a table of referrer and query combinations, including precedence (UTM paid beats Instagram referrer; fbclid beats organic).
-- `src/lib/insights/periods.test.ts`: week and month ranges around month and year boundaries and DST changes, fixed "now" injected.
-- `src/lib/insights/buildWebInsights.test.ts`: fake reader returning canned Umami responses; asserts totals, `changePct` including the zero-previous case, top-10 caps, `contactsByChannel` summation.
-- `src/app/api/insights/web/route.test.ts`: 401 without and with a wrong secret, 400 for a bad period, 200 shape with the builder mocked.
-- `src/lib/analytics.test.ts` updated: `track()` calls `window.umami.track` with merged attribution when present, logs when absent.
+- `src/lib/attribution.test.ts`: a table of referrer and query combinations covering every rule and the precedence (UTM paid beats a Meta referrer; `fbclid` alone is organic; `gemini.google.com` is AI, not Google; same-origin referrer is direct; storage unavailable returns UNKNOWN).
+- `src/lib/insights/periods.test.ts`: week and month ranges around month and year boundaries and both DST changes, with `now` injected.
+- `src/lib/insights/buildWebInsights.test.ts`: fake reader with canned Umami responses; totals, formulas including the zero-previous case, top-10 caps, value truncation, `contactsByChannel` summation and the unknown-value fold.
+- `src/services/umami.test.ts`: fetch mocked; bearer header sent, 401 and 500 become `UmamiError`, timeout becomes `UmamiError`, non-JSON body becomes `UmamiError`.
+- `src/app/api/insights/web/route.test.ts`: 503 without server secret, 401 without and with wrong secret and with a different-length secret, 400 bad period, 429 after the limit, 200 shape with the builder mocked, `Cache-Control: private, no-store` on every response.
+- `src/lib/analytics.test.ts` updated: `track()` calls `window.umami.track` with merged attribution when present; queues and flushes when absent; the queue caps at 20; call-site properties win over attribution keys.
 - Existing test suite stays green.
 
 ## Rollout
 
-1. Railway: add Postgres, add Umami, set variables, add `analytics.themakersbarn.nl` in Cloudflare. Benny logs in and changes the password. Create website entry and reader user.
-2. Site: deploy the tracking change with `NEXT_PUBLIC_UMAMI_WEBSITE_ID` set. Verify in Umami's realtime view that a visit and one test event arrive with a `channel` property.
-3. Site: deploy the endpoint. Verify with `curl -H "Authorization: Bearer …" https://themakersbarn.nl/api/insights/web?period=week`.
+1. Railway: Postgres and Umami are up, `analytics.themakersbarn.nl` is in Cloudflare. Pin the image tag. Benny changes the admin password. The build creates the website entry, team, reader user and API key through the API.
+2. Site: deploy the tracking change with `NEXT_PUBLIC_UMAMI_WEBSITE_ID` and `UMAMI_URL` set. Verify from the site container that `http://umami.railway.internal:3000/api/heartbeat` answers. Verify in Umami's realtime view that a visit and one test event arrive with an `attribution_channel` property, and that visitors are not all one country (if they are, set `CLIENT_IP_HEADER` on Umami).
+3. Site: deploy the endpoint. Verify with `curl -H "Authorization: Bearer …" "https://themakersbarn.nl/api/insights/web?period=week"`.
 4. Hand Benny a one-paragraph instruction for the scheduled task: URL, header, and the JSON fields to use.
-5. Forward the UTM template to the person running the ads: `utm_source=instagram&utm_medium=paid-social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`. Until they add it, `fbclid` still marks paid clicks.
+5. Forward the UTM template to the person running the ads: `utm_source=instagram&utm_medium=paid-social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`. Until they add it, ad clicks count as Meta organic or direct.
 
 ## Open points
 
-- Umami's built-in channel grouping and our own `Channel` enum will not match one to one. The endpoint returns both; the email agent decides which to show. If that proves confusing, drop `umamiChannels` later.
+- Umami's built-in channel grouping and our own `Channel` enum will not match one to one. The endpoint returns both; the email agent decides which to show.
 - The first week after launch has no previous period; `changePct` is `null` and the agent should say so.
