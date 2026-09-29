@@ -48,7 +48,10 @@ const BASE: FakeData = {
     [UmamiMetricType.CHANNEL]: { [CURRENT.startAt]: [{ x: 'organicSocial', y: 130 }, { x: 'llm', y: 9 }] },
     [UmamiMetricType.EVENT]: {
       [CURRENT.startAt]: [{ x: AnalyticsEvent.CONTACT_FORM_SUBMITTED, y: 7 }, { x: AnalyticsEvent.CALCULATOR_LOADED, y: 40 }],
-      [PREVIOUS.startAt]: [{ x: AnalyticsEvent.CONTACT_FORM_SUBMITTED, y: 4 }],
+      [PREVIOUS.startAt]: [
+        { x: AnalyticsEvent.CONTACT_FORM_SUBMITTED, y: 4 },
+        { x: AnalyticsEvent.BOOKING_FORM_SUBMITTED, y: 2 },
+      ],
     },
   },
   utm: {
@@ -94,6 +97,7 @@ describe('buildWebInsights', () => {
     expect(insights.events).toEqual([
       { name: AnalyticsEvent.CONTACT_FORM_SUBMITTED, current: 7, previous: 4 },
       { name: AnalyticsEvent.CALCULATOR_LOADED, current: 40, previous: 0 },
+      { name: AnalyticsEvent.BOOKING_FORM_SUBMITTED, current: 0, previous: 2 },
     ])
   })
 

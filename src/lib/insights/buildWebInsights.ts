@@ -42,7 +42,12 @@ function toUtmRows(rows: UmamiUtmMetric[]): UtmRow[] {
 
 function pairEvents(current: UmamiMetric[], previous: UmamiMetric[]): EventRow[] {
   const previousByName = new Map(previous.map((row) => [row.x, row.y]))
-  return current.map((row) => ({ name: row.x, current: row.y, previous: previousByName.get(row.x) ?? 0 }))
+  const currentNames = new Set(current.map((row) => row.x))
+  const currentRows = current.map((row) => ({ name: row.x, current: row.y, previous: previousByName.get(row.x) ?? 0 }))
+  const previousOnlyRows = previous
+    .filter((row) => !currentNames.has(row.x))
+    .map((row) => ({ name: row.x, current: 0, previous: row.y }))
+  return [...currentRows, ...previousOnlyRows]
 }
 
 function isChannel(value: string): value is Channel {
