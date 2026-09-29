@@ -11,6 +11,7 @@ export * from './site'
 export * from './booking'
 export * from './typography'
 export * from './analytics'
+export * from './insights'
 export * from './redirects'
 export * from './tools'
 export {
