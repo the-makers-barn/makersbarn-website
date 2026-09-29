@@ -56,6 +56,7 @@ export class UmamiError extends Error {
 }
 
 const STATS_FIELDS: readonly (keyof UmamiStats)[] = ['pageviews', 'visitors', 'visits', 'bounces', 'totaltime']
+const JSON_CONTENT_TYPE = 'application/json'
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null
@@ -76,11 +77,23 @@ function parseStats(body: unknown): UmamiStats {
   return stats as UmamiStats
 }
 
-function parseRows<T>(body: unknown, keys: readonly string[]): T[] {
+function isMetricRow(row: unknown): row is UmamiMetric {
+  return isRecord(row) && typeof row.x === 'string' && typeof row.y === 'number'
+}
+
+function isUtmRow(row: unknown): row is UmamiUtmMetric {
+  return isRecord(row) && typeof row.utm === 'string' && typeof row.views === 'number'
+}
+
+function isEventValueRow(row: unknown): row is UmamiEventValue {
+  return isRecord(row) && typeof row.value === 'string' && typeof row.total === 'number'
+}
+
+function parseRows<T>(body: unknown, isRow: (row: unknown) => row is T): T[] {
   if (!Array.isArray(body)) {
     throw new UmamiError('expected an array', null)
   }
-  return body.filter((row): row is T => isRecord(row) && keys.every((key) => key in row))
+  return body.filter(isRow)
 }
 
 export function createUmamiClient(config: UmamiClientConfig): UmamiReader {
@@ -93,7 +106,7 @@ export function createUmamiClient(config: UmamiClientConfig): UmamiReader {
     let response: Response
     try {
       response = await fetchImpl(url, {
-        headers: { authorization: `Bearer ${config.apiKey}`, accept: 'application/json' },
+        headers: { authorization: `Bearer ${config.apiKey}`, accept: JSON_CONTENT_TYPE },
         signal: AbortSignal.timeout(UMAMI_REQUEST_TIMEOUT_MS),
       })
     } catch (error) {
@@ -103,7 +116,7 @@ export function createUmamiClient(config: UmamiClientConfig): UmamiReader {
       throw new UmamiError(`umami answered ${response.status} for ${path}`, response.status)
     }
     const contentType = response.headers.get('content-type') ?? ''
-    if (!contentType.includes('application/json')) {
+    if (!contentType.includes(JSON_CONTENT_TYPE)) {
       throw new UmamiError(`umami answered ${contentType || 'no content type'} for ${path}`, response.status)
     }
     try {
@@ -122,18 +135,18 @@ export function createUmamiClient(config: UmamiClientConfig): UmamiReader {
       return parseStats(await getJson('stats', rangeParams(range)))
     },
     async getMetrics(range, type, limit) {
-      return parseRows<UmamiMetric>(await getJson('metrics', { ...rangeParams(range), type, limit: String(limit) }), [
-        'x',
-        'y',
-      ])
+      return parseRows(
+        await getJson('metrics', { ...rangeParams(range), type, limit: String(limit) }),
+        isMetricRow,
+      )
     },
     async getUtmMetrics(range, type) {
-      return parseRows<UmamiUtmMetric>(await getJson('utm/metrics', { ...rangeParams(range), type }), ['utm', 'views'])
+      return parseRows(await getJson('utm/metrics', { ...rangeParams(range), type }), isUtmRow)
     },
     async getEventPropertyValues(range, eventName, propertyName) {
-      return parseRows<UmamiEventValue>(
+      return parseRows(
         await getJson('event-data/values', { ...rangeParams(range), eventName, propertyName }),
-        ['value', 'total'],
+        isEventValueRow,
       )
     },
   }

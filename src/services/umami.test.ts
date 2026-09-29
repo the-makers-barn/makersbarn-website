@@ -72,4 +72,35 @@ describe('createUmamiClient', () => {
     const fetchImpl = vi.fn(() => jsonResponse({ pageviews: 'ten' }))
     await expect(client(fetchImpl as unknown as typeof fetch).getStats(RANGE)).rejects.toBeInstanceOf(UmamiError)
   })
+
+  it('keeps well-typed metric rows and drops rows with a wrong type or missing key', async () => {
+    const fetchImpl = vi.fn(() =>
+      jsonResponse([{ x: '/a', y: 3 }, { x: 5, y: 'abc' }, { x: '/b' }, { y: 1 }]),
+    )
+    const rows = await client(fetchImpl as unknown as typeof fetch).getMetrics(RANGE, UmamiMetricType.PATH, 10)
+    expect(rows).toEqual([{ x: '/a', y: 3 }])
+  })
+
+  it('keeps well-typed utm rows and drops a malformed one', async () => {
+    const fetchImpl = vi.fn(() => jsonResponse([{ utm: 'spring', views: 7 }, { utm: 'broken', views: 'nope' }]))
+    const rows = await client(fetchImpl as unknown as typeof fetch).getUtmMetrics(RANGE, UmamiUtmType.CAMPAIGN)
+    expect(rows).toEqual([{ utm: 'spring', views: 7 }])
+  })
+
+  it('keeps well-typed event-value rows and drops a malformed one', async () => {
+    const fetchImpl = vi.fn(() => jsonResponse([{ value: 'organic', total: 2 }, { value: 9, total: 2 }]))
+    const rows = await client(fetchImpl as unknown as typeof fetch).getEventPropertyValues(
+      RANGE,
+      'contact_form_submitted',
+      'attribution_channel',
+    )
+    expect(rows).toEqual([{ value: 'organic', total: 2 }])
+  })
+
+  it('rejects a non-array metrics body', async () => {
+    const fetchImpl = vi.fn(() => jsonResponse({ x: '/a', y: 3 }))
+    await expect(
+      client(fetchImpl as unknown as typeof fetch).getMetrics(RANGE, UmamiMetricType.PATH, 10),
+    ).rejects.toBeInstanceOf(UmamiError)
+  })
 })
