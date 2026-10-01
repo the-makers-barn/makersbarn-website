@@ -852,6 +852,7 @@ export const en: Dictionary = {
     stats: {
       guests: 'Up to {count} guests',
       bedrooms: { one: '{count} bedroom', other: '{count} bedrooms' },
+      bedroomRange: '{min}–{max} bedrooms',
     },
     rating: 'Rated {score}/{outOf} by {count} guests on {platform}',
     reviews: {
@@ -941,20 +942,20 @@ export const en: Dictionary = {
       },
       horizon: {
         metaTitle: 'Horizon Loft — luxury attic loft in the countryside',
-        metaDescription: 'Stay in the Horizon loft at The Makers Barn: a luxury attic loft for up to 3 guests with a rainfall shower, a well-equipped kitchen and access to the sauna, swimming pond and glass house in Wijhe, Overijssel. Book directly for the best rate.',
+        metaDescription: 'Stay in the Horizon loft at The Makers Barn: a luxury attic loft for up to 6 guests with a rainfall shower, a well-equipped kitchen and access to the sauna, swimming pond and glass house in Wijhe, Overijssel. Book directly for the best rate.',
         kicker: 'Attic loft · Wijhe, Overijssel',
         title: 'Horizon Loft',
         tagline: 'A luxury attic loft in the middle of the countryside — the comfort of an apartment with the outdoors on your doorstep.',
         keyFacts: [
           'Luxury attic loft',
           'Double bed',
-          'Own room for a third guest',
+          'Extra bedrooms for larger groups',
           'Rainfall shower',
           'Linen, towels & cleaning included',
         ],
         description: [
           'Horizon is a luxury attic loft in the middle of the countryside: the comfort of an apartment with the outdoors on your doorstep. New but authentic and made with love, it has everything you would hope for — a comfortable bed, super-fast Wi-Fi, a well-equipped kitchen and a rainfall shower.',
-          'The loft sleeps two in a double bed, and a third guest has a room of their own. Bed linen, towels and final cleaning are included in the price, and your own picnic table gives you a private spot outside.',
+          'The loft sleeps two in a double bed. For a larger group you can add up to two extra bedrooms, so up to six guests can stay. Bed linen, towels and final cleaning are included in the price, and your own picnic table gives you a private spot outside.',
           'You are free to use the glass house, the hammocks, the terrace by the swimming pond, the fire pit and the sauna. Around the loft, the grassland has turned into a small nature paradise over the past four years: hidden paths, wildflowers, fresh berries and a swimming pond with a little waterfall.',
         ],
         amenityGroups: [
@@ -964,7 +965,7 @@ export const en: Dictionary = {
               'Well-equipped kitchen',
               'Rainfall shower',
               'Double bed',
-              'Separate room for a third guest',
+              'Up to two extra bedrooms',
               'Super-fast Wi-Fi',
               'Bed linen and towels included',
             ],

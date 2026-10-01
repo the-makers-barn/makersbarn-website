@@ -527,6 +527,8 @@ export interface CabinDetailTranslations {
   stats: {
     guests: string
     bedrooms: { one: string; other: string }
+    /** `{min}` and `{max}` are replaced. */
+    bedroomRange: string
   }
   /** `{score}`, `{outOf}`, `{count}` and `{platform}` are replaced. */
   rating: string

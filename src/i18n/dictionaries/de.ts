@@ -855,6 +855,7 @@ export const de: Dictionary = {
     stats: {
       guests: 'Bis zu {count} Gäste',
       bedrooms: { one: '{count} Schlafzimmer', other: '{count} Schlafzimmer' },
+      bedroomRange: '{min}–{max} Schlafzimmer',
     },
     rating: 'Mit {score}/{outOf} bewertet von {count} Gästen auf {platform}',
     reviews: {
@@ -944,20 +945,20 @@ export const de: Dictionary = {
       },
       horizon: {
         metaTitle: 'Horizon-Loft — Luxus-Dachloft auf dem Land',
-        metaDescription: 'Übernachte im Horizon-Loft bei The Makers Barn: ein luxuriöses Dachloft für bis zu 3 Gäste mit Regendusche, gut ausgestatteter Küche und Zugang zu Sauna, Schwimmteich und Glashaus in Wijhe, Overijssel. Direkt buchen zum besten Preis.',
+        metaDescription: 'Übernachte im Horizon-Loft bei The Makers Barn: ein luxuriöses Dachloft für bis zu 6 Gäste mit Regendusche, gut ausgestatteter Küche und Zugang zu Sauna, Schwimmteich und Glashaus in Wijhe, Overijssel. Direkt buchen zum besten Preis.',
         kicker: 'Dachloft · Wijhe, Overijssel',
         title: 'Horizon-Loft',
         tagline: 'Ein luxuriöses Dachloft mitten auf dem Land — der Komfort einer Wohnung mit der Natur direkt vor der Tür.',
         keyFacts: [
           'Luxuriöses Dachloft',
           'Doppelbett',
-          'Eigenes Zimmer für einen dritten Gast',
+          'Zusätzliche Schlafzimmer für größere Gruppen',
           'Regendusche',
           'Bettwäsche, Handtücher & Endreinigung inklusive',
         ],
         description: [
           'Horizon ist ein luxuriöses Dachloft mitten auf dem Land: die perfekte Verbindung aus komfortabler Wohnung und Draußensein. Neu, aber authentisch und mit Liebe eingerichtet, mit allem, was du dir wünschst — ein bequemes Bett, superschnelles WLAN, eine gut ausgestattete Küche und eine Regendusche.',
-          'Im Loft schlafen zwei Personen in einem Doppelbett; ein dritter Gast hat ein eigenes Zimmer. Bettwäsche, Handtücher und Endreinigung sind im Preis enthalten, und mit dem eigenen Picknicktisch hast du draußen einen privaten Platz.',
+          'Im Loft schlafen zwei Personen in einem Doppelbett. Für eine größere Gruppe kannst du bis zu zwei zusätzliche Schlafzimmer dazubuchen, sodass bis zu sechs Gäste übernachten können. Bettwäsche, Handtücher und Endreinigung sind im Preis enthalten, und mit dem eigenen Picknicktisch hast du draußen einen privaten Platz.',
           'Du kannst das Glashaus, die Hängematten, die Terrasse am Schwimmteich, die Feuerstelle und die Sauna nutzen. In den letzten vier Jahren ist das Grasland rundherum zu einem kleinen Naturparadies geworden: versteckte Pfade, Wildblumen, frische Beeren und ein Schwimmteich mit kleinem Wasserfall.',
         ],
         amenityGroups: [
@@ -967,7 +968,7 @@ export const de: Dictionary = {
               'Gut ausgestattete Küche',
               'Regendusche',
               'Doppelbett',
-              'Separates Zimmer für einen dritten Gast',
+              'Bis zu zwei zusätzliche Schlafzimmer',
               'Superschnelles WLAN',
               'Bettwäsche und Handtücher inklusive',
             ],

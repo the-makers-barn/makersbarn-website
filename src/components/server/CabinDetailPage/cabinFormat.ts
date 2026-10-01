@@ -26,10 +26,13 @@ export function formatStayStats(
 ): string[] {
   const bedroomTemplate =
     stay.bedrooms === 1 ? copy.stats.bedrooms.one : copy.stats.bedrooms.other
+  const hasBedroomRange = stay.minBedrooms !== undefined && stay.minBedrooms < stay.bedrooms
 
   return [
     fill(copy.stats.guests, { count: String(stay.maxGuests) }),
-    fill(bedroomTemplate, { count: String(stay.bedrooms) }),
+    hasBedroomRange
+      ? fill(copy.stats.bedroomRange, { min: String(stay.minBedrooms), max: String(stay.bedrooms) })
+      : fill(bedroomTemplate, { count: String(stay.bedrooms) }),
   ]
 }
 

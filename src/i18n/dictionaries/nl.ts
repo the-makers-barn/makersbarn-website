@@ -442,6 +442,7 @@ export const nl: Dictionary = {
     stats: {
       guests: 'Tot {count} personen',
       bedrooms: { one: '{count} slaapkamer', other: '{count} slaapkamers' },
+      bedroomRange: '{min}–{max} slaapkamers',
     },
     rating: 'Beoordeeld met {score}/{outOf} door {count} gasten op {platform}',
     reviews: {
@@ -531,20 +532,20 @@ export const nl: Dictionary = {
       },
       horizon: {
         metaTitle: 'Horizon Loft — luxe zolderloft op het platteland',
-        metaDescription: 'Verblijf in de Horizon Loft bij The Makers Barn: een luxe zolderloft voor maximaal 3 personen met regendouche, een goed uitgeruste keuken en toegang tot sauna, zwemvijver en glazen huis in Wijhe, Overijssel. Boek direct voor de beste prijs.',
+        metaDescription: 'Verblijf in de Horizon Loft bij The Makers Barn: een luxe zolderloft voor maximaal 6 personen met regendouche, een goed uitgeruste keuken en toegang tot sauna, zwemvijver en glazen huis in Wijhe, Overijssel. Boek direct voor de beste prijs.',
         kicker: 'Zolderloft · Wijhe, Overijssel',
         title: 'Horizon Loft',
         tagline: 'Een luxe zolderloft midden op het platteland — het comfort van een appartement met de natuur voor de deur.',
         keyFacts: [
           'Luxe zolderloft',
           'Tweepersoonsbed',
-          'Eigen kamer voor een derde gast',
+          'Extra slaapkamers voor grotere groepen',
           'Regendouche',
           'Inclusief linnen, handdoeken & schoonmaak',
         ],
         description: [
           'Horizon is een luxe zolderloft midden op het platteland: de perfecte combinatie van een luxe appartement en buiten zijn. Nieuw maar authentiek en gemaakt met liefde, met alle gemakken die je mag verwachten — een comfortabel bed, supersnelle wifi, een goed uitgeruste keuken en een heerlijke regendouche.',
-          'In de loft slapen twee personen in een tweepersoonsbed; een derde gast heeft een eigen kamer. Bedlinnen, handdoeken en eindschoonmaak zijn bij de prijs inbegrepen, en met een eigen picknicktafel heb je een privé plekje buiten.',
+          'In de loft slapen twee personen in een tweepersoonsbed. Met een grotere groep boek je er tot twee extra slaapkamers bij, zodat je met maximaal zes personen kunt verblijven. Bedlinnen, handdoeken en eindschoonmaak zijn bij de prijs inbegrepen, en met een eigen picknicktafel heb je een privé plekje buiten.',
           'Je bent vrij om gebruik te maken van het glazen huis, de hangmatten, het terras bij de zwemvijver, de vuurkuil en de sauna. Het grasland rondom is de afgelopen vier jaar omgetoverd tot een klein natuurparadijs: verborgen paadjes, wilde bloemen, verse bessen en een zwemvijver met een watervalletje.',
         ],
         amenityGroups: [
@@ -554,7 +555,7 @@ export const nl: Dictionary = {
               'Goed uitgeruste keuken',
               'Regendouche',
               'Tweepersoonsbed',
-              'Aparte kamer voor een derde gast',
+              'Tot twee extra slaapkamers',
               'Supersnelle wifi',
               'Inclusief bedlinnen en handdoeken',
             ],

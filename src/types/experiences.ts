@@ -41,6 +41,8 @@ export interface AccommodationOffer {
 export interface CabinStayDetails {
   maxGuests: number
   bedrooms: number
+  /** Set when the bedroom count varies by booking; `bedrooms` is then the most. */
+  minBedrooms?: number
   checkInFrom: string
   checkInUntil: string
   checkOutUntil: string

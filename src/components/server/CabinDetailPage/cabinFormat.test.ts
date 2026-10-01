@@ -24,6 +24,12 @@ describe('cabin formatting', () => {
     expect(formatStayStats({ ...cosmos.stay, bedrooms: 2 }, en)[1]).toBe('2 bedrooms')
   })
 
+  it('formats a bedroom range when the count varies by booking', () => {
+    const stay = { ...cosmos.stay, maxGuests: 6, minBedrooms: 1, bedrooms: 3 }
+    expect(formatStayStats(stay, en)).toEqual(['Up to 6 guests', '1–3 bedrooms'])
+    expect(formatStayStats(stay, nl)[1]).toBe('1–3 slaapkamers')
+  })
+
   it('formats the rating with locale-aware decimals', () => {
     const rating = { platform: BookingPlatform.NATUURHUISJE, score: 9.6, outOf: 10, reviewCount: 5 }
     expect(formatRating(rating, en, Language.EN)).toBe('Rated 9.6/10 by 5 guests on Natuurhuisje')

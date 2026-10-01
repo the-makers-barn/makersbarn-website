@@ -75,8 +75,9 @@ export const CABIN_DETAILS: Record<AccommodationCabin, CabinDetail> = {
       },
     ],
     stay: {
-      maxGuests: 3,
-      bedrooms: 1,
+      maxGuests: 6,
+      minBedrooms: 1,
+      bedrooms: 3,
       checkInFrom: '15:00',
       checkInUntil: '22:00',
       checkOutUntil: '11:00',
