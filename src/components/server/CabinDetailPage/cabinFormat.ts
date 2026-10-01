@@ -1,7 +1,13 @@
 import type { CabinDetailTranslations } from '@/i18n/types'
-import { BookingPlatform, type CabinRating, type CabinStayDetails, type Language } from '@/types'
+import {
+  BookingPlatform,
+  type CabinRating,
+  type CabinReview,
+  type CabinStayDetails,
+  type Language,
+} from '@/types'
 
-const PLATFORM_NAMES: Record<BookingPlatform, string> = {
+export const PLATFORM_NAMES: Record<BookingPlatform, string> = {
   [BookingPlatform.AIRBNB]: 'Airbnb',
   [BookingPlatform.NATUURHUISJE]: 'Natuurhuisje',
 }
@@ -67,4 +73,43 @@ export function formatStayRules(
       value: stay.petsAllowed ? goodToKnow.petsAllowed : goodToKnow.petsNotAllowed,
     },
   ]
+}
+
+export function formatReviewScore(review: CabinReview, copy: CabinDetailTranslations): string {
+  return fill(copy.reviews.score, {
+    score: String(review.score),
+    outOf: String(review.outOf),
+  })
+}
+
+/** "September 2026"; month precision is enough and avoids timezone drift. */
+export function formatReviewDate(isoDate: string, locale: Language): string {
+  const [year, month] = isoDate.split('-').map(Number)
+  return new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
+    new Date(Date.UTC(year, month - 1, 1)),
+  )
+}
+
+/** Note shown under a review read in another language than it was written in. */
+export function formatTranslationNote(
+  review: CabinReview,
+  copy: CabinDetailTranslations,
+  locale: Language,
+): string | undefined {
+  if (review.sourceLanguage === locale) {
+    return undefined
+  }
+  return fill(copy.reviews.translatedFrom, {
+    language: copy.reviews.languageNames[review.sourceLanguage],
+  })
+}
+
+export function formatReadAllReviews(
+  rating: CabinRating,
+  copy: CabinDetailTranslations,
+): string {
+  return fill(copy.reviews.readAll, {
+    count: String(rating.reviewCount),
+    platform: PLATFORM_NAMES[rating.platform],
+  })
 }

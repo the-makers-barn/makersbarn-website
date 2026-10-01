@@ -12,6 +12,7 @@ import {
 import { StructuredData } from '@/components/server/StructuredData'
 import { SITE_CONFIG } from '@/constants/site'
 import { CABIN_DETAILS, OTHER_CABIN } from '@/data/cabins'
+import { getCabinReviews } from '@/data/cabinReviews'
 import type { CabinDetailContent, Dictionary } from '@/i18n/types'
 import { getImageAltText } from '@/lib/imageAltText'
 import { getLocalizedPath } from '@/lib/routing'
@@ -20,6 +21,7 @@ import { AccommodationCabin, Language, Route } from '@/types'
 
 import { CabinBookingCard } from './CabinBookingCard'
 import { CabinGoodToKnow } from './CabinGoodToKnow'
+import { CabinReviews } from './CabinReviews'
 import { formatRating, formatStayStats } from './cabinFormat'
 import styles from './CabinDetailPage.module.css'
 
@@ -144,6 +146,7 @@ export function CabinDetailPage({ cabin, locale, t }: CabinDetailPageProps) {
   const detail = CABIN_DETAILS[cabin]
   const copy = t.cabinDetail
   const content = copy.cabins[cabin]
+  const reviews = getCabinReviews(cabin)
   const galleryImages = detail.gallery.map((src) => ({
     src,
     alt: getImageAltText(src, locale) || content.title,
@@ -199,6 +202,18 @@ export function CabinDetailPage({ cabin, locale, t }: CabinDetailPageProps) {
               <CabinSection title={copy.amenitiesTitle}>
                 <CabinAmenities groups={content.amenityGroups} />
               </CabinSection>
+
+              {reviews.length > 0 && (
+                <CabinSection title={copy.reviews.title}>
+                  <CabinReviews
+                    reviews={reviews}
+                    rating={detail.rating}
+                    bookingLinks={detail.bookingLinks}
+                    copy={copy}
+                    locale={locale}
+                  />
+                </CabinSection>
+              )}
 
               <CabinSection title={copy.goodToKnow.title}>
                 <CabinGoodToKnow

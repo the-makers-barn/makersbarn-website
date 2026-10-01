@@ -1,3 +1,4 @@
+import type { Language } from './common'
 import { Route } from './navigation'
 
 export enum ExperienceType {
@@ -51,6 +52,23 @@ export interface CabinRating {
   score: number
   outOf: number
   reviewCount: number
+}
+
+/**
+ * A guest review copied from a booking platform. `text` holds the original in
+ * `sourceLanguage` and translations for the other locales.
+ */
+export interface CabinReview {
+  id: string
+  cabin: AccommodationCabin
+  author: string
+  /** ISO date, `YYYY-MM-DD`. */
+  date: string
+  score: number
+  outOf: number
+  platform: BookingPlatform
+  sourceLanguage: Language
+  text: Record<Language, string>
 }
 
 /**

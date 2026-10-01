@@ -1,10 +1,18 @@
 import { describe, expect, it } from 'vitest'
 
 import { CABIN_DETAILS } from '@/data/cabins'
+import { CABIN_REVIEWS } from '@/data/cabinReviews'
 import { dictionaries } from '@/i18n/dictionaries'
 import { AccommodationCabin, BookingPlatform, Language } from '@/types'
 
-import { formatRating, formatStayRules, formatStayStats } from './cabinFormat'
+import {
+  formatRating,
+  formatReadAllReviews,
+  formatReviewDate,
+  formatStayRules,
+  formatStayStats,
+  formatTranslationNote,
+} from './cabinFormat'
 
 const en = dictionaries[Language.EN].cabinDetail
 const nl = dictionaries[Language.NL].cabinDetail
@@ -30,5 +38,20 @@ describe('cabin formatting', () => {
       { label: 'Check-out', value: 'Until 11:00' },
       { label: 'Pets', value: 'Not allowed' },
     ])
+  })
+
+  it('formats review dates by month in the page locale', () => {
+    expect(formatReviewDate('2026-09-22', Language.EN)).toBe('September 2026')
+    expect(formatReviewDate('2026-09-22', Language.NL)).toBe('september 2026')
+  })
+
+  it('labels translated reviews only', () => {
+    const [review] = CABIN_REVIEWS
+    expect(formatTranslationNote(review, nl, Language.NL)).toBeUndefined()
+    expect(formatTranslationNote(review, en, Language.EN)).toBe('Translated from Dutch')
+  })
+
+  it('links to all reviews on the rating platform', () => {
+    expect(formatReadAllReviews(cosmos.rating!, en)).toBe('Read all 20 reviews on Natuurhuisje')
   })
 })

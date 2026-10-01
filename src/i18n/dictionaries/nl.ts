@@ -444,6 +444,13 @@ export const nl: Dictionary = {
       bedrooms: { one: '{count} slaapkamer', other: '{count} slaapkamers' },
     },
     rating: 'Beoordeeld met {score}/{outOf} door {count} gasten op {platform}',
+    reviews: {
+      title: 'Wat gasten zeggen',
+      score: '{score}/{outOf}',
+      translatedFrom: 'Vertaald uit het {language}',
+      readAll: 'Lees alle {count} beoordelingen op {platform}',
+      languageNames: { en: 'Engels', nl: 'Nederlands', de: 'Duits' },
+    },
     goodToKnow: {
       title: 'Goed om te weten',
       checkIn: 'Inchecken',

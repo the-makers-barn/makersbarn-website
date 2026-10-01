@@ -530,6 +530,16 @@ export interface CabinDetailTranslations {
   }
   /** `{score}`, `{outOf}`, `{count}` and `{platform}` are replaced. */
   rating: string
+  reviews: {
+    title: string
+    /** `{score}` and `{outOf}` are replaced. */
+    score: string
+    /** `{language}` is replaced with a name from `languageNames`. */
+    translatedFrom: string
+    /** `{count}` and `{platform}` are replaced. */
+    readAll: string
+    languageNames: Record<Language, string>
+  }
   goodToKnow: {
     title: string
     checkIn: string

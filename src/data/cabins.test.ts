@@ -4,11 +4,12 @@ import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import { dictionaries } from '@/i18n/dictionaries'
+import { getImageAltText } from '@/lib/imageAltText'
 import { AccommodationCabin, ExperienceType, Language } from '@/types'
 
+import { CABIN_REVIEWS, getCabinReviews } from './cabinReviews'
 import { CABIN_DETAILS, OTHER_CABIN } from './cabins'
 import { EXPERIENCE_OFFERS } from './experiences'
-import { IMAGE_ALT_TEXT } from './imageAltText'
 
 const CABINS = Object.values(AccommodationCabin)
 const LOCALES = Object.values(Language)
@@ -21,7 +22,7 @@ describe('cabin details', () => {
     for (const src of gallery) {
       expect(existsSync(path.join(process.cwd(), 'public', src)), src).toBe(true)
       for (const locale of LOCALES) {
-        expect(IMAGE_ALT_TEXT[src]?.[locale], `${src} (${locale})`).toBeTruthy()
+        expect(getImageAltText(src, locale), `${src} (${locale})`).toBeTruthy()
       }
     }
   })
@@ -50,6 +51,22 @@ describe('cabin details', () => {
       expect(content.keyFacts.length).toBeGreaterThan(0)
       expect(content.description.length).toBeGreaterThan(0)
       expect(content.amenityGroups.every((group) => group.items.length > 0)).toBe(true)
+    }
+  })
+
+  it.each(CABINS)('%s has reviews', (cabin) => {
+    expect(getCabinReviews(cabin).length).toBeGreaterThan(0)
+  })
+
+  it('has unique reviews with text in every locale and a valid score and date', () => {
+    expect(new Set(CABIN_REVIEWS.map((review) => review.id)).size).toBe(CABIN_REVIEWS.length)
+    for (const review of CABIN_REVIEWS) {
+      expect(review.date).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+      expect(review.score).toBeGreaterThan(0)
+      expect(review.score).toBeLessThanOrEqual(review.outOf)
+      for (const locale of LOCALES) {
+        expect(review.text[locale], `${review.id} (${locale})`).toBeTruthy()
+      }
     }
   })
 })

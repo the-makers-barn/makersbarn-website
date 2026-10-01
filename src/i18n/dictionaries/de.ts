@@ -857,6 +857,13 @@ export const de: Dictionary = {
       bedrooms: { one: '{count} Schlafzimmer', other: '{count} Schlafzimmer' },
     },
     rating: 'Mit {score}/{outOf} bewertet von {count} Gästen auf {platform}',
+    reviews: {
+      title: 'Was Gäste sagen',
+      score: '{score}/{outOf}',
+      translatedFrom: 'Aus dem {language} übersetzt',
+      readAll: 'Alle {count} Bewertungen auf {platform} lesen',
+      languageNames: { en: 'Englischen', nl: 'Niederländischen', de: 'Deutschen' },
+    },
     goodToKnow: {
       title: 'Gut zu wissen',
       checkIn: 'Check-in',
