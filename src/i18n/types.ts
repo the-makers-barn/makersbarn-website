@@ -504,6 +504,8 @@ export interface CabinDetailContent {
   /** Body copy for "About this place", one string per paragraph. */
   description: readonly string[]
   amenityGroups: readonly { title: string; items: readonly string[] }[]
+  /** Extra cabin-specific notes for the "Good to know" section. */
+  goodToKnowNotes: readonly string[]
   bookingMessage: string
 }
 
@@ -521,6 +523,26 @@ export interface CabinDetailTranslations {
   amenitiesTitle: string
   locationTitle: string
   locationItems: readonly string[]
+  /** `{count}` is replaced with the number. */
+  stats: {
+    guests: string
+    bedrooms: { one: string; other: string }
+  }
+  /** `{score}`, `{outOf}`, `{count}` and `{platform}` are replaced. */
+  rating: string
+  goodToKnow: {
+    title: string
+    checkIn: string
+    checkOut: string
+    /** `{from}` and `{until}` are replaced with times. */
+    checkInValue: string
+    /** `{until}` is replaced with a time. */
+    checkOutValue: string
+    pets: string
+    petsAllowed: string
+    petsNotAllowed: string
+    contactless: string
+  }
   bookingCard: {
     title: string
     intro: string

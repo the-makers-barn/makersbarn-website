@@ -19,13 +19,16 @@ import { generateLocalBusinessSchema, generatePageBreadcrumbs } from '@/lib/stru
 import { AccommodationCabin, Language, Route } from '@/types'
 
 import { CabinBookingCard } from './CabinBookingCard'
+import { CabinGoodToKnow } from './CabinGoodToKnow'
+import { formatRating, formatStayStats } from './cabinFormat'
 import styles from './CabinDetailPage.module.css'
 
 interface CabinHeaderProps {
   content: CabinDetailContent
+  rating?: string
 }
 
-function CabinHeader({ content }: CabinHeaderProps) {
+function CabinHeader({ content, rating }: CabinHeaderProps) {
   return (
     <header className={styles.header}>
       <p className={styles.kicker}>
@@ -34,6 +37,11 @@ function CabinHeader({ content }: CabinHeaderProps) {
       </p>
       <h1 className={styles.title}>{content.title}</h1>
       <p className={styles.tagline}>{content.tagline}</p>
+      {rating && (
+        <p className={styles.rating}>
+          <span aria-hidden="true">★</span> {rating}
+        </p>
+      )}
     </header>
   )
 }
@@ -163,7 +171,10 @@ export function CabinDetailPage({ cabin, locale, t }: CabinDetailPageProps) {
             {copy.backToExperiences}
           </Link>
 
-          <CabinHeader content={content} />
+          <CabinHeader
+            content={content}
+            rating={detail.rating && formatRating(detail.rating, copy, locale)}
+          />
 
           <CabinGallery
             images={galleryImages}
@@ -173,7 +184,9 @@ export function CabinDetailPage({ cabin, locale, t }: CabinDetailPageProps) {
 
           <div className={styles.layout}>
             <div className={styles.main}>
-              <CabinKeyFacts facts={content.keyFacts} />
+              <CabinKeyFacts
+                facts={[...formatStayStats(detail.stay, copy), ...content.keyFacts]}
+              />
 
               <CabinSection title={copy.aboutTitle}>
                 {content.description.map((paragraph) => (
@@ -185,6 +198,14 @@ export function CabinDetailPage({ cabin, locale, t }: CabinDetailPageProps) {
 
               <CabinSection title={copy.amenitiesTitle}>
                 <CabinAmenities groups={content.amenityGroups} />
+              </CabinSection>
+
+              <CabinSection title={copy.goodToKnow.title}>
+                <CabinGoodToKnow
+                  stay={detail.stay}
+                  notes={content.goodToKnowNotes}
+                  copy={copy}
+                />
               </CabinSection>
 
               <CabinSection title={copy.locationTitle}>

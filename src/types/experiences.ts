@@ -36,6 +36,23 @@ export interface AccommodationOffer {
   detailUrl: Route
 }
 
+/** House rules and capacity; times are 24h `HH:mm`. */
+export interface CabinStayDetails {
+  maxGuests: number
+  bedrooms: number
+  checkInFrom: string
+  checkInUntil: string
+  checkOutUntil: string
+  petsAllowed: boolean
+}
+
+export interface CabinRating {
+  platform: BookingPlatform
+  score: number
+  outOf: number
+  reviewCount: number
+}
+
 /**
  * Static data behind a cabin detail page. Copy lives in the dictionaries
  * (`cabinDetail.cabins[cabin]`); this holds what is the same in every locale.
@@ -46,6 +63,8 @@ export interface CabinDetail {
   /** Gallery order: the first image is the large hero tile. */
   gallery: readonly string[]
   bookingLinks: readonly ExternalLink[]
+  stay: CabinStayDetails
+  rating?: CabinRating
 }
 
 export interface FocusedWorkationOffer {

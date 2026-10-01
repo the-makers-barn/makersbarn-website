@@ -27,6 +27,20 @@ export const CABIN_DETAILS: Record<AccommodationCabin, CabinDetail> = {
         url: 'https://www.natuurhuisje.nl/vakantiehuisje/86113',
       },
     ],
+    stay: {
+      maxGuests: 4,
+      bedrooms: 1,
+      checkInFrom: '15:00',
+      checkInUntil: '22:00',
+      checkOutUntil: '11:00',
+      petsAllowed: false,
+    },
+    rating: {
+      platform: BookingPlatform.NATUURHUISJE,
+      score: 9,
+      outOf: 10,
+      reviewCount: 20,
+    },
   },
   [AccommodationCabin.HORIZON]: {
     cabin: AccommodationCabin.HORIZON,
@@ -47,6 +61,20 @@ export const CABIN_DETAILS: Record<AccommodationCabin, CabinDetail> = {
         url: 'https://www.natuurhuisje.nl/vakantiehuisje/91228',
       },
     ],
+    stay: {
+      maxGuests: 3,
+      bedrooms: 1,
+      checkInFrom: '15:00',
+      checkInUntil: '22:00',
+      checkOutUntil: '11:00',
+      petsAllowed: false,
+    },
+    rating: {
+      platform: BookingPlatform.NATUURHUISJE,
+      score: 9.6,
+      outOf: 10,
+      reviewCount: 5,
+    },
   },
 }
 
