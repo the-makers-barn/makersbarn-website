@@ -167,9 +167,9 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.DE]: 'Inspirierendes Zitat: Du bist, wo du sein sollst',
   },
   '/images/two-beds-in-horizon.jpg': {
-    [Language.EN]: 'Two beds in the Horizon facilities space',
-    [Language.NL]: 'Twee bedden in de Horizon faciliteiten',
-    [Language.DE]: 'Zwei Betten in den Räumen von Horizon',
+    [Language.EN]: 'Two single beds in the extra room of the Horizon loft',
+    [Language.NL]: 'Twee eenpersoonsbedden in de extra kamer van de Horizon loft',
+    [Language.DE]: 'Zwei Einzelbetten im Zusatzzimmer des Horizon-Lofts',
   },
   '/images/single-bed-with-wood.jpg': {
     [Language.EN]: 'Single bed with wooden details in Horizon facilities',
@@ -195,6 +195,77 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.EN]: 'Garden view with hammocks at The Makers Barn',
     [Language.NL]: 'Uitzicht op de tuin met hangmatten bij The Makers Barn',
     [Language.DE]: 'Blick in den Garten mit Hängematten bei The Makers Barn',
+  },
+
+  '/images/cabin-horizon-lounge.jpg': {
+    [Language.EN]: 'Lounge corner with velvet sofas in the Horizon loft',
+    [Language.NL]: 'Loungehoek met fluwelen banken in de Horizon loft',
+    [Language.DE]: 'Lounge-Ecke mit Samtsofas im Horizon-Loft',
+  },
+  '/images/cabin-horizon-dining-kitchen.jpg': {
+    [Language.EN]: 'Dining table and open kitchen under the roof beams of the Horizon loft',
+    [Language.NL]: 'Eettafel en open keuken onder het schuine dak van de Horizon loft',
+    [Language.DE]: 'Esstisch und offene Küche unter dem Dach des Horizon-Lofts',
+  },
+  '/images/cabin-horizon-bedroom.jpg': {
+    [Language.EN]: 'Double bed under the sloping roof of the Horizon loft',
+    [Language.NL]: 'Tweepersoonsbed onder het schuine dak van de Horizon loft',
+    [Language.DE]: 'Doppelbett unter der Dachschräge des Horizon-Lofts',
+  },
+  '/images/cabin-horizon-kitchen.jpg': {
+    [Language.EN]: 'Fully equipped kitchen with oven and fridge in the Horizon loft',
+    [Language.NL]: 'Volledig ingerichte keuken met oven en koelkast in de Horizon loft',
+    [Language.DE]: 'Voll ausgestattete Küche mit Backofen und Kühlschrank im Horizon-Loft',
+  },
+  '/images/cabin-horizon-loft-overview.jpg': {
+    [Language.EN]: 'View across the open-plan Horizon loft',
+    [Language.NL]: 'Zicht over de open ruimte van de Horizon loft',
+    [Language.DE]: 'Blick über den offenen Wohnraum des Horizon-Lofts',
+  },
+  '/images/cabin-horizon-dining-table.jpg': {
+    [Language.EN]: 'Round dining table with flowers in the Horizon loft',
+    [Language.NL]: 'Ronde eettafel met bloemen in de Horizon loft',
+    [Language.DE]: 'Runder Esstisch mit Blumen im Horizon-Loft',
+  },
+  '/images/cabin-horizon-table-set.jpg': {
+    [Language.EN]: 'Table set for dinner in the Horizon loft',
+    [Language.NL]: 'Gedekte tafel voor het diner in de Horizon loft',
+    [Language.DE]: 'Gedeckter Tisch zum Abendessen im Horizon-Loft',
+  },
+  '/images/cabin-horizon-reading-chair.jpg': {
+    [Language.EN]: 'Striped armchair in a quiet reading corner of the Horizon loft',
+    [Language.NL]: 'Gestreepte fauteuil in een rustige leeshoek van de Horizon loft',
+    [Language.DE]: 'Gestreifter Sessel in einer ruhigen Leseecke des Horizon-Lofts',
+  },
+  '/images/cabin-horizon-landing.jpg': {
+    [Language.EN]: 'Staircase landing leading into the Horizon loft',
+    [Language.NL]: 'Overloop bij de trap naar de Horizon loft',
+    [Language.DE]: 'Treppenabsatz mit Zugang zum Horizon-Loft',
+  },
+  '/images/cabin-horizon-bathroom.jpg': {
+    [Language.EN]: 'Bathroom with washbasin in the Horizon loft',
+    [Language.NL]: 'Badkamer met wastafel in de Horizon loft',
+    [Language.DE]: 'Badezimmer mit Waschbecken im Horizon-Loft',
+  },
+  '/images/cabin-horizon-extra-room.jpg': {
+    [Language.EN]: 'Extra en-suite room that can be booked with the Horizon loft',
+    [Language.NL]: 'Extra kamer en suite die je bij de Horizon loft kunt boeken',
+    [Language.DE]: 'Zusätzliches Zimmer mit eigenem Bad, buchbar zum Horizon-Loft',
+  },
+  '/images/cabin-horizon-garden-room.jpg': {
+    [Language.EN]: 'Glass garden room with a table at The Makers Barn',
+    [Language.NL]: 'Glazen tuinkamer met tafel bij The Makers Barn',
+    [Language.DE]: 'Gläsernes Gartenzimmer mit Tisch bei The Makers Barn',
+  },
+  '/images/cabin-horizon-hammocks.jpg': {
+    [Language.EN]: 'Hammocks between the fruit trees at The Makers Barn',
+    [Language.NL]: 'Hangmatten tussen de fruitbomen bij The Makers Barn',
+    [Language.DE]: 'Hängematten zwischen den Obstbäumen bei The Makers Barn',
+  },
+  '/images/cabin-horizon-garden-tree.jpg': {
+    [Language.EN]: 'Picnic table under a tree in the garden of The Makers Barn',
+    [Language.NL]: 'Picknicktafel onder een boom in de tuin van The Makers Barn',
+    [Language.DE]: 'Picknicktisch unter einem Baum im Garten von The Makers Barn',
   },
 
   // Team images

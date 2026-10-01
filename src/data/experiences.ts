@@ -22,7 +22,7 @@ export const EXPERIENCE_OFFERS: ExperienceOffer[] = [
     id: 'accommodation-horizon',
     type: ExperienceType.ACCOMMODATION,
     cabin: AccommodationCabin.HORIZON,
-    image: IMAGES.accommodation.horizonExterior,
+    image: IMAGES.accommodation.horizonLounge,
     bookingLinks: CABIN_DETAILS[AccommodationCabin.HORIZON].bookingLinks,
     detailUrl: CABIN_DETAILS[AccommodationCabin.HORIZON].route,
   },
