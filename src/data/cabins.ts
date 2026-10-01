@@ -1,0 +1,57 @@
+import { AccommodationCabin, BookingPlatform, CabinDetail, Route } from '@/types'
+
+import { IMAGES } from './images'
+
+export const CABIN_DETAILS: Record<AccommodationCabin, CabinDetail> = {
+  [AccommodationCabin.COSMOS]: {
+    cabin: AccommodationCabin.COSMOS,
+    route: Route.COSMOS_CABIN,
+    gallery: [
+      IMAGES.accommodation.cosmosOutside,
+      IMAGES.accommodation.cosmosView,
+      IMAGES.accommodation.cosmosCouch,
+      IMAGES.accommodation.cosmosKitchen,
+      IMAGES.accommodation.hotTubInField,
+      IMAGES.accommodation.sauna,
+      IMAGES.accommodation.pondComplete,
+      IMAGES.accommodation.fireCircleGathering,
+      IMAGES.accommodation.gardenViewWithHammocks,
+    ],
+    bookingLinks: [
+      {
+        platform: BookingPlatform.AIRBNB,
+        url: 'https://www.airbnb.nl/rooms/1577611712640094818',
+      },
+      {
+        platform: BookingPlatform.NATUURHUISJE,
+        url: 'https://www.natuurhuisje.nl/vakantiehuisje/86113',
+      },
+    ],
+  },
+  [AccommodationCabin.HORIZON]: {
+    cabin: AccommodationCabin.HORIZON,
+    route: Route.HORIZON_LOFT,
+    gallery: [
+      IMAGES.accommodation.horizonExterior,
+      IMAGES.accommodation.horizonKitchen,
+      IMAGES.accommodation.twoBedsInHorizon,
+      IMAGES.accommodation.horizonShower,
+      IMAGES.accommodation.sauna,
+      IMAGES.accommodation.pondComplete,
+      IMAGES.accommodation.fireCircleGathering,
+      IMAGES.accommodation.gardenViewWithHammocks,
+    ],
+    bookingLinks: [
+      {
+        platform: BookingPlatform.NATUURHUISJE,
+        url: 'https://www.natuurhuisje.nl/vakantiehuisje/91228',
+      },
+    ],
+  },
+}
+
+/** The cabin to suggest at the bottom of a cabin page. */
+export const OTHER_CABIN: Record<AccommodationCabin, AccommodationCabin> = {
+  [AccommodationCabin.COSMOS]: AccommodationCabin.HORIZON,
+  [AccommodationCabin.HORIZON]: AccommodationCabin.COSMOS,
+}

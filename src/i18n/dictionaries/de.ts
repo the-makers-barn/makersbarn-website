@@ -374,6 +374,7 @@ export const de: Dictionary = {
       responseNote: 'Meist antworten wir innerhalb weniger Stunden',
       alsoBookableVia: 'Auch buchbar über',
     },
+    cabinDetailsCta: 'Fotos & Details',
     cabins: {
       cosmos: {
         title: 'Cosmos-Hütte buchen',
@@ -834,6 +835,135 @@ export const de: Dictionary = {
       bookNow: 'Über WhatsApp buchen',
       alternativeText: 'Lieber per E-Mail?',
       alternativeCta: 'Nutze das Kontaktformular',
+    },
+  },
+
+  cabinDetail: {
+    backToExperiences: 'Zurück zu den Erlebnissen',
+    showAllPhotos: 'Alle Fotos anzeigen',
+    openPhoto: 'Foto öffnen',
+    aboutTitle: 'Über diese Unterkunft',
+    amenitiesTitle: 'Was diese Unterkunft bietet',
+    locationTitle: 'Lage',
+    locationItems: [
+      'In Wijhe, Overijssel — zwischen Zwolle und Deventer',
+      'Der Bahnhof Wijhe ist zehn Minuten mit dem Rad entfernt',
+      'Kasteel Nijenhuis mit Museum und Skulpturengärten ist zu Fuß erreichbar',
+      'Einkaufsmöglichkeiten und Restaurants im Dorf nebenan',
+      'Wander- und Radrouten entlang der IJssel und durch die Sallandse Heuvelrug',
+    ],
+    bookingCard: {
+      title: 'Direkt bei uns buchen',
+      intro: 'Schick uns deine Wunschdaten per WhatsApp – wir klären Verfügbarkeit und Preis gemeinsam.',
+    },
+    otherCabin: {
+      title: 'Ebenfalls bei The Makers Barn',
+      cta: 'Unterkunft ansehen',
+    },
+    cabins: {
+      cosmos: {
+        metaTitle: 'Cosmos-Hütte — Holzhütte mit Holzofen',
+        metaDescription: 'Übernachte in der Cosmos-Hütte bei The Makers Barn: eine 60 m² große Holzhütte mit Holzofen, eigener Terrasse und weitem Blick in Wijhe, Overijssel. Direkt buchen zum besten Preis.',
+        kicker: 'Holzhütte · Wijhe, Overijssel',
+        title: 'Cosmos-Hütte',
+        tagline: 'Eine Holzhütte mit Holzofen, so gemütlich wie kaum eine andere – und mit einem der schönsten Ausblicke der Niederlande.',
+        keyFacts: [
+          '60 m²',
+          'Doppelbett oder zwei Einzelbetten',
+          'Schlafsofa',
+          'Eigene Küche & Dusche',
+          'Holzofen',
+        ],
+        description: [
+          'Cosmos ist eine Holzhütte für Paare oder zu zweit, die sich nah an der Natur einkuscheln möchten. Der Holzofen hält sie an kalten Abenden warm, und von der eigenen Terrasse geht der Blick über eine der weitesten Aussichten der Niederlande.',
+          'Drinnen gibt es eine Küche, eine Dusche, ein Doppelbett, das sich in zwei Einzelbetten teilen lässt, und ein Schlafsofa. Mit dem Schreibtisch am Fenster ist sie auch ein ruhiger Ort zum Arbeiten.',
+          'Rund um die Hütte liegen mehr als 1,3 Hektar eigenes Land mit natürlichem Schwimmteich, Sauna und Hot Tub, einem Feuerkreis und Wegen zwischen mehr als tausend Bäumen. Yogastunden, Massage und Verpflegung gibt es auf Anfrage.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Drinnen',
+            items: [
+              'Holzofen',
+              'Küche',
+              'Dusche',
+              'Doppelbett oder zwei Einzelbetten',
+              'Schlafsofa',
+              'Schreibtisch am Fenster',
+              'Glasfaser-WLAN',
+            ],
+          },
+          {
+            title: 'Draußen',
+            items: [
+              'Eigene Terrasse mit weitem Blick',
+              'Natürlicher Schwimmteich',
+              'Feuerkreis',
+              'Wege zwischen mehr als 1.000 Bäumen',
+              'Kostenlose Fahrräder',
+            ],
+          },
+          {
+            title: 'Wellness & Extras',
+            items: [
+              'Sauna und Hot Tub',
+              'Yogastunden auf Anfrage',
+              'Massage auf Anfrage',
+              'Verpflegung auf Anfrage',
+            ],
+          },
+        ],
+        bookingMessage: 'Hallo! Ich würde gern einen Aufenthalt in der Cosmos-Hütte bei The Makers Barn buchen.',
+      },
+      horizon: {
+        metaTitle: 'Horizon-Loft — Luxus-Loft auf dem Land',
+        metaDescription: 'Übernachte im Horizon-Loft bei The Makers Barn: ein neu gebautes Luxus-Loft mit offener Küche, Regendusche und Glaspavillon mit Blick auf 13.000 m² Gelände in Wijhe, Overijssel. Direkt buchen zum besten Preis.',
+        kicker: 'Luxus-Loft · Wijhe, Overijssel',
+        title: 'Horizon-Loft',
+        tagline: 'Ein neu gebautes Loft mit hochwertiger Ausstattung, offener Küche und Blick in die Landschaft aus jedem Fenster.',
+        keyFacts: [
+          'Neu gebautes Loft',
+          'Offene Küche',
+          'Regendusche',
+          'Glaspavillon',
+          '13.000 m² Gelände',
+        ],
+        description: [
+          'Horizon ist ein neu gebautes Luxus-Loft mit hochwertiger Ausstattung und Blick in die Landschaft aus jedem Fenster. Die offene Küche und der lange Tisch laden dazu ein, gemeinsam zu kochen, zu essen und sitzen zu bleiben.',
+          'Ein Glaspavillon blickt auf das gemeinsame, 13.000 m² große Gelände mit Wildblumenwiesen – ein Ort zum Lesen, Dehnen oder einfach, um dem Wetter zuzusehen.',
+          'Draußen warten die Sauna, der natürliche Schwimmteich und die Feuerstelle, und ein Fahrrad steht bereit, um das IJsseltal zu erkunden. Verpflegung gibt es auf Anfrage.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Drinnen',
+            items: [
+              'Offene Küche',
+              'Regendusche',
+              'Hochwertige Ausstattung',
+              'Langer Tisch mit vielen Steckdosen',
+              'Glasfaser-WLAN',
+              'Blick in die Landschaft aus jedem Fenster',
+            ],
+          },
+          {
+            title: 'Draußen',
+            items: [
+              'Glaspavillon',
+              '13.000 m² gemeinsames Gelände mit Wildblumenwiesen',
+              'Natürlicher Schwimmteich',
+              'Feuerstelle',
+              'Fahrrad inklusive',
+            ],
+          },
+          {
+            title: 'Wellness & Extras',
+            items: [
+              'Sauna',
+              'Verpflegung auf Anfrage',
+            ],
+          },
+        ],
+        bookingMessage: 'Hallo! Ich würde gern einen Aufenthalt im Horizon-Loft bei The Makers Barn buchen.',
+      },
     },
   },
 

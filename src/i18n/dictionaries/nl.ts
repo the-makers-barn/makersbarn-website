@@ -374,6 +374,7 @@ export const nl: Dictionary = {
       responseNote: 'Meestal reageren we binnen een paar uur',
       alsoBookableVia: 'Ook te boeken via',
     },
+    cabinDetailsCta: 'Foto’s & details',
     cabins: {
       cosmos: {
         title: 'Boek Cosmos Cabin',
@@ -422,6 +423,135 @@ export const nl: Dictionary = {
     ctaTitle: 'Niet zeker welke ervaring bij je past?',
     ctaSubtitle: 'Neem contact met ons op en we helpen je de perfecte match te vinden.',
     ctaButton: 'Neem Contact Op',
+  },
+
+  cabinDetail: {
+    backToExperiences: 'Terug naar Ervaringen',
+    showAllPhotos: 'Toon alle foto’s',
+    openPhoto: 'Open foto',
+    aboutTitle: 'Over deze plek',
+    amenitiesTitle: 'Wat deze plek te bieden heeft',
+    locationTitle: 'Locatie',
+    locationItems: [
+      'In Wijhe, Overijssel — tussen Zwolle en Deventer',
+      'Station Wijhe ligt op tien minuten fietsen',
+      'Kasteel Nijenhuis, met museum en beeldentuinen, ligt op loopafstand',
+      'Boodschappen en restaurants in het dorp vlakbij',
+      'Wandel- en fietsroutes langs de IJssel en over de Sallandse Heuvelrug',
+    ],
+    bookingCard: {
+      title: 'Boek direct bij ons',
+      intro: 'Stuur ons je data via WhatsApp en we stemmen samen de beschikbaarheid en de prijs af.',
+    },
+    otherCabin: {
+      title: 'Ook bij The Makers Barn',
+      cta: 'Bekijk deze plek',
+    },
+    cabins: {
+      cosmos: {
+        metaTitle: 'Cosmos Cabin — houten cabin met houtkachel',
+        metaDescription: 'Verblijf in de Cosmos cabin bij The Makers Barn: een houten cabin van 60 m² met houtkachel, privé terras en weids uitzicht in Wijhe, Overijssel. Boek direct voor de beste prijs.',
+        kicker: 'Houten cabin · Wijhe, Overijssel',
+        title: 'Cosmos Cabin',
+        tagline: 'Een houten cabin met houtkachel, gezellig als geen ander en omgeven door een van de mooiste uitzichten die Nederland te bieden heeft.',
+        keyFacts: [
+          '60 m²',
+          'Tweepersoonsbed of twee eenpersoonsbedden',
+          'Slaapbank',
+          'Eigen keuken & douche',
+          'Houtkachel',
+        ],
+        description: [
+          "Cosmos is een houten cabin voor stellen of duo's die zich willen terugtrekken in de natuur. De houtkachel houdt het warm op koude avonden en het privé terras kijkt uit over een van de weidste uitzichten van Nederland.",
+          'Binnen vind je een keuken, een douche, een tweepersoonsbed dat ook als twee eenpersoonsbedden kan, en een slaapbank. Dankzij de schrijftafel bij het raam is het ook een rustige plek om te werken.',
+          'Rondom de cabin ligt meer dan 1,3 hectare eigen grond met een natuurlijke zwemvijver, sauna en hot tub, een vuurcirkel en paden tussen meer dan duizend bomen. Yogasessies, massage en catering zijn op aanvraag te regelen.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Binnen',
+            items: [
+              'Houtkachel',
+              'Keuken',
+              'Douche',
+              'Tweepersoonsbed of twee eenpersoonsbedden',
+              'Slaapbank',
+              'Schrijftafel bij het raam',
+              'Glasvezel-wifi',
+            ],
+          },
+          {
+            title: 'Buiten',
+            items: [
+              'Privé terras met weids uitzicht',
+              'Natuurlijke zwemvijver',
+              'Vuurcirkel',
+              'Wandelpaden tussen 1000+ bomen',
+              'Gratis fietsen',
+            ],
+          },
+          {
+            title: 'Wellness & extra’s',
+            items: [
+              'Sauna en hot tub',
+              'Yogasessies op aanvraag',
+              'Massage beschikbaar',
+              'Catering op aanvraag',
+            ],
+          },
+        ],
+        bookingMessage: 'Hoi! Ik wil graag een verblijf boeken in de Cosmos cabin bij The Makers Barn.',
+      },
+      horizon: {
+        metaTitle: 'Horizon Loft — luxe loft op het platteland',
+        metaDescription: 'Verblijf in de Horizon Loft bij The Makers Barn: een nieuw gebouwde luxe loft met open keuken, regendouche en een glazen paviljoen met uitzicht op 13.000 m² terrein in Wijhe, Overijssel. Boek direct voor de beste prijs.',
+        kicker: 'Luxe loft · Wijhe, Overijssel',
+        title: 'Horizon Loft',
+        tagline: 'Een nieuw gebouwde loft met premium afwerking, een open keuken en uitzicht op het platteland vanuit elk raam.',
+        keyFacts: [
+          'Nieuw gebouwde loft',
+          'Open keuken',
+          'Regendouche',
+          'Glazen paviljoen',
+          '13.000 m² terrein',
+        ],
+        description: [
+          'Horizon is een nieuw gebouwde luxe loft met premium afwerking en uitzicht op het platteland vanuit elk raam. Met de open keuken en de lange tafel is het makkelijk om samen te koken, te eten en te blijven hangen.',
+          'Een glazen paviljoen kijkt uit over 13.000 m² gedeeld terrein met wilde bloemenweiden — een plek om te lezen, te strekken of gewoon naar het weer te kijken.',
+          'Buiten liggen de sauna, de natuurlijke zwemvijver en de vuurplaats voor je klaar, en een gratis fiets staat klaar om de IJsselvallei te verkennen. Catering is op aanvraag te regelen.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Binnen',
+            items: [
+              'Open keuken',
+              'Regendouche',
+              'Premium afwerking',
+              'Lange tafel met stopcontacten genoeg',
+              'Glasvezel-wifi',
+              'Uitzicht op het platteland vanuit elk raam',
+            ],
+          },
+          {
+            title: 'Buiten',
+            items: [
+              'Glazen paviljoen',
+              '13.000 m² gedeeld terrein met wilde bloemenweiden',
+              'Natuurlijke zwemvijver',
+              'Vuurplaats',
+              'Gratis fiets',
+            ],
+          },
+          {
+            title: 'Wellness & extra’s',
+            items: [
+              'Sauna',
+              'Catering op aanvraag',
+            ],
+          },
+        ],
+        bookingMessage: 'Hoi! Ik wil graag een verblijf boeken in de Horizon Loft bij The Makers Barn.',
+      },
+    },
   },
 
   impressionCarousel: {

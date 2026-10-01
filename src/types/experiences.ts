@@ -32,7 +32,20 @@ export interface AccommodationOffer {
   type: ExperienceType.ACCOMMODATION
   cabin: AccommodationCabin
   image: string
-  bookingLinks: ExternalLink[]
+  bookingLinks: readonly ExternalLink[]
+  detailUrl: Route
+}
+
+/**
+ * Static data behind a cabin detail page. Copy lives in the dictionaries
+ * (`cabinDetail.cabins[cabin]`); this holds what is the same in every locale.
+ */
+export interface CabinDetail {
+  cabin: AccommodationCabin
+  route: Route
+  /** Gallery order: the first image is the large hero tile. */
+  gallery: readonly string[]
+  bookingLinks: readonly ExternalLink[]
 }
 
 export interface FocusedWorkationOffer {

@@ -371,6 +371,7 @@ export const en: Dictionary = {
       responseNote: 'We typically reply within a few hours',
       alsoBookableVia: 'Also bookable via',
     },
+    cabinDetailsCta: 'Photos & details',
     cabins: {
       cosmos: {
         title: 'Book Cosmos Cabin',
@@ -831,6 +832,135 @@ export const en: Dictionary = {
       bookNow: 'Book via WhatsApp',
       alternativeText: 'Prefer email?',
       alternativeCta: 'Use the contact form',
+    },
+  },
+
+  cabinDetail: {
+    backToExperiences: 'Back to Experiences',
+    showAllPhotos: 'Show all photos',
+    openPhoto: 'Open photo',
+    aboutTitle: 'About this place',
+    amenitiesTitle: 'What this place offers',
+    locationTitle: 'Location',
+    locationItems: [
+      'Located in Wijhe, Overijssel — between Zwolle and Deventer',
+      'Wijhe train station is ten minutes away by bike',
+      'Kasteel Nijenhuis, with its museum and sculpture gardens, is within walking distance',
+      'Groceries and restaurants in the village nearby',
+      'Hiking and cycling routes along the IJssel and through the Sallandse Heuvelrug',
+    ],
+    bookingCard: {
+      title: 'Book directly with us',
+      intro: 'Send us your dates on WhatsApp and we will confirm availability and the rate together.',
+    },
+    otherCabin: {
+      title: 'Also at The Makers Barn',
+      cta: 'View this place',
+    },
+    cabins: {
+      cosmos: {
+        metaTitle: 'Cosmos Cabin — wooden cabin with wood stove',
+        metaDescription: 'Stay in the Cosmos cabin at The Makers Barn: a 60 m² wooden cabin with a wood stove, private terrace and wide countryside views in Wijhe, Overijssel. Book directly for the best rate.',
+        kicker: 'Wooden cabin · Wijhe, Overijssel',
+        title: 'Cosmos Cabin',
+        tagline: 'A wooden cabin with a wood stove, cosy as no other and bathed in some of the best views the Netherlands has to offer.',
+        keyFacts: [
+          '60 m²',
+          'Double bed or two singles',
+          'Sleeper sofa',
+          'Own kitchen & shower',
+          'Wood stove',
+        ],
+        description: [
+          'Cosmos is a wooden cabin made for couples or duos craving a cocooned escape close to nature. The wood stove keeps it warm on cold evenings, and the private terrace looks out over one of the widest views the Netherlands has to offer.',
+          'Inside you will find a kitchen, a shower, a double bed that can be split into two singles, and a sleeper sofa. A writing desk by the window makes it a quiet place to work, too.',
+          'Around the cabin lie more than 1.3 hectares of private land with a natural swimming pond, a sauna and hot tub, a fire circle and paths between more than a thousand trees. Yoga sessions, massage and catering can be arranged on request.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Inside',
+            items: [
+              'Wood stove',
+              'Kitchen',
+              'Shower',
+              'Double bed or two single beds',
+              'Sleeper sofa',
+              'Writing desk by the window',
+              'Fibre Wi-Fi',
+            ],
+          },
+          {
+            title: 'Outside',
+            items: [
+              'Private terrace with wide views',
+              'Natural swimming pond',
+              'Fire circle',
+              'Walking paths among 1,000+ trees',
+              'Free bikes',
+            ],
+          },
+          {
+            title: 'Wellness & extras',
+            items: [
+              'Sauna and hot tub',
+              'Yoga sessions on request',
+              'Massage available',
+              'Catering on request',
+            ],
+          },
+        ],
+        bookingMessage: 'Hi! I would like to book a stay in the Cosmos cabin at The Makers Barn.',
+      },
+      horizon: {
+        metaTitle: 'Horizon Loft — luxury loft in the countryside',
+        metaDescription: 'Stay in the Horizon loft at The Makers Barn: a newly built luxury loft with an open kitchen, rainfall shower and a glass pavilion overlooking 13,000 m² of grounds in Wijhe, Overijssel. Book directly for the best rate.',
+        kicker: 'Luxury loft · Wijhe, Overijssel',
+        title: 'Horizon Loft',
+        tagline: 'A newly built loft with premium finishes, an open kitchen and countryside views from every window.',
+        keyFacts: [
+          'Newly built loft',
+          'Open kitchen',
+          'Rainfall shower',
+          'Glass pavilion',
+          '13,000 m² of grounds',
+        ],
+        description: [
+          'Horizon is a newly built luxury loft with premium finishes and views over the countryside from every window. The open kitchen and long table make it easy to cook, eat and linger together.',
+          'A glass pavilion looks out over 13,000 m² of shared grounds with wildflower meadows — a place to read, stretch or simply watch the weather roll in.',
+          'Outside, the sauna, the natural swimming pond and the fire pit are yours to enjoy, and a free bicycle is ready to explore the IJssel valley. Catering can be arranged on request.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Inside',
+            items: [
+              'Open kitchen',
+              'Rainfall shower',
+              'Premium finishes',
+              'Long table with plenty of outlets',
+              'Fibre Wi-Fi',
+              'Countryside views from every window',
+            ],
+          },
+          {
+            title: 'Outside',
+            items: [
+              'Glass pavilion',
+              '13,000 m² of shared grounds with wildflower meadows',
+              'Natural swimming pond',
+              'Fire pit',
+              'Free bicycle',
+            ],
+          },
+          {
+            title: 'Wellness & extras',
+            items: [
+              'Sauna',
+              'Catering on request',
+            ],
+          },
+        ],
+        bookingMessage: 'Hi! I would like to book a stay in the Horizon loft at The Makers Barn.',
+      },
     },
   },
 

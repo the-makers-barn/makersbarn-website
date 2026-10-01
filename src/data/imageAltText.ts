@@ -186,6 +186,16 @@ export const IMAGE_ALT_TEXT: Record<string, Record<Language, string>> = {
     [Language.NL]: 'Douchefaciliteiten in de Horizon accommodatie',
     [Language.DE]: 'Duschräume in der Unterkunft Horizon',
   },
+  '/images/horizon.avif': {
+    [Language.EN]: 'Exterior of the Horizon loft in the Overijssel countryside',
+    [Language.NL]: 'Buitenkant van de Horizon loft in het Overijsselse buitengebied',
+    [Language.DE]: 'Außenansicht des Horizon-Lofts in der Landschaft von Overijssel',
+  },
+  '/images/graden_view_with_hammocks.JPG': {
+    [Language.EN]: 'Garden view with hammocks at The Makers Barn',
+    [Language.NL]: 'Uitzicht op de tuin met hangmatten bij The Makers Barn',
+    [Language.DE]: 'Blick in den Garten mit Hängematten bei The Makers Barn',
+  },
 
   // Team images
   '/images/nana-stairs.jpg': {
