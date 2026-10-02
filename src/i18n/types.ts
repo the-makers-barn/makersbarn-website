@@ -1,4 +1,13 @@
-import { AccommodationCabin, Language } from '@/types'
+import {
+  AccommodationCabin,
+  Language,
+  RetreatAccessKey,
+  RetreatAccommodationKey,
+  RetreatActivityKey,
+  RetreatDayKind,
+  RetreatProgrammeKey,
+  RetreatServiceKey,
+} from '@/types'
 import type { DietaryCapability, NlRegion, RetreatType } from '@/constants/chef'
 import type { ChefInquiryDict } from '@/types/chef'
 
@@ -361,8 +370,7 @@ export interface ShantiDevaRetreatTranslations {
     title: string
     subtitle: string
     withTeachers: string
-    dailyTime: string
-    getInTouch: string
+    bookPlace: string
   }
 
   video: {
@@ -375,13 +383,26 @@ export interface ShantiDevaRetreatTranslations {
     secondRetreat: string
     thirdRetreat: string
     duration: string
+    oneRetreatNote: string
   }
 
   teacher: {
     sectionTitle: string
-    biography: string
-    gesheTitle: string
-    monkTitle: string
+    geshe: {
+      name: string
+      tagline: string
+      biography: string
+    }
+    lobsang: {
+      name: string
+      biography: string
+    }
+  }
+
+  programme: {
+    title: string
+    intro: string
+    topics: Record<RetreatProgrammeKey, { title: string; description: string }>
   }
 
   details: {
@@ -390,52 +411,57 @@ export interface ShantiDevaRetreatTranslations {
     locationDescription: string
     address: string
     accessibility: string
-    accessibilityItems: {
-      carFromZwolle: string
-      freePickup: string
-      sharedTransport: string
+    accessibilityItems: Record<RetreatAccessKey, string>
+    galleryAlt: {
+      dalaiLama: string
+      farmAerial: string
+      momoDemonstration: string
     }
   }
 
   schedule: {
     title: string
     intro: string
-    activities: {
-      morningMeditation: string
-      breakfastBuffet: string
-      teachingLectures: string
-      lunch: string
-      restAndDigest: string
-      afternoonWorkshop: string
-      dinnerGathering: string
-      qaSession: string
-      eveningConnect: string
-    }
+    days: Record<RetreatDayKind, string>
+    activities: Record<RetreatActivityKey, string>
     workshopNote: string
   }
 
   included: {
     title: string
     accommodation: string
-    accommodationOptions: {
-      duration: string
-      doubleRooms: string
-      sharedRooms: string
-      singleRoom: string
-      tentCaravan: string
-    }
+    accommodationOptions: Record<RetreatAccommodationKey, string>
     servicesTitle: string
-    services: {
-      beddingTowels: string
-      vegetarianMeals: string
-      farmFacilities: string
+    services: Record<RetreatServiceKey, string>
+  }
+
+  pricing: {
+    title: string
+    subtitle: string
+    perParticipant: string
+    /** Placeholders: {base}, {vatPercent}, {vat}. */
+    breakdown: string
+    includes: string
+    register: string
+    bookingNote: string
+    brochure: string
+    paymentTitle: string
+    /** Placeholder: {deposit}. */
+    deposit: string
+    /** Placeholder: {balance}. */
+    balance: string
+    instalments: string
+    cancellationTitle: string
+    cancellation: {
+      fullRefund: string
+      halfRefund: string
+      noRefund: string
     }
   }
 
   registration: {
     title: string
     subtitle: string
-    participantRange: string
     contact: string
     whatsapp: string
     email: string

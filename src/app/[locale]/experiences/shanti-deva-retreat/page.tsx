@@ -10,10 +10,11 @@ import { SHANTI_DEVA_RETREAT } from '@/data'
 import { getServerTranslations } from '@/i18n'
 import { getValidLocale } from '@/lib/locale'
 import { getLocalizedPath } from '@/lib/routing'
+import { formatWholeEventPrice } from '@/lib/eventPricing'
 
 import styles from './page.module.css'
 
-/** Target of the hero CTA — the page has no booking form, only the organiser's details. */
+/** Target of the hero CTA — the price section, which holds the booking form link. */
 const REGISTRATION_ANCHOR = 'register'
 
 /** Display handle for the contact link; the URL it points at lives in the retreat data. */
@@ -190,13 +191,24 @@ function formatDateRange(startDate: string, endDate: string, locale: Language): 
   }).formatRange(new Date(startDate), new Date(endDate))
 }
 
-interface RetreatHeroProps {
-  t: Awaited<ReturnType<typeof getServerTranslations>>
-  retreat: typeof SHANTI_DEVA_RETREAT
+type Translations = Awaited<ReturnType<typeof getServerTranslations>>
+type Retreat = typeof SHANTI_DEVA_RETREAT
+
+interface RetreatSectionProps {
+  t: Translations
+  retreat: Retreat
+}
+
+interface LocalizedRetreatSectionProps extends RetreatSectionProps {
   validLocale: Language
 }
 
-function RetreatHero({ t, retreat, validLocale }: RetreatHeroProps) {
+/** Fills `{name}` placeholders in a dictionary template. */
+function fillTemplate(template: string, values: Record<string, string>): string {
+  return template.replace(/\{(\w+)\}/g, (match, name: string) => values[name] ?? match)
+}
+
+function RetreatHero({ t, retreat, validLocale }: LocalizedRetreatSectionProps) {
   return (
     <>
       <Link href={getLocalizedPath(Route.EXPERIENCES, validLocale)} className={styles.backLink}>
@@ -238,7 +250,7 @@ function RetreatHero({ t, retreat, validLocale }: RetreatHeroProps) {
 
               <div className={styles.heroActions}>
                 <a href={`#${REGISTRATION_ANCHOR}`} className={styles.heroCta}>
-                  {t.shantiDevaRetreat.hero.getInTouch}
+                  {t.shantiDevaRetreat.hero.bookPlace}
                   <ArrowRightIcon className={styles.heroCtaIcon} />
                 </a>
               </div>
@@ -262,13 +274,20 @@ function RetreatHero({ t, retreat, validLocale }: RetreatHeroProps) {
   )
 }
 
-interface RetreatDatesProps {
-  t: Awaited<ReturnType<typeof getServerTranslations>>
-  retreat: typeof SHANTI_DEVA_RETREAT
-  validLocale: Language
+function CheckList({ items }: { items: string[] }) {
+  return (
+    <ul className={styles.includedList}>
+      {items.map(item => (
+        <li key={item} className={styles.includedItem}>
+          <CheckIcon className={styles.checkIcon} />
+          {item}
+        </li>
+      ))}
+    </ul>
+  )
 }
 
-function RetreatDates({ t, retreat, validLocale }: RetreatDatesProps) {
+function RetreatDates({ t, retreat, validLocale }: LocalizedRetreatSectionProps) {
   const labels = [
     t.shantiDevaRetreat.dates.firstRetreat,
     t.shantiDevaRetreat.dates.secondRetreat,
@@ -289,94 +308,108 @@ function RetreatDates({ t, retreat, validLocale }: RetreatDatesProps) {
           </div>
         ))}
       </div>
+      <p className={styles.datesNote}>{t.shantiDevaRetreat.dates.oneRetreatNote}</p>
     </section>
   )
 }
 
-interface RetreatScheduleProps {
-  t: Awaited<ReturnType<typeof getServerTranslations>>
-  retreat: typeof SHANTI_DEVA_RETREAT
+function RetreatTeachers({ t, retreat }: RetreatSectionProps) {
+  const { teacher } = t.shantiDevaRetreat
+
+  return (
+    <section className={styles.teacherSection}>
+      <h2 className={styles.sectionTitle}>{teacher.sectionTitle}</h2>
+      <div className={styles.teacherContent}>
+        <div className={styles.teacherImageWrapper}>
+          <Image
+            src={retreat.heroImage}
+            alt={retreat.teachers[0].name}
+            fill
+            className={styles.teacherImage}
+            sizes="(max-width: 768px) 100vw, 300px"
+          />
+        </div>
+        <div>
+          <h3 className={styles.teacherName}>{teacher.geshe.name}</h3>
+          <p className={styles.teacherTagline}>{teacher.geshe.tagline}</p>
+          <p className={styles.teacherBio}>{teacher.geshe.biography}</p>
+
+          <h3 className={styles.teacherName}>{teacher.lobsang.name}</h3>
+          <p className={styles.teacherBio}>{teacher.lobsang.biography}</p>
+        </div>
+      </div>
+    </section>
+  )
 }
 
-function RetreatSchedule({ t, retreat }: RetreatScheduleProps) {
-  const activities = t.shantiDevaRetreat.schedule.activities
+function RetreatProgramme({ t, retreat }: RetreatSectionProps) {
+  const { programme } = t.shantiDevaRetreat
+
+  return (
+    <section className={styles.programmeSection}>
+      <h2 className={styles.sectionTitle}>{programme.title}</h2>
+      <p className={styles.sectionIntro}>{programme.intro}</p>
+      <ol className={styles.programmeGrid}>
+        {retreat.programmeKeys.map((key, index) => (
+          <li key={key} className={styles.programmeCard}>
+            <span className={styles.programmeNumber} aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 className={styles.programmeTitle}>{programme.topics[key].title}</h3>
+            <p className={styles.programmeText}>{programme.topics[key].description}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
+
+function RetreatSchedule({ t, retreat }: RetreatSectionProps) {
+  const { schedule } = t.shantiDevaRetreat
 
   return (
     <section className={styles.scheduleSection}>
-      <h2 className={styles.sectionTitle}>{t.shantiDevaRetreat.schedule.title}</h2>
-      <p className={styles.scheduleIntro}>{t.shantiDevaRetreat.schedule.intro}</p>
+      <h2 className={styles.sectionTitle}>{schedule.title}</h2>
+      <p className={styles.sectionIntro}>{schedule.intro}</p>
 
-      <div className={styles.scheduleContent}>
-        <ol className={styles.dayFlowList}>
-          {retreat.dayFlowKeys.map(key => (
-            <li key={key} className={styles.dayFlowItem}>
-              <span className={styles.dayFlowMarker} aria-hidden="true" />
-              <span className={styles.dayFlowActivity}>
-                {activities[key as keyof typeof activities] || key}
-              </span>
-            </li>
-          ))}
-        </ol>
+      <div className={styles.scheduleGrid}>
+        {retreat.schedule.map(day => (
+          <div key={day.kind} className={styles.scheduleCard}>
+            <h3 className={styles.scheduleDayTitle}>{schedule.days[day.kind]}</h3>
+            <dl className={styles.timetable}>
+              {day.items.map(item => (
+                <div key={`${item.time}-${item.activityKey}`} className={styles.timetableRow}>
+                  <dt className={styles.timetableTime}>{item.time}</dt>
+                  <dd className={styles.timetableActivity}>{schedule.activities[item.activityKey]}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
       </div>
 
       <div className={styles.specialActivity}>
-        <p className={styles.specialActivityText}>{t.shantiDevaRetreat.schedule.workshopNote}</p>
+        <p className={styles.specialActivityText}>{schedule.workshopNote}</p>
       </div>
     </section>
   )
 }
 
-interface RetreatIncludedProps {
-  t: Awaited<ReturnType<typeof getServerTranslations>>
-}
+function RetreatIncluded({ t, retreat }: RetreatSectionProps) {
+  const { included } = t.shantiDevaRetreat
 
-function RetreatIncluded({ t }: RetreatIncludedProps) {
   return (
     <section className={styles.includedSection}>
       <div className={styles.includedContent}>
-        <h2 className={styles.sectionTitle}>{t.shantiDevaRetreat.included.title}</h2>
+        <h2 className={styles.sectionTitle}>{included.title}</h2>
         <div className={styles.includedGrid}>
           <div className={styles.includedCard}>
-            <h3 className={styles.includedCardTitle}>{t.shantiDevaRetreat.included.accommodation}</h3>
-            <ul className={styles.includedList}>
-              <li className={styles.includedItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.included.accommodationOptions.duration}
-              </li>
-              <li className={styles.includedItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.included.accommodationOptions.doubleRooms}
-              </li>
-              <li className={styles.includedItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.included.accommodationOptions.sharedRooms}
-              </li>
-              <li className={styles.includedItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.included.accommodationOptions.singleRoom}
-              </li>
-              <li className={styles.includedItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.included.accommodationOptions.tentCaravan}
-              </li>
-            </ul>
+            <h3 className={styles.includedCardTitle}>{included.accommodation}</h3>
+            <CheckList items={retreat.accommodationKeys.map(key => included.accommodationOptions[key])} />
           </div>
           <div className={styles.includedCard}>
-            <h3 className={styles.includedCardTitle}>{t.shantiDevaRetreat.included.servicesTitle}</h3>
-            <ul className={styles.includedList}>
-              <li className={styles.includedItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.included.services.beddingTowels}
-              </li>
-              <li className={styles.includedItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.included.services.vegetarianMeals}
-              </li>
-              <li className={styles.includedItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.included.services.farmFacilities}
-              </li>
-            </ul>
+            <h3 className={styles.includedCardTitle}>{included.servicesTitle}</h3>
+            <CheckList items={retreat.serviceKeys.map(key => included.services[key])} />
           </div>
         </div>
       </div>
@@ -384,19 +417,79 @@ function RetreatIncluded({ t }: RetreatIncludedProps) {
   )
 }
 
-interface RetreatRegistrationProps {
-  t: Awaited<ReturnType<typeof getServerTranslations>>
-  retreat: typeof SHANTI_DEVA_RETREAT
+function RetreatPricing({ t, retreat, validLocale }: LocalizedRetreatSectionProps) {
+  const { pricing } = t.shantiDevaRetreat
+  const { currency, total, base, vatPercent, deposit } = retreat.pricing
+  const format = (amount: number | string) => formatWholeEventPrice(String(amount), currency, validLocale)
+
+  const breakdown = fillTemplate(pricing.breakdown, {
+    base: format(base),
+    vatPercent: String(vatPercent),
+    vat: format(Number(total) - Number(base)),
+  })
+
+  return (
+    <section id={REGISTRATION_ANCHOR} className={styles.pricingSection}>
+      <h2 className={styles.sectionTitle}>{pricing.title}</h2>
+      <p className={styles.sectionIntro}>{pricing.subtitle}</p>
+
+      <div className={styles.pricingGrid}>
+        <div className={styles.priceCard}>
+          <p className={styles.priceLabel}>{pricing.perParticipant}</p>
+          <p className={styles.priceAmount}>{format(total)}</p>
+          <p className={styles.priceBreakdown}>{breakdown}</p>
+          <p className={styles.priceIncludes}>{pricing.includes}</p>
+          <a
+            href={retreat.contact.bookingFormUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.heroCta}
+          >
+            {pricing.register}
+            <ArrowRightIcon className={styles.heroCtaIcon} />
+          </a>
+          <p className={styles.bookingNote}>{pricing.bookingNote}</p>
+          <a
+            href={retreat.contact.brochureUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.brochureLink}
+          >
+            {pricing.brochure}
+          </a>
+        </div>
+
+        <div className={styles.includedCard}>
+          <h3 className={styles.includedCardTitle}>{pricing.paymentTitle}</h3>
+          <CheckList
+            items={[
+              fillTemplate(pricing.deposit, { deposit: format(deposit) }),
+              fillTemplate(pricing.balance, { balance: format(Number(total) - Number(deposit)) }),
+              pricing.instalments,
+            ]}
+          />
+          <h3 className={`${styles.includedCardTitle} ${styles.cardSubheading}`}>
+            {pricing.cancellationTitle}
+          </h3>
+          <CheckList
+            items={[
+              pricing.cancellation.fullRefund,
+              pricing.cancellation.halfRefund,
+              pricing.cancellation.noRefund,
+            ]}
+          />
+        </div>
+      </div>
+    </section>
+  )
 }
 
-function RetreatRegistration({ t, retreat }: RetreatRegistrationProps) {
+function RetreatContact({ t, retreat }: RetreatSectionProps) {
   return (
-    <section id={REGISTRATION_ANCHOR} className={styles.registrationSection}>
+    <section className={styles.registrationSection}>
       <div className={styles.registrationContent}>
         <h2 className={styles.registrationTitle}>{t.shantiDevaRetreat.registration.title}</h2>
         <p className={styles.registrationSubtitle}>{t.shantiDevaRetreat.registration.subtitle}</p>
-
-        <p className={styles.participantInfo}>{t.shantiDevaRetreat.registration.participantRange}</p>
 
         <p className={styles.contactInfo}>{t.shantiDevaRetreat.registration.contact}</p>
         <div className={styles.contactLinks}>
@@ -434,46 +527,37 @@ function RetreatRegistration({ t, retreat }: RetreatRegistrationProps) {
   )
 }
 
-interface RetreatDetailsProps {
-  t: Awaited<ReturnType<typeof getServerTranslations>>
-  retreat: typeof SHANTI_DEVA_RETREAT
-}
+function RetreatDetails({ t, retreat }: RetreatSectionProps) {
+  const { details } = t.shantiDevaRetreat
 
-function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
   return (
     <section className={styles.detailsSection}>
       <div className={styles.detailsContent}>
-        <h2 className={styles.sectionTitle}>{t.shantiDevaRetreat.details.title}</h2>
+        <h2 className={styles.sectionTitle}>{details.title}</h2>
         <div className={styles.detailsGrid}>
           <div className={styles.detailCard}>
             <h3 className={styles.detailCardTitle}>
               <LocationIcon className={styles.detailIcon} />
-              {t.shantiDevaRetreat.details.location}
+              {details.location}
             </h3>
-            <p className={styles.detailText}>{t.shantiDevaRetreat.details.locationDescription}</p>
+            <p className={styles.detailText}>{details.locationDescription}</p>
             <p className={styles.detailText}>
-              <strong>{t.shantiDevaRetreat.details.address}:</strong>{' '}
+              <strong>{details.address}:</strong>{' '}
               <span className={styles.detailAddress}>{retreat.location.address}</span>
             </p>
           </div>
           <div className={styles.detailCard}>
             <h3 className={styles.detailCardTitle}>
               <CarIcon className={styles.detailIcon} />
-              {t.shantiDevaRetreat.details.accessibility}
+              {details.accessibility}
             </h3>
             <ul className={styles.accessibilityList}>
-              <li className={styles.accessibilityItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.details.accessibilityItems.carFromZwolle}
-              </li>
-              <li className={styles.accessibilityItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.details.accessibilityItems.freePickup}
-              </li>
-              <li className={styles.accessibilityItem}>
-                <CheckIcon className={styles.checkIcon} />
-                {t.shantiDevaRetreat.details.accessibilityItems.sharedTransport}
-              </li>
+              {retreat.location.accessibilityKeys.map(key => (
+                <li key={key} className={styles.accessibilityItem}>
+                  <CheckIcon className={styles.checkIcon} />
+                  {details.accessibilityItems[key]}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -481,8 +565,8 @@ function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
         <div className={styles.venueGallery}>
           <div className={styles.venueImageLarge}>
             <Image
-              src="/images/retreats/shanti-deva/teachers-together.jpg"
-              alt="Gen La Geshe Pema Dorjee and monk Lobsang greeting the room"
+              src="/images/retreats/shanti-deva/geshe-with-dalai-lama.jpg"
+              alt={details.galleryAlt.dalaiLama}
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
               className={styles.venueImage}
@@ -491,7 +575,7 @@ function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
           <div className={styles.venueImageSmall}>
             <Image
               src="/images/retreats/shanti-deva/farm-aerial.jpg"
-              alt="Aerial view of the farm with the retreat tent in the orchard"
+              alt={details.galleryAlt.farmAerial}
               fill
               sizes="(max-width: 768px) 50vw, 20vw"
               className={styles.venueImage}
@@ -500,7 +584,7 @@ function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
           <div className={styles.venueImageSmall}>
             <Image
               src="/images/retreats/shanti-deva/momo-demonstration.jpg"
-              alt="Geshe Pema Dorjee showing the group how to fold Tibetan momos"
+              alt={details.galleryAlt.momoDemonstration}
               fill
               sizes="(max-width: 768px) 50vw, 20vw"
               className={styles.venueImage}
@@ -512,7 +596,7 @@ function RetreatDetails({ t, retreat }: RetreatDetailsProps) {
   )
 }
 
-function createEventSchema(t: Awaited<ReturnType<typeof getServerTranslations>>, retreat: typeof SHANTI_DEVA_RETREAT) {
+function createEventSchema(t: Translations, retreat: Retreat) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Event',
@@ -530,6 +614,13 @@ function createEventSchema(t: Awaited<ReturnType<typeof getServerTranslations>>,
         addressLocality: 'Wijhe',
         addressCountry: 'NL',
       },
+    },
+    offers: {
+      '@type': 'Offer',
+      price: retreat.pricing.total,
+      priceCurrency: retreat.pricing.currency,
+      availability: 'https://schema.org/InStock',
+      url: retreat.contact.bookingFormUrl,
     },
     organizer: {
       '@type': 'Organization',
@@ -564,25 +655,11 @@ export default async function ShantiDevaRetreatPage({ params }: ShantiDevaRetrea
 
         <div className={styles.divider} />
 
-        <section className={styles.teacherSection}>
-          <div className={styles.teacherContent}>
-            <div className={styles.teacherImageWrapper}>
-              <Image
-                src={retreat.heroImage}
-                alt={retreat.teachers[0].name}
-                fill
-                className={styles.teacherImage}
-                sizes="(max-width: 768px) 100vw, 300px"
-              />
-            </div>
-            <div className={styles.teacherText}>
-              <h2>{t.shantiDevaRetreat.teacher.sectionTitle}</h2>
-              <p className={styles.teacherBio}>{t.shantiDevaRetreat.teacher.biography}</p>
-            </div>
-          </div>
-        </section>
+        <RetreatTeachers t={t} retreat={retreat} />
 
         <div className={styles.divider} />
+
+        <RetreatProgramme t={t} retreat={retreat} />
 
         <RetreatDetails t={t} retreat={retreat} />
 
@@ -590,9 +667,11 @@ export default async function ShantiDevaRetreatPage({ params }: ShantiDevaRetrea
 
         <div className={styles.divider} />
 
-        <RetreatIncluded t={t} />
+        <RetreatIncluded t={t} retreat={retreat} />
 
-        <RetreatRegistration t={t} retreat={retreat} />
+        <RetreatPricing t={t} retreat={retreat} validLocale={validLocale} />
+
+        <RetreatContact t={t} retreat={retreat} />
       </div>
     </>
   )

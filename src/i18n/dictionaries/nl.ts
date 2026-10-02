@@ -545,15 +545,14 @@ export const nl: Dictionary = {
 
   shantiDevaRetreat: {
     metaTitle: 'Shanti Deva Boeddhistisch Tibetaans Retraite',
-    metaDescription: 'Doe mee met Gen La Geshe Pema Dorjee voor een 6-daagse Boeddhistische retraite op het Nederlandse platteland. Drie retraites in 2027, met meditatie, onderricht en vegetarische maaltijden inbegrepen.',
+    metaDescription: 'Doe mee met Gen La Geshe Pema Dorjee en de eerwaarde Lobsang Tsering voor een 6-daagse Boeddhistische retraite op het Nederlandse platteland. Drie retraites in 2027, €795 inclusief verblijf, vegetarische maaltijden en workshops.',
     backToExperiences: 'Terug naar Ervaringen',
 
     hero: {
       title: 'Shanti Deva Boeddhistisch Tibetaans Retraite',
       subtitle: 'Studie van Tibetaans Boeddhisme',
-      withTeachers: 'met Gen La Geshe Pema Dorjee & de Gerespecteerde monnik Lobsang',
-      dailyTime: 'Dagelijks van 7:00 tot 20:00 uur',
-      getInTouch: 'Stel je vraag over de retraite',
+      withTeachers: 'met Gen La Geshe Pema Dorjee & de eerwaarde monnik Lobsang Tsering',
+      bookPlace: 'Reserveer je plek',
     },
 
     video: {
@@ -566,13 +565,39 @@ export const nl: Dictionary = {
       secondRetreat: 'Retraite 2',
       thirdRetreat: 'Retraite 3',
       duration: '5 nachten (6 dagen)',
+      oneRetreatNote: 'Alle drie de retraites volgen hetzelfde programma. Kies daarom één retraite en meld je alleen daarvoor aan.',
     },
 
     teacher: {
-      sectionTitle: 'Wie is Geshe Pema Dorjee?',
-      biography: 'Geshe Pema Dorjee werd geboren in Tibet en vluchtte met zijn familie in 1959 naar Dharamsala, India. Hij studeerde Boeddhistische filosofie en ontving in 1995 de Geshe-graad - de hoogste academische titel in het Tibetaans Boeddhisme. Meer dan 20 jaar gaf hij les en was hij directeur van het Tibetan Children\'s Village. Op verzoek van Zijne Heiligheid de Dalai Lama richtte hij het Bodong Research Center en een klooster in Kathmandu op. Hij heeft ook uitgebreide humanitaire projecten geleid, waaronder scholen, weeshuizen, watersystemen en aardbevingshulp in Nepal. Sinds 1997 geeft hij wereldwijd les, bekend om zijn helderheid, warmte en mededogen.',
-      gesheTitle: 'Geshe',
-      monkTitle: 'Gerespecteerde Monnik',
+      sectionTitle: 'Maak kennis met de leraren',
+      geshe: {
+        name: 'Gen La Geshe Pema Dorjee',
+        tagline: 'Een leven gewijd aan studie, dienstbaarheid en de Dharma.',
+        biography: 'Geshe Pema Dorjee werd geboren in Tibet en vluchtte met zijn familie in 1959 naar Dharamsala, India. Hij studeerde Boeddhistische filosofie en ontving in 1995 de Geshe-graad - de hoogste academische titel in het Tibetaans Boeddhisme. Meer dan 20 jaar gaf hij les en was hij directeur van het Tibetan Children\'s Village. Op verzoek van Zijne Heiligheid de Dalai Lama richtte hij het Bodong Research Center en een klooster in Kathmandu op. Hij heeft ook uitgebreide humanitaire projecten geleid, waaronder scholen, weeshuizen, watersystemen en aardbevingshulp in Nepal. Sinds 1997 geeft hij wereldwijd les, bekend om zijn helderheid, warmte en mededogen.',
+      },
+      lobsang: {
+        name: 'Eerwaarde Lobsang Tsering',
+        biography: 'De Boeddhistische monnik Lobsang Tsering leidt de retraite samen met Gen La Geshe Pema Dorjee en ondersteunt het programma van Boeddhistische studie, meditatie en gesprek.',
+      },
+    },
+
+    programme: {
+      title: 'Het Programma',
+      intro: 'Samen studeren, oefenen en leven - hetzelfde programma bij alle drie de retraites.',
+      topics: {
+        joyfulEffort: {
+          title: 'Vreugdevolle inzet',
+          description: 'Het zevende hoofdstuk van Shantideva\'s De weg van de bodhisattva.',
+        },
+        mahayana: {
+          title: 'Mahayana Boeddhisme',
+          description: 'Kennismaking met en studie van het Mahayana-pad.',
+        },
+        meditation: {
+          title: 'Meditatie',
+          description: 'Wat is meditatie en hoe mediteren we?',
+        },
+      },
     },
 
     details: {
@@ -582,27 +607,41 @@ export const nl: Dictionary = {
       address: 'Adres boerderij',
       accessibility: 'Bereikbaarheid',
       accessibilityItems: {
-        carFromZwolle: '15 minuten met de auto vanaf Zwolle (1 uur 15 met de trein vanaf Schiphol Airport, Amsterdam)',
-        freePickup: 'Gratis ophaalservice vanaf station Zwolle (14:00-16:00)',
-        sharedTransport: 'Gedeeld vervoer terug naar het station aan het einde: ~€10 per persoon',
+        carFromZwolle: '15 minuten met de auto vanaf Zwolle; met de trein stap je in Zwolle over richting Wijhe (Schiphol Airport - Zwolle duurt 1 uur 15)',
+        freePickup: 'Gratis ophaalservice vanaf station Wijhe tussen 14:00 en 16:00 op de aankomstdag',
+        returnTransport: 'Vervoer terug naar station Wijhe wordt door de organisatie geregeld',
+      },
+      galleryAlt: {
+        dalaiLama: 'Zijne Heiligheid de Dalai Lama begroet Gen La Geshe Pema Dorjee',
+        farmAerial: 'Luchtfoto van de boerderij met de retraitetent in de boomgaard',
+        momoDemonstration: 'Geshe Pema Dorjee laat de groep zien hoe je Tibetaanse momo\'s vouwt',
       },
     },
 
     schedule: {
-      title: 'Een Typische Dag',
-      intro: 'Geen dag is hetzelfde, maar elke dag volgt dit rustige ritme.',
-      activities: {
-        morningMeditation: 'Ochtendmeditatie en chanten in de groep',
-        breakfastBuffet: 'Ontbijtbuffet',
-        teachingLectures: 'Boeddhistisch onderricht en lezingen',
-        lunch: 'Samen lunchen',
-        restAndDigest: 'Vrije tijd om te rusten en te laten bezinken',
-        afternoonWorkshop: 'Op sommige dagen een middagworkshop',
-        dinnerGathering: 'Samen dineren',
-        qaSession: 'Vraag & Antwoord Sessie',
-        eveningConnect: 'Tijd om te verbinden, van de sauna te genieten en de dag te overdenken - alleen of samen',
+      title: 'Dagritme',
+      intro: 'Elke retraite loopt van een middag aankomen, via de studiedagen, naar een afsluitende ochtend.',
+      days: {
+        arrival: 'Aankomstdag',
+        study: 'Studiedagen',
+        final: 'Laatste dag',
       },
-      workshopNote: 'De middagworkshops wisselen tussen Tibetaanse momo\'s koken, slow flow yoga en het schilderen van Boeddhistische motieven.',
+      activities: {
+        checkIn: 'Inchecken',
+        farmTour: 'Rondleiding over de boerderij',
+        welcomeReception: 'Welkomstontvangst',
+        dinner: 'Diner',
+        introduction: 'Introductie',
+        meditation: 'Meditatie: studie en beoefening',
+        breakfast: 'Ontbijt',
+        teaching: 'Onderricht',
+        lunch: 'Lunch',
+        teachingsAndWorkshops: 'Onderricht en workshops',
+        questionsAndAnswers: 'Vragen & antwoorden',
+        closing: 'Afsluiting',
+        checkOut: 'Uitchecken',
+      },
+      workshopNote: 'De middagworkshops zijn onder meer Tibetaanse momo\'s koken, Tibetaanse motieven schilderen en rustige yoga.',
     },
 
     included: {
@@ -610,24 +649,44 @@ export const nl: Dictionary = {
       accommodation: 'Accommodatie',
       accommodationOptions: {
         duration: '5 nachten (6 dagen)',
-        doubleRooms: 'Tweepersoonskamers',
-        sharedRooms: 'Kamers voor 3-4 personen',
-        singleRoom: 'Eenpersoonskamer',
-        tentCaravan: 'Optie om in eigen tent of caravan te verblijven tegen gereduceerd tarief',
+        sharedRooms: 'Gedeelde kamers voor 2-4 deelnemers',
+        coupleRoom: 'Eén kamer voor een stel met tweepersoonsbed, zolang beschikbaar',
+        bedding: 'Beddengoed & handdoeken (zwembad/sauna handdoek niet inbegrepen)',
       },
-      servicesTitle: 'Diensten',
+      servicesTitle: 'Maaltijden, boerderij & workshops',
       services: {
-        beddingTowels: 'Beddengoed & handdoeken (zwembad/sauna handdoek niet inbegrepen)',
-        vegetarianMeals: '3 vegetarische maaltijden per dag + drankjes & snacks',
-        farmFacilities: 'Gebruik van alle boerderijfaciliteiten - Sauna, Ecologisch zwembad en meer',
+        vegetarianMeals: 'Volledig vegetarische maaltijden tijdens de hele retraite',
+        drinks: 'Warme dranken & water',
+        farmFacilities: 'Kleine ecologische zwemvijver, sauna, hottub & vuurcirkel',
+        workshops: 'Workshops Tibetaanse momo\'s koken, Tibetaanse motieven schilderen en rustige yoga',
+      },
+    },
+
+    pricing: {
+      title: 'Prijs & Aanmelden',
+      subtitle: 'Per retraite is er plaats voor 10-15 deelnemers.',
+      perParticipant: 'Totaal per deelnemer',
+      breakdown: 'Basis {base} + {vatPercent}% btw {vat}',
+      includes: 'Inclusief verblijf, volledig vegetarische maaltijden, warme dranken & water en alle workshops.',
+      register: 'Online aanmelden',
+      bookingNote: 'Aanmelden gaat via het formulier van de organisator en opent in een nieuw tabblad.',
+      brochure: 'Download de brochure (PDF, Engels)',
+      paymentTitle: 'Betaling',
+      deposit: '{deposit} aanbetaling bij aanmelding',
+      balance: 'Restbedrag van {balance}, te voldoen vier maanden voor je retraite',
+      instalments: 'Het restbedrag kan op verzoek in 2 of 3 termijnen worden betaald',
+      cancellationTitle: 'Annulering',
+      cancellation: {
+        fullRefund: 'Volledige terugbetaling tot 4 maanden voor de start van de retraite',
+        halfRefund: '50% terugbetaling tussen 4 en 2 maanden voor de start',
+        noRefund: 'Vanaf 2 maanden voor de start: geen terugbetaling, tenzij er een vervangende deelnemer wordt gevonden (dan volledige terugbetaling)',
       },
     },
 
     registration: {
-      title: 'Meer weten of je aanmelden?',
-      subtitle: 'De groep blijft bewust klein. Stuur een bericht en je krijgt alles te horen wat je wilt weten.',
-      participantRange: '10-15 deelnemers',
-      contact: 'Neem contact op met Tete, de organisator van de retraite',
+      title: 'Vragen? Neem contact op',
+      subtitle: 'Twijfel je nog, of wil je meer weten voordat je je aanmeldt? Stuur een bericht en je krijgt alles te horen wat je wilt weten.',
+      contact: 'Neem contact op met Tete Dagani, de organisator van de retraite',
       whatsapp: 'WhatsApp',
       instagram: 'Instagram',
       email: 'E-mail',

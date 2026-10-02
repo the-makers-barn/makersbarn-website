@@ -438,15 +438,14 @@ export const de: Dictionary = {
 
   shantiDevaRetreat: {
     metaTitle: 'Shanti Deva – Tibetisch-Buddhistisches Retreat',
-    metaDescription: 'Komm mit Gen La Geshe Pema Dorjee zu einem 6-tägigen buddhistischen Retreat in der niederländischen Landschaft. Drei Retreats in 2027, mit Meditation, Lehrgesprächen und vegetarischer Verpflegung.',
+    metaDescription: 'Komm mit Gen La Geshe Pema Dorjee und dem ehrwürdigen Lobsang Tsering zu einem 6-tägigen buddhistischen Retreat in der niederländischen Landschaft. Drei Retreats in 2027, 795 € inklusive Unterkunft, vegetarischer Verpflegung und Workshops.',
     backToExperiences: 'Zurück zu den Erlebnissen',
 
     hero: {
       title: 'Shanti Deva – Tibetisch-Buddhistisches Retreat',
       subtitle: 'Tibetischen Buddhismus studieren',
-      withTeachers: 'mit Gen La Geshe Pema Dorjee und dem ehrwürdigen Mönch Lobsang',
-      dailyTime: 'Täglich von 7 bis 20 Uhr',
-      getInTouch: 'Frage zum Retreat stellen',
+      withTeachers: 'mit Gen La Geshe Pema Dorjee und dem ehrwürdigen Mönch Lobsang Tsering',
+      bookPlace: 'Platz buchen',
     },
 
     video: {
@@ -459,13 +458,39 @@ export const de: Dictionary = {
       secondRetreat: 'Retreat 2',
       thirdRetreat: 'Retreat 3',
       duration: '5 Nächte (6 Tage)',
+      oneRetreatNote: 'Alle drei Retreats folgen demselben Programm – bitte wähle deshalb nur ein Retreat aus und melde dich dafür an.',
     },
 
     teacher: {
-      sectionTitle: 'Wer ist Geshe Pema Dorjee?',
-      biography: 'Geshe Pema Dorjee wurde in Tibet geboren und floh 1959 mit seiner Familie nach Dharamsala in Indien, wo er aufwuchs. Er studierte buddhistische Philosophie und erhielt 1995 den Geshe-Grad – den höchsten akademischen Titel im tibetischen Buddhismus. Über 20 Jahre lang lehrte er am Tibetan Children\'s Village und leitete es als Direktor. Auf Wunsch Seiner Heiligkeit des Dalai Lama gründete er das Bodong Research Center und ein Kloster in Kathmandu. Außerdem hat er umfangreiche humanitäre Projekte ins Leben gerufen – Schulen, Waisenhäuser, Wasserversorgung und Erdbebenhilfe in Nepal. Seit 1997 lehrt er weltweit und ist bekannt für seine Klarheit, Wärme und sein Mitgefühl.',
-      gesheTitle: 'Geshe',
-      monkTitle: 'Ehrwürdiger Mönch',
+      sectionTitle: 'Die Lehrer',
+      geshe: {
+        name: 'Gen La Geshe Pema Dorjee',
+        tagline: 'Ein Leben im Dienst des Lernens, der Hilfe für andere und des Dharma.',
+        biography: 'Geshe Pema Dorjee wurde in Tibet geboren und floh 1959 mit seiner Familie nach Dharamsala in Indien, wo er aufwuchs. Er studierte buddhistische Philosophie und erhielt 1995 den Geshe-Grad – den höchsten akademischen Titel im tibetischen Buddhismus. Über 20 Jahre lang lehrte er am Tibetan Children\'s Village und leitete es als Direktor. Auf Wunsch Seiner Heiligkeit des Dalai Lama gründete er das Bodong Research Center und ein Kloster in Kathmandu. Außerdem hat er umfangreiche humanitäre Projekte ins Leben gerufen – Schulen, Waisenhäuser, Wasserversorgung und Erdbebenhilfe in Nepal. Seit 1997 lehrt er weltweit und ist bekannt für seine Klarheit, Wärme und sein Mitgefühl.',
+      },
+      lobsang: {
+        name: 'Ehrwürdiger Lobsang Tsering',
+        biography: 'Der buddhistische Mönch Lobsang Tsering leitet das Retreat gemeinsam mit Gen La Geshe Pema Dorjee und begleitet das Programm aus buddhistischem Studium, Meditation und Gespräch.',
+      },
+    },
+
+    programme: {
+      title: 'Das Programm',
+      intro: 'Gemeinsam studieren, üben und leben – dasselbe Programm bei allen drei Retreats.',
+      topics: {
+        joyfulEffort: {
+          title: 'Freudige Anstrengung',
+          description: 'Das siebte Kapitel von Shantidevas „Anleitungen auf dem Weg zur Glückseligkeit“ (Bodhicaryavatara).',
+        },
+        mahayana: {
+          title: 'Mahayana-Buddhismus',
+          description: 'Einführung in den Mahayana-Weg und sein Studium.',
+        },
+        meditation: {
+          title: 'Meditation',
+          description: 'Was ist Meditation und wie meditieren wir?',
+        },
+      },
     },
 
     details: {
@@ -475,27 +500,41 @@ export const de: Dictionary = {
       address: 'Adresse des Hofes',
       accessibility: 'Anreise',
       accessibilityItems: {
-        carFromZwolle: '15 Minuten mit dem Auto von Zwolle (1 Std. 15 Min. mit dem Zug ab Flughafen Schiphol, Amsterdam)',
-        freePickup: 'Kostenlose Abholung vom Bahnhof Zwolle (14:00–16:00)',
-        sharedTransport: 'Sammeltransfer zurück zum Bahnhof am Ende: ca. 10 € pro Person',
+        carFromZwolle: '15 Minuten mit dem Auto von Zwolle; mit dem Zug in Zwolle Richtung Wijhe umsteigen (Flughafen Schiphol – Zwolle: 1 Std. 15 Min.)',
+        freePickup: 'Kostenlose Abholung vom Bahnhof Wijhe zwischen 14:00 und 16:00 Uhr am Anreisetag',
+        returnTransport: 'Die Rückfahrt zum Bahnhof Wijhe organisieren die Veranstalter',
+      },
+      galleryAlt: {
+        dalaiLama: 'Seine Heiligkeit der Dalai Lama begrüßt Gen La Geshe Pema Dorjee',
+        farmAerial: 'Luftaufnahme des Hofes mit dem Retreat-Zelt im Obstgarten',
+        momoDemonstration: 'Geshe Pema Dorjee zeigt der Gruppe, wie man tibetische Momos faltet',
       },
     },
 
     schedule: {
-      title: 'Ein typischer Tag',
-      intro: 'Kein Tag ist wie der andere, doch jeder Tag folgt diesem ruhigen Rhythmus.',
-      activities: {
-        morningMeditation: 'Morgendliche Gruppenmeditation und Chanten',
-        breakfastBuffet: 'Frühstücksbuffet',
-        teachingLectures: 'Buddhistische Lehren und Vorträge',
-        lunch: 'Gemeinsames Mittagessen',
-        restAndDigest: 'Freie Zeit zum Ausruhen und Nachwirken',
-        afternoonWorkshop: 'An einigen Tagen ein Workshop am Nachmittag',
-        dinnerGathering: 'Gemeinsames Abendessen',
-        qaSession: 'Fragen und Antworten',
-        eveningConnect: 'Zeit für Begegnung, Sauna und Rückblick auf den Tag – allein oder gemeinsam',
+      title: 'Tagesablauf',
+      intro: 'Jedes Retreat reicht vom Anreisenachmittag über die Studientage bis zum Abschlussmorgen.',
+      days: {
+        arrival: 'Anreisetag',
+        study: 'Studientage',
+        final: 'Abreisetag',
       },
-      workshopNote: 'Die Nachmittagsworkshops wechseln zwischen tibetischem Momo-Kochen, Slow Flow Yoga und dem Malen buddhistischer Motive.',
+      activities: {
+        checkIn: 'Check-in',
+        farmTour: 'Führung über den Hof',
+        welcomeReception: 'Begrüßung',
+        dinner: 'Abendessen',
+        introduction: 'Einführung',
+        meditation: 'Meditation: Studium und Praxis',
+        breakfast: 'Frühstück',
+        teaching: 'Belehrung',
+        lunch: 'Mittagessen',
+        teachingsAndWorkshops: 'Belehrungen und Workshops',
+        questionsAndAnswers: 'Fragen und Antworten',
+        closing: 'Abschluss',
+        checkOut: 'Check-out',
+      },
+      workshopNote: 'Zu den Nachmittagsworkshops gehören tibetisches Momo-Kochen, das Malen tibetischer Motive und sanftes Yoga.',
     },
 
     included: {
@@ -503,24 +542,44 @@ export const de: Dictionary = {
       accommodation: 'Unterkunft',
       accommodationOptions: {
         duration: '5 Nächte (6 Tage)',
-        doubleRooms: 'Doppelzimmer',
-        sharedRooms: 'Zimmer für 3–4 Personen',
-        singleRoom: 'Einzelzimmer',
-        tentCaravan: 'Übernachtung im Zelt oder Wohnwagen möglich – zum vergünstigten Preis',
+        sharedRooms: 'Mehrbettzimmer für 2–4 Teilnehmende',
+        coupleRoom: 'Ein Paarzimmer mit Doppelbett, nach Verfügbarkeit',
+        bedding: 'Bettwäsche und Handtücher (Bade- und Saunatuch nicht inbegriffen)',
       },
-      servicesTitle: 'Leistungen',
+      servicesTitle: 'Verpflegung, Hof & Workshops',
       services: {
-        beddingTowels: 'Bettwäsche und Handtücher (Bade- und Saunatuch nicht inbegriffen)',
-        vegetarianMeals: '3 vegetarische Mahlzeiten am Tag, dazu Getränke und Snacks',
-        farmFacilities: 'Nutzung aller Hofeinrichtungen: Sauna, ökologischer Pool und mehr',
+        vegetarianMeals: 'Vollständige vegetarische Verpflegung während des ganzen Retreats',
+        drinks: 'Heißgetränke & Wasser',
+        farmFacilities: 'Kleiner ökologischer Schwimmteich, Sauna, Hot Tub & Feuerstelle',
+        workshops: 'Workshops: tibetisches Momo-Kochen, Malen tibetischer Motive und sanftes Yoga',
+      },
+    },
+
+    pricing: {
+      title: 'Preis & Anmeldung',
+      subtitle: 'Pro Retreat gibt es Platz für 10–15 Teilnehmende.',
+      perParticipant: 'Gesamtpreis pro Person',
+      breakdown: 'Grundpreis {base} + {vatPercent} % MwSt. {vat}',
+      includes: 'Inklusive Unterkunft, vollständiger vegetarischer Verpflegung, Heißgetränken & Wasser sowie aller Workshops.',
+      register: 'Online anmelden',
+      bookingNote: 'Die Anmeldung läuft über das Formular der Organisation und öffnet sich in einem neuen Tab.',
+      brochure: 'Broschüre herunterladen (PDF, Englisch)',
+      paymentTitle: 'Zahlung',
+      deposit: '{deposit} Anzahlung bei der Anmeldung',
+      balance: 'Restbetrag von {balance}, fällig vier Monate vor deinem Retreat',
+      instalments: 'Der Restbetrag kann auf Wunsch in 2 oder 3 Raten gezahlt werden',
+      cancellationTitle: 'Stornierung',
+      cancellation: {
+        fullRefund: 'Volle Rückerstattung bis 4 Monate vor Beginn des Retreats',
+        halfRefund: '50 % Rückerstattung zwischen 4 und 2 Monaten vor Beginn',
+        noRefund: 'Ab 2 Monaten vor Beginn: keine Rückerstattung, es sei denn, es findet sich eine Ersatzperson (dann volle Rückerstattung)',
       },
     },
 
     registration: {
-      title: 'Mehr erfahren oder anmelden?',
-      subtitle: 'Die Gruppe bleibt bewusst klein. Schreib eine Nachricht und du erfährst alles, was du wissen möchtest.',
-      participantRange: '10–15 Teilnehmer',
-      contact: 'Wende dich an Tete, die Organisation des Retreats',
+      title: 'Fragen? Schreib uns',
+      subtitle: 'Noch unsicher oder möchtest du vor der Anmeldung mehr wissen? Schreib eine Nachricht und du erfährst alles, was du wissen möchtest.',
+      contact: 'Wende dich an Tete Dagani, die Organisation des Retreats',
       whatsapp: 'WhatsApp',
       instagram: 'Instagram',
       email: 'E-Mail',

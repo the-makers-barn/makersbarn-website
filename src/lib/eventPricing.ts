@@ -18,3 +18,16 @@ export function formatEventPrice(amount: string, currency: string, locale: Langu
     currency,
   }).format(Number(amount))
 }
+
+/**
+ * Same conventions as `formatEventPrice`, for prices quoted in whole units —
+ * "€795" rather than "€795.00".
+ */
+export function formatWholeEventPrice(amount: string, currency: string, locale: Language): string {
+  return new Intl.NumberFormat(PRICE_LOCALES[locale], {
+    style: 'currency',
+    currency,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(Number(amount))
+}
