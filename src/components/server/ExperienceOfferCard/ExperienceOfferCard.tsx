@@ -84,6 +84,45 @@ function getOfferContent(offer: ExperienceOffer, t: Dictionary): OfferContent {
   }
 }
 
+/** Offers with their own page link the image and title there; the rest stay static. */
+function getDetailHref(offer: ExperienceOffer, locale: Language): string | undefined {
+  return offer.type === ExperienceType.ACCOMMODATION
+    ? getLocalizedPath(offer.detailUrl, locale)
+    : undefined
+}
+
+interface OfferImageProps {
+  src: string
+  alt: string
+  badge?: string
+  href?: string
+}
+
+function OfferImage({ src, alt, badge, href }: OfferImageProps) {
+  const image = (
+    <>
+      {badge && <span className={styles.offerBadge}>{badge}</span>}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 25vw"
+        className={styles.offerImage}
+      />
+    </>
+  )
+
+  if (!href) {
+    return <div className={styles.offerImageWrapper}>{image}</div>
+  }
+
+  return (
+    <Link href={href} className={styles.offerImageWrapper} tabIndex={-1} aria-hidden="true">
+      {image}
+    </Link>
+  )
+}
+
 interface ExperienceOfferCardProps {
   offer: ExperienceOffer
   validLocale: Language
@@ -94,24 +133,27 @@ export function ExperienceOfferCard({ offer, validLocale, t }: ExperienceOfferCa
   const content = getOfferContent(offer, t)
   const directBooking = t.experiences.directBooking
   const platforms = t.experiences.bookingPlatforms
+  const detailHref = getDetailHref(offer, validLocale)
 
   return (
     <article className={styles.offerCard}>
-      <div className={styles.offerImageWrapper}>
-        {content.kind === 'workation' && (
-          <span className={styles.offerBadge}>{content.badge}</span>
-        )}
-        <Image
-          src={offer.image}
-          alt={content.title}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 25vw"
-          className={styles.offerImage}
-        />
-      </div>
+      <OfferImage
+        src={offer.image}
+        alt={content.title}
+        badge={content.kind === 'workation' ? content.badge : undefined}
+        href={detailHref}
+      />
 
       <div className={styles.offerContent}>
-        <h3 className={styles.offerTitle}>{content.title}</h3>
+        <h3 className={styles.offerTitle}>
+          {detailHref ? (
+            <Link href={detailHref} className={styles.offerTitleLink}>
+              {content.title}
+            </Link>
+          ) : (
+            content.title
+          )}
+        </h3>
         <p className={styles.offerDescription}>{content.description}</p>
 
         <ul className={styles.featuresList}>
@@ -150,6 +192,13 @@ export function ExperienceOfferCard({ offer, validLocale, t }: ExperienceOfferCa
               </a>
             </div>
           </div>
+        )}
+
+        {detailHref && (
+          <Link href={detailHref} className={styles.detailsLink}>
+            {t.experiences.cabinDetailsCta}
+            <ArrowRightIcon className={styles.offerCtaIcon} />
+          </Link>
         )}
 
         {content.kind === 'booking' && offer.type === ExperienceType.ACCOMMODATION && (

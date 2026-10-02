@@ -318,6 +318,8 @@ export interface ExperiencesTranslations {
     responseNote: string
     alsoBookableVia: string
   }
+  /** Link from a cabin card to its detail page. */
+  cabinDetailsCta: string
   cabins: Record<AccommodationCabin, {
     title: string
     description: string
@@ -513,6 +515,81 @@ export interface FocusedWorkationTranslations {
     alternativeText: string
     alternativeCta: string
   }
+}
+
+/**
+ * Copy for one cabin detail page.
+ */
+export interface CabinDetailContent {
+  metaTitle: string
+  metaDescription: string
+  kicker: string
+  title: string
+  tagline: string
+  keyFacts: readonly string[]
+  /** Body copy for "About this place", one string per paragraph. */
+  description: readonly string[]
+  amenityGroups: readonly { title: string; items: readonly string[] }[]
+  /** Extra cabin-specific notes for the "Good to know" section. */
+  goodToKnowNotes: readonly string[]
+  bookingMessage: string
+}
+
+/**
+ * Cabin detail pages (/experiences/cosmos, /experiences/horizon).
+ *
+ * Booking CTA labels and platform names are shared with the experiences
+ * overview and live in `experiences.directBooking` / `experiences.bookingPlatforms`.
+ */
+export interface CabinDetailTranslations {
+  backToExperiences: string
+  showAllPhotos: string
+  openPhoto: string
+  aboutTitle: string
+  amenitiesTitle: string
+  locationTitle: string
+  locationItems: readonly string[]
+  /** `{count}` is replaced with the number. */
+  stats: {
+    guests: string
+    bedrooms: { one: string; other: string }
+    /** `{min}` and `{max}` are replaced. */
+    bedroomRange: string
+  }
+  /** `{score}`, `{outOf}`, `{count}` and `{platform}` are replaced. */
+  rating: string
+  reviews: {
+    title: string
+    /** `{score}` and `{outOf}` are replaced. */
+    score: string
+    /** `{language}` is replaced with a name from `languageNames`. */
+    translatedFrom: string
+    /** `{count}` and `{platform}` are replaced. */
+    readAll: string
+    languageNames: Record<Language, string>
+  }
+  goodToKnow: {
+    title: string
+    checkIn: string
+    checkOut: string
+    /** `{from}` and `{until}` are replaced with times. */
+    checkInValue: string
+    /** `{until}` is replaced with a time. */
+    checkOutValue: string
+    pets: string
+    petsAllowed: string
+    petsNotAllowed: string
+    contactless: string
+  }
+  bookingCard: {
+    title: string
+    intro: string
+  }
+  otherCabin: {
+    title: string
+    cta: string
+  }
+  cabins: Record<AccommodationCabin, CabinDetailContent>
 }
 
 /**
@@ -1421,6 +1498,7 @@ export interface Dictionary {
   autumnGrounding: AutumnGroundingTranslations
   sweatLodge: SweatLodgeTranslations
   focusedWorkation: FocusedWorkationTranslations
+  cabinDetail: CabinDetailTranslations
   impressionCarousel: ImpressionCarouselTranslations
   impressionPolaroids: ImpressionPolaroidsTranslations
   testimonials: TestimonialsTranslations

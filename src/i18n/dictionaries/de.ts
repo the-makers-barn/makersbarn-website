@@ -374,6 +374,7 @@ export const de: Dictionary = {
       responseNote: 'Meist antworten wir innerhalb weniger Stunden',
       alsoBookableVia: 'Auch buchbar über',
     },
+    cabinDetailsCta: 'Fotos & Details',
     cabins: {
       cosmos: {
         title: 'Cosmos-Hütte buchen',
@@ -893,6 +894,169 @@ export const de: Dictionary = {
       bookNow: 'Über WhatsApp buchen',
       alternativeText: 'Lieber per E-Mail?',
       alternativeCta: 'Nutze das Kontaktformular',
+    },
+  },
+
+  cabinDetail: {
+    backToExperiences: 'Zurück zu den Erlebnissen',
+    showAllPhotos: 'Alle Fotos anzeigen',
+    openPhoto: 'Foto öffnen',
+    aboutTitle: 'Über diese Unterkunft',
+    amenitiesTitle: 'Was diese Unterkunft bietet',
+    locationTitle: 'Lage',
+    locationItems: [
+      'In Wijhe, Overijssel — zwischen Zwolle und Deventer',
+      'Kasteel Nijenhuis mit Museum und Skulpturengärten ist fünf Minuten zu Fuß oder mit dem Rad entfernt',
+      'Der Bahnhof Wijhe ist zehn Minuten mit dem Rad entfernt',
+      'Wander- und Radrouten entlang der IJssel und durch die Sallandse Heuvelrug',
+      'Nachts wird es in der Landschaft von Salland noch richtig dunkel — ideal zum Sternegucken',
+    ],
+    stats: {
+      guests: 'Bis zu {count} Gäste',
+      bedrooms: { one: '{count} Schlafzimmer', other: '{count} Schlafzimmer' },
+      bedroomRange: '{min}–{max} Schlafzimmer',
+    },
+    rating: 'Mit {score}/{outOf} bewertet von {count} Gästen auf {platform}',
+    reviews: {
+      title: 'Was Gäste sagen',
+      score: '{score}/{outOf}',
+      translatedFrom: 'Aus dem {language} übersetzt',
+      readAll: 'Alle {count} Bewertungen auf {platform} lesen',
+      languageNames: { en: 'Englischen', nl: 'Niederländischen', de: 'Deutschen' },
+    },
+    goodToKnow: {
+      title: 'Gut zu wissen',
+      checkIn: 'Check-in',
+      checkOut: 'Check-out',
+      checkInValue: '{from} – {until} Uhr',
+      checkOutValue: 'Bis {until} Uhr',
+      pets: 'Haustiere',
+      petsAllowed: 'Willkommen',
+      petsNotAllowed: 'Nicht erlaubt',
+      contactless: 'Kontaktloser Check-in möglich',
+    },
+    bookingCard: {
+      title: 'Direkt bei uns buchen',
+      intro: 'Schick uns deine Wunschdaten per WhatsApp – wir klären Verfügbarkeit und Preis gemeinsam.',
+    },
+    otherCabin: {
+      title: 'Ebenfalls bei The Makers Barn',
+      cta: 'Unterkunft ansehen',
+    },
+    cabins: {
+      cosmos: {
+        metaTitle: 'Cosmos-Hütte — Holzhütte mit Holzofen',
+        metaDescription: 'Übernachte in der Cosmos-Hütte bei The Makers Barn: eine freistehende Holzhütte für bis zu 4 Gäste mit Holzofen, Regendusche und eigener Veranda in Wijhe, Overijssel. Direkt buchen zum besten Preis.',
+        kicker: 'Freistehende Holzhütte · Wijhe, Overijssel',
+        title: 'Cosmos-Hütte',
+        tagline: 'Eine Holzhütte mit Holzofen, so gemütlich wie kaum eine andere – und mit einem der schönsten Ausblicke der Niederlande.',
+        keyFacts: [
+          '60 m²',
+          'Doppelbett oder zwei Einzelbetten',
+          'Schlafsofa für zwei',
+          'Holzofen',
+          'Eigene Veranda & Rasen',
+        ],
+        description: [
+          'Cosmos ist eine freistehende Holzhütte: neu, aber authentisch, mit viel Liebe und einem Auge für schöne Dinge eingerichtet. Mit allem, was du dir wünschst — ein bequemes Bett, superschnelles WLAN, eine gut ausgestattete Küche mit großem Backofen und eine Regendusche.',
+          'Das Bett wird so bezogen, wie du es magst: mit einer Doppeldecke, als zwei Einzelbetten oder als getrennt stehende Betten. Durch die Fenster direkt über dem Bett schläfst du mit Blick auf die Sterne ein, der Holzofen hält die Hütte warm, und Veranda und Rasen gehören ganz dir.',
+          'In den letzten vier Jahren ist das Grasland rundherum zu einem kleinen Naturparadies geworden: versteckte Pfade, Wildblumen, ein Rosenbogen und frische Beeren, Hühner, Enten und Truthähne und ein Schwimmteich mit kleinem Wasserfall. Nutze die Hängematten, die Terrasse am Teich und die Feuerstelle oder gönn dir einen Tag mit dem holzbefeuerten Hot Tub oder der finnischen Sauna.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Drinnen',
+            items: [
+              'Holzofen',
+              'Gut ausgestattete Küche mit großem Backofen',
+              'Regendusche',
+              'Doppelbett oder zwei Einzelbetten',
+              'Schlafsofa für zwei',
+              'Fenster über dem Bett zum Sternegucken',
+              'Superschnelles WLAN',
+            ],
+          },
+          {
+            title: 'Draußen',
+            items: [
+              'Eigene Veranda und Rasen',
+              'Hängematten',
+              'Terrasse am Schwimmteich',
+              'Feuerstelle',
+              'Versteckte Pfade, Wildblumen und ein Rosenbogen',
+            ],
+          },
+          {
+            title: 'Wellness & Extras',
+            items: [
+              'Holzbefeuerter Hot Tub',
+              'Finnische Sauna (15 € pro Sitzung)',
+              'Yogastunden auf Anfrage',
+              'Massage auf Anfrage',
+              'Verpflegung auf Anfrage',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'Das 13.000 m² große Naturgelände teilst du mit uns — drei Menschen und zwei Hunden — und den Gästen unserer zweiten Unterkunft',
+          'Feuerwerksfreie Umgebung',
+        ],
+        bookingMessage: 'Hallo! Ich würde gern einen Aufenthalt in der Cosmos-Hütte bei The Makers Barn buchen.',
+      },
+      horizon: {
+        metaTitle: 'Horizon-Loft — Luxus-Dachloft auf dem Land',
+        metaDescription: 'Übernachte im Horizon-Loft bei The Makers Barn: ein luxuriöses Dachloft für bis zu 6 Gäste mit Regendusche, gut ausgestatteter Küche und Zugang zu Sauna, Schwimmteich und Glashaus in Wijhe, Overijssel. Direkt buchen zum besten Preis.',
+        kicker: 'Dachloft · Wijhe, Overijssel',
+        title: 'Horizon-Loft',
+        tagline: 'Ein luxuriöses Dachloft mitten auf dem Land — der Komfort einer Wohnung mit der Natur direkt vor der Tür.',
+        keyFacts: [
+          'Luxuriöses Dachloft',
+          'Doppelbett',
+          'Zusätzliche Schlafzimmer für größere Gruppen',
+          'Regendusche',
+          'Bettwäsche, Handtücher & Endreinigung inklusive',
+        ],
+        description: [
+          'Horizon ist ein luxuriöses Dachloft mitten auf dem Land: die perfekte Verbindung aus komfortabler Wohnung und Draußensein. Neu, aber authentisch und mit Liebe eingerichtet, mit allem, was du dir wünschst — ein bequemes Bett, superschnelles WLAN, eine gut ausgestattete Küche und eine Regendusche.',
+          'Im Loft schlafen zwei Personen in einem Doppelbett. Für eine größere Gruppe kannst du bis zu zwei zusätzliche Schlafzimmer dazubuchen, sodass bis zu sechs Gäste übernachten können. Bettwäsche, Handtücher und Endreinigung sind im Preis enthalten, und mit dem eigenen Picknicktisch hast du draußen einen privaten Platz.',
+          'Du kannst das Glashaus, die Hängematten, die Terrasse am Schwimmteich, die Feuerstelle und die Sauna nutzen. In den letzten vier Jahren ist das Grasland rundherum zu einem kleinen Naturparadies geworden: versteckte Pfade, Wildblumen, frische Beeren und ein Schwimmteich mit kleinem Wasserfall.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Drinnen',
+            items: [
+              'Gut ausgestattete Küche',
+              'Regendusche',
+              'Doppelbett',
+              'Bis zu zwei zusätzliche Schlafzimmer',
+              'Superschnelles WLAN',
+              'Bettwäsche und Handtücher inklusive',
+            ],
+          },
+          {
+            title: 'Draußen',
+            items: [
+              'Eigener Picknicktisch',
+              'Glashaus',
+              'Hängematten',
+              'Terrasse am Schwimmteich',
+              'Feuerstelle',
+            ],
+          },
+          {
+            title: 'Wellness & Extras',
+            items: [
+              'Sauna (15 € pro Sitzung)',
+              'Verpflegung auf Anfrage',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'Bettwäsche, Handtücher und Endreinigung sind im Preis enthalten',
+          'Das 13.000 m² große Naturgelände teilst du mit uns — drei Menschen und zwei Hunden — und den Gästen unserer zweiten Unterkunft',
+          'Feuerwerksfreie Umgebung',
+        ],
+        bookingMessage: 'Hallo! Ich würde gern einen Aufenthalt im Horizon-Loft bei The Makers Barn buchen.',
+      },
     },
   },
 

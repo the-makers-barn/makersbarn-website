@@ -374,6 +374,7 @@ export const nl: Dictionary = {
       responseNote: 'Meestal reageren we binnen een paar uur',
       alsoBookableVia: 'Ook te boeken via',
     },
+    cabinDetailsCta: 'Foto’s & details',
     cabins: {
       cosmos: {
         title: 'Boek Cosmos Cabin',
@@ -422,6 +423,169 @@ export const nl: Dictionary = {
     ctaTitle: 'Niet zeker welke ervaring bij je past?',
     ctaSubtitle: 'Neem contact met ons op en we helpen je de perfecte match te vinden.',
     ctaButton: 'Neem Contact Op',
+  },
+
+  cabinDetail: {
+    backToExperiences: 'Terug naar Ervaringen',
+    showAllPhotos: 'Toon alle foto’s',
+    openPhoto: 'Open foto',
+    aboutTitle: 'Over deze plek',
+    amenitiesTitle: 'Wat deze plek te bieden heeft',
+    locationTitle: 'Locatie',
+    locationItems: [
+      'In Wijhe, Overijssel — tussen Zwolle en Deventer',
+      'Kasteel Nijenhuis, met museum en beeldentuinen, ligt op vijf minuten lopen of fietsen',
+      'Station Wijhe ligt op tien minuten fietsen',
+      'Wandel- en fietsroutes langs de IJssel en over de Sallandse Heuvelrug',
+      'Écht donker ’s avonds in het Sallandse buitengebied — ideaal om sterren te kijken',
+    ],
+    stats: {
+      guests: 'Tot {count} personen',
+      bedrooms: { one: '{count} slaapkamer', other: '{count} slaapkamers' },
+      bedroomRange: '{min}–{max} slaapkamers',
+    },
+    rating: 'Beoordeeld met {score}/{outOf} door {count} gasten op {platform}',
+    reviews: {
+      title: 'Wat gasten zeggen',
+      score: '{score}/{outOf}',
+      translatedFrom: 'Vertaald uit het {language}',
+      readAll: 'Lees alle {count} beoordelingen op {platform}',
+      languageNames: { en: 'Engels', nl: 'Nederlands', de: 'Duits' },
+    },
+    goodToKnow: {
+      title: 'Goed om te weten',
+      checkIn: 'Inchecken',
+      checkOut: 'Uitchecken',
+      checkInValue: '{from} – {until}',
+      checkOutValue: 'Tot {until}',
+      pets: 'Huisdieren',
+      petsAllowed: 'Welkom',
+      petsNotAllowed: 'Niet toegestaan',
+      contactless: 'Contactloos inchecken mogelijk',
+    },
+    bookingCard: {
+      title: 'Boek direct bij ons',
+      intro: 'Stuur ons je data via WhatsApp en we stemmen samen de beschikbaarheid en de prijs af.',
+    },
+    otherCabin: {
+      title: 'Ook bij The Makers Barn',
+      cta: 'Bekijk deze plek',
+    },
+    cabins: {
+      cosmos: {
+        metaTitle: 'Cosmos Cabin — houten cabin met houtkachel',
+        metaDescription: 'Verblijf in de Cosmos cabin bij The Makers Barn: een vrijstaande houten cabin voor maximaal 4 personen met houtkachel, regendouche en privé veranda in Wijhe, Overijssel. Boek direct voor de beste prijs.',
+        kicker: 'Vrijstaande houten cabin · Wijhe, Overijssel',
+        title: 'Cosmos Cabin',
+        tagline: 'Een houten cabin met houtkachel, gezellig als geen ander en omgeven door een van de mooiste uitzichten die Nederland te bieden heeft.',
+        keyFacts: [
+          '60 m²',
+          'Tweepersoonsbed of twee eenpersoonsbedden',
+          'Tweepersoons slaapbank',
+          'Houtkachel',
+          'Privé veranda & gazon',
+        ],
+        description: [
+          'Cosmos is een vrijstaande houten cabin: nieuw maar authentiek, gemaakt met liefde en passie voor leuke spullen en fijn verblijven. Met alle gemakken die je mag verwachten — een comfortabel bed, supersnelle wifi, een goed uitgeruste keuken met grote oven en een heerlijke regendouche.',
+          'Het bed wordt opgemaakt zoals jij het wilt: met een dubbel dekbed, als twee eenpersoonsbedden of als rustig gescheiden bedden. Door de ramen direct boven het bed val je in slaap met zicht op de sterren, de houtkachel houdt het warm en de privé veranda en het gazon zijn helemaal van jou.',
+          'Het grasland rondom is de afgelopen vier jaar omgetoverd tot een klein natuurparadijs: verborgen paadjes, wilde bloemen, een rozenboog en verse bessen, kippen, eenden en kalkoenen, en een zwemvijver met een watervalletje. Maak gebruik van de hangmatten, het terras bij de vijver en de vuurkuil, of geniet een dagje van de houtgestookte hottub of de Finse sauna.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Binnen',
+            items: [
+              'Houtkachel',
+              'Goed uitgeruste keuken met grote oven',
+              'Regendouche',
+              'Tweepersoonsbed of twee eenpersoonsbedden',
+              'Tweepersoons slaapbank',
+              'Ramen boven het bed om sterren te kijken',
+              'Supersnelle wifi',
+            ],
+          },
+          {
+            title: 'Buiten',
+            items: [
+              'Privé veranda en gazon',
+              'Hangmatten',
+              'Terras bij de zwemvijver',
+              'Vuurkuil',
+              'Verborgen paadjes, wilde bloemen en een rozenboog',
+            ],
+          },
+          {
+            title: 'Wellness & extra’s',
+            items: [
+              'Houtgestookte hottub',
+              'Finse sauna (€15 per sessie)',
+              'Yogasessies op aanvraag',
+              'Massage beschikbaar',
+              'Catering op aanvraag',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'Het natuurerf van 13.000 m² deel je met ons — drie mensen en twee honden — en eventuele gasten van ons tweede huisje',
+          'Vuurwerkvrije omgeving',
+        ],
+        bookingMessage: 'Hoi! Ik wil graag een verblijf boeken in de Cosmos cabin bij The Makers Barn.',
+      },
+      horizon: {
+        metaTitle: 'Horizon Loft — luxe zolderloft op het platteland',
+        metaDescription: 'Verblijf in de Horizon Loft bij The Makers Barn: een luxe zolderloft voor maximaal 6 personen met regendouche, een goed uitgeruste keuken en toegang tot sauna, zwemvijver en glazen huis in Wijhe, Overijssel. Boek direct voor de beste prijs.',
+        kicker: 'Zolderloft · Wijhe, Overijssel',
+        title: 'Horizon Loft',
+        tagline: 'Een luxe zolderloft midden op het platteland — het comfort van een appartement met de natuur voor de deur.',
+        keyFacts: [
+          'Luxe zolderloft',
+          'Tweepersoonsbed',
+          'Extra slaapkamers voor grotere groepen',
+          'Regendouche',
+          'Inclusief linnen, handdoeken & schoonmaak',
+        ],
+        description: [
+          'Horizon is een luxe zolderloft midden op het platteland: de perfecte combinatie van een luxe appartement en buiten zijn. Nieuw maar authentiek en gemaakt met liefde, met alle gemakken die je mag verwachten — een comfortabel bed, supersnelle wifi, een goed uitgeruste keuken en een heerlijke regendouche.',
+          'In de loft slapen twee personen in een tweepersoonsbed. Met een grotere groep boek je er tot twee extra slaapkamers bij, zodat je met maximaal zes personen kunt verblijven. Bedlinnen, handdoeken en eindschoonmaak zijn bij de prijs inbegrepen, en met een eigen picknicktafel heb je een privé plekje buiten.',
+          'Je bent vrij om gebruik te maken van het glazen huis, de hangmatten, het terras bij de zwemvijver, de vuurkuil en de sauna. Het grasland rondom is de afgelopen vier jaar omgetoverd tot een klein natuurparadijs: verborgen paadjes, wilde bloemen, verse bessen en een zwemvijver met een watervalletje.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Binnen',
+            items: [
+              'Goed uitgeruste keuken',
+              'Regendouche',
+              'Tweepersoonsbed',
+              'Tot twee extra slaapkamers',
+              'Supersnelle wifi',
+              'Inclusief bedlinnen en handdoeken',
+            ],
+          },
+          {
+            title: 'Buiten',
+            items: [
+              'Eigen picknicktafel',
+              'Glazen huis',
+              'Hangmatten',
+              'Terras bij de zwemvijver',
+              'Vuurkuil',
+            ],
+          },
+          {
+            title: 'Wellness & extra’s',
+            items: [
+              'Sauna (€15 per sessie)',
+              'Catering op aanvraag',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'Bedlinnen, handdoeken en eindschoonmaak zijn bij de prijs inbegrepen',
+          'Het natuurerf van 13.000 m² deel je met ons — drie mensen en twee honden — en eventuele gasten van ons tweede huisje',
+          'Vuurwerkvrije omgeving',
+        ],
+        bookingMessage: 'Hoi! Ik wil graag een verblijf boeken in de Horizon Loft bij The Makers Barn.',
+      },
+    },
   },
 
   impressionCarousel: {

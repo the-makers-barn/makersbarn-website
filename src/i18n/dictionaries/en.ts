@@ -371,6 +371,7 @@ export const en: Dictionary = {
       responseNote: 'We typically reply within a few hours',
       alsoBookableVia: 'Also bookable via',
     },
+    cabinDetailsCta: 'Photos & details',
     cabins: {
       cosmos: {
         title: 'Book Cosmos Cabin',
@@ -890,6 +891,169 @@ export const en: Dictionary = {
       bookNow: 'Book via WhatsApp',
       alternativeText: 'Prefer email?',
       alternativeCta: 'Use the contact form',
+    },
+  },
+
+  cabinDetail: {
+    backToExperiences: 'Back to Experiences',
+    showAllPhotos: 'Show all photos',
+    openPhoto: 'Open photo',
+    aboutTitle: 'About this place',
+    amenitiesTitle: 'What this place offers',
+    locationTitle: 'Location',
+    locationItems: [
+      'Located in Wijhe, Overijssel — between Zwolle and Deventer',
+      'Kasteel Nijenhuis, with its museum and sculpture gardens, is five minutes away on foot or by bike',
+      'Wijhe train station is ten minutes away by bike',
+      'Hiking and cycling routes along the IJssel and through the Sallandse Heuvelrug',
+      'Real darkness at night in the Salland countryside — perfect for stargazing',
+    ],
+    stats: {
+      guests: 'Up to {count} guests',
+      bedrooms: { one: '{count} bedroom', other: '{count} bedrooms' },
+      bedroomRange: '{min}–{max} bedrooms',
+    },
+    rating: 'Rated {score}/{outOf} by {count} guests on {platform}',
+    reviews: {
+      title: 'What guests say',
+      score: '{score}/{outOf}',
+      translatedFrom: 'Translated from {language}',
+      readAll: 'Read all {count} reviews on {platform}',
+      languageNames: { en: 'English', nl: 'Dutch', de: 'German' },
+    },
+    goodToKnow: {
+      title: 'Good to know',
+      checkIn: 'Check-in',
+      checkOut: 'Check-out',
+      checkInValue: '{from} – {until}',
+      checkOutValue: 'Until {until}',
+      pets: 'Pets',
+      petsAllowed: 'Welcome',
+      petsNotAllowed: 'Not allowed',
+      contactless: 'Contactless check-in possible',
+    },
+    bookingCard: {
+      title: 'Book directly with us',
+      intro: 'Send us your dates on WhatsApp and we will confirm availability and the rate together.',
+    },
+    otherCabin: {
+      title: 'Also at The Makers Barn',
+      cta: 'View this place',
+    },
+    cabins: {
+      cosmos: {
+        metaTitle: 'Cosmos Cabin — wooden cabin with wood stove',
+        metaDescription: 'Stay in the Cosmos cabin at The Makers Barn: a detached wooden cabin for up to 4 guests with a wood stove, rainfall shower and private veranda in Wijhe, Overijssel. Book directly for the best rate.',
+        kicker: 'Detached wooden cabin · Wijhe, Overijssel',
+        title: 'Cosmos Cabin',
+        tagline: 'A wooden cabin with a wood stove, cosy as no other and bathed in some of the best views the Netherlands has to offer.',
+        keyFacts: [
+          '60 m²',
+          'Double bed or two singles',
+          'Double sofa bed',
+          'Wood stove',
+          'Private veranda & lawn',
+        ],
+        description: [
+          'Cosmos is a detached wooden cabin: new but authentic, made with love and an eye for beautiful things. It has everything you would hope for — a comfortable bed, super-fast Wi-Fi, a well-equipped kitchen with a large oven and a rainfall shower.',
+          'The bed is made the way you like it: one double duvet, two singles or two separate beds. Windows right above the bed let you fall asleep looking at the stars, the wood stove keeps the cabin warm, and the private veranda and lawn are yours alone.',
+          'Over the past four years the surrounding grassland has turned into a small nature paradise: hidden paths, wildflowers, a rose arch and fresh berries, chickens, ducks and turkeys, and a swimming pond with a little waterfall. Use the hammocks, the terrace by the pond and the fire pit, or treat yourself to a day with the wood-fired hot tub or the Finnish sauna.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Inside',
+            items: [
+              'Wood stove',
+              'Well-equipped kitchen with a large oven',
+              'Rainfall shower',
+              'Double bed or two single beds',
+              'Double sofa bed',
+              'Windows above the bed for stargazing',
+              'Super-fast Wi-Fi',
+            ],
+          },
+          {
+            title: 'Outside',
+            items: [
+              'Private veranda and lawn',
+              'Hammocks',
+              'Terrace by the swimming pond',
+              'Fire pit',
+              'Hidden paths, wildflowers and a rose arch',
+            ],
+          },
+          {
+            title: 'Wellness & extras',
+            items: [
+              'Wood-fired hot tub',
+              'Finnish sauna (€15 per session)',
+              'Yoga sessions on request',
+              'Massage available',
+              'Catering on request',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'You share the 13,000 m² nature yard with us — three people and two dogs — and guests of our second cabin',
+          'Fireworks-free area',
+        ],
+        bookingMessage: 'Hi! I would like to book a stay in the Cosmos cabin at The Makers Barn.',
+      },
+      horizon: {
+        metaTitle: 'Horizon Loft — luxury attic loft in the countryside',
+        metaDescription: 'Stay in the Horizon loft at The Makers Barn: a luxury attic loft for up to 6 guests with a rainfall shower, a well-equipped kitchen and access to the sauna, swimming pond and glass house in Wijhe, Overijssel. Book directly for the best rate.',
+        kicker: 'Attic loft · Wijhe, Overijssel',
+        title: 'Horizon Loft',
+        tagline: 'A luxury attic loft in the middle of the countryside — the comfort of an apartment with the outdoors on your doorstep.',
+        keyFacts: [
+          'Luxury attic loft',
+          'Double bed',
+          'Extra bedrooms for larger groups',
+          'Rainfall shower',
+          'Linen, towels & cleaning included',
+        ],
+        description: [
+          'Horizon is a luxury attic loft in the middle of the countryside: the comfort of an apartment with the outdoors on your doorstep. New but authentic and made with love, it has everything you would hope for — a comfortable bed, super-fast Wi-Fi, a well-equipped kitchen and a rainfall shower.',
+          'The loft sleeps two in a double bed. For a larger group you can add up to two extra bedrooms, so up to six guests can stay. Bed linen, towels and final cleaning are included in the price, and your own picnic table gives you a private spot outside.',
+          'You are free to use the glass house, the hammocks, the terrace by the swimming pond, the fire pit and the sauna. Around the loft, the grassland has turned into a small nature paradise over the past four years: hidden paths, wildflowers, fresh berries and a swimming pond with a little waterfall.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Inside',
+            items: [
+              'Well-equipped kitchen',
+              'Rainfall shower',
+              'Double bed',
+              'Up to two extra bedrooms',
+              'Super-fast Wi-Fi',
+              'Bed linen and towels included',
+            ],
+          },
+          {
+            title: 'Outside',
+            items: [
+              'Own picnic table',
+              'Glass house',
+              'Hammocks',
+              'Terrace by the swimming pond',
+              'Fire pit',
+            ],
+          },
+          {
+            title: 'Wellness & extras',
+            items: [
+              'Sauna (€15 per session)',
+              'Catering on request',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'Bed linen, towels and final cleaning are included in the price',
+          'You share the 13,000 m² nature yard with us — three people and two dogs — and guests of our second cabin',
+          'Fireworks-free area',
+        ],
+        bookingMessage: 'Hi! I would like to book a stay in the Horizon loft at The Makers Barn.',
+      },
     },
   },
 
