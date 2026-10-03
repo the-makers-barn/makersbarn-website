@@ -1,4 +1,5 @@
 import { IMAGES } from '@/data/images'
+import { SHANTI_DEVA_RETREAT_EVENT_ID } from '@/lib/structuredData'
 import { Language, Route, SiloContent, SiloSlug } from '@/types'
 
 export const MEDITATION_RETREATS_SILO: SiloContent = {
@@ -331,7 +332,7 @@ export const MEDITATION_RETREATS_SILO: SiloContent = {
       [Language.DE]: 'Buddhistische Sanghas, Dharma-Gruppen und Meditationslehrer:innen, die ihre eigene Tradition mitbringen',
     },
     cohortSize: { min: 8, max: 14 },
-    linkedEventIds: ['https://themakersbarn.nl/experiences/shanti-deva-retreat#event'],
+    linkedEventIds: [SHANTI_DEVA_RETREAT_EVENT_ID],
     keywords: {
       [Language.EN]: [
         'silent retreat venue Netherlands',
