@@ -18,7 +18,7 @@ pnpm test:watch  # Run vitest in watch mode
 
 ## Deployment
 
-Hosted on **Vercel**. Pushes to `main` branch trigger automatic deployments.
+Hosted on **Railway** (workspace SIP, project `makersbarn-website`). Pushes to `main` trigger automatic deployments. Vercel is no longer used.
 
 ## Architecture
 
