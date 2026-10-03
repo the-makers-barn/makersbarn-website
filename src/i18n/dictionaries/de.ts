@@ -374,6 +374,7 @@ export const de: Dictionary = {
       responseNote: 'Meist antworten wir innerhalb weniger Stunden',
       alsoBookableVia: 'Auch buchbar über',
     },
+    cabinDetailsCta: 'Fotos & Details',
     cabins: {
       cosmos: {
         title: 'Cosmos-Hütte buchen',
@@ -438,15 +439,14 @@ export const de: Dictionary = {
 
   shantiDevaRetreat: {
     metaTitle: 'Shanti Deva – Tibetisch-Buddhistisches Retreat',
-    metaDescription: 'Komm mit Gen La Geshe Pema Dorjee zu einem 6-tägigen buddhistischen Retreat in der niederländischen Landschaft. Drei Retreats in 2027, mit Meditation, Lehrgesprächen und vegetarischer Verpflegung.',
+    metaDescription: 'Komm mit Gen La Geshe Pema Dorjee und dem ehrwürdigen Lobsang Tsering zu einem 6-tägigen buddhistischen Retreat in der niederländischen Landschaft. Drei Retreats in 2027, 795 € inklusive Unterkunft, vegetarischer Verpflegung und Workshops.',
     backToExperiences: 'Zurück zu den Erlebnissen',
 
     hero: {
       title: 'Shanti Deva – Tibetisch-Buddhistisches Retreat',
       subtitle: 'Tibetischen Buddhismus studieren',
-      withTeachers: 'mit Gen La Geshe Pema Dorjee und dem ehrwürdigen Mönch Lobsang',
-      dailyTime: 'Täglich von 7 bis 20 Uhr',
-      getInTouch: 'Frage zum Retreat stellen',
+      withTeachers: 'mit Gen La Geshe Pema Dorjee und dem ehrwürdigen Mönch Lobsang Tsering',
+      bookPlace: 'Platz buchen',
     },
 
     video: {
@@ -459,13 +459,39 @@ export const de: Dictionary = {
       secondRetreat: 'Retreat 2',
       thirdRetreat: 'Retreat 3',
       duration: '5 Nächte (6 Tage)',
+      oneRetreatNote: 'Alle drei Retreats folgen demselben Programm – bitte wähle deshalb nur ein Retreat aus und melde dich dafür an.',
     },
 
     teacher: {
-      sectionTitle: 'Wer ist Geshe Pema Dorjee?',
-      biography: 'Geshe Pema Dorjee wurde in Tibet geboren und floh 1959 mit seiner Familie nach Dharamsala in Indien, wo er aufwuchs. Er studierte buddhistische Philosophie und erhielt 1995 den Geshe-Grad – den höchsten akademischen Titel im tibetischen Buddhismus. Über 20 Jahre lang lehrte er am Tibetan Children\'s Village und leitete es als Direktor. Auf Wunsch Seiner Heiligkeit des Dalai Lama gründete er das Bodong Research Center und ein Kloster in Kathmandu. Außerdem hat er umfangreiche humanitäre Projekte ins Leben gerufen – Schulen, Waisenhäuser, Wasserversorgung und Erdbebenhilfe in Nepal. Seit 1997 lehrt er weltweit und ist bekannt für seine Klarheit, Wärme und sein Mitgefühl.',
-      gesheTitle: 'Geshe',
-      monkTitle: 'Ehrwürdiger Mönch',
+      sectionTitle: 'Die Lehrer',
+      geshe: {
+        name: 'Gen La Geshe Pema Dorjee',
+        tagline: 'Ein Leben im Dienst des Lernens, der Hilfe für andere und des Dharma.',
+        biography: 'Geshe Pema Dorjee wurde in Tibet geboren und floh 1959 mit seiner Familie nach Dharamsala in Indien, wo er aufwuchs. Er studierte buddhistische Philosophie und erhielt 1995 den Geshe-Grad – den höchsten akademischen Titel im tibetischen Buddhismus. Über 20 Jahre lang lehrte er am Tibetan Children\'s Village und leitete es als Direktor. Auf Wunsch Seiner Heiligkeit des Dalai Lama gründete er das Bodong Research Center und ein Kloster in Kathmandu. Außerdem hat er umfangreiche humanitäre Projekte ins Leben gerufen – Schulen, Waisenhäuser, Wasserversorgung und Erdbebenhilfe in Nepal. Seit 1997 lehrt er weltweit und ist bekannt für seine Klarheit, Wärme und sein Mitgefühl.',
+      },
+      lobsang: {
+        name: 'Ehrwürdiger Lobsang Tsering',
+        biography: 'Der buddhistische Mönch Lobsang Tsering leitet das Retreat gemeinsam mit Gen La Geshe Pema Dorjee und begleitet das Programm aus buddhistischem Studium, Meditation und Gespräch.',
+      },
+    },
+
+    programme: {
+      title: 'Das Programm',
+      intro: 'Gemeinsam studieren, üben und leben – dasselbe Programm bei allen drei Retreats.',
+      topics: {
+        joyfulEffort: {
+          title: 'Freudige Anstrengung',
+          description: 'Das siebte Kapitel von Shantidevas „Anleitungen auf dem Weg zur Glückseligkeit“ (Bodhicaryavatara).',
+        },
+        mahayana: {
+          title: 'Mahayana-Buddhismus',
+          description: 'Einführung in den Mahayana-Weg und sein Studium.',
+        },
+        meditation: {
+          title: 'Meditation',
+          description: 'Was ist Meditation und wie meditieren wir?',
+        },
+      },
     },
 
     details: {
@@ -475,27 +501,41 @@ export const de: Dictionary = {
       address: 'Adresse des Hofes',
       accessibility: 'Anreise',
       accessibilityItems: {
-        carFromZwolle: '15 Minuten mit dem Auto von Zwolle (1 Std. 15 Min. mit dem Zug ab Flughafen Schiphol, Amsterdam)',
-        freePickup: 'Kostenlose Abholung vom Bahnhof Zwolle (14:00–16:00)',
-        sharedTransport: 'Sammeltransfer zurück zum Bahnhof am Ende: ca. 10 € pro Person',
+        carFromZwolle: '15 Minuten mit dem Auto von Zwolle; mit dem Zug in Zwolle Richtung Wijhe umsteigen (Flughafen Schiphol – Zwolle: 1 Std. 15 Min.)',
+        freePickup: 'Kostenlose Abholung vom Bahnhof Wijhe zwischen 14:00 und 16:00 Uhr am Anreisetag',
+        returnTransport: 'Die Rückfahrt zum Bahnhof Wijhe organisieren die Veranstalter',
+      },
+      galleryAlt: {
+        dalaiLama: 'Seine Heiligkeit der Dalai Lama begrüßt Gen La Geshe Pema Dorjee',
+        farmAerial: 'Luftaufnahme des Hofes mit dem Retreat-Zelt im Obstgarten',
+        momoDemonstration: 'Geshe Pema Dorjee zeigt der Gruppe, wie man tibetische Momos faltet',
       },
     },
 
     schedule: {
-      title: 'Ein typischer Tag',
-      intro: 'Kein Tag ist wie der andere, doch jeder Tag folgt diesem ruhigen Rhythmus.',
-      activities: {
-        morningMeditation: 'Morgendliche Gruppenmeditation und Chanten',
-        breakfastBuffet: 'Frühstücksbuffet',
-        teachingLectures: 'Buddhistische Lehren und Vorträge',
-        lunch: 'Gemeinsames Mittagessen',
-        restAndDigest: 'Freie Zeit zum Ausruhen und Nachwirken',
-        afternoonWorkshop: 'An einigen Tagen ein Workshop am Nachmittag',
-        dinnerGathering: 'Gemeinsames Abendessen',
-        qaSession: 'Fragen und Antworten',
-        eveningConnect: 'Zeit für Begegnung, Sauna und Rückblick auf den Tag – allein oder gemeinsam',
+      title: 'Tagesablauf',
+      intro: 'Jedes Retreat reicht vom Anreisenachmittag über die Studientage bis zum Abschlussmorgen.',
+      days: {
+        arrival: 'Anreisetag',
+        study: 'Studientage',
+        final: 'Abreisetag',
       },
-      workshopNote: 'Die Nachmittagsworkshops wechseln zwischen tibetischem Momo-Kochen, Slow Flow Yoga und dem Malen buddhistischer Motive.',
+      activities: {
+        checkIn: 'Check-in',
+        farmTour: 'Führung über den Hof',
+        welcomeReception: 'Begrüßung',
+        dinner: 'Abendessen',
+        introduction: 'Einführung',
+        meditation: 'Meditation: Studium und Praxis',
+        breakfast: 'Frühstück',
+        teaching: 'Belehrung',
+        lunch: 'Mittagessen',
+        teachingsAndWorkshops: 'Belehrungen und Workshops',
+        questionsAndAnswers: 'Fragen und Antworten',
+        closing: 'Abschluss',
+        checkOut: 'Check-out',
+      },
+      workshopNote: 'Zu den Nachmittagsworkshops gehören tibetisches Momo-Kochen, das Malen tibetischer Motive und sanftes Yoga.',
     },
 
     included: {
@@ -503,24 +543,44 @@ export const de: Dictionary = {
       accommodation: 'Unterkunft',
       accommodationOptions: {
         duration: '5 Nächte (6 Tage)',
-        doubleRooms: 'Doppelzimmer',
-        sharedRooms: 'Zimmer für 3–4 Personen',
-        singleRoom: 'Einzelzimmer',
-        tentCaravan: 'Übernachtung im Zelt oder Wohnwagen möglich – zum vergünstigten Preis',
+        sharedRooms: 'Mehrbettzimmer für 2–4 Teilnehmende',
+        coupleRoom: 'Ein Paarzimmer mit Doppelbett, nach Verfügbarkeit',
+        bedding: 'Bettwäsche und Handtücher (Bade- und Saunatuch nicht inbegriffen)',
       },
-      servicesTitle: 'Leistungen',
+      servicesTitle: 'Verpflegung, Hof & Workshops',
       services: {
-        beddingTowels: 'Bettwäsche und Handtücher (Bade- und Saunatuch nicht inbegriffen)',
-        vegetarianMeals: '3 vegetarische Mahlzeiten am Tag, dazu Getränke und Snacks',
-        farmFacilities: 'Nutzung aller Hofeinrichtungen: Sauna, ökologischer Pool und mehr',
+        vegetarianMeals: 'Vollständige vegetarische Verpflegung während des ganzen Retreats',
+        drinks: 'Heißgetränke & Wasser',
+        farmFacilities: 'Kleiner ökologischer Schwimmteich, Sauna, Hot Tub & Feuerstelle',
+        workshops: 'Workshops: tibetisches Momo-Kochen, Malen tibetischer Motive und sanftes Yoga',
+      },
+    },
+
+    pricing: {
+      title: 'Preis & Anmeldung',
+      subtitle: 'Pro Retreat gibt es Platz für 10–15 Teilnehmende.',
+      perParticipant: 'Gesamtpreis pro Person',
+      breakdown: 'Grundpreis {base} + {vatPercent} % MwSt. {vat}',
+      includes: 'Inklusive Unterkunft, vollständiger vegetarischer Verpflegung, Heißgetränken & Wasser sowie aller Workshops.',
+      register: 'Online anmelden',
+      bookingNote: 'Die Anmeldung läuft über das Formular der Organisation und öffnet sich in einem neuen Tab.',
+      brochure: 'Broschüre herunterladen (PDF, Englisch)',
+      paymentTitle: 'Zahlung',
+      deposit: '{deposit} Anzahlung bei der Anmeldung',
+      balance: 'Restbetrag von {balance}, fällig vier Monate vor deinem Retreat',
+      instalments: 'Der Restbetrag kann auf Wunsch in 2 oder 3 Raten gezahlt werden',
+      cancellationTitle: 'Stornierung',
+      cancellation: {
+        fullRefund: 'Volle Rückerstattung bis 4 Monate vor Beginn des Retreats',
+        halfRefund: '50 % Rückerstattung zwischen 4 und 2 Monaten vor Beginn',
+        noRefund: 'Ab 2 Monaten vor Beginn: keine Rückerstattung, es sei denn, es findet sich eine Ersatzperson (dann volle Rückerstattung)',
       },
     },
 
     registration: {
-      title: 'Mehr erfahren oder anmelden?',
-      subtitle: 'Die Gruppe bleibt bewusst klein. Schreib eine Nachricht und du erfährst alles, was du wissen möchtest.',
-      participantRange: '10–15 Teilnehmer',
-      contact: 'Wende dich an Tete, die Organisation des Retreats',
+      title: 'Fragen? Schreib uns',
+      subtitle: 'Noch unsicher oder möchtest du vor der Anmeldung mehr wissen? Schreib eine Nachricht und du erfährst alles, was du wissen möchtest.',
+      contact: 'Wende dich an Tete Dagani, die Organisation des Retreats',
       whatsapp: 'WhatsApp',
       instagram: 'Instagram',
       email: 'E-Mail',
@@ -834,6 +894,169 @@ export const de: Dictionary = {
       bookNow: 'Über WhatsApp buchen',
       alternativeText: 'Lieber per E-Mail?',
       alternativeCta: 'Nutze das Kontaktformular',
+    },
+  },
+
+  cabinDetail: {
+    backToExperiences: 'Zurück zu den Erlebnissen',
+    showAllPhotos: 'Alle Fotos anzeigen',
+    openPhoto: 'Foto öffnen',
+    aboutTitle: 'Über diese Unterkunft',
+    amenitiesTitle: 'Was diese Unterkunft bietet',
+    locationTitle: 'Lage',
+    locationItems: [
+      'In Wijhe, Overijssel — zwischen Zwolle und Deventer',
+      'Kasteel Nijenhuis mit Museum und Skulpturengärten ist fünf Minuten zu Fuß oder mit dem Rad entfernt',
+      'Der Bahnhof Wijhe ist zehn Minuten mit dem Rad entfernt',
+      'Wander- und Radrouten entlang der IJssel und durch die Sallandse Heuvelrug',
+      'Nachts wird es in der Landschaft von Salland noch richtig dunkel — ideal zum Sternegucken',
+    ],
+    stats: {
+      guests: 'Bis zu {count} Gäste',
+      bedrooms: { one: '{count} Schlafzimmer', other: '{count} Schlafzimmer' },
+      bedroomRange: '{min}–{max} Schlafzimmer',
+    },
+    rating: 'Mit {score}/{outOf} bewertet von {count} Gästen auf {platform}',
+    reviews: {
+      title: 'Was Gäste sagen',
+      score: '{score}/{outOf}',
+      translatedFrom: 'Aus dem {language} übersetzt',
+      readAll: 'Alle {count} Bewertungen auf {platform} lesen',
+      languageNames: { en: 'Englischen', nl: 'Niederländischen', de: 'Deutschen' },
+    },
+    goodToKnow: {
+      title: 'Gut zu wissen',
+      checkIn: 'Check-in',
+      checkOut: 'Check-out',
+      checkInValue: '{from} – {until} Uhr',
+      checkOutValue: 'Bis {until} Uhr',
+      pets: 'Haustiere',
+      petsAllowed: 'Willkommen',
+      petsNotAllowed: 'Nicht erlaubt',
+      contactless: 'Kontaktloser Check-in möglich',
+    },
+    bookingCard: {
+      title: 'Direkt bei uns buchen',
+      intro: 'Schick uns deine Wunschdaten per WhatsApp – wir klären Verfügbarkeit und Preis gemeinsam.',
+    },
+    otherCabin: {
+      title: 'Ebenfalls bei The Makers Barn',
+      cta: 'Unterkunft ansehen',
+    },
+    cabins: {
+      cosmos: {
+        metaTitle: 'Cosmos-Hütte — Holzhütte mit Holzofen',
+        metaDescription: 'Übernachte in der Cosmos-Hütte bei The Makers Barn: eine freistehende Holzhütte für bis zu 4 Gäste mit Holzofen, Regendusche und eigener Veranda in Wijhe, Overijssel. Direkt buchen zum besten Preis.',
+        kicker: 'Freistehende Holzhütte · Wijhe, Overijssel',
+        title: 'Cosmos-Hütte',
+        tagline: 'Eine Holzhütte mit Holzofen, so gemütlich wie kaum eine andere – und mit einem der schönsten Ausblicke der Niederlande.',
+        keyFacts: [
+          '60 m²',
+          'Doppelbett oder zwei Einzelbetten',
+          'Schlafsofa für zwei',
+          'Holzofen',
+          'Eigene Veranda & Rasen',
+        ],
+        description: [
+          'Cosmos ist eine freistehende Holzhütte: neu, aber authentisch, mit viel Liebe und einem Auge für schöne Dinge eingerichtet. Mit allem, was du dir wünschst — ein bequemes Bett, superschnelles WLAN, eine gut ausgestattete Küche mit großem Backofen und eine Regendusche.',
+          'Das Bett wird so bezogen, wie du es magst: mit einer Doppeldecke, als zwei Einzelbetten oder als getrennt stehende Betten. Durch die Fenster direkt über dem Bett schläfst du mit Blick auf die Sterne ein, der Holzofen hält die Hütte warm, und Veranda und Rasen gehören ganz dir.',
+          'In den letzten vier Jahren ist das Grasland rundherum zu einem kleinen Naturparadies geworden: versteckte Pfade, Wildblumen, ein Rosenbogen und frische Beeren, Hühner, Enten und Truthähne und ein Schwimmteich mit kleinem Wasserfall. Nutze die Hängematten, die Terrasse am Teich und die Feuerstelle oder gönn dir einen Tag mit dem holzbefeuerten Hot Tub oder der finnischen Sauna.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Drinnen',
+            items: [
+              'Holzofen',
+              'Gut ausgestattete Küche mit großem Backofen',
+              'Regendusche',
+              'Doppelbett oder zwei Einzelbetten',
+              'Schlafsofa für zwei',
+              'Fenster über dem Bett zum Sternegucken',
+              'Superschnelles WLAN',
+            ],
+          },
+          {
+            title: 'Draußen',
+            items: [
+              'Eigene Veranda und Rasen',
+              'Hängematten',
+              'Terrasse am Schwimmteich',
+              'Feuerstelle',
+              'Versteckte Pfade, Wildblumen und ein Rosenbogen',
+            ],
+          },
+          {
+            title: 'Wellness & Extras',
+            items: [
+              'Holzbefeuerter Hot Tub',
+              'Finnische Sauna (15 € pro Sitzung)',
+              'Yogastunden auf Anfrage',
+              'Massage auf Anfrage',
+              'Verpflegung auf Anfrage',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'Das 13.000 m² große Naturgelände teilst du mit uns — drei Menschen und zwei Hunden — und den Gästen unserer zweiten Unterkunft',
+          'Feuerwerksfreie Umgebung',
+        ],
+        bookingMessage: 'Hallo! Ich würde gern einen Aufenthalt in der Cosmos-Hütte bei The Makers Barn buchen.',
+      },
+      horizon: {
+        metaTitle: 'Horizon-Loft — Luxus-Dachloft auf dem Land',
+        metaDescription: 'Übernachte im Horizon-Loft bei The Makers Barn: ein luxuriöses Dachloft für bis zu 6 Gäste mit Regendusche, gut ausgestatteter Küche und Zugang zu Sauna, Schwimmteich und Glashaus in Wijhe, Overijssel. Direkt buchen zum besten Preis.',
+        kicker: 'Dachloft · Wijhe, Overijssel',
+        title: 'Horizon-Loft',
+        tagline: 'Ein luxuriöses Dachloft mitten auf dem Land — der Komfort einer Wohnung mit der Natur direkt vor der Tür.',
+        keyFacts: [
+          'Luxuriöses Dachloft',
+          'Doppelbett',
+          'Zusätzliche Schlafzimmer für größere Gruppen',
+          'Regendusche',
+          'Bettwäsche, Handtücher & Endreinigung inklusive',
+        ],
+        description: [
+          'Horizon ist ein luxuriöses Dachloft mitten auf dem Land: die perfekte Verbindung aus komfortabler Wohnung und Draußensein. Neu, aber authentisch und mit Liebe eingerichtet, mit allem, was du dir wünschst — ein bequemes Bett, superschnelles WLAN, eine gut ausgestattete Küche und eine Regendusche.',
+          'Im Loft schlafen zwei Personen in einem Doppelbett. Für eine größere Gruppe kannst du bis zu zwei zusätzliche Schlafzimmer dazubuchen, sodass bis zu sechs Gäste übernachten können. Bettwäsche, Handtücher und Endreinigung sind im Preis enthalten, und mit dem eigenen Picknicktisch hast du draußen einen privaten Platz.',
+          'Du kannst das Glashaus, die Hängematten, die Terrasse am Schwimmteich, die Feuerstelle und die Sauna nutzen. In den letzten vier Jahren ist das Grasland rundherum zu einem kleinen Naturparadies geworden: versteckte Pfade, Wildblumen, frische Beeren und ein Schwimmteich mit kleinem Wasserfall.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Drinnen',
+            items: [
+              'Gut ausgestattete Küche',
+              'Regendusche',
+              'Doppelbett',
+              'Bis zu zwei zusätzliche Schlafzimmer',
+              'Superschnelles WLAN',
+              'Bettwäsche und Handtücher inklusive',
+            ],
+          },
+          {
+            title: 'Draußen',
+            items: [
+              'Eigener Picknicktisch',
+              'Glashaus',
+              'Hängematten',
+              'Terrasse am Schwimmteich',
+              'Feuerstelle',
+            ],
+          },
+          {
+            title: 'Wellness & Extras',
+            items: [
+              'Sauna (15 € pro Sitzung)',
+              'Verpflegung auf Anfrage',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'Bettwäsche, Handtücher und Endreinigung sind im Preis enthalten',
+          'Das 13.000 m² große Naturgelände teilst du mit uns — drei Menschen und zwei Hunden — und den Gästen unserer zweiten Unterkunft',
+          'Feuerwerksfreie Umgebung',
+        ],
+        bookingMessage: 'Hallo! Ich würde gern einen Aufenthalt im Horizon-Loft bei The Makers Barn buchen.',
+      },
     },
   },
 

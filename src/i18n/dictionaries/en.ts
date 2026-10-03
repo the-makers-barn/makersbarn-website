@@ -371,6 +371,7 @@ export const en: Dictionary = {
       responseNote: 'We typically reply within a few hours',
       alsoBookableVia: 'Also bookable via',
     },
+    cabinDetailsCta: 'Photos & details',
     cabins: {
       cosmos: {
         title: 'Book Cosmos Cabin',
@@ -435,15 +436,14 @@ export const en: Dictionary = {
 
   shantiDevaRetreat: {
     metaTitle: 'Shanti Deva Buddhist Tibetan Retreat',
-    metaDescription: 'Join Gen La Geshe Pema Dorjee for a 6-day Buddhist retreat in the Dutch countryside. Three retreats in 2027, with meditation, teachings and vegetarian meals included.',
+    metaDescription: 'Join Gen La Geshe Pema Dorjee and the Venerable Lobsang Tsering for a 6-day Buddhist retreat in the Dutch countryside. Three retreats in 2027, €795 including accommodation, vegetarian meals and workshops.',
     backToExperiences: 'Back to Experiences',
 
     hero: {
       title: 'Shanti Deva Buddhist Tibetan Retreat',
       subtitle: 'Study of Tibetan Buddhism',
-      withTeachers: 'with Gen La Geshe Pema Dorjee & the Respected monk Lobsang',
-      dailyTime: 'From 7 AM to 8 PM daily',
-      getInTouch: 'Ask about the retreat',
+      withTeachers: 'with Gen La Geshe Pema Dorjee & the Venerable monk Lobsang Tsering',
+      bookPlace: 'Book your place',
     },
 
     video: {
@@ -456,13 +456,39 @@ export const en: Dictionary = {
       secondRetreat: 'Retreat 2',
       thirdRetreat: 'Retreat 3',
       duration: '5 nights (6 days)',
+      oneRetreatNote: 'All three retreats follow the same programme, so please choose and register for one retreat only.',
     },
 
     teacher: {
-      sectionTitle: 'Who is Geshe Pema Dorjee?',
-      biography: 'Geshe Pema Dorjee was born in Tibet and fled with his family in 1959, growing up in Dharamsala, India. He studied Buddhist philosophy and in 1995 was awarded the Geshe degree - the highest academic title in Tibetan Buddhism. For over 20 years he taught and served as principal at the Tibetan Children\'s Village. At the request of His Holiness the Dalai Lama, he founded the Bodong Research Center and a monastery in Kathmandu. He has also led extensive humanitarian projects, including schools, orphanages, water systems, and earthquake relief in Nepal. Since 1997 he has been teaching worldwide, known for his clarity, warmth, and compassion.',
-      gesheTitle: 'Geshe',
-      monkTitle: 'Respected Monk',
+      sectionTitle: 'Meet the teachers',
+      geshe: {
+        name: 'Gen La Geshe Pema Dorjee',
+        tagline: 'A life devoted to learning, service and the Dharma.',
+        biography: 'Geshe Pema Dorjee was born in Tibet and fled with his family in 1959, growing up in Dharamsala, India. He studied Buddhist philosophy and in 1995 was awarded the Geshe degree - the highest academic title in Tibetan Buddhism. For over 20 years he taught and served as principal at the Tibetan Children\'s Village. At the request of His Holiness the Dalai Lama, he founded the Bodong Research Center and a monastery in Kathmandu. He has also led extensive humanitarian projects, including schools, orphanages, water systems, and earthquake relief in Nepal. Since 1997 he has been teaching worldwide, known for his clarity, warmth, and compassion.',
+      },
+      lobsang: {
+        name: 'Venerable Lobsang Tsering',
+        biography: 'Buddhist monk Lobsang Tsering co-leads the retreat with Gen La Geshe Pema Dorjee and supports the programme of Buddhist study, meditation and discussion.',
+      },
+    },
+
+    programme: {
+      title: 'The Programme',
+      intro: 'Study, practise and live together - the same programme on all three retreats.',
+      topics: {
+        joyfulEffort: {
+          title: 'Joyful Effort',
+          description: 'The seventh chapter of Shantideva\'s The Bodhisattva\'s Way of Life.',
+        },
+        mahayana: {
+          title: 'Mahayana Buddhism',
+          description: 'Introduction to and study of the Mahayana path.',
+        },
+        meditation: {
+          title: 'Meditation',
+          description: 'What is meditation and how do we meditate?',
+        },
+      },
     },
 
     details: {
@@ -470,29 +496,43 @@ export const en: Dictionary = {
       location: 'Location',
       locationDescription: 'A countryside farm in the Netherlands',
       address: 'Farm address',
-      accessibility: 'Accessibility',
+      accessibility: 'Getting there',
       accessibilityItems: {
-        carFromZwolle: '15 minutes by car from Zwolle (1h15 by train from Schiphol Airport, Amsterdam)',
-        freePickup: 'Free pickup from Zwolle train station (14:00-16:00)',
-        sharedTransport: 'Shared transport back to the station at the end: ~€10 per person',
+        carFromZwolle: '15 minutes by car from Zwolle; by train, change at Zwolle for Wijhe (Schiphol Airport to Zwolle takes 1h15)',
+        freePickup: 'Free pickup from Wijhe train station between 14:00 and 16:00 on arrival day',
+        returnTransport: 'Return transport to Wijhe train station is arranged by the organisers',
+      },
+      galleryAlt: {
+        dalaiLama: 'His Holiness the Dalai Lama greeting Gen La Geshe Pema Dorjee',
+        farmAerial: 'Aerial view of the farm with the retreat tent in the orchard',
+        momoDemonstration: 'Geshe Pema Dorjee showing the group how to fold Tibetan momos',
       },
     },
 
     schedule: {
-      title: 'A Typical Day',
-      intro: 'No two days are the same, but every day follows this gentle rhythm.',
-      activities: {
-        morningMeditation: 'Morning group meditation and chanting',
-        breakfastBuffet: 'Breakfast buffet',
-        teachingLectures: 'Buddhist teachings and lectures',
-        lunch: 'Lunch together',
-        restAndDigest: 'Free time to rest and digest',
-        afternoonWorkshop: 'On some days, an afternoon workshop',
-        dinnerGathering: 'Dinner gathering',
-        qaSession: 'Q&A session',
-        eveningConnect: 'Time to connect, enjoy the sauna and reflect on the day - alone or with others',
+      title: 'Daily Rhythm',
+      intro: 'Every retreat runs from an arrival afternoon, through the study days, to a closing morning.',
+      days: {
+        arrival: 'Arrival day',
+        study: 'Study days',
+        final: 'Final day',
       },
-      workshopNote: 'Afternoon workshops rotate between Tibetan momo cooking, slow flow yoga and painting Buddhist motifs.',
+      activities: {
+        checkIn: 'Check-in',
+        farmTour: 'Farm tour',
+        welcomeReception: 'Welcome reception',
+        dinner: 'Dinner',
+        introduction: 'Introduction',
+        meditation: 'Meditation study and practice',
+        breakfast: 'Breakfast',
+        teaching: 'Teaching',
+        lunch: 'Lunch',
+        teachingsAndWorkshops: 'Teachings and workshops',
+        questionsAndAnswers: 'Q&A',
+        closing: 'Closing',
+        checkOut: 'Check-out',
+      },
+      workshopNote: 'Afternoon workshops include Tibetan momo cooking, painting Tibetan motifs and calm yoga.',
     },
 
     included: {
@@ -500,24 +540,44 @@ export const en: Dictionary = {
       accommodation: 'Accommodation',
       accommodationOptions: {
         duration: '5 nights (6 days)',
-        doubleRooms: 'Double rooms',
-        sharedRooms: 'Rooms for 3-4 people',
-        singleRoom: 'Single room',
-        tentCaravan: 'Option to stay in a tent or caravan at reduced price',
+        sharedRooms: 'Shared rooms of 2-4 participants',
+        coupleRoom: 'One couple room with a double bed, subject to availability',
+        bedding: 'Bedding & towels (pool/sauna towel not included)',
       },
-      servicesTitle: 'Services',
+      servicesTitle: 'Board, farm & workshops',
       services: {
-        beddingTowels: 'Bedding & towels (pool/sauna towel not included)',
-        vegetarianMeals: '3 vegetarian meals daily + drinks & snacks',
-        farmFacilities: 'Use of all farm facilities - Sauna, Ecological pool and more',
+        vegetarianMeals: 'Full vegetarian meals throughout the retreat',
+        drinks: 'Hot drinks & water',
+        farmFacilities: 'Small ecological swimming pond, sauna, hot tub & fire circle',
+        workshops: 'Tibetan momo cooking, Tibetan motif painting and calm yoga workshops',
+      },
+    },
+
+    pricing: {
+      title: 'Price & Registration',
+      subtitle: 'Places are limited to 10-15 participants per retreat.',
+      perParticipant: 'Total per participant',
+      breakdown: 'Base {base} + {vatPercent}% VAT {vat}',
+      includes: 'Includes accommodation, full vegetarian meals, hot drinks & water, and all workshops.',
+      register: 'Register online',
+      bookingNote: "Registration runs through the organiser's form and opens in a new tab.",
+      brochure: 'Download the brochure (PDF)',
+      paymentTitle: 'Payment',
+      deposit: '{deposit} deposit on registration',
+      balance: 'Balance of {balance}, due four months before your retreat',
+      instalments: 'The balance may be split into 2 or 3 instalments on request',
+      cancellationTitle: 'Cancellation',
+      cancellation: {
+        fullRefund: 'Full refund up to 4 months before the retreat starts',
+        halfRefund: '50% refund between 4 and 2 months before the start',
+        noRefund: 'From 2 months before the start: no refund, unless a replacement participant is found (then a full refund)',
       },
     },
 
     registration: {
-      title: 'Interested in more details or registering?',
-      subtitle: 'The circle stays small on purpose. Send a message and you will get everything you need to know.',
-      participantRange: '10-15 participants',
-      contact: 'Contact Tete, the retreat organiser',
+      title: 'Questions? Get in touch',
+      subtitle: 'Not sure yet, or want to know more before you register? Send a message and you will get everything you need to know.',
+      contact: 'Contact Tete Dagani, the retreat organiser',
       whatsapp: 'WhatsApp',
       instagram: 'Instagram',
       email: 'Email',
@@ -831,6 +891,169 @@ export const en: Dictionary = {
       bookNow: 'Book via WhatsApp',
       alternativeText: 'Prefer email?',
       alternativeCta: 'Use the contact form',
+    },
+  },
+
+  cabinDetail: {
+    backToExperiences: 'Back to Experiences',
+    showAllPhotos: 'Show all photos',
+    openPhoto: 'Open photo',
+    aboutTitle: 'About this place',
+    amenitiesTitle: 'What this place offers',
+    locationTitle: 'Location',
+    locationItems: [
+      'Located in Wijhe, Overijssel — between Zwolle and Deventer',
+      'Kasteel Nijenhuis, with its museum and sculpture gardens, is five minutes away on foot or by bike',
+      'Wijhe train station is ten minutes away by bike',
+      'Hiking and cycling routes along the IJssel and through the Sallandse Heuvelrug',
+      'Real darkness at night in the Salland countryside — perfect for stargazing',
+    ],
+    stats: {
+      guests: 'Up to {count} guests',
+      bedrooms: { one: '{count} bedroom', other: '{count} bedrooms' },
+      bedroomRange: '{min}–{max} bedrooms',
+    },
+    rating: 'Rated {score}/{outOf} by {count} guests on {platform}',
+    reviews: {
+      title: 'What guests say',
+      score: '{score}/{outOf}',
+      translatedFrom: 'Translated from {language}',
+      readAll: 'Read all {count} reviews on {platform}',
+      languageNames: { en: 'English', nl: 'Dutch', de: 'German' },
+    },
+    goodToKnow: {
+      title: 'Good to know',
+      checkIn: 'Check-in',
+      checkOut: 'Check-out',
+      checkInValue: '{from} – {until}',
+      checkOutValue: 'Until {until}',
+      pets: 'Pets',
+      petsAllowed: 'Welcome',
+      petsNotAllowed: 'Not allowed',
+      contactless: 'Contactless check-in possible',
+    },
+    bookingCard: {
+      title: 'Book directly with us',
+      intro: 'Send us your dates on WhatsApp and we will confirm availability and the rate together.',
+    },
+    otherCabin: {
+      title: 'Also at The Makers Barn',
+      cta: 'View this place',
+    },
+    cabins: {
+      cosmos: {
+        metaTitle: 'Cosmos Cabin — wooden cabin with wood stove',
+        metaDescription: 'Stay in the Cosmos cabin at The Makers Barn: a detached wooden cabin for up to 4 guests with a wood stove, rainfall shower and private veranda in Wijhe, Overijssel. Book directly for the best rate.',
+        kicker: 'Detached wooden cabin · Wijhe, Overijssel',
+        title: 'Cosmos Cabin',
+        tagline: 'A wooden cabin with a wood stove, cosy as no other and bathed in some of the best views the Netherlands has to offer.',
+        keyFacts: [
+          '60 m²',
+          'Double bed or two singles',
+          'Double sofa bed',
+          'Wood stove',
+          'Private veranda & lawn',
+        ],
+        description: [
+          'Cosmos is a detached wooden cabin: new but authentic, made with love and an eye for beautiful things. It has everything you would hope for — a comfortable bed, super-fast Wi-Fi, a well-equipped kitchen with a large oven and a rainfall shower.',
+          'The bed is made the way you like it: one double duvet, two singles or two separate beds. Windows right above the bed let you fall asleep looking at the stars, the wood stove keeps the cabin warm, and the private veranda and lawn are yours alone.',
+          'Over the past four years the surrounding grassland has turned into a small nature paradise: hidden paths, wildflowers, a rose arch and fresh berries, chickens, ducks and turkeys, and a swimming pond with a little waterfall. Use the hammocks, the terrace by the pond and the fire pit, or treat yourself to a day with the wood-fired hot tub or the Finnish sauna.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Inside',
+            items: [
+              'Wood stove',
+              'Well-equipped kitchen with a large oven',
+              'Rainfall shower',
+              'Double bed or two single beds',
+              'Double sofa bed',
+              'Windows above the bed for stargazing',
+              'Super-fast Wi-Fi',
+            ],
+          },
+          {
+            title: 'Outside',
+            items: [
+              'Private veranda and lawn',
+              'Hammocks',
+              'Terrace by the swimming pond',
+              'Fire pit',
+              'Hidden paths, wildflowers and a rose arch',
+            ],
+          },
+          {
+            title: 'Wellness & extras',
+            items: [
+              'Wood-fired hot tub',
+              'Finnish sauna (€15 per session)',
+              'Yoga sessions on request',
+              'Massage available',
+              'Catering on request',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'You share the 13,000 m² nature yard with us — three people and two dogs — and guests of our second cabin',
+          'Fireworks-free area',
+        ],
+        bookingMessage: 'Hi! I would like to book a stay in the Cosmos cabin at The Makers Barn.',
+      },
+      horizon: {
+        metaTitle: 'Horizon Loft — luxury attic loft in the countryside',
+        metaDescription: 'Stay in the Horizon loft at The Makers Barn: a luxury attic loft for up to 6 guests with a rainfall shower, a well-equipped kitchen and access to the sauna, swimming pond and glass house in Wijhe, Overijssel. Book directly for the best rate.',
+        kicker: 'Attic loft · Wijhe, Overijssel',
+        title: 'Horizon Loft',
+        tagline: 'A luxury attic loft in the middle of the countryside — the comfort of an apartment with the outdoors on your doorstep.',
+        keyFacts: [
+          'Luxury attic loft',
+          'Double bed',
+          'Extra bedrooms for larger groups',
+          'Rainfall shower',
+          'Linen, towels & cleaning included',
+        ],
+        description: [
+          'Horizon is a luxury attic loft in the middle of the countryside: the comfort of an apartment with the outdoors on your doorstep. New but authentic and made with love, it has everything you would hope for — a comfortable bed, super-fast Wi-Fi, a well-equipped kitchen and a rainfall shower.',
+          'The loft sleeps two in a double bed. For a larger group you can add up to two extra bedrooms, so up to six guests can stay. Bed linen, towels and final cleaning are included in the price, and your own picnic table gives you a private spot outside.',
+          'You are free to use the glass house, the hammocks, the terrace by the swimming pond, the fire pit and the sauna. Around the loft, the grassland has turned into a small nature paradise over the past four years: hidden paths, wildflowers, fresh berries and a swimming pond with a little waterfall.',
+        ],
+        amenityGroups: [
+          {
+            title: 'Inside',
+            items: [
+              'Well-equipped kitchen',
+              'Rainfall shower',
+              'Double bed',
+              'Up to two extra bedrooms',
+              'Super-fast Wi-Fi',
+              'Bed linen and towels included',
+            ],
+          },
+          {
+            title: 'Outside',
+            items: [
+              'Own picnic table',
+              'Glass house',
+              'Hammocks',
+              'Terrace by the swimming pond',
+              'Fire pit',
+            ],
+          },
+          {
+            title: 'Wellness & extras',
+            items: [
+              'Sauna (€15 per session)',
+              'Catering on request',
+            ],
+          },
+        ],
+        goodToKnowNotes: [
+          'Bed linen, towels and final cleaning are included in the price',
+          'You share the 13,000 m² nature yard with us — three people and two dogs — and guests of our second cabin',
+          'Fireworks-free area',
+        ],
+        bookingMessage: 'Hi! I would like to book a stay in the Horizon loft at The Makers Barn.',
+      },
     },
   },
 

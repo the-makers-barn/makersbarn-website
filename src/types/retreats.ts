@@ -28,6 +28,13 @@ export interface Teacher {
   imageUrl: string
 }
 
+/** The three kinds of day a multi-day retreat runs through, in order. */
+export enum RetreatDayKind {
+  ARRIVAL = 'arrival',
+  STUDY = 'study',
+  FINAL = 'final',
+}
+
 export interface ScheduleItem {
   time: string
   activityKey: string
@@ -49,6 +56,60 @@ export interface RetreatContact {
   email: string
   /** Public profile URL for the retreat's own Instagram account. */
   instagram: string
+  /** The organiser's registration form, hosted on Google Forms. */
+  bookingFormUrl: string
+  /** The organiser's printable brochure (PDF). */
+  brochureUrl: string
+}
+
+/*
+ * Keys the Shanti Deva retreat data shares with its dictionary block. Typing
+ * both sides with the same unions means a key added to the data without a
+ * translation in every language fails the type check instead of rendering blank.
+ */
+export type RetreatProgrammeKey = 'joyfulEffort' | 'mahayana' | 'meditation'
+
+export type RetreatActivityKey =
+  | 'checkIn'
+  | 'farmTour'
+  | 'welcomeReception'
+  | 'dinner'
+  | 'introduction'
+  | 'meditation'
+  | 'breakfast'
+  | 'teaching'
+  | 'lunch'
+  | 'teachingsAndWorkshops'
+  | 'questionsAndAnswers'
+  | 'closing'
+  | 'checkOut'
+
+export type RetreatAccessKey = 'carFromZwolle' | 'freePickup' | 'returnTransport'
+
+export type RetreatAccommodationKey = 'duration' | 'sharedRooms' | 'coupleRoom' | 'bedding'
+
+export type RetreatServiceKey = 'vegetarianMeals' | 'drinks' | 'farmFacilities' | 'workshops'
+
+/** One kind of retreat day and its timetable. */
+export interface RetreatScheduleDay {
+  kind: RetreatDayKind
+  items: { time: string; activityKey: RetreatActivityKey }[]
+}
+
+/**
+ * Whole-euro amounts, as strings like every other price in the retreat data.
+ * The VAT share and the balance are derived from these, so the published
+ * figures can never disagree with each other.
+ */
+export interface RetreatPricing {
+  currency: string
+  /** Price per participant including VAT. */
+  total: string
+  /** Price per participant excluding VAT. */
+  base: string
+  vatPercent: number
+  /** Paid on registration; the rest of `total` is the balance. */
+  deposit: string
 }
 
 export interface RetreatData {
@@ -59,13 +120,17 @@ export interface RetreatData {
   videoEmbedUrl: string
   teachers: Teacher[]
   dates: RetreatDate[]
-  location: RetreatLocation
-  /**
-   * The rhythm of a typical retreat day, in order. Each entry keys into the
-   * `shantiDevaRetreat.schedule.activities` dictionary block. Deliberately
-   * untimed — the flow is an indication, not a timetable.
-   */
-  dayFlowKeys: string[]
+  location: Omit<RetreatLocation, 'accessibilityKeys'> & {
+    /** How to get there, in display order. */
+    accessibilityKeys: RetreatAccessKey[]
+  }
+  /** Study themes, in teaching order. */
+  programmeKeys: RetreatProgrammeKey[]
+  /** The organiser's timetable, one entry per kind of day. */
+  schedule: RetreatScheduleDay[]
+  accommodationKeys: RetreatAccommodationKey[]
+  serviceKeys: RetreatServiceKey[]
+  pricing: RetreatPricing
   contact: RetreatContact
 }
 

@@ -7,6 +7,8 @@ export enum Route {
   AUTUMN_GROUNDING_RETREAT = '/experiences/autumn-grounding-retreat',
   MENS_SWEAT_LODGE = '/experiences/mens-sweat-lodge',
   FOCUSED_WORKATION = '/experiences/focused-workation',
+  COSMOS_CABIN = '/experiences/cosmos',
+  HORIZON_LOFT = '/experiences/horizon',
   SURROUNDINGS = '/surroundings',
   CONTACT = '/contact',
   BOOK = '/book',

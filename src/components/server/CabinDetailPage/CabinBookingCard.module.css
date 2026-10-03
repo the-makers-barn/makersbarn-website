@@ -1,0 +1,91 @@
+.card {
+  padding: 1.75rem;
+  border: 1px solid rgba(41, 75, 58, 0.12);
+  border-radius: 16px;
+  background: var(--color-background);
+  box-shadow: 0 8px 30px rgba(39, 32, 22, 0.12);
+}
+
+.title {
+  font-family: var(--font-playfair);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+  margin: 0 0 0.75rem;
+}
+
+.intro {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 1.25rem;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(41, 75, 58, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cta:hover {
+  background: #1e3a2c;
+  transform: translateY(-1px);
+}
+
+.benefit {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 1rem 0 0.25rem;
+}
+
+.note {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  margin: 0;
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(41, 75, 58, 0.12);
+}
+
+.platformLabel {
+  width: 100%;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+.platformLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.platformLink:hover {
+  color: var(--color-primary);
+}

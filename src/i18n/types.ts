@@ -1,4 +1,13 @@
-import { AccommodationCabin, Language } from '@/types'
+import {
+  AccommodationCabin,
+  Language,
+  RetreatAccessKey,
+  RetreatAccommodationKey,
+  RetreatActivityKey,
+  RetreatDayKind,
+  RetreatProgrammeKey,
+  RetreatServiceKey,
+} from '@/types'
 import type { DietaryCapability, NlRegion, RetreatType } from '@/constants/chef'
 import type { ChefInquiryDict } from '@/types/chef'
 
@@ -309,6 +318,8 @@ export interface ExperiencesTranslations {
     responseNote: string
     alsoBookableVia: string
   }
+  /** Link from a cabin card to its detail page. */
+  cabinDetailsCta: string
   cabins: Record<AccommodationCabin, {
     title: string
     description: string
@@ -361,8 +372,7 @@ export interface ShantiDevaRetreatTranslations {
     title: string
     subtitle: string
     withTeachers: string
-    dailyTime: string
-    getInTouch: string
+    bookPlace: string
   }
 
   video: {
@@ -375,13 +385,26 @@ export interface ShantiDevaRetreatTranslations {
     secondRetreat: string
     thirdRetreat: string
     duration: string
+    oneRetreatNote: string
   }
 
   teacher: {
     sectionTitle: string
-    biography: string
-    gesheTitle: string
-    monkTitle: string
+    geshe: {
+      name: string
+      tagline: string
+      biography: string
+    }
+    lobsang: {
+      name: string
+      biography: string
+    }
+  }
+
+  programme: {
+    title: string
+    intro: string
+    topics: Record<RetreatProgrammeKey, { title: string; description: string }>
   }
 
   details: {
@@ -390,52 +413,57 @@ export interface ShantiDevaRetreatTranslations {
     locationDescription: string
     address: string
     accessibility: string
-    accessibilityItems: {
-      carFromZwolle: string
-      freePickup: string
-      sharedTransport: string
+    accessibilityItems: Record<RetreatAccessKey, string>
+    galleryAlt: {
+      dalaiLama: string
+      farmAerial: string
+      momoDemonstration: string
     }
   }
 
   schedule: {
     title: string
     intro: string
-    activities: {
-      morningMeditation: string
-      breakfastBuffet: string
-      teachingLectures: string
-      lunch: string
-      restAndDigest: string
-      afternoonWorkshop: string
-      dinnerGathering: string
-      qaSession: string
-      eveningConnect: string
-    }
+    days: Record<RetreatDayKind, string>
+    activities: Record<RetreatActivityKey, string>
     workshopNote: string
   }
 
   included: {
     title: string
     accommodation: string
-    accommodationOptions: {
-      duration: string
-      doubleRooms: string
-      sharedRooms: string
-      singleRoom: string
-      tentCaravan: string
-    }
+    accommodationOptions: Record<RetreatAccommodationKey, string>
     servicesTitle: string
-    services: {
-      beddingTowels: string
-      vegetarianMeals: string
-      farmFacilities: string
+    services: Record<RetreatServiceKey, string>
+  }
+
+  pricing: {
+    title: string
+    subtitle: string
+    perParticipant: string
+    /** Placeholders: {base}, {vatPercent}, {vat}. */
+    breakdown: string
+    includes: string
+    register: string
+    bookingNote: string
+    brochure: string
+    paymentTitle: string
+    /** Placeholder: {deposit}. */
+    deposit: string
+    /** Placeholder: {balance}. */
+    balance: string
+    instalments: string
+    cancellationTitle: string
+    cancellation: {
+      fullRefund: string
+      halfRefund: string
+      noRefund: string
     }
   }
 
   registration: {
     title: string
     subtitle: string
-    participantRange: string
     contact: string
     whatsapp: string
     email: string
@@ -487,6 +515,81 @@ export interface FocusedWorkationTranslations {
     alternativeText: string
     alternativeCta: string
   }
+}
+
+/**
+ * Copy for one cabin detail page.
+ */
+export interface CabinDetailContent {
+  metaTitle: string
+  metaDescription: string
+  kicker: string
+  title: string
+  tagline: string
+  keyFacts: readonly string[]
+  /** Body copy for "About this place", one string per paragraph. */
+  description: readonly string[]
+  amenityGroups: readonly { title: string; items: readonly string[] }[]
+  /** Extra cabin-specific notes for the "Good to know" section. */
+  goodToKnowNotes: readonly string[]
+  bookingMessage: string
+}
+
+/**
+ * Cabin detail pages (/experiences/cosmos, /experiences/horizon).
+ *
+ * Booking CTA labels and platform names are shared with the experiences
+ * overview and live in `experiences.directBooking` / `experiences.bookingPlatforms`.
+ */
+export interface CabinDetailTranslations {
+  backToExperiences: string
+  showAllPhotos: string
+  openPhoto: string
+  aboutTitle: string
+  amenitiesTitle: string
+  locationTitle: string
+  locationItems: readonly string[]
+  /** `{count}` is replaced with the number. */
+  stats: {
+    guests: string
+    bedrooms: { one: string; other: string }
+    /** `{min}` and `{max}` are replaced. */
+    bedroomRange: string
+  }
+  /** `{score}`, `{outOf}`, `{count}` and `{platform}` are replaced. */
+  rating: string
+  reviews: {
+    title: string
+    /** `{score}` and `{outOf}` are replaced. */
+    score: string
+    /** `{language}` is replaced with a name from `languageNames`. */
+    translatedFrom: string
+    /** `{count}` and `{platform}` are replaced. */
+    readAll: string
+    languageNames: Record<Language, string>
+  }
+  goodToKnow: {
+    title: string
+    checkIn: string
+    checkOut: string
+    /** `{from}` and `{until}` are replaced with times. */
+    checkInValue: string
+    /** `{until}` is replaced with a time. */
+    checkOutValue: string
+    pets: string
+    petsAllowed: string
+    petsNotAllowed: string
+    contactless: string
+  }
+  bookingCard: {
+    title: string
+    intro: string
+  }
+  otherCabin: {
+    title: string
+    cta: string
+  }
+  cabins: Record<AccommodationCabin, CabinDetailContent>
 }
 
 /**
@@ -1395,6 +1498,7 @@ export interface Dictionary {
   autumnGrounding: AutumnGroundingTranslations
   sweatLodge: SweatLodgeTranslations
   focusedWorkation: FocusedWorkationTranslations
+  cabinDetail: CabinDetailTranslations
   impressionCarousel: ImpressionCarouselTranslations
   impressionPolaroids: ImpressionPolaroidsTranslations
   testimonials: TestimonialsTranslations

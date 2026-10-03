@@ -1,0 +1,1 @@
+export { CabinGallery } from './CabinGallery'
