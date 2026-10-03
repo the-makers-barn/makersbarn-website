@@ -111,7 +111,7 @@ export interface EventVenueSchema {
   isAccessibleForFree?: boolean
   publicAccess?: boolean
   smokingAllowed?: boolean
-  subjectOf?: Array<{ '@type': 'Event'; '@id': string }>
+  subjectOf?: Array<{ '@id': string }>
 }
 
 export interface CollectionPageSchema {
@@ -397,10 +397,9 @@ export function generateEventVenueSchema(
   }
 
   if (linkedEventIds.length > 0) {
-    schema.subjectOf = linkedEventIds.map((id) => ({
-      '@type': 'Event' as const,
-      '@id': id,
-    }))
+    // Reference by @id only. A typed stub makes Google read it as a separate
+    // Event that lacks name, startDate and location.
+    schema.subjectOf = linkedEventIds.map((id) => ({ '@id': id }))
   }
 
   return schema
