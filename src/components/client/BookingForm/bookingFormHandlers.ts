@@ -1,13 +1,14 @@
 
 import { track } from '@/lib/analytics'
-import { AnalyticsEvent } from '@/constants'
-import { FormStatus, type BookingFormData } from '@/types'
+import { AnalyticsEvent, HEARD_ABOUT_EVENT_KEY } from '@/constants'
+import { FormStatus, type BookingFormData, type HeardAboutSource } from '@/types'
 
 import { FIELD_TO_STEP, WizardStep } from './BookingFormConstants'
 
 interface SubmitSuccessParams {
   translatedMessage: string
   retreatType: string
+  heardAbout?: HeardAboutSource
   setStatus: (status: FormStatus) => void
   setStatusMessage: (message: string) => void
 }
@@ -15,10 +16,14 @@ interface SubmitSuccessParams {
 export function handleSubmitSuccess({
   translatedMessage,
   retreatType,
+  heardAbout,
   setStatus,
   setStatusMessage,
 }: SubmitSuccessParams) {
-  track(AnalyticsEvent.BOOKING_FORM_SUBMITTED, { retreatType })
+  track(AnalyticsEvent.BOOKING_FORM_SUBMITTED, {
+    retreatType,
+    ...(heardAbout ? { [HEARD_ABOUT_EVENT_KEY]: heardAbout } : {}),
+  })
   setStatus(FormStatus.SUCCESS)
   setStatusMessage(translatedMessage)
 }

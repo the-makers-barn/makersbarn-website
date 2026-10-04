@@ -2,7 +2,7 @@ import { ChangeEvent, RefObject } from 'react'
 import { motion } from 'framer-motion'
 
 import { RetreatType, type BookingFormData } from '@/types'
-import { FormField } from '@/components/client/forms'
+import { FormField, HeardAboutField, HeardAboutTone, type HeardAboutValue } from '@/components/client/forms'
 
 import { FORM_FIELD_IDS, STEP_VARIANTS, RETREAT_TYPE_KEYS } from './BookingFormConstants'
 import styles from './BookingForm.module.css'
@@ -31,6 +31,7 @@ interface BookingFormReviewStepProps {
   formData: BookingFormData
   errors: Record<string, string>
   handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void
+  handleHeardAboutChange: (value: HeardAboutValue) => void
   handleAnimationComplete: () => void
   stepHeadingRef: RefObject<HTMLHeadingElement | null>
   translations: {
@@ -84,6 +85,7 @@ export function BookingFormReviewStep({
   formData,
   errors,
   handleChange,
+  handleHeardAboutChange,
   handleAnimationComplete,
   stepHeadingRef,
   translations,
@@ -203,6 +205,14 @@ export function BookingFormReviewStep({
         onChange={handleChange}
         placeholder={translations.placeholders.extraInfo}
         error={errors.extraInfo}
+      />
+
+      <HeardAboutField
+        idPrefix={FORM_FIELD_IDS.HEARD_ABOUT}
+        tone={HeardAboutTone.LIGHT}
+        heardAbout={formData.heardAbout}
+        heardAboutDetail={formData.heardAboutDetail ?? ''}
+        onChange={handleHeardAboutChange}
       />
     </motion.div>
   )

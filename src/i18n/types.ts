@@ -1,5 +1,7 @@
 import {
   AccommodationCabin,
+  type HeardAboutSource,
+  type HeardAboutDetailSource,
   Language,
   RetreatAccessKey,
   RetreatAccommodationKey,
@@ -768,6 +770,13 @@ export interface UnifiedContactTranslations {
   }
 }
 
+export interface HeardAboutTranslations {
+  legend: string
+  optional: string
+  options: Record<HeardAboutSource, string>
+  detailLabels: Record<HeardAboutDetailSource, string>
+}
+
 export interface ChefsListingFaqItem {
   question: string
   answer: string
@@ -1489,6 +1498,7 @@ export interface Dictionary {
   contact: ContactTranslations
   unifiedContact: UnifiedContactTranslations
   booking: BookingTranslations
+  heardAbout: HeardAboutTranslations
   footer: FooterTranslations
   about: AboutTranslations
   facilities: FacilitiesTranslations

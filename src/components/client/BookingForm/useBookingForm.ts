@@ -2,7 +2,9 @@ import { useState, useCallback, useMemo, useRef, useEffect, FormEvent, ChangeEve
 
 import { getBlockedDateRanges } from '@/constants'
 import { submitBookingForm } from '@/actions'
+import { getSubmissionAttribution } from '@/lib/attribution'
 import { FormStatus, type BookingFormData } from '@/types'
+import type { HeardAboutValue } from '@/components/client/forms'
 
 import {
   INITIAL_FORM_DATA,
@@ -132,7 +134,7 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
       setErrors({})
 
       try {
-        const result = await submitBookingForm(formData)
+        const result = await submitBookingForm({ ...formData, ...getSubmissionAttribution() })
         const messageKey = result.messageCode as keyof typeof bookingMessages
         const translatedMessage = bookingMessages[messageKey] || bookingMessages.unexpectedError
 
@@ -140,6 +142,7 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
           handleSubmitSuccess({
             translatedMessage,
             retreatType: formData.retreatType,
+            heardAbout: formData.heardAbout,
             setStatus,
             setStatusMessage,
           })
@@ -175,6 +178,10 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
     if (!hasAnimated) {setHasAnimated(true)}
   }, [hasAnimated])
 
+  const handleHeardAboutChange = useCallback((value: HeardAboutValue) => {
+    setFormData((prev) => ({ ...prev, ...value }))
+  }, [])
+
   const setCateringNeeded = useCallback((value: boolean) => {
     setFormData((prev) => ({ ...prev, cateringNeeded: value, cateringDetails: value ? prev.cateringDetails : '' }))
   }, [])
@@ -196,5 +203,6 @@ export function useBookingForm({ bookingMessages, bookingValidation, retreatType
     handleNewRequest,
     handleAnimationComplete,
     setCateringNeeded,
+    handleHeardAboutChange,
   }
 }

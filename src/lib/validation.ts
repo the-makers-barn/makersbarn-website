@@ -4,8 +4,14 @@
 
 import { z } from 'zod'
 
-import { ContactIntent, RetreatType, type ValidatedBookingFormData } from '@/types'
-import { BOOKING_FIELD_LIMITS, RETREAT_TYPE_LABELS } from '@/constants'
+import { ContactIntent, HeardAboutSource, RetreatType, type ValidatedBookingFormData } from '@/types'
+import {
+  ATTRIBUTION_CAMPAIGN_MAX,
+  BOOKING_FIELD_LIMITS,
+  Channel,
+  HEARD_ABOUT_DETAIL_MAX,
+  RETREAT_TYPE_LABELS,
+} from '@/constants'
 
 const VALIDATION_LIMITS = {
   NAME_MAX: 100,
@@ -52,6 +58,28 @@ export const ContactInfoSchema = z.object({
 
 export type ValidatedContactInfo = z.infer<typeof ContactInfoSchema>
 
+function truncatedOptionalText(max: number) {
+  return z
+    .string()
+    .transform((val) => {
+      const trimmed = val.trim().slice(0, max)
+      return trimmed ? trimmed : undefined
+    })
+    .catch(undefined)
+    .optional()
+}
+
+/**
+ * Where the submission came from. Every field falls back to undefined instead
+ * of failing: a bad tracking value must never block a visitor's message.
+ */
+const SubmissionSourceFields = {
+  heardAbout: z.nativeEnum(HeardAboutSource).optional().catch(undefined),
+  heardAboutDetail: truncatedOptionalText(HEARD_ABOUT_DETAIL_MAX),
+  attributionChannel: z.nativeEnum(Channel).optional().catch(undefined),
+  attributionCampaign: truncatedOptionalText(ATTRIBUTION_CAMPAIGN_MAX),
+}
+
 /**
  * Get display label for retreat type (server-side use: emails, logs, Slack)
  * Handles "Other" type with custom text
@@ -94,6 +122,7 @@ export const ContactFormSchema = z.object({
     .max(VALIDATION_LIMITS.MESSAGE_MAX, VALIDATION_MESSAGES.MESSAGE_TOO_LONG)
     .trim(),
   source: z.nativeEnum(ContactIntent).optional(),
+  ...SubmissionSourceFields,
 })
 
 export type ValidatedContactFormData = z.infer<typeof ContactFormSchema>
@@ -218,6 +247,7 @@ export const BookingFormSchema = z.object({
     .trim()
     .optional()
     .transform((val) => (val && val.length > 0 ? val : undefined)),
+  ...SubmissionSourceFields,
 })
 
 /**

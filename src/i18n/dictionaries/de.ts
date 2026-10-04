@@ -1,3 +1,5 @@
+import { HeardAboutSource } from '@/types'
+
 import type { Dictionary } from '../types'
 
 /**
@@ -238,6 +240,25 @@ export const de: Dictionary = {
       ],
       newRequestButton: 'Weitere Anfrage senden',
       homeButton: 'Zurück zur Startseite',
+    },
+  },
+
+  heardAbout: {
+    legend: 'Wie hast du von uns erfahren?',
+    optional: 'Optional',
+    options: {
+      [HeardAboutSource.GOOGLE]: 'Google-Suche',
+      [HeardAboutSource.SOCIAL_MEDIA]: 'Instagram oder Facebook',
+      [HeardAboutSource.AI_ASSISTANT]: 'KI-Assistent (ChatGPT o. Ä.)',
+      [HeardAboutSource.FRIEND]: 'Freunde oder Kollegen',
+      [HeardAboutSource.RETURNING]: 'Ich war schon einmal hier',
+      [HeardAboutSource.EVENT_OR_PARTNER]: 'Eine Veranstaltung oder ein Partner',
+      [HeardAboutSource.OTHER]: 'Etwas anderes',
+    },
+    detailLabels: {
+      [HeardAboutSource.FRIEND]: 'Wer hat dir von uns erzählt?',
+      [HeardAboutSource.EVENT_OR_PARTNER]: 'Welche Veranstaltung oder welcher Partner?',
+      [HeardAboutSource.OTHER]: 'Wo hast du von uns gehört?',
     },
   },
 

@@ -5,11 +5,13 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 import { track } from '@/lib/analytics'
+import { getSubmissionAttribution } from '@/lib/attribution'
 import { IMAGES } from '@/data'
 import { submitContactForm } from '@/actions'
-import { AnalyticsEvent } from '@/constants'
+import { AnalyticsEvent, HEARD_ABOUT_EVENT_KEY } from '@/constants'
 import { FormStatus, type ContactFormData, type ContactIntent } from '@/types'
 import { useTranslation } from '@/context'
+import { HeardAboutField, HeardAboutTone, type HeardAboutValue } from '@/components/client/forms'
 
 import styles from './QuestionForm.module.css'
 
@@ -29,7 +31,22 @@ const FORM_FIELD_IDS = {
   EMAIL: 'question-email',
   PHONE: 'question-phone',
   MESSAGE: 'question-message',
+  HEARD_ABOUT: 'question-heard-about',
 } as const
+
+function StatusMessage({ status, message }: { status: FormStatus; message: string }) {
+  return (
+    <div
+      className={`${styles.statusMessage} ${
+        status === FormStatus.SUCCESS ? styles.statusSuccess : ''
+      } ${status === FormStatus.ERROR ? styles.statusError : ''}`}
+      role="status"
+      aria-live={status === FormStatus.ERROR ? 'assertive' : 'polite'}
+    >
+      {message}
+    </div>
+  )
+}
 
 export function QuestionForm({ contactIntent }: QuestionFormProps = {}) {
   const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM_DATA)
@@ -54,6 +71,10 @@ export function QuestionForm({ contactIntent }: QuestionFormProps = {}) {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }, [])
 
+  const handleHeardAboutChange = useCallback((value: HeardAboutValue) => {
+    setFormData((prev) => ({ ...prev, ...value }))
+  }, [])
+
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -63,12 +84,16 @@ export function QuestionForm({ contactIntent }: QuestionFormProps = {}) {
       try {
         const payload: ContactFormData = {
           ...formData,
+          ...getSubmissionAttribution(),
           ...(contactIntent ? { source: contactIntent } : {}),
         }
         const result = await submitContactForm(payload)
 
         if (result.success) {
-          track(AnalyticsEvent.QUESTION_FORM_SUBMITTED)
+          track(
+            AnalyticsEvent.QUESTION_FORM_SUBMITTED,
+            formData.heardAbout ? { [HEARD_ABOUT_EVENT_KEY]: formData.heardAbout } : undefined
+          )
           setStatus(FormStatus.SUCCESS)
           setStatusMessage(result.message)
           setFormData(INITIAL_FORM_DATA)
@@ -151,17 +176,15 @@ export function QuestionForm({ contactIntent }: QuestionFormProps = {}) {
           />
         </div>
 
-        {statusMessage && (
-          <div
-            className={`${styles.statusMessage} ${
-              status === FormStatus.SUCCESS ? styles.statusSuccess : ''
-            } ${status === FormStatus.ERROR ? styles.statusError : ''}`}
-            role="status"
-            aria-live={status === FormStatus.ERROR ? 'assertive' : 'polite'}
-          >
-            {statusMessage}
-          </div>
-        )}
+        <HeardAboutField
+          idPrefix={FORM_FIELD_IDS.HEARD_ABOUT}
+          tone={HeardAboutTone.DARK}
+          heardAbout={formData.heardAbout}
+          heardAboutDetail={formData.heardAboutDetail ?? ''}
+          onChange={handleHeardAboutChange}
+        />
+
+        {statusMessage && <StatusMessage status={status} message={statusMessage} />}
 
         <motion.button
           whileHover={isSubmitting ? {} : { scale: 1.01 }}

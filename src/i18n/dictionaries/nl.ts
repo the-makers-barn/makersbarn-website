@@ -1,3 +1,5 @@
+import { HeardAboutSource } from '@/types'
+
 import type { Dictionary } from '../types'
 
 /**
@@ -238,6 +240,25 @@ export const nl: Dictionary = {
       ],
       newRequestButton: 'Nieuwe Aanvraag Indienen',
       homeButton: 'Terug naar Home',
+    },
+  },
+
+  heardAbout: {
+    legend: 'Hoe heb je over ons gehoord?',
+    optional: 'Optioneel',
+    options: {
+      [HeardAboutSource.GOOGLE]: 'Google',
+      [HeardAboutSource.SOCIAL_MEDIA]: 'Instagram of Facebook',
+      [HeardAboutSource.AI_ASSISTANT]: 'AI-assistent (ChatGPT en dergelijke)',
+      [HeardAboutSource.FRIEND]: 'Een vriend of collega',
+      [HeardAboutSource.RETURNING]: 'Ik ben hier eerder geweest',
+      [HeardAboutSource.EVENT_OR_PARTNER]: 'Een evenement of partner',
+      [HeardAboutSource.OTHER]: 'Iets anders',
+    },
+    detailLabels: {
+      [HeardAboutSource.FRIEND]: 'Wie heeft je over ons verteld?',
+      [HeardAboutSource.EVENT_OR_PARTNER]: 'Welk evenement of welke partner?',
+      [HeardAboutSource.OTHER]: 'Waar heb je over ons gehoord?',
     },
   },
 

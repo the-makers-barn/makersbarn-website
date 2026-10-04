@@ -9,6 +9,7 @@ import {
   META_UTM_SOURCES,
   PAID_UTM_MEDIUMS,
 } from '@/constants/analytics'
+import type { SubmissionSource } from '@/types'
 
 /**
  * Where the visit came from, decided once on the landing page.
@@ -159,4 +160,10 @@ export function getAttribution(): Attribution {
   } catch {
     return { attribution_channel: Channel.UNKNOWN }
   }
+}
+
+/** The landing attribution in the shape the contact and booking server actions accept. */
+export function getSubmissionAttribution(): Pick<SubmissionSource, 'attributionChannel' | 'attributionCampaign'> {
+  const { attribution_channel, attribution_campaign } = getAttribution()
+  return { attributionChannel: attribution_channel, attributionCampaign: attribution_campaign }
 }
