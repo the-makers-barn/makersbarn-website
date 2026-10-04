@@ -32,6 +32,7 @@ export function BookingForm() {
     handleNewRequest,
     handleAnimationComplete,
     setCateringNeeded,
+    handleHeardAboutChange,
   } = useBookingForm({
     bookingMessages: booking.messages,
     bookingValidation: booking.validation,
@@ -67,6 +68,7 @@ export function BookingForm() {
               handleChange={handleChange}
               handleAnimationComplete={handleAnimationComplete}
               setCateringNeeded={setCateringNeeded}
+              handleHeardAboutChange={handleHeardAboutChange}
               translations={booking}
             />
 

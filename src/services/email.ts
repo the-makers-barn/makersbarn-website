@@ -3,8 +3,16 @@
 import * as postmark from 'postmark'
 import { revalidatePath } from 'next/cache'
 
-import { createLogger, escapeHtml, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
-import type { Chef, Language, ValidatedBookingFormData } from '@/types'
+import {
+  createLogger,
+  escapeHtml,
+  formatGroupSize,
+  formatHeardAbout,
+  formatLandingChannel,
+  getRetreatTypeDisplayLabel,
+  type ValidatedContactFormData,
+} from '@/lib'
+import type { Chef, Language, SubmissionSource, ValidatedBookingFormData } from '@/types'
 import { CONTACT_SOURCE_EMAIL_SUBJECT_PREFIX } from '@/constants'
 
 const logger = createLogger('email-service')
@@ -42,6 +50,14 @@ function createEmailText(fields: EmailField[]): string {
     .join('\n')
 }
 
+/** Admin-only: the visitor's confirmation email never shows where we think they came from. */
+function buildSubmissionSourceFields(data: SubmissionSource): EmailField[] {
+  return [
+    { label: 'Heard about us', value: formatHeardAbout(data) },
+    { label: 'Landing channel', value: formatLandingChannel(data) },
+  ]
+}
+
 function buildFormFields(data: ValidatedContactFormData): EmailField[] {
   return [
     { label: 'Name', value: data.name },
@@ -67,6 +83,7 @@ export async function sendEmail(formData: ValidatedContactFormData): Promise<Ema
 
   const client = new postmark.ServerClient(apiToken)
   const fields = buildFormFields(formData)
+  const adminFields = [...fields, ...buildSubmissionSourceFields(formData)]
 
   // Support multiple recipients: comma-separated string or array
   // Postmark accepts both formats
@@ -95,7 +112,7 @@ export async function sendEmail(formData: ValidatedContactFormData): Promise<Ema
         <h2>New Contact Form Submission</h2>
         <p>You have received a new inquiry from the website contact form.</p>
         <hr />
-        ${createEmailHtml(fields)}
+        ${createEmailHtml(adminFields)}
       `,
       TextBody: `
 New Contact Form Submission
@@ -103,7 +120,7 @@ New Contact Form Submission
 
 You have received a new inquiry from the website contact form.
 
-${createEmailText(fields)}
+${createEmailText(adminFields)}
       `.trim(),
     })
 
@@ -228,6 +245,7 @@ export async function sendBookingEmail(formData: ValidatedBookingFormData): Prom
 
   const client = new postmark.ServerClient(apiToken)
   const fields = buildBookingFields(formData)
+  const adminFields = [...fields, ...buildSubmissionSourceFields(formData)]
 
   const adminEmails = adminEmail.includes(',')
     ? adminEmail.split(',').map(email => email.trim()).join(',')
@@ -249,7 +267,7 @@ export async function sendBookingEmail(formData: ValidatedBookingFormData): Prom
         <h2>New Booking Request</h2>
         <p>You have received a new booking request from the website.</p>
         <hr />
-        ${createEmailHtml(fields)}
+        ${createEmailHtml(adminFields)}
       `,
       TextBody: `
 New Booking Request
@@ -257,7 +275,7 @@ New Booking Request
 
 You have received a new booking request from the website.
 
-${createEmailText(fields)}
+${createEmailText(adminFields)}
       `.trim(),
     })
 

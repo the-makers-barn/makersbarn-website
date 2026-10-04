@@ -1,3 +1,5 @@
+import { HeardAboutSource } from '@/types'
+
 import type { Dictionary } from '../types'
 
 export const en: Dictionary = {
@@ -235,6 +237,25 @@ export const en: Dictionary = {
       ],
       newRequestButton: 'Submit Another Request',
       homeButton: 'Back to Home',
+    },
+  },
+
+  heardAbout: {
+    legend: 'How did you hear about us?',
+    optional: 'Optional',
+    options: {
+      [HeardAboutSource.GOOGLE]: 'Google search',
+      [HeardAboutSource.SOCIAL_MEDIA]: 'Instagram or Facebook',
+      [HeardAboutSource.AI_ASSISTANT]: 'AI assistant (like ChatGPT)',
+      [HeardAboutSource.FRIEND]: 'A friend or colleague',
+      [HeardAboutSource.RETURNING]: "I've been here before",
+      [HeardAboutSource.EVENT_OR_PARTNER]: 'An event or partner',
+      [HeardAboutSource.OTHER]: 'Something else',
+    },
+    detailLabels: {
+      [HeardAboutSource.FRIEND]: 'Who told you about us?',
+      [HeardAboutSource.EVENT_OR_PARTNER]: 'Which event or partner?',
+      [HeardAboutSource.OTHER]: 'Where did you hear about us?',
     },
   },
 

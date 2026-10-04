@@ -40,6 +40,8 @@ export enum Channel {
 export const ATTRIBUTION_CHANNEL_KEY = 'attribution_channel'
 export const ATTRIBUTION_CAMPAIGN_KEY = 'attribution_campaign'
 export const ATTRIBUTION_STORAGE_KEY = 'tmb.attribution'
+/** Event property key for the visitor's own "How did you hear about us?" answer. */
+export const HEARD_ABOUT_EVENT_KEY = 'heard_about'
 
 export const META_UTM_SOURCES: ReadonlySet<string> = new Set(['instagram', 'ig', 'facebook', 'fb', 'meta'])
 export const PAID_UTM_MEDIUMS: ReadonlySet<string> = new Set([

@@ -2,6 +2,7 @@ import { ChangeEvent, RefObject } from 'react'
 import { AnimatePresence } from 'framer-motion'
 
 import { RetreatType, Language, type BookingFormData } from '@/types'
+import type { HeardAboutValue } from '@/components/client/forms'
 
 import { BookingFormContactStep } from './BookingFormContactStep'
 import { BookingFormRetreatStep } from './BookingFormRetreatStep'
@@ -26,6 +27,7 @@ interface BookingFormStepsProps {
   handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void
   handleAnimationComplete: () => void
   setCateringNeeded: (value: boolean) => void
+  handleHeardAboutChange: (value: HeardAboutValue) => void
   translations: {
     alert: {
       title: string
@@ -120,6 +122,7 @@ export function BookingFormSteps({
   handleChange,
   handleAnimationComplete,
   setCateringNeeded,
+  handleHeardAboutChange,
   translations,
 }: BookingFormStepsProps) {
   return (
@@ -167,6 +170,7 @@ export function BookingFormSteps({
           formData={formData}
           errors={errors}
           handleChange={handleChange}
+          handleHeardAboutChange={handleHeardAboutChange}
           handleAnimationComplete={handleAnimationComplete}
           stepHeadingRef={stepHeadingRef}
           translations={translations}

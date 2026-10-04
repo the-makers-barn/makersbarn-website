@@ -34,6 +34,7 @@ export const FORM_FIELD_IDS = {
   CATERING_NEEDED: 'booking-catering-needed',
   CATERING_DETAILS: 'booking-catering-details',
   EXTRA_INFO: 'booking-extra-info',
+  HEARD_ABOUT: 'booking-heard-about',
 } as const
 
 export const RETREAT_TYPE_KEYS = [

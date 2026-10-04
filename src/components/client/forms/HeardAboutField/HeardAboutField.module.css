@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Heard About Field - optional source chips
+   Light tone for the booking wizard, dark tone for the green question form
+   ========================================================================== */
+
+.fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.legend {
+  padding: 0;
+  margin-bottom: 0.75rem;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.optional {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: #cbd5e1;
+}
+
+.chip:has(.radio:focus-visible) {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(41, 75, 58, 0.25);
+}
+
+.chipSelected,
+.chipSelected:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  pointer-events: none;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detailLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.detailInput {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  color: var(--color-text);
+  background-color: #ffffff;
+}
+
+.detailInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(41, 75, 58, 0.12);
+}
+
+/* Dark tone ---------------------------------------------------------------- */
+
+.dark .legend {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-inverse-muted);
+}
+
+.dark .optional,
+.dark .detailLabel {
+  color: var(--color-text-inverse-muted);
+}
+
+.dark .chip {
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(41, 75, 58, 0.8);
+  color: var(--color-text-inverse);
+}
+
+.dark .chip:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+/* Solid white ring: a translucent gold ring measured ~1.7:1 on the green form, below WCAG's 3:1. */
+.dark .chip:has(.radio:focus-visible) {
+  box-shadow: none;
+  outline: 2px solid var(--color-background-white);
+  outline-offset: 2px;
+}
+
+/* White chip with green text: white on the brand gold measures ~3.1:1, below WCAG AA. */
+.dark .chipSelected,
+.dark .chipSelected:hover {
+  border-color: var(--color-secondary);
+  background-color: var(--color-background-white);
+  color: var(--color-primary);
+}
+
+.dark .detailInput {
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(41, 75, 58, 0.8);
+  color: var(--color-text-inverse);
+}
+
+.dark .detailInput:focus {
+  border-color: rgba(184, 137, 74, 0.8);
+  box-shadow: 0 0 0 3px rgba(184, 137, 74, 0.3);
+}

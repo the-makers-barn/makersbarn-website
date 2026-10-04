@@ -1,5 +1,12 @@
-import { createLogger, formatGroupSize, getRetreatTypeDisplayLabel, type ValidatedContactFormData } from '@/lib'
-import type { ValidatedBookingFormData, PartialBookingContactData } from '@/types'
+import {
+  createLogger,
+  formatGroupSize,
+  formatHeardAbout,
+  formatLandingChannel,
+  getRetreatTypeDisplayLabel,
+  type ValidatedContactFormData,
+} from '@/lib'
+import type { ValidatedBookingFormData, PartialBookingContactData, SubmissionSource } from '@/types'
 import { CONTACT_SOURCE_SLACK_LABEL } from '@/constants'
 
 const logger = createLogger('slack-service')
@@ -83,6 +90,19 @@ export async function sendSlackMessage({
   }
 }
 
+function formatSubmissionSourceLines(data: SubmissionSource): string[] {
+  const lines: string[] = []
+  const heardAbout = formatHeardAbout(data)
+  if (heardAbout) {
+    lines.push(`*Heard about us:* ${escapeSlackMarkdown(heardAbout)}`)
+  }
+  const landingChannel = formatLandingChannel(data)
+  if (landingChannel) {
+    lines.push(`*Landing channel:* ${escapeSlackMarkdown(landingChannel)}`)
+  }
+  return lines
+}
+
 export function formatContactFormMessage(data: ValidatedContactFormData): string {
   const lines = [
     '📬 *New Contact Form Submission*',
@@ -99,6 +119,8 @@ export function formatContactFormMessage(data: ValidatedContactFormData): string
   if (sourceLabel) {
     lines.push(`*Source:* ${sourceLabel}`)
   }
+
+  lines.push(...formatSubmissionSourceLines(data))
 
   lines.push('', `*Message:*`, escapeSlackMarkdown(data.message))
 
@@ -165,6 +187,12 @@ export function formatBookingFormMessage(data: ValidatedBookingFormData): string
   if (data.extraInfo) {
     addSection()
     lines.push('*Extra Information:*', escapeSlackMarkdown(data.extraInfo))
+  }
+
+  const sourceLines = formatSubmissionSourceLines(data)
+  if (sourceLines.length > 0) {
+    addSection()
+    lines.push(...sourceLines)
   }
 
   return lines.join('\n')

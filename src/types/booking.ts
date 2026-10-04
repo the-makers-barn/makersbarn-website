@@ -1,3 +1,5 @@
+import type { SubmissionSource } from './contact'
+
 /**
  * Retreat type options for booking form
  */
@@ -28,7 +30,7 @@ export interface DateRangeConfig {
 /**
  * Form data structure for booking form (client-side)
  */
-export interface BookingFormData {
+export interface BookingFormData extends SubmissionSource {
   name: string
   email: string
   phone: string
@@ -50,7 +52,7 @@ export interface BookingFormData {
  * Validated booking form data (after Zod validation)
  * Only name and email are required - everything else captures intent
  */
-export interface ValidatedBookingFormData {
+export interface ValidatedBookingFormData extends SubmissionSource {
   name: string
   email: string
   phone?: string
