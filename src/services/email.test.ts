@@ -66,7 +66,7 @@ describe('submission source in emails', () => {
   })
 
   it('shows the source to the admin but not in the contact confirmation', async () => {
-    await sendEmail({ name: 'Ada', email: VISITOR_EMAIL, message: 'hello', ...source })
+    await sendEmail({ name: 'Ada', email: VISITOR_EMAIL, phone: undefined, message: 'hello', ...source })
     expectSourceOnlyForAdmin()
   })
 

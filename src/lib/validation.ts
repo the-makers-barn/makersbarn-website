@@ -58,7 +58,7 @@ export const ContactInfoSchema = z.object({
 
 export type ValidatedContactInfo = z.infer<typeof ContactInfoSchema>
 
-const LINE_BREAKS = /[\r\n\t]+/g
+const LINE_BREAKS = /\s+/g
 
 /** Single-line text: a line break could fake an extra "Label: value" row in the plain-text email or Slack. */
 function truncatedOptionalText(max: number) {

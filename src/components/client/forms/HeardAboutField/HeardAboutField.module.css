@@ -124,8 +124,11 @@
   border-color: rgba(255, 255, 255, 0.55);
 }
 
+/* Solid white ring: a translucent gold ring measured ~1.7:1 on the green form, below WCAG's 3:1. */
 .dark .chip:has(.radio:focus-visible) {
-  box-shadow: 0 0 0 3px rgba(184, 137, 74, 0.45);
+  box-shadow: none;
+  outline: 2px solid var(--color-background-white);
+  outline-offset: 2px;
 }
 
 /* White chip with green text: white on the brand gold measures ~3.1:1, below WCAG AA. */

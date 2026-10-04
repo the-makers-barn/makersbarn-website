@@ -31,7 +31,7 @@ const ENTER_KEY = 'Enter'
 
 /** On the quote wizard's last step, Enter in this box would otherwise send the whole request. */
 function preventImplicitSubmit(e: KeyboardEvent<HTMLInputElement>): void {
-  if (e.key === ENTER_KEY) {
+  if (e.key === ENTER_KEY && !e.nativeEvent.isComposing) {
     e.preventDefault()
   }
 }
