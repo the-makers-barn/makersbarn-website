@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { createEvent, fireEvent, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
 import { HeardAboutSource } from '@/types'
@@ -57,5 +58,30 @@ describe('HeardAboutField', () => {
     fireEvent.click(chip)
     expect(onValue).toHaveBeenLastCalledWith({ heardAbout: undefined, heardAboutDetail: '' })
     expect((chip as HTMLInputElement).checked).toBe(false)
+  })
+
+  it('selects through a real tap on the chip text', async () => {
+    const onValue = vi.fn()
+    render(<Harness onValue={onValue} />)
+    await userEvent.click(screen.getByText('Google search'))
+    expect(onValue).toHaveBeenLastCalledWith({ heardAbout: HeardAboutSource.GOOGLE, heardAboutDetail: '' })
+  })
+
+  it('drops the typed detail when another chip is chosen', () => {
+    const onValue = vi.fn()
+    render(<Harness onValue={onValue} />)
+    fireEvent.click(screen.getByLabelText('A friend or colleague'))
+    fireEvent.change(screen.getByLabelText('Who told you about us?'), { target: { value: 'Anna' } })
+    fireEvent.click(screen.getByLabelText('Something else'))
+    expect(onValue).toHaveBeenLastCalledWith({ heardAbout: HeardAboutSource.OTHER, heardAboutDetail: '' })
+  })
+
+  it('keeps Enter in the follow-up box from submitting the surrounding form', () => {
+    render(<Harness onValue={vi.fn()} />)
+    fireEvent.click(screen.getByLabelText('Something else'))
+    const detail = screen.getByLabelText('Where did you hear about us?')
+    const enter = createEvent.keyDown(detail, { key: 'Enter' })
+    fireEvent(detail, enter)
+    expect(enter.defaultPrevented).toBe(true)
   })
 })

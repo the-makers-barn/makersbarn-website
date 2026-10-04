@@ -11,7 +11,7 @@ export function formatHeardAbout({ heardAbout, heardAboutDetail }: SubmissionSou
     return undefined
   }
   const label = HEARD_ABOUT_ADMIN_LABEL[heardAbout]
-  return heardAboutDetail ? `${label}: ${heardAboutDetail}` : label
+  return heardAboutDetail && isHeardAboutDetailSource(heardAbout) ? `${label}: ${heardAboutDetail}` : label
 }
 
 /** "google (campaign: spring-retreats)", or undefined when the client sent no channel. */

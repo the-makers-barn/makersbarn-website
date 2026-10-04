@@ -246,7 +246,7 @@ export const en: Dictionary = {
     options: {
       [HeardAboutSource.GOOGLE]: 'Google search',
       [HeardAboutSource.SOCIAL_MEDIA]: 'Instagram or Facebook',
-      [HeardAboutSource.AI_ASSISTANT]: 'AI assistant (ChatGPT and similar)',
+      [HeardAboutSource.AI_ASSISTANT]: 'AI assistant (like ChatGPT)',
       [HeardAboutSource.FRIEND]: 'A friend or colleague',
       [HeardAboutSource.RETURNING]: "I've been here before",
       [HeardAboutSource.EVENT_OR_PARTNER]: 'An event or partner',

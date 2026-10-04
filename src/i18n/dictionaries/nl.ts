@@ -249,7 +249,7 @@ export const nl: Dictionary = {
     options: {
       [HeardAboutSource.GOOGLE]: 'Google',
       [HeardAboutSource.SOCIAL_MEDIA]: 'Instagram of Facebook',
-      [HeardAboutSource.AI_ASSISTANT]: 'AI-assistent (ChatGPT en dergelijke)',
+      [HeardAboutSource.AI_ASSISTANT]: 'AI-assistent (zoals ChatGPT)',
       [HeardAboutSource.FRIEND]: 'Een vriend of collega',
       [HeardAboutSource.RETURNING]: 'Ik ben hier eerder geweest',
       [HeardAboutSource.EVENT_OR_PARTNER]: 'Een evenement of partner',

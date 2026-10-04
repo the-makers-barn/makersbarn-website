@@ -73,4 +73,9 @@ describe('submission source fields', () => {
     const blank = validateContactForm({ ...contactBase, heardAboutDetail: '   ' })
     expect(blank.data?.heardAboutDetail).toBeUndefined()
   })
+
+  it('flattens line breaks so a field cannot fake an extra row', () => {
+    const result = validateContactForm({ ...contactBase, attributionCampaign: 'spring\nHeard about us: fake' })
+    expect(result.data?.attributionCampaign).toBe('spring Heard about us: fake')
+  })
 })

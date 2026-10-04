@@ -249,7 +249,7 @@ export const de: Dictionary = {
     options: {
       [HeardAboutSource.GOOGLE]: 'Google-Suche',
       [HeardAboutSource.SOCIAL_MEDIA]: 'Instagram oder Facebook',
-      [HeardAboutSource.AI_ASSISTANT]: 'KI-Assistent (ChatGPT o. Ä.)',
+      [HeardAboutSource.AI_ASSISTANT]: 'KI-Assistent (z. B. ChatGPT)',
       [HeardAboutSource.FRIEND]: 'Freunde oder Kollegen',
       [HeardAboutSource.RETURNING]: 'Ich war schon einmal hier',
       [HeardAboutSource.EVENT_OR_PARTNER]: 'Eine Veranstaltung oder ein Partner',

@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useCallback, type ChangeEvent } from 'react'
+import { memo, useCallback, type ChangeEvent, type KeyboardEvent } from 'react'
 
 import { HEARD_ABOUT_DETAIL_MAX } from '@/constants/heardAbout'
 import { useTranslation } from '@/context'
@@ -27,6 +27,14 @@ interface HeardAboutFieldProps extends HeardAboutValue {
 }
 
 const OPTIONS = Object.values(HeardAboutSource)
+const ENTER_KEY = 'Enter'
+
+/** On the quote wizard's last step, Enter in this box would otherwise send the whole request. */
+function preventImplicitSubmit(e: KeyboardEvent<HTMLInputElement>): void {
+  if (e.key === ENTER_KEY) {
+    e.preventDefault()
+  }
+}
 
 /**
  * Optional "How did you hear about us?" chips. A tap selects, a second tap on
@@ -98,6 +106,7 @@ export const HeardAboutField = memo(function HeardAboutField({
             type="text"
             value={heardAboutDetail}
             onChange={handleDetailChange}
+            onKeyDown={preventImplicitSubmit}
             maxLength={HEARD_ABOUT_DETAIL_MAX}
             className={styles.detailInput}
           />

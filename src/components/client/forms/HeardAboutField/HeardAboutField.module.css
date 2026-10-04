@@ -128,11 +128,12 @@
   box-shadow: 0 0 0 3px rgba(184, 137, 74, 0.45);
 }
 
+/* White chip with green text: white on the brand gold measures ~3.1:1, below WCAG AA. */
 .dark .chipSelected,
 .dark .chipSelected:hover {
   border-color: var(--color-secondary);
-  background-color: var(--color-secondary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-background-white);
+  color: var(--color-primary);
 }
 
 .dark .detailInput {
