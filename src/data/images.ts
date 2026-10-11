@@ -31,6 +31,7 @@ export const IMAGES = {
     horizonGardenTree: '/images/cabin-horizon-garden-tree.jpg',
     doubleEnsuite: '/images/double-ensuite.jpg',
     teahouse: '/images/teahous-with-chair.jpg',
+    stretchTentAerial: '/images/stretch-tent-aerial.jpg',
     sauna: '/images/sauna.jpg',
     ducks: '/images/ducks.jpg',
     outsideWalk: '/images/outside-walk.jpg',
