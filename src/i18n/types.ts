@@ -51,19 +51,6 @@ export interface HeroDetailsTranslations {
 }
 
 /**
- * Full-width highlight of the Autumn Grounding retreat on the home page
- */
-export interface RetreatHighlightTranslations {
-  kicker: string
-  title: string
-  subtitle: string
-  body: string
-  metaItems: readonly string[]
-  ctaLabel: string
-  scarcityNote: string
-}
-
-/**
  * Contact form translations
  */
 export interface ContactTranslations {
@@ -1494,7 +1481,6 @@ export interface Dictionary {
   nav: NavTranslations
   hero: HeroTranslations
   heroDetails: HeroDetailsTranslations
-  retreatHighlight: RetreatHighlightTranslations
   contact: ContactTranslations
   unifiedContact: UnifiedContactTranslations
   booking: BookingTranslations

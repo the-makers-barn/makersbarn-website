@@ -110,6 +110,7 @@ export const FACILITIES_OPTIONS: FacilitiesOption[] = [
       IMAGES.accommodation.mainHouse,
       IMAGES.accommodation.outsideWalk,
       IMAGES.accommodation.teahouse,
+      IMAGES.accommodation.stretchTentAerial,
     ],
     description: 'The offered Facilities are essential for a retreat, but it\'s the little things in between that make a place truly special',
     features: [
