@@ -31,11 +31,21 @@ export interface UmamiEventValue {
   total: number
 }
 
+/** Narrows any Umami query. Countries are ISO codes, sent as Umami's `country=neq.A,B` filter. */
+export interface UmamiFilter {
+  excludeCountries?: readonly string[]
+}
+
 export interface UmamiReader {
-  getStats(range: DateRange): Promise<UmamiStats>
-  getMetrics(range: DateRange, type: UmamiMetricType, limit: number): Promise<UmamiMetric[]>
-  getUtmMetrics(range: DateRange, type: UmamiUtmType): Promise<UmamiUtmMetric[]>
-  getEventPropertyValues(range: DateRange, eventName: string, propertyName: string): Promise<UmamiEventValue[]>
+  getStats(range: DateRange, filter?: UmamiFilter): Promise<UmamiStats>
+  getMetrics(range: DateRange, type: UmamiMetricType, limit: number, filter?: UmamiFilter): Promise<UmamiMetric[]>
+  getUtmMetrics(range: DateRange, type: UmamiUtmType, filter?: UmamiFilter): Promise<UmamiUtmMetric[]>
+  getEventPropertyValues(
+    range: DateRange,
+    eventName: string,
+    propertyName: string,
+    filter?: UmamiFilter,
+  ): Promise<UmamiEventValue[]>
 }
 
 export interface UmamiClientConfig {
@@ -57,6 +67,8 @@ export class UmamiError extends Error {
 
 const STATS_FIELDS: readonly (keyof UmamiStats)[] = ['pageviews', 'visitors', 'visits', 'bounces', 'totaltime']
 const JSON_CONTENT_TYPE = 'application/json'
+const COUNTRY_PARAM = 'country'
+const NOT_EQUAL_PREFIX = 'neq.'
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null
@@ -130,22 +142,27 @@ export function createUmamiClient(config: UmamiClientConfig): UmamiReader {
     return { startAt: String(range.startAt), endAt: String(range.endAt) }
   }
 
+  function filterParams(filter: UmamiFilter | undefined): Record<string, string> {
+    const excluded = filter?.excludeCountries ?? []
+    return excluded.length === 0 ? {} : { [COUNTRY_PARAM]: `${NOT_EQUAL_PREFIX}${excluded.join(',')}` }
+  }
+
   return {
-    async getStats(range) {
-      return parseStats(await getJson('stats', rangeParams(range)))
+    async getStats(range, filter) {
+      return parseStats(await getJson('stats', { ...rangeParams(range), ...filterParams(filter) }))
     },
-    async getMetrics(range, type, limit) {
+    async getMetrics(range, type, limit, filter) {
       return parseRows(
-        await getJson('metrics', { ...rangeParams(range), type, limit: String(limit) }),
+        await getJson('metrics', { ...rangeParams(range), type, limit: String(limit), ...filterParams(filter) }),
         isMetricRow,
       )
     },
-    async getUtmMetrics(range, type) {
-      return parseRows(await getJson('utm/metrics', { ...rangeParams(range), type }), isUtmRow)
+    async getUtmMetrics(range, type, filter) {
+      return parseRows(await getJson('utm/metrics', { ...rangeParams(range), type, ...filterParams(filter) }), isUtmRow)
     },
-    async getEventPropertyValues(range, eventName, propertyName) {
+    async getEventPropertyValues(range, eventName, propertyName, filter) {
       return parseRows(
-        await getJson('event-data/values', { ...rangeParams(range), eventName, propertyName }),
+        await getJson('event-data/values', { ...rangeParams(range), eventName, propertyName, ...filterParams(filter) }),
         isEventValueRow,
       )
     },

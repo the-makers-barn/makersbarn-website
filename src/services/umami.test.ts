@@ -45,6 +45,33 @@ describe('createUmamiClient', () => {
     )
   })
 
+  it('adds a country exclusion to every endpoint when a filter is given', async () => {
+    const fetchImpl = vi.fn((url: string) =>
+      url.includes('/stats?')
+        ? jsonResponse({ pageviews: 0, visitors: 0, visits: 0, bounces: 0, totaltime: 0 })
+        : jsonResponse([]),
+    )
+    const c = client(fetchImpl as unknown as typeof fetch)
+    const filter = { excludeCountries: ['SG', 'CN'] }
+    await c.getStats(RANGE, filter)
+    await c.getMetrics(RANGE, UmamiMetricType.COUNTRY, 5, filter)
+    await c.getUtmMetrics(RANGE, UmamiUtmType.SOURCE, filter)
+    await c.getEventPropertyValues(RANGE, 'contact_form_submitted', 'attribution_channel', filter)
+    const urls = fetchImpl.mock.calls.map((call) => new URL(call[0]))
+    expect(urls).toHaveLength(4)
+    for (const url of urls) {
+      expect(url.searchParams.get('country')).toBe('neq.SG,CN')
+    }
+  })
+
+  it('sends no country parameter for an empty exclusion list', async () => {
+    const fetchImpl = vi.fn(() => jsonResponse([]))
+    await client(fetchImpl as unknown as typeof fetch).getMetrics(RANGE, UmamiMetricType.DEVICE, 10, { excludeCountries: [] })
+    const url = new URL(String((fetchImpl.mock.calls[0] as unknown as [string])[0]))
+    expect(url.searchParams.has('country')).toBe(false)
+    expect(url.searchParams.get('type')).toBe('device')
+  })
+
   it.each([401, 500])('turns HTTP %s into UmamiError with the status', async (status) => {
     const fetchImpl = vi.fn(() => jsonResponse({ error: 'x' }, status))
     await expect(client(fetchImpl as unknown as typeof fetch).getStats(RANGE)).rejects.toMatchObject({

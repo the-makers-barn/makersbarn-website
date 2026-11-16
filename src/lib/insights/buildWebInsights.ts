@@ -6,18 +6,32 @@ import {
   InsightsSource,
   MAX_TEXT_LENGTH,
   MAX_UTM_VALUE_LENGTH,
+  PAGE_SPREAD_ROWS,
+  PAGE_SPREAD_TOP_PAGES,
+  SUSPECTED_BOT_COUNTRIES,
+  TOP_COUNTRY_ROWS,
   TOP_ROWS,
   UmamiMetricType,
   UmamiUtmType,
 } from '@/constants/insights'
 import { sanitizePlainText } from '@/lib/security'
-import type { UmamiEventValue, UmamiMetric, UmamiReader, UmamiStats, UmamiUtmMetric } from '@/services/umami'
-import type { ContactsByChannelRow, EventRow, MetricComparison, UtmRow, WebInsights } from '@/types/insights'
+import type { UmamiEventValue, UmamiFilter, UmamiMetric, UmamiReader, UmamiStats, UmamiUtmMetric } from '@/services/umami'
+import type {
+  ContactsByChannelRow,
+  CountryRow,
+  DeviceRow,
+  EventRow,
+  MetricComparison,
+  PageSpread,
+  UtmRow,
+  WebInsights,
+} from '@/types/insights'
 
 import type { ReportingPeriods } from './periods'
 
 const PERCENT = 100
 const ONE_DECIMAL = 10
+const REAL_VISITORS: UmamiFilter = { excludeCountries: SUSPECTED_BOT_COUNTRIES }
 
 function round1(value: number): number {
   return Math.round(value * ONE_DECIMAL) / ONE_DECIMAL
@@ -37,6 +51,33 @@ function avgVisitSeconds(stats: UmamiStats): number {
 
 function bounceRatePct(stats: UmamiStats): number {
   return stats.visits === 0 ? 0 : round1((stats.bounces / stats.visits) * PERCENT)
+}
+
+/** Counts that belong to the suspected robot countries: everything minus the filtered view. Countries do not overlap, so the subtraction is exact. */
+function robotStats(all: UmamiStats, real: UmamiStats): UmamiStats {
+  return {
+    pageviews: Math.max(0, all.pageviews - real.pageviews),
+    visitors: Math.max(0, all.visitors - real.visitors),
+    visits: Math.max(0, all.visits - real.visits),
+    bounces: Math.max(0, all.bounces - real.bounces),
+    totaltime: Math.max(0, all.totaltime - real.totaltime),
+  }
+}
+
+function pageSpread(paths: UmamiMetric[]): PageSpread {
+  const total = paths.reduce((sum, row) => sum + row.y, 0)
+  const top = paths.slice(0, PAGE_SPREAD_TOP_PAGES).reduce((sum, row) => sum + row.y, 0)
+  return { distinctPages: paths.length, topThreeSharePct: total === 0 ? 0 : round1((top / total) * PERCENT) }
+}
+
+function toCountryRows(rows: UmamiMetric[]): CountryRow[] {
+  return rows
+    .slice(0, TOP_COUNTRY_ROWS)
+    .map((row) => ({ country: sanitizePlainText(row.x, MAX_TEXT_LENGTH), visitors: row.y }))
+}
+
+function toDeviceRows(rows: UmamiMetric[]): DeviceRow[] {
+  return rows.map((row) => ({ device: sanitizePlainText(row.x, MAX_TEXT_LENGTH), visitors: row.y }))
 }
 
 function toUtmRows(rows: UmamiUtmMetric[]): UtmRow[] {
@@ -80,15 +121,21 @@ function sumContactsByChannel(valueLists: UmamiEventValue[][]): ContactsByChanne
 /**
  * Turns Umami's raw answers for a period and its predecessor into the digest
  * contract. Pure: every number comes from the reader, `now` stamps the output.
+ * Every number leaves out SUSPECTED_BOT_COUNTRIES except `likelyBots`, which
+ * is the unfiltered total minus the filtered one.
  */
 export async function buildWebInsights(reader: UmamiReader, periods: ReportingPeriods, now: Date): Promise<WebInsights> {
   const { current, previous } = periods
   const [
+    allCurrentStats,
+    allPreviousStats,
     currentStats,
     previousStats,
     paths,
     referrers,
     channels,
+    countries,
+    devices,
     currentEvents,
     previousEvents,
     utmCampaign,
@@ -98,16 +145,26 @@ export async function buildWebInsights(reader: UmamiReader, periods: ReportingPe
   ] = await Promise.all([
     reader.getStats(current),
     reader.getStats(previous),
-    reader.getMetrics(current, UmamiMetricType.PATH, TOP_ROWS),
-    reader.getMetrics(current, UmamiMetricType.REFERRER, TOP_ROWS),
-    reader.getMetrics(current, UmamiMetricType.CHANNEL, TOP_ROWS),
-    reader.getMetrics(current, UmamiMetricType.EVENT, EVENT_ROWS),
-    reader.getMetrics(previous, UmamiMetricType.EVENT, EVENT_ROWS),
-    reader.getUtmMetrics(current, UmamiUtmType.CAMPAIGN),
-    reader.getUtmMetrics(current, UmamiUtmType.SOURCE),
-    reader.getUtmMetrics(current, UmamiUtmType.MEDIUM),
-    Promise.all(CONTACT_EVENTS.map((event) => reader.getEventPropertyValues(current, event, ATTRIBUTION_CHANNEL_KEY))),
+    reader.getStats(current, REAL_VISITORS),
+    reader.getStats(previous, REAL_VISITORS),
+    reader.getMetrics(current, UmamiMetricType.PATH, PAGE_SPREAD_ROWS, REAL_VISITORS),
+    reader.getMetrics(current, UmamiMetricType.REFERRER, TOP_ROWS, REAL_VISITORS),
+    reader.getMetrics(current, UmamiMetricType.CHANNEL, TOP_ROWS, REAL_VISITORS),
+    reader.getMetrics(current, UmamiMetricType.COUNTRY, TOP_COUNTRY_ROWS, REAL_VISITORS),
+    reader.getMetrics(current, UmamiMetricType.DEVICE, TOP_ROWS, REAL_VISITORS),
+    reader.getMetrics(current, UmamiMetricType.EVENT, EVENT_ROWS, REAL_VISITORS),
+    reader.getMetrics(previous, UmamiMetricType.EVENT, EVENT_ROWS, REAL_VISITORS),
+    reader.getUtmMetrics(current, UmamiUtmType.CAMPAIGN, REAL_VISITORS),
+    reader.getUtmMetrics(current, UmamiUtmType.SOURCE, REAL_VISITORS),
+    reader.getUtmMetrics(current, UmamiUtmType.MEDIUM, REAL_VISITORS),
+    Promise.all(
+      CONTACT_EVENTS.map((event) =>
+        reader.getEventPropertyValues(current, event, ATTRIBUTION_CHANNEL_KEY, REAL_VISITORS),
+      ),
+    ),
   ])
+  const currentRobots = robotStats(allCurrentStats, currentStats)
+  const previousRobots = robotStats(allPreviousStats, previousStats)
 
   return {
     domain: InsightsDomain.WEB,
@@ -120,10 +177,18 @@ export async function buildWebInsights(reader: UmamiReader, periods: ReportingPe
       avgVisitSeconds: compare(avgVisitSeconds(currentStats), avgVisitSeconds(previousStats)),
       bounceRatePct: compare(bounceRatePct(currentStats), bounceRatePct(previousStats)),
     },
+    likelyBots: {
+      countries: [...SUSPECTED_BOT_COUNTRIES],
+      visitors: compare(currentRobots.visitors, previousRobots.visitors),
+      pageviews: compare(currentRobots.pageviews, previousRobots.pageviews),
+    },
     topPages: paths.slice(0, TOP_ROWS).map((row) => ({ path: sanitizePlainText(row.x, MAX_TEXT_LENGTH), visitors: row.y })),
     topReferrers: referrers
       .slice(0, TOP_ROWS)
       .map((row) => ({ host: sanitizePlainText(row.x, MAX_TEXT_LENGTH), visitors: row.y })),
+    pageSpread: pageSpread(paths),
+    countries: toCountryRows(countries),
+    devices: toDeviceRows(devices),
     umamiChannels: channels.map((row) => ({ channel: sanitizePlainText(row.x, MAX_TEXT_LENGTH), visitors: row.y })),
     campaigns: {
       [UmamiUtmType.CAMPAIGN]: toUtmRows(utmCampaign),
