@@ -7,11 +7,13 @@ import {
   InsightsSource,
   MAX_TEXT_LENGTH,
   MAX_UTM_VALUE_LENGTH,
+  SUSPECTED_BOT_COUNTRIES,
+  TOP_COUNTRY_ROWS,
   TOP_ROWS,
   UmamiMetricType,
   UmamiUtmType,
 } from '@/constants/insights'
-import type { UmamiEventValue, UmamiMetric, UmamiReader, UmamiStats, UmamiUtmMetric } from '@/services/umami'
+import type { UmamiEventValue, UmamiFilter, UmamiMetric, UmamiReader, UmamiStats, UmamiUtmMetric } from '@/services/umami'
 
 import { buildWebInsights } from './buildWebInsights'
 import type { DateRange, ReportingPeriods } from './periods'
@@ -24,14 +26,23 @@ const EMPTY_STATS: UmamiStats = { pageviews: 0, visitors: 0, visits: 0, bounces:
 
 interface FakeData {
   stats: Partial<Record<number, UmamiStats>>
+  /** Stats with the suspected robot countries left out; falls back to `stats` when absent. */
+  realStats?: Partial<Record<number, UmamiStats>>
   metrics: Partial<Record<UmamiMetricType, Record<number, UmamiMetric[]>>>
   utm: Partial<Record<UmamiUtmType, UmamiUtmMetric[]>>
   eventValues: Record<string, UmamiEventValue[]>
 }
 
+function excludesCountries(filter: UmamiFilter | undefined): boolean {
+  return (filter?.excludeCountries?.length ?? 0) > 0
+}
+
 function fakeReader(data: FakeData): UmamiReader {
   return {
-    getStats: (range) => Promise.resolve(data.stats[range.startAt] ?? EMPTY_STATS),
+    getStats: (range, filter) => {
+      const source = excludesCountries(filter) ? (data.realStats ?? data.stats) : data.stats
+      return Promise.resolve(source[range.startAt] ?? EMPTY_STATS)
+    },
     getMetrics: (range, type, limit) => Promise.resolve((data.metrics[type]?.[range.startAt] ?? []).slice(0, limit)),
     getUtmMetrics: (_range, type) => Promise.resolve(data.utm[type] ?? []),
     getEventPropertyValues: (_range, eventName) => Promise.resolve(data.eventValues[eventName] ?? []),
@@ -166,5 +177,88 @@ describe('buildWebInsights', () => {
     expect(topPage.path).not.toContain('>')
     expect(topPage.path).not.toContain('\x00')
     expect(topPage.path.length).toBeLessThanOrEqual(MAX_TEXT_LENGTH)
+  })
+
+})
+
+describe('buildWebInsights robots and audience', () => {
+  it('reports totals without likely robots and counts the robots apart', async () => {
+    const withRobots: FakeData = {
+      ...BASE,
+      realStats: {
+        [CURRENT.startAt]: { pageviews: 237, visitors: 86, visits: 94, bounces: 47, totaltime: 7212 },
+        [PREVIOUS.startAt]: { pageviews: 199, visitors: 65, visits: 69, bounces: 31, totaltime: 7342 },
+      },
+      stats: {
+        [CURRENT.startAt]: { pageviews: 391, visitors: 219, visits: 228, bounces: 161, totaltime: 7221 },
+        [PREVIOUS.startAt]: { pageviews: 261, visitors: 119, visits: 123, bounces: 79, totaltime: 7344 },
+      },
+    }
+    const insights = await buildWebInsights(fakeReader(withRobots), PERIODS, NOW)
+    expect(insights.totals.visitors).toEqual({ current: 86, previous: 65, changePct: 32.3 })
+    expect(insights.likelyBots.countries).toEqual([...SUSPECTED_BOT_COUNTRIES])
+    expect(insights.likelyBots.visitors).toEqual({ current: 133, previous: 54, changePct: 146.3 })
+    expect(insights.likelyBots.pageviews).toEqual({ current: 154, previous: 62, changePct: 148.4 })
+  })
+
+  it('leaves the suspected robot countries out of every breakdown', async () => {
+    const reader = fakeReader(BASE)
+    const filters: (UmamiFilter | undefined)[] = []
+    const recording: UmamiReader = {
+      getStats: (range, filter) => {
+        filters.push(filter)
+        return reader.getStats(range, filter)
+      },
+      getMetrics: (range, type, limit, filter) => {
+        filters.push(filter)
+        return reader.getMetrics(range, type, limit, filter)
+      },
+      getUtmMetrics: (range, type, filter) => {
+        filters.push(filter)
+        return reader.getUtmMetrics(range, type, filter)
+      },
+      getEventPropertyValues: (range, eventName, propertyName, filter) => {
+        filters.push(filter)
+        return reader.getEventPropertyValues(range, eventName, propertyName, filter)
+      },
+    }
+    await buildWebInsights(recording, PERIODS, NOW)
+    const unfiltered = filters.filter((filter) => !excludesCountries(filter))
+    expect(unfiltered).toHaveLength(2)
+    expect(filters.length).toBeGreaterThan(unfiltered.length)
+  })
+
+  it('lists the top countries and the device split', async () => {
+    const withAudience: FakeData = {
+      ...BASE,
+      metrics: {
+        ...BASE.metrics,
+        [UmamiMetricType.COUNTRY]: {
+          [CURRENT.startAt]: [
+            { x: 'NL', y: 46 },
+            { x: 'US', y: 17 },
+            { x: 'DE', y: 5 },
+            { x: 'FR', y: 2 },
+            { x: 'GB', y: 2 },
+            { x: '<b>', y: 1 },
+          ],
+        },
+        [UmamiMetricType.DEVICE]: { [CURRENT.startAt]: [{ x: 'laptop', y: 49 }, { x: 'mobile', y: 28 }] },
+      },
+    }
+    const insights = await buildWebInsights(fakeReader(withAudience), PERIODS, NOW)
+    expect(insights.countries).toHaveLength(TOP_COUNTRY_ROWS)
+    expect(insights.countries[0]).toEqual({ country: 'NL', visitors: 46 })
+    expect(insights.devices).toEqual([
+      { device: 'laptop', visitors: 49 },
+      { device: 'mobile', visitors: 28 },
+    ])
+  })
+
+  it('measures how spread out page visits are', async () => {
+    const insights = await buildWebInsights(fakeReader(BASE), PERIODS, NOW)
+    expect(insights.topPages).toHaveLength(TOP_ROWS)
+    expect(insights.pageSpread.distinctPages).toBe(15)
+    expect(insights.pageSpread.topThreeSharePct).toBe(21.3)
   })
 })

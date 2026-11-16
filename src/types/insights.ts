@@ -46,6 +46,30 @@ export interface ContactsByChannelRow {
   contacts: number
 }
 
+export interface CountryRow {
+  country: string
+  visitors: number
+}
+
+export interface DeviceRow {
+  device: string
+  visitors: number
+}
+
+export interface PageSpread {
+  /** Distinct paths visited in the period. */
+  distinctPages: number
+  /** Share of all page visits that went to the top three pages, one decimal. */
+  topThreeSharePct: number
+}
+
+/** Visitors from the suspected robot countries. Every other number in WebInsights leaves them out. */
+export interface LikelyBots {
+  countries: string[]
+  visitors: MetricComparison
+  pageviews: MetricComparison
+}
+
 export interface WebInsights {
   domain: InsightsDomain
   period: PeriodSummary
@@ -57,7 +81,11 @@ export interface WebInsights {
     avgVisitSeconds: MetricComparison
     bounceRatePct: MetricComparison
   }
+  likelyBots: LikelyBots
   topPages: PageRow[]
+  pageSpread: PageSpread
+  countries: CountryRow[]
+  devices: DeviceRow[]
   topReferrers: ReferrerRow[]
   umamiChannels: UmamiChannelRow[]
   campaigns: Record<UmamiUtmType, UtmRow[]>

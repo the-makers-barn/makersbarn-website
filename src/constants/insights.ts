@@ -28,6 +28,8 @@ export enum UmamiMetricType {
   REFERRER = 'referrer',
   CHANNEL = 'channel',
   EVENT = 'event',
+  COUNTRY = 'country',
+  DEVICE = 'device',
 }
 
 /** Types of Umami's GET /api/websites/{id}/utm/metrics endpoint. */
@@ -44,6 +46,19 @@ export const INSIGHTS_RATE_LIMIT_KEY = 'insights'
 export const INSIGHTS_TIMEOUT_MS = 30_000
 export const UMAMI_REQUEST_TIMEOUT_MS = 10_000
 export const TOP_ROWS = 10
+export const TOP_COUNTRY_ROWS = 5
+/** Row limit for the path metric: high enough to count every distinct page the site has in all three languages. */
+export const PAGE_SPREAD_ROWS = 1000
+/** Number of top pages whose share of all page visits the digest reports. */
+export const PAGE_SPREAD_TOP_PAGES = 3
+
+/**
+ * ISO country codes whose visitors are counted as likely robots and left out of
+ * every other number. Singapore since 2026-11: 133 of 219 visitors in week 46,
+ * all without a referrer, desktop Chrome with zh-CN or a fixed 1280x1200 screen,
+ * 9 seconds of total visit time between them.
+ */
+export const SUSPECTED_BOT_COUNTRIES: readonly string[] = ['SG']
 export const MAX_UTM_VALUE_LENGTH = 100
 /** Cap for other visitor-controlled strings (paths, referrer hosts, Umami channel names). */
 export const MAX_TEXT_LENGTH = 200
