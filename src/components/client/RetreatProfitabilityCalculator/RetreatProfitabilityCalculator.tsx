@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import { track } from '@/lib/analytics'
 import { AnalyticsEvent } from '@/constants/analytics'
@@ -13,7 +13,7 @@ import {
 import type { Dictionary } from '@/i18n/types'
 import { getLocalizedPath } from '@/lib/routing'
 import { Language, Route } from '@/types'
-import type { VariantConfig } from '@/types/tools'
+import type { CalculatorInputs, VariantConfig } from '@/types/tools'
 import { CALCULATOR_VARIANTS } from '@/data/tools'
 
 import { EmailCapture } from './EmailCapture'
@@ -21,6 +21,7 @@ import { InputsPanel } from './InputsPanel'
 import { ResultsPanel } from './ResultsPanel'
 import { ShareLink } from './ShareLink'
 import { useCalculator } from './useCalculator'
+import { useTrackFirstInput } from './useTrackFirstInput'
 import styles from './RetreatProfitabilityCalculator.module.css'
 
 interface RetreatProfitabilityCalculatorProps {
@@ -36,6 +37,15 @@ export function RetreatProfitabilityCalculator({
 }: RetreatProfitabilityCalculatorProps) {
   const config: VariantConfig = CALCULATOR_VARIANTS[variant]
   const { inputs, results, setInput, reset } = useCalculator(config.defaults)
+  const trackFirstInput = useTrackFirstInput(variant)
+
+  const handleInputChange = useCallback(
+    <K extends keyof CalculatorInputs>(key: K, value: CalculatorInputs[K]) => {
+      trackFirstInput(key)
+      setInput(key, value)
+    },
+    [setInput, trackFirstInput]
+  )
 
   useEffect(() => {
     track(AnalyticsEvent.CALCULATOR_LOADED, { variant })
@@ -53,7 +63,7 @@ export function RetreatProfitabilityCalculator({
           variant={config}
           locale={locale}
           t={t}
-          onChange={setInput}
+          onChange={handleInputChange}
           onReset={reset}
         />
         <ResultsPanel inputs={inputs} results={results} t={t} />
